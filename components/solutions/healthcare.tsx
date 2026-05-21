@@ -135,29 +135,23 @@ export function HealthcarePageView() {
             <p className="mt-4 text-white/60">Every feature designed with PHI in mind.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((f, i) => {
-              const colors: Record<string, string> = {
-                rose: 'from-[#046BD2]/20 to-[#046BD2]/5 border-[#046BD2]/30 [&_.icon]:text-[#0086F9]',
-                sky: 'from-[#0086F9]/20 to-[#0086F9]/5 border-[#0086F9]/30 [&_.icon]:text-[#0086F9]',
-                teal: 'from-[#2D98F1]/20 to-[#2D98F1]/5 border-[#2D98F1]/30 [&_.icon]:text-[#2D98F1]',
-                violet: 'from-[#2575FC]/20 to-[#2575FC]/5 border-[#2575FC]/30 [&_.icon]:text-[#2575FC]',
-                amber: 'from-[#0078E0]/20 to-[#0078E0]/5 border-[#0078E0]/30 [&_.icon]:text-[#0086F9]',
-              }
-              return (
-                <motion.div
-                  key={f.title}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                  className={`group p-7 rounded-3xl bg-gradient-to-br border ${colors[f.accent]} hover:scale-[1.02] transition-transform`}
-                >
-                  <div className="w-12 h-12 rounded-2xl bg-white/[0.08] flex items-center justify-center mb-4">
-                    <f.icon className="icon w-6 h-6" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-                  <p className="text-sm text-white/60 leading-relaxed">{f.desc}</p>
-                </motion.div>
-              )
-            })}
+          <div className="rounded-2xl border border-white/[0.08] overflow-hidden">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="group flex items-start gap-6 px-8 py-7 border-b border-white/[0.06] last:border-0 hover:bg-[#046BD2]/[0.04] transition-colors"
+              >
+                <div className="w-11 h-11 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mt-0.5">
+                  <f.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-white text-[1.05rem] mb-1.5 group-hover:text-[#0086F9] transition-colors">{f.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                </div>
+                <div className="shrink-0 mt-1 px-2 py-0.5 rounded-md bg-[#046BD2]/10 border border-[#046BD2]/20 text-[9px] font-mono text-[#2D98F1] uppercase tracking-wider">PHI-safe</div>
+              </motion.div>
+            ))}
           </div>
         </section>
 

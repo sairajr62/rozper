@@ -110,20 +110,41 @@ export function SMBPageView() {
             <p className="mt-4 text-white/60">Set it up in under an hour — no IT team required.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {features.map((f, i) => (
+          <div className="space-y-4">
+            {/* Featured first card — full width */}
+            {features.slice(0, 1).map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="p-7 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/30 transition"
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }}
+                className="flex items-start gap-6 rounded-2xl bg-[#111B2D] border border-[#046BD2]/20 p-7 group hover:border-[#046BD2]/40 transition-colors"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#046BD2]/15 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 shrink-0 rounded-xl bg-[#046BD2]/15 border border-[#046BD2]/25 flex items-center justify-center group-hover:bg-[#046BD2]/25 transition-all">
                   <f.icon className="w-6 h-6 text-[#0086F9]" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.desc}</p>
+                <div>
+                  <h3 className="font-display font-semibold text-white text-lg mb-1.5">{f.title}</h3>
+                  <p className="text-sm text-white/55 leading-relaxed max-w-2xl">{f.desc}</p>
+                </div>
               </motion.div>
             ))}
+            {/* Remaining 4 in 2x2 grid */}
+            <div className="grid md:grid-cols-2 gap-4">
+              {features.slice(1).map((f, i) => (
+                <motion.div
+                  key={f.title}
+                  initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i + 1) * 0.07 }}
+                  className="flex items-start gap-4 rounded-2xl bg-[#111B2D] border border-white/[0.08] p-5 group hover:border-[#046BD2]/30 transition-colors"
+                >
+                  <div className="w-9 h-9 shrink-0 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all mt-0.5">
+                    <f.icon className="w-4 h-4 text-[#0086F9]" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-semibold text-white text-sm mb-1">{f.title}</h3>
+                    <p className="text-xs text-white/50 leading-relaxed">{f.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

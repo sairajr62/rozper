@@ -243,20 +243,20 @@ export function SupportTeamsPageView() {
             <p className="mt-4 text-white/60 max-w-xl mx-auto">Every tool your agents need — surfaced at exactly the right moment.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                className="group relative p-7 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/40 transition overflow-hidden"
+                initial={{ opacity: 0, x: i % 2 === 0 ? -12 : 12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className={`flex items-start gap-4 group ${i === 4 ? 'md:col-span-2 max-w-md' : ''}`}
               >
-                {/* Subtle top glow on hover */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#046BD2]/50 to-transparent opacity-0 group-hover:opacity-100 transition" />
-                <div className="w-11 h-11 rounded-2xl bg-[#046BD2]/15 flex items-center justify-center mb-4">
-                  <f.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mt-0.5">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.desc}</p>
+                <div>
+                  <h3 className="font-display font-semibold text-white mb-1">{f.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>

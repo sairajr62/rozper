@@ -161,16 +161,20 @@ export function FinancePageView() {
             <h2 className="font-display text-4xl md:text-5xl font-bold">Compliance built in, not bolted on.</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="group p-7 rounded border-l-2 border-[#046BD2]/40 bg-gradient-to-br from-[#046BD2]/[0.04] to-transparent hover:border-[#0086F9] hover:bg-[#046BD2]/[0.06] transition"
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className={`rounded-2xl bg-[#111B2D] border border-white/[0.08] hover:border-[#046BD2]/30 p-6 transition-colors group ${i === 4 ? 'md:col-span-2 flex items-start gap-6' : ''}`}
               >
-                <f.icon className="w-7 h-7 text-[#0086F9] mb-4" strokeWidth={1.5} />
-                <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.desc}</p>
+                <div className="w-11 h-11 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all">
+                  <f.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <div className={i === 4 ? 'flex-1' : 'mt-4'}>
+                  <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>

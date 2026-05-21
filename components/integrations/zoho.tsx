@@ -207,18 +207,20 @@ export function ZohoPageView() {
           <div className="text-center mb-14">
             <h2 className="font-display text-4xl md:text-5xl font-bold">What the Zoho integration does.</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 gap-3">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                className="group p-7 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/40 transition"
+                initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className={`flex items-start gap-4 p-5 rounded-2xl bg-[#111B2D] border border-white/[0.07] hover:border-[#046BD2]/30 transition-colors group ${i === 4 ? 'md:col-span-2' : ''}`}
               >
-                <div className="w-11 h-11 rounded-2xl bg-[#046BD2]/15 flex items-center justify-center mb-4">
-                  <f.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
+                <div className="shrink-0 w-9 h-9 rounded-lg bg-[#046BD2]/15 border border-[#046BD2]/25 flex items-center justify-center">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.desc}</p>
+                <div>
+                  <h3 className="font-display font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">{f.title}</h3>
+                  <p className="text-xs text-white/50 leading-relaxed">{f.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>

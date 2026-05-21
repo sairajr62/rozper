@@ -145,13 +145,20 @@ export function ProdAIAssistantPageView() {
           <div className="text-center mb-16">
             <h2 className="font-display text-4xl md:text-5xl font-bold">AI that makes every rep your best rep.</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="divide-y divide-white/[0.06]">
             {features.map((f, i) => (
-              <motion.div key={f.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="p-7 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/40 transition">
-                <f.icon className="w-8 h-8 text-[#0086F9] mb-4" strokeWidth={1.5} />
-                <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.desc}</p>
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="group flex items-start gap-6 py-7 first:pt-0 last:pb-0 hover:pl-2 transition-all duration-300"
+              >
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mt-0.5">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-white mb-1.5 group-hover:text-[#0086F9] transition-colors">{f.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
