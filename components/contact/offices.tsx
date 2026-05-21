@@ -65,13 +65,13 @@ export function ContactOffices() {
             <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[280px] rounded-2xl border border-white/10 overflow-hidden bg-[#0F1A2E]/60 backdrop-blur-md shadow-[0_30px_60px_-20px_rgba(0,134,249,0.35)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/global-map.webp"
+                src="/images/WorldMap.avif"
                 alt="Rozper global office locations — San Francisco, London, Dubai, Singapore"
-                className="block w-full h-full object-cover brightness-[0.35]"
+                className="block w-full h-full object-cover opacity-90"
               />
 
-              {/* Overlay — suppresses embedded image nodes, custom pins sit above this */}
-              <div className="absolute inset-0 pointer-events-none bg-[#0B1220]/55" />
+              {/* Subtle overlay to blend map with page dark theme */}
+              <div className="absolute inset-0 pointer-events-none bg-[#0B1220]/30" />
 
               {/* SVG connection lines */}
               <svg
