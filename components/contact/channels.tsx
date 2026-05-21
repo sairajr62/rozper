@@ -15,7 +15,7 @@ const channels = [
     title: "Book a 30-min call",
     body: "Pick a slot on a solutions engineer's live calendar. Demo + Q&A.",
     cta: "Open calendar",
-    accent: "from-[#22D3EE] to-[#046BD2]",
+    accent: "from-[#046BD2] to-[#0086F9]",
     badge: "Most common",
   },
   {
@@ -23,21 +23,21 @@ const channels = [
     title: "Chat with sales",
     body: "Average answer under a minute during business hours, globally.",
     cta: "Start chat",
-    accent: "from-[#A78BFA] to-[#2575FC]",
+    accent: "from-[#0086F9] to-[#2D98F1]",
   },
   {
     Icon: Phone,
     title: "Call us now",
     body: "+1 (415) 555-0199 · also reachable on local numbers in 19 countries.",
     cta: "See numbers",
-    accent: "from-[#34D399] to-[#0086F9]",
+    accent: "from-[#2D98F1] to-[#046BD2]",
   },
   {
     Icon: ShieldCheck,
     title: "Procurement & security",
     body: "Requesting our SOC 2 pack, BAA, or DPA? Direct line to compliance.",
     cta: "Email legal",
-    accent: "from-[#F472B6] to-[#A78BFA]",
+    accent: "from-[#046BD2] to-[#0060C7]",
   },
 ]
 
@@ -48,7 +48,7 @@ export function ContactChannels() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] font-mono text-[#22D3EE] mb-3">
+            <div className="text-[10px] uppercase tracking-[0.22em] font-mono text-[#0086F9] mb-3">
               Channels · pick yours
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
@@ -74,7 +74,7 @@ export function ContactChannels() {
                   className={`absolute -top-16 -right-16 w-32 h-32 rounded-full bg-gradient-to-br ${c.accent} opacity-25 blur-2xl pointer-events-none`}
                 />
                 {c.badge && (
-                  <span className="absolute top-4 right-4 text-[9px] uppercase tracking-widest font-mono px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
+                  <span className="absolute top-4 right-4 text-[9px] uppercase tracking-widest font-mono px-1.5 py-0.5 rounded bg-[#046BD2]/20 text-[#2D98F1] border border-[#0086F9]/30">
                     {c.badge}
                   </span>
                 )}
@@ -89,7 +89,7 @@ export function ContactChannels() {
                 <p className="relative mt-2 text-sm text-[#9AA8BC] leading-relaxed">
                   {c.body}
                 </p>
-                <div className="relative mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-[#22D3EE] group-hover:text-white">
+                <div className="relative mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-[#0086F9] group-hover:text-white">
                   {c.cta}
                   <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
