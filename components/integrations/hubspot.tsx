@@ -200,6 +200,7 @@ export function HubSpotPageView() {
             <p className="mt-4 text-white/50">Five automatic steps — zero manual action.</p>
           </div>
 
+          <div className="max-w-xl mx-auto">
           <div className="relative">
             {/* Vertical journey path */}
             <div className="absolute left-[1.85rem] top-7 bottom-7 w-px bg-gradient-to-b from-[#046BD2] via-[#0086F9]/70 to-[#046BD2]/20" />
@@ -232,6 +233,7 @@ export function HubSpotPageView() {
                 </motion.div>
               ))}
             </div>
+          </div>
           </div>
         </section>
 
