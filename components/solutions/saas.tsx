@@ -116,7 +116,7 @@ export function SaaSPageView() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link href="/pricing" className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-white/15 text-white font-medium hover:bg-white/5 transition">
-                $9.99 / seat
+                See pricing
               </Link>
             </motion.div>
           </div>
