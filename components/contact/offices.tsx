@@ -10,7 +10,6 @@ const offices = [
     address: "535 Mission Street, Floor 14, San Francisco, CA 94105",
     phone: "+1 (415) 555-0199",
     hours: "Mon–Fri · 8a–7p PT",
-    coords: { x: 18, y: 42 },
   },
   {
     region: "EMEA",
@@ -18,7 +17,6 @@ const offices = [
     address: "8 Devonshire Square, London EC2M 4PL",
     phone: "+44 20 7946 0312",
     hours: "Mon–Fri · 9a–7p BST",
-    coords: { x: 48, y: 33 },
   },
   {
     region: "MENA",
@@ -26,7 +24,6 @@ const offices = [
     address: "Sheikh Zayed Road, DIFC Gate Avenue, Dubai",
     phone: "+971 4 555 0188",
     hours: "Sun–Thu · 9a–7p GST",
-    coords: { x: 60, y: 48 },
   },
   {
     region: "APAC",
@@ -34,9 +31,19 @@ const offices = [
     address: "8 Marina Boulevard, Marina Bay Financial Centre",
     phone: "+65 6555 0144",
     hours: "Mon–Fri · 9a–7p SGT",
-    coords: { x: 74, y: 58 },
   },
 ]
+
+// Equirectangular projection — x=(lng+180)/360*100, y=(90-lat)/180*100
+const nodes = [
+  { x: 16.0, y: 29.0, code: 'SFO', labelRight: true  }, // San Francisco
+  { x: 50.0, y: 21.4, code: 'LON', labelRight: true  }, // London
+  { x: 65.4, y: 36.0, code: 'DXB', labelRight: true  }, // Dubai
+  { x: 78.8, y: 49.3, code: 'SIN', labelRight: false }, // Singapore
+]
+
+// Draw lines: SFO↔LON, LON↔DXB, DXB↔SIN
+const connections: [number, number][] = [[0, 1], [1, 2], [2, 3]]
 
 export function ContactOffices() {
   return (
@@ -53,20 +60,87 @@ export function ContactOffices() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Global map image */}
+          {/* Global map with city pins */}
           <div className="lg:col-span-7">
-            <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[260px] rounded-2xl border border-white/10 overflow-hidden bg-[#0F1A2E]/60 backdrop-blur-md shadow-[0_30px_60px_-20px_rgba(0,134,249,0.35)]">
+            <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[280px] rounded-2xl border border-white/10 overflow-hidden bg-[#0F1A2E]/60 backdrop-blur-md shadow-[0_30px_60px_-20px_rgba(0,134,249,0.35)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/global-map.webp"
                 alt="Rozper global office locations — San Francisco, London, Dubai, Singapore"
                 className="block w-full h-full object-cover"
               />
-              {/* Soft gradient overlay to blend with page background */}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0B1220]/40 via-transparent to-transparent" />
-              {/* Globe label */}
+
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0B1220]/50 via-transparent to-transparent" />
+
+              {/* SVG connection lines */}
+              <svg
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <filter id="line-glow">
+                    <feGaussianBlur stdDeviation="0.4" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                </defs>
+                {connections.map(([a, b], i) => (
+                  <motion.path
+                    key={i}
+                    d={`M ${nodes[a].x} ${nodes[a].y} L ${nodes[b].x} ${nodes[b].y}`}
+                    stroke="#0086F9"
+                    strokeWidth="0.22"
+                    strokeDasharray="1.2 1.2"
+                    fill="none"
+                    filter="url(#line-glow)"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 0.55 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.4, delay: 0.4 + i * 0.35, ease: 'easeOut' }}
+                  />
+                ))}
+              </svg>
+
+              {/* City pin dots */}
+              {nodes.map((node, i) => (
+                <div
+                  key={node.code}
+                  className="absolute"
+                  style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
+                >
+                  {/* Pulse ring */}
+                  <motion.div
+                    className="absolute rounded-full bg-[#0086F9]/25 border border-[#0086F9]/40"
+                    style={{ width: 10, height: 10, top: 0, left: 0 }}
+                    animate={{ scale: [1, 3.2], opacity: [0.7, 0] }}
+                    transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.55, ease: 'easeOut' }}
+                  />
+                  {/* Core dot */}
+                  <motion.div
+                    className="relative z-10 w-2.5 h-2.5 rounded-full bg-[#0086F9] shadow-[0_0_10px_3px_rgba(0,134,249,0.65)]"
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.3 + i * 0.15 }}
+                  />
+                  {/* City code label */}
+                  <span
+                    className="absolute top-1/2 -translate-y-1/2 text-[9px] font-mono font-bold text-white/80 whitespace-nowrap tracking-widest z-20"
+                    style={node.labelRight ? { left: '16px' } : { right: '16px' }}
+                  >
+                    {node.code}
+                  </span>
+                </div>
+              ))}
+
+              {/* Bottom labels */}
               <div className="absolute bottom-4 left-4 text-[10px] font-mono uppercase tracking-widest text-white/40">
                 4 offices · ops in 150+ countries
+              </div>
+              <div className="absolute bottom-3 right-4 text-right">
+                <div className="text-[8px] font-mono uppercase tracking-[0.18em] text-white/30">Edge Pops</div>
+                <div className="text-[22px] font-mono font-bold text-white/55 leading-tight">42</div>
               </div>
             </div>
           </div>
