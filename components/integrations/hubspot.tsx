@@ -227,25 +227,52 @@ export function HubSpotPageView() {
           </div>
         </section>
 
-        {/* Features grid */}
+        {/* Features — two-column sticky heading + divider rows */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-14">
-            <h2 className="font-display text-4xl md:text-5xl font-bold">Everything the integration does.</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                className="group p-7 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/40 transition"
-              >
-                <div className="w-11 h-11 rounded-2xl bg-[#046BD2]/15 flex items-center justify-center mb-4">
-                  <f.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-display text-lg font-semibold mb-2">{f.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.desc}</p>
-              </motion.div>
-            ))}
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 lg:gap-24 items-start">
+
+            {/* Left — sticky heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="lg:sticky lg:top-28"
+            >
+              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#0086F9]/60 mb-4">// integration.features</div>
+              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-5">
+                Everything the integration does.
+              </h2>
+              <p className="text-white/50 text-base leading-relaxed">
+                Every feature fires automatically — no manual steps, no missed data.
+              </p>
+            </motion.div>
+
+            {/* Right — feature rows */}
+            <div className="divide-y divide-white/[0.06]">
+              {features.map((f, i) => (
+                <motion.div
+                  key={f.title}
+                  initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                  className="group flex items-start gap-6 py-8 first:pt-0 last:pb-0"
+                >
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/45 transition-all duration-300 mt-0.5">
+                    <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-6">
+                      <div className="flex-1">
+                        <h3 className="font-display font-semibold text-white group-hover:text-[#0086F9] transition-colors duration-300 mb-2">
+                          {f.title}
+                        </h3>
+                        <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                      </div>
+                      <span className="font-mono text-[10px] text-white/15 shrink-0 mt-1 hidden sm:block">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
           </div>
         </section>
 
