@@ -227,52 +227,34 @@ export function HubSpotPageView() {
           </div>
         </section>
 
-        {/* Features — two-column sticky heading + divider rows */}
+        {/* Features — full-width row table */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 lg:gap-24 items-start">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-4xl md:text-5xl font-bold">Everything the integration does.</h2>
+            <p className="mt-4 text-white/50">Every feature fires automatically — no manual steps, no missed data.</p>
+          </div>
 
-            {/* Left — sticky heading */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="lg:sticky lg:top-28"
-            >
-              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#0086F9]/60 mb-4">// integration.features</div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-5">
-                Everything the integration does.
-              </h2>
-              <p className="text-white/50 text-base leading-relaxed">
-                Every feature fires automatically — no manual steps, no missed data.
-              </p>
-            </motion.div>
+          <div className="rounded-2xl border border-white/[0.08] overflow-hidden">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="group grid sm:grid-cols-[56px_220px_1fr] items-center gap-6 px-8 py-6 border-b border-white/[0.06] last:border-0 hover:bg-[#046BD2]/[0.05] transition-colors duration-300"
+              >
+                {/* Icon */}
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all duration-300">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
 
-            {/* Right — feature rows */}
-            <div className="divide-y divide-white/[0.06]">
-              {features.map((f, i) => (
-                <motion.div
-                  key={f.title}
-                  initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
-                  className="group flex items-start gap-6 py-8 first:pt-0 last:pb-0"
-                >
-                  <div className="w-11 h-11 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/45 transition-all duration-300 mt-0.5">
-                    <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-6">
-                      <div className="flex-1">
-                        <h3 className="font-display font-semibold text-white group-hover:text-[#0086F9] transition-colors duration-300 mb-2">
-                          {f.title}
-                        </h3>
-                        <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
-                      </div>
-                      <span className="font-mono text-[10px] text-white/15 shrink-0 mt-1 hidden sm:block">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                {/* Title */}
+                <h3 className="font-display font-semibold text-white group-hover:text-[#0086F9] transition-colors duration-300">
+                  {f.title}
+                </h3>
 
+                {/* Description */}
+                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
