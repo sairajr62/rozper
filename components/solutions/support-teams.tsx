@@ -405,9 +405,12 @@ export function SupportTeamsPageView() {
             <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 80%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
             <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white relative">Handle more. Stress less.</h2>
             <p className="mt-6 text-white/80 max-w-md mx-auto relative">14-day free trial. No credit card required. Cancel anytime.</p>
-            <Link href="/contact" className="mt-10 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition relative">
-              Book a demo <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 relative">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+                Book a demo <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 

@@ -300,7 +300,8 @@ export function HealthcarePageView() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.2),transparent_60%)]" />
             <Heart className="w-12 h-12 mx-auto mb-6 text-white relative" strokeWidth={1.5} />
             <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight relative">Care for your patients.<br />We'll handle the calls.</h2>
-            <div className="mt-10 flex flex-wrap justify-center gap-4 relative">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 relative">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
               <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
                 Request BAA <ArrowRight className="w-4 h-4" />
               </Link>

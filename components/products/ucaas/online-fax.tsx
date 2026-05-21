@@ -123,6 +123,7 @@ export function ProdUCaaSOnlineFaxPageView() {
               <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
                 Start faxing digitally <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
           </div>
 
@@ -166,9 +167,12 @@ export function ProdUCaaSOnlineFaxPageView() {
           <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <FileText className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-4xl md:text-6xl font-bold text-white">Kill the fax machine. Keep the number.</h2>
-            <Link href="/contact" className="mt-10 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
-              Start faxing digitally <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+                Start faxing digitally <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 

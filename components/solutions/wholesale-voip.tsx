@@ -364,6 +364,7 @@ export function WholesaleVoipPageView() {
               >
                 Read the API docs
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
           </div>
 
@@ -610,13 +611,16 @@ export function WholesaleVoipPageView() {
               Talk to our wholesale team for SIP trunk peering, white-label
               setup, and volume pricing — or jump straight into the API.
             </p>
-            <Link
-              href="/contact"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-[#046BD2] transition hover:scale-105"
-            >
-              Talk to wholesale team
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-[#046BD2] transition hover:scale-105"
+              >
+                Talk to wholesale team
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </section>
 

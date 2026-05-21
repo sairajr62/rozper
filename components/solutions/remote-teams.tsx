@@ -149,6 +149,7 @@ export function RemoteTeamsPageView() {
               <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] text-white font-semibold hover:bg-[#0086F9] transition">
                 Connect your team <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-12 flex flex-wrap items-center gap-3">
@@ -325,9 +326,12 @@ export function RemoteTeamsPageView() {
           <div className="relative rounded-[2rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_60%)]" />
             <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight relative">One platform.<br />Twelve time zones.</h2>
-            <Link href="/contact" className="mt-10 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition relative">
-              Connect your team <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition relative">
+                Connect your team <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 
