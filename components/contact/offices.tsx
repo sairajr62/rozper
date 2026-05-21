@@ -67,11 +67,11 @@ export function ContactOffices() {
               <img
                 src="/images/global-map.webp"
                 alt="Rozper global office locations — San Francisco, London, Dubai, Singapore"
-                className="block w-full h-full object-cover"
+                className="block w-full h-full object-cover brightness-[0.35]"
               />
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0B1220]/50 via-transparent to-transparent" />
+              {/* Overlay — suppresses embedded image nodes, custom pins sit above this */}
+              <div className="absolute inset-0 pointer-events-none bg-[#0B1220]/55" />
 
               {/* SVG connection lines */}
               <svg
