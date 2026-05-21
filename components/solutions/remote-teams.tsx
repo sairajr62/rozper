@@ -166,23 +166,31 @@ export function RemoteTeamsPageView() {
 
         {/* Features */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold">Full phone features from any location.</h2>
-          </div>
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start">
+            <div className="lg:sticky lg:top-28">
+              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#2D98F1]/60 mb-4">// platform.features</div>
+              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">Full phone features from any location.</h2>
+              <p className="mt-5 text-white/50 text-base leading-relaxed">Everything your office phone does — available on any device, anywhere on Earth.</p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="group relative p-7 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#046BD2]/40 transition overflow-hidden"
-              >
-                <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[#046BD2]/0 group-hover:bg-[#046BD2]/10 blur-2xl transition" />
-                <f.icon className="w-8 h-8 text-[#0086F9] mb-4 relative" strokeWidth={1.5} />
-                <h3 className="font-display text-lg font-semibold mb-2 relative">{f.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed relative">{f.desc}</p>
-              </motion.div>
-            ))}
+            <div className="divide-y divide-white/[0.06]">
+              {features.map((f, i) => (
+                <motion.div
+                  key={f.title}
+                  initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                  className="group flex items-start gap-5 py-7 first:pt-0 last:pb-0"
+                >
+                  <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:border-[#046BD2]/50 group-hover:bg-[#046BD2]/20 transition mt-0.5">
+                    <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1 min-w-0 sm:grid sm:grid-cols-[200px_1fr] sm:gap-8">
+                    <h3 className="font-display font-semibold text-white group-hover:text-[#2D98F1] transition">{f.title}</h3>
+                    <p className="mt-1 sm:mt-0 text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                  </div>
+                  <span className="font-mono text-[10px] text-white/15 shrink-0 pt-1 hidden sm:block">{String(i + 1).padStart(2, '0')}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -214,119 +222,85 @@ export function RemoteTeamsPageView() {
           </div>
         </section>
 
-        {/* Testimonials — world bento grid */}
+        {/* Testimonials — connection pulse cards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="text-xs font-mono uppercase tracking-widest text-[#2D98F1] mb-3">Customer Stories</p>
+          <div className="mb-16">
+            <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#2D98F1]/60 mb-3">// customer.connections[]</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold">Teams across the globe, one platform.</h2>
           </div>
 
-          <div className="grid md:grid-cols-12 gap-5">
-            {/* Featured large card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="md:col-span-7 relative p-8 rounded-3xl bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#046BD2]/5 border border-[#046BD2]/30 overflow-hidden flex flex-col"
-            >
-              <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[#046BD2]/10 blur-3xl pointer-events-none" />
-              <div className="flex items-center gap-2 mb-8">
-                <Globe className="w-3.5 h-3.5 text-[#0086F9]" />
-                <span className="text-xs font-mono text-white/40 uppercase tracking-widest">Remote · 8 Countries</span>
-                <span className="ml-auto flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] font-mono text-emerald-400">Fully distributed</span>
-                </span>
-              </div>
-              <div className="text-3xl text-[#046BD2]/40 font-serif mb-3 leading-none">"</div>
-              <blockquote className="font-display text-xl md:text-2xl font-medium leading-relaxed text-white/90 flex-1 mb-8">
-                We went fully remote across 8 countries. Rozper made it invisible — same call quality, same numbers, same platform as when we were in one office.
-              </blockquote>
-              <div className="flex items-center gap-3 pt-6 border-t border-[#046BD2]/20">
-                <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">CM</div>
-                <div>
-                  <div className="font-semibold">Chloe Martin</div>
-                  <div className="text-xs text-white/50">COO · Forma Global Consulting</div>
-                </div>
-                <div className="ml-auto text-right hidden md:block">
-                  <div className="text-sm text-white/20">🇩🇪 🇯🇵 🇺🇸 🇬🇧 🇧🇷 🇦🇺 🇸🇬 🇨🇦</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right column — 2 stacked cards */}
-            <div className="md:col-span-5 flex flex-col gap-5">
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
+              {
+                region: 'Global · 8 Countries', tz: 'Multi-TZ',
+                flags: '🇩🇪 🇯🇵 🇺🇸 🇬🇧 🇧🇷 🇦🇺 🇸🇬 🇨🇦',
+                ping: '14ms', pulseColor: 'bg-emerald-400', pulseTxt: 'text-emerald-400',
+                initials: 'CM', name: 'Chloe Martin', role: 'COO · Forma Global Consulting',
+                avatarBg: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#2D98F1]',
+                quote: '"We went fully remote across 8 countries. Rozper made it invisible — same call quality, same numbers, same platform as when we were in one office."',
+              },
+              {
+                region: 'London · Singapore', tz: 'GMT / SGT',
+                flags: '🇬🇧 🇸🇬',
+                ping: '22ms', pulseColor: 'bg-violet-400', pulseTxt: 'text-violet-400',
+                initials: 'JR', name: 'James Reeves', role: 'IT Director · Alderton Partners',
+                avatarBg: 'bg-violet-500/20 border-violet-500/30 text-violet-300',
+                quote: '"Our London and Singapore offices feel like one team. SSO and shared dashboards give managers full visibility — no VPN required."',
+              },
+              {
+                region: 'Australia · SE Asia', tz: 'AEST / ICT',
+                flags: '🇦🇺 🇮🇩 🇻🇳',
+                ping: '31ms', pulseColor: 'bg-amber-400', pulseTxt: 'text-amber-400',
+                initials: 'AT', name: 'Amara Tan', role: 'Head of Ops · PacRim Digital',
+                avatarBg: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
+                quote: '"We onboarded 40 remote agents across Australia and Southeast Asia in a weekend. No IT on-site, anywhere."',
+              },
+              {
+                region: 'Europe · Multi-DC', tz: 'CET / GMT',
+                flags: '🇸🇮 🇩🇪 🇫🇷',
+                ping: '9ms', pulseColor: 'bg-cyan-400', pulseTxt: 'text-cyan-400',
+                initials: 'NK', name: 'Nina Kovač', role: 'VP Engineering · CloudBridge EU',
+                avatarBg: 'bg-cyan-500/20 border-cyan-500/30 text-cyan-300',
+                quote: '"Failover routing saved us during a regional outage. Customers never noticed — that\'s the reliability we need for global operations."',
+              },
+            ].map((t, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-                className="p-6 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col flex-1"
+                key={t.name}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-[#046BD2]/35 transition overflow-hidden flex flex-col"
               >
-                <div className="text-2xl text-white/10 font-serif mb-2 leading-none">"</div>
-                <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                  Our London and Singapore offices feel like one team. SSO and shared dashboards give managers full visibility — no VPN required.
-                </blockquote>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                  <div className="w-8 h-8 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center text-violet-300 font-display font-bold text-xs">JR</div>
-                  <div>
-                    <div className="font-semibold text-sm">James Reeves</div>
-                    <div className="text-xs text-white/40">IT Director · Alderton Partners</div>
+                {/* Connection header */}
+                <div className="px-4 py-2.5 bg-[#0B1220]/60 border-b border-white/[0.06] flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className={`relative flex w-2 h-2 shrink-0`}>
+                      <span className={`absolute inset-0 rounded-full ${t.pulseColor} animate-ping opacity-60`} />
+                      <span className={`relative w-2 h-2 rounded-full ${t.pulseColor}`} />
+                    </span>
+                    <span className="font-mono text-[10px] text-white/50">{t.region}</span>
                   </div>
-                  <span className="ml-auto text-xs text-white/20">🇬🇧 🇸🇬</span>
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[10px] text-white/30">{t.tz}</span>
+                    <span className={`font-mono text-[9px] ${t.pulseTxt}`}>↓{t.ping}</span>
+                  </div>
+                </div>
+
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Flags row */}
+                  <div className="text-sm mb-4 tracking-wide text-white/50">{t.flags}</div>
+
+                  <blockquote className="text-sm text-white/75 leading-relaxed flex-1 mb-5">{t.quote}</blockquote>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
+                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[11px] shrink-0 ${t.avatarBg}`}>{t.initials}</div>
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold truncate">{t.name}</div>
+                      <div className="text-[11px] text-white/40 truncate">{t.role}</div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-                className="p-6 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col flex-1"
-              >
-                <div className="text-2xl text-white/10 font-serif mb-2 leading-none">"</div>
-                <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                  We onboarded 40 remote agents across Australia and Southeast Asia in a weekend. No IT on-site, anywhere.
-                </blockquote>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                  <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 font-display font-bold text-xs">AT</div>
-                  <div>
-                    <div className="font-semibold text-sm">Amara Tan</div>
-                    <div className="text-xs text-white/40">Head of Ops · PacRim Digital</div>
-                  </div>
-                  <span className="ml-auto text-xs text-white/20">🇦🇺 🇮🇩 🇻🇳</span>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Bottom row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
-              className="md:col-span-5 p-6 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col"
-            >
-              <div className="text-2xl text-white/10 font-serif mb-2 leading-none">"</div>
-              <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                Failover routing saved us during a regional outage. Customers never noticed — that's the reliability we need for global operations.
-              </blockquote>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                <div className="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-300 font-display font-bold text-xs">NK</div>
-                <div>
-                  <div className="font-semibold text-sm">Nina Kovač</div>
-                  <div className="text-xs text-white/40">VP Engineering · CloudBridge EU</div>
-                </div>
-                <span className="ml-auto text-xs text-white/20">🇸🇮 🇩🇪 🇫🇷</span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }}
-              className="md:col-span-7 p-6 rounded-3xl bg-gradient-to-r from-[#046BD2]/10 to-transparent border border-[#046BD2]/20 hover:border-[#046BD2]/40 transition flex flex-col"
-            >
-              <div className="text-2xl text-[#046BD2]/30 font-serif mb-2 leading-none">"</div>
-              <blockquote className="font-display text-lg font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                The automatic time-zone routing means our clients always reach someone in business hours. It's become a genuine competitive advantage for our firm.
-              </blockquote>
-              <div className="flex items-center gap-3 pt-4 border-t border-[#046BD2]/20">
-                <div className="w-8 h-8 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold text-xs">DP</div>
-                <div>
-                  <div className="font-semibold text-sm">David Petersen</div>
-                  <div className="text-xs text-white/40">Managing Director · Apex Advisory Group</div>
-                </div>
-                <span className="ml-auto text-xs text-white/20">🇺🇸 🇬🇧 🇦🇪 🇸🇬</span>
-              </div>
-            </motion.div>
+            ))}
           </div>
         </section>
 

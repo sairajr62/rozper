@@ -217,92 +217,64 @@ export function SalesTeamsPageView() {
           </div>
         </section>
 
-        {/* Testimonials — performance board */}
+        {/* Testimonials — performance scorecards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
             <p className="text-xs font-mono uppercase tracking-widest text-[#2D98F1] mb-3">Rep Stories</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold">Numbers don't lie.</h2>
           </div>
 
-          {/* Featured testimonial with metrics sidebar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="relative rounded-3xl bg-[#111B2D] border border-white/10 overflow-hidden mb-5"
-          >
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#046BD2] to-transparent" />
-            <div className="grid lg:grid-cols-[1fr_auto]">
-              <div className="p-8 md:p-10">
-                <div className="flex items-center gap-2 mb-6">
-                  <Trophy className="w-4 h-4 text-[#0086F9]" />
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Featured · Top Performer Team</span>
-                </div>
-                <blockquote className="font-display text-xl md:text-2xl font-medium leading-relaxed text-white/90 mb-8">
-                  "Our reps make 3× the calls since switching to Rozper. The AI summaries mean they're talking to the next lead before they've finished the last one."
-                </blockquote>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">MR</div>
-                  <div>
-                    <div className="font-semibold">Marcus Reid</div>
-                    <div className="text-xs text-white/50">VP Sales · Northgate Growth</div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-8 md:p-10 border-t lg:border-t-0 lg:border-l border-white/[0.06] bg-white/[0.02] flex flex-col gap-6 min-w-[210px]">
-                <div className="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-1">Impact metrics</div>
-                {[
-                  { k: 'Calls per rep', v: '3×', color: 'text-[#0086F9]' },
-                  { k: 'Connect rate', v: '+47%', color: 'text-[#22D3EE]' },
-                  { k: 'CRM sync', v: '100%', color: 'text-[#2D98F1]' },
-                ].map(m => (
-                  <div key={m.k}>
-                    <div className={`font-display text-2xl font-bold ${m.color}`}>{m.v}</div>
-                    <div className="text-xs text-white/40 font-mono mt-0.5">{m.k}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Three supporting testimonials */}
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 gap-5">
             {[
               {
+                rank: '#01', kpi: '3×', kpiLabel: 'calls per rep',
+                kpiColor: 'text-[#0086F9]', borderColor: 'border-[#0086F9]/20',
+                initials: 'MR', name: 'Marcus Reid', title: 'VP Sales · Northgate Growth',
+                avatarClass: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#2D98F1]',
+                quote: '"Our reps make 3× the calls since switching to Rozper. The AI summaries mean they\'re talking to the next lead before they\'ve finished the last one."',
+              },
+              {
+                rank: '#02', kpi: '−3 wks', kpiLabel: 'rep ramp time',
+                kpiColor: 'text-[#2575FC]', borderColor: 'border-[#2575FC]/20',
                 initials: 'SB', name: 'Sophia Bell', title: 'Sales Manager · Vertex SaaS',
                 avatarClass: 'bg-[#2575FC]/20 border-[#2575FC]/30 text-[#2575FC]',
-                quote: "Whisper coaching changed how I develop reps. I can guide someone through a tough negotiation in real time without the prospect ever knowing I'm there.",
-                metric: { k: 'Rep ramp time', v: '−3 weeks' },
+                quote: '"Whisper coaching changed how I develop reps. I can guide someone through a tough negotiation in real time without the prospect ever knowing I\'m there."',
               },
               {
+                rank: '#03', kpi: '+16 pp', kpiLabel: 'connect rate lift',
+                kpiColor: 'text-[#22D3EE]', borderColor: 'border-[#22D3EE]/20',
                 initials: 'RC', name: 'Ryan Chen', title: 'Account Executive · Elevate Cloud',
                 avatarClass: 'bg-[#22D3EE]/20 border-[#22D3EE]/30 text-[#22D3EE]',
-                quote: "Local presence dialing alone was worth the switch. My connect rate went from 22% to 38% in the first month — without changing my script.",
-                metric: { k: 'Connect rate lift', v: '+16 pp' },
+                quote: '"Local presence dialing alone was worth the switch. My connect rate went from 22% to 38% in the first month — without changing my script."',
               },
               {
+                rank: '#04', kpi: '+28%', kpiLabel: 'win rate after',
+                kpiColor: 'text-[#0078E0]', borderColor: 'border-[#0078E0]/20',
                 initials: 'FN', name: 'Fatima Nour', title: 'VP Revenue · Horizon B2B',
                 avatarClass: 'bg-[#0078E0]/20 border-[#0078E0]/30 text-[#0078E0]',
-                quote: "Conversation intelligence surfaced a closing pattern we didn't know our top reps were using. We trained the whole team in two weeks.",
-                metric: { k: 'Win rate after', v: '+28%' },
+                quote: '"Conversation intelligence surfaced a closing pattern we didn\'t know our top reps were using. We trained the whole team in two weeks."',
               },
             ].map((t, i) => (
               <motion.div
-                key={t.name}
+                key={t.initials}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="relative p-7 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/40 transition overflow-hidden flex flex-col"
+                className={`group flex flex-col rounded-3xl bg-[#111B2D] border border-white/10 hover:${t.borderColor} hover:bg-[#1A2638] transition p-7 relative overflow-hidden`}
               >
-                <div className="absolute -top-px -left-px w-16 h-px bg-gradient-to-r from-[#046BD2] to-transparent" />
-                <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-6">
-                  "{t.quote}"
-                </blockquote>
-                <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 mb-5">
-                  <span className="text-[10px] font-mono text-white/40">{t.metric.k}</span>
-                  <span className="font-display font-bold text-[#0086F9]">{t.metric.v}</span>
+                <div className="absolute -top-px -left-px w-20 h-px bg-gradient-to-r from-[#046BD2] to-transparent" />
+                {/* Rank + KPI */}
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-mono text-[10px] text-white/30 border border-white/10 px-2 py-0.5 rounded">{t.rank}</span>
+                  <div className="text-right">
+                    <div className={`font-display text-3xl font-bold ${t.kpiColor}`}>{t.kpi}</div>
+                    <div className="font-mono text-[10px] text-white/40 mt-0.5">{t.kpiLabel}</div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-xs ${t.avatarClass}`}>{t.initials}</div>
+                <blockquote className="font-display text-base font-medium text-white/80 leading-relaxed flex-1 mb-6">{t.quote}</blockquote>
+                <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
+                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-xs shrink-0 ${t.avatarClass}`}>{t.initials}</div>
                   <div>
                     <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-xs text-white/40">{t.title}</div>
+                    <div className="text-[11px] text-white/40 font-mono">{t.title}</div>
                   </div>
                 </div>
               </motion.div>

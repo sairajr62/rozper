@@ -158,109 +158,100 @@ export function SMBPageView() {
           </div>
         </section>
 
-        {/* Testimonials — star rating review cards */}
+        {/* Testimonials — verified review platform cards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-1 mb-4">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-[#0086F9] fill-[#0086F9]" />)}
-            </div>
+          <div className="mb-16">
+            <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#0086F9]/60 mb-3">// verified.reviews[]</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold">Small teams. Big results.</h2>
-            <p className="mt-3 text-sm text-white/40 font-mono">Verified reviews from Rozper SMB customers</p>
           </div>
 
-          {/* Featured review + side card */}
-          <div className="grid md:grid-cols-12 gap-5 mb-5">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="md:col-span-8 p-8 rounded-3xl bg-gradient-to-br from-[#046BD2]/15 via-[#111B2D] to-[#0B1220] border border-[#046BD2]/30 flex flex-col"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-[#0086F9] fill-[#0086F9]" />)}
-                </div>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-[10px] font-mono text-emerald-400">✓ Verified</span>
-                <span className="ml-auto text-[10px] font-mono text-white/30">Consulting · 3 employees</span>
-              </div>
-              <blockquote className="font-display text-xl md:text-2xl font-medium leading-relaxed text-white/90 flex-1 mb-8">
-                "Rozper made our 3-person team sound like a 30-person company. The AI Receptionist handles calls I can't take. Setup took under an hour."
-              </blockquote>
-              <div className="flex items-center gap-3 pt-5 border-t border-[#046BD2]/20">
-                <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">KA</div>
-                <div>
-                  <div className="font-semibold">Kwame Asante</div>
-                  <div className="text-xs text-white/50">Founder · Asante Advisory</div>
-                </div>
-                <div className="ml-auto hidden md:flex items-center gap-2 text-[10px] text-white/30 font-mono">
-                  <span>Before: missed calls</span>
-                  <span className="text-white/20">→</span>
-                  <span className="text-emerald-400">After: 100% answered</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-              className="md:col-span-4 p-6 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-[#0086F9] fill-[#0086F9]" />)}
-                </div>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-[10px] font-mono text-emerald-400">✓ Verified</span>
-              </div>
-              <div className="text-[10px] font-mono text-white/30 mb-4">Retail · 8 employees</div>
-              <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                "I run a boutique with two locations. Rozper routes calls to whichever shop is free. It's like having a full receptionist team for the price of a coffee."
-              </blockquote>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                <div className="w-8 h-8 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center text-violet-300 font-display font-bold text-xs">LM</div>
-                <div>
-                  <div className="font-semibold text-sm">Lucia Moreno</div>
-                  <div className="text-xs text-white/40">Owner · Moda Latina Boutique</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Three more review cards */}
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
+                platform: 'G2', platformColor: 'text-orange-400', platformBg: 'bg-orange-400/10 border-orange-400/20',
+                helpful: '42 people found this helpful',
+                segment: 'Consulting', employees: '3 seats',
+                initials: 'KA', name: 'Kwame Asante', title: 'Founder · Asante Advisory',
+                avatarBg: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#2D98F1]',
+                quote: '"Rozper made our 3-person team sound like a 30-person company. The AI Receptionist handles calls I can\'t take. Setup took under an hour."',
+              },
+              {
+                platform: 'Capterra', platformColor: 'text-blue-400', platformBg: 'bg-blue-400/10 border-blue-400/20',
+                helpful: '31 people found this helpful',
+                segment: 'Retail', employees: '8 seats',
+                initials: 'LM', name: 'Lucia Moreno', title: 'Owner · Moda Latina Boutique',
+                avatarBg: 'bg-violet-500/20 border-violet-500/30 text-violet-300',
+                quote: '"I run a boutique with two locations. Rozper routes calls to whichever shop is free. It\'s like having a full receptionist team for the price of a coffee."',
+              },
+              {
+                platform: 'Google', platformColor: 'text-emerald-400', platformBg: 'bg-emerald-400/10 border-emerald-400/20',
+                helpful: '28 people found this helpful',
+                segment: 'Legal', employees: '5 seats',
                 initials: 'JB', name: 'Jake Bowen', title: 'Founder · Bowen Legal Consulting',
-                avatarClass: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300',
-                biz: 'Legal · 5 employees',
+                avatarBg: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300',
                 quote: '"Voicemail transcription saved my week. I read messages between client sessions — no more playing 20 voicemails at the end of the day."',
               },
               {
+                platform: 'G2', platformColor: 'text-orange-400', platformBg: 'bg-orange-400/10 border-orange-400/20',
+                helpful: '19 people found this helpful',
+                segment: 'Media', employees: '12 seats',
                 initials: 'RF', name: 'Ranya Farhat', title: 'Co-Founder · Spark Media Studio',
-                avatarClass: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
-                biz: 'Media · 12 employees',
+                avatarBg: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
                 quote: '"The $9.99 price looked too good to be true. But it genuinely does everything — call recording, CRM sync, AI Receptionist. No hidden fees."',
               },
               {
+                platform: 'Capterra', platformColor: 'text-blue-400', platformBg: 'bg-blue-400/10 border-blue-400/20',
+                helpful: '37 people found this helpful',
+                segment: 'Logistics', employees: '20 seats',
                 initials: 'PL', name: 'Pavel Lund', title: 'CEO · Lund Logistics',
-                avatarClass: 'bg-cyan-500/20 border-cyan-500/30 text-cyan-300',
-                biz: 'Logistics · 20 employees',
+                avatarBg: 'bg-cyan-500/20 border-cyan-500/30 text-cyan-300',
                 quote: '"We scaled from 4 to 20 employees in six months. Adding a new seat takes 2 minutes. No IT tickets, no hardware, no waiting."',
+              },
+              {
+                platform: 'Google', platformColor: 'text-emerald-400', platformBg: 'bg-emerald-400/10 border-emerald-400/20',
+                helpful: '24 people found this helpful',
+                segment: 'Food & Bev', employees: '9 seats',
+                initials: 'NB', name: 'Nadia Brennan', title: 'Owner · The Corner Roast',
+                avatarBg: 'bg-rose-500/20 border-rose-500/30 text-rose-300',
+                quote: '"My café gets slammed at peak hours. Rozper\'s auto-attendant routes catering inquiries to my phone and walk-ins to the counter line. Zero missed orders."',
               },
             ].map((t, i) => (
               <motion.div
                 key={t.name}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="p-7 rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col"
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className="rounded-2xl bg-[#111B2D] border border-white/[0.08] hover:border-[#046BD2]/30 transition overflow-hidden flex flex-col"
               >
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, j) => <Star key={j} className="w-3 h-3 text-[#0086F9] fill-[#0086F9]" />)}
+                {/* Platform header */}
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[#0B1220]/70 border-b border-white/[0.06]">
+                  <div className="flex items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded border text-[9px] font-mono font-bold ${t.platformBg} ${t.platformColor}`}>{t.platform}</span>
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, j) => <Star key={j} className="w-2.5 h-2.5 text-[#0086F9] fill-[#0086F9]" />)}
+                    </div>
                   </div>
-                  <span className="ml-auto text-[10px] font-mono text-white/30">{t.biz}</span>
+                  <span className="flex items-center gap-1 text-[9px] font-mono text-emerald-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+                    Verified
+                  </span>
                 </div>
-                <blockquote className="font-display text-sm font-medium leading-relaxed text-white/80 flex-1 mb-5">{t.quote}</blockquote>
-                <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
-                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-xs ${t.avatarClass}`}>{t.initials}</div>
-                  <div>
-                    <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-xs text-white/40">{t.title}</div>
+
+                <div className="p-5 flex flex-col flex-1">
+                  {/* Segment + seats */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="px-2 py-0.5 rounded bg-white/5 border border-white/[0.08] text-[10px] font-mono text-white/50">{t.segment}</span>
+                    <span className="text-[10px] font-mono text-white/30">{t.employees}</span>
+                    <span className="ml-auto text-[9px] font-mono text-white/20">{t.helpful}</span>
+                  </div>
+
+                  <blockquote className="text-sm text-white/75 leading-relaxed flex-1 mb-5">{t.quote}</blockquote>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
+                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[11px] shrink-0 ${t.avatarBg}`}>{t.initials}</div>
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold truncate">{t.name}</div>
+                      <div className="text-[11px] text-white/40 truncate">{t.title}</div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

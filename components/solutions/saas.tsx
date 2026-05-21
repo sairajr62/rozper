@@ -194,67 +194,66 @@ export function SaaSPageView() {
             <p className="mt-3 text-white/50 font-mono text-sm">Real deployments. Real velocity.</p>
           </div>
 
-          {/* Featured banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="relative rounded-2xl bg-gradient-to-br from-[#046BD2]/20 via-[#111B2D] to-[#2575FC]/10 border border-[#046BD2]/30 p-8 md:p-10 overflow-hidden mb-4"
-          >
-            <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-[#0086F9]/12 blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-[#2575FC]/10 blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
-            <div className="relative grid md:grid-cols-[1fr_auto] gap-8 items-center">
-              <div>
-                <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#0086F9] mb-4">// reference.customer</div>
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3.5 h-3.5 text-[#0086F9] fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
-                </div>
-                <blockquote className="font-display text-2xl md:text-3xl font-medium leading-snug text-white mb-5">
-                  "Rozper gave us a real phone system in <span className="text-[#2D98F1]">48 hours</span>. Numbers in 6 countries, Salesforce logging, and AI summaries before the week was out."
-                </blockquote>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-400 font-mono text-[10px]">→ 200 OK</span>
-                  <span className="px-2.5 py-1 rounded bg-[#046BD2]/15 text-[#2D98F1] font-mono text-[10px]">6 countries</span>
-                  <span className="px-2.5 py-1 rounded bg-violet-500/15 text-violet-400 font-mono text-[10px]">48h deploy</span>
-                </div>
-              </div>
-              <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 md:border-l md:border-white/10 md:pl-8">
-                <div className="w-14 h-14 rounded-xl bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold shrink-0">JO</div>
-                <div>
-                  <div className="font-semibold">James O'Brien</div>
-                  <div className="text-[11px] text-white/50 font-mono mt-0.5">RevOps Lead</div>
-                  <div className="text-[11px] text-white/50 font-mono">Skyline SaaS</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Equal 3-column row */}
-          <div className="grid md:grid-cols-3 gap-4">
+          {/* API response cards — all equal */}
+          <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { stars: 'text-violet-400', initials: 'MC', name: 'Maya Chen', role: 'Head of Engineering · Luma Growth', badge: { text: 'REST API', cls: 'text-violet-400/70 border-violet-400/20' }, avatar: 'bg-violet-500/10 border-violet-500/20 text-violet-400', quote: <>"The API docs are genuinely good. We had webhooks pushing call data into our data warehouse <span className="text-violet-400 font-semibold">within a single sprint</span> — no Rozper engineer needed."</> },
-              { stars: 'text-emerald-400', initials: 'TB', name: 'Tom Bakker', role: 'VP Sales · Orbit CRM', badge: { text: 'CRM sync', cls: 'text-emerald-400/70 border-emerald-400/20' }, avatar: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400', quote: <>"AI call summaries log straight into HubSpot. Our reps <span className="text-emerald-400 font-semibold">stopped dreading note-taking</span> — they just close the call and the summary is already there."</> },
-              { stars: 'text-amber-400', initials: 'AP', name: 'Asha Patel', role: 'Head of CS · Driftline', badge: { text: 'global deploy', cls: 'text-amber-400/70 border-amber-400/20' }, avatar: 'bg-amber-500/10 border-amber-500/20 text-amber-400', quote: <>"We expanded into APAC and EMEA without a single IT ticket. <span className="text-amber-400 font-semibold">Four countries provisioned in one sprint</span> — local numbers, SSO, and AI routing all configured before the regional hires started."</> },
+              {
+                method: 'GET', endpoint: '/teams/skyline-saas', status: '200', latency: '48h deploy',
+                initials: 'JO', name: "James O'Brien", role: 'RevOps Lead · Skyline SaaS',
+                avatarBg: 'linear-gradient(135deg,#046BD2,#2575FC)',
+                quote: '"Rozper gave us a real phone system in 48 hours. Numbers in 6 countries, Salesforce logging, and AI summaries before the week was out."',
+              },
+              {
+                method: 'POST', endpoint: '/webhooks/data-warehouse', status: '200', latency: '1 sprint',
+                initials: 'MC', name: 'Maya Chen', role: 'Head of Engineering · Luma Growth',
+                avatarBg: 'linear-gradient(135deg,#046BD2,#0086F9)',
+                quote: '"The API docs are genuinely good. We had webhooks pushing call data into our data warehouse within a single sprint — no Rozper engineer needed."',
+              },
+              {
+                method: 'SYNC', endpoint: '/crm/hubspot/summaries', status: '200', latency: 'auto',
+                initials: 'TB', name: 'Tom Bakker', role: 'VP Sales · Orbit CRM',
+                avatarBg: 'linear-gradient(135deg,#0086F9,#2575FC)',
+                quote: '"AI call summaries log straight into HubSpot. Our reps stopped dreading note-taking — they just close the call and the summary is already there."',
+              },
+              {
+                method: 'PUT', endpoint: '/numbers/apac-emea', status: '200', latency: '4 countries',
+                initials: 'AP', name: 'Asha Patel', role: 'Head of CS · Driftline',
+                avatarBg: 'linear-gradient(135deg,#2575FC,#046BD2)',
+                quote: '"We expanded into APAC and EMEA without a single IT ticket. Four countries provisioned in one sprint — local numbers, SSO, and AI routing all configured."',
+              },
             ].map((t, i) => (
               <motion.div
                 key={t.initials}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="flex flex-col rounded-2xl bg-[#111B2D] border border-white/10 hover:bg-[#1A2638] transition p-6"
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="rounded-2xl border border-[#0086F9]/15 bg-[#060D1A] overflow-hidden hover:border-[#0086F9]/40 hover:shadow-[0_0_30px_-10px_rgba(0,134,249,0.2)] transition-all duration-300 flex flex-col"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-1">
+                {/* Terminal-style header */}
+                <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.06] bg-[#0a1426]">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="font-mono text-[10px] font-bold text-[#0086F9] shrink-0">{t.method}</span>
+                    <span className="font-mono text-[10px] text-white/35 truncate">{t.endpoint}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                    <span className="font-mono text-[10px] text-emerald-400">{t.status} OK</span>
+                    <span className="text-white/20">·</span>
+                    <span className="font-mono text-[10px] text-[#2D98F1]">{t.latency}</span>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex gap-0.5 mb-5">
                     {[...Array(5)].map((_, j) => (
-                      <svg key={j} className={`w-3.5 h-3.5 fill-current ${t.stars}`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                      <svg key={j} className="w-3.5 h-3.5 fill-[#0086F9]" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
                     ))}
                   </div>
-                  <span className={`font-mono text-[9px] border px-2 py-0.5 rounded ${t.badge.cls}`}>{t.badge.text}</span>
-                </div>
-                <blockquote className="text-sm text-white/80 leading-relaxed mb-6 flex-1">{t.quote}</blockquote>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] mt-auto">
-                  <div className={`w-9 h-9 rounded-xl border flex items-center justify-center font-display font-bold text-xs shrink-0 ${t.avatar}`}>{t.initials}</div>
-                  <div>
-                    <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-[11px] text-white/50 font-mono mt-0.5">{t.role}</div>
+                  <blockquote className="font-mono text-[13px] text-white/75 leading-relaxed flex-1 mb-6">{t.quote}</blockquote>
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs text-white shrink-0" style={{ background: t.avatarBg }}>{t.initials}</div>
+                    <div>
+                      <div className="font-semibold text-sm">{t.name}</div>
+                      <div className="font-mono text-[11px] text-white/40 mt-0.5">{t.role}</div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

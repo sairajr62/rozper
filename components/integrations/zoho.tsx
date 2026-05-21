@@ -256,20 +256,73 @@ export function ZohoPageView() {
           </div>
         </section>
 
-        {/* Testimonial */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-24 text-center">
-          <div className="w-14 h-14 mx-auto rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center mb-8">
-            <GitMerge className="w-6 h-6 text-[#0086F9]" />
+        {/* Testimonials — Zoho module activity cards, all equal */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="mb-12">
+            <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#0086F9]/60 mb-3">// zoho.activity.feedback[]</div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold">From Zoho teams.</h2>
           </div>
-          <blockquote className="font-display text-2xl md:text-3xl font-medium leading-relaxed">
-            "Our sales reps stopped writing call notes in Zoho. Rozper does it automatically — and the AI summaries are better than what anyone was writing manually."
-          </blockquote>
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">SP</div>
-            <div className="text-left">
-              <div className="font-semibold">Sunita Patel</div>
-              <div className="text-xs text-white/50">CRM Admin · Brightside Sales</div>
-            </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              {
+                module: 'CRM', moduleCls: 'bg-[#046BD2]/12 border-[#046BD2]/25 text-[#0086F9]',
+                event: 'call.completed → activity.logged',
+                initials: 'SP', name: 'Sunita Patel', title: 'CRM Admin · Brightside Sales',
+                avatarBg: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#2D98F1]',
+                result: 'Zero manual notes', resultCls: 'text-emerald-400',
+                quote: '"Our sales reps stopped writing call notes in Zoho. Rozper does it automatically — and the AI summaries are better than what anyone was writing manually."',
+              },
+              {
+                module: 'Desk', moduleCls: 'bg-violet-400/10 border-violet-400/20 text-violet-400',
+                event: 'call.ended → ticket.updated',
+                initials: 'OS', name: 'Omar Siddiqui', title: 'Head of Support · Meridian Group',
+                avatarBg: 'bg-violet-500/20 border-violet-500/30 text-violet-300',
+                result: 'SLA hit every call', resultCls: 'text-[#2D98F1]',
+                quote: '"Zoho Desk tickets update the moment a call ends. Our SLA reporting is finally accurate — no more agents forgetting to log resolutions."',
+              },
+              {
+                module: 'Recruit', moduleCls: 'bg-amber-400/10 border-amber-400/20 text-amber-400',
+                event: 'call.outcome → candidate.stage',
+                initials: 'PM', name: 'Priya Mehta', title: 'Talent Ops Lead · NovaTalent',
+                avatarBg: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
+                result: '3× faster pipeline moves', resultCls: 'text-emerald-400',
+                quote: '"Candidate records in Zoho Recruit update automatically after screening calls. My recruiters focus on conversations — the CRM handles itself."',
+              },
+            ].map((t, i) => (
+              <motion.div
+                key={t.name}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="rounded-2xl bg-[#111B2D] border border-white/[0.08] hover:border-[#046BD2]/35 transition overflow-hidden flex flex-col"
+              >
+                {/* Module header */}
+                <div className="px-4 py-2.5 bg-[#0B1220]/70 border-b border-white/[0.06] flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className={`px-2 py-0.5 rounded border text-[9px] font-mono font-bold ${t.moduleCls}`}>Zoho {t.module}</span>
+                  </div>
+                  <span className="font-mono text-[9px] text-white/25 truncate ml-2 max-w-[180px]">{t.event}</span>
+                </div>
+
+                <div className="p-5 flex flex-col flex-1">
+                  <blockquote className="text-sm text-white/75 leading-relaxed flex-1 mb-5">{t.quote}</blockquote>
+
+                  {/* Result row */}
+                  <div className="flex items-center gap-1.5 mb-4 py-2.5 border-y border-white/[0.06]">
+                    <span className="font-mono text-[9px] text-white/30 uppercase">result:</span>
+                    <span className={`font-mono text-[10px] font-semibold ${t.resultCls}`}>{t.result}</span>
+                  </div>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-2.5">
+                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[11px] shrink-0 ${t.avatarBg}`}>{t.initials}</div>
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold truncate">{t.name}</div>
+                      <div className="text-[11px] text-white/40 truncate">{t.title}</div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 

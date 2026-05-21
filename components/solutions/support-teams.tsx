@@ -306,110 +306,76 @@ export function SupportTeamsPageView() {
           </div>
         </section>
 
-        {/* Testimonials — terminal metric cards */}
+        {/* Testimonials — live ticket cards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
             <p className="text-xs font-mono uppercase tracking-widest text-[#2D98F1] mb-3">Support Leaders</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold">What happens when teams switch.</h2>
           </div>
 
-          {/* Stat-led horizontal cards — 5 uniform, all peers */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               {
-                statValue: '4.5',
-                statUnit: 'min',
-                statLabel: 'AHT REDUCTION',
-                accent: 'text-[#0086F9]',
-                glow: 'shadow-[0_0_30px_-12px_rgba(0,134,249,0.6)]',
-                ring: 'group-hover:border-[#0086F9]/50',
-                quote: 'AI Agent Assist gives every rep the right answer before they have to search for it.',
-                initials: 'LH',
-                name: 'Layla Hassan',
-                role: 'Support Ops Lead · TechBridge',
-                avatar: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#2D98F1]',
+                ticketId: 'TKT-0041', priority: 'P1', priorityCls: 'text-red-400 bg-red-400/10 border-red-400/20',
+                sla: '4.5 min AHT', channel: 'Voice',
+                channelCls: 'text-[#0086F9] bg-[#046BD2]/15',
+                initials: 'LH', name: 'Layla Hassan', role: 'Support Ops Lead · TechBridge',
+                avatarCls: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#2D98F1]',
+                quote: 'AI Agent Assist gives every rep the right answer before they have to search for it. AHT dropped 4.5 minutes across the team.',
               },
               {
-                statValue: '5→1',
-                statUnit: 'tabs',
-                statLabel: 'CONTEXT SWITCH',
-                accent: 'text-violet-300',
-                glow: 'shadow-[0_0_30px_-12px_rgba(167,139,250,0.5)]',
-                ring: 'group-hover:border-violet-400/50',
-                quote: 'Unified inbox was a game changer. Now it\'s one screen, zero context switching.',
-                initials: 'PK',
-                name: 'Priya Kumar',
-                role: 'CS Manager · FlowDesk',
-                avatar: 'bg-violet-500/20 border-violet-500/30 text-violet-300',
+                ticketId: 'TKT-0092', priority: 'P2', priorityCls: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
+                sla: '5→1 tabs', channel: 'Chat',
+                channelCls: 'text-violet-400 bg-violet-400/10',
+                initials: 'OB', name: 'Omar Bakr', role: 'Support Director · Hive',
+                avatarCls: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
+                quote: 'SLA compliance went from 91% to 99.7% in 30 days. Built-in escalation rules did 80% of the work automatically.',
               },
               {
-                statValue: '99.7',
-                statUnit: '%',
-                statLabel: 'SLA COMPLIANCE',
-                accent: 'text-amber-300',
-                glow: 'shadow-[0_0_30px_-12px_rgba(252,211,77,0.5)]',
-                ring: 'group-hover:border-amber-400/50',
-                quote: 'Up from 91% in 30 days. Built-in escalation rules did 80% of the work automatically.',
-                initials: 'OB',
-                name: 'Omar Bakr',
-                role: 'Support Director · Hive',
-                avatar: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
+                ticketId: 'TKT-0153', priority: 'P3', priorityCls: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+                sla: '100% QA', channel: 'Omni',
+                channelCls: 'text-emerald-400 bg-emerald-400/10',
+                initials: 'TN', name: 'Tariq Nasser', role: 'QA Lead · ClearPath',
+                avatarCls: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#5BB8FF]',
+                quote: 'We used to QA 5% of interactions manually. Now every single interaction is auto-scored by AI. We coach instead of audit.',
               },
               {
-                statValue: '2',
-                statUnit: 'clicks',
-                statLabel: 'WHATSAPP LIVE',
-                accent: 'text-emerald-300',
-                glow: 'shadow-[0_0_30px_-12px_rgba(110,231,183,0.5)]',
-                ring: 'group-hover:border-emerald-400/50',
-                quote: 'Adding WhatsApp as a support channel was that fast. Handled tickets within an hour.',
-                initials: 'MC',
-                name: 'Maria Castillo',
-                role: 'Digital CX · SolTech Latam',
-                avatar: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300',
+                ticketId: 'TKT-0204', priority: 'P2', priorityCls: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+                sla: '2 clicks live', channel: 'WhatsApp',
+                channelCls: 'text-emerald-300 bg-emerald-300/10',
+                initials: 'MC', name: 'Maria Castillo', role: 'Digital CX · SolTech Latam',
+                avatarCls: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300',
+                quote: 'Adding WhatsApp as a support channel took two clicks. We were handling tickets within an hour of connecting it.',
               },
               {
-                statValue: '100',
-                statUnit: '% QA',
-                statLabel: 'AI SCORED',
-                accent: 'text-[#5BB8FF]',
-                glow: 'shadow-[0_0_30px_-12px_rgba(91,184,255,0.6)]',
-                ring: 'group-hover:border-[#5BB8FF]/50',
-                quote: 'We used to QA 5% manually. Now every interaction is auto-scored. We coach instead of audit.',
-                initials: 'TN',
-                name: 'Tariq Nasser',
-                role: 'QA Lead · ClearPath',
-                avatar: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#5BB8FF]',
+                ticketId: 'TKT-0271', priority: 'P3', priorityCls: 'text-[#0086F9] bg-[#046BD2]/10 border-[#046BD2]/20',
+                sla: '5→1 tabs', channel: 'Chat',
+                channelCls: 'text-[#2D98F1] bg-[#046BD2]/15',
+                initials: 'PK', name: 'Priya Kumar', role: 'CS Manager · FlowDesk',
+                avatarCls: 'bg-violet-500/20 border-violet-500/30 text-violet-300',
+                quote: 'Unified inbox was the game changer. Five browser tabs collapsed into one screen — zero context switching, full customer history on every call.',
               },
             ].map((t, i) => (
               <motion.div
                 key={t.initials}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                className={`group flex flex-col p-5 rounded-2xl bg-gradient-to-br from-[#111B2D] to-[#0B1220] border border-white/10 ${t.ring} hover:bg-[#1A2638]/50 transition-all ${t.glow}`}
+                className="flex flex-col rounded-2xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/40 transition overflow-hidden"
               >
-                {/* Stat label */}
-                <div className="text-[9px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2">{t.statLabel}</div>
-
-                {/* Big stat */}
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className={`font-display text-4xl font-bold leading-none tabular-nums tracking-tight ${t.accent}`}>{t.statValue}</span>
-                  <span className={`text-sm font-mono ${t.accent} opacity-70`}>{t.statUnit}</span>
+                {/* Ticket header */}
+                <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.07] bg-[#0B1220]/70">
+                  <span className="font-mono text-[10px] text-white/30">{t.ticketId}</span>
+                  <span className={`ml-auto inline-flex items-center px-2 py-0.5 rounded text-[9px] font-mono border ${t.priorityCls}`}>{t.priority}</span>
+                  <span className={`inline-flex items-center px-2 py-0.5 rounded text-[9px] font-mono ${t.channelCls}`}>{t.channel}</span>
+                  <span className="font-mono text-[9px] text-white/30 border border-white/10 px-1.5 py-0.5 rounded">{t.sla}</span>
                 </div>
-
-                {/* Divider */}
-                <div className="h-px bg-white/[0.06] mb-4" />
-
-                {/* Quote */}
-                <blockquote className="text-[13px] text-white/70 leading-relaxed flex-1 mb-4">
-                  "{t.quote}"
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex items-center gap-2.5 pt-3 border-t border-white/[0.06] mt-auto">
-                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[10px] shrink-0 ${t.avatar}`}>{t.initials}</div>
-                  <div className="min-w-0">
-                    <div className="font-semibold text-[12px] text-white truncate">{t.name}</div>
-                    <div className="text-[10px] font-mono text-white/40 truncate">{t.role}</div>
+                <div className="p-5 flex flex-col flex-1">
+                  <blockquote className="text-[13px] text-white/78 leading-relaxed flex-1 mb-5">"{t.quote}"</blockquote>
+                  <div className="flex items-center gap-2.5 pt-3 border-t border-white/[0.06] mt-auto">
+                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[10px] shrink-0 ${t.avatarCls}`}>{t.initials}</div>
+                    <div className="min-w-0">
+                      <div className="font-semibold text-[12px] text-white truncate">{t.name}</div>
+                      <div className="text-[10px] font-mono text-white/40 truncate">{t.role}</div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

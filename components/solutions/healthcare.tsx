@@ -200,69 +200,78 @@ export function HealthcarePageView() {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials — clinical note cards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
-              <Activity className="w-3.5 h-3.5 text-[#2D98F1]" />
-              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">From the Field</span>
+              <Activity className="w-3.5 h-3.5 text-[#22D3EE]" />
+              <span className="text-xs font-mono uppercase tracking-widest text-[#22D3EE]">From the Field</span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold">Trusted by healthcare teams.</h2>
             <p className="mt-4 text-white/50 text-lg">Real clinics. Real outcomes.</p>
           </div>
 
-          {/* Featured banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="relative rounded-3xl border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2]/20 via-[#046BD2]/10 to-[#2575FC]/10 p-8 md:p-10 overflow-hidden mb-6"
-          >
-            <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-[#0086F9]/15 blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-[#2575FC]/10 blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
-            <div className="relative grid md:grid-cols-[1fr_auto] gap-8 items-center">
-              <div>
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-[#0086F9] fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
-                </div>
-                <blockquote className="font-display text-2xl md:text-3xl font-medium leading-snug text-white">
-                  "Rozper handled our HIPAA requirements out of the box. The AI Receptionist now handles <span className="text-[#2D98F1]">40% of our inbound after-hours calls</span> without a single human intervention."
-                </blockquote>
-              </div>
-              <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 md:border-l md:border-white/10 md:pl-8">
-                <div className="w-14 h-14 rounded-full bg-[#046BD2]/30 border border-[#046BD2]/50 flex items-center justify-center text-[#2D98F1] font-display font-bold shrink-0">JT</div>
-                <div>
-                  <div className="font-semibold">Dr. James Thornton</div>
-                  <div className="text-xs text-white/50 mt-0.5">Practice Owner</div>
-                  <div className="text-xs text-white/50">Thornton Family Medicine</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Equal 3-column row */}
-          <div className="grid md:grid-cols-3 gap-6">
+          {/* Clinical record cards — all equal */}
+          <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { stars: 'text-emerald-400', accent: 'text-emerald-400', initials: 'SK', name: 'Sarah Kim, RN', role: 'Nurse Manager · Valley Health Clinic', badge: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-400', quote: <>"Our no-show rate dropped <span className="text-emerald-400 font-semibold">30% in the first month</span> after switching to Rozper's automated SMS reminders. Patients actually show up now."</> },
-              { stars: 'text-sky-400', accent: 'text-sky-400', initials: 'MR', name: 'Dr. Marcus Rivera', role: 'Medical Director · Eastside Urgent Care', badge: 'bg-sky-500/20 border-sky-500/30 text-sky-400', quote: <>"The online fax feature alone retired three fax machines. Every clinical document is <span className="text-sky-400 font-semibold">fully traceable and audit-ready</span> — our compliance officer finally has peace of mind."</> },
-              { stars: 'text-violet-400', accent: 'text-violet-400', initials: 'LP', name: 'Linda Park', role: 'Ops Manager · Greenway Medical Group', badge: 'bg-violet-500/20 border-violet-500/30 text-violet-400', quote: <>"Routing patients across our three locations was a manual nightmare. Rozper's <span className="text-violet-400 font-semibold">multi-site call routing set up in an afternoon</span> — our front desk team couldn't believe how smooth it runs."</> },
+              {
+                recordId: 'CLN-2024-001', type: 'AI Receptionist', typeCls: 'text-sky-400 bg-sky-400/10 border-sky-400/20',
+                outcome: '40% after-hrs handled',
+                initials: 'JT', name: 'Dr. James Thornton', role: 'Practice Owner · Thornton Family Medicine',
+                avatarBg: 'linear-gradient(135deg,#046BD2,#2575FC)',
+                quote: '"Rozper handled our HIPAA requirements out of the box. The AI Receptionist now handles 40% of our inbound after-hours calls without a single human intervention."',
+              },
+              {
+                recordId: 'CLN-2024-002', type: 'SMS Reminders', typeCls: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+                outcome: '−30% no-show rate',
+                initials: 'SK', name: 'Sarah Kim, RN', role: 'Nurse Manager · Valley Health Clinic',
+                avatarBg: 'linear-gradient(135deg,#046BD2,#0086F9)',
+                quote: '"Our no-show rate dropped 30% in the first month after switching to Rozper\'s automated SMS reminders. Patients actually show up now."',
+              },
+              {
+                recordId: 'CLN-2024-003', type: 'Online Fax', typeCls: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
+                outcome: '3 fax machines retired',
+                initials: 'MR', name: 'Dr. Marcus Rivera', role: 'Medical Director · Eastside Urgent Care',
+                avatarBg: 'linear-gradient(135deg,#0086F9,#2575FC)',
+                quote: '"The online fax feature alone retired three fax machines. Every clinical document is fully traceable and audit-ready — our compliance officer finally has peace of mind."',
+              },
+              {
+                recordId: 'CLN-2024-004', type: 'Multi-Site Routing', typeCls: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+                outcome: 'Set up in 1 afternoon',
+                initials: 'LP', name: 'Linda Park', role: 'Ops Manager · Greenway Medical Group',
+                avatarBg: 'linear-gradient(135deg,#2575FC,#046BD2)',
+                quote: '"Routing patients across our three locations was a manual nightmare. Rozper\'s multi-site call routing set up in an afternoon — our front desk couldn\'t believe how smooth it runs."',
+              },
             ].map((t, i) => (
               <motion.div
                 key={t.initials}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.07] transition-colors p-7"
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="flex flex-col rounded-2xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/30 transition overflow-hidden"
               >
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, j) => (
-                    <svg key={j} className={`w-4 h-4 fill-current ${t.stars}`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
+                {/* Clinical record header */}
+                <div className="flex items-center justify-between px-5 py-2.5 border-b border-white/[0.07] bg-[#0B1220]/60">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[10px] text-white/30">{t.recordId}</span>
+                    <span className={`px-2 py-0.5 rounded text-[9px] font-mono border ${t.typeCls}`}>{t.type}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Shield className="w-3 h-3 text-emerald-400" />
+                    <span className="font-mono text-[9px] text-emerald-400">HIPAA</span>
+                  </div>
                 </div>
-                <blockquote className="text-base text-white/80 leading-relaxed mb-6 flex-1">{t.quote}</blockquote>
-                <div className="flex items-center gap-3 pt-5 border-t border-white/10 mt-auto">
-                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center font-display font-bold text-sm shrink-0 ${t.badge}`}>{t.initials}</div>
-                  <div>
-                    <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-xs text-white/50 mt-0.5">{t.role}</div>
+                {/* Outcome strip */}
+                <div className="px-5 py-2 border-b border-white/[0.04] bg-[#046BD2]/[0.04]">
+                  <span className="font-mono text-[10px] text-white/40">outcome: </span>
+                  <span className="font-mono text-[10px] text-[#2D98F1]">{t.outcome}</span>
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <blockquote className="text-[14px] text-white/78 leading-relaxed flex-1 mb-5">{t.quote}</blockquote>
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] mt-auto">
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs text-white shrink-0" style={{ background: t.avatarBg }}>{t.initials}</div>
+                    <div>
+                      <div className="font-semibold text-sm">{t.name}</div>
+                      <div className="text-[11px] text-white/40 mt-0.5">{t.role}</div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

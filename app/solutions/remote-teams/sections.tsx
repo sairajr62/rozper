@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Globe, Smartphone, RefreshCw, Shield, FileText,
   MessageSquare, Video, BarChart3, Quote, ChevronDown,
@@ -104,50 +105,69 @@ export function Breadcrumb() {
 }
 
 // ─── WORLD VISUALIZATION ────────────────────────────────────────────────────
+// Positions derived from equirectangular projection:
+// x% = (lng + 180) / 360 * 100   y% = (90 - lat) / 180 * 100
 
 function WorldVisualization() {
   const nodes = [
-    { x: 50, y: 28, label: 'New York' },
-    { x: 76, y: 22, label: 'London' },
-    { x: 87, y: 52, label: 'Singapore' },
-    { x: 24, y: 58, label: 'São Paulo' },
-    { x: 62, y: 62, label: 'Dubai' },
-    { x: 14, y: 32, label: 'Toronto' },
+    { x: 29.4, y: 27.4, label: 'New York',   labelLeft: false },
+    { x: 50.0, y: 21.4, label: 'London',      labelLeft: false },
+    { x: 78.8, y: 49.3, label: 'Singapore',   labelLeft: true  },
+    { x: 37.1, y: 63.1, label: 'São Paulo',   labelLeft: false },
+    { x: 65.4, y: 36.0, label: 'Dubai',       labelLeft: false },
+    { x: 28.0, y: 25.0, label: 'Toronto',     labelLeft: true  },
   ]
 
-  const connections = [
-    [0, 1], [1, 2], [0, 3], [2, 4], [3, 4], [0, 5], [5, 1],
-  ] as [number, number][]
+  const connections: [number, number][] = [
+    [0, 1], // New York → London
+    [1, 2], // London → Singapore
+    [0, 3], // New York → São Paulo
+    [2, 4], // Singapore → Dubai
+    [3, 4], // São Paulo → Dubai
+    [0, 5], // New York → Toronto
+    [5, 1], // Toronto → London
+  ]
 
   return (
-    <div className="relative w-[460px] h-[400px]">
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#046BD2]/10 to-[#0086F9]/5 border border-[#046BD2]/20 backdrop-blur-sm overflow-hidden">
-        {/* subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'linear-gradient(#046BD2 1px, transparent 1px), linear-gradient(90deg, #046BD2 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-          }}
-        />
-      </div>
+    <div className="relative w-full max-w-[520px] aspect-[8/5] rounded-2xl overflow-hidden border border-[#046BD2]/20 shadow-2xl shadow-[#046BD2]/10">
+      {/* Real world map */}
+      <Image
+        src="/images/global-map.webp"
+        alt="World map"
+        fill
+        className="object-cover"
+        priority
+      />
 
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      {/* Dark overlay to match page theme and improve dot visibility */}
+      <div className="absolute inset-0 bg-[#030C18]/60" />
+
+      {/* Subtle blue vignette */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#046BD2]/8 via-transparent to-[#0086F9]/5" />
+
+      {/* SVG connection lines */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
         {connections.map(([a, b], i) => (
           <motion.line
             key={i}
             x1={nodes[a].x} y1={nodes[a].y}
             x2={nodes[b].x} y2={nodes[b].y}
-            stroke="#046BD2"
-            strokeWidth="0.25"
-            strokeOpacity="0.35"
+            stroke="#0086F9"
+            strokeWidth="0.18"
+            strokeOpacity="0.45"
+            strokeDasharray="0.6 0.4"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 + i * 0.12 }}
+            transition={{ duration: 1.6, delay: 0.4 + i * 0.14, ease: 'easeOut' }}
           />
         ))}
       </svg>
 
+      {/* City dots */}
       {nodes.map((node, i) => (
         <motion.div
           key={i}
@@ -155,38 +175,39 @@ function WorldVisualization() {
           style={{ left: `${node.x}%`, top: `${node.y}%`, transform: 'translate(-50%, -50%)' }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.6 + i * 0.15 }}
+          transition={{ duration: 0.35, delay: 0.5 + i * 0.15, ease: 'backOut' }}
         >
-          <div className="relative">
+          <div className="relative flex items-center">
+            {/* Label — left side */}
+            {node.labelLeft && (
+              <span className="absolute right-[calc(100%+6px)] top-1/2 -translate-y-1/2 text-[8.5px] text-white/65 whitespace-nowrap font-medium tracking-wide">
+                {node.label}
+              </span>
+            )}
+
+            {/* Pulse ring */}
             <motion.div
-              className="w-3 h-3 rounded-full bg-[#046BD2] border-2 border-[#0086F9]/60"
-              animate={{ scale: [1, 1.25, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.3 }}
+              className="absolute inset-[-4px] rounded-full bg-[#046BD2]/20"
+              animate={{ scale: [1, 2.6, 1], opacity: [0.6, 0, 0.6] }}
+              transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.35 }}
             />
+
+            {/* Core dot */}
             <motion.div
-              className="absolute inset-[-3px] rounded-full bg-[#046BD2]/25"
-              animate={{ scale: [1, 2.8, 1], opacity: [0.5, 0, 0.5] }}
-              transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.3 }}
+              className="relative z-10 w-2.5 h-2.5 rounded-full bg-[#0086F9] border border-[#2D98F1]/70 shadow-[0_0_6px_rgba(0,134,249,0.7)]"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.35 }}
             />
-            <span className="absolute left-4 top-0 text-[9px] text-[#CCD6DF]/60 whitespace-nowrap font-medium">
-              {node.label}
-            </span>
+
+            {/* Label — right side */}
+            {!node.labelLeft && (
+              <span className="absolute left-[calc(100%+6px)] top-1/2 -translate-y-1/2 text-[8.5px] text-white/65 whitespace-nowrap font-medium tracking-wide">
+                {node.label}
+              </span>
+            )}
           </div>
         </motion.div>
       ))}
-
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <motion.div
-          className="text-center"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        >
-          <div className="w-14 h-14 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/40 flex items-center justify-center mx-auto mb-2">
-            <Globe className="w-6 h-6 text-[#046BD2]" />
-          </div>
-          <p className="text-[10px] text-[#CCD6DF]/50 font-medium tracking-wide">150+ countries</p>
-        </motion.div>
-      </div>
     </div>
   )
 }
@@ -321,130 +342,105 @@ export function Stats() {
   )
 }
 
-// ─── BENTO FEATURES ──────────────────────────────────────────────────────────
+// ─── PLATFORM FEATURES ───────────────────────────────────────────────────────
 
 export function BentoFeatures() {
+  const features = [
+    {
+      Icon: Globe,
+      title: 'Local Numbers Worldwide',
+      desc: 'Local numbers in 150+ countries — your remote team looks local everywhere.',
+      tags: ['US', 'UK', 'DE', 'SG', 'BR', 'AU', '+145 more'],
+    },
+    {
+      Icon: Smartphone,
+      title: 'Any Device, Anywhere',
+      desc: 'Calls, video, chat, and SMS on desktop, browser, iOS, and Android.',
+    },
+    {
+      Icon: RefreshCw,
+      title: 'Automatic Failover',
+      desc: 'If one connection drops, calls route to backup instantly.',
+    },
+    {
+      Icon: Shield,
+      title: 'SSO — No VPN',
+      desc: 'Secure remote access with SSO. No VPN required, ever.',
+    },
+    {
+      Icon: FileText,
+      title: 'Remote Recording & AI',
+      desc: 'Call recording and AI-generated summaries work the same remotely as in-office. Every conversation captured, every insight available.',
+    },
+  ]
+
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-3 py-1 text-xs font-medium text-[#046BD2] bg-[#046BD2]/10 rounded-full border border-[#046BD2]/20 mb-4">
-            Platform Features
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-            Full phone features from{' '}
-            <span className="bg-gradient-to-r from-[#046BD2] to-[#0086F9] bg-clip-text text-transparent">
-              any location
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-16 lg:gap-24 items-start">
+
+          {/* Left — sticky heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="lg:sticky lg:top-28"
+          >
+            <span className="inline-block px-3 py-1 text-xs font-medium text-[#046BD2] bg-[#046BD2]/10 rounded-full border border-[#046BD2]/20 mb-6">
+              Platform Features
             </span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Large card — 2 cols */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="md:col-span-2 group relative p-8 rounded-2xl bg-gradient-to-br from-[#046BD2]/10 to-[#0086F9]/5 border border-[#046BD2]/20 hover:border-[#046BD2]/40 transition-all duration-300 overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#046BD2]/10 rounded-full blur-[60px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-            <div className="relative z-10">
-              <div className="inline-flex p-3 rounded-xl bg-[#046BD2]/20 mb-6">
-                <Globe className="w-7 h-7 text-[#046BD2]" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-white mb-3">Local Numbers Worldwide</h3>
-              <p className="text-[#CCD6DF] leading-relaxed text-base max-w-sm mb-6">
-                Local numbers in 150+ countries — your remote team looks local everywhere.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['US', 'UK', 'DE', 'SG', 'BR', 'AU', '+145 more'].map((c) => (
-                  <span key={c} className="px-3 py-1 text-xs text-[#046BD2] bg-[#046BD2]/10 border border-[#046BD2]/20 rounded-full">
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Small card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="group p-8 rounded-2xl bg-white/[0.03] border border-[#1A2638] hover:border-[#046BD2]/30 hover:bg-white/[0.05] transition-all duration-300"
-          >
-            <div className="inline-flex p-3 rounded-xl bg-[#046BD2]/10 mb-6">
-              <Smartphone className="w-6 h-6 text-[#046BD2]" />
-            </div>
-            <h3 className="font-display text-xl font-bold text-white mb-3">Any Device, Anywhere</h3>
-            <p className="text-[#CCD6DF] leading-relaxed text-sm">
-              Calls, video, chat, and SMS on desktop, browser, iOS, and Android.
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
+              Full phone features from{' '}
+              <span className="bg-gradient-to-r from-[#046BD2] to-[#0086F9] bg-clip-text text-transparent">
+                any location
+              </span>
+            </h2>
+            <p className="text-[#CCD6DF] leading-relaxed">
+              Everything your office phone does — available on any device, anywhere on Earth.
             </p>
           </motion.div>
 
-          {/* Small card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            viewport={{ once: true }}
-            className="group p-8 rounded-2xl bg-white/[0.03] border border-[#1A2638] hover:border-[#046BD2]/30 hover:bg-white/[0.05] transition-all duration-300"
-          >
-            <div className="inline-flex p-3 rounded-xl bg-[#046BD2]/10 mb-6">
-              <RefreshCw className="w-6 h-6 text-[#046BD2]" />
-            </div>
-            <h3 className="font-display text-xl font-bold text-white mb-3">Automatic Failover</h3>
-            <p className="text-[#CCD6DF] leading-relaxed text-sm">
-              If one connection drops, calls route to backup instantly.
-            </p>
-          </motion.div>
+          {/* Right — feature rows */}
+          <div className="divide-y divide-[#1A2638]">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                viewport={{ once: true }}
+                className="group flex items-start gap-6 py-8 first:pt-0 last:pb-0"
+              >
+                <div className="w-12 h-12 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all duration-300 mt-0.5">
+                  <f.Icon className="w-5 h-5 text-[#046BD2]" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <h3 className="font-display font-semibold text-white group-hover:text-[#046BD2] transition-colors duration-300 mb-2">
+                        {f.title}
+                      </h3>
+                      <p className="text-[#CCD6DF] text-sm leading-relaxed">{f.desc}</p>
+                      {'tags' in f && (
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {f.tags!.map((tag) => (
+                            <span key={tag} className="px-3 py-1 text-xs text-[#046BD2] bg-[#046BD2]/10 border border-[#046BD2]/20 rounded-full">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <span className="font-mono text-xs text-[#1A2638] shrink-0 mt-1 hidden sm:block">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-          {/* Small card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="group p-8 rounded-2xl bg-white/[0.03] border border-[#1A2638] hover:border-[#046BD2]/30 hover:bg-white/[0.05] transition-all duration-300"
-          >
-            <div className="inline-flex p-3 rounded-xl bg-[#046BD2]/10 mb-6">
-              <Shield className="w-6 h-6 text-[#046BD2]" />
-            </div>
-            <h3 className="font-display text-xl font-bold text-white mb-3">SSO — No VPN</h3>
-            <p className="text-[#CCD6DF] leading-relaxed text-sm">
-              Secure remote access with SSO. No VPN required, ever.
-            </p>
-          </motion.div>
-
-          {/* Large card — 2 cols */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            viewport={{ once: true }}
-            className="md:col-span-2 group relative p-8 rounded-2xl bg-white/[0.03] border border-[#1A2638] hover:border-[#046BD2]/30 hover:bg-white/[0.05] transition-all duration-300 overflow-hidden"
-          >
-            <div className="absolute bottom-0 right-0 w-48 h-48 bg-[#0086F9]/5 rounded-full blur-[50px] pointer-events-none" />
-            <div className="relative z-10 flex items-start gap-6">
-              <div className="inline-flex p-3 rounded-xl bg-[#046BD2]/10 flex-shrink-0">
-                <FileText className="w-6 h-6 text-[#046BD2]" />
-              </div>
-              <div>
-                <h3 className="font-display text-xl font-bold text-white mb-3">Remote Recording & AI</h3>
-                <p className="text-[#CCD6DF] leading-relaxed text-sm max-w-lg">
-                  Call recording and AI-generated summaries work the same remotely as in-office. Every conversation captured, every insight available — wherever your team is calling from.
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

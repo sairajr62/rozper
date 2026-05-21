@@ -213,148 +213,78 @@ export function EnterpriseITPageView() {
           </div>
         </section>
 
-        {/* Testimonials — vendor audit log style */}
+        {/* Testimonials — vendor clearance cards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="mb-16">
             <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#0086F9]/60 mb-3">// customer.reviews[]</div>
             <h2 className="font-display text-4xl md:text-5xl font-bold">Cleared by enterprise IT.</h2>
           </div>
 
-          {/* Vertical audit-log timeline — single column, left rail connecting all entries */}
-          {(() => {
-            const entries = [
+          <div className="grid md:grid-cols-2 gap-4">
+            {[
               {
-                featured: true,
-                idx: '000', id: 'ENT-2024-004',
+                reviewId: 'ENT-2024-004', status: 'APPROVED',
                 initials: 'SK', name: 'Stefan Koch', title: 'Director of IT · Meridian Holdings',
                 tags: ['SOC2', 'GDPR', 'HIPAA'],
-                quote: "Rozper passed our security review faster than any vendor we've worked with. The deployment team handled everything from SSO to number migration. Zero surprises.",
+                quote: '"Rozper passed our security review faster than any vendor we\'ve worked with. The deployment team handled everything from SSO to number migration. Zero surprises."',
               },
               {
-                idx: '001', id: 'ENT-2024-007',
+                reviewId: 'ENT-2024-007', status: 'APPROVED',
                 initials: 'AL', name: 'Annika Lindqvist', title: 'CISO · NordGroup AB',
                 tags: ['SAML', 'SCIM', 'RBAC'],
-                quote: 'SCIM provisioning cut our onboarding overhead by 90%. Accounts are created and deactivated automatically from Azure AD. No manual tickets, ever.',
+                quote: '"SCIM provisioning cut our onboarding overhead by 90%. Accounts are created and deactivated automatically from Azure AD. No manual tickets, ever."',
               },
               {
-                idx: '002', id: 'ENT-2024-011',
+                reviewId: 'ENT-2024-011', status: 'APPROVED',
                 initials: 'MB', name: 'Marcus Barnes', title: 'VP IT · Centurion Financial',
                 tags: ['HIPAA', 'Encryption', 'Audit'],
-                quote: 'The compliance documentation was audit-ready on day one. Our legal team had the HIPAA BAA signed before we even finished the POC.',
+                quote: '"The compliance documentation was audit-ready on day one. Our legal team had the HIPAA BAA signed before we even finished the POC."',
               },
               {
-                idx: '003', id: 'ENT-2024-015',
+                reviewId: 'ENT-2024-015', status: 'APPROVED',
                 initials: 'YP', name: 'Yuki Patel', title: 'IT Director · Solaris Group',
                 tags: ['Multi-site', 'SLA', 'Migration'],
-                quote: "We migrated 600 seats across 4 countries in 3 weeks. The implementation team was better than any vendor I've worked with in 15 years of IT.",
+                quote: '"We migrated 600 seats across 4 countries in 3 weeks. The implementation team was better than any vendor I\'ve worked with in 15 years of IT."',
               },
-            ]
-            return (
-              <div className="relative">
-                {/* Log header */}
-                <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#046BD2]/15">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// vendor.review.log</span>
-                    <span className="font-mono text-[10px] text-[#0086F9]/30">4 entries</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <motion.span animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 1.8, repeat: Infinity }} className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    <span className="font-mono text-[10px] text-emerald-400">all approved · live</span>
-                  </div>
+            ].map((t, i) => (
+              <motion.div
+                key={t.name}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="relative flex flex-col rounded-md border border-[#046BD2]/20 bg-[#111B2D] hover:border-[#0086F9]/40 hover:bg-[#1A2638] transition overflow-hidden"
+              >
+                {/* Blueprint grid overlay */}
+                <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{
+                  backgroundImage: 'linear-gradient(rgba(0,134,249,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,134,249,1) 1px, transparent 1px)',
+                  backgroundSize: '20px 20px',
+                }} />
+                {/* Review header */}
+                <div className="relative flex items-center justify-between px-5 py-2.5 border-b border-[#046BD2]/15 bg-[#046BD2]/[0.03]">
+                  <span className="font-mono text-[10px] text-[#0086F9]/50">{t.reviewId}</span>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-400/10 border border-emerald-400/20">
+                    <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                    <span className="font-mono text-[9px] text-emerald-400">{t.status}</span>
+                  </span>
                 </div>
-
-                {/* Timeline rail + entries */}
-                <div className="relative pl-10">
-                  {/* Vertical rail */}
-                  <div className="absolute left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-[#0086F9]/60 via-[#046BD2]/30 to-[#046BD2]/10" />
-
-                  <div className="space-y-4">
-                    {entries.map((t, i) => (
-                      <motion.div
-                        key={t.name}
-                        initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                        className="relative"
-                      >
-                        {/* Timeline dot */}
-                        <div className={`absolute -left-[31px] top-5 z-10 ${t.featured ? 'w-4 h-4 -mt-0.5 -ml-0.5' : 'w-3 h-3'}`}>
-                          {t.featured ? (
-                            <>
-                              <motion.div
-                                animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                                className="absolute inset-0 rounded-full bg-[#0086F9]"
-                              />
-                              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#046BD2] to-[#0086F9] border-2 border-[#0B1220]" />
-                            </>
-                          ) : (
-                            <div className="w-3 h-3 rounded-full bg-[#0B1220] border-2 border-[#0086F9]/60" />
-                          )}
-                        </div>
-
-                        {/* Entry card */}
-                        <div className={`relative border bg-[#111B2D] rounded-md overflow-hidden group hover:border-[#0086F9]/40 transition ${
-                          t.featured
-                            ? 'border-[#046BD2]/30 p-7 shadow-[0_0_30px_-10px_rgba(0,134,249,0.3)]'
-                            : 'border-[#046BD2]/15 p-4'
-                        }`}>
-                          {/* Subtle grid for featured only */}
-                          {t.featured && (
-                            <div className="absolute inset-0 opacity-15 pointer-events-none" style={{
-                              backgroundImage: 'linear-gradient(rgba(0,134,249,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,134,249,0.05) 1px, transparent 1px)',
-                              backgroundSize: '20px 20px',
-                            }} />
-                          )}
-
-                          {/* Header row — avatar + name + meta */}
-                          <div className="relative flex items-center justify-between gap-3 mb-3">
-                            <div className="flex items-center gap-3 min-w-0">
-                              <div className={`rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold flex-shrink-0 ${
-                                t.featured ? 'w-10 h-10 text-sm' : 'w-8 h-8 text-[11px]'
-                              }`}>{t.initials}</div>
-                              <div className="min-w-0">
-                                <div className={`font-semibold leading-tight ${t.featured ? 'text-base' : 'text-sm'}`}>{t.name}</div>
-                                <div className="text-[10px] text-white/40 font-mono truncate leading-tight">{t.title}</div>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-2 flex-shrink-0">
-                              <span className="font-mono text-[9px] text-[#0086F9]/40 hidden sm:inline">{t.id}</span>
-                              <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-400/10 border border-emerald-400/20">
-                                <span className="w-1 h-1 rounded-full bg-emerald-400" />
-                                <span className="font-mono text-[8px] text-emerald-400">{t.featured ? 'APPROVED' : 'OK'}</span>
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Quote */}
-                          <blockquote className={`relative text-white/85 leading-relaxed mb-3 ${
-                            t.featured ? 'font-display text-lg md:text-xl font-medium' : 'text-[13px] text-white/75'
-                          }`}>
-                            "{t.quote}"
-                          </blockquote>
-
-                          {/* Tags */}
-                          <div className="relative flex items-center gap-1.5 flex-wrap">
-                            {t.tags.map(tag => (
-                              <span key={tag} className="px-1.5 py-0.5 rounded text-[9px] font-mono border border-[#046BD2]/20 text-[#2D98F1]">{tag}</span>
-                            ))}
-                            <span className="ml-auto font-mono text-[9px] text-[#0086F9]/30 sm:hidden">{t.id}</span>
-                          </div>
-
-                          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#046BD2]/0 via-[#046BD2]/30 to-[#046BD2]/0 group-hover:via-[#0086F9] transition" />
-                        </div>
-                      </motion.div>
+                <div className="relative p-6 flex flex-col flex-1">
+                  <blockquote className="text-[14px] text-white/82 leading-relaxed flex-1 mb-5">{t.quote}</blockquote>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {t.tags.map(tag => (
+                      <span key={tag} className="px-2 py-0.5 rounded text-[9px] font-mono border border-[#046BD2]/25 text-[#2D98F1]">{tag}</span>
                     ))}
-
-                    {/* End-of-log marker */}
-                    <div className="relative">
-                      <div className="absolute -left-[28px] top-1.5 w-2 h-2 rounded-full bg-[#046BD2]/30" />
-                      <div className="font-mono text-[10px] text-[#0086F9]/40 pt-0.5">$ end of log · 4 / 4 records</div>
+                  </div>
+                  <div className="flex items-center gap-3 pt-4 border-t border-[#046BD2]/15">
+                    <div className="w-9 h-9 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold text-xs shrink-0">{t.initials}</div>
+                    <div className="min-w-0">
+                      <div className="font-semibold text-sm leading-tight">{t.name}</div>
+                      <div className="text-[10px] font-mono text-white/40 truncate">{t.title}</div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )
-          })()}
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#046BD2]/0 via-[#046BD2]/30 to-[#046BD2]/0" />
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* FAQ */}

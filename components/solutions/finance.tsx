@@ -210,7 +210,7 @@ export function FinancePageView() {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials — compliance report cards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="mb-12">
             <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#0086F9]/60 mb-3">// client.feedback</div>
@@ -218,68 +218,61 @@ export function FinancePageView() {
             <p className="mt-3 text-white/50 font-mono text-sm">Banks, brokerages, and insurers running on Rozper.</p>
           </div>
 
-          {/* Featured banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="relative rounded border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2]/15 via-[#111B2D] to-[#046BD2]/5 p-8 md:p-10 overflow-hidden mb-4"
-          >
-            <div className="absolute top-5 right-5 px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[9px] font-mono text-emerald-400 tracking-widest">VERIFIED</div>
-            <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-[#0086F9]/12 blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-[#046BD2]/12 blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
-            <div className="relative grid md:grid-cols-[1fr_auto] gap-8 items-center">
-              <div>
-                <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#0086F9] mb-4">// client.feedback</div>
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3.5 h-3.5 text-[#0086F9] fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
-                </div>
-                <blockquote className="font-display text-2xl md:text-3xl font-medium leading-snug text-white mb-5">
-                  "Regulatory audits used to take us a week to prepare for. With Rozper's call archive and search, we pull <span className="text-[#2D98F1]">everything in minutes</span>."
-                </blockquote>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-400 font-mono text-[10px] tracking-widest">AUDIT READY</span>
-                  <span className="px-2.5 py-1 rounded bg-[#046BD2]/15 text-[#2D98F1] font-mono text-[10px] tracking-widest">7-DAY → MINUTES</span>
-                  <span className="px-2.5 py-1 rounded bg-sky-500/15 text-sky-400 font-mono text-[10px] tracking-widest">MIFID II</span>
-                </div>
-              </div>
-              <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 md:border-l md:border-[#046BD2]/20 md:pl-8">
-                <div className="w-14 h-14 rounded bg-[#046BD2]/20 border border-[#046BD2]/40 flex items-center justify-center text-[#2D98F1] font-display font-bold shrink-0">CE</div>
-                <div>
-                  <div className="font-semibold">Charlotte Evans</div>
-                  <div className="text-[11px] text-white/50 font-mono mt-0.5">Head of Compliance</div>
-                  <div className="text-[11px] text-white/50 font-mono">Bridgepoint Capital</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Equal 3-column row */}
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {[
-              { stars: 'text-amber-400', accent: 'border-amber-400/50', initials: 'DO', name: 'David Okafor', role: 'VP Operations · Meridian Asset Mgmt', badge: { text: 'AI MONITOR', cls: 'text-amber-400/70 border-amber-400/20' }, avatar: 'bg-amber-500/10 border-amber-500/20 text-amber-400', quote: <>"The AI compliance monitor flagged a prohibited phrase on a client call <span className="text-amber-400 font-semibold">before our regulator did</span>. That single catch alone justified the switch."</> },
-              { stars: 'text-emerald-400', accent: 'border-emerald-400/50', initials: 'PN', name: 'Priya Nair', role: 'Chief Risk Officer · Horizon Insurance', badge: { text: 'PCI SAFE', cls: 'text-emerald-400/70 border-emerald-400/20' }, avatar: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400', quote: <>"PCI-safe recording meant we could finally <span className="text-emerald-400 font-semibold">remove card data risk from every payment call</span>. Our InfoSec team signed off in a day."</> },
-              { stars: 'text-sky-400', accent: 'border-sky-400/50', initials: 'JW', name: 'James Whitfield', role: 'Head of Client Services · Sterling Brokerage', badge: { text: 'MIFID II', cls: 'text-sky-400/70 border-sky-400/20' }, avatar: 'bg-sky-500/10 border-sky-500/20 text-sky-400', quote: <>"We went from dreading MiFID II audits to being <span className="text-sky-400 font-semibold">audit-ready overnight</span>. Metadata, timestamps, access logs — our external auditors actually complimented it."</> },
+              {
+                regulation: 'MIFID II', regulationCls: 'text-sky-400 bg-sky-400/10 border-sky-400/20',
+                finding: 'AUDIT READY', findingCls: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+                initials: 'CE', name: 'Charlotte Evans', role: 'Head of Compliance · Bridgepoint Capital',
+                avatarCls: 'bg-[#046BD2]/20 border-[#046BD2]/40 text-[#2D98F1]',
+                quote: '"Regulatory audits used to take us a week to prepare for. With Rozper\'s call archive and search, we pull everything in minutes."',
+              },
+              {
+                regulation: 'AI MONITOR', regulationCls: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+                finding: 'COMPLIANCE', findingCls: 'text-amber-400 bg-amber-400/10 border-amber-400/20',
+                initials: 'DO', name: 'David Okafor', role: 'VP Operations · Meridian Asset Mgmt',
+                avatarCls: 'bg-amber-500/10 border-amber-500/20 text-amber-400',
+                quote: '"The AI compliance monitor flagged a prohibited phrase on a client call before our regulator did. That single catch alone justified the switch."',
+              },
+              {
+                regulation: 'PCI DSS', regulationCls: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+                finding: 'PCI SAFE', findingCls: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+                initials: 'PN', name: 'Priya Nair', role: 'Chief Risk Officer · Horizon Insurance',
+                avatarCls: 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
+                quote: '"PCI-safe recording meant we could finally remove card data risk from every payment call. Our InfoSec team signed off in a day."',
+              },
+              {
+                regulation: 'MIFID II', regulationCls: 'text-sky-400 bg-sky-400/10 border-sky-400/20',
+                finding: 'VERIFIED', findingCls: 'text-[#2D98F1] bg-[#046BD2]/10 border-[#046BD2]/20',
+                initials: 'JW', name: 'James Whitfield', role: 'Head of Client Services · Sterling Brokerage',
+                avatarCls: 'bg-sky-500/10 border-sky-500/20 text-sky-400',
+                quote: '"We went from dreading MiFID II audits to being audit-ready overnight. Metadata, timestamps, access logs — our external auditors actually complimented it."',
+              },
             ].map((t, i) => (
               <motion.div
                 key={t.initials}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className={`flex flex-col rounded border-l-2 ${t.accent} bg-[#111B2D] hover:bg-[#1A2638] transition p-6`}
+                className="flex flex-col rounded border border-[#046BD2]/20 bg-[#111B2D] hover:bg-[#1A2638] hover:border-[#046BD2]/40 transition overflow-hidden"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-1">
+                {/* Compliance header */}
+                <div className="flex items-center gap-2 px-5 py-2.5 border-b border-[#046BD2]/15 bg-[#046BD2]/[0.03]">
+                  <span className="font-mono text-[9px] text-white/30">// audit.finding</span>
+                  <span className={`ml-auto px-2 py-0.5 rounded text-[9px] font-mono border ${t.regulationCls}`}>{t.regulation}</span>
+                  <span className={`px-2 py-0.5 rounded text-[9px] font-mono border ${t.findingCls}`}>{t.finding}</span>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex gap-0.5 mb-4">
                     {[...Array(5)].map((_, j) => (
-                      <svg key={j} className={`w-3.5 h-3.5 fill-current ${t.stars}`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                      <svg key={j} className="w-3.5 h-3.5 fill-[#0086F9]" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                     ))}
                   </div>
-                  <span className={`font-mono text-[9px] border px-2 py-0.5 rounded tracking-widest ${t.badge.cls}`}>{t.badge.text}</span>
-                </div>
-                <blockquote className="text-sm text-white/80 leading-relaxed mb-6 flex-1">{t.quote}</blockquote>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] mt-auto">
-                  <div className={`w-9 h-9 rounded border flex items-center justify-center font-display font-bold text-xs shrink-0 ${t.avatar}`}>{t.initials}</div>
-                  <div>
-                    <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-[11px] text-white/50 font-mono mt-0.5">{t.role}</div>
+                  <blockquote className="text-sm text-white/82 leading-relaxed flex-1 mb-5">{t.quote}</blockquote>
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] mt-auto">
+                    <div className={`w-9 h-9 rounded border flex items-center justify-center font-display font-bold text-xs shrink-0 ${t.avatarCls}`}>{t.initials}</div>
+                    <div>
+                      <div className="font-semibold text-sm">{t.name}</div>
+                      <div className="text-[11px] text-white/50 font-mono mt-0.5">{t.role}</div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
