@@ -195,7 +195,7 @@ export function ContactCenterPageView() {
               </motion.div>
 
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-12 grid grid-cols-3 gap-px bg-white/5 rounded overflow-hidden border border-white/10 max-w-md">
-                {[{ k: 'Uptime', v: '99.999%' }, { k: 'Channels', v: '6+' }, { k: 'Countries', v: '150+' }].map((s) => (
+                {[{ k: 'Uptime', v: '99.99%' }, { k: 'Channels', v: '6+' }, { k: 'Countries', v: '150+' }].map((s) => (
                   <div key={s.k} className="p-4 bg-[#0B1220]">
                     <div className="font-display text-2xl font-bold text-white">{s.v}</div>
                     <div className="text-[10px] text-white/40 mt-1 font-mono uppercase tracking-widest">{s.k}</div>

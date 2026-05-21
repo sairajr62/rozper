@@ -94,7 +94,7 @@ function PhoneSystemDiagram() {
       </div>
 
       <div className="px-5 py-3 border-t border-white/10 text-[10px] font-mono text-white/30">
-        Unlimited extensions · Visual dial plan · No hardware · 99.999% uptime
+        Unlimited extensions · Visual dial plan · No hardware · 99.99% uptime
       </div>
     </div>
   )

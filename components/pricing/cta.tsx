@@ -5,7 +5,7 @@ import { ArrowRight, MessageCircle } from 'lucide-react'
 
 const stats = [
   { value: '500+', label: 'Companies worldwide' },
-  { value: '99.999%', label: 'Uptime SLA' },
+  { value: '99.99%', label: 'Uptime SLA' },
   { value: '14-day', label: 'Free trial' },
   { value: '24/7', label: 'Expert support' },
 ]

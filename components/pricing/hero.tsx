@@ -5,7 +5,7 @@ import { Shield, Globe, Clock, Zap } from 'lucide-react'
 
 export function PricingHero() {
   const trustIndicators = [
-    { icon: Shield, label: '99.999% Uptime' },
+    { icon: Shield, label: '99.99% Uptime' },
     { icon: Globe, label: '150+ Countries' },
     { icon: Clock, label: '24/7 Expert Support' },
     { icon: Zap, label: 'Risk-Free Trial' },

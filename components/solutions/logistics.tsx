@@ -264,8 +264,8 @@ export function LogisticsPageView() {
               ].map((t) => {
                 const accent = {
                   blue:    { dot: 'bg-[#046BD2] border-[#2D98F1] shadow-[#046BD2]/60', glow: 'bg-[#0086F9]/30', metric: 'text-[#2D98F1]', label: 'text-[#2D98F1]/70', avatar: 'bg-[#046BD2]/20 border-[#046BD2]/40 text-[#2D98F1]', card: 'border-[#046BD2]/25 hover:border-[#046BD2]/50' },
-                  cyan:    { dot: 'bg-cyan-500 border-cyan-300 shadow-cyan-500/60',     glow: 'bg-cyan-400/20',    metric: 'text-cyan-300',    label: 'text-cyan-400/70',   avatar: 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300',    card: 'border-cyan-500/20  hover:border-cyan-500/40' },
-                  emerald: { dot: 'bg-emerald-500 border-emerald-300 shadow-emerald-500/60', glow: 'bg-emerald-400/20', metric: 'text-emerald-300', label: 'text-emerald-400/70', avatar: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300', card: 'border-emerald-500/20 hover:border-emerald-500/40' },
+                  cyan:    { dot: 'bg-[#22D3EE] border-[#22D3EE]/70 shadow-[#22D3EE]/60', glow: 'bg-[#22D3EE]/20', metric: 'text-[#22D3EE]', label: 'text-[#22D3EE]/70', avatar: 'bg-[#22D3EE]/15 border-[#22D3EE]/30 text-[#22D3EE]', card: 'border-[#22D3EE]/20 hover:border-[#22D3EE]/40' },
+                  emerald: { dot: 'bg-[#2575FC] border-[#2575FC]/70 shadow-[#2575FC]/60', glow: 'bg-[#2575FC]/20', metric: 'text-[#2575FC]', label: 'text-[#2575FC]/70', avatar: 'bg-[#2575FC]/15 border-[#2575FC]/30 text-[#2575FC]', card: 'border-[#2575FC]/20 hover:border-[#2575FC]/40' },
                 }[t.color]!
 
                 return (

@@ -13,7 +13,7 @@ import {
 
 const stats = [
   { value: '150+', label: 'Countries Supported' },
-  { value: '99.999%', label: 'Uptime SLA' },
+  { value: '99.99%', label: 'Uptime SLA' },
   { value: '12', label: 'Time Zones Covered' },
   { value: '0', label: 'VPNs Required' },
 ]
@@ -247,7 +247,7 @@ export function Hero() {
               Cloud calling, video, and chat for fully remote and hybrid teams — in 150+ countries.
             </p>
             <p className="text-base text-[#757575] mb-10 leading-relaxed max-w-xl">
-              Your team works in 12 time zones. Your phone system should work in all of them. Every remote seat gets a local number, a full comms suite, and 99.999% uptime.
+              Your team works in 12 time zones. Your phone system should work in all of them. Every remote seat gets a local number, a full comms suite, and 99.99% uptime.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">

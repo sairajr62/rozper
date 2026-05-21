@@ -1,0 +1,18 @@
+Commands when storage space gets full
+1. Get-PSDrive C
+2. # Clear Next.js cache (biggest win)
+Remove-Item -Recurse -Force "C:\Users\OTHER-USERS\Downloads\b_i8jCFfXRN2t\b_i8jCFfXRN2t\.next"
+3.# Clear npm cache
+npm cache clean --force
+4.# Clear Windows temp files
+Remove-Item -Recurse -Force "$env:TEMP\*" -ErrorAction SilentlyContinue
+
+Mega Tip :- If disk space keeps filling up, add this to next.config.js to limit cache size:
+js/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    turboCacheSize: 500, // MB — adjust as needed
+  },
+};
+
+module.exports = nextConfig;

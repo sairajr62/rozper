@@ -51,7 +51,7 @@ const benefits = [
 const sections = [
   { title: 'Every Channel in One Inbox', desc: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified for every agent. Stop switching between apps and start focusing on customers.', icon: Headphones, bullets: ['Omnichannel routing', 'Unified conversation history', 'Real-time analytics'], image: '/images/ucaas-unified-inbox.png' },
   { title: 'AI That Works While You Sleep', desc: 'AI Receptionist answers calls 24/7, qualifies leads, books appointments, and routes to the right team. No more missed opportunities.', icon: Zap, bullets: ['24/7 AI answering', 'Lead qualification', 'Appointment booking'], image: '/images/ucass-unified-ai.png' },
-  { title: 'Built for Global Teams', desc: 'Local numbers in 150+ countries, carrier-grade routing, and 99.999% uptime. Your team works globally — your phone system should too.', icon: Globe2, bullets: ['Local presence worldwide', 'Carrier-grade network', 'Follow-the-sun support'], image: '/images/ucass-unified-global.png' },
+  { title: 'Built for Global Teams', desc: 'Local numbers in 150+ countries, carrier-grade routing, and 99.99% uptime. Your team works globally — your phone system should too.', icon: Globe2, bullets: ['Local presence worldwide', 'Carrier-grade network', 'Follow-the-sun support'], image: '/images/ucass-unified-global.png' },
 ]
 
 const steps = [
@@ -194,7 +194,7 @@ export function UcaasPageView() {
           </motion.div>
 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {[{ k: 'Countries', v: '150+' }, { k: 'Uptime SLA', v: '99.999%' }, { k: 'From/User/Mo', v: '$12.99' }, { k: 'Support', v: '24/7' }].map((s, i) => (
+            {[{ k: 'Countries', v: '150+' }, { k: 'Uptime SLA', v: '99.99%' }, { k: 'From/User/Mo', v: '$12.99' }, { k: 'Support', v: '24/7' }].map((s, i) => (
               <motion.div
                 key={s.k}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}

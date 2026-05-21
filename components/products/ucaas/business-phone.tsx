@@ -13,7 +13,7 @@ const features = [
   { icon: Globe, title: 'Local Numbers in 150+ Countries', desc: 'Look local everywhere — provision numbers in 150+ countries instantly.' },
   { icon: Zap, title: 'HD Voice & Video Calling', desc: 'Crystal-clear calls on any device — desk phone, browser, or mobile app.' },
   { icon: RefreshCw, title: 'Smart Call Routing', desc: 'Time-based, skills-based, and AI-powered routing out of the box.' },
-  { icon: Shield, title: 'Enterprise-Grade Uptime', desc: '99.999% SLA backed by redundant global infrastructure.' },
+  { icon: Shield, title: 'Enterprise-Grade Uptime', desc: '99.99% SLA backed by redundant global infrastructure.' },
   { icon: Headphones, title: 'Softphone & Mobile App', desc: 'One app across Mac, Windows, iOS, and Android — no hardware needed.' },
   { icon: Phone, title: 'Toll-Free & Local Numbers', desc: 'Every plan includes toll-free numbers in 40+ countries at no extra charge.' },
 ]
@@ -104,7 +104,7 @@ function SoftphoneUI() {
       </div>
 
       <div className="px-5 py-3 border-t border-white/10 text-[10px] font-mono text-white/30">
-        5 extensions · HD voice · 99.999% uptime SLA
+        5 extensions · HD voice · 99.99% uptime SLA
       </div>
     </div>
   )
@@ -151,7 +151,7 @@ export function ProdUCaaSBusinessPhonePageView() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-10 grid grid-cols-3 gap-3">
-              {[{ v: '150+', k: 'Countries' }, { v: '99.999%', k: 'Uptime SLA' }, { v: '<1s', k: 'Call Setup' }].map(s => (
+              {[{ v: '150+', k: 'Countries' }, { v: '99.99%', k: 'Uptime SLA' }, { v: '<1s', k: 'Call Setup' }].map(s => (
                 <div key={s.k} className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
                   <div className="font-display text-2xl font-bold text-[#0086F9]">{s.v}</div>
                   <div className="text-[10px] font-mono text-white/40 mt-1 uppercase tracking-wider">{s.k}</div>

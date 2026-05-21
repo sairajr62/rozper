@@ -211,98 +211,62 @@ export function HealthcarePageView() {
             <p className="mt-4 text-white/50 text-lg">Real clinics. Real outcomes.</p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 items-start">
-            {/* Featured large card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }}
-              className="lg:col-span-1 relative rounded-3xl border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2]/20 via-[#046BD2]/10 to-[#2575FC]/10 p-8 overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-[#0086F9]/15 blur-3xl -translate-y-1/2 translate-x-1/2" />
-              <div className="relative">
-                <div className="flex gap-1 mb-6">
+          {/* Featured banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="relative rounded-3xl border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2]/20 via-[#046BD2]/10 to-[#2575FC]/10 p-8 md:p-10 overflow-hidden mb-6"
+          >
+            <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-[#0086F9]/15 blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-[#2575FC]/10 blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+            <div className="relative grid md:grid-cols-[1fr_auto] gap-8 items-center">
+              <div>
+                <div className="flex gap-1 mb-5">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-4 h-4 text-[#0086F9] fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                   ))}
                 </div>
-                <blockquote className="font-display text-xl font-medium leading-relaxed text-white mb-8">
+                <blockquote className="font-display text-2xl md:text-3xl font-medium leading-snug text-white">
                   "Rozper handled our HIPAA requirements out of the box. The AI Receptionist now handles <span className="text-[#2D98F1]">40% of our inbound after-hours calls</span> without a single human intervention."
                 </blockquote>
-                <div className="flex items-center gap-3 pt-6 border-t border-white/10">
-                  <div className="w-11 h-11 rounded-full bg-[#046BD2]/30 border border-[#046BD2]/50 flex items-center justify-center text-[#2D98F1] font-display font-bold text-sm shrink-0">JT</div>
-                  <div>
-                    <div className="font-semibold text-sm">Dr. James Thornton</div>
-                    <div className="text-xs text-white/50 mt-0.5">Practice Owner · Thornton Family Medicine</div>
-                  </div>
+              </div>
+              <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-3 md:border-l md:border-white/10 md:pl-8">
+                <div className="w-14 h-14 rounded-full bg-[#046BD2]/30 border border-[#046BD2]/50 flex items-center justify-center text-[#2D98F1] font-display font-bold shrink-0">JT</div>
+                <div>
+                  <div className="font-semibold">Dr. James Thornton</div>
+                  <div className="text-xs text-white/50 mt-0.5">Practice Owner</div>
+                  <div className="text-xs text-white/50">Thornton Family Medicine</div>
                 </div>
               </div>
-            </motion.div>
-
-            {/* Two stacked cards */}
-            <div className="lg:col-span-2 grid sm:grid-cols-2 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.07] transition-colors p-7"
-              >
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-emerald-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
-                </div>
-                <blockquote className="text-base text-white/80 leading-relaxed mb-6">
-                  "Our no-show rate dropped <span className="text-emerald-400 font-semibold">30% in the first month</span> after switching to Rozper's automated SMS reminders. Patients actually show up now."
-                </blockquote>
-                <div className="flex items-center gap-3 pt-5 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-display font-bold text-sm shrink-0">SK</div>
-                  <div>
-                    <div className="font-semibold text-sm">Sarah Kim, RN</div>
-                    <div className="text-xs text-white/50 mt-0.5">Nurse Manager · Valley Health Clinic</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.07] transition-colors p-7"
-              >
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-sky-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
-                </div>
-                <blockquote className="text-base text-white/80 leading-relaxed mb-6">
-                  "The online fax feature alone retired three fax machines. Every clinical document is <span className="text-sky-400 font-semibold">fully traceable and audit-ready</span> — our compliance officer finally has peace of mind."
-                </blockquote>
-                <div className="flex items-center gap-3 pt-5 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-sky-400 font-display font-bold text-sm shrink-0">MR</div>
-                  <div>
-                    <div className="font-semibold text-sm">Dr. Marcus Rivera</div>
-                    <div className="text-xs text-white/50 mt-0.5">Medical Director · Eastside Urgent Care</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Bottom wide card spanning both columns */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-                className="sm:col-span-2 rounded-3xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.07] transition-colors p-7"
-              >
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-violet-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
-                </div>
-                <blockquote className="text-base text-white/80 leading-relaxed mb-6">
-                  "Routing patients across our three clinic locations used to be a manual nightmare. Rozper's <span className="text-violet-400 font-semibold">multi-site call routing set up in under an afternoon</span> — our front desk team couldn't believe how smooth it runs."
-                </blockquote>
-                <div className="flex items-center gap-3 pt-5 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center text-violet-400 font-display font-bold text-sm shrink-0">LP</div>
-                  <div>
-                    <div className="font-semibold text-sm">Linda Park</div>
-                    <div className="text-xs text-white/50 mt-0.5">Operations Manager · Greenway Medical Group</div>
-                  </div>
-                </div>
-              </motion.div>
             </div>
+          </motion.div>
+
+          {/* Equal 3-column row */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { stars: 'text-emerald-400', accent: 'text-emerald-400', initials: 'SK', name: 'Sarah Kim, RN', role: 'Nurse Manager · Valley Health Clinic', badge: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-400', quote: <>"Our no-show rate dropped <span className="text-emerald-400 font-semibold">30% in the first month</span> after switching to Rozper's automated SMS reminders. Patients actually show up now."</> },
+              { stars: 'text-sky-400', accent: 'text-sky-400', initials: 'MR', name: 'Dr. Marcus Rivera', role: 'Medical Director · Eastside Urgent Care', badge: 'bg-sky-500/20 border-sky-500/30 text-sky-400', quote: <>"The online fax feature alone retired three fax machines. Every clinical document is <span className="text-sky-400 font-semibold">fully traceable and audit-ready</span> — our compliance officer finally has peace of mind."</> },
+              { stars: 'text-violet-400', accent: 'text-violet-400', initials: 'LP', name: 'Linda Park', role: 'Ops Manager · Greenway Medical Group', badge: 'bg-violet-500/20 border-violet-500/30 text-violet-400', quote: <>"Routing patients across our three locations was a manual nightmare. Rozper's <span className="text-violet-400 font-semibold">multi-site call routing set up in an afternoon</span> — our front desk team couldn't believe how smooth it runs."</> },
+            ].map((t, i) => (
+              <motion.div
+                key={t.initials}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.04] hover:bg-white/[0.07] transition-colors p-7"
+              >
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_, j) => (
+                    <svg key={j} className={`w-4 h-4 fill-current ${t.stars}`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  ))}
+                </div>
+                <blockquote className="text-base text-white/80 leading-relaxed mb-6 flex-1">{t.quote}</blockquote>
+                <div className="flex items-center gap-3 pt-5 border-t border-white/10 mt-auto">
+                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center font-display font-bold text-sm shrink-0 ${t.badge}`}>{t.initials}</div>
+                  <div>
+                    <div className="font-semibold text-sm">{t.name}</div>
+                    <div className="text-xs text-white/50 mt-0.5">{t.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 

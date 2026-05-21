@@ -68,6 +68,15 @@ body {
   background-color: #0B1220;
 }
 
+/* Homepage section H2 headings — One Platform, Why Teams Switch,
+   Explore the Full Library, AI Spotlight, How It Works, Built for Your Team,
+   Integrations, Industries, What Customers Say, FAQ, and CTA all use
+   `h2.font-display`. Pin them to weight 500 to match the hero H1.
+   Card-level <h3> sub-headings are untouched. */
+h2.font-display {
+  font-weight: 500;
+}
+
 @theme inline {
   --font-sans: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
   --font-display: var(--font-archivo), 'Archivo Fallback', system-ui, sans-serif;
@@ -119,4 +128,369 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   .blog-prose — dark-theme typography for WordPress content rendered on
+   /blog/[slug]. Scoped to keep these styles off the rest of the app.
+   ───────────────────────────────────────────────────────────────────────── */
+.blog-prose {
+  color: #CCD6DF;
+  font-family: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  letter-spacing: -0.005em;
+}
+
+@media (min-width: 768px) {
+  .blog-prose {
+    font-size: 1.125rem;
+    line-height: 1.78;
+  }
+}
+
+.blog-prose > * + * {
+  margin-top: 1.25em;
+}
+
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4,
+.blog-prose h5,
+.blog-prose h6 {
+  font-family: var(--font-archivo), 'Archivo Fallback', system-ui, sans-serif;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  scroll-margin-top: 112px;
+}
+
+.blog-prose h2 {
+  font-size: 1.875rem;
+  line-height: 1.2;
+  margin-top: 2.5em;
+  margin-bottom: 0.6em;
+  position: relative;
+  padding-left: 1rem;
+}
+@media (min-width: 768px) {
+  .blog-prose h2 { font-size: 2.125rem; }
+}
+.blog-prose h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  bottom: 0.35em;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #046BD2 0%, #22D3EE 100%);
+  box-shadow: 0 0 12px rgba(4, 107, 210, 0.6);
+}
+
+.blog-prose h3 {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+  .blog-prose h3 { font-size: 1.5rem; }
+}
+
+.blog-prose h4 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  margin-top: 1.75em;
+  margin-bottom: 0.4em;
+  color: #ffffff;
+}
+
+.blog-prose p {
+  color: #CCD6DF;
+}
+
+.blog-prose strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.blog-prose em { color: #E2EAF4; }
+
+.blog-prose a {
+  color: #22D3EE;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.3);
+  transition: color 150ms, border-color 150ms;
+}
+.blog-prose a:hover {
+  color: #0086F9;
+  border-bottom-color: rgba(0, 134, 249, 0.8);
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  padding-left: 1.5em;
+  margin-top: 1.1em;
+  margin-bottom: 1.1em;
+}
+.blog-prose ul { list-style: none; }
+.blog-prose ul > li {
+  position: relative;
+  padding-left: 0.5em;
+}
+.blog-prose ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1em;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #046BD2, #22D3EE);
+  box-shadow: 0 0 8px rgba(4, 107, 210, 0.5);
+}
+.blog-prose ol {
+  list-style: decimal;
+  color: #B8C4D4;
+}
+.blog-prose ol > li::marker {
+  color: #22D3EE;
+  font-weight: 600;
+  font-feature-settings: 'tnum';
+}
+.blog-prose li + li { margin-top: 0.45em; }
+
+.blog-prose blockquote {
+  margin: 1.75em 0;
+  padding: 1.25em 1.5em;
+  border-left: 3px solid #046BD2;
+  background: rgba(4, 107, 210, 0.08);
+  border-radius: 0 1rem 1rem 0;
+  color: #E2EAF4;
+  font-style: italic;
+  position: relative;
+}
+.blog-prose blockquote p { color: #E2EAF4; }
+
+.blog-prose code {
+  background: rgba(34, 211, 238, 0.12);
+  color: #22D3EE;
+  padding: 0.15em 0.45em;
+  border-radius: 0.375rem;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+.blog-prose pre {
+  background: #070B14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1.25em 1.5em;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.blog-prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: #CCD6DF;
+}
+
+.blog-prose img,
+.blog-prose figure img {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 30px 60px -40px rgba(4, 107, 210, 0.5);
+  max-width: 100%;
+  height: auto;
+  margin: 1.75em auto;
+  display: block;
+}
+
+.blog-prose figure { margin: 1.75em 0; }
+.blog-prose figcaption {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(204, 214, 223, 0.6);
+  margin-top: 0.75em;
+  font-style: italic;
+}
+
+.blog-prose hr {
+  border: 0;
+  height: 1px;
+  margin: 2.5em 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* Tables — wrap in scrollable container by default. */
+.blog-prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2em 0;
+  font-size: 0.9375rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .blog-prose table { display: table; white-space: normal; }
+}
+.blog-prose thead {
+  background: rgba(4, 107, 210, 0.12);
+}
+.blog-prose th {
+  text-align: left;
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 0.85em 1.1em;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.blog-prose td {
+  padding: 0.85em 1.1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #CCD6DF;
+  vertical-align: top;
+}
+.blog-prose tr:last-child td { border-bottom: 0; }
+.blog-prose tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+/* Strip Elementor "skip link" and outer wrappers from leaking spacing. */
+.blog-prose .elementor-widget-container > p:first-child,
+.blog-prose > p:first-child { margin-top: 0; }
+.blog-prose div[data-elementor-type] { margin: 0; }
+
+/* Force inline font-weight spans (WP/Elementor inserts these) to inherit. */
+.blog-prose span[style*="font-weight: 400"] {
+  font-weight: inherit !important;
+  color: inherit;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Inline FAQ accordion — replaces a WordPress-rendered FAQ section
+   in the article body. Built from native <details> for accessibility +
+   zero-JS toggling. Injected client-side from post-layout.tsx.
+   ───────────────────────────────────────────────────────────────────────── */
+.rozper-faq-accordion {
+  margin: 2.75em 0;
+}
+.rozper-faq-accordion .rozper-faq-title {
+  font-family: var(--font-archivo), 'Archivo Fallback', system-ui, sans-serif;
+  font-size: 1.625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 1.25rem 0;
+  padding-left: 0;
+  position: static;
+  scroll-margin-top: 96px;
+}
+.rozper-faq-accordion .rozper-faq-title::before {
+  content: none;
+}
+@media (min-width: 768px) {
+  .rozper-faq-accordion .rozper-faq-title { font-size: 1.875rem; }
+}
+.rozper-faq-accordion .rozper-faq-list {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.rozper-faq-accordion .rozper-faq-list::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(4, 107, 210, 0.15), transparent);
+  -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
+          mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+.rozper-faq-accordion .rozper-faq-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+.rozper-faq-accordion .rozper-faq-row:last-child { border-bottom: 0; }
+.rozper-faq-accordion .rozper-faq-row > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 1.25rem;
+  transition: background-color 200ms;
+  outline: none;
+}
+.rozper-faq-accordion .rozper-faq-row > summary::-webkit-details-marker { display: none; }
+.rozper-faq-accordion .rozper-faq-row > summary:hover { background: rgba(255, 255, 255, 0.025); }
+.rozper-faq-accordion .rozper-faq-row > summary:focus-visible {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.45);
+}
+.rozper-faq-accordion .rozper-faq-question {
+  font-family: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+}
+@media (min-width: 768px) {
+  .rozper-faq-accordion .rozper-faq-question { font-size: 1rem; }
+}
+.rozper-faq-accordion .rozper-faq-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.55);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 200ms,
+              border-color 200ms,
+              background-color 200ms;
+}
+.rozper-faq-accordion .rozper-faq-icon svg { width: 0.875rem; height: 0.875rem; }
+.rozper-faq-accordion .rozper-faq-row[open] > summary { background: rgba(34, 211, 238, 0.04); }
+.rozper-faq-accordion .rozper-faq-row[open] .rozper-faq-icon {
+  transform: rotate(45deg);
+  color: #22D3EE;
+  border-color: rgba(34, 211, 238, 0.4);
+  background: rgba(34, 211, 238, 0.10);
+}
+.rozper-faq-accordion .rozper-faq-row[open] .rozper-faq-question { color: #ffffff; }
+.rozper-faq-accordion .rozper-faq-answer {
+  padding: 0 1.25rem 1.15rem 1.25rem;
+  color: #9AA8BC;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+.rozper-faq-accordion .rozper-faq-answer p { margin: 0 0 0.6em 0; }
+.rozper-faq-accordion .rozper-faq-answer p:last-child { margin-bottom: 0; }
+@media (min-width: 768px) {
+  .rozper-faq-accordion .rozper-faq-answer { font-size: 0.9375rem; }
 }

@@ -21,27 +21,27 @@ const steps = [
     number: "01",
     duration: "30 minutes",
     icon: MessageCircle,
-    title: "A no-pressure conversation",
+    title: "A no-pressure conversation.",
     description:
-      "We listen first — your setup, your pain points, your goals. No deck, no demo theatre.",
+      "We listen. We learn your setup, your challenges, and your goals. No scripted sales pitch.",
     bullets: ["Discovery call", "Stack audit", "Outcome mapping"],
   },
   {
     number: "02",
-    duration: "7–14 days",
+    duration: "5–10 business days",
     icon: Settings,
-    title: "Structured onboarding",
+    title: "Structured onboarding.",
     description:
-      "A dedicated team handles porting, numbers, integrations, and routing — you watch it happen.",
+      "A dedicated team handles migration, number porting, integrations, and training. Most teams are live in days, not weeks.",
     bullets: ["Number porting", "CRM sync", "Routing & IVR build"],
   },
   {
     number: "03",
     duration: "Ongoing",
     icon: TrendingUp,
-    title: "Partnership, not a vendor",
+    title: "Ongoing partnership.",
     description:
-      "Quarterly reviews, on-call engineers, and strategic guidance as you scale into new markets.",
+      "Expert support and strategic guidance as your team grows. Quarterly reviews. Direct line to engineers. Real partnership.",
     bullets: ["QBR cadence", "Dedicated CSM", "24/7 NOC"],
   },
 ]
@@ -64,7 +64,7 @@ export function HowItWorks() {
   return (
     <section
       ref={ref}
-      className="relative py-20 sm:py-24 overflow-hidden bg-[#0A1020]"
+      className="relative py-20 sm:py-28 overflow-hidden bg-[#0A1020]"
     >
       {/* background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -101,17 +101,17 @@ export function HowItWorks() {
         >
           <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-mono text-white/50">
             <span className="w-6 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
-            How it works
+            How It Works
             <span className="w-6 h-px bg-gradient-to-l from-transparent to-[#0086F9]" />
           </div>
 
           <h2 className="font-display mt-5 text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold text-white tracking-[-0.025em] leading-[1.05]">
-            From first call to{" "}
+            How Rozper works{" "}
             <span className="bg-gradient-to-r from-[#22D3EE] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">
-              fully operational
+              for your team.
             </span>
           </h2>
-          <p className="mt-6 text-base sm:text-lg text-[#9AA8BC] leading-relaxed max-w-xl mx-auto">
+          <p className="mt-5 text-base sm:text-lg text-[#9AA8BC] leading-relaxed max-w-xl mx-auto">
             Three phases. No surprises. A real timeline you can hold us to.
           </p>
         </motion.div>
@@ -136,9 +136,7 @@ export function HowItWorks() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-120px" }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative grid sm:grid-cols-2 gap-6 sm:gap-12 items-center ${
-                    isRight ? "" : ""
-                  }`}
+                  className="relative grid sm:grid-cols-2 gap-6 sm:gap-12 items-center"
                 >
                   {/* Node */}
                   <div className="absolute left-7 sm:left-1/2 top-8 -translate-x-1/2 z-10">
@@ -147,7 +145,7 @@ export function HowItWorks() {
                     </div>
                   </div>
 
-                  {/* Card — alternates side on sm+ */}
+                  {/* Card */}
                   <div
                     className={`pl-16 sm:pl-0 ${
                       isRight ? "sm:col-start-2 sm:pl-12" : "sm:pr-12"
@@ -199,7 +197,7 @@ export function HowItWorks() {
                     </div>
                   </div>
 
-                  {/* opposite slot — empty on small, decorative on lg */}
+                  {/* Ghost number on opposite side */}
                   <div
                     className={`hidden sm:block ${
                       isRight ? "sm:col-start-1 sm:row-start-1" : ""
@@ -231,9 +229,9 @@ export function HowItWorks() {
         >
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 text-white font-medium text-sm backdrop-blur-md transition-colors"
+            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold text-sm shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition-colors"
           >
-            Start a no-pressure conversation
+            Book Your No-Pressure Call
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </a>
         </motion.div>

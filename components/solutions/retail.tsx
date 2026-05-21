@@ -19,13 +19,13 @@ const features = [
 
 const dark = [
   'Add seats in minutes — no hardware, no procurement lead time',
-  '99.999% uptime SLA on your highest traffic day',
+  '99.99% uptime SLA on your highest traffic day',
   'Real-time queue analytics so managers see demand and staff accordingly',
 ]
 
 const stats = [
   { v: '3x', k: 'Capacity scaled in 2 days' },
-  { v: '99.999%', k: 'Uptime SLA' },
+  { v: '99.99%', k: 'Uptime SLA' },
   { v: '0', k: 'Outages on peak days' },
 ]
 
@@ -181,20 +181,73 @@ export function RetailPageView() {
           </div>
         </section>
 
-        {/* Quote */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-24">
-          <div className="rounded-3xl border border-[#046BD2]/20 bg-[#046BD2]/5 p-10">
-            <Activity className="w-8 h-8 text-[#0086F9] mb-4" />
-            <blockquote className="font-display text-xl md:text-2xl font-medium leading-relaxed">
-              "We tripled our contact center capacity for the holiday season in two days. Rozper handled the surge without a single outage."
-            </blockquote>
-            <div className="mt-6 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">AT</div>
-              <div>
-                <div className="font-semibold">Adriana Torres</div>
-                <div className="text-xs text-white/50">CX Director · Luminary Commerce</div>
-              </div>
+        {/* Testimonials */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
+              <Activity className="w-3.5 h-3.5 text-[#2D98F1]" />
+              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Customer Stories</span>
             </div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold">Retail teams scaling on Rozper.</h2>
+          </div>
+
+          {/* 3 equal cards */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                stars: 'text-[#0086F9]',
+                accent: 'border-[#0086F9]/50',
+                initials: 'AT',
+                name: 'Adriana Torres',
+                role: 'CX Director · Luminary Commerce',
+                badge: { text: '3× CAPACITY', cls: 'text-[#0086F9]/70 border-[#0086F9]/20' },
+                avatar: 'bg-[#046BD2]/15 border-[#046BD2]/40 text-[#2D98F1]',
+                quote: <>"We tripled our contact center capacity for the holiday season in <span className="text-[#2D98F1] font-semibold">two days</span>. Rozper handled the surge without a single outage."</>,
+              },
+              {
+                stars: 'text-emerald-400',
+                accent: 'border-emerald-400/50',
+                initials: 'JK',
+                name: 'Jamie Kowalski',
+                role: 'Head of Customer Care · Northstone Outdoors',
+                badge: { text: '−68% WISMO', cls: 'text-emerald-400/70 border-emerald-400/20' },
+                avatar: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400',
+                quote: <>"The AI Receptionist deflected <span className="text-emerald-400 font-semibold">68% of "where is my order" calls</span> overnight. Our agents finally have time for the actual issues — returns, refunds, exchanges."</>,
+              },
+              {
+                stars: 'text-amber-400',
+                accent: 'border-amber-400/50',
+                initials: 'MO',
+                name: 'Marisol Ortiz',
+                role: 'eCommerce Ops · Velara Beauty',
+                badge: { text: '4.8 CSAT', cls: 'text-amber-400/70 border-amber-400/20' },
+                avatar: 'bg-amber-500/10 border-amber-500/30 text-amber-400',
+                quote: <>"Cyber Monday traffic broke every prior tool we used. With Rozper's auto-scaling and unified inbox, our team handled <span className="text-amber-400 font-semibold">12k interactions in a single day</span> — CSAT stayed at 4.8."</>,
+              },
+            ].map((t, i) => (
+              <motion.div
+                key={t.initials}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className={`flex flex-col rounded-3xl border-l-2 ${t.accent} bg-[#111B2D] hover:bg-[#1A2638] transition p-7`}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, j) => (
+                      <svg key={j} className={`w-3.5 h-3.5 fill-current ${t.stars}`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                    ))}
+                  </div>
+                  <span className={`font-mono text-[10px] border px-2 py-0.5 rounded tracking-widest ${t.badge.cls}`}>{t.badge.text}</span>
+                </div>
+                <blockquote className="text-base text-white/80 leading-relaxed mb-6 flex-1">{t.quote}</blockquote>
+                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06] mt-auto">
+                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center font-display font-bold text-sm shrink-0 ${t.avatar}`}>{t.initials}</div>
+                  <div>
+                    <div className="font-semibold text-sm">{t.name}</div>
+                    <div className="text-[11px] text-white/50 mt-0.5">{t.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 

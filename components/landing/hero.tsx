@@ -1,674 +1,892 @@
-"use client"
+"use client";
 
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion"
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
-  Play,
   Sparkles,
-  Globe2,
-  ShieldCheck,
-  Waves,
+  Phone,
+  Video,
+  MessageSquare,
   Bot,
-  User,
-  BarChart2,
-  Zap,
-  CheckCircle2,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useEffect, useRef, useState } from "react"
+  Headphones as HeadsetIcon,
+  Smile,
+  Paperclip,
+  Send,
+  Mic,
+  Users,
+  PhoneOff,
+  ScreenShare,
+  Volume2,
+  Grid3x3,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-const trustLogos = [
-  { name: "Tigo", src: "/images/logos/Tigo-partner.png" },
-  { name: "T-Mobile", src: "/images/logos/TM.png" },
-  { name: "China Mobile International", src: "/images/logos/china-mobile-partner.png" },
-  { name: "PLDT", src: "/images/logos/PLDT.png" },
-  { name: "Telekom Slovenije", src: "/images/logos/Telekom-Slovenije-partner.png" },
-  { name: "Telin", src: "/images/logos/p6.webp" },
-  { name: "MTT", src: "/images/logos/MTT-1.webp" },
-  { name: "Reliance Communications", src: "/images/logos/Relience.png" },
+// ──────────────────────────────────────────────────────────────────────
+// App nav — Chat is the active context (the screen always shows the chat),
+// the rest are the UCaaS features shown alongside it
+// ──────────────────────────────────────────────────────────────────────
+const NAV: { icon: LucideIcon; name: string }[] = [
+  { icon: Phone, name: "Voice" },
+  { icon: Video, name: "Video" },
+  { icon: MessageSquare, name: "Chat" },
+  { icon: Bot, name: "AI Agents" },
+  { icon: HeadsetIcon, name: "Contact Center" },
+];
+
+// AI conversation that streams on the tablet chat screen
+const CHAT: { from: "user" | "ai"; text: string }[] = [
+  { from: "user", text: "Route all UK calls to the support queue." },
+  { from: "ai", text: "Done — UK calls now ring support. Add an after-hours rule?" },
+  { from: "user", text: "Yes, and an SMS fallback after 30 seconds." },
+  { from: "ai", text: "All set. After 30s, callers get an SMS option." },
+];
+
+// participants on the laptop video-meeting screen
+const PARTICIPANTS = [
+  { initials: "SR", name: "Sofia Rossi", accent: "from-[#F9A8C4] to-[#C084FC]" },
+  { initials: "MR", name: "Maya Rivera", accent: "from-[#046BD2] to-[#22D3EE]" },
+  { initials: "TB", name: "Tom Becker", accent: "from-[#0086F9] to-[#2575FC]" },
+  { initials: "DC", name: "Daniela Cruz", accent: "from-[#22D3EE] to-[#046BD2]" },
 ]
 
-const liveCalls = [
-  { from: "London", to: "New York", agent: "Maya", sentiment: 0.92 },
-  { from: "Tokyo", to: "Berlin", agent: "Elias", sentiment: 0.78 },
-  { from: "Dubai", to: "São Paulo", agent: "Priya", sentiment: 0.85 },
-  { from: "Sydney", to: "Toronto", agent: "Jonas", sentiment: 0.71 },
+// live AI transcription on the mobile call screen
+const TRANSCRIPT: { from: "Caller" | "You"; text: string }[] = [
+  {
+    from: "Caller",
+    text: "Hi, I'd like to update the billing address on my account.",
+  },
+  {
+    from: "You",
+    text: "Sure — I've pulled up your account and verified you.",
+  },
+  {
+    from: "Caller",
+    text: "Great. The new address is 14 Harbour Lane, Bristol.",
+  },
+  { from: "You", text: "Updated, and I've sent a confirmation by SMS." },
 ]
 
-const transcriptLines = [
-  { role: "user", text: "Hi, I need to upgrade my plan to enterprise.", delay: 0 },
-  { role: "ai", text: "Absolutely! I can help with that. Let me pull up your account…", delay: 0.5 },
-  { role: "user", text: "Also, do you support calls in Southeast Asia?", delay: 1.0 },
-  { role: "ai", text: "Yes — we cover 42 regions including SG, TH, PH & ID with <30ms latency.", delay: 1.5 },
-]
+// laptop → tablet → mobile frame geometry
+const FRAMES = [
+  { id: "laptop", w: 432, h: 268, pad: 8, radius: 14 },
+  { id: "tablet", w: 304, h: 394, pad: 7, radius: 20 },
+  { id: "mobile", w: 214, h: 438, pad: 7, radius: 34 },
+];
 
-const sentimentSteps = [72, 78, 83, 88, 91, 95]
-
-// ──────────────────────────────────────────────────────────────────────
-// Background — animated conic mesh + grid + parallax orb
-// ──────────────────────────────────────────────────────────────────────
-function MeshBackground({
-  parallaxX,
-  parallaxY,
-}: {
-  parallaxX: any
-  parallaxY: any
-}) {
+// Rozper logo mark — recreated as an SVG in the brand's own colors
+function RozperLogo({ className }: { className?: string }) {
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* base */}
-      <div className="absolute inset-0 bg-[#070B14]" />
-
-      {/* fine grid */}
-      <div
-        className="absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(120, 160, 220, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(120, 160, 220, 0.06) 1px, transparent 1px)
-          `,
-          backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%)",
-        }}
+    <svg
+      viewBox="0 0 48 38"
+      className={className}
+      fill="none"
+      aria-hidden
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* signature ascending bars */}
+      <rect x="2.5" y="26" width="6" height="9" rx="0.5" fill="#12A150" />
+      <rect x="10.5" y="21" width="6" height="14" rx="0.5" fill="#EF4136" />
+      <rect x="18.5" y="13" width="6" height="22" rx="0.5" fill="#FBBC05" />
+      {/* blue R */}
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M24 3H38C43 3 46 6.5 46 12C46 17.5 43 21 37 21L46 35H38L30 22V35H24ZM30 9V16H37C39 16 40 14 40 12C40 10 39 9 36 9H30Z"
+        fill="#0086F9"
       />
-
-      {/* slow-rotating conic gradient */}
-      <motion.div
-        className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] rounded-full opacity-60"
-        style={{
-          background:
-            "conic-gradient(from 90deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.35) 60deg, rgba(0,134,249,0.15) 140deg, rgba(34,211,238,0.25) 220deg, rgba(4,107,210,0) 360deg)",
-          filter: "blur(80px)",
-        }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      />
-
-      {/* parallax orb (mouse-follow) */}
-      <motion.div
-        className="absolute top-[20%] right-[10%] w-[520px] h-[520px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(4,107,210,0) 65%)",
-          filter: "blur(60px)",
-          x: parallaxX,
-          y: parallaxY,
-        }}
-      />
-      <motion.div
-        className="absolute bottom-[10%] left-[8%] w-[420px] h-[420px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(34,211,238,0.25) 0%, rgba(34,211,238,0) 65%)",
-          filter: "blur(70px)",
-        }}
-        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* top fade */}
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#070B14] to-transparent" />
-      {/* bottom fade into next section */}
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0B1220] to-transparent" />
-
-      {/* SVG noise — film grain */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-[0.04] mix-blend-overlay pointer-events-none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <filter id="hero-noise">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.9"
-            numOctaves="2"
-            stitchTiles="stitch"
-          />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#hero-noise)" />
-      </svg>
-    </div>
-  )
+    </svg>
+  );
 }
 
-// ──────────────────────────────────────────────────────────────────────
-// Live status pill
-// ──────────────────────────────────────────────────────────────────────
-function LivePill() {
-  const [count, setCount] = useState(2_412_034)
-  useEffect(() => {
-    const id = setInterval(() => setCount((c) => c + Math.floor(Math.random() * 14) + 3), 1200)
-    return () => clearInterval(id)
-  }, [])
+function TypingDots() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md px-3.5 py-1.5 text-xs sm:text-sm"
-    >
-      <span className="relative flex h-2 w-2">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-      </span>
-      <span className="text-white/90 font-medium tracking-wide">
-        Live · {count.toLocaleString()} calls routed today
-      </span>
-      <span className="hidden sm:inline-flex items-center gap-1 text-white/50 border-l border-white/10 pl-2.5">
-        <Sparkles className="w-3 h-3 text-[#0086F9]" />
-        
-      </span>
-    </motion.div>
-  )
-}
-
-// ──────────────────────────────────────────────────────────────────────
-// Kinetic headline word
-// ──────────────────────────────────────────────────────────────────────
-function KineticWord({
-  children,
-  delay = 0,
-  gradient = false,
-}: {
-  children: string
-  delay?: number
-  gradient?: boolean
-}) {
-  return (
-    <motion.span
-      className={
-        gradient
-          ? "inline-block bg-gradient-to-r from-[#2D98F1] via-[#0086F9] to-[#22D3EE] bg-clip-text text-transparent"
-          : "inline-block text-white"
-      }
-      style={
-        gradient
-          ? { textShadow: "0 0 60px rgba(4,107,210,0.45)" }
-          : undefined
-      }
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {children}
-    </motion.span>
-  )
-}
-
-// ──────────────────────────────────────────────────────────────────────
-// AI Voice Agent panel — the right-side visual
-// ──────────────────────────────────────────────────────────────────────
-function LiveOpsPanel({
-  parallaxX,
-  parallaxY,
-}: {
-  parallaxX: any
-  parallaxY: any
-}) {
-  const [visibleLines, setVisibleLines] = useState(1)
-  const [sentiment, setSentiment] = useState(sentimentSteps[0])
-  const [callDuration, setCallDuration] = useState(0)
-  const [latency, setLatency] = useState(24)
-
-  useEffect(() => {
-    const t1 = setInterval(() => {
-      setVisibleLines((v) => (v < transcriptLines.length ? v + 1 : 1))
-    }, 2800)
-    const t2 = setInterval(() => {
-      setSentiment((s) => {
-        const idx = sentimentSteps.indexOf(s)
-        return sentimentSteps[(idx + 1) % sentimentSteps.length]
-      })
-    }, 2800)
-    const t3 = setInterval(() => setCallDuration((d) => d + 1), 1000)
-    const t4 = setInterval(() => setLatency(18 + Math.floor(Math.random() * 14)), 1200)
-    return () => {
-      clearInterval(t1)
-      clearInterval(t2)
-      clearInterval(t3)
-      clearInterval(t4)
-    }
-  }, [])
-
-  const mins = String(Math.floor(callDuration / 60)).padStart(2, "0")
-  const secs = String(callDuration % 60).padStart(2, "0")
-
-  return (
-    <motion.div
-      className="relative w-full max-w-[560px] mx-auto"
-      style={{ x: parallaxX, y: parallaxY }}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {/* ambient glow rings */}
-      <div className="absolute -inset-6 sm:-inset-12 -z-10 flex items-center justify-center pointer-events-none">
-        <motion.div
-          className="w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] rounded-full border border-[#0086F9]/15"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] rounded-full border border-[#22D3EE]/20"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        />
-        <div
-          className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(4,107,210,0.35) 0%, transparent 70%)",
-            filter: "blur(40px)",
+    <span className="flex items-center gap-0.5">
+      {[0, 1, 2].map((i) => (
+        <motion.span
+          key={i}
+          className="h-1 w-1 rounded-full bg-[#22D3EE]"
+          animate={{ opacity: [0.25, 1, 0.25], y: [0, -1.5, 0] }}
+          transition={{
+            duration: 0.9,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.16,
           }}
         />
-      </div>
-
-      {/* card */}
-      <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/40 to-transparent shadow-[0_0_80px_-20px_rgba(4,107,210,0.6)]">
-        <div className="rounded-3xl bg-[#0A1020]/85 backdrop-blur-2xl overflow-hidden">
-
-          {/* header */}
-          <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-b border-white/5">
-            <div className="flex items-center gap-2 min-w-0">
-              <div className="flex gap-1.5 shrink-0">
-                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-              </div>
-              <span className="ml-2 sm:ml-3 text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:tracking-[0.18em] text-white/40 font-mono truncate">
-                rozper · ai voice agent
-              </span>
-            </div>
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[11px] font-mono text-white/40">{mins}:{secs}</span>
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              </span>
-            </div>
-          </div>
-
-          <div className="p-4 sm:p-5 space-y-4">
-
-            {/* agent identity row */}
-            <div className="flex items-center gap-3">
-              <div className="relative shrink-0">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#046BD2] to-[#22D3EE] flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-white" />
-                </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-400 ring-2 ring-[#0A1020]" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-sm font-semibold text-white">Aria <span className="text-white/40 font-normal">· AI Support Agent</span></div>
-                <div className="flex items-center gap-1.5 mt-1.5">
-                  {Array.from({ length: 30 }).map((_, i) => (
-                    <motion.span
-                      key={i}
-                      className="w-[2px] rounded-full bg-[#0086F9]"
-                      animate={{
-                        height: [`${4 + Math.random() * 3}px`, `${7 + Math.random() * 16}px`, `${4 + Math.random() * 3}px`],
-                        opacity: [0.35, 1, 0.35],
-                      }}
-                      transition={{ duration: 0.85 + Math.random() * 0.5, repeat: Infinity, delay: i * 0.035 }}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div className="text-right shrink-0">
-                <div className="text-[10px] text-white/40 font-mono uppercase tracking-wider mb-0.5">Sentiment</div>
-                <div className="text-sm font-bold text-emerald-400 tabular-nums">+{sentiment}%</div>
-              </div>
-            </div>
-
-            {/* live transcript */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3 space-y-2.5 min-h-[130px]">
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-mono">Live transcript</span>
-                <span className="flex items-center gap-1 text-[10px] text-[#22D3EE] font-mono">
-                  <span className="w-1 h-1 rounded-full bg-[#22D3EE] animate-pulse" />
-                  streaming
-                </span>
-              </div>
-              <AnimatePresence initial={false}>
-                {transcriptLines.slice(0, visibleLines).map((line, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: line.role === "ai" ? -8 : 8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.35 }}
-                    className={`flex gap-2 items-start ${line.role === "user" ? "flex-row-reverse" : ""}`}
-                  >
-                    <span className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${line.role === "ai" ? "bg-[#046BD2]/30" : "bg-white/10"}`}>
-                      {line.role === "ai"
-                        ? <Bot className="w-3 h-3 text-[#22D3EE]" />
-                        : <User className="w-3 h-3 text-white/60" />}
-                    </span>
-                    <span className={`text-[11px] leading-relaxed px-2.5 py-1.5 rounded-lg max-w-[82%] ${line.role === "ai" ? "bg-[#046BD2]/15 text-white/80" : "bg-white/[0.06] text-white/70"}`}>
-                      {line.text}
-                    </span>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-
-            {/* stat grid */}
-            <div className="grid grid-cols-3 gap-2">
-              <StatTile
-                icon={<Zap className="w-3.5 h-3.5" />}
-                label="Latency"
-                value={`${latency}ms`}
-                accent
-              />
-              <StatTile
-                icon={<Globe2 className="w-3.5 h-3.5" />}
-                label="Regions"
-                value="42"
-              />
-              <StatTile
-                icon={<CheckCircle2 className="w-3.5 h-3.5" />}
-                label="Resolved"
-                value="94%"
-              />
-            </div>
-
-            {/* resolution confidence bar */}
-            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-3">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-white/40 font-mono">Resolution confidence</span>
-                <span className="text-[10px] font-mono text-[#22D3EE]">{sentiment}%</span>
-              </div>
-              <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-[#046BD2] to-[#22D3EE]"
-                  animate={{ width: `${sentiment}%` }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                />
-              </div>
-              <div className="flex justify-between mt-1.5">
-                {sentimentSteps.map((step) => (
-                  <span key={step} className={`text-[9px] font-mono ${step <= sentiment ? "text-[#22D3EE]" : "text-white/20"}`}>
-                    {step}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* Floating chips */}
-      <FloatingChip
-        className="-top-3 left-2 sm:-top-6 sm:-left-10"
-        icon={<ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />}
-        label="99.999%"
-        sub="uptime SLA"
-        delay={1.0}
-      />
-      <FloatingChip
-        className="-bottom-3 right-2 sm:-bottom-4 sm:-right-8"
-        icon={<BarChart2 className="w-3.5 h-3.5 text-[#22D3EE]" />}
-        label="94%"
-        sub="first call res."
-        delay={1.2}
-      />
-      <FloatingChip
-        className="top-1/2 -right-6 sm:-right-12 -translate-y-1/2 hidden md:flex"
-        icon={<Waves className="w-3.5 h-3.5 text-[#0086F9]" />}
-        label="<40ms"
-        sub="median"
-        delay={1.4}
-      />
-    </motion.div>
-  )
+      ))}
+    </span>
+  );
 }
 
-function StatTile({
-  icon,
-  label,
-  value,
-  accent = false,
-}: {
-  icon: React.ReactNode
-  label: string
-  value: string
-  accent?: boolean
-}) {
+// small circular control button (video + call screens)
+function CtrlBtn({ icon: Icon, danger }: { icon: LucideIcon; danger?: boolean }) {
   return (
-    <div
-      className={`rounded-xl border px-2.5 sm:px-3 py-2 sm:py-2.5 ${
-        accent
-          ? "border-[#046BD2]/30 bg-[#046BD2]/10"
-          : "border-white/5 bg-white/[0.02]"
+    <span
+      className={`flex h-6 w-6 items-center justify-center rounded-full ${
+        danger ? "bg-[#EF4136]" : "bg-white/[0.08]"
       }`}
     >
-      <div className="flex items-center gap-1.5 text-white/50 text-[10px] uppercase tracking-wider font-mono">
-        {icon}
-        {label}
+      <Icon className="h-3 w-3 text-white" strokeWidth={2} />
+    </span>
+  );
+}
+
+// tiny voice waveform
+function MiniWave({ bars = 6 }: { bars?: number }) {
+  return (
+    <div className="flex h-2.5 items-center gap-[1.5px]">
+      {Array.from({ length: bars }).map((_, i) => (
+        <motion.span
+          key={i}
+          className="w-[2px] rounded-full bg-[#22D3EE]"
+          animate={{ height: ["30%", `${45 + (i % 4) * 16}%`, "35%"] }}
+          transition={{
+            duration: 0.7 + (i % 3) * 0.12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.06,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// ── Laptop: video meeting screen ───────────────────────────────────────
+function VideoScreen({ speaker, time }: { speaker: number; time: string }) {
+  return (
+    <div className="flex h-full w-full flex-col bg-[#0B1220]">
+      <div className="flex shrink-0 items-center gap-1.5 border-b border-white/[0.06] px-2.5 py-1.5">
+        <RozperLogo className="h-3 w-auto shrink-0" />
+        <span className="font-display text-[8px] font-semibold text-white">
+          Rozper Meet
+        </span>
+        <span className="font-mono text-[6px] uppercase tracking-[0.12em] text-white/35">
+          Q1 Sync
+        </span>
+        <span className="ml-auto flex items-center gap-1">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#EF4136]" />
+          <span className="font-mono text-[7px] tabular-nums text-white/55">
+            {time}
+          </span>
+        </span>
       </div>
-      <div className="mt-1 text-sm font-semibold text-white tabular-nums">
-        {value}
+
+      <div className="grid min-h-0 flex-1 grid-cols-2 gap-1.5 p-2">
+        {PARTICIPANTS.map((p, i) => {
+          const speaking = i === speaker;
+          return (
+            <div
+              key={p.name}
+              className={`relative flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-white/[0.07] to-white/[0.02] transition-shadow duration-300 ${
+                speaking
+                  ? "ring-1 ring-[#22D3EE] shadow-[0_0_18px_-4px_rgba(34,211,238,0.7)]"
+                  : "ring-1 ring-white/[0.06]"
+              }`}
+            >
+              <span
+                className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${p.accent} text-[10px] font-bold text-white`}
+              >
+                {p.initials}
+              </span>
+              <span className="absolute bottom-1 left-1 flex items-center gap-1 rounded bg-black/45 px-1 py-[1px]">
+                <Mic className="h-2 w-2 text-white/70" strokeWidth={2.5} />
+                <span className="text-[6px] font-medium text-white/85">
+                  {p.name}
+                </span>
+              </span>
+              {speaking && (
+                <span className="absolute bottom-1 right-1">
+                  <MiniWave bars={5} />
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="flex shrink-0 items-center justify-center gap-1.5 border-t border-white/[0.06] py-2">
+        <CtrlBtn icon={Mic} />
+        <CtrlBtn icon={Video} />
+        <CtrlBtn icon={ScreenShare} />
+        <CtrlBtn icon={Users} />
+        <CtrlBtn icon={PhoneOff} danger />
       </div>
     </div>
-  )
+  );
 }
 
-function FloatingChip({
-  className,
-  icon,
-  label,
-  sub,
-  delay,
+// ── Tablet: AI chat screen ─────────────────────────────────────────────
+function ChatScreen({
+  visible,
+  showTyping,
 }: {
-  className?: string
-  icon: React.ReactNode
-  label: string
-  sub: string
-  delay: number
+  visible: typeof CHAT;
+  showTyping: boolean;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.85 }}
-      animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
-      transition={{
-        opacity: { duration: 0.5, delay },
-        scale: { duration: 0.5, delay },
-        y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay },
-      }}
-      className={`absolute z-10 flex items-center gap-2 rounded-2xl border border-white/10 bg-[#0A1020]/90 backdrop-blur-xl px-3 py-2 shadow-[0_10px_40px_-10px_rgba(4,107,210,0.6)] ${className}`}
-    >
-      <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-white/5">
-        {icon}
-      </span>
-      <div className="leading-tight">
-        <div className="text-sm font-semibold text-white tabular-nums">
-          {label}
+    <div className="flex h-full w-full flex-col bg-white">
+      <div className="flex shrink-0 items-center gap-1.5 border-b border-black/[0.07] bg-white px-2 py-1.5">
+        <RozperLogo className="h-3.5 w-auto shrink-0" />
+        <span className="truncate font-display text-[9px] font-semibold text-[#0B1220]">
+          Hi, Sofia Rossi
+        </span>
+        <span className="font-mono text-[6px] uppercase tracking-[0.12em] text-black/35">
+          Agent
+        </span>
+        <span className="ml-auto flex h-4 w-4 items-center justify-center rounded-full bg-gradient-to-br from-[#F9A8C4] to-[#C084FC] text-[6px] font-bold text-white">
+          SR
+        </span>
+      </div>
+
+      <div className="flex min-h-0 flex-1">
+        {/* icon rail */}
+        <div className="flex w-[34px] shrink-0 flex-col items-center gap-1.5 border-r border-black/[0.07] bg-[#F6F8FC] py-2">
+          {NAV.map((f, i) => {
+            const Ic = f.icon;
+            const on = i === 2;
+            return (
+              <div key={f.name} className="relative flex w-full justify-center">
+                {on && (
+                  <span className="absolute left-0 top-1/2 h-4 w-[2px] -translate-y-1/2 rounded-r bg-[#046BD2]" />
+                )}
+                <span
+                  className={`flex h-6 w-6 items-center justify-center rounded-lg ${
+                    on
+                      ? "bg-gradient-to-br from-[#046BD2] to-[#22D3EE] shadow-[0_4px_12px_-3px_rgba(4,107,210,0.8)]"
+                      : ""
+                  }`}
+                >
+                  <Ic
+                    className={`h-3 w-3 ${on ? "text-white" : "text-black/35"}`}
+                    strokeWidth={2}
+                  />
+                </span>
+              </div>
+            );
+          })}
         </div>
-        <div className="text-[10px] text-white/50 uppercase tracking-wider">
-          {sub}
+
+        {/* conversation */}
+        <div className="flex min-w-0 flex-1 flex-col bg-white">
+          <div className="flex shrink-0 items-center gap-1.5 border-b border-black/[0.07] px-2 py-1.5">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#046BD2] to-[#22D3EE]">
+              <Bot className="h-3 w-3 text-white" strokeWidth={2.2} />
+            </span>
+            <div className="min-w-0">
+              <p className="truncate text-[8px] font-semibold text-[#0B1220]">
+                Rozper AI
+              </p>
+              <p className="flex items-center gap-1 text-[6px] text-emerald-500">
+                <span className="h-1 w-1 rounded-full bg-emerald-500" />
+                Online
+              </p>
+            </div>
+          </div>
+
+          <div className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 bg-[#F6F8FC] p-2">
+            <div className="mb-0.5 flex justify-center">
+              <span className="rounded-full bg-black/[0.06] px-1.5 py-[2px] text-[6px] font-medium text-black/45">
+                Today
+              </span>
+            </div>
+            <AnimatePresence mode="popLayout">
+              {visible.map((m, i) => (
+                <motion.div
+                  key={`${i}-${m.text}`}
+                  layout
+                  initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className={`flex items-end gap-1 ${
+                    m.from === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  {m.from === "ai" && (
+                    <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#046BD2] to-[#22D3EE]">
+                      <Bot className="h-2 w-2 text-white" strokeWidth={2.4} />
+                    </span>
+                  )}
+                  <span
+                    className={`max-w-[80%] rounded-lg px-2 py-1 text-[8px] leading-snug ${
+                      m.from === "user"
+                        ? "rounded-br-sm bg-[#046BD2] text-white"
+                        : "rounded-bl-sm border border-black/[0.06] bg-white text-[#0B1220]"
+                    }`}
+                  >
+                    {m.text}
+                  </span>
+                </motion.div>
+              ))}
+              {showTyping && (
+                <motion.div
+                  key="typing"
+                  layout
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex items-end gap-1"
+                >
+                  <span className="flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#046BD2] to-[#22D3EE]">
+                    <Bot className="h-2 w-2 text-white" strokeWidth={2.4} />
+                  </span>
+                  <span className="rounded-lg rounded-bl-sm border border-black/[0.06] bg-white px-2 py-1.5">
+                    <TypingDots />
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1.5 border-t border-black/[0.07] bg-white px-2 py-1.5">
+            <Smile className="h-3 w-3 shrink-0 text-black/30" strokeWidth={2} />
+            <Paperclip
+              className="h-3 w-3 shrink-0 text-black/30"
+              strokeWidth={2}
+            />
+            <span className="min-w-0 flex-1 truncate rounded-full border border-black/[0.1] px-2 py-1 text-[7px] text-black/30">
+              Write a message…
+            </span>
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0B1220]">
+              <Send className="h-2.5 w-2.5 text-white" strokeWidth={2} />
+            </span>
+          </div>
         </div>
       </div>
-    </motion.div>
-  )
+    </div>
+  );
+}
+
+// ── Mobile: call screen with live AI transcription ────────────────────
+function CallScreen({
+  lines,
+  time,
+}: {
+  lines: typeof TRANSCRIPT;
+  time: string;
+}) {
+  return (
+    <div className="flex h-full w-full flex-col bg-gradient-to-b from-[#0B1220] to-[#070B14]">
+      <div className="flex shrink-0 items-center gap-1.5 px-2.5 pb-1.5 pt-2.5">
+        <RozperLogo className="h-3 w-auto shrink-0" />
+        <span className="font-display text-[8px] font-semibold text-white">
+          Rozper Phone
+        </span>
+        <span className="ml-auto flex items-center gap-1">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          <span className="font-mono text-[6px] uppercase tracking-wider text-white/45">
+            On call
+          </span>
+        </span>
+      </div>
+
+      <div className="flex shrink-0 flex-col items-center pb-2 pt-1.5">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#22D3EE] to-[#046BD2] text-base font-bold text-white shadow-[0_8px_24px_-6px_rgba(34,211,238,0.7)]">
+          DC
+        </span>
+        <p className="mt-2 font-display text-[12px] font-semibold text-white">
+          Daniela Cruz
+        </p>
+        <p className="font-mono text-[7px] text-white/40">+44 20 7946 0921</p>
+        <p className="mt-1 font-mono text-[11px] tabular-nums text-[#22D3EE]">
+          {time}
+        </p>
+      </div>
+
+      {/* live AI transcription */}
+      <div className="mx-2 flex min-h-0 flex-1 flex-col rounded-xl border border-white/10 bg-white/[0.04] p-2">
+        <div className="mb-1.5 flex shrink-0 items-center gap-1">
+          <Sparkles className="h-2.5 w-2.5 text-[#22D3EE]" />
+          <span className="font-mono text-[7px] uppercase tracking-[0.14em] text-white/55">
+            AI Transcription
+          </span>
+          <span className="ml-auto h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
+        </div>
+        <div className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden">
+          <AnimatePresence mode="popLayout">
+            {lines.map((l, i) => (
+              <motion.div
+                key={`${i}-${l.text}`}
+                layout
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span
+                  className={`font-mono text-[6px] uppercase tracking-wider ${
+                    l.from === "You" ? "text-[#22D3EE]" : "text-white/40"
+                  }`}
+                >
+                  {l.from}
+                </span>
+                <p className="text-[8px] leading-snug text-white/85">
+                  {l.text}
+                </p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      <div className="flex shrink-0 items-center justify-center gap-2 py-3">
+        <CtrlBtn icon={Mic} />
+        <CtrlBtn icon={Grid3x3} />
+        <CtrlBtn icon={Volume2} />
+        <CtrlBtn icon={PhoneOff} danger />
+      </div>
+    </div>
+  );
 }
 
 // ──────────────────────────────────────────────────────────────────────
-// Hero
+// Device showcase — frame morphs laptop ↔ tablet ↔ mobile, each device
+// showing its own screen (video meeting / AI chat / call transcription)
 // ──────────────────────────────────────────────────────────────────────
-export function Hero() {
-  const ref = useRef<HTMLElement | null>(null)
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 60, damping: 20 })
-  const springY = useSpring(mouseY, { stiffness: 60, damping: 20 })
-
-  const bgX = useTransform(springX, [-1, 1], [-40, 40])
-  const bgY = useTransform(springY, [-1, 1], [-30, 30])
-  const panelX = useTransform(springX, [-1, 1], [12, -12])
-  const panelY = useTransform(springY, [-1, 1], [8, -8])
+function DeviceShowcase() {
+  const [device, setDevice] = useState(0);
+  const [step, setStep] = useState(1);
+  const [tStep, setTStep] = useState(1);
+  const [speaker, setSpeaker] = useState(0);
+  const [seconds, setSeconds] = useState(134);
 
   useEffect(() => {
-    const handle = (e: MouseEvent) => {
-      const el = ref.current
-      if (!el) return
-      const rect = el.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width - 0.5
-      const y = (e.clientY - rect.top) / rect.height - 0.5
-      mouseX.set(x * 2)
-      mouseY.set(y * 2)
-    }
-    window.addEventListener("mousemove", handle)
-    return () => window.removeEventListener("mousemove", handle)
-  }, [mouseX, mouseY])
+    const id = setInterval(
+      () => setDevice((d) => (d + 1) % FRAMES.length),
+      4800,
+    );
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setStep((s) => (s >= CHAT.length ? 0 : s + 1)),
+      1700,
+    );
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setTStep((s) => (s >= TRANSCRIPT.length ? 0 : s + 1)),
+      1900,
+    );
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setSpeaker((s) => (s + 1) % PARTICIPANTS.length),
+      2100,
+    );
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => setSeconds((s) => s + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const frame = FRAMES[device];
+  const isLaptop = frame.id === "laptop";
+  const isTablet = frame.id === "tablet";
+  const isMobile = frame.id === "mobile";
+
+  const visible = CHAT.slice(0, step);
+  const showTyping = step < CHAT.length && CHAT[step].from === "ai";
+  const lines = TRANSCRIPT.slice(0, tStep);
+  const time = `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(
+    seconds % 60,
+  ).padStart(2, "0")}`;
 
   return (
+    <div className="relative mx-auto w-full max-w-[480px]">
+      {/* glow */}
+      <motion.div
+        aria-hidden
+        className="absolute left-1/2 top-1/2 h-[90%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(34,211,238,0.14) 45%, rgba(4,107,210,0) 75%)",
+          filter: "blur(55px)",
+        }}
+        animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.06, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* fixed stage so surrounding layout stays put while the device morphs.
+          The device frames use fixed px sizes (laptop base ≈ 470px), so on
+          phones we scale the whole stage down to fit. The scale lives on a
+          plain wrapper div — NOT the motion.div — so it doesn't get clobbered
+          by framer-motion's inline transform. */}
+      <div className="relative h-[340px] sm:h-[470px] lg:h-[500px]">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.6] sm:scale-90 md:scale-100">
+        <motion.div
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="relative flex flex-col items-center"
+        >
+          {/* device frame */}
+          <motion.div
+            animate={{
+              width: frame.w,
+              height: frame.h,
+              borderRadius: frame.radius,
+              padding: frame.pad,
+            }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative border border-white/12 bg-[#0B1220] shadow-[0_40px_90px_-25px_rgba(4,107,210,0.85)]"
+          >
+            {/* camera dot (laptop / tablet) */}
+            <motion.span
+              aria-hidden
+              className="absolute left-1/2 top-1.5 h-1 w-1 -translate-x-1/2 rounded-full bg-white/25"
+              animate={{ opacity: isMobile ? 0 : 1 }}
+              transition={{ duration: 0.3 }}
+            />
+
+            {/* inner screen */}
+            <motion.div
+              animate={{ borderRadius: Math.max(6, frame.radius - 6) }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex h-full w-full flex-col overflow-hidden bg-white"
+            >
+              {/* notch (mobile) */}
+              <motion.span
+                aria-hidden
+                className="absolute left-1/2 top-1 z-30 h-1.5 w-12 -translate-x-1/2 rounded-full bg-black/70"
+                animate={{ opacity: isMobile ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+              />
+
+              {/* === Screen content — each device shows its own screen === */}
+              <AnimatePresence>
+                <motion.div
+                  key={frame.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0"
+                >
+                  {isLaptop && <VideoScreen speaker={speaker} time={time} />}
+                  {isTablet && (
+                    <ChatScreen visible={visible} showTyping={showTyping} />
+                  )}
+                  {isMobile && <CallScreen lines={lines} time={time} />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
+          </motion.div>
+
+          {/* laptop hinge + base */}
+          <AnimatePresence>
+            {isLaptop && (
+              <motion.div
+                initial={{ opacity: 0, scaleY: 0.1 }}
+                animate={{ opacity: 1, scaleY: 1 }}
+                exit={{ opacity: 0, scaleY: 0.1 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                style={{ transformOrigin: "top" }}
+                className="flex flex-col items-center"
+              >
+                <div className="h-1 w-[410px] rounded-b-[3px] bg-gradient-to-b from-[#1A2638] to-[#0B1220]" />
+                <div
+                  className="relative h-3 w-[470px]"
+                  style={{
+                    clipPath: "polygon(2.5% 0%, 97.5% 0%, 100% 100%, 0% 100%)",
+                    background: "linear-gradient(to bottom, #232F44, #0B1220)",
+                  }}
+                >
+                  <div className="absolute inset-x-0 top-0 h-px bg-white/15" />
+                  <div className="absolute left-1/2 top-0 h-[3px] w-12 -translate-x-1/2 rounded-b-md bg-[#070B14]" />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// Floating background particles
+// ──────────────────────────────────────────────────────────────────────
+function Particles() {
+  const dots = [
+    { x: 8, y: 18, d: 6 },
+    { x: 14, y: 72, d: 5 },
+    { x: 26, y: 32, d: 7 },
+    { x: 38, y: 86, d: 5 },
+    { x: 58, y: 14, d: 6 },
+    { x: 72, y: 64, d: 7 },
+    { x: 84, y: 26, d: 5 },
+    { x: 92, y: 78, d: 6 },
+    { x: 46, y: 8, d: 6 },
+    { x: 22, y: 92, d: 7 },
+  ];
+  return (
+    <div aria-hidden className="absolute inset-0 pointer-events-none">
+      {dots.map((p, i) => (
+        <motion.span
+          key={i}
+          className="absolute h-1 w-1 rounded-full bg-[#22D3EE]"
+          style={{ left: `${p.x}%`, top: `${p.y}%`, filter: "blur(0.5px)" }}
+          animate={{ opacity: [0.15, 0.7, 0.15], y: [0, -8, 0] }}
+          transition={{
+            duration: p.d,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.4,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// HERO — 2-side layout
+// ──────────────────────────────────────────────────────────────────────
+export function Hero() {
+  return (
     <section
-      ref={ref}
-      className="relative overflow-hidden lg:min-h-screen lg:flex lg:items-center"
+      className="relative isolate flex min-h-[100svh] items-center overflow-hidden lg:h-[100svh] lg:min-h-0"
+      style={{ contain: "paint" }}
     >
-      <MeshBackground parallaxX={bgX} parallaxY={bgY} />
+      {/* ─────────── Scoped background ─────────── */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-[#070B14]" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-14 sm:pb-20 lg:pt-36 lg:pb-24">
-        <div className="grid lg:grid-cols-12 gap-12 sm:gap-10 lg:gap-8 lg:items-center">
-          {/* ───── Left: copy ───── */}
-          <div className="lg:col-span-7 text-center lg:text-left">
-            <div className="flex justify-center lg:justify-start">
-              <LivePill />
-            </div>
+        <div
+          className="absolute inset-0 opacity-[0.30]"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(140,180,230,0.16) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage:
+              "radial-gradient(ellipse 80% 65% at 50% 50%, black 40%, transparent 85%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 65% at 50% 50%, black 40%, transparent 85%)",
+          }}
+        />
 
-            <h1 className="font-display mt-6 sm:mt-7 text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] leading-[1.05] sm:leading-[0.95] tracking-[-0.03em] font-semibold break-words">
-              <span className="block">
-                <KineticWord delay={0.15}>One platform.</KineticWord>
+        <motion.div
+          aria-hidden
+          className="absolute -left-[10%] top-[10%] h-[520px] w-[520px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(4,107,210,0) 65%)",
+            filter: "blur(80px)",
+          }}
+          animate={{ scale: [1, 1.12, 1], opacity: [0.6, 0.95, 0.6] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          aria-hidden
+          className="absolute -right-[8%] bottom-[8%] h-[560px] w-[560px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(34,211,238,0.32) 0%, rgba(34,211,238,0) 65%)",
+            filter: "blur(90px)",
+          }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.85, 0.5] }}
+          transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        <motion.div
+          aria-hidden
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[1500px] w-[1500px] rounded-full opacity-40"
+          style={{
+            background:
+              "conic-gradient(from 90deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.3) 60deg, rgba(0,134,249,0.12) 140deg, rgba(34,211,238,0.22) 220deg, rgba(4,107,210,0) 360deg)",
+            filter: "blur(100px)",
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+        />
+
+        <Particles />
+
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#070B14] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0B1220] to-transparent" />
+      </div>
+
+      {/* ─────────── Content (2 columns) ─────────── */}
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-24 pb-10 sm:px-6 sm:pt-24 sm:pb-12 lg:px-8 lg:pt-20 lg:pb-8">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-6">
+          {/* ───── Left: copy column ───── */}
+          <div className="text-center lg:col-span-6 lg:text-left xl:col-span-6">
+            {/* Pill */}
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 rounded-full border border-[#22D3EE]/25 bg-white/[0.04] px-3.5 py-1.5 text-[11px] backdrop-blur-md sm:text-xs"
+            >
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22D3EE] opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#22D3EE]" />
               </span>
-              <span className="block mt-1">
-                <KineticWord delay={0.3} gradient>
-                  Every call.
-                </KineticWord>
+              <span className="font-medium tracking-wide text-white/85">
+                AI Voice Agents · Now in 42 regions
               </span>
-              <span className="block mt-1">
-                <KineticWord delay={0.45} gradient>
-                  Every country.
-                </KineticWord>
-              </span>
+              <Sparkles className="h-3 w-3 text-[#22D3EE]" />
+            </motion.div>
+
+            {/* Headline */}
+            <h1 className="font-display mx-auto mt-4 max-w-[620px] text-[1.85rem] font-medium leading-[1.07] tracking-[-0.035em] text-white sm:mt-5 sm:text-[2.2rem] md:text-[2.4rem] lg:mx-0 lg:text-[2.5rem] xl:text-[2.6rem]">
+              <motion.span
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="block"
+              >
+                Simplify calls, AI and contact
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.25,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="block"
+              >
+                centers from a{" "}
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-[#2D98F1] via-[#0086F9] to-[#22D3EE] bg-clip-text text-transparent">
+                    single platform
+                  </span>
+                  <motion.span
+                    aria-hidden
+                    className="absolute -bottom-1 left-0 h-px w-full origin-left bg-gradient-to-r from-transparent via-[#22D3EE] to-transparent"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{
+                      duration: 1.1,
+                      delay: 1,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  />
+                </span>
+                .
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.4,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="block text-white/90"
+              >
+                No need to switch.
+              </motion.span>
             </h1>
 
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="mt-5 sm:mt-7 text-base sm:text-xl text-[#B8C4D4] max-w-xl mx-auto lg:mx-0 leading-relaxed font-light"
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="mx-auto mt-3 max-w-xl text-sm font-light leading-relaxed text-[#B8C4D4] sm:mt-4 sm:text-[0.95rem] lg:mx-0"
             >
-              UCaaS, contact center, AI agents, and virtual numbers — on a{" "}
-              <span className="text-white">carrier-grade network</span> covering{" "}
-              <span className="text-[#22D3EE]">150+ countries</span>.
+              Meet the new standard for a modern communications stack — UCaaS,
+              contact center, AI voice agents and global numbers, designed for
+              enterprises and growing teams.
             </motion.p>
 
+            {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.85 }}
-              className="mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+              transition={{ duration: 0.6, delay: 0.65 }}
+              className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 lg:justify-start"
             >
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full sm:w-auto"
+              >
                 <Button
                   size="lg"
-                  className="relative w-full sm:w-auto h-12 sm:h-14 px-5 sm:px-7 text-sm sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
+                  className="group relative h-11 w-full overflow-hidden rounded-full bg-[#046BD2] px-6 text-sm font-semibold text-white shadow-[0_0_50px_-10px_rgba(4,107,210,0.85)] hover:bg-[#0078E0] sm:w-auto sm:px-7 sm:text-[0.95rem]"
                 >
                   <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                    aria-hidden
+                    className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                     animate={{ x: ["-150%", "150%"] }}
-                    transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 2.5 }}
+                    transition={{
+                      duration: 2.4,
+                      repeat: Infinity,
+                      repeatDelay: 2.2,
+                    }}
                   />
                   <span className="relative flex items-center justify-center gap-2">
-                    <span className="sm:hidden">Start a conversation</span>
-                    <span className="hidden sm:inline">Start a no-pressure conversation</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    Start a free trial
+                    <Link href="/contact"></Link>
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </Button>
               </motion.div>
 
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full sm:w-auto"
+              >
                 <Button
+                  asChild
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto h-12 sm:h-14 px-5 sm:px-7 text-sm sm:text-base rounded-xl border-white/10 bg-white/[0.03] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
+                  className="group h-11 w-full rounded-full border-white/15 bg-white/[0.04] px-6 text-sm text-white backdrop-blur-md hover:bg-white/10 hover:text-white sm:w-auto sm:px-7 sm:text-[0.95rem]"
                 >
-                  <span className="mr-2 flex items-center justify-center w-7 h-7 rounded-full bg-white/10 group-hover:bg-[#046BD2]/30 transition-colors">
-                    <Play className="w-3 h-3 ml-0.5 fill-white" />
-                  </span>
-                  Watch 90-sec demo
+                  <Link href="/pricing">
+                    See Pricing
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
                 </Button>
               </motion.div>
             </motion.div>
 
-            {/* Trust marquee */}
+            {/* Microfooter */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
-              className="mt-12 lg:mt-14"
+              transition={{ duration: 0.6, delay: 0.85 }}
+              className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[11px] text-white/45 lg:justify-start"
             >
-              <div className="text-[11px] uppercase tracking-[0.22em] text-white/40 font-mono mb-4 text-center lg:text-left">
-                Trusted by teams shipping the future
-              </div>
-              <div
-                className="relative overflow-hidden"
-                style={{
-                  maskImage:
-                    "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
-                  WebkitMaskImage:
-                    "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
-                }}
-              >
-                <motion.div
-                  className="flex items-center gap-12 whitespace-nowrap"
-                  animate={{ x: ["0%", "-50%"] }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                >
-                  {[...trustLogos, ...trustLogos].map((logo, i) => (
-                    <img
-                      key={i}
-                      src={logo.src}
-                      alt={logo.name}
-                      className="h-7 sm:h-8 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
-                    />
-                  ))}
-                </motion.div>
-              </div>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="h-1 w-1 rounded-full bg-emerald-400" />
+                No credit card required
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <HeadsetIcon className="h-3 w-3" />
+                24/7 support
+              </span>
             </motion.div>
           </div>
 
-          {/* ───── Right: live ops panel ───── */}
-          <div className="lg:col-span-5 relative">
-            <LiveOpsPanel parallaxX={panelX} parallaxY={panelY} />
+          {/* ───── Right: device showcase (laptop → tablet → mobile) ───── */}
+          <div className="relative lg:col-span-6 xl:col-span-6">
+            <DeviceShowcase />
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/40"
-      >
-        <span className="text-[10px] uppercase tracking-[0.22em] font-mono">
-          Scroll
-        </span>
-        <motion.div
-          className="w-[1px] h-10 bg-gradient-to-b from-white/40 to-transparent"
-          animate={{ scaleY: [0.4, 1, 0.4], originY: 0 }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
     </section>
-  )
+  );
 }

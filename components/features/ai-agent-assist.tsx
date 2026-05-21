@@ -27,7 +27,7 @@ const faqs = [
 
 const suggestions = [
   { trigger: 'Customer: "That\'s too expensive..."', suggestion: 'Acknowledge the concern, then reframe around ROI. Mention the 14-day trial to reduce commitment risk.', type: 'objection' },
-  { trigger: 'Customer: "What\'s your uptime guarantee?"', suggestion: 'We offer 99.999% uptime SLA — that\'s less than 5 minutes of downtime per year, backed by contract.', type: 'answer' },
+  { trigger: 'Customer: "What\'s your uptime guarantee?"', suggestion: 'We offer 99.99% uptime SLA — that\'s less than 5 minutes of downtime per year, backed by contract.', type: 'answer' },
   { trigger: 'Sentiment: Frustrated (↓ 42%)', suggestion: 'Customer tone has shifted. Slow down, acknowledge their frustration explicitly before continuing.', type: 'sentiment' },
 ]
 

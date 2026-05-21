@@ -37,7 +37,7 @@ const detail = [
 
 const stats = [
   { v: '150+', k: 'Countries Supported' },
-  { v: '99.999%', k: 'Uptime SLA' },
+  { v: '99.99%', k: 'Uptime SLA' },
   { v: '12', k: 'Time Zones Covered' },
   { v: '0', k: 'VPNs Required' },
 ]

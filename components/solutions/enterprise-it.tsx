@@ -27,7 +27,7 @@ const detail = [
 const stack = ['Okta', 'Azure AD', 'Google Workspace', 'Salesforce', 'ServiceNow', 'Workday']
 
 const stats = [
-  { v: '99.999%', k: 'Uptime SLA' },
+  { v: '99.99%', k: 'Uptime SLA' },
   { v: 'SOC 2', k: 'Type II Certified' },
   { v: 'HIPAA', k: 'Compliant' },
   { v: '24/7', k: 'Enterprise Support' },
@@ -72,7 +72,7 @@ function BlueprintFigure() {
         <g transform="translate(140,180)">
           <rect width="120" height="60" rx="6" fill="rgba(0,134,249,0.06)" stroke="#0086F9" strokeWidth="1.5" />
           <text x="60" y="25" textAnchor="middle" fill="#fff" fontSize="12" fontFamily="monospace" fontWeight="bold">Rozper Core</text>
-          <text x="60" y="42" textAnchor="middle" fill="#0086F9" fontSize="9" fontFamily="monospace" opacity="0.7">99.999% SLA</text>
+          <text x="60" y="42" textAnchor="middle" fill="#0086F9" fontSize="9" fontFamily="monospace" opacity="0.7">99.99% SLA</text>
         </g>
 
         {/* Sites */}
@@ -220,106 +220,141 @@ export function EnterpriseITPageView() {
             <h2 className="font-display text-4xl md:text-5xl font-bold">Cleared by enterprise IT.</h2>
           </div>
 
-          {/* Featured review — full blueprint style with metadata sidebar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="relative border border-[#046BD2]/20 bg-[#111B2D] rounded-md p-8 mb-5 hover:border-[#0086F9]/40 transition overflow-hidden group"
-          >
-            <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
-              backgroundImage: 'linear-gradient(rgba(0,134,249,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,134,249,0.05) 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
-            }} />
-            <div className="relative grid lg:grid-cols-[1fr_auto] gap-8">
-              <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#0086F9]/60 mb-5">// customer.testimonial[0]</div>
-                <blockquote className="font-display text-xl md:text-2xl font-medium leading-relaxed text-white/90 mb-8">
-                  "Rozper passed our security review faster than any vendor we've worked with. The deployment team handled everything from SSO to number migration. Zero surprises."
-                </blockquote>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">SK</div>
-                  <div>
-                    <div className="font-semibold">Stefan Koch</div>
-                    <div className="text-xs text-white/50 font-mono">Director of IT · Meridian Holdings</div>
-                  </div>
-                </div>
-              </div>
-              <div className="border-t lg:border-t-0 lg:border-l border-[#046BD2]/20 pt-6 lg:pt-0 lg:pl-8 flex flex-col gap-5 min-w-[180px]">
-                <div>
-                  <div className="text-[9px] font-mono text-[#0086F9]/60 uppercase tracking-widest mb-1">REV.ID</div>
-                  <div className="font-mono text-sm text-white/80">ENT-2024-004</div>
-                </div>
-                <div>
-                  <div className="text-[9px] font-mono text-[#0086F9]/60 uppercase tracking-widest mb-1">STATUS</div>
-                  <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-400/10 border border-emerald-400/20">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    <span className="font-mono text-[10px] text-emerald-400">APPROVED</span>
-                  </div>
-                </div>
-                <div>
-                  <div className="text-[9px] font-mono text-[#0086F9]/60 uppercase tracking-widest mb-2">COMPLIANCE</div>
-                  <div className="flex flex-wrap gap-1">
-                    {['SOC2', 'GDPR', 'HIPAA'].map(c => (
-                      <span key={c} className="px-1.5 py-0.5 rounded text-[9px] font-mono border border-[#046BD2]/20 text-[#2D98F1]">{c}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#046BD2]/0 via-[#046BD2]/40 to-[#046BD2]/0 group-hover:via-[#0086F9] transition" />
-          </motion.div>
-
-          {/* Three schematic review cards */}
-          <div className="grid md:grid-cols-3 gap-4">
-            {[
+          {/* Vertical audit-log timeline — single column, left rail connecting all entries */}
+          {(() => {
+            const entries = [
+              {
+                featured: true,
+                idx: '000', id: 'ENT-2024-004',
+                initials: 'SK', name: 'Stefan Koch', title: 'Director of IT · Meridian Holdings',
+                tags: ['SOC2', 'GDPR', 'HIPAA'],
+                quote: "Rozper passed our security review faster than any vendor we've worked with. The deployment team handled everything from SSO to number migration. Zero surprises.",
+              },
               {
                 idx: '001', id: 'ENT-2024-007',
                 initials: 'AL', name: 'Annika Lindqvist', title: 'CISO · NordGroup AB',
                 tags: ['SAML', 'SCIM', 'RBAC'],
-                quote: '"SCIM provisioning cut our onboarding overhead by 90%. Accounts are created and deactivated automatically from Azure AD. No manual tickets, ever."',
+                quote: 'SCIM provisioning cut our onboarding overhead by 90%. Accounts are created and deactivated automatically from Azure AD. No manual tickets, ever.',
               },
               {
                 idx: '002', id: 'ENT-2024-011',
                 initials: 'MB', name: 'Marcus Barnes', title: 'VP IT · Centurion Financial',
                 tags: ['HIPAA', 'Encryption', 'Audit'],
-                quote: '"The compliance documentation was audit-ready on day one. Our legal team had the HIPAA BAA signed before we even finished the POC."',
+                quote: 'The compliance documentation was audit-ready on day one. Our legal team had the HIPAA BAA signed before we even finished the POC.',
               },
               {
                 idx: '003', id: 'ENT-2024-015',
                 initials: 'YP', name: 'Yuki Patel', title: 'IT Director · Solaris Group',
                 tags: ['Multi-site', 'SLA', 'Migration'],
-                quote: '"We migrated 600 seats across 4 countries in 3 weeks. The implementation team was better than any vendor I\'ve worked with in 15 years of IT."',
+                quote: "We migrated 600 seats across 4 countries in 3 weeks. The implementation team was better than any vendor I've worked with in 15 years of IT.",
               },
-            ].map((t, i) => (
-              <motion.div
-                key={t.name}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="relative border border-[#046BD2]/20 bg-[#111B2D] rounded-md p-6 hover:border-[#0086F9]/40 transition group overflow-hidden"
-              >
-                <div className="absolute top-3 left-3 font-mono text-[9px] text-[#0086F9]/40 uppercase tracking-widest">REV.{t.idx}</div>
-                <div className="absolute top-3 right-3">
-                  <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-400/10 border border-emerald-400/20">
-                    <span className="w-1 h-1 rounded-full bg-emerald-400" />
-                    <span className="font-mono text-[8px] text-emerald-400">APPROVED</span>
+            ]
+            return (
+              <div className="relative">
+                {/* Log header */}
+                <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#046BD2]/15">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// vendor.review.log</span>
+                    <span className="font-mono text-[10px] text-[#0086F9]/30">4 entries</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <motion.span animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 1.8, repeat: Infinity }} className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="font-mono text-[10px] text-emerald-400">all approved · live</span>
                   </div>
                 </div>
-                <div className="mt-6 mb-4 flex flex-wrap gap-1">
-                  {t.tags.map(tag => (
-                    <span key={tag} className="px-1.5 py-0.5 rounded text-[9px] font-mono border border-[#046BD2]/20 text-[#2D98F1]">{tag}</span>
-                  ))}
-                </div>
-                <blockquote className="font-display text-sm font-medium leading-relaxed text-white/80 mb-6">{t.quote}</blockquote>
-                <div className="pt-4 border-t border-[#046BD2]/10 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold text-xs">{t.initials}</div>
-                  <div>
-                    <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-[10px] text-white/40 font-mono">{t.title}</div>
+
+                {/* Timeline rail + entries */}
+                <div className="relative pl-10">
+                  {/* Vertical rail */}
+                  <div className="absolute left-[15px] top-3 bottom-3 w-px bg-gradient-to-b from-[#0086F9]/60 via-[#046BD2]/30 to-[#046BD2]/10" />
+
+                  <div className="space-y-4">
+                    {entries.map((t, i) => (
+                      <motion.div
+                        key={t.name}
+                        initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                        className="relative"
+                      >
+                        {/* Timeline dot */}
+                        <div className={`absolute -left-[31px] top-5 z-10 ${t.featured ? 'w-4 h-4 -mt-0.5 -ml-0.5' : 'w-3 h-3'}`}>
+                          {t.featured ? (
+                            <>
+                              <motion.div
+                                animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="absolute inset-0 rounded-full bg-[#0086F9]"
+                              />
+                              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#046BD2] to-[#0086F9] border-2 border-[#0B1220]" />
+                            </>
+                          ) : (
+                            <div className="w-3 h-3 rounded-full bg-[#0B1220] border-2 border-[#0086F9]/60" />
+                          )}
+                        </div>
+
+                        {/* Entry card */}
+                        <div className={`relative border bg-[#111B2D] rounded-md overflow-hidden group hover:border-[#0086F9]/40 transition ${
+                          t.featured
+                            ? 'border-[#046BD2]/30 p-7 shadow-[0_0_30px_-10px_rgba(0,134,249,0.3)]'
+                            : 'border-[#046BD2]/15 p-4'
+                        }`}>
+                          {/* Subtle grid for featured only */}
+                          {t.featured && (
+                            <div className="absolute inset-0 opacity-15 pointer-events-none" style={{
+                              backgroundImage: 'linear-gradient(rgba(0,134,249,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,134,249,0.05) 1px, transparent 1px)',
+                              backgroundSize: '20px 20px',
+                            }} />
+                          )}
+
+                          {/* Header row — avatar + name + meta */}
+                          <div className="relative flex items-center justify-between gap-3 mb-3">
+                            <div className="flex items-center gap-3 min-w-0">
+                              <div className={`rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold flex-shrink-0 ${
+                                t.featured ? 'w-10 h-10 text-sm' : 'w-8 h-8 text-[11px]'
+                              }`}>{t.initials}</div>
+                              <div className="min-w-0">
+                                <div className={`font-semibold leading-tight ${t.featured ? 'text-base' : 'text-sm'}`}>{t.name}</div>
+                                <div className="text-[10px] text-white/40 font-mono truncate leading-tight">{t.title}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <span className="font-mono text-[9px] text-[#0086F9]/40 hidden sm:inline">{t.id}</span>
+                              <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-400/10 border border-emerald-400/20">
+                                <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                                <span className="font-mono text-[8px] text-emerald-400">{t.featured ? 'APPROVED' : 'OK'}</span>
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Quote */}
+                          <blockquote className={`relative text-white/85 leading-relaxed mb-3 ${
+                            t.featured ? 'font-display text-lg md:text-xl font-medium' : 'text-[13px] text-white/75'
+                          }`}>
+                            "{t.quote}"
+                          </blockquote>
+
+                          {/* Tags */}
+                          <div className="relative flex items-center gap-1.5 flex-wrap">
+                            {t.tags.map(tag => (
+                              <span key={tag} className="px-1.5 py-0.5 rounded text-[9px] font-mono border border-[#046BD2]/20 text-[#2D98F1]">{tag}</span>
+                            ))}
+                            <span className="ml-auto font-mono text-[9px] text-[#0086F9]/30 sm:hidden">{t.id}</span>
+                          </div>
+
+                          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#046BD2]/0 via-[#046BD2]/30 to-[#046BD2]/0 group-hover:via-[#0086F9] transition" />
+                        </div>
+                      </motion.div>
+                    ))}
+
+                    {/* End-of-log marker */}
+                    <div className="relative">
+                      <div className="absolute -left-[28px] top-1.5 w-2 h-2 rounded-full bg-[#046BD2]/30" />
+                      <div className="font-mono text-[10px] text-[#0086F9]/40 pt-0.5">$ end of log · 4 / 4 records</div>
+                    </div>
                   </div>
                 </div>
-                <div className="absolute bottom-3 right-3 font-mono text-[9px] text-[#0086F9]/30">{t.id}</div>
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#046BD2]/0 via-[#046BD2]/30 to-[#046BD2]/0 group-hover:via-[#0086F9] transition" />
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            )
+          })()}
         </section>
 
         {/* FAQ */}

@@ -313,127 +313,107 @@ export function SupportTeamsPageView() {
             <h2 className="font-display text-4xl md:text-5xl font-bold">What happens when teams switch.</h2>
           </div>
 
-          <div className="grid md:grid-cols-12 gap-5">
-            {/* Large featured card — terminal-chrome style */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="md:col-span-8 rounded-3xl bg-[#111B2D] border border-white/10 overflow-hidden"
-            >
-              <div className="px-5 py-3 bg-[#0B1220] border-b border-white/10 flex items-center gap-3">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/70" />
-                </div>
-                <span className="text-xs font-mono text-white/30 ml-2">support-lead · review</span>
-                <div className="ml-auto flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span className="text-[10px] font-mono text-emerald-400">CSAT 97%</span>
-                </div>
-              </div>
-              <div className="p-8">
-                <blockquote className="font-display text-xl md:text-2xl font-medium leading-relaxed text-white/90 mb-8">
-                  "Our AHT dropped 4.5 minutes after moving to Rozper. AI Agent Assist gives every rep the right answer before they have to search for it."
-                </blockquote>
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  {[
-                    { k: 'AHT Reduction', v: '4.5 min', color: 'text-[#0086F9]' },
-                    { k: 'CSAT Lift', v: '+12 pts', color: 'text-emerald-400' },
-                    { k: 'Tickets/day', v: '+34%', color: 'text-[#2D98F1]' },
-                  ].map(m => (
-                    <div key={m.k} className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] text-center">
-                      <div className={`font-display text-xl font-bold ${m.color}`}>{m.v}</div>
-                      <div className="text-[10px] font-mono text-white/40 mt-1">{m.k}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center gap-3 pt-5 border-t border-white/[0.06]">
-                  <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">LH</div>
-                  <div>
-                    <div className="font-semibold">Layla Hassan</div>
-                    <div className="text-xs text-white/50">Support Operations Lead · TechBridge Solutions</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right column — 2 stacked cards */}
-            <div className="md:col-span-4 flex flex-col gap-5">
+          {/* Stat-led horizontal cards — 5 uniform, all peers */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              {
+                statValue: '4.5',
+                statUnit: 'min',
+                statLabel: 'AHT REDUCTION',
+                accent: 'text-[#0086F9]',
+                glow: 'shadow-[0_0_30px_-12px_rgba(0,134,249,0.6)]',
+                ring: 'group-hover:border-[#0086F9]/50',
+                quote: 'AI Agent Assist gives every rep the right answer before they have to search for it.',
+                initials: 'LH',
+                name: 'Layla Hassan',
+                role: 'Support Ops Lead · TechBridge',
+                avatar: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#2D98F1]',
+              },
+              {
+                statValue: '5→1',
+                statUnit: 'tabs',
+                statLabel: 'CONTEXT SWITCH',
+                accent: 'text-violet-300',
+                glow: 'shadow-[0_0_30px_-12px_rgba(167,139,250,0.5)]',
+                ring: 'group-hover:border-violet-400/50',
+                quote: 'Unified inbox was a game changer. Now it\'s one screen, zero context switching.',
+                initials: 'PK',
+                name: 'Priya Kumar',
+                role: 'CS Manager · FlowDesk',
+                avatar: 'bg-violet-500/20 border-violet-500/30 text-violet-300',
+              },
+              {
+                statValue: '99.7',
+                statUnit: '%',
+                statLabel: 'SLA COMPLIANCE',
+                accent: 'text-amber-300',
+                glow: 'shadow-[0_0_30px_-12px_rgba(252,211,77,0.5)]',
+                ring: 'group-hover:border-amber-400/50',
+                quote: 'Up from 91% in 30 days. Built-in escalation rules did 80% of the work automatically.',
+                initials: 'OB',
+                name: 'Omar Bakr',
+                role: 'Support Director · Hive',
+                avatar: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
+              },
+              {
+                statValue: '2',
+                statUnit: 'clicks',
+                statLabel: 'WHATSAPP LIVE',
+                accent: 'text-emerald-300',
+                glow: 'shadow-[0_0_30px_-12px_rgba(110,231,183,0.5)]',
+                ring: 'group-hover:border-emerald-400/50',
+                quote: 'Adding WhatsApp as a support channel was that fast. Handled tickets within an hour.',
+                initials: 'MC',
+                name: 'Maria Castillo',
+                role: 'Digital CX · SolTech Latam',
+                avatar: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300',
+              },
+              {
+                statValue: '100',
+                statUnit: '% QA',
+                statLabel: 'AI SCORED',
+                accent: 'text-[#5BB8FF]',
+                glow: 'shadow-[0_0_30px_-12px_rgba(91,184,255,0.6)]',
+                ring: 'group-hover:border-[#5BB8FF]/50',
+                quote: 'We used to QA 5% manually. Now every interaction is auto-scored. We coach instead of audit.',
+                initials: 'TN',
+                name: 'Tariq Nasser',
+                role: 'QA Lead · ClearPath',
+                avatar: 'bg-[#046BD2]/20 border-[#046BD2]/30 text-[#5BB8FF]',
+              },
+            ].map((t, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-                className="p-6 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col flex-1"
+                key={t.initials}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className={`group flex flex-col p-5 rounded-2xl bg-gradient-to-br from-[#111B2D] to-[#0B1220] border border-white/10 ${t.ring} hover:bg-[#1A2638]/50 transition-all ${t.glow}`}
               >
-                <span className="inline-flex self-start px-2 py-0.5 rounded bg-emerald-400/10 text-[10px] font-mono text-emerald-400 mb-4">Voice + Chat</span>
-                <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                  "Unified inbox was a game changer. Agents used to switch between 5 tabs. Now it's one screen, zero context switching."
+                {/* Stat label */}
+                <div className="text-[9px] font-mono text-white/40 uppercase tracking-[0.2em] mb-2">{t.statLabel}</div>
+
+                {/* Big stat */}
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className={`font-display text-4xl font-bold leading-none tabular-nums tracking-tight ${t.accent}`}>{t.statValue}</span>
+                  <span className={`text-sm font-mono ${t.accent} opacity-70`}>{t.statUnit}</span>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-white/[0.06] mb-4" />
+
+                {/* Quote */}
+                <blockquote className="text-[13px] text-white/70 leading-relaxed flex-1 mb-4">
+                  "{t.quote}"
                 </blockquote>
-                <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
-                  <div className="w-8 h-8 rounded-full bg-violet-500/20 border border-violet-500/30 flex items-center justify-center text-violet-300 font-display font-bold text-xs">PK</div>
-                  <div>
-                    <div className="font-semibold text-sm">Priya Kumar</div>
-                    <div className="text-xs text-white/40">CS Manager · FlowDesk</div>
+
+                {/* Author */}
+                <div className="flex items-center gap-2.5 pt-3 border-t border-white/[0.06] mt-auto">
+                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[10px] shrink-0 ${t.avatar}`}>{t.initials}</div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-[12px] text-white truncate">{t.name}</div>
+                    <div className="text-[10px] font-mono text-white/40 truncate">{t.role}</div>
                   </div>
                 </div>
               </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-                className="p-6 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col flex-1"
-              >
-                <span className="inline-flex self-start px-2 py-0.5 rounded bg-[#046BD2]/15 text-[10px] font-mono text-[#2D98F1] mb-4">Omnichannel</span>
-                <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                  "SLA compliance went from 91% to 99.7% in 30 days. The built-in escalation rules did 80% of the work automatically."
-                </blockquote>
-                <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
-                  <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 font-display font-bold text-xs">OB</div>
-                  <div>
-                    <div className="font-semibold text-sm">Omar Bakr</div>
-                    <div className="text-xs text-white/40">Support Director · Hive Enterprise</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Bottom row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
-              className="md:col-span-6 p-7 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#046BD2]/30 transition flex flex-col"
-            >
-              <div className="flex items-center gap-2 mb-5">
-                <span className="inline-flex px-2 py-0.5 rounded bg-violet-400/10 text-[10px] font-mono text-violet-300">WhatsApp + SMS</span>
-                <span className="ml-auto text-[10px] font-mono text-white/30">CSAT 94/100</span>
-              </div>
-              <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                "Adding WhatsApp as a support channel took two clicks. We were handling tickets from it within an hour of going live."
-              </blockquote>
-              <div className="flex items-center gap-2.5 pt-4 border-t border-white/[0.06]">
-                <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300 font-display font-bold text-xs">MC</div>
-                <div>
-                  <div className="font-semibold text-sm">Maria Castillo</div>
-                  <div className="text-xs text-white/40">Digital CX Lead · SolTech Latam</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.22 }}
-              className="md:col-span-6 p-7 rounded-3xl bg-gradient-to-br from-[#046BD2]/10 to-transparent border border-[#046BD2]/20 hover:border-[#046BD2]/40 transition flex flex-col"
-            >
-              <div className="flex items-center gap-2 mb-5">
-                <span className="inline-flex px-2 py-0.5 rounded bg-[#046BD2]/15 text-[10px] font-mono text-[#2D98F1]">AI QA</span>
-                <span className="ml-auto text-[10px] font-mono text-white/30">100% scored</span>
-              </div>
-              <blockquote className="font-display text-base font-medium leading-relaxed text-white/80 flex-1 mb-5">
-                "We used to manually QA 5% of calls. Now Rozper automatically scores every interaction. My team coaches instead of auditing."
-              </blockquote>
-              <div className="flex items-center gap-2.5 pt-4 border-t border-[#046BD2]/20">
-                <div className="w-8 h-8 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold text-xs">TN</div>
-                <div>
-                  <div className="font-semibold text-sm">Tariq Nasser</div>
-                  <div className="text-xs text-white/40">QA Lead · ClearPath Insurance</div>
-                </div>
-              </div>
-            </motion.div>
+            ))}
           </div>
         </section>
 

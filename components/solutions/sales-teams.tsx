@@ -251,7 +251,7 @@ export function SalesTeamsPageView() {
                 <div className="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-1">Impact metrics</div>
                 {[
                   { k: 'Calls per rep', v: '3×', color: 'text-[#0086F9]' },
-                  { k: 'Connect rate', v: '+47%', color: 'text-emerald-400' },
+                  { k: 'Connect rate', v: '+47%', color: 'text-[#22D3EE]' },
                   { k: 'CRM sync', v: '100%', color: 'text-[#2D98F1]' },
                 ].map(m => (
                   <div key={m.k}>
@@ -268,19 +268,19 @@ export function SalesTeamsPageView() {
             {[
               {
                 initials: 'SB', name: 'Sophia Bell', title: 'Sales Manager · Vertex SaaS',
-                avatarClass: 'bg-violet-500/20 border-violet-500/30 text-violet-300',
+                avatarClass: 'bg-[#2575FC]/20 border-[#2575FC]/30 text-[#2575FC]',
                 quote: "Whisper coaching changed how I develop reps. I can guide someone through a tough negotiation in real time without the prospect ever knowing I'm there.",
                 metric: { k: 'Rep ramp time', v: '−3 weeks' },
               },
               {
                 initials: 'RC', name: 'Ryan Chen', title: 'Account Executive · Elevate Cloud',
-                avatarClass: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300',
+                avatarClass: 'bg-[#22D3EE]/20 border-[#22D3EE]/30 text-[#22D3EE]',
                 quote: "Local presence dialing alone was worth the switch. My connect rate went from 22% to 38% in the first month — without changing my script.",
                 metric: { k: 'Connect rate lift', v: '+16 pp' },
               },
               {
                 initials: 'FN', name: 'Fatima Nour', title: 'VP Revenue · Horizon B2B',
-                avatarClass: 'bg-amber-500/20 border-amber-500/30 text-amber-300',
+                avatarClass: 'bg-[#0078E0]/20 border-[#0078E0]/30 text-[#0078E0]',
                 quote: "Conversation intelligence surfaced a closing pattern we didn't know our top reps were using. We trained the whole team in two weeks.",
                 metric: { k: 'Win rate after', v: '+28%' },
               },

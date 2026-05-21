@@ -8,6 +8,8 @@ import {
   Menu,
   X,
   ChevronDown,
+  ArrowRight,
+  Sparkles,
   Phone,
   Users,
   Building2,
@@ -23,10 +25,7 @@ import {
   Brain,
   Headphones,
   BarChart3,
-  Eye,
-  Mic,
   Settings,
-  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ComponentType } from "react";
@@ -34,201 +33,234 @@ import type { ComponentType } from "react";
 type MenuItem = {
   label: string;
   subtitle?: string;
+  description?: string;
   href?: string;
   icon?: ComponentType<{ className?: string }>;
-  badge?: string;
+  badge?: "New" | "Free" | "AI" | "Beta";
+  iconGradient?: string;
 };
 
 type MenuColumn = {
-  title: string;
-  featured?: boolean;
-  items?: MenuItem[];
-  headline?: string;
-  description?: string;
-  quote?: string;
-  attribution?: string;
-  ctaText?: string;
-  ctaHref?: string;
+  title?: string;
+  items: MenuItem[];
 };
 
-// Mega menu configuration matching the design
+// Mega menu configuration — card grid
 const megaMenuConfig: Record<string, { columns: MenuColumn[] }> = {
   Products: {
     columns: [
       {
-        title: "CORE PRODUCTS",
         items: [
-          { label: "Cloud Contact Center", subtitle: "AI-powered omnichannel CX", href: "/products/contact-center", icon: Phone },
-          { label: "Unified Communications", subtitle: "Voice, video, chat in one", href: "/products/ucaas", icon: Users },
-          { label: "Business Phone System", subtitle: "Cloud PBX for teams", href: "/products/ucaas/business-phone", icon: Building2 },
-          { label: "AI Voice Agent", subtitle: "24/7 autonomous calls", href: "/products/ai/receptionist", icon: Bot },
-          { label: "Website Chatbot", subtitle: "Convert visitors instantly", href: "/products/ucaas/website-chatbot", icon: MessageSquare },
-          { label: "Wholesale Voice", subtitle: "Carrier-grade routing", href: "/solutions/wholesale", icon: PhoneCall },
-          { label: "Wholesale VOIP", subtitle: "Carrier-grade VoIP termination", href: "/wholesale-voip", icon: Globe2 },
+          {
+            label: "Cloud Contact Center",
+            description:
+              "AI-powered omnichannel CX with dialers and analytics, built to scale.",
+            href: "/products/contact-center",
+            icon: Phone,
+            iconGradient: "from-[#046BD2] to-[#22D3EE]",
+          },
+          {
+            label: "Unified Communications",
+            description:
+              "Voice, video, chat and SMS unified for every seat on the team.",
+            href: "/products/ucaas",
+            icon: Users,
+            iconGradient: "from-[#0078E0] to-[#2575FC]",
+            badge: "New",
+          },
+          {
+            label: "Business Phone System",
+            description:
+              "Cloud PBX with extensions, IVR, recording and porting in 150+ countries.",
+            href: "/products/ucaas/business-phone",
+            icon: Building2,
+            iconGradient: "from-[#2575FC] to-[#046BD2]",
+          },
+          {
+            label: "AI Voice Agent",
+            description:
+              "24/7 autonomous calls — captures intent, qualifies leads, books meetings.",
+            href: "/products/ai/receptionist",
+            icon: Bot,
+            iconGradient: "from-[#22D3EE] to-[#0086F9]",
+            badge: "AI",
+          },
+          {
+            label: "Website Chatbot",
+            description:
+              "Convert visitors instantly with an LLM-powered chat that hands off to a human.",
+            href: "/products/ucaas/website-chatbot",
+            icon: MessageSquare,
+            iconGradient: "from-[#0086F9] to-[#22D3EE]",
+          },
+          {
+            label: "HD Video Meetings",
+            description:
+              "Crisp 1080p video, screen share, recording and noise suppression.",
+            href: "/products/ucaas/video-meetings",
+            icon: Video,
+            iconGradient: "from-[#046BD2] to-[#0078E0]",
+          },
+          {
+            label: "Business SMS & MMS",
+            description:
+              "Two-way messaging, MMS attachments and campaign sending built in.",
+            href: "/products/ucaas/sms-mms",
+            icon: MessageCircle,
+            iconGradient: "from-[#2575FC] to-[#22D3EE]",
+          },
+          {
+            label: "Omnichannel Inbox",
+            description:
+              "One inbox for voice, email, SMS, WhatsApp, web chat and social.",
+            href: "/products/contact-center/omnichannel",
+            icon: Inbox,
+            iconGradient: "from-[#0078E0] to-[#046BD2]",
+          },
+          {
+            label: "Predictive Dialer",
+            description:
+              "Power, predictive and preview dialers tuned for connect rate.",
+            href: "/products/contact-center/outbound-dialer",
+            icon: PhoneOutgoing,
+            iconGradient: "from-[#22D3EE] to-[#2575FC]",
+          },
         ],
-      },
-      {
-        title: "FEATURES & CHANNELS",
-        items: [
-          { label: "HD Video Meetings", href: "/products/ucaas/video-meetings", icon: Video },
-          { label: "Business SMS & MMS", href: "/products/ucaas/sms-mms", icon: MessageCircle },
-          { label: "Team Chat", href: "/products/ucaas/team-chat", icon: MessageSquare },
-          { label: "Omnichannel Inbox", href: "/products/contact-center/omnichannel", icon: Inbox },
-          { label: "Predictive Dialer", href: "/products/contact-center/outbound-dialer", icon: PhoneOutgoing },
-        ],
-      },
-      {
-        title: "INTELLIGENCE & TOOLS",
-        items: [
-          { label: "AI Sentiment Analysis", href: "/features/ai-sentiment", icon: Brain },
-          { label: "AI Agent Assist", href: "/features/ai-agent-assist", icon: Headphones },
-          { label: "Conversation Intelligence", href: "/features/conversation-intelligence", icon: BarChart3 },
-          { label: "Call Monitoring & Barge", href: "/features/supervisor-tools", icon: Eye },
-          { label: "Call Recording", href: "/features/call-recording", icon: Mic },
-          { label: "Auto Attendant & IVR", href: "/features/auto-attendant", icon: Phone },
-        ],
-      },
-      {
-        title: "Featured",
-        featured: true,
-        headline: "AI Contact Center + Cloud Phone",
-        description: "NLP routing, real-time analytics, and 100+ integrations — on one unified platform.",
-        ctaText: "Learn more",
-        ctaHref: "/products/contact-center",
       },
     ],
   },
   Solutions: {
     columns: [
       {
-        title: "BY INDUSTRY",
         items: [
           {
             label: "Healthcare",
+            description: "HIPAA-aligned voice, SMS and AI for patient teams.",
             href: "/solutions/healthcare",
             icon: Building2,
+            iconGradient: "from-[#22D3EE] to-[#0086F9]",
           },
           {
             label: "Financial Services",
+            description: "Compliant calling, recording and dialers for banks and fintechs.",
             href: "/solutions/finance",
             icon: Building2,
+            iconGradient: "from-[#046BD2] to-[#2575FC]",
           },
           {
             label: "Retail & eCommerce",
+            description: "Drive conversions across SMS, chat, voice and WhatsApp.",
             href: "/solutions/retail",
             icon: Building2,
+            iconGradient: "from-[#0086F9] to-[#22D3EE]",
           },
           {
             label: "SaaS & Technology",
+            description: "Embed calling and SMS in your product with our SDKs.",
             href: "/solutions/saas",
             icon: Building2,
+            iconGradient: "from-[#2575FC] to-[#046BD2]",
           },
-          {
-            label: "Logistics & Transport",
-            href: "/solutions/logistics",
-            icon: Truck,
-          },
-        ],
-      },
-      {
-        title: "BY TEAM",
-        items: [
           {
             label: "Sales Teams",
+            description: "Power dialers, AI coaching and CRM-synced workflows.",
             href: "/solutions/sales-teams",
             icon: PhoneOutgoing,
+            iconGradient: "from-[#0078E0] to-[#22D3EE]",
           },
           {
             label: "Support Teams",
+            description: "Omnichannel inbox, AI agent assist and quality scoring.",
             href: "/solutions/support-teams",
             icon: Headphones,
+            iconGradient: "from-[#22D3EE] to-[#046BD2]",
           },
           {
             label: "Remote Teams",
+            description: "One seat that works on web, mobile and desktop.",
             href: "/solutions/remote-teams",
             icon: Users,
+            iconGradient: "from-[#046BD2] to-[#0078E0]",
           },
-          { label: "Small Business", href: "/solutions/smb", icon: Building2 },
+          {
+            label: "Logistics & Transport",
+            description: "Dispatch, alerts and driver routing across regions.",
+            href: "/solutions/logistics",
+            icon: Truck,
+            iconGradient: "from-[#2575FC] to-[#0086F9]",
+          },
           {
             label: "Enterprise IT",
+            description: "SSO, SCIM, audit logs and dedicated routing.",
             href: "/solutions/enterprise-it",
             icon: Settings,
+            iconGradient: "from-[#0086F9] to-[#046BD2]",
           },
         ],
       },
-      /* BY USE CASE — hidden
+    ],
+  },
+  Integrations: {
+    columns: [
       {
-        title: "BY USE CASE",
         items: [
           {
-            label: "Inbound Contact Center",
-            href: "/solutions/inbound",
-            icon: Phone,
+            label: "HubSpot",
+            description: "Two-way CRM sync, click-to-call and AI call summaries.",
+            href: "/integrations/hubspot",
+            icon: Building2,
+            iconGradient: "from-[#046BD2] to-[#22D3EE]",
           },
           {
-            label: "Outbound Sales",
-            href: "/solutions/outbound",
-            icon: PhoneOutgoing,
-          },
-          {
-            label: "Customer Support",
-            href: "/solutions/support",
-            icon: Headphones,
-          },
-          { label: "Remote Work", href: "/solutions/remote", icon: Users },
-          {
-            label: "International Expansion",
-            href: "/solutions/international",
-            icon: Truck,
+            label: "Zoho CRM",
+            description: "Automate sales workflows and log every call automatically.",
+            href: "/integrations/zoho",
+            icon: Building2,
+            iconGradient: "from-[#0078E0] to-[#0086F9]",
           },
         ],
-      },
-      */
-      {
-        title: "Featured",
-        featured: true,
-        quote: '"We cut costs 40% and improved CSAT by 25 points in 90 days."',
-        attribution: "Sarah Chen, VP Operations — TechFlow Inc.",
-        ctaText: "Read the story",
-        ctaHref: "/customers",
       },
     ],
   },
   Resources: {
     columns: [
       {
-        title: "LEARN",
         items: [
-          { label: "Blog", href: "/blog", icon: MessageSquare },
           {
-            label: "Guides & Ebooks",
-            href: "/resources/guides",
+            label: "Blog",
+            description: "Product updates, playbooks and industry trends.",
+            href: "/blog",
+            icon: MessageSquare,
+            iconGradient: "from-[#22D3EE] to-[#0086F9]",
+          },
+          {
+            label: "Documentation",
+            description: "Guides, references and step-by-step setup.",
+            href: "/docs",
             icon: Building2,
+            iconGradient: "from-[#046BD2] to-[#0078E0]",
           },
-          { label: "Webinars", href: "/resources/webinars", icon: Video },
           {
-            label: "VoIP Glossary",
-            href: "/resources/glossary",
-            icon: MessageCircle,
+            label: "API Reference",
+            description: "REST and webhooks to embed Rozper anywhere.",
+            href: "/docs/api",
+            icon: Settings,
+            iconGradient: "from-[#2575FC] to-[#22D3EE]",
           },
-        ],
-      },
-      {
-        title: "BUILD",
-        items: [
-          { label: "Documentation", href: "/docs", icon: Building2 },
-          { label: "API Reference", href: "/docs/api", icon: Settings },
-          { label: "SDKs & Libraries", href: "/docs/sdks", icon: Settings },
-          { label: "Changelog", href: "/changelog", icon: MessageSquare },
-        ],
-      },
-      {
-        title: "SUPPORT",
-        items: [
-          { label: "Help Center", href: "/support", icon: Headphones },
-          { label: "Status Page", href: "/status", icon: BarChart3 },
-          { label: "Contact Sales", href: "/contact", icon: Phone },
-          { label: "Security & Compliance", href: "/security", icon: Settings },
+          {
+            label: "Contact Sales",
+            description: "Talk to a specialist about volume pricing.",
+            href: "/contact",
+            icon: Phone,
+            iconGradient: "from-[#0086F9] to-[#046BD2]",
+          },
+          {
+            label: "Status Page",
+            description: "Real-time uptime and incident history.",
+            href: "/status",
+            icon: BarChart3,
+            iconGradient: "from-[#22D3EE] to-[#046BD2]",
+          },
         ],
       },
     ],
@@ -238,6 +270,7 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[] }> = {
 const topLevelNav = [
   { label: "Products", megaMenu: "Products" },
   { label: "Solutions", megaMenu: "Solutions" },
+  { label: "Integrations", megaMenu: "Integrations" },
   { label: "Pricing", href: "/pricing" },
   { label: "Resources", megaMenu: "Resources" },
 ];
@@ -316,125 +349,122 @@ export function Navbar() {
                   </Link>
 
                   {/* Mega Menu */}
-                  {item.megaMenu && activeMenu === item.megaMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="fixed left-1/2 -translate-x-1/2 top-[80px] bg-white border border-gray-200 rounded-lg shadow-xl"
-                      style={{
-                        width: `min(calc(100vw - 2rem), ${item.megaMenu === "Resources" ? "800px" : "1000px"})`,
-                      }}
-                      onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
-                      onMouseLeave={handleMenuLeave}
-                    >
-                      <div
-                        className="grid gap-0 p-6"
-                        style={{
-                          gridTemplateColumns: `repeat(${megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig].columns.length}, 1fr)`,
-                        }}
-                      >
-                        {megaMenuConfig[
-                          item.megaMenu as keyof typeof megaMenuConfig
-                        ].columns.map((column, idx) => (
+                  <AnimatePresence>
+                    {item.megaMenu && activeMenu === item.megaMenu && (() => {
+                      const cfg = megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig];
+                      const allItems = cfg.columns.flatMap((c) => c.items);
+                      const itemCount = allItems.length;
+                      const panelWidth =
+                        itemCount <= 2 ? "560px" : itemCount <= 5 ? "720px" : "880px";
+                      const gridCols = itemCount <= 2 ? 1 : itemCount <= 5 ? 2 : 3;
+
+                      return (
+                        <motion.div
+                          key={item.megaMenu}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                          className="fixed left-1/2 -translate-x-1/2 top-[72px] z-50"
+                          style={{
+                            width: `min(calc(100vw - 2rem), ${panelWidth})`,
+                          }}
+                          onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
+                          onMouseLeave={handleMenuLeave}
+                        >
+                          {/* Gradient halo */}
                           <div
-                            key={idx}
-                            className={`px-4 ${idx < megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig].columns.length - 1 ? "border-r border-gray-100" : ""}`}
-                          >
-                            {column.featured ? (
-                              <div className="bg-[#F0F7FF] border border-[#D1E5FA] p-5 rounded-lg h-full">
-                                <div className="flex items-center gap-1.5 mb-3">
-                                  <Star className="w-4 h-4 text-[#046BD2] fill-[#046BD2]" />
-                                  <span className="text-xs font-semibold text-[#046BD2] uppercase tracking-wide">
-                                    Featured
-                                  </span>
-                                </div>
-                                {column.headline && (
-                                  <h3 className="font-bold text-gray-900 text-base mb-2">
-                                    {column.headline}
-                                  </h3>
-                                )}
-                                {column.description && (
-                                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                                    {column.description}
-                                  </p>
-                                )}
-                                {column.quote && (
-                                  <>
-                                    <p className="text-sm italic text-gray-700 mb-2">
-                                      {column.quote}
-                                    </p>
-                                    {column.attribution && (
-                                      <p className="text-xs text-gray-500 mb-4">
-                                        {column.attribution}
-                                      </p>
-                                    )}
-                                  </>
-                                )}
-                                <Link
-                                  href={column.ctaHref ?? "/"}
-                                  className="text-sm font-semibold text-[#046BD2] hover:text-[#0078E0] transition-colors inline-flex items-center gap-1"
+                            aria-hidden
+                            className="absolute -inset-4 -z-10 rounded-3xl opacity-70 blur-2xl pointer-events-none"
+                            style={{
+                              background:
+                                "radial-gradient(60% 60% at 50% 0%, rgba(4,107,210,0.35) 0%, rgba(34,211,238,0.10) 45%, transparent 75%)",
+                            }}
+                          />
+
+                          {/* Panel */}
+                          <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/5 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
+                            <div className="rounded-2xl bg-[#0A1020]/95 backdrop-blur-2xl overflow-hidden">
+                              {/* Top accent strip */}
+                              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#046BD2]/60 to-transparent" />
+
+                              {/* Card grid */}
+                              <div className="p-5">
+                                <div
+                                  className="grid gap-3"
+                                  style={{
+                                    gridTemplateColumns: `repeat(${gridCols}, 1fr)`,
+                                  }}
                                 >
-                                  {column.ctaText} <span>→</span>
-                                </Link>
-                              </div>
-                            ) : (
-                              <>
-                                <h4 className="font-bold text-[#046BD2] text-xs uppercase tracking-wider mb-4">
-                                  {column.title}
-                                </h4>
-                                <ul className="space-y-2.5">
-                                  {column.items?.map((menuItem, itemIdx) => {
+                                  {allItems.map((menuItem, itemIdx) => {
                                     const IconComponent = menuItem.icon;
                                     return (
-                                      <li key={itemIdx}>
-                                        <Link
-                                          href={menuItem.href ?? "/"}
-                                          className="flex items-start gap-3 text-sm text-gray-700 hover:text-gray-900 transition-colors hover:translate-x-0.5 group"
-                                        >
-                                          {IconComponent && (
-                                            <IconComponent className="w-5 h-5 text-[#046BD2] flex-shrink-0 mt-0.5" />
-                                          )}
-                                          <div>
-                                            <span className="font-medium">
+                                      <Link
+                                        key={itemIdx}
+                                        href={menuItem.href ?? "/"}
+                                        className="group/item relative flex gap-3.5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/15 p-3.5 transition-colors"
+                                      >
+                                        {IconComponent && (
+                                          <span
+                                            className={`relative flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br ${
+                                              menuItem.iconGradient ??
+                                              "from-[#046BD2] to-[#22D3EE]"
+                                            } shadow-[0_8px_24px_-8px_rgba(4,107,210,0.6)] shrink-0`}
+                                          >
+                                            <IconComponent className="w-4 h-4 text-white" />
+                                          </span>
+                                        )}
+                                        <div className="flex-1 min-w-0">
+                                          <div className="flex items-center gap-1.5 flex-wrap">
+                                            <span className="text-sm font-medium text-white leading-tight">
                                               {menuItem.label}
                                             </span>
-                                            {menuItem.subtitle && (
-                                              <span className="block text-xs text-gray-500 mt-0.5">
-                                                {menuItem.subtitle}
+                                            {menuItem.badge && (
+                                              <span
+                                                className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
+                                                  menuItem.badge === "New"
+                                                    ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
+                                                    : menuItem.badge === "AI"
+                                                    ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
+                                                    : menuItem.badge === "Beta"
+                                                    ? "bg-[#2575FC]/15 text-[#2D98F1] border border-[#2D98F1]/30"
+                                                    : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
+                                                }`}
+                                              >
+                                                {menuItem.badge}
                                               </span>
                                             )}
                                           </div>
-                                        </Link>
-                                      </li>
+                                          {(menuItem.description ||
+                                            menuItem.subtitle) && (
+                                            <p className="mt-1.5 text-xs text-white/55 leading-relaxed line-clamp-2">
+                                              {menuItem.description ??
+                                                menuItem.subtitle}
+                                            </p>
+                                          )}
+                                        </div>
+                                      </Link>
                                     );
                                   })}
-                                </ul>
-                              </>
-                            )}
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
+                        </motion.div>
+                      );
+                    })()}
+                  </AnimatePresence>
                 </div>
               ))}
             </div>
 
             {/* Right: CTA Buttons */}
             <div className="hidden md:flex items-center gap-3">
-              <Link
-                href="/sign-in"
-                className="text-white/90 hover:text-white text-sm font-normal transition-colors hover:-translate-y-px"
-              >
-                Sign in
-              </Link>
               <Button
-                className="bg-[#1A3C5E] hover:bg-[#162d45] text-white text-sm font-medium h-9 px-5 rounded"
+                className="bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium h-9 px-5 rounded-lg shadow-[0_0_24px_-8px_rgba(4,107,210,0.7)]"
                 asChild
               >
-                <Link href="/get-started">Get started</Link>
+                <Link href="/contact">Start a free trial</Link>
               </Button>
             </div>
 
@@ -463,17 +493,31 @@ export function Navbar() {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 right-0 w-full h-screen bg-white z-40 md:hidden overflow-y-auto flex flex-col"
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-0 right-0 w-full h-screen bg-[#0B1220] z-40 md:hidden overflow-y-auto flex flex-col"
           >
+            {/* Subtle background glow */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -z-0"
+              style={{
+                background:
+                  "radial-gradient(60% 40% at 100% 0%, rgba(4,107,210,0.25) 0%, transparent 70%)",
+              }}
+            />
+
             {/* Mobile Header */}
-            <div className="flex items-center justify-between h-16 px-6 border-b border-[#E5E5E5]">
-              <div className="text-lg font-bold text-gray-900">
-                Roz<span className="text-[#1A3C5E]">per</span>
-              </div>
+            <div className="relative flex items-center justify-between h-16 px-6 border-b border-white/10">
+              <Image
+                src="/images/white-rozper-logo.png"
+                alt="Rozper"
+                width={130}
+                height={40}
+                className="h-9 w-auto"
+              />
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 text-gray-900"
+                className="p-2 text-white/80 hover:text-white transition-colors"
                 aria-label="Close menu"
               >
                 <X className="w-6 h-6" />
@@ -481,48 +525,78 @@ export function Navbar() {
             </div>
 
             {/* Mobile Menu Items */}
-            <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2">
+            <div className="relative flex-1 overflow-y-auto px-4 py-4 space-y-1">
               {topLevelNav.map((item) => (
                 <div key={item.label}>
                   {item.megaMenu ? (
-                    <details className="group">
-                      <summary className="flex items-center justify-between py-3 cursor-pointer text-gray-900 font-medium text-base hover:text-[#1A3C5E] transition-colors">
-                        {item.label}
-                        <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform" />
+                    <details className="group rounded-xl overflow-hidden">
+                      <summary className="flex items-center justify-between px-3 py-3 cursor-pointer text-white font-medium text-base list-none rounded-xl hover:bg-white/[0.04] transition-colors">
+                        <span>{item.label}</span>
+                        <ChevronDown className="w-4 h-4 text-white/50 group-open:rotate-180 group-open:text-[#22D3EE] transition-transform" />
                       </summary>
-                      <div className="pl-4 space-y-3 pb-4">
-                        {megaMenuConfig[
-                          item.megaMenu as keyof typeof megaMenuConfig
-                        ].columns.map((column, idx) => (
-                          <div key={idx}>
-                            {!column.featured && (
-                              <>
-                                <h4 className="font-semibold text-xs uppercase text-gray-700 mb-2">
-                                  {column.title}
-                                </h4>
-                                <ul className="space-y-2">
-                                  {column.items?.map((subitem, subIdx) => (
-                                    <li key={subIdx}>
-                                      <Link
-                                        href={subitem.href ?? "/"}
-                                        className="text-sm text-gray-600 hover:text-[#1A3C5E] transition-colors block"
-                                        onClick={() => setIsOpen(false)}
+                      <div className="px-1 pb-3 pt-2">
+                        <ul className="space-y-1">
+                          {megaMenuConfig[
+                            item.megaMenu as keyof typeof megaMenuConfig
+                          ].columns
+                            .flatMap((c) => c.items)
+                            .map((subitem, subIdx) => {
+                              const IconComponent = subitem.icon;
+                              return (
+                                <li key={subIdx}>
+                                  <Link
+                                    href={subitem.href ?? "/"}
+                                    className="flex items-start gap-3 rounded-lg px-3 py-2.5 text-sm text-white/85 hover:text-white hover:bg-white/[0.04] transition-colors"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {IconComponent && (
+                                      <span
+                                        className={`flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${
+                                          subitem.iconGradient ??
+                                          "from-[#046BD2] to-[#22D3EE]"
+                                        } shrink-0`}
                                       >
-                                        {subitem.label}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </>
-                            )}
-                          </div>
-                        ))}
+                                        <IconComponent className="w-4 h-4 text-white" />
+                                      </span>
+                                    )}
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex items-center gap-1.5 flex-wrap">
+                                        <span className="text-sm font-medium text-white">
+                                          {subitem.label}
+                                        </span>
+                                        {subitem.badge && (
+                                          <span
+                                            className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
+                                              subitem.badge === "New"
+                                                ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
+                                                : subitem.badge === "AI"
+                                                ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
+                                                : subitem.badge === "Beta"
+                                                ? "bg-[#2575FC]/15 text-[#2D98F1] border border-[#2D98F1]/30"
+                                                : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
+                                            }`}
+                                          >
+                                            {subitem.badge}
+                                          </span>
+                                        )}
+                                      </div>
+                                      {(subitem.description || subitem.subtitle) && (
+                                        <p className="mt-0.5 text-xs text-white/50 leading-snug">
+                                          {subitem.description ?? subitem.subtitle}
+                                        </p>
+                                      )}
+                                    </div>
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                        </ul>
                       </div>
                     </details>
                   ) : (
                     <Link
                       href={item.href ?? "/"}
-                      className="block py-3 text-gray-900 font-medium text-base hover:text-[#1A3C5E] transition-colors"
+                      className="block px-3 py-3 text-white font-medium text-base rounded-xl hover:bg-white/[0.04] hover:text-white transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.label}
@@ -533,20 +607,14 @@ export function Navbar() {
             </div>
 
             {/* Mobile CTA Section */}
-            <div className="border-t border-[#E5E5E5] px-6 py-4 space-y-3 sticky bottom-0 bg-white">
-              <Link
-                href="/sign-in"
-                className="block py-3 text-center text-gray-700 text-sm font-medium hover:text-[#1A3C5E] transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Sign in
-              </Link>
+            <div className="relative border-t border-white/10 px-6 py-4 sticky bottom-0 bg-[#0B1220]">
               <Button
-                className="w-full bg-[#1A3C5E] hover:bg-[#162d45] text-white font-medium h-12 rounded"
+                className="w-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-medium h-12 rounded-xl shadow-[0_0_30px_-10px_rgba(4,107,210,0.7)]"
                 asChild
               >
-                <Link href="/get-started" onClick={() => setIsOpen(false)}>
-                  Get started
+                <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  Start a free trial
+                  <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
               </Button>
             </div>

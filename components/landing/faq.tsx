@@ -2,20 +2,20 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Plus, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
+import { Plus, Sparkles } from "lucide-react";
 
 const faqs = [
   {
-    category: "About",
-    question: "What exactly is Rozper?",
+    category: "Pricing",
+    question: "What's included in the $9.99 plan?",
     answer:
-      "Rozper is a global business communications platform offering UCaaS, wholesale voice, virtual phone numbers (150+ countries), SIP trunking, and bulk SMS — backed by 99.999% uptime and 24/7 human support. No fixed plans. You pay for what you actually use."
+      "Calling, extensions, voicemail, recording, IVR, SMS, video, AI Receptionist, omnichannel chat, team chat, and CRM sync — one local number per seat included.",
   },
   {
     category: "Coverage",
     question: "Does Rozper work internationally?",
     answer:
-      "Yes. Rozper covers 150+ countries with local virtual numbers, global outbound, carrier-grade routing, and 24/7 support from our Hong Kong HQ.",
+      "Yes. Rozper covers 150+ countries with local numbers, global outbound, carrier-grade routing, and 24/7 support from our Hong Kong HQ.",
   },
   {
     category: "Migration",
@@ -33,7 +33,13 @@ const faqs = [
     category: "Differentiator",
     question: "What makes Rozper different from other UCaaS platforms?",
     answer:
-      "Three things: 99.999% uptime on a carrier-grade network, 150+ country coverage, and genuine human support. We're partners, not just a platform.",
+      "Three things: 99.99% uptime on a carrier-grade network, 150+ country coverage, and genuine human support. We're partners, not just a platform.",
+  },
+  {
+    category: "Onboarding",
+    question: "How fast can we go live?",
+    answer:
+      "Most teams port numbers and onboard within 5–10 business days. Complex enterprise migrations get a dedicated implementation team.",
   },
 ];
 
@@ -45,7 +51,7 @@ export function FAQ() {
   return (
     <section
       ref={ref}
-      className="relative py-20 sm:py-24 overflow-hidden bg-[#0A1020]"
+      className="relative py-20 sm:py-28 overflow-hidden bg-[#070B14]"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -64,56 +70,23 @@ export function FAQ() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4 lg:sticky lg:top-32 lg:self-start"
+            className="lg:col-span-4 lg:sticky lg:top-6 lg:self-start lg:-mt-44"
           >
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-mono text-white/50">
               <span className="w-6 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
-              FAQ
+              Frequently Asked
             </div>
             <h2 className="font-display mt-5 text-4xl sm:text-5xl font-semibold text-white tracking-[-0.025em] leading-[1.05]">
-              Questions,{" "}
+              Questions before{" "}
               <span className="bg-gradient-to-r from-[#22D3EE] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">
-                answered straight.
+                you talk to us.
               </span>
             </h2>
-            <p className="mt-6 text-base text-[#9AA8BC] leading-relaxed">
+            <p className="mt-5 text-base text-[#9AA8BC] leading-relaxed">
               Everything you need to know before a 30-minute call. Don&apos;t
               see your question?
             </p>
 
-            {/* Help card */}
-            <div className="mt-8 relative group">
-              <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-white/10 via-[#046BD2]/30 to-transparent" />
-              <div className="relative rounded-2xl bg-[#0A1020] border border-white/5 p-5">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#046BD2] to-[#22D3EE] flex items-center justify-center">
-                    <MessageCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-widest font-mono text-emerald-400 flex items-center gap-1.5">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                      </span>
-                      Live
-                    </div>
-                    <div className="text-sm font-semibold text-white">
-                      Talk to a human
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-3 text-sm text-white/60 leading-relaxed">
-                  Avg response 47 seconds. No bot loop, no queue.
-                </p>
-                <a
-                  href="#contact"
-                  className="mt-4 group inline-flex items-center gap-1.5 text-sm font-medium text-[#22D3EE] hover:text-white transition-colors"
-                >
-                  Start a chat
-                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              </div>
-            </div>
           </motion.div>
 
           {/* Right: FAQ list */}
@@ -161,7 +134,7 @@ export function FAQ() {
                           {faq.category}
                         </span>
                         <span
-                          className={`font-semibold text-base sm:text-lg truncate transition-colors ${
+                          className={`font-semibold text-base sm:text-lg transition-colors ${
                             isOpen ? "text-white" : "text-white/85"
                           }`}
                         >
@@ -193,7 +166,7 @@ export function FAQ() {
                           }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 sm:px-6 pb-6 pt-0 pl-5 sm:pl-[7.25rem] text-[#9AA8BC] leading-relaxed">
+                          <div className="px-5 sm:px-6 pb-6 pt-0 sm:pl-[7.25rem] text-[#9AA8BC] leading-relaxed">
                             {faq.answer}
                           </div>
                         </motion.div>

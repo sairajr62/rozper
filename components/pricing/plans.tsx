@@ -126,7 +126,7 @@ const plans: Plan[] = [
       'HIPAA BAA · SOC 2 Type II',
       'BigQuery / Snowflake export',
       'Dedicated CSM + TAM',
-      '99.999% SLA + financial credits',
+      '99.99% SLA + financial credits',
     ],
   },
 ]

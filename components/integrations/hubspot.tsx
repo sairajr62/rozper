@@ -281,20 +281,72 @@ export function HubSpotPageView() {
           </div>
         </section>
 
-        {/* Testimonial */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-24 text-center">
-          <div className="w-14 h-14 mx-auto rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center mb-8">
-            <RefreshCw className="w-6 h-6 text-[#0086F9]" />
+        {/* Testimonials — clean 3-column grid, equal peers */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-12">
+            <p className="text-xs font-mono uppercase tracking-widest text-[#2D98F1] mb-3">// what teams say</p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold">From HubSpot teams.</h2>
+            <p className="mt-4 text-white/55 max-w-xl mx-auto">Real outcomes after teams connect Rozper to their HubSpot workspace.</p>
           </div>
-          <blockquote className="font-display text-2xl md:text-3xl font-medium leading-relaxed">
-            "Our HubSpot pipeline stays clean now. Every call logged, every deal stage moves automatically, and our reps have more time for actual selling."
-          </blockquote>
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold">EB</div>
-            <div className="text-left">
-              <div className="font-semibold">Elliot Barnes</div>
-              <div className="text-xs text-white/50">Sales Manager · Pivot Growth Agency</div>
-            </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                initials: 'EB', name: 'Elliot Barnes', title: 'Sales Manager · Pivot Growth Agency',
+                badge: 'Pipeline hygiene',
+                quote: 'Our HubSpot pipeline stays clean now. Every call logged, every deal stage moves automatically, and our reps have more time for actual selling.',
+                stat: { v: '100%', k: 'auto-logged' },
+              },
+              {
+                initials: 'NK', name: 'Naomi Khalil', title: 'RevOps Lead · Forge Labs',
+                badge: 'AI summaries',
+                quote: 'AI summaries land in the deal record before the rep is even back at their desk. Our handoff between SDR and AE got dramatically cleaner.',
+                stat: { v: '<10s', k: 'summary in HubSpot' },
+              },
+              {
+                initials: 'DR', name: 'Diego Reyes', title: 'Sales Director · Loop Studio',
+                badge: 'Deal automation',
+                quote: 'Deal stages move themselves based on call outcomes. My team went from chasing data entry to chasing pipeline.',
+                stat: { v: '+27%', k: 'rep selling time' },
+              },
+            ].map((t, i) => (
+              <motion.div
+                key={t.name}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="group relative flex flex-col rounded-3xl bg-[#111B2D] border border-white/10 hover:border-[#046BD2]/40 transition p-6 overflow-hidden"
+              >
+                {/* Top accent bar (subtle) */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#046BD2]/50 to-transparent" />
+
+                {/* Header row — category + index */}
+                <div className="flex items-center justify-between mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-[#046BD2]/12 border border-[#046BD2]/25 text-[10px] font-mono uppercase tracking-widest text-[#2D98F1]">
+                    {t.badge}
+                  </span>
+                  <span className="font-mono text-[10px] text-white/30 tabular-nums">{String(i + 1).padStart(2, '0')} / 03</span>
+                </div>
+
+                {/* Quote */}
+                <blockquote className="text-[14px] md:text-[15px] text-white/82 leading-relaxed flex-1">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+
+                {/* Stat row */}
+                <div className="my-5 flex items-baseline gap-2 py-3 border-y border-white/8">
+                  <span className="font-display text-2xl font-bold bg-gradient-to-br from-[#2D98F1] to-[#046BD2] bg-clip-text text-transparent tabular-nums leading-none">{t.stat.v}</span>
+                  <span className="text-[11px] font-mono text-white/45 uppercase tracking-wider">{t.stat.k}</span>
+                </div>
+
+                {/* Author */}
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] font-display font-bold text-xs flex-shrink-0">{t.initials}</div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-sm leading-tight truncate">{t.name}</div>
+                    <div className="text-[10px] text-white/45 font-mono truncate leading-tight">{t.title}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 

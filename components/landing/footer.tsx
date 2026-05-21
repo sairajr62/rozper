@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Linkedin, Youtube, Github, ArrowUpRight, Send } from 'lucide-react'
-import { useState } from 'react'
+import { ArrowUpRight, Linkedin, Twitter, Facebook } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 const footerColumns = [
   {
@@ -21,9 +21,8 @@ const footerColumns = [
     title: 'Company',
     links: [
       { label: 'About', href: '/about' },
-      { label: 'Customers', href: '/customers' },
-      { label: 'Careers', href: '/careers', badge: 'Hiring' },
-      { label: 'Press', href: '/press' },
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'HubSpot Integration', href: '/integrations/hubspot' },
       { label: 'Contact', href: '/contact' },
     ],
   },
@@ -33,25 +32,21 @@ const footerColumns = [
       { label: 'Docs', href: '/docs' },
       { label: 'API Reference', href: '/docs/api' },
       { label: 'Status', href: '/status' },
-      { label: 'Changelog', href: '/changelog' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Security', href: '/security' },
     ],
   },
 ]
 
+type Social = { Icon: LucideIcon; label: string; href?: string }
+
+const socials: Social[] = [
+  { Icon: Linkedin, href: 'https://linkedin.com/company/rozper', label: 'LinkedIn' },
+  { Icon: Twitter, label: 'Twitter' },
+  { Icon: Facebook, label: 'Facebook' },
+]
+
 export function Footer() {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (email) {
-      setSubscribed(true)
-      setEmail('')
-      setTimeout(() => setSubscribed(false), 3000)
-    }
-  }
-
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -97,38 +92,42 @@ export function Footer() {
               wholesale VoIP — one platform built to scale.
             </p>
 
-            {/* Newsletter */}
-            <form onSubmit={handleSubscribe} className="mt-7 max-w-sm">
-              <div className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40 mb-2.5">
-                Get the changelog
+            {/* Social */}
+            <div className="mt-7">
+              <div className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40 mb-3">
+                Follow us
               </div>
-              <div className="relative flex items-center rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md focus-within:border-[#22D3EE]/40 transition-colors">
-                <input
-                  type="email"
-                  placeholder="you@company.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 bg-transparent px-4 py-3 text-sm text-white placeholder-white/30 outline-none"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="m-1 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium transition-colors"
-                >
-                  {subscribed ? (
-                    'Subscribed'
+              <div className="flex items-center gap-2.5">
+                {socials.map(({ Icon, href, label }) => {
+                  const className =
+                    'group w-10 h-10 rounded-xl flex items-center justify-center bg-white/[0.03] border border-white/10 text-white/65 hover:text-white hover:bg-white/[0.06] hover:border-[#22D3EE]/30 transition-colors'
+                  const inner = (
+                    <Icon className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+                  )
+                  return href ? (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className={className}
+                    >
+                      {inner}
+                    </a>
                   ) : (
-                    <>
-                      <Send className="w-3.5 h-3.5" />
-                      Subscribe
-                    </>
-                  )}
-                </button>
+                    <span
+                      key={label}
+                      aria-label={label}
+                      role="presentation"
+                      className={className}
+                    >
+                      {inner}
+                    </span>
+                  )
+                })}
               </div>
-              <p className="mt-2 text-[11px] text-white/30">
-                Monthly. Plain text. Unsubscribe anytime.
-              </p>
-            </form>
+            </div>
           </div>
 
           {/* Link columns */}
@@ -152,11 +151,6 @@ export function Footer() {
                       className="group inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors"
                     >
                       {link.label}
-                      {'badge' in link && link.badge && (
-                        <span className="text-[9px] uppercase tracking-widest font-mono px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
-                          {link.badge}
-                        </span>
-                      )}
                     </a>
                   </li>
                 ))}
@@ -165,24 +159,6 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Stats strip */}
-        <div className="mt-12 pt-8 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
-          {[
-            { v: '99.999%', l: 'Contracted uptime' },
-            { v: '150+', l: 'Countries served' },
-            { v: '300+', l: 'Native integrations' },
-            { v: '24/7', l: 'Live engineer NOC' },
-          ].map((s) => (
-            <div key={s.l} className="bg-[#0A1020] px-5 py-4">
-              <div className="font-display text-xl sm:text-2xl font-bold bg-gradient-to-br from-[#22D3EE] to-[#046BD2] bg-clip-text text-transparent tabular-nums">
-                {s.v}
-              </div>
-              <div className="text-[10px] uppercase tracking-widest font-mono text-white/40 mt-1">
-                {s.l}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Bottom strip */}
@@ -212,43 +188,8 @@ export function Footer() {
               <a href="/legal/terms" className="hover:text-white transition-colors">
                 Terms
               </a>
-              <a href="/legal/dpa" className="hover:text-white transition-colors">
-                DPA
-              </a>
-              <a href="/legal/cookies" className="hover:text-white transition-colors">
-                Cookies
-              </a>
             </div>
 
-            <div className="flex items-center gap-2">
-              {[
-                { Icon: Linkedin, href: 'https://linkedin.com/company/rozper', label: 'LinkedIn' },
-                { Icon: Youtube, href: 'https://youtube.com/rozper', label: 'YouTube' },
-                { Icon: Github, href: 'https://github.com/rozper', label: 'GitHub' },
-              ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.03] border border-white/5 text-white/60 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition-colors"
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                </a>
-              ))}
-              <a
-                href="https://x.com/rozper"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X"
-                className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.03] border border-white/5 text-white/60 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition-colors"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.514l-5.106-6.665-5.835 6.665H2.306l7.644-8.77L2.25 2.25h6.734l4.615 6.111L17.939 2.25zM16.369 20.033h1.83L5.337 3.987H3.425l12.944 16.046z" />
-                </svg>
-              </a>
-            </div>
           </div>
         </div>
       </div>
