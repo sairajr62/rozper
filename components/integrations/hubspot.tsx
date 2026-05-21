@@ -201,25 +201,33 @@ export function HubSpotPageView() {
           </div>
 
           <div className="relative">
-            {/* Vertical connector */}
-            <div className="absolute left-[1.85rem] top-6 bottom-6 w-px bg-gradient-to-b from-[#046BD2] via-[#0086F9] to-transparent" />
+            {/* Vertical journey path */}
+            <div className="absolute left-[1.85rem] top-7 bottom-7 w-px bg-gradient-to-b from-[#046BD2] via-[#0086F9]/70 to-[#046BD2]/20" />
 
-            <div className="space-y-6">
+            <div className="space-y-12">
               {syncFlow.map((s, i) => (
                 <motion.div
                   key={s.step}
-                  initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                  initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="flex items-start gap-5"
                 >
-                  <div className="w-14 h-14 flex-shrink-0 rounded-2xl bg-[#046BD2]/15 border border-[#046BD2]/30 flex items-center justify-center relative z-10">
-                    <span className="font-mono text-xs text-[#0086F9] font-bold">{s.step}</span>
+                  {/* Node — opaque bg so the line visually terminates here */}
+                  <div className="relative w-14 h-14 flex-shrink-0 rounded-2xl bg-[#0B1220] border border-[#046BD2]/40 flex items-center justify-center z-10 shadow-[0_0_0_4px_rgba(4,107,210,0.12),0_0_18px_rgba(0,134,249,0.12)]">
+                    <motion.div
+                      className="absolute inset-0 rounded-2xl bg-[#046BD2]/10"
+                      animate={{ opacity: [0.4, 1, 0.4] }}
+                      transition={{ duration: 3, repeat: Infinity, delay: i * 0.6, ease: 'easeInOut' }}
+                    />
+                    <span className="font-mono text-xs text-[#0086F9] font-bold relative z-10">{s.step}</span>
                   </div>
-                  <div className="flex-1 pt-2">
-                    <div className="flex items-center gap-3 mb-1">
-                      <span className="font-display font-semibold text-white">{s.label}</span>
+
+                  {/* Content */}
+                  <div className="flex-1 pt-3 pb-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="font-display font-semibold text-white text-[1.05rem]">{s.label}</span>
                       <span className={`px-2 py-0.5 rounded-md text-[10px] font-mono border ${sideColors[s.side]}`}>{sideLabel[s.side]}</span>
                     </div>
-                    <p className="text-sm text-white/50">{s.detail}</p>
+                    <p className="text-sm text-white/50 leading-relaxed">{s.detail}</p>
                   </div>
                 </motion.div>
               ))}
