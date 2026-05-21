@@ -302,23 +302,18 @@ export function FinancePageView() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-2xl border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#0B1220] p-12 md:p-20 overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#046BD2]/10 blur-3xl" />
-            <div className="relative grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
-                  Reduce audit prep<br />from weeks to <span className="text-[#0086F9]">minutes</span>.
-                </h2>
-                <p className="mt-6 text-white/60 max-w-md">Built for banks, insurance, broker-dealers, and fintech. SOC 2 Type II certified.</p>
-              </div>
-              <div className="flex flex-col gap-3 md:items-end">
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#046BD2] text-white font-semibold rounded hover:bg-[#0086F9] transition">
-                  Talk to compliance team <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="/pricing" className="inline-flex items-center justify-center gap-2 px-7 py-4 border border-[#046BD2]/30 text-[#2D98F1] rounded hover:bg-[#046BD2]/10 transition font-medium">
-                  Pricing
-                </Link>
-              </div>
+          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">
+              Reduce audit prep<br />from weeks to minutes.
+            </h2>
+            <p className="mt-6 text-white/80 max-w-md mx-auto">Built for banks, insurance, broker-dealers, and fintech. SOC 2 Type II certified.</p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">
+                See pricing
+              </Link>
+              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+                Talk to compliance team <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>
