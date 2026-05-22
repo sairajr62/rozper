@@ -204,9 +204,11 @@ export function ContactCenterPageView() {
               </motion.div>
             </div>
 
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
-              <LiveDashboard />
-            </motion.div>
+            <div className="hidden md:block">
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
+                <LiveDashboard />
+              </motion.div>
+            </div>
           </div>
         </section>
 

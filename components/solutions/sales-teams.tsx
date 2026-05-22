@@ -162,10 +162,12 @@ export function SalesTeamsPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="space-y-4">
-            <Leaderboard />
-            <SalesPipeline />
-          </motion.div>
+          <div className="hidden sm:block">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="space-y-4">
+              <Leaderboard />
+              <SalesPipeline />
+            </motion.div>
+          </div>
         </section>
 
         {/* Features grid */}

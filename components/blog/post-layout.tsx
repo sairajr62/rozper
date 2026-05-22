@@ -413,6 +413,8 @@ export function PostLayout({
   author: BlogAuthor
 }) {
   const articleRef = useRef<HTMLElement>(null)
+  const tocListRef = useRef<HTMLUListElement>(null)
+  const activeIdRef = useRef<string>("")
   const [activeId, setActiveId] = useState<string>("")
 
   // Bake heading IDs into the HTML string up-front (runs identically on
@@ -424,12 +426,32 @@ export function PostLayout({
     [html],
   )
 
-  // TOC navigation is handled by the native `<a href="#id">` anchors: the
-  // heading IDs are baked into the markup (see injectHeadingIds) and the
-  // `.blog-prose` headings carry `scroll-margin-top: 112px`, so the browser
-  // smooth-scrolls each target to just below the fixed navbar. We only need
-  // to reflect the chosen section in the active-highlight state.
-  const handleTocClick = (id: string) => setActiveId(id)
+  // TOC click: scroll the heading to just below the fixed navbar explicitly.
+  // The anchors keep their real `href="#id"` (SSR-friendly, right-click /
+  // open-in-new-tab still work, and they're keyboard-focusable), but we
+  // intercept the plain click so the scroll is deterministic — relying on the
+  // browser's native fragment scroll proved unreliable here. We mirror the
+  // section into the URL hash (replaceState, no history spam) and optimistically
+  // set the active row; the scroll-spy keeps it in sync afterward.
+  const NAV_OFFSET = 112
+  const handleTocClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) => {
+    // let modified clicks (new tab, etc.) behave natively
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+    e.preventDefault()
+    const el = document.getElementById(id)
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" })
+      if (window.location.hash !== `#${id}`) {
+        window.history.replaceState(null, "", `#${id}`)
+      }
+    }
+    activeIdRef.current = id
+    setActiveId(id)
+  }
 
   // Post-render enhancements (FAQ accordion + mid-article CTAs) and scroll-spy.
   // IDs are already in the markup, so this no longer touches them.
@@ -445,10 +467,9 @@ export function PostLayout({
     // Transform any FAQ section into a collapsible accordion.
     transformFaqSections(article)
 
-    const headings = Array.from(
-      article.querySelectorAll<HTMLHeadingElement>("h2, h3"),
+    const h2s = Array.from(
+      article.querySelectorAll<HTMLHeadingElement>("h2"),
     )
-    const h2s = headings.filter((h) => h.tagName === "H2")
 
     // Inject a mid-article CTA before every 3rd H2 (needs ≥ 4 H2s; never on
     // the final one so it doesn't collide with the end CTA card).
@@ -466,19 +487,93 @@ export function PostLayout({
       })
     }
 
-    // Scroll-spy for TOC active state.
-    if (!headings.length) return
-    const observer = new IntersectionObserver(
-      (mutations) => {
-        const visible = mutations
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visible[0]) setActiveId(visible[0].target.id)
-      },
-      { rootMargin: "-25% 0px -65% 0px", threshold: [0, 1] },
-    )
-    headings.forEach((h) => observer.observe(h))
-    return () => observer.disconnect()
+    // ── Scroll-spy ────────────────────────────────────────────────────────
+    // Position-based rather than IntersectionObserver: the active section is
+    // the *last* heading whose top has crossed the offset line just under the
+    // fixed navbar. This tracks the section you're actually reading
+    // continuously — even through long sections that never put a heading
+    // inside a narrow observer band — which is what makes the reference TOC
+    // feel "live". We mirror the active section into the URL hash (via
+    // replaceState, so the Back button isn't polluted) and keep the active
+    // TOC row scrolled into view inside its (scrollable) list.
+    // Re-query the headings on every tick rather than capturing them once:
+    // post-render mutations (FAQ accordion, injected CTAs) and dev-mode
+    // re-renders can detach the original nodes, leaving stale references
+    // whose getBoundingClientRect() reads as 0 — which would pin the active
+    // section to the last heading forever. A fresh query is cheap (≈30 nodes,
+    // throttled to one rAF per scroll) and always reflects the live DOM.
+    const getHeadings = () =>
+      Array.from(
+        article.querySelectorAll<HTMLHeadingElement>("h2[id], h3[id]"),
+      )
+    if (!getHeadings().length) return
+
+    const OFFSET = 140 // px from top ≈ navbar height + breathing room
+    let ticking = false
+
+    const computeActive = () => {
+      ticking = false
+      const headings = getHeadings()
+      if (!headings.length) return
+      const scrollY = window.scrollY
+      const doc = document.documentElement
+      const atBottom = window.innerHeight + scrollY >= doc.scrollHeight - 4
+
+      let current = headings[0]
+      if (atBottom) {
+        current = headings[headings.length - 1]
+      } else {
+        for (const h of headings) {
+          if (h.getBoundingClientRect().top - OFFSET <= 0) current = h
+          else break
+        }
+      }
+
+      const id = current.id
+      if (!id || id === activeIdRef.current) return
+      activeIdRef.current = id
+      setActiveId(id)
+
+      // Reflect active section in the URL without jumping or adding history.
+      const newHash = `#${id}`
+      if (window.location.hash !== newHash) {
+        window.history.replaceState(null, "", newHash)
+      }
+
+      // Keep the active TOC row visible inside the scrollable list.
+      const list = tocListRef.current
+      if (list) {
+        const row = list.querySelector<HTMLElement>(`[data-toc-id="${id}"]`)
+        if (row) {
+          const rTop = row.offsetTop
+          const rBot = rTop + row.offsetHeight
+          if (
+            rTop < list.scrollTop ||
+            rBot > list.scrollTop + list.clientHeight
+          ) {
+            list.scrollTo({
+              top: rTop - list.clientHeight / 2 + row.offsetHeight / 2,
+              behavior: "smooth",
+            })
+          }
+        }
+      }
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(computeActive)
+      }
+    }
+
+    computeActive()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+    }
   }, [processedHtml])
 
   return (
@@ -499,18 +594,23 @@ export function PostLayout({
                     <span className="w-4 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
                     Table of contents
                   </div>
-                  <ul className="space-y-0.5 max-h-[55vh] overflow-y-auto pr-1">
+                  <ul
+                    ref={tocListRef}
+                    className="space-y-0.5"
+                  >
                     {toc.map((entry, i) => {
                       const isActive = activeId === entry.id
                       return (
                         <li key={entry.id}>
                           <a
                             href={`#${entry.id}`}
-                            onClick={() => handleTocClick(entry.id)}
-                            className={`group flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm transition-colors ${
+                            data-toc-id={entry.id}
+                            onClick={(e) => handleTocClick(e, entry.id)}
+                            aria-current={isActive ? "location" : undefined}
+                            className={`group flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm border-l-2 transition-colors ${
                               isActive
-                                ? "bg-[#046BD2]/15 text-white"
-                                : "text-white/55 hover:text-white/90 hover:bg-white/[0.04]"
+                                ? "border-[#22D3EE] bg-[#046BD2]/15 text-white"
+                                : "border-transparent text-white/55 hover:text-white/90 hover:bg-white/[0.04]"
                             } ${entry.level === 3 ? "pl-6 text-[13px]" : ""}`}
                           >
                             <span

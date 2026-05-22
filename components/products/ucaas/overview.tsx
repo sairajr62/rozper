@@ -3,30 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
+import { LaptopHero } from '@/components/products/ucaas/laptop-hero'
 import {
   Globe2, Phone, Video, MessageSquare, Bot, Headphones, Zap, Shield,
-  ArrowRight, ChevronRight, Wifi, MapPin, Plug, Layers,
+  ArrowRight, ChevronRight, Wifi, Plug, Layers, MapPin,
 } from 'lucide-react'
-
-const nodes = [
-  { x: 18, y: 35, label: 'NYC' },
-  { x: 28, y: 28, label: 'TOR' },
-  { x: 32, y: 50, label: 'MEX' },
-  { x: 47, y: 30, label: 'LON' },
-  { x: 50, y: 38, label: 'PAR' },
-  { x: 53, y: 45, label: 'MAD' },
-  { x: 56, y: 60, label: 'LOS' },
-  { x: 63, y: 32, label: 'BER' },
-  { x: 70, y: 42, label: 'DUB' },
-  { x: 75, y: 50, label: 'BLR' },
-  { x: 82, y: 45, label: 'TYO' },
-  { x: 86, y: 65, label: 'SYD' },
-  { x: 22, y: 60, label: 'SAO' },
-  { x: 12, y: 40, label: 'SFO' },
-]
 
 const products = [
   { icon: Phone, name: 'Business Phone', desc: 'Cloud calling in 150+ countries', href: '/products/ucaas/business-phone' },
@@ -68,83 +51,6 @@ const faqs = [
   { q: 'How quickly can we get started?', a: 'Most teams are up and running within a day. Port existing numbers or get new ones instantly.' },
 ]
 
-function GlobalMap() {
-  return (
-    <div className="relative w-full aspect-[16/10] rounded-3xl bg-gradient-to-br from-[#111B2D] to-[#0B1220] border border-white/10 overflow-hidden">
-      {/* Dot grid */}
-      <div className="absolute inset-0" style={{
-        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)',
-        backgroundSize: '20px 20px',
-      }} />
-
-      {/* World map country outlines */}
-      <ComposableMap
-        projectionConfig={{ scale: 155, center: [10, 5] }}
-        style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
-      >
-        <Geographies geography="/countries-110m.json">
-          {({ geographies }) =>
-            geographies.map((geo) => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                fill="rgba(0, 134, 249, 0.06)"
-                stroke="rgba(0, 134, 249, 0.25)"
-                strokeWidth={0.4}
-                style={{
-                  default: { outline: 'none' },
-                  hover: { outline: 'none', fill: 'rgba(0, 134, 249, 0.06)' },
-                  pressed: { outline: 'none' },
-                }}
-              />
-            ))
-          }
-        </Geographies>
-      </ComposableMap>
-
-      {/* Animated city nodes and connection lines */}
-      <svg viewBox="0 0 100 75" className="absolute inset-0 w-full h-full">
-        {nodes.flatMap((a, i) =>
-          nodes.slice(i + 1).map((b, j) => {
-            const dist = Math.hypot(a.x - b.x, a.y - b.y)
-            if (dist > 22 || (i + j) % 2 === 0) return null
-            return (
-              <line
-                key={`${i}-${j}`}
-                x1={a.x} y1={a.y} x2={b.x} y2={b.y}
-                stroke="#0086F9"
-                strokeWidth="0.15"
-                strokeOpacity="0.5"
-              />
-            )
-          })
-        )}
-        {nodes.map((n, i) => (
-          <g key={n.label}>
-            <motion.circle
-              cx={n.x} cy={n.y} r="2"
-              fill="#0086F9"
-              fillOpacity="0.2"
-              animate={{ r: [1.5, 4, 1.5], fillOpacity: [0.2, 0, 0.2] }}
-              transition={{ duration: 3, repeat: Infinity, delay: i * 0.2 }}
-            />
-            <circle cx={n.x} cy={n.y} r="0.8" fill="#0086F9" />
-          </g>
-        ))}
-      </svg>
-
-      <div className="absolute top-6 left-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur">
-        <Wifi className="w-3.5 h-3.5 text-emerald-400" />
-        <span className="text-xs font-mono text-white/70">Carrier mesh · 150+ countries</span>
-      </div>
-      <div className="absolute bottom-6 right-6 px-4 py-2 rounded bg-white/5 border border-white/10 backdrop-blur">
-        <div className="text-[10px] font-mono uppercase tracking-widest text-white/50">Edge POPs</div>
-        <div className="font-display text-2xl font-bold text-white">42</div>
-      </div>
-    </div>
-  )
-}
-
 export function UcaasPageView() {
   return (
     <main className="min-h-screen bg-[#0B1220]">
@@ -161,49 +67,60 @@ export function UcaasPageView() {
           </div>
         </div>
 
-        {/* Hero */}
+        {/* Hero — 2-column */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#046BD2]/30 bg-[#046BD2]/5 mb-8">
-              <Globe2 className="w-4 h-4 text-[#0086F9]" />
-              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Unified Communications</span>
-            </motion.div>
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start">
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight">
-              One platform.<br />
-              <span className="bg-gradient-to-r from-[#0086F9] via-[#2D98F1] to-[#2575FC] bg-clip-text text-transparent">Every country</span>.
-            </motion.h1>
-
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-6 text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
-              Voice, video, messaging, and AI in one platform. One seat. One bill. One support team. <span className="text-white">From $12.99/user/mo.</span>
-            </motion.p>
-
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap justify-center gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-[#046BD2] to-[#0078E0] text-white font-semibold hover:shadow-[0_0_40px_rgba(56,189,248,0.5)] transition-shadow">
-                Start a No-Pressure Conversation
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">
-                Pricing — from $12.99/seat
-              </Link>
-            </motion.div>
-          </div>
-
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.4 } }}>
-            <GlobalMap />
-          </motion.div>
-
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {[{ k: 'Countries', v: '150+' }, { k: 'Uptime SLA', v: '99.99%' }, { k: 'From/User/Mo', v: '$12.99' }, { k: 'Support', v: '24/7' }].map((s, i) => (
-              <motion.div
-                key={s.k}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur text-center"
-              >
-                <div className="font-display text-3xl font-bold bg-gradient-to-br from-[#2D98F1] to-[#2575FC] bg-clip-text text-transparent">{s.v}</div>
-                <div className="text-xs text-white/50 mt-1 font-mono uppercase tracking-wider">{s.k}</div>
+            {/* ── Left: copy ── */}
+            <div>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#046BD2]/30 bg-[#046BD2]/5 mb-8">
+                <Globe2 className="w-4 h-4 text-[#0086F9]" />
+                <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">UCaaS · Unified Communications</span>
               </motion.div>
-            ))}
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
+                className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+              >
+                One platform.<br />
+                <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent italic">Every country</span>.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.2 } }}
+                className="mt-6 text-lg text-white/60 max-w-lg leading-relaxed"
+              >
+                Voice, video, messaging, and AI in one platform. One seat. One bill. One support team.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.3 } }}
+                className="mt-10 flex flex-wrap gap-3"
+              >
+                <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+                  Start a free trial
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">
+                  See Pricing
+                </Link>
+              </motion.div>
+
+            </div>
+
+            {/* ── Right: GSAP laptop ── */}
+            <div className="hidden sm:block">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0, transition: { delay: 0.25, ease: 'easeOut' } }}
+                className="relative"
+              >
+                <LaptopHero />
+              </motion.div>
+            </div>
           </div>
         </section>
 

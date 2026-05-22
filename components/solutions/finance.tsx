@@ -127,7 +127,7 @@ export function FinancePageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }} className="rounded border border-[#046BD2]/20 bg-[#111B2D] p-5">
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }} className="hidden sm:block rounded border border-[#046BD2]/20 bg-[#111B2D] p-5">
             <div className="flex items-center justify-between mb-3">
               <div>
                 <div className="text-[10px] font-mono uppercase tracking-widest text-[#0086F9]/60">Audit Readiness Index</div>

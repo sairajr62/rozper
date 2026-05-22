@@ -123,9 +123,11 @@ export function HealthcarePageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
-            <HeartMonitor />
-          </motion.div>
+          <div className="hidden sm:block">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
+              <HeartMonitor />
+            </motion.div>
+          </div>
         </section>
 
         {/* Features as care cards */}
