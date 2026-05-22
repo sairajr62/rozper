@@ -2,12 +2,12 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
+import { ChatbotHero } from '@/components/products/ucaas/chatbot-hero'
 import {
-  MessageSquare, Zap, Users, BarChart3, Globe, Code,
-  ArrowRight, ChevronRight, Bot, X,
+  Zap, Users, BarChart3, Globe, Code,
+  ArrowRight, ChevronRight, Bot,
 } from 'lucide-react'
 
 const features = [
@@ -25,96 +25,6 @@ const faqs = [
   { q: 'How does live agent handoff work?', a: 'When the AI can\'t help or the visitor requests it, chat routes to a live agent with full conversation history.' },
 ]
 
-const botMessages = [
-  { from: 'bot', text: 'Hi! I\'m Rozper\'s assistant. How can I help today?' },
-  { from: 'user', text: 'I need pricing for a 20-person team.' },
-  { from: 'bot', text: 'For 20 users, our Business plan comes to $199/mo — that\'s voice, SMS, video, and AI included. Want me to book a quick call with our team?' },
-  { from: 'user', text: 'Yes, that would be great.' },
-  { from: 'bot', text: 'Perfect! Checking available slots now...' },
-]
-
-function ChatbotWidget() {
-  const [open, setOpen] = useState(true)
-
-  return (
-    <div className="relative">
-      {/* Mock webpage background */}
-      <div className="rounded-3xl bg-[#0B1220] border border-white/10 overflow-hidden">
-        <div className="px-5 py-3 bg-[#0B1220] border-b border-white/5 flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-            <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
-          </div>
-          <div className="flex-1 mx-4 py-1 px-3 rounded bg-white/5 text-[9px] font-mono text-white/20">
-            yoursite.com/pricing
-          </div>
-        </div>
-
-        {/* Page content */}
-        <div className="p-6 min-h-[300px] relative">
-          <div className="space-y-3 opacity-30 pointer-events-none select-none">
-            <div className="h-3 bg-white/20 rounded w-2/3" />
-            <div className="h-2 bg-white/10 rounded w-full" />
-            <div className="h-2 bg-white/10 rounded w-5/6" />
-            <div className="h-2 bg-white/10 rounded w-4/5" />
-            <div className="mt-4 h-3 bg-white/20 rounded w-1/2" />
-            <div className="h-2 bg-white/10 rounded w-full" />
-            <div className="h-2 bg-white/10 rounded w-3/4" />
-          </div>
-
-          {/* Chat widget */}
-          {open && (
-            <motion.div initial={{ opacity: 0, y: 20, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }}
-              className="absolute bottom-4 right-4 w-64 rounded-2xl bg-[#111B2D] border border-white/15 shadow-2xl overflow-hidden">
-              <div className="px-4 py-3 bg-[#046BD2] flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Bot className="w-4 h-4 text-white" />
-                  <span className="text-xs font-semibold text-white">Rozper Assistant</span>
-                </div>
-                <button onClick={() => setOpen(false)} className="hover:opacity-75 transition">
-                  <X className="w-3.5 h-3.5 text-white" />
-                </button>
-              </div>
-
-              <div className="p-3 space-y-2 max-h-48 overflow-y-auto">
-                {botMessages.map((m, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.15 }}
-                    className={`flex ${m.from === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-[85%] px-3 py-2 rounded-xl text-[10px] leading-relaxed ${
-                      m.from === 'bot' ? 'bg-white/[0.07] text-white/75' : 'bg-[#046BD2] text-white'
-                    }`}>
-                      {m.text}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="px-3 py-2 border-t border-white/10 flex items-center gap-2">
-                <div className="flex-1 text-[10px] text-white/25 font-mono">Type a message…</div>
-                <button className="w-6 h-6 rounded-lg bg-[#046BD2] flex items-center justify-center">
-                  <ArrowRight className="w-3 h-3 text-white" />
-                </button>
-              </div>
-            </motion.div>
-          )}
-
-          {!open && (
-            <motion.button initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }}
-              onClick={() => setOpen(true)}
-              className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-[#046BD2] flex items-center justify-center shadow-lg hover:bg-[#0086F9] transition">
-              <MessageSquare className="w-5 h-5 text-white" />
-            </motion.button>
-          )}
-        </div>
-      </div>
-
-      <div className="mt-3 px-4 py-2.5 rounded-xl bg-[#111B2D] border border-white/8 text-[10px] font-mono text-white/30 text-center">
-        Embed with one script tag · Converts 3× more visitors than forms
-      </div>
-    </div>
-  )
-}
 
 export function ProdUCaaSWebsiteChatbotPageView() {
   return (
@@ -134,7 +44,7 @@ export function ProdUCaaSWebsiteChatbotPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
               <Bot className="w-3.5 h-3.5 text-[#0086F9]" />
@@ -158,9 +68,15 @@ export function ProdUCaaSWebsiteChatbotPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
-            <ChatbotWidget />
-          </motion.div>
+          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 380 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }}
+              className="relative"
+            >
+              <ChatbotHero />
+            </motion.div>
+          </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">

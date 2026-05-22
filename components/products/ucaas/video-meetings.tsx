@@ -4,9 +4,10 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
+import { TabletVideoHero } from '@/components/products/ucaas/tablet-video-hero'
 import {
   Video, Users, FileText, Monitor, Shield, Zap,
-  ArrowRight, ChevronRight, Mic, MicOff, VideoOff,
+  ArrowRight, ChevronRight,
 } from 'lucide-react'
 
 const features = [
@@ -24,82 +25,6 @@ const faqs = [
   { q: 'How many participants can join?', a: 'Up to 200. Contact us for larger webinar plans with up to 1,000 attendees.' },
 ]
 
-const participants = [
-  { initials: 'ML', name: 'Marcus L.', speaking: true, muted: false },
-  { initials: 'PN', name: 'Priya N.', speaking: false, muted: false },
-  { initials: 'LH', name: 'Layla H.', speaking: false, muted: true },
-  { initials: 'JK', name: 'Jordan K.', speaking: false, muted: true },
-  { initials: 'DF', name: 'Diego F.', speaking: false, muted: false },
-  { initials: 'ST', name: 'Sam T.', speaking: false, muted: false },
-]
-
-function VideoGrid() {
-  return (
-    <div className="rounded-3xl bg-[#111B2D] border border-white/10 overflow-hidden">
-      <div className="px-5 py-3 bg-[#0B1220] border-b border-white/10 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Video className="w-4 h-4 text-[#0086F9]" />
-          <span className="text-xs font-mono text-white/60">Q2 All-Hands · 6 participants</span>
-        </div>
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-red-400/10 border border-red-400/20">
-          <div className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-          <span className="text-[10px] font-mono text-red-400">REC</span>
-        </div>
-      </div>
-
-      <div className="p-4 grid grid-cols-3 gap-2">
-        {participants.map((p, i) => (
-          <motion.div key={p.initials} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.06 }}
-            className={`relative aspect-video rounded-xl flex items-center justify-center ${p.speaking ? 'ring-2 ring-[#046BD2]' : ''} bg-[#0B1220]`}>
-            <div className="text-center">
-              <div className={`w-10 h-10 mx-auto rounded-full border flex items-center justify-center text-xs font-bold ${p.speaking ? 'bg-[#046BD2]/30 border-[#046BD2] text-[#2D98F1]' : 'bg-[#046BD2]/10 border-[#046BD2]/20 text-[#2D98F1]/60'}`}>
-                {p.initials}
-              </div>
-              <div className="text-[9px] font-mono text-white/40 mt-1">{p.name.split(' ')[0]}</div>
-            </div>
-            {p.muted && (
-              <div className="absolute top-1.5 right-1.5">
-                <MicOff className="w-3 h-3 text-red-400" />
-              </div>
-            )}
-            {p.speaking && (
-              <div className="absolute bottom-1.5 left-1.5 flex items-end gap-0.5 h-3">
-                {[1, 2, 3].map(j => (
-                  <motion.div key={j} className="w-0.5 bg-[#0086F9] rounded-full"
-                    animate={{ height: `${20 + j * 30}%` }}
-                    transition={{ duration: 0.4, repeat: Infinity, repeatType: 'reverse', delay: j * 0.1 }} />
-                ))}
-              </div>
-            )}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* AI transcript strip */}
-      <div className="mx-4 mb-4 p-3 rounded-xl bg-[#0B1220] border border-white/8">
-        <div className="text-[9px] font-mono text-[#0086F9]/60 uppercase tracking-widest mb-1.5">AI Transcript · Live</div>
-        <p className="text-xs text-white/60 leading-relaxed">
-          <span className="text-[#0086F9]">Marcus:</span> "…so the Q2 targets are looking strong, especially in the enterprise segment where we closed three new logos this week…"
-        </p>
-      </div>
-
-      <div className="px-5 py-3 border-t border-white/10 bg-[#0B1220] flex items-center justify-center gap-4">
-        <button className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-          <Mic className="w-4 h-4 text-white/60" />
-        </button>
-        <button className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-          <Video className="w-4 h-4 text-white/60" />
-        </button>
-        <button className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-          <Monitor className="w-4 h-4 text-white/60" />
-        </button>
-        <button className="w-9 h-9 rounded-full bg-red-500/80 flex items-center justify-center hover:bg-red-500 transition">
-          <VideoOff className="w-4 h-4 text-white" />
-        </button>
-      </div>
-    </div>
-  )
-}
 
 export function ProdUCaaSVideoMeetingsPageView() {
   return (
@@ -119,7 +44,7 @@ export function ProdUCaaSVideoMeetingsPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
               <Video className="w-3.5 h-3.5 text-[#0086F9]" />
@@ -152,9 +77,15 @@ export function ProdUCaaSVideoMeetingsPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
-            <VideoGrid />
-          </motion.div>
+          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 380 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }}
+              className="relative"
+            >
+              <TabletVideoHero />
+            </motion.div>
+          </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
