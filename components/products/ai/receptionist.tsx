@@ -121,7 +121,7 @@ export function ProdAIReceptionistPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
               <Bot className="w-3.5 h-3.5 text-[#0086F9]" />
@@ -146,7 +146,7 @@ export function ProdAIReceptionistPageView() {
 
           </div>
 
-          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 430 }}>
+          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 340 }}>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }} className="relative">
               <ReceptionistHero />
             </motion.div>

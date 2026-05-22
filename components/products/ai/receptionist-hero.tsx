@@ -168,7 +168,7 @@ export function ReceptionistHero() {
   return (
     <div
       ref={wrapRef}
-      className="flex items-center justify-center gap-5 select-none relative scale-[0.48] sm:scale-[0.62] md:scale-[0.78] lg:scale-100 origin-top"
+      className="flex items-center justify-center gap-5 select-none relative scale-[0.48] sm:scale-[0.62] md:scale-[0.75] lg:scale-[0.75] xl:scale-[0.88] 2xl:scale-100 origin-top"
     >
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none"
