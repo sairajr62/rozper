@@ -565,7 +565,6 @@ export function WholesaleVoicePageView() {
               back a tailored A-Z rate deck within a business day.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-[#046BD2] transition hover:scale-105"
@@ -573,6 +572,7 @@ export function WholesaleVoicePageView() {
                 Request a rate deck
                 <ArrowRight className="h-4 w-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

@@ -289,10 +289,10 @@ export function SaaSPageView() {
               <div className="font-mono text-xs uppercase tracking-[0.3em] text-white/70 mb-3">// ship.it</div>
               <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight text-white">Build phone into your stack in an afternoon.</h2>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
                 <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
                   <span className="font-mono">$ rozper init</span> <ArrowRight className="w-4 h-4" />
                 </Link>
+                <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
               </div>
             </div>
           </div>

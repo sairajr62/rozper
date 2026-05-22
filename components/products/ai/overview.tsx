@@ -168,17 +168,6 @@ export function AIPageView() {
               </Link>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-12 grid grid-cols-3 gap-4 max-w-md"
-            >
-              {[{ k: 'AI Tools', v: '3' }, { k: 'Extra Cost', v: '$0' }, { k: 'Uptime', v: '24/7' }].map((s) => (
-                <div key={s.k} className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-md">
-                  <div className="font-display text-3xl font-bold bg-gradient-to-br from-white to-white/40 bg-clip-text text-transparent">{s.v}</div>
-                  <div className="text-xs text-white/40 mt-1 font-mono uppercase tracking-wider">{s.k}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           <div className="hidden lg:block">

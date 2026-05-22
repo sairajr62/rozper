@@ -143,14 +143,6 @@ export function FeatAIAgentAssistPageView() {
               </Link>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-10 grid grid-cols-3 gap-3">
-              {[{ v: '<1s', k: 'Response Time' }, { v: '100%', k: 'Call Coverage' }, { v: '0', k: 'Customer Hears' }].map(s => (
-                <div key={s.k} className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
-                  <div className="font-display text-2xl font-bold text-[#0086F9]">{s.v}</div>
-                  <div className="text-[10px] font-mono text-white/40 mt-1 uppercase tracking-wider">{s.k}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>

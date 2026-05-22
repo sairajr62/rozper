@@ -312,10 +312,10 @@ export function SalesTeamsPageView() {
             <Trophy className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Sell more, type less.</h2>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
               <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
                 Book a demo <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

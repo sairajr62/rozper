@@ -143,14 +143,6 @@ export function ProdAIReceptionistPageView() {
               <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-10 grid grid-cols-3 gap-3">
-              {[{ v: '100%', k: 'Calls Answered' }, { v: '0s', k: 'Hold Time' }, { v: '24/7', k: 'Availability' }].map(s => (
-                <div key={s.k} className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
-                  <div className="font-display text-2xl font-bold text-[#0086F9]">{s.v}</div>
-                  <div className="text-[10px] font-mono text-white/40 mt-1 uppercase tracking-wider">{s.k}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
@@ -201,10 +193,10 @@ export function ProdAIReceptionistPageView() {
             <Bot className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-4xl md:text-6xl font-bold text-white">Answer every call. Book every meeting.</h2>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
               <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
                 Start a free trial <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

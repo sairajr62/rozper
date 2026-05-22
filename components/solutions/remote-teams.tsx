@@ -327,10 +327,10 @@ export function RemoteTeamsPageView() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_60%)]" />
             <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight relative">One platform.<br />Twelve time zones.</h2>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
               <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition relative">
                 Connect your team <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

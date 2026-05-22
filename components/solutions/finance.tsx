@@ -308,11 +308,11 @@ export function FinancePageView() {
             </h2>
             <p className="mt-6 text-white/80 max-w-md mx-auto">Built for banks, insurance, broker-dealers, and fintech. SOC 2 Type II certified.</p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">
-                See pricing
-              </Link>
               <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
                 Talk to compliance team <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">
+                See pricing
               </Link>
             </div>
           </div>
