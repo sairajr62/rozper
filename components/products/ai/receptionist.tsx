@@ -8,6 +8,7 @@ import {
   Phone, Calendar, Database, Mic, Globe, RefreshCw,
   ArrowRight, ChevronRight, Bot, CheckCircle,
 } from 'lucide-react'
+import { ReceptionistHero } from '@/components/products/ai/receptionist-hero'
 
 const features = [
   { icon: Bot, title: '24/7 Call Answering', desc: 'Never miss a call — AI answers immediately at any hour, any day.' },
@@ -145,9 +146,11 @@ export function ProdAIReceptionistPageView() {
 
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
-            <ReceptionistFlowUI />
-          </motion.div>
+          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 430 }}>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }} className="relative">
+              <ReceptionistHero />
+            </motion.div>
+          </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
