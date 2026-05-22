@@ -54,6 +54,13 @@ html {
   background-color: #0B1220;
   color: #ffffff;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* keep hash-targeted headings clear of the fixed navbar */
+  scroll-padding-top: 112px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 body {
@@ -68,6 +75,19 @@ body {
   background-color: #0B1220;
 }
 
+/* Hide the scrollbar while keeping the element scrollable (used by the
+   blog post Table of Contents so the list can still auto-scroll the active
+   section into view without showing a track). */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE / old Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;             /* Chrome / Safari / WebKit */
+}
+
 /* Homepage section H2 headings — One Platform, Why Teams Switch,
    Explore the Full Library, AI Spotlight, How It Works, Built for Your Team,
    Integrations, Industries, What Customers Say, FAQ, and CTA all use
@@ -75,6 +95,21 @@ body {
    Card-level <h3> sub-headings are untouched. */
 h2.font-display {
   font-weight: 500;
+}
+
+/* ─── Global typography weights ──────────────────────────────────────────────
+   Declared outside @layer so these rules sit above @layer utilities in the
+   cascade and override any Tailwind font-bold / font-semibold utility that
+   appears on a heading or paragraph element.
+   Blog content is scoped under .blog-prose which uses more-specific selectors
+   (.blog-prose h2 etc.) so its own weight system is not affected.
+   ─────────────────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 300;
 }
 
 @theme inline {
