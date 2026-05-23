@@ -30,6 +30,12 @@ import {
   FileText,
   Hash,
   PhoneIncoming,
+  Zap,
+  Shield,
+  BookOpen,
+  Database,
+  GitMerge,
+  Activity,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ComponentType } from "react";
@@ -49,8 +55,8 @@ type MenuColumn = {
   items: MenuItem[];
 };
 
-// Mega menu configuration — card grid
-const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolean }> = {
+// Mega menu configuration
+const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolean; width?: string }> = {
   Products: {
     sectioned: true,
     columns: [
@@ -188,14 +194,17 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
     ],
   },
   Solutions: {
+    sectioned: true,
+    width: "780px",
     columns: [
       {
+        title: "By Industry",
         items: [
           {
             label: "Healthcare",
             description: "HIPAA-aligned voice, SMS and AI for patient teams.",
             href: "/solutions/healthcare",
-            icon: Building2,
+            icon: Activity,
             iconGradient: "from-[#22D3EE] to-[#0086F9]",
           },
           {
@@ -209,16 +218,28 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
             label: "Retail & eCommerce",
             description: "Drive conversions across SMS, chat, voice and WhatsApp.",
             href: "/solutions/retail",
-            icon: Building2,
+            icon: Globe2,
             iconGradient: "from-[#0086F9] to-[#22D3EE]",
           },
           {
             label: "SaaS & Technology",
             description: "Embed calling and SMS in your product with our SDKs.",
             href: "/solutions/saas",
-            icon: Building2,
+            icon: Settings,
             iconGradient: "from-[#2575FC] to-[#046BD2]",
           },
+          {
+            label: "Logistics & Transport",
+            description: "Dispatch, alerts and driver routing across regions.",
+            href: "/solutions/logistics",
+            icon: Truck,
+            iconGradient: "from-[#2575FC] to-[#0086F9]",
+          },
+        ],
+      },
+      {
+        title: "By Team",
+        items: [
           {
             label: "Sales Teams",
             description: "Power dialers, AI coaching and CRM-synced workflows.",
@@ -241,17 +262,10 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
             iconGradient: "from-[#046BD2] to-[#0078E0]",
           },
           {
-            label: "Logistics & Transport",
-            description: "Dispatch, alerts and driver routing across regions.",
-            href: "/solutions/logistics",
-            icon: Truck,
-            iconGradient: "from-[#2575FC] to-[#0086F9]",
-          },
-          {
             label: "Enterprise IT",
             description: "SSO, SCIM, audit logs and dedicated routing.",
             href: "/solutions/enterprise-it",
-            icon: Settings,
+            icon: Shield,
             iconGradient: "from-[#0086F9] to-[#046BD2]",
           },
         ],
@@ -259,43 +273,49 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
     ],
   },
   Integrations: {
+    sectioned: true,
+    width: "420px",
     columns: [
       {
+        title: "CRM & Tools",
         items: [
           {
             label: "HubSpot",
             description: "Two-way CRM sync, click-to-call and AI call summaries.",
             href: "/integrations/hubspot",
             icon: Building2,
-            iconGradient: "from-[#046BD2] to-[#22D3EE]",
+            iconGradient: "from-[#046BD2] to-[#0086F9]",
           },
           {
             label: "Zoho CRM",
             description: "Automate sales workflows and log every call automatically.",
             href: "/integrations/zoho",
-            icon: Building2,
-            iconGradient: "from-[#0078E0] to-[#0086F9]",
+            icon: Database,
+            iconGradient: "from-[#0086F9] to-[#22D3EE]",
           },
         ],
       },
     ],
   },
   Resources: {
+    sectioned: true,
+    width: "660px",
     columns: [
       {
+        title: "Learn",
         items: [
           {
             label: "Blog",
             description: "Product updates, playbooks and industry trends.",
             href: "/blog",
-            icon: MessageSquare,
+            icon: BookOpen,
             iconGradient: "from-[#22D3EE] to-[#0086F9]",
           },
           {
             label: "Documentation",
             description: "Guides, references and step-by-step setup.",
             href: "/docs",
-            icon: Building2,
+            icon: FileText,
             iconGradient: "from-[#046BD2] to-[#0078E0]",
           },
           {
@@ -305,6 +325,11 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
             icon: Settings,
             iconGradient: "from-[#2575FC] to-[#22D3EE]",
           },
+        ],
+      },
+      {
+        title: "Company",
+        items: [
           {
             label: "Contact Sales",
             description: "Talk to a specialist about volume pricing.",
@@ -316,8 +341,15 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
             label: "Status Page",
             description: "Real-time uptime and incident history.",
             href: "/status",
-            icon: BarChart3,
+            icon: Activity,
             iconGradient: "from-[#22D3EE] to-[#046BD2]",
+          },
+          {
+            label: "Security",
+            description: "SOC 2 Type II, HIPAA BAA and trust documentation.",
+            href: "/security",
+            icon: Shield,
+            iconGradient: "from-[#046BD2] to-[#2575FC]",
           },
         ],
       },
@@ -422,7 +454,7 @@ export function Navbar() {
                             exit={{ opacity: 0, y: 8 }}
                             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                             className="fixed left-1/2 -translate-x-1/2 top-[72px] z-50"
-                            style={{ width: "min(calc(100vw - 2rem), 960px)" }}
+                            style={{ width: `min(calc(100vw - 2rem), ${cfg.width ?? "960px"})` }}
                             onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
                             onMouseLeave={handleMenuLeave}
                           >
