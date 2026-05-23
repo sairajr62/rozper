@@ -112,13 +112,13 @@ export function AboutTeam() {
                   {p.initials}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="font-display text-base sm:text-lg font-semibold text-white truncate">
+                  <div className="font-display text-base sm:text-lg font-semibold text-white leading-tight">
                     {p.name}
                   </div>
-                  <div className="text-xs sm:text-[13px] text-[#22D3EE]/85 mt-0.5">
+                  <div className="text-xs sm:text-[13px] text-[#22D3EE]/85 mt-0.5 leading-tight">
                     {p.role}
                   </div>
-                  <div className="text-[11px] sm:text-xs text-white/45 font-mono mt-1.5 truncate">
+                  <div className="text-[11px] sm:text-xs text-white/45 font-mono mt-1.5">
                     {p.prev}
                   </div>
                 </div>

@@ -7,14 +7,31 @@ import type { LucideIcon } from 'lucide-react'
 
 const footerColumns = [
   {
-    title: 'Platform',
+    title: 'Unified Communication',
+    href: '/products/ucaas',
     links: [
-      { label: 'Unified Comms', href: '/products/ucaas' },
-      { label: 'Contact Center', href: '/products/contact-center' },
-      { label: 'Wholesale Voice', href: '/solutions/wholesale' },
-      { label: 'SIP Trunking', href: '/features/sip-trunking' },
-      /*{ label: 'DID Numbers', href: '/features/did-numbers' },*/
-      { label: 'API', href: '/developers' },
+      { label: 'Business Phone System', href: '/products/ucaas/business-phone' },
+      { label: 'HD Video Meetings', href: '/products/ucaas/video-meetings' },
+      { label: 'Business SMS & MMS', href: '/products/ucaas/sms-mms' },
+      { label: 'Team Chat', href: '/products/ucaas/team-chat' },
+    ],
+  },
+  {
+    title: 'Contact Center',
+    href: '/products/contact-center',
+    links: [
+      { label: 'Omnichannel Inbox', href: '/products/contact-center/omnichannel' },
+      { label: 'Predictive Dialer', href: '/products/contact-center/outbound-dialer' },
+      { label: 'Supervisor Tools', href: '/products/contact-center/supervisor-tools' },
+    ],
+  },
+  {
+    title: 'AI Features',
+    href: '/products/ai',
+    links: [
+      { label: 'AI Voice Agent', href: '/products/ai/receptionist' },
+      { label: 'AI Assistant', href: '/products/ucaas/ai-assistant' },
+      { label: 'Customer Engagement', href: '/products/ucaas/customer-engagement' },
     ],
   },
   {
@@ -76,9 +93,9 @@ export function Footer() {
 
       {/* Main */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-5">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-4">
             <Image
               src="/images/white-rozper-logo.png"
               alt="Rozper"
@@ -131,32 +148,45 @@ export function Footer() {
           </div>
 
           {/* Link columns */}
-          {footerColumns.map((column, idx) => (
-            <motion.div
-              key={column.title}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              className={idx === 0 ? 'md:col-span-3' : 'md:col-span-2'}
-            >
-              <h4 className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40 mb-5">
-                {column.title}
-              </h4>
-              <ul className="space-y-3">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="group inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+          {footerColumns.map((column, idx) => {
+            /* product cols (0-2) get 2 spans, company/resources (3-4) get 1 span each */
+            const colSpan = idx < 3 ? 'sm:col-span-1 lg:col-span-2' : 'sm:col-span-1 lg:col-span-1'
+            return (
+              <motion.div
+                key={column.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className={colSpan}
+              >
+                {'href' in column && column.href ? (
+                  <a
+                    href={column.href}
+                    className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40 hover:text-white/70 transition-colors mb-5 block"
+                  >
+                    {column.title}
+                  </a>
+                ) : (
+                  <h4 className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40 mb-5">
+                    {column.title}
+                  </h4>
+                )}
+                <ul className="space-y-3">
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="group inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )
+          })}
         </div>
 
       </div>

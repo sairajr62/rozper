@@ -154,7 +154,7 @@ export function PricingTestimonial() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className="flex flex-wrap justify-center gap-4 mb-16 px-4"
+        className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 sm:gap-4 mb-16 px-4 max-w-2xl mx-auto sm:max-w-none"
       >
         {stats.map((s, i) => (
           <motion.div
@@ -163,7 +163,7 @@ export function PricingTestimonial() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.15 + i * 0.07 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center px-7 py-4 rounded-2xl"
+            className="flex flex-col items-center px-4 sm:px-7 py-4 rounded-2xl"
             style={{
               background: 'rgba(255,255,255,0.04)',
               border: '1px solid rgba(255,255,255,0.08)',
@@ -194,7 +194,7 @@ export function PricingTestimonial() {
         className="max-w-4xl mx-auto px-4 sm:px-6 mb-12"
       >
         <div
-          className="relative rounded-3xl overflow-hidden px-10 py-12 sm:px-14"
+          className="relative rounded-3xl overflow-hidden px-5 py-8 sm:px-10 sm:py-12"
           style={{
             background: 'linear-gradient(135deg, rgba(4,107,210,0.12) 0%, rgba(255,255,255,0.04) 60%, rgba(0,134,249,0.08) 100%)',
             border: '1px solid rgba(255,255,255,0.12)',
@@ -203,7 +203,7 @@ export function PricingTestimonial() {
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#046BD2]/70 to-transparent" />
           <div
-            className="absolute -top-2 left-8 text-[130px] font-serif select-none pointer-events-none leading-none"
+            className="absolute -top-2 left-4 sm:left-8 text-[80px] sm:text-[130px] font-serif select-none pointer-events-none leading-none"
             style={{
               color: 'transparent',
               backgroundImage: 'linear-gradient(135deg, rgba(4,107,210,0.28) 0%, transparent 80%)',
@@ -230,7 +230,7 @@ export function PricingTestimonial() {
                   </motion.div>
                 ))}
               </div>
-              <blockquote className="text-xl sm:text-2xl font-semibold text-white leading-relaxed">
+              <blockquote className="text-lg sm:text-xl md:text-2xl font-semibold text-white leading-relaxed">
                 &ldquo;{featured.quote}&rdquo;
               </blockquote>
             </div>

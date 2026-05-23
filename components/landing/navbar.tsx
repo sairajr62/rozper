@@ -26,6 +26,10 @@ import {
   Headphones,
   BarChart3,
   Settings,
+  Eye,
+  FileText,
+  Hash,
+  PhoneIncoming,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ComponentType } from "react";
@@ -46,23 +50,16 @@ type MenuColumn = {
 };
 
 // Mega menu configuration — card grid
-const megaMenuConfig: Record<string, { columns: MenuColumn[] }> = {
+const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolean }> = {
   Products: {
+    sectioned: true,
     columns: [
       {
+        title: "Unified Communication",
         items: [
           {
-            label: "Cloud Contact Center",
-            description:
-              "AI-powered omnichannel CX with dialers and analytics, built to scale.",
-            href: "/products/contact-center",
-            icon: Phone,
-            iconGradient: "from-[#046BD2] to-[#22D3EE]",
-          },
-          {
             label: "Unified Communications",
-            description:
-              "Voice, video, chat and SMS unified for every seat on the team.",
+            description: "Voice, video, chat and SMS unified for every seat.",
             href: "/products/ucaas",
             icon: Users,
             iconGradient: "from-[#0078E0] to-[#2575FC]",
@@ -70,60 +67,121 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[] }> = {
           },
           {
             label: "Business Phone System",
-            description:
-              "Cloud PBX with extensions, IVR, recording and porting in 150+ countries.",
+            description: "Cloud PBX with IVR, recording and porting in 150+ countries.",
             href: "/products/ucaas/business-phone",
             icon: Building2,
             iconGradient: "from-[#2575FC] to-[#046BD2]",
           },
           {
-            label: "AI Voice Agent",
-            description:
-              "24/7 autonomous calls — captures intent, qualifies leads, books meetings.",
-            href: "/products/ai/receptionist",
-            icon: Bot,
-            iconGradient: "from-[#22D3EE] to-[#0086F9]",
-            badge: "AI",
-          },
-          {
-            label: "Website Chatbot",
-            description:
-              "Convert visitors instantly with an LLM-powered chat that hands off to a human.",
-            href: "/products/ucaas/website-chatbot",
-            icon: MessageSquare,
-            iconGradient: "from-[#0086F9] to-[#22D3EE]",
-          },
-          {
             label: "HD Video Meetings",
-            description:
-              "Crisp 1080p video, screen share, recording and noise suppression.",
+            description: "1080p video, screen share, recording and noise suppression.",
             href: "/products/ucaas/video-meetings",
             icon: Video,
             iconGradient: "from-[#046BD2] to-[#0078E0]",
           },
           {
             label: "Business SMS & MMS",
-            description:
-              "Two-way messaging, MMS attachments and campaign sending built in.",
+            description: "Two-way messaging, MMS and bulk campaign sending.",
             href: "/products/ucaas/sms-mms",
             icon: MessageCircle,
             iconGradient: "from-[#2575FC] to-[#22D3EE]",
           },
           {
+            label: "Team Chat",
+            description: "Channels, DMs and file sharing for internal teams.",
+            href: "/products/ucaas/team-chat",
+            icon: Hash,
+            iconGradient: "from-[#0086F9] to-[#2575FC]",
+          },
+          {
+            label: "Online Fax",
+            description: "Send and receive faxes from any device, no hardware needed.",
+            href: "/products/ucaas/online-fax",
+            icon: FileText,
+            iconGradient: "from-[#046BD2] to-[#22D3EE]",
+          },
+          {
+            label: "Website Chatbot",
+            description: "Convert visitors with LLM-powered chat and human handoff.",
+            href: "/products/ucaas/website-chatbot",
+            icon: MessageSquare,
+            iconGradient: "from-[#0086F9] to-[#22D3EE]",
+          },
+        ],
+      },
+      {
+        title: "Contact Center",
+        items: [
+          {
+            label: "Cloud Contact Center",
+            description: "AI-powered omnichannel CX with dialers and analytics.",
+            href: "/products/contact-center",
+            icon: Phone,
+            iconGradient: "from-[#046BD2] to-[#22D3EE]",
+          },
+          {
             label: "Omnichannel Inbox",
-            description:
-              "One inbox for voice, email, SMS, WhatsApp, web chat and social.",
+            description: "One inbox for voice, email, SMS, WhatsApp and web chat.",
             href: "/products/contact-center/omnichannel",
             icon: Inbox,
             iconGradient: "from-[#0078E0] to-[#046BD2]",
           },
           {
             label: "Predictive Dialer",
-            description:
-              "Power, predictive and preview dialers tuned for connect rate.",
+            description: "Power, predictive and preview dialers for max connect rate.",
             href: "/products/contact-center/outbound-dialer",
             icon: PhoneOutgoing,
             iconGradient: "from-[#22D3EE] to-[#2575FC]",
+          },
+          {
+            label: "Supervisor Tools",
+            description: "Monitor, whisper and barge with live AI escalation alerts.",
+            href: "/products/contact-center/supervisor-tools",
+            icon: Eye,
+            iconGradient: "from-[#2575FC] to-[#0086F9]",
+          },
+          {
+            label: "Analytics & Reporting",
+            description: "Real-time dashboards, CSAT scoring and call analytics.",
+            href: "/products/contact-center/analytics",
+            icon: BarChart3,
+            iconGradient: "from-[#0086F9] to-[#046BD2]",
+          },
+        ],
+      },
+      {
+        title: "AI Features",
+        items: [
+          {
+            label: "AI Overview",
+            description: "The full suite of Rozper AI capabilities in one place.",
+            href: "/products/ai",
+            icon: Sparkles,
+            iconGradient: "from-[#22D3EE] to-[#0086F9]",
+            badge: "AI",
+          },
+          {
+            label: "AI Voice Agent",
+            description: "24/7 autonomous calls — captures intent, qualifies leads.",
+            href: "/products/ai/receptionist",
+            icon: Bot,
+            iconGradient: "from-[#22D3EE] to-[#0086F9]",
+            badge: "AI",
+          },
+          {
+            label: "AI Assistant",
+            description: "Real-time agent guidance, summaries and next-best-action.",
+            href: "/products/ucaas/ai-assistant",
+            icon: Brain,
+            iconGradient: "from-[#0086F9] to-[#2575FC]",
+            badge: "AI",
+          },
+          {
+            label: "Customer Engagement",
+            description: "AI-driven campaigns, scoring and proactive outreach.",
+            href: "/products/ucaas/customer-engagement",
+            icon: Users,
+            iconGradient: "from-[#2575FC] to-[#22D3EE]",
           },
         ],
       },
@@ -330,7 +388,7 @@ export function Navbar() {
             </motion.div>
 
             {/* Center: Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-6">
               {topLevelNav.map((item) => (
                 <div
                   key={item.label}
@@ -352,6 +410,103 @@ export function Navbar() {
                   <AnimatePresence>
                     {item.megaMenu && activeMenu === item.megaMenu && (() => {
                       const cfg = megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig];
+                      const isSectioned = cfg.sectioned === true;
+
+                      if (isSectioned) {
+                        /* ── Sectioned Products layout (3 columns with titles) ── */
+                        return (
+                          <motion.div
+                            key={item.megaMenu}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 8 }}
+                            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                            className="fixed left-1/2 -translate-x-1/2 top-[72px] z-50"
+                            style={{ width: "min(calc(100vw - 2rem), 960px)" }}
+                            onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
+                            onMouseLeave={handleMenuLeave}
+                          >
+                            {/* Gradient halo */}
+                            <div
+                              aria-hidden
+                              className="absolute -inset-4 -z-10 rounded-3xl opacity-70 blur-2xl pointer-events-none"
+                              style={{
+                                background:
+                                  "radial-gradient(60% 60% at 50% 0%, rgba(4,107,210,0.35) 0%, rgba(34,211,238,0.10) 45%, transparent 75%)",
+                              }}
+                            />
+                            {/* Panel */}
+                            <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/5 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
+                              <div className="rounded-2xl bg-[#0A1020]/95 backdrop-blur-2xl overflow-hidden">
+                                <div className="h-px w-full bg-gradient-to-r from-transparent via-[#046BD2]/60 to-transparent" />
+                                <div className="flex divide-x divide-white/[0.06]">
+                                  {cfg.columns.map((col, colIdx) => (
+                                    <div key={colIdx} className="flex-1 min-w-0 p-4">
+                                      {/* Section title */}
+                                      <p className="px-2 pb-2.5 text-[10px] font-semibold uppercase tracking-widest text-white/35 select-none">
+                                        {col.title}
+                                      </p>
+                                      {/* Items */}
+                                      <ul className="space-y-0.5">
+                                        {col.items.map((menuItem, itemIdx) => {
+                                          const IconComponent = menuItem.icon;
+                                          return (
+                                            <li key={itemIdx}>
+                                              <Link
+                                                href={menuItem.href ?? "/"}
+                                                className="group/item flex items-center gap-3 rounded-lg px-2 py-2 hover:bg-white/[0.05] transition-colors"
+                                              >
+                                                {IconComponent && (
+                                                  <span
+                                                    className={`flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${
+                                                      menuItem.iconGradient ?? "from-[#046BD2] to-[#22D3EE]"
+                                                    } shrink-0`}
+                                                  >
+                                                    <IconComponent className="w-3.5 h-3.5 text-white" />
+                                                  </span>
+                                                )}
+                                                <div className="flex-1 min-w-0">
+                                                  <div className="flex items-center gap-1.5">
+                                                    <span className="text-sm font-medium text-white/90 group-hover/item:text-white leading-tight transition-colors">
+                                                      {menuItem.label}
+                                                    </span>
+                                                    {menuItem.badge && (
+                                                      <span
+                                                        className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
+                                                          menuItem.badge === "New"
+                                                            ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
+                                                            : menuItem.badge === "AI"
+                                                            ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
+                                                            : menuItem.badge === "Beta"
+                                                            ? "bg-[#2575FC]/15 text-[#2D98F1] border border-[#2D98F1]/30"
+                                                            : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
+                                                        }`}
+                                                      >
+                                                        {menuItem.badge}
+                                                      </span>
+                                                    )}
+                                                  </div>
+                                                  {menuItem.description && (
+                                                    <p className="text-[11px] text-white/45 leading-snug mt-0.5 line-clamp-1">
+                                                      {menuItem.description}
+                                                    </p>
+                                                  )}
+                                                </div>
+                                              </Link>
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      }
+
+                      /* ── Standard card-grid layout (Solutions, Resources, etc.) ── */
                       const allItems = cfg.columns.flatMap((c) => c.items);
                       const itemCount = allItems.length;
                       const panelWidth =
@@ -459,7 +614,7 @@ export function Navbar() {
             </div>
 
             {/* Right: CTA Buttons */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-3">
               <Button
                 className="bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium h-9 px-5 rounded-lg shadow-[0_0_24px_-8px_rgba(4,107,210,0.7)]"
                 asChild
@@ -469,10 +624,9 @@ export function Navbar() {
             </div>
 
             {/* Mobile Menu Button */}
-            <motion.button
-              className="md:hidden p-2 text-white"
+            <button
+              className="lg:hidden p-2 text-white active:scale-95 transition-transform"
               onClick={() => setIsOpen(!isOpen)}
-              whileTap={{ scale: 0.95 }}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -481,144 +635,146 @@ export function Navbar() {
               ) : (
                 <Menu className="w-6 h-6" />
               )}
-            </motion.button>
+            </button>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile dropdown menu — drops below navbar, keeps hamburger visible */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-0 right-0 w-full h-screen bg-[#0B1220] z-40 md:hidden overflow-y-auto flex flex-col"
-          >
-            {/* Subtle background glow */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 -z-0"
-              style={{
-                background:
-                  "radial-gradient(60% 40% at 100% 0%, rgba(4,107,210,0.25) 0%, transparent 70%)",
-              }}
+          <>
+            {/* Backdrop — closes menu on tap outside */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="fixed inset-0 top-[72px] z-[39] lg:hidden bg-black/30"
+              onClick={() => setIsOpen(false)}
             />
 
-            {/* Mobile Header */}
-            <div className="relative flex items-center justify-between h-16 px-6 border-b border-white/10">
-              <Image
-                src="/images/white-rozper-logo.png"
-                alt="Rozper"
-                width={130}
-                height={40}
-                className="h-9 w-auto"
-              />
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2 text-white/80 hover:text-white transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            {/* Mobile Menu Items */}
-            <div className="relative flex-1 overflow-y-auto px-4 py-4 space-y-1">
-              {topLevelNav.map((item) => (
-                <div key={item.label}>
-                  {item.megaMenu ? (
-                    <details className="group rounded-xl overflow-hidden">
-                      <summary className="flex items-center justify-between px-3 py-3 cursor-pointer text-white font-medium text-base list-none rounded-xl hover:bg-white/[0.04] transition-colors">
-                        <span>{item.label}</span>
-                        <ChevronDown className="w-4 h-4 text-white/50 group-open:rotate-180 group-open:text-[#22D3EE] transition-transform" />
-                      </summary>
-                      <div className="px-1 pb-3 pt-2">
-                        <ul className="space-y-1">
-                          {megaMenuConfig[
-                            item.megaMenu as keyof typeof megaMenuConfig
-                          ].columns
-                            .flatMap((c) => c.items)
-                            .map((subitem, subIdx) => {
-                              const IconComponent = subitem.icon;
-                              return (
-                                <li key={subIdx}>
-                                  <Link
-                                    href={subitem.href ?? "/"}
-                                    className="flex items-start gap-3 rounded-lg px-3 py-2.5 text-sm text-white/85 hover:text-white hover:bg-white/[0.04] transition-colors"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    {IconComponent && (
-                                      <span
-                                        className={`flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${
-                                          subitem.iconGradient ??
-                                          "from-[#046BD2] to-[#22D3EE]"
-                                        } shrink-0`}
-                                      >
-                                        <IconComponent className="w-4 h-4 text-white" />
-                                      </span>
-                                    )}
-                                    <div className="flex-1 min-w-0">
-                                      <div className="flex items-center gap-1.5 flex-wrap">
-                                        <span className="text-sm font-medium text-white">
-                                          {subitem.label}
-                                        </span>
-                                        {subitem.badge && (
-                                          <span
-                                            className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
-                                              subitem.badge === "New"
-                                                ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
-                                                : subitem.badge === "AI"
-                                                ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
-                                                : subitem.badge === "Beta"
-                                                ? "bg-[#2575FC]/15 text-[#2D98F1] border border-[#2D98F1]/30"
-                                                : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
-                                            }`}
+            {/* Dropdown panel */}
+            <motion.div
+              key="dropdown"
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed top-[72px] left-0 right-0 z-40 lg:hidden max-h-[calc(100vh-72px)] overflow-y-auto bg-[#0B1220] border-b border-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.7)]"
+            >
+              {/* Nav items */}
+              <div className="px-4 py-3 space-y-0.5">
+                {topLevelNav.map((item) => (
+                  <div key={item.label}>
+                    {item.megaMenu ? (
+                      <details className="group">
+                        <summary className="flex items-center justify-between px-3 py-3 cursor-pointer text-white font-medium text-base list-none rounded-xl hover:bg-white/[0.04] transition-colors">
+                          <span>{item.label}</span>
+                          <ChevronDown className="w-4 h-4 text-white/50 group-open:rotate-180 group-open:text-[#22D3EE] transition-transform duration-200" />
+                        </summary>
+                        <div className="px-1 pb-2 pt-0.5">
+                          {megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig].sectioned ? (
+                            <div className="space-y-2">
+                              {megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig].columns.map((col, colIdx) => (
+                                <div key={colIdx}>
+                                  <p className="px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/35">
+                                    {col.title}
+                                  </p>
+                                  <ul className="space-y-0.5">
+                                    {col.items.map((subitem, subIdx) => {
+                                      const IconComponent = subitem.icon;
+                                      return (
+                                        <li key={subIdx}>
+                                          <Link
+                                            href={subitem.href ?? "/"}
+                                            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors"
+                                            onClick={() => setIsOpen(false)}
                                           >
-                                            {subitem.badge}
+                                            {IconComponent && (
+                                              <span className={`flex items-center justify-center w-7 h-7 rounded-lg bg-gradient-to-br ${subitem.iconGradient ?? "from-[#046BD2] to-[#22D3EE]"} shrink-0`}>
+                                                <IconComponent className="w-3.5 h-3.5 text-white" />
+                                              </span>
+                                            )}
+                                            <span className="font-medium text-white">{subitem.label}</span>
+                                            {subitem.badge && (
+                                              <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
+                                                subitem.badge === "New" ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
+                                                : subitem.badge === "AI" ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
+                                                : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
+                                              }`}>{subitem.badge}</span>
+                                            )}
+                                          </Link>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <ul className="space-y-0.5">
+                              {megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig].columns
+                                .flatMap((c) => c.items)
+                                .map((subitem, subIdx) => {
+                                  const IconComponent = subitem.icon;
+                                  return (
+                                    <li key={subIdx}>
+                                      <Link
+                                        href={subitem.href ?? "/"}
+                                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {IconComponent && (
+                                          <span className={`flex items-center justify-center w-7 h-7 rounded-lg bg-gradient-to-br ${subitem.iconGradient ?? "from-[#046BD2] to-[#22D3EE]"} shrink-0`}>
+                                            <IconComponent className="w-3.5 h-3.5 text-white" />
                                           </span>
                                         )}
-                                      </div>
-                                      {(subitem.description || subitem.subtitle) && (
-                                        <p className="mt-0.5 text-xs text-white/50 leading-snug">
-                                          {subitem.description ?? subitem.subtitle}
-                                        </p>
-                                      )}
-                                    </div>
-                                  </Link>
-                                </li>
-                              );
-                            })}
-                        </ul>
-                      </div>
-                    </details>
-                  ) : (
-                    <Link
-                      href={item.href ?? "/"}
-                      className="block px-3 py-3 text-white font-medium text-base rounded-xl hover:bg-white/[0.04] hover:text-white transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </div>
+                                        <span className="font-medium text-white">{subitem.label}</span>
+                                        {subitem.badge && (
+                                          <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
+                                            subitem.badge === "New" ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
+                                            : subitem.badge === "AI" ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
+                                            : subitem.badge === "Beta" ? "bg-[#2575FC]/15 text-[#2D98F1] border border-[#2D98F1]/30"
+                                            : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
+                                          }`}>{subitem.badge}</span>
+                                        )}
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
+                            </ul>
+                          )}
+                        </div>
+                      </details>
+                    ) : (
+                      <Link
+                        href={item.href ?? "/"}
+                        className="block px-3 py-3 text-white font-medium text-base rounded-xl hover:bg-white/[0.04] transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
 
-            {/* Mobile CTA Section */}
-            <div className="relative border-t border-white/10 px-6 py-4 sticky bottom-0 bg-[#0B1220]">
-              <Button
-                className="w-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-medium h-12 rounded-xl shadow-[0_0_30px_-10px_rgba(4,107,210,0.7)]"
-                asChild
-              >
-                <Link href="/contact" onClick={() => setIsOpen(false)}>
-                  Start a free trial
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
+              {/* CTA */}
+              <div className="px-4 pt-2 pb-4 border-t border-white/10">
+                <Button
+                  className="w-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-medium h-11 rounded-xl"
+                  asChild
+                >
+                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                    Start a free trial
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

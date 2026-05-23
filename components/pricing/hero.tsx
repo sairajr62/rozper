@@ -90,13 +90,13 @@ export function PricingHero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.32 }}
-          className="inline-flex items-baseline gap-2 mb-10 px-8 py-5 rounded-2xl bg-[#046BD2]/8 border border-[#046BD2]/20"
+          className="inline-flex items-baseline gap-2 mb-10 px-4 py-4 sm:px-8 sm:py-5 rounded-2xl bg-[#046BD2]/8 border border-[#046BD2]/20"
           style={{ boxShadow: '0 0 50px rgba(4,107,210,0.12), inset 0 1px 0 rgba(255,255,255,0.05)' }}
         >
-          <span className="text-7xl font-bold text-white tracking-tight">$9.99</span>
+          <span className="text-5xl sm:text-7xl font-bold text-white tracking-tight">$9.99</span>
           <div className="flex flex-col items-start">
-            <span className="text-[#CCD6DF] text-base font-medium">per user</span>
-            <span className="text-[#757575] text-sm">per month</span>
+            <span className="text-[#CCD6DF] text-sm sm:text-base font-medium whitespace-nowrap">per user</span>
+            <span className="text-[#757575] text-xs sm:text-sm whitespace-nowrap">per month</span>
           </div>
         </motion.div>
 

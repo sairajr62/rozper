@@ -34,12 +34,12 @@ const offices = [
   },
 ]
 
-// Equirectangular projection — x=(lng+180)/360*100, y=(90-lat)/180*100
+// Visually calibrated to WorldMap.avif (Natural Earth–like projection)
 const nodes = [
-  { x: 16.0, y: 29.0, code: 'SFO', labelRight: true  }, // San Francisco
-  { x: 50.0, y: 21.4, code: 'LON', labelRight: true  }, // London
-  { x: 65.4, y: 36.0, code: 'DXB', labelRight: true  }, // Dubai
-  { x: 78.8, y: 49.3, code: 'SIN', labelRight: false }, // Singapore
+  { x: 20.5, y: 29.0, code: 'SFO', labelRight: true  }, // San Francisco — nudged east onto CA coast
+  { x: 49.5, y: 21.5, code: 'LON', labelRight: true  }, // London
+  { x: 64.5, y: 36.5, code: 'DXB', labelRight: true  }, // Dubai
+  { x: 77.5, y: 50.0, code: 'SIN', labelRight: false }, // Singapore
 ]
 
 // Draw lines: SFO↔LON, LON↔DXB, DXB↔SIN
@@ -62,7 +62,7 @@ export function ContactOffices() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Global map with city pins */}
           <div className="lg:col-span-7">
-            <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[280px] rounded-2xl border border-white/10 overflow-hidden bg-[#0F1A2E]/60 backdrop-blur-md shadow-[0_30px_60px_-20px_rgba(0,134,249,0.35)]">
+            <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[360px] rounded-2xl border border-white/10 overflow-hidden bg-[#0F1A2E]/60 backdrop-blur-md shadow-[0_30px_60px_-20px_rgba(0,134,249,0.35)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/WorldMap.avif"
@@ -126,22 +126,14 @@ export function ContactOffices() {
                   />
                   {/* City code label */}
                   <span
-                    className="absolute top-1/2 -translate-y-1/2 text-[9px] font-mono font-bold text-white/80 whitespace-nowrap tracking-widest z-20"
-                    style={node.labelRight ? { left: '16px' } : { right: '16px' }}
+                    className="absolute top-1/2 -translate-y-1/2 text-[8px] sm:text-[9px] font-mono font-bold text-white/80 whitespace-nowrap tracking-widest z-20"
+                    style={node.labelRight ? { left: '14px' } : { right: '14px' }}
                   >
                     {node.code}
                   </span>
                 </div>
               ))}
 
-              {/* Bottom labels */}
-              <div className="absolute bottom-4 left-4 text-[10px] font-mono uppercase tracking-widest text-white/40">
-                4 offices · ops in 150+ countries
-              </div>
-              <div className="absolute bottom-3 right-4 text-right">
-                <div className="text-[8px] font-mono uppercase tracking-[0.18em] text-white/30">Edge Pops</div>
-                <div className="text-[22px] font-mono font-bold text-white/55 leading-tight">42</div>
-              </div>
             </div>
           </div>
 
