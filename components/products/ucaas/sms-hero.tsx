@@ -43,7 +43,7 @@ export function SMSHero() {
   const wrapRef     = useRef<HTMLDivElement>(null)
   const msgsRef     = useRef<HTMLDivElement>(null)
   const typingRef   = useRef<HTMLDivElement>(null)
-  const inputRef    = useRef<HTMLSpanElement>(null)
+  const inputRef    = useRef<HTMLInputElement>(null)
   const sendBtnRef  = useRef<HTMLDivElement>(null)
   const aliveRef    = useRef(true)
   const timerRef    = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -133,11 +133,7 @@ export function SMSHero() {
               onComplete: () => {
                 if (msgsRef.current) msgsRef.current.innerHTML = ''
                 hideTyping()
-                if (inputRef.current) {
-                  inputRef.current.textContent = ''
-                  const ph = inputRef.current.parentElement?.querySelector<HTMLElement>('.input-placeholder')
-                  if (ph) ph.style.display = ''
-                }
+                if (inputRef.current) inputRef.current.value = ''
                 timerRef.current = setTimeout(() => step(0), 250)
               },
             })
@@ -158,14 +154,11 @@ export function SMSHero() {
     if (msg.from === 'agent' && inputRef.current) {
       const full = msg.text
       let pos = 0
-      /* hide placeholder */
-      const ph = inputRef.current.parentElement?.querySelector<HTMLElement>('.input-placeholder')
-      if (ph) ph.style.display = 'none'
       const chunkMs = Math.max(14, waitMs / (full.length / 2))
       typeIRef.current = setInterval(() => {
         if (!aliveRef.current) { clearInterval(typeIRef.current!); return }
         pos = Math.min(pos + 2, full.length)
-        if (inputRef.current) inputRef.current.textContent = full.slice(0, pos)
+        if (inputRef.current) inputRef.current.value = full.slice(0, pos)
         /* pulse send button while typing */
         if (sendBtnRef.current && pos % 6 === 0) {
           gsap.fromTo(sendBtnRef.current, { scale: 1 }, { scale: 1.12, duration: 0.12, yoyo: true, repeat: 1 })
@@ -178,11 +171,7 @@ export function SMSHero() {
       if (!aliveRef.current) return
       hideTyping()
       addBubble(idx)
-      if (inputRef.current) {
-        inputRef.current.textContent = ''
-        const ph = inputRef.current.parentElement?.querySelector<HTMLElement>('.input-placeholder')
-        if (ph) ph.style.display = ''
-      }
+      if (inputRef.current) inputRef.current.value = ''
       timerRef.current = setTimeout(() => step(idx + 1), GAP_MS)
     }, waitMs)
   }, [addBubble, showTyping, hideTyping])
@@ -389,14 +378,12 @@ export function SMSHero() {
 
               {/* Input bar */}
               <div className="flex items-center gap-2 px-3 py-2 border-t border-white/[0.06] shrink-0 bg-[#0B1220]">
-                <div className="flex-1 flex items-center px-2.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.07] min-w-0">
-                  <span
-                    ref={inputRef}
-                    className="text-[8px] font-mono text-white/70 flex-1 truncate"
-                  />
-                  {/* placeholder if empty */}
-                  <span className="text-[8px] font-mono text-white/20 input-placeholder">Type a reply…</span>
-                </div>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  placeholder="Type a reply…"
+                  className="flex-1 min-w-0 px-2.5 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.07] text-[8px] font-mono text-white/80 placeholder:text-white/20 outline-none focus:border-[#046BD2]/50 focus:bg-white/[0.06] transition-colors"
+                />
                 <div
                   ref={sendBtnRef}
                   className="w-7 h-7 rounded-lg bg-[#046BD2] flex items-center justify-center shrink-0 cursor-pointer hover:bg-[#0078E0] transition-colors"
