@@ -9,6 +9,7 @@ import {
   Layers, Phone, MessageSquare, Globe, Zap, BarChart3,
   ArrowRight, ChevronRight, Inbox,
 } from 'lucide-react'
+import { OmnichannelIllustration } from '@/components/ui/omnichannel-illustration'
 
 const features = [
   { icon: Layers, title: 'Unified Agent Desktop', desc: 'Every channel — voice, chat, SMS, social, email — in one screen with full CRM context.' },
@@ -145,8 +146,9 @@ export function ProdCCOmnichannelPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
-            <OmnichannelInbox />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+            className="w-full">
+            <OmnichannelIllustration />
           </motion.div>
         </section>
 
