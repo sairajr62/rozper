@@ -220,9 +220,13 @@ export function ProdUCaaSBusinessPhonePageView() {
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28">
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
-            <Link href="/" className="hover:text-[#0086F9]">/</Link>
+            <Link href="/" className="hover:text-[#0086F9]">
+              /
+            </Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/products/ucaas" className="hover:text-[#0086F9]">ucaas</Link>
+            <Link href="/products/ucaas" className="hover:text-[#0086F9]">
+              ucaas
+            </Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">business-phone</span>
           </div>
@@ -232,9 +236,15 @@ export function ProdUCaaSBusinessPhonePageView() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-16 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:items-start">
           {/* Left copy */}
           <div className="pt-2">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8"
+            >
               <Phone className="w-3.5 h-3.5 text-[#0086F9]" />
-              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">UCaaS · Business Phone</span>
+              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">
+                UCaaS · Business Phone
+              </span>
             </motion.div>
 
             <motion.h1
@@ -242,8 +252,12 @@ export function ProdUCaaSBusinessPhonePageView() {
               animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
               className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
             >
-              Cloud calling for<br />
-              <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">global teams</span>.
+              Cloud calling for
+              <br />
+              <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">
+                global teams
+              </span>
+              .
             </motion.h1>
 
             <motion.p
@@ -251,7 +265,9 @@ export function ProdUCaaSBusinessPhonePageView() {
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
               className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed"
             >
-              Local numbers in 150+ countries, HD voice on any device, smart routing — all managed from one dashboard. No hardware, no carrier contracts.
+              Local numbers in 150+ countries, HD voice on any device, smart
+              routing — all managed from one dashboard. No hardware, no carrier
+              contracts.
             </motion.p>
 
             <motion.div
@@ -259,10 +275,17 @@ export function ProdUCaaSBusinessPhonePageView() {
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
               className="mt-10 flex flex-wrap gap-3"
             >
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
-                Start calling <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition"
+              >
+                Start a free trial{" "}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition"
+              >
                 See pricing
               </Link>
             </motion.div>
@@ -271,7 +294,11 @@ export function ProdUCaaSBusinessPhonePageView() {
           {/* Right — phone mockup */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0, transition: { delay: 0.25, ease: 'easeOut' } }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.25, ease: "easeOut" },
+            }}
             className="hidden sm:flex justify-center lg:justify-end"
           >
             {/* Phone shell — fixed width so it never overflows */}
@@ -281,7 +308,6 @@ export function ProdUCaaSBusinessPhonePageView() {
 
               {/* Body */}
               <div className="relative rounded-[38px] bg-gradient-to-b from-[#1C2A3E] to-[#0F1A2C] border-[3px] border-white/[0.09] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.07)] p-[8px]">
-
                 {/* Volume buttons */}
                 <div className="absolute -left-[4px] top-[88px] w-[4px] h-6 rounded-l-full bg-white/10" />
                 <div className="absolute -left-[4px] top-[120px] w-[4px] h-6 rounded-l-full bg-white/10" />
@@ -292,7 +318,9 @@ export function ProdUCaaSBusinessPhonePageView() {
                 <div className="rounded-[32px] overflow-hidden bg-[#0B1220]">
                   {/* Status bar */}
                   <div className="flex items-center justify-between px-4 pt-2.5 pb-1.5 bg-[#0B1220]">
-                    <span className="text-[9px] font-mono text-white/45">9:41</span>
+                    <span className="text-[9px] font-mono text-white/45">
+                      9:41
+                    </span>
                     {/* Dynamic island */}
                     <div className="w-16 h-4 rounded-full bg-black flex items-center justify-center gap-1">
                       <motion.div
@@ -324,21 +352,33 @@ export function ProdUCaaSBusinessPhonePageView() {
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold">Enterprise calling. Startup simplicity.</h2>
+            <h2 className="font-display text-4xl md:text-5xl font-bold">
+              Enterprise calling. Startup simplicity.
+            </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
                 className="flex items-start gap-4 p-5 rounded-2xl bg-[#111B2D] border border-white/[0.07] hover:border-[#046BD2]/30 transition-colors group"
               >
                 <div className="w-9 h-9 shrink-0 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all mt-0.5">
-                  <f.icon className="w-4 h-4 text-[#0086F9]" strokeWidth={1.5} />
+                  <f.icon
+                    className="w-4 h-4 text-[#0086F9]"
+                    strokeWidth={1.5}
+                  />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">{f.title}</h3>
-                  <p className="text-xs text-white/50 leading-relaxed">{f.desc}</p>
+                  <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">
+                    {f.title}
+                  </h3>
+                  <p className="text-xs text-white/50 leading-relaxed">
+                    {f.desc}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -346,10 +386,15 @@ export function ProdUCaaSBusinessPhonePageView() {
         </section>
 
         <section className="max-w-3xl mx-auto px-4 sm:px-6 py-24">
-          <h2 className="font-display text-4xl font-bold mb-8 text-center">FAQ</h2>
+          <h2 className="font-display text-4xl font-bold mb-8 text-center">
+            FAQ
+          </h2>
           <div className="space-y-3">
             {faqs.map((f, i) => (
-              <details key={i} className="group rounded-2xl bg-white/[0.03] border border-white/10 p-6 hover:bg-white/[0.05] transition">
+              <details
+                key={i}
+                className="group rounded-2xl bg-white/[0.03] border border-white/10 p-6 hover:bg-white/[0.05] transition"
+              >
                 <summary className="flex items-center justify-between cursor-pointer list-none font-display font-semibold">
                   <span>{f.q}</span>
                   <ChevronRight className="w-5 h-5 group-open:rotate-90 transition-transform text-[#0086F9]" />
@@ -363,11 +408,21 @@ export function ProdUCaaSBusinessPhonePageView() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Phone className="w-12 h-12 mx-auto mb-6 text-white" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white">Your team. Calling everywhere.</h2>
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-white">
+              Your team. Calling everywhere.
+            </h2>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
-                Start calling <ArrowRight className="w-4 h-4" />
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition"
+              >
+                Start a free trial <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition"
+              >
+                See pricing
               </Link>
             </div>
           </div>
@@ -376,5 +431,5 @@ export function ProdUCaaSBusinessPhonePageView() {
         <Footer />
       </div>
     </main>
-  )
+  );
 }
