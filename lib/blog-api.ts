@@ -88,6 +88,7 @@ type RawPost = {
   excerpt: Rendered
   content?: Rendered
   yoast_head_json?: {
+    title?: string
     description?: string
     og_image?: Array<{ url: string }>
   }
@@ -131,6 +132,7 @@ export type BlogPost = {
   featuredImage?: BlogImage
   categories: BlogTerm[]
   tags: BlogTerm[]
+  seoTitle?: string
   seoDescription?: string
 }
 
@@ -279,6 +281,7 @@ function normalizePost(raw: RawPost): BlogPostDetail {
     featuredImage,
     categories,
     tags,
+    seoTitle: raw.yoast_head_json?.title,
     seoDescription:
       raw.yoast_head_json?.description ?? excerptText.slice(0, 160),
     contentHtml,

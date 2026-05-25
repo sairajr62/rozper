@@ -8,6 +8,7 @@ import {
   PhoneOutgoing, Shield, Zap, BarChart3, Users, RefreshCw,
   ArrowRight, ChevronRight, TrendingUp,
 } from 'lucide-react'
+import { OutboundDialerMobile } from '@/components/ui/outbound-dialer-mobile'
 
 const features = [
   { icon: PhoneOutgoing, title: 'Power & Predictive Dialing', desc: 'Power dialer for compliance, predictive for volume — switch modes per campaign.' },
@@ -109,51 +110,75 @@ export function ProdCCOutboundDialerPageView() {
     <main className="min-h-screen bg-[#0B1220] overflow-hidden">
       <Navbar />
 
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-[#046BD2]/7 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] rounded-full bg-[#046BD2]/7 blur-[140px] pointer-events-none" />
 
       <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28">
-          <div className="flex items-center gap-2 text-xs font-mono text-white/40">
-            <Link href="/" className="hover:text-[#0086F9]">/</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link href="/products/contact-center" className="hover:text-[#0086F9]">contact-center</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-[#0086F9]">outbound-dialer</span>
-          </div>
-        </div>
-
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24 lg:pt-28 pb-8 lg:pb-6 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-center">
           <div>
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 text-xs font-mono text-white/40 mb-6">
+              <Link href="/" className="hover:text-[#0086F9]">/</Link>
+              <ChevronRight className="w-3 h-3" />
+              <Link href="/products/contact-center" className="hover:text-[#0086F9]">contact-center</Link>
+              <ChevronRight className="w-3 h-3" />
+              <span className="text-[#0086F9]">outbound-dialer</span>
+            </div>
+
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
               <PhoneOutgoing className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Contact Center · Outbound Dialer</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight">
               Outbound dialing.<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">Compliant at scale</span>.
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-4 sm:mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
               Power and predictive dialing with TCPA compliance, AI coaching, and CRM sync — built for sales and collections teams that need to move fast.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 sm:mt-10 flex flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition text-sm sm:text-base">
                 Start dialing smarter <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition text-sm sm:text-base">See pricing</Link>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
-            <OutboundDialerUI />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] } }}
+            className="flex justify-center lg:justify-end items-center mt-4 lg:mt-0"
+          >
+            {/* Phone scaled to 75% on mobile, 85% on desktop */}
+            <div className="hidden sm:block" style={{ width: 228, height: 456, position: 'relative', overflow: 'visible' }}>
+              <div style={{
+                position: 'absolute', top: 0, left: 0,
+                transform: 'scale(0.85) translateZ(0)',
+                transformOrigin: 'top left',
+                backfaceVisibility: 'hidden',
+              }}>
+                <OutboundDialerMobile />
+              </div>
+            </div>
+            {/* Smaller scale for xs mobile screens */}
+            <div className="block sm:hidden" style={{ width: 201, height: 402, position: 'relative', overflow: 'visible' }}>
+              <div style={{
+                position: 'absolute', top: 0, left: 0,
+                transform: 'scale(0.75) translateZ(0)',
+                transformOrigin: 'top left',
+                backfaceVisibility: 'hidden',
+              }}>
+                <OutboundDialerMobile />
+              </div>
+            </div>
           </motion.div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold">More connects. Better conversations. Fewer risks.</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">More connects. Better conversations. Fewer risks.</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {features.map((f, i) => (
@@ -175,8 +200,8 @@ export function ProdCCOutboundDialerPageView() {
           </div>
         </section>
 
-        <section className="max-w-3xl mx-auto px-4 sm:px-6 py-24">
-          <h2 className="font-display text-4xl font-bold mb-8 text-center">FAQ</h2>
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">FAQ</h2>
           <div className="space-y-3">
             {faqs.map((f, i) => (
               <details key={i} className="group rounded-2xl bg-white/[0.03] border border-white/10 p-6 hover:bg-white/[0.05] transition">

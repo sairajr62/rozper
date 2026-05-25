@@ -68,7 +68,7 @@ export function ProdUCaaSWebsiteChatbotPageView() {
             </motion.div>
           </div>
 
-          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 380 }}>
+          <div className="flex items-start justify-center overflow-hidden h-[191px] sm:h-[246px] md:h-[310px] lg:h-[397px]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }}

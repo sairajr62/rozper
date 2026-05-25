@@ -36,6 +36,11 @@ const aiInsights = [
   '● 3 unanswered calls flagged for review',
 ]
 
+/* Pre-computed wave bar heights — deterministic, fixed precision to avoid SSR/client hydration mismatch */
+const WAVE_BAR_HEIGHTS = Array.from({ length: 14 }, (_, i) =>
+  `${(20 + Math.abs(Math.sin(i * 0.9)) * 80).toFixed(1)}%`
+)
+
 /* ─── component ─────────────────────────────────────────────── */
 export function LaptopHero() {
   /* refs for every animated piece */
@@ -244,11 +249,11 @@ export function LaptopHero() {
                 </div>
                 {/* Waveform */}
                 <div ref={waveRef} className="flex items-end gap-[2px] h-5 mr-2">
-                  {Array.from({ length: 14 }).map((_, i) => (
+                  {WAVE_BAR_HEIGHTS.map((h, i) => (
                     <div
                       key={i}
                       className="wave-bar w-[2px] rounded-sm bg-[#0086F9]"
-                      style={{ height: `${20 + Math.abs(Math.sin(i * 0.9)) * 80}%`, transformOrigin: 'bottom' }}
+                      style={{ height: h, transformOrigin: 'center bottom' }}
                     />
                   ))}
                 </div>

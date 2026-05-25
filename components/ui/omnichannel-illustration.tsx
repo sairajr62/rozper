@@ -9,7 +9,7 @@ import {
   Smile, Paperclip, CheckCheck,
 } from "lucide-react"
 
-/* ── Inline brand SVG icons ───────────────────────────────── */
+/* ── Inline brand SVG icons ──────────────────────────────── */
 const WaIcon = ({ size = 12 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="#25D366">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -41,43 +41,27 @@ const FbIcon = ({ size = 12 }: { size?: number }) => (
   </svg>
 )
 
-/* ── Avatar helper ─────────────────────────────────────────── */
+/* ── Avatar ─────────────────────────────────────────────── */
 function Avatar({ initials, color }: { initials: string; color: string }) {
   return (
-    <div
-      className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold"
-      style={{ background: color, fontSize: 9 }}
-    >
+    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold" style={{ background: color, fontSize: 9 }}>
       {initials}
     </div>
   )
 }
 
-/* ── Sidebar nav icon ──────────────────────────────────────── */
-function NavIcon({
-  icon: Icon,
-  active = false,
-  badge,
-  onMouseEnter,
-  onMouseLeave,
-}: {
-  icon: React.ElementType
-  active?: boolean
-  badge?: number
-  onMouseEnter?: () => void
-  onMouseLeave?: () => void
+/* ── Sidebar nav icon ───────────────────────────────────── */
+function NavIcon({ icon: Icon, active = false, badge, onMouseEnter, onMouseLeave }: {
+  icon: React.ElementType; active?: boolean; badge?: number
+  onMouseEnter?: () => void; onMouseLeave?: () => void
 }) {
   return (
-    <div
-      className="relative flex items-center justify-center w-8 h-8 rounded-lg transition-colors cursor-pointer"
+    <div className="relative flex items-center justify-center w-8 h-8 rounded-lg transition-colors cursor-pointer"
       style={{ background: active ? 'rgba(4,107,210,0.2)' : 'transparent' }}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+      onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <Icon className="w-3.5 h-3.5" style={{ color: active ? '#0086F9' : 'rgba(255,255,255,0.4)' }} />
       {badge != null && (
-        <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#046BD2] text-white flex items-center justify-center"
-          style={{ fontSize: 7 }}>
+        <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#046BD2] text-white flex items-center justify-center" style={{ fontSize: 7 }}>
           {badge}
         </span>
       )}
@@ -85,21 +69,17 @@ function NavIcon({
   )
 }
 
-/* ── Conversation row ──────────────────────────────────────── */
-function ConvRow({
-  initials, color, name, preview, time, channelIcon, unread, active = false,
-}: {
+/* ── Conversation row ───────────────────────────────────── */
+function ConvRow({ initials, color, name, preview, time, channelIcon, unread, active = false }: {
   initials: string; color: string; name: string; preview: string
   time: string; channelIcon: React.ReactNode; unread?: boolean; active?: boolean
 }) {
   return (
-    <div
-      className="flex items-center gap-2 px-2 sm:px-3 py-1.5 cursor-pointer transition-colors"
-      style={{ background: active ? 'rgba(4,107,210,0.08)' : 'transparent' }}
-    >
+    <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 cursor-pointer"
+      style={{ background: active ? 'rgba(4,107,210,0.08)' : 'transparent' }}>
       <div className="relative flex-shrink-0">
         <Avatar initials={initials} color={color} />
-        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#111B2D] flex items-center justify-center">
+        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-[#0B1220] flex items-center justify-center">
           {channelIcon}
         </div>
       </div>
@@ -115,7 +95,7 @@ function ConvRow({
   )
 }
 
-/* ── Channel dropdown item ─────────────────────────────────── */
+/* ── Channel dropdown item ──────────────────────────────── */
 function DropItem({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <div className="flex items-center gap-2 px-3 py-1.5 hover:bg-white/5 cursor-pointer rounded-md">
@@ -125,339 +105,264 @@ function DropItem({ icon, label }: { icon: React.ReactNode; label: string }) {
   )
 }
 
-/* ── Chat messages definition ──────────────────────────────── */
+/* ── Chat steps ─────────────────────────────────────────── */
 const CHAT_STEPS = [
-  {
-    id: 'msg1', side: 'left', initials: 'RM',
-    color: 'linear-gradient(135deg,#059669,#10b981)',
-    text: 'Hi, I have a question about my invoice #882 — there\'s an extra charge I don\'t recognize.',
-    time: '10:42',
-  },
-  {
-    id: 'msg2', side: 'right', initials: 'PN',
-    color: 'linear-gradient(135deg,#046BD2,#0086F9)',
-    text: 'Hi Rosa! I can see your invoice #882 right here. Let me pull up the details for you.',
-    time: '10:43',
-  },
-  {
-    id: 'msg3', side: 'left', initials: 'RM',
-    color: 'linear-gradient(135deg,#059669,#10b981)',
-    text: 'Thank you! It was a one-time setup fee. I\'ll send a revised breakdown now.',
-    time: '10:44',
-  },
+  { id: 'msg1', side: 'left',   initials: 'RM', color: 'linear-gradient(135deg,#059669,#10b981)', text: "Hi, I have a question about my invoice #882 — there's an extra charge I don't recognize.", time: '10:42' },
+  { id: 'msg2', side: 'right',  initials: 'PN', color: 'linear-gradient(135deg,#046BD2,#0086F9)', text: 'Hi Rosa! I can see your invoice #882 right here. Let me pull up the details for you.', time: '10:43' },
+  { id: 'msg3', side: 'left',   initials: 'RM', color: 'linear-gradient(135deg,#059669,#10b981)', text: "Thank you! It was a one-time setup fee. I'll send a revised breakdown now.", time: '10:44' },
   { id: 'typing', side: 'typing' },
 ] as const
 
-/* Delays (ms) between each step appearing */
 const STEP_DELAYS = [600, 1300, 1300, 1000]
-const LOOP_PAUSE = 2200
+const LOOP_PAUSE  = 2200
 
-/* ── Main export ───────────────────────────────────────────── */
+/* ── Main export ────────────────────────────────────────── */
 export function OmnichannelIllustration() {
-  const [chatHovered, setChatHovered] = useState(false)
-  /* visibleCount: how many chat steps are currently shown (0–4) */
+  const [chatHovered,  setChatHovered]  = useState(false)
   const [visibleCount, setVisibleCount] = useState(0)
-  /* loopKey: increment to remount AnimatePresence children on reset */
-  const [loopKey, setLoopKey] = useState(0)
+  const [loopKey,      setLoopKey]      = useState(0)
 
   useEffect(() => {
     let cancelled = false
     const timers: ReturnType<typeof setTimeout>[] = []
-
-    function runLoop() {
-      let cumulative = 0
-      STEP_DELAYS.forEach((delay, idx) => {
-        cumulative += delay
-        const t = setTimeout(() => {
-          if (!cancelled) setVisibleCount(idx + 1)
-        }, cumulative)
-        timers.push(t)
+    function run() {
+      let cum = 0
+      STEP_DELAYS.forEach((d, i) => {
+        cum += d
+        timers.push(setTimeout(() => { if (!cancelled) setVisibleCount(i + 1) }, cum))
       })
-      const resetTimer = setTimeout(() => {
+      timers.push(setTimeout(() => {
         if (!cancelled) {
           setVisibleCount(0)
-          const restartTimer = setTimeout(() => {
-            if (!cancelled) {
-              setLoopKey(k => k + 1)
-            }
-          }, 400)
-          timers.push(restartTimer)
+          timers.push(setTimeout(() => { if (!cancelled) setLoopKey(k => k + 1) }, 400))
         }
-      }, cumulative + LOOP_PAUSE)
-      timers.push(resetTimer)
+      }, cum + LOOP_PAUSE))
     }
-
-    runLoop()
-    return () => {
-      cancelled = true
-      timers.forEach(clearTimeout)
-    }
+    run()
+    return () => { cancelled = true; timers.forEach(clearTimeout) }
   }, [loopKey])
 
   return (
-    <div className="relative w-full max-w-[720px] mx-auto select-none">
+    <div className="relative w-full max-w-[680px] mx-auto select-none">
 
-      {/* Background glow */}
-      <div className="absolute -inset-6 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-[#046BD2]/20 blur-[80px] rounded-full" />
-        <div className="absolute top-1/4 right-1/4 w-[200px] h-[200px] bg-[#25D366]/10 blur-[60px] rounded-full" />
-        <div className="absolute bottom-1/4 left-1/4 w-[200px] h-[200px] bg-[#bc1888]/10 blur-[60px] rounded-full" />
+      {/* Glow */}
+      <div className="absolute -inset-8 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[320px] bg-[#046BD2]/20 blur-[90px] rounded-full" />
       </div>
 
-      {/* Browser window */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-[0_32px_80px_-20px_rgba(4,107,210,0.4)]"
+        className="relative flex flex-col items-center"
       >
-        {/* Browser chrome */}
-        <div className="h-7 sm:h-8 bg-[#1A2540] border-b border-white/5 flex items-center px-2 sm:px-3 gap-1.5">
-          <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FF5F57]" />
-          <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#FFBD2E]" />
-          <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#28C840]" />
-          <div className="ml-2 sm:ml-3 flex-1 max-w-[180px] sm:max-w-[220px] h-4 sm:h-4.5 rounded bg-white/5 flex items-center px-2 gap-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#25D366]/60" />
-            <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.35)' }} className="font-mono truncate">
-              app.rozper.com/inbox
-            </span>
-          </div>
-        </div>
+        {/* ── Laptop lid ── */}
+        <div
+          className="relative w-full border border-white/[0.12] bg-[#0B1220] rounded-[14px] shadow-[0_40px_90px_-25px_rgba(4,107,210,0.85)]"
+          style={{ padding: 7 }}
+        >
+          {/* Camera dot */}
+          <div className="absolute left-1/2 top-1.5 h-1 w-1 -translate-x-1/2 rounded-full bg-white/25" />
 
-        {/* App body */}
-        <div className="flex bg-[#0D1525]" style={{ height: 'clamp(300px, 45vw, 420px)' }}>
+          {/* Screen */}
+          <div className="relative w-full rounded-[8px] overflow-hidden" style={{ background: '#0D1525' }}>
 
-          {/* ── Left sidebar ── */}
-          <div className="w-10 sm:w-12 flex-shrink-0 bg-[#111B2D] border-r border-white/5 flex flex-col items-center py-3 gap-1.5">
-            <NavIcon icon={Home} />
-            <NavIcon icon={Phone} />
-            <NavIcon
-              icon={MessageSquare}
-              active
-              badge={12}
-              onMouseEnter={() => setChatHovered(true)}
-              onMouseLeave={() => setChatHovered(false)}
-            />
-            <NavIcon icon={Video} />
-            <div className="my-1 w-5 border-t border-white/5" />
-            <NavIcon icon={Inbox} />
-            <NavIcon icon={Users} />
-            <NavIcon icon={Megaphone} />
-            <div className="flex-1" />
-            <NavIcon icon={BarChart2} />
-          </div>
-
-          {/* ── Middle pane: conversation list ── */}
-          <div className="flex flex-col border-r border-white/5"
-            style={{ width: 'clamp(140px, 28%, 200px)', flexShrink: 0 }}>
-
-            {/* Header */}
-            <div className="flex items-center justify-between px-2 sm:px-3 py-2 border-b border-white/5">
-              <span className="font-bold text-white" style={{ fontSize: 11 }}>Chat</span>
-              <div className="flex items-center gap-1">
-                <div className="w-5 h-5 rounded flex items-center justify-center hover:bg-white/5">
-                  <Plus className="w-3 h-3 text-white/50" />
-                </div>
-                <div className="w-5 h-5 rounded flex items-center justify-center hover:bg-white/5">
-                  <SlidersHorizontal className="w-3 h-3 text-white/50" />
+            {/* Address bar */}
+            <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/5" style={{ background: '#0F1829' }}>
+              <div className="flex items-center gap-1 flex-shrink-0">
+                <div className="w-2 h-2 rounded-full bg-[#FF5F57]" />
+                <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
+                <div className="w-2 h-2 rounded-full bg-[#28C840]" />
+              </div>
+              <div className="flex-1 flex justify-center">
+                <div className="flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-white/[0.06] border border-white/[0.08]">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#046BD2]/70 flex-shrink-0" />
+                  <span className="font-mono text-white/35" style={{ fontSize: 9 }}>app.rozper.com/inbox</span>
                 </div>
               </div>
+              <div className="w-16 flex-shrink-0" />
             </div>
 
-            {/* Tabs */}
-            <div className="flex border-b border-white/5 px-1">
-              {['All', 'Team', 'Direct'].map((t, i) => (
-                <div key={t}
-                  className="px-2 py-1.5 cursor-pointer"
-                  style={{
-                    fontSize: 9,
-                    color: i === 0 ? '#0086F9' : 'rgba(255,255,255,0.4)',
-                    borderBottom: i === 0 ? '1.5px solid #0086F9' : '1.5px solid transparent',
-                    marginBottom: -1,
-                  }}>
-                  {t}
-                </div>
-              ))}
-            </div>
+            {/* App body */}
+            <div className="flex" style={{ height: 'clamp(240px, 36vw, 360px)' }}>
 
-            {/* Search bar */}
-            <div className="px-2 sm:px-3 py-1.5 border-b border-white/5">
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/5">
-                <Search className="w-2.5 h-2.5 text-white/30 flex-shrink-0" />
-                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)' }}>Search...</span>
+              {/* Left sidebar */}
+              <div className="w-10 sm:w-12 flex-shrink-0 bg-[#0D1628] border-r border-white/5 flex flex-col items-center py-3 gap-1.5">
+                <NavIcon icon={Home} />
+                <NavIcon icon={Phone} />
+                <NavIcon icon={MessageSquare} active badge={12}
+                  onMouseEnter={() => setChatHovered(true)}
+                  onMouseLeave={() => setChatHovered(false)} />
+                <NavIcon icon={Video} />
+                <div className="my-1 w-5 border-t border-white/5" />
+                <NavIcon icon={Inbox} />
+                <NavIcon icon={Users} />
+                <NavIcon icon={Megaphone} />
+                <div className="flex-1" />
+                <NavIcon icon={BarChart2} />
               </div>
-            </div>
 
-            {/* Conversation list + hover dropdown overlay */}
-            <div className="relative flex-1 overflow-hidden">
-
-              {/* Channel dropdown — only on chat icon hover */}
-              <AnimatePresence>
-                {chatHovered && (
-                  <motion.div
-                    key="dropdown"
-                    initial={{ opacity: 0, y: -6, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -4, scale: 0.97 }}
-                    transition={{ duration: 0.18, ease: 'easeOut' }}
-                    className="absolute top-1 left-2 right-2 z-20 rounded-lg border border-white/10 py-1 shadow-2xl"
-                    style={{ background: '#1A2847' }}
-                  >
-                    <DropItem icon={<MessageSquare className="w-3 h-3 text-white/60" />} label="Chat" />
-                    <DropItem icon={<TgIcon size={12} />} label="Telegram" />
-                    <DropItem icon={<IgIcon size={12} />} label="Instagram" />
-                    <DropItem icon={<FbIcon size={12} />} label="Facebook" />
-                    <DropItem icon={<WaIcon size={12} />} label="Whatsapp" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Conversations (blurred when dropdown open) */}
-              <div
-                className="pt-1 transition-all duration-200"
-                style={{
-                  opacity: chatHovered ? 0.3 : 1,
-                  filter: chatHovered ? 'blur(1px)' : 'none',
-                  pointerEvents: 'none',
-                }}
-              >
-                <div className="px-2 sm:px-3 pt-2 pb-1">
-                  <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em' }}>TEAM</span>
-                </div>
-                <ConvRow
-                  initials="WR" color="linear-gradient(135deg,#6366f1,#8b5cf6)"
-                  name="Support Team" preview="IVR routing config update" time="16:18"
-                  channelIcon={<MessageSquare style={{ width: 8, height: 8, color: 'rgba(255,255,255,0.6)' }} />}
-                />
-                <div className="px-2 sm:px-3 pt-2 pb-1">
-                  <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.08em' }}>CHATS</span>
-                </div>
-                <ConvRow initials="JW" color="linear-gradient(135deg,#0ea5e9,#2563eb)" name="James Wilson" preview="Need help with IVR setup…" time="Yesterday" channelIcon={<TgIcon size={8} />} unread />
-                <ConvRow initials="RM" color="linear-gradient(135deg,#059669,#10b981)" name="Rosa Martinez" preview="Billing inquiry · Invoice #882" time="2m ago" channelIcon={<WaIcon size={8} />} active />
-              </div>
-            </div>
-          </div>
-
-          {/* ── Right pane: active chat ── */}
-          <div className="hidden sm:flex flex-1 flex-col bg-[#0B1422]">
-
-            {/* Chat header */}
-            <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-b border-white/5 bg-[#0D1525]">
-              <div className="flex items-center gap-2">
-                <div className="relative">
-                  <Avatar initials="RM" color="linear-gradient(135deg,#059669,#10b981)" />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#0D1525] flex items-center justify-center">
-                    <WaIcon size={8} />
+              {/* Middle pane */}
+              <div className="flex flex-col border-r border-white/5" style={{ width: 'clamp(130px, 27%, 190px)', flexShrink: 0 }}>
+                <div className="flex items-center justify-between px-2 sm:px-3 py-2 border-b border-white/5">
+                  <span className="font-bold text-white" style={{ fontSize: 11 }}>Chat</span>
+                  <div className="flex items-center gap-1">
+                    <div className="w-5 h-5 rounded flex items-center justify-center hover:bg-white/5 cursor-pointer">
+                      <Plus className="w-3 h-3 text-white/50" />
+                    </div>
+                    <div className="w-5 h-5 rounded flex items-center justify-center hover:bg-white/5 cursor-pointer">
+                      <SlidersHorizontal className="w-3 h-3 text-white/50" />
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="font-semibold text-white" style={{ fontSize: 11 }}>Rosa Martinez</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  </div>
-                  <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.4)' }}>Online · WhatsApp</span>
+                <div className="flex border-b border-white/5 px-1">
+                  {['All', 'Team', 'Direct'].map((t, i) => (
+                    <div key={t} className="px-2 py-1.5 cursor-pointer" style={{ fontSize: 9, color: i === 0 ? '#0086F9' : 'rgba(255,255,255,0.4)', borderBottom: i === 0 ? '1.5px solid #0086F9' : '1.5px solid transparent', marginBottom: -1 }}>
+                      {t}
+                    </div>
+                  ))}
                 </div>
-              </div>
-              <div className="flex items-center gap-1">
-                {[Phone, Video, BarChart2].map((Icon, i) => (
-                  <div key={i} className="w-6 h-6 rounded-lg flex items-center justify-center bg-white/5 hover:bg-white/10">
-                    <Icon className="w-3 h-3 text-white/50" />
+                <div className="px-2 sm:px-3 py-1.5 border-b border-white/5">
+                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-white/5">
+                    <Search className="w-2.5 h-2.5 text-white/30 flex-shrink-0" />
+                    <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)' }}>Search...</span>
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
 
-            {/* Messages area — looping animation */}
-            <div className="flex-1 overflow-hidden px-3 sm:px-4 py-3 flex flex-col justify-end gap-2">
-              <AnimatePresence mode="sync">
-                {CHAT_STEPS.map((step, idx) => {
-                  if (idx >= visibleCount) return null
-
-                  if (step.side === 'typing') {
-                    return (
-                      <motion.div
-                        key={`${loopKey}-typing`}
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 4 }}
-                        transition={{ duration: 0.25 }}
-                        className="flex items-center gap-2"
-                      >
-                        <Avatar initials="PN" color="linear-gradient(135deg,#046BD2,#0086F9)" />
-                        <div className="flex items-center gap-1 px-3 py-2 rounded-2xl" style={{ background: 'rgba(4,107,210,0.2)' }}>
-                          {[0, 0.15, 0.3].map((d, i) => (
-                            <motion.div
-                              key={i}
-                              className="w-1.5 h-1.5 rounded-full bg-[#0086F9]"
-                              animate={{ y: [0, -3, 0] }}
-                              transition={{ duration: 0.6, repeat: Infinity, delay: d }}
-                            />
-                          ))}
-                        </div>
+                {/* Conversation list */}
+                <div className="relative flex-1 overflow-hidden">
+                  <AnimatePresence>
+                    {chatHovered && (
+                      <motion.div key="dd"
+                        initial={{ opacity: 0, y: -6, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -4, scale: 0.97 }} transition={{ duration: 0.18 }}
+                        className="absolute top-1 left-2 right-2 z-20 rounded-lg border border-white/10 py-1 shadow-2xl"
+                        style={{ background: '#0F1D36' }}>
+                        <DropItem icon={<MessageSquare className="w-3 h-3 text-white/60" />} label="Chat" />
+                        <DropItem icon={<TgIcon size={12} />} label="Telegram" />
+                        <DropItem icon={<IgIcon size={12} />} label="Instagram" />
+                        <DropItem icon={<FbIcon size={12} />} label="Facebook" />
+                        <DropItem icon={<WaIcon size={12} />} label="Whatsapp" />
                       </motion.div>
-                    )
-                  }
-
-                  const isRight = step.side === 'right'
-                  return (
-                    <motion.div
-                      key={`${loopKey}-${step.id}`}
-                      initial={{ opacity: 0, x: isRight ? 10 : -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: isRight ? 6 : -6 }}
-                      transition={{ duration: 0.3, ease: 'easeOut' }}
-                      className={`flex items-end gap-2 max-w-[75%] ${isRight ? 'self-end flex-row-reverse' : ''}`}
-                    >
-                      <Avatar initials={step.initials} color={step.color} />
-                      <div
-                        className={`rounded-2xl px-3 py-2 ${isRight ? 'rounded-br-sm' : 'rounded-bl-sm'}`}
-                        style={{
-                          background: isRight ? 'rgba(4,107,210,0.35)' : '#1A2540',
-                          fontSize: 10,
-                          color: 'rgba(255,255,255,0.9)',
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {step.text}
-                        <div className={`flex items-center gap-1 mt-0.5 ${isRight ? 'justify-end' : ''}`}>
-                          <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.35)' }}>{step.time}</span>
-                          {isRight && <CheckCheck className="w-2.5 h-2.5" style={{ color: '#0086F9' }} />}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )
-                })}
-              </AnimatePresence>
-            </div>
-
-            {/* Input bar */}
-            <div className="px-3 sm:px-4 py-2 border-t border-white/5">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/8">
-                <Paperclip className="w-3 h-3 text-white/35 flex-shrink-0" />
-                <span className="flex-1" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>
-                  Reply to Rosa Martinez — Priya N.
-                </span>
-                <Smile className="w-3 h-3 text-white/35 flex-shrink-0" />
-                <div className="w-5 h-5 rounded-full bg-[#046BD2] flex items-center justify-center flex-shrink-0">
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
-                  </svg>
+                    )}
+                  </AnimatePresence>
+                  <div className="pt-1 transition-all duration-200" style={{ opacity: chatHovered ? 0.25 : 1, filter: chatHovered ? 'blur(1px)' : 'none', pointerEvents: 'none' }}>
+                    <div className="px-2 sm:px-3 pt-2 pb-1">
+                      <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>TEAM</span>
+                    </div>
+                    <ConvRow initials="WR" color="linear-gradient(135deg,#6366f1,#8b5cf6)" name="Support Team" preview="IVR routing config update" time="16:18"
+                      channelIcon={<MessageSquare style={{ width: 8, height: 8, color: 'rgba(255,255,255,0.6)' }} />} />
+                    <div className="px-2 sm:px-3 pt-2 pb-1">
+                      <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>CHATS</span>
+                    </div>
+                    <ConvRow initials="JW" color="linear-gradient(135deg,#0ea5e9,#2563eb)" name="James Wilson" preview="Need help with IVR setup…" time="Yesterday" channelIcon={<TgIcon size={8} />} unread />
+                    <ConvRow initials="RM" color="linear-gradient(135deg,#059669,#10b981)" name="Rosa Martinez" preview="Billing inquiry · Invoice #882" time="2m ago" channelIcon={<WaIcon size={8} />} active />
+                  </div>
                 </div>
               </div>
+
+              {/* Right pane */}
+              <div className="hidden sm:flex flex-1 flex-col bg-[#090F1C]">
+                <div className="flex items-center justify-between px-3 sm:px-4 py-2 border-b border-white/5 bg-[#0B1220]">
+                  <div className="flex items-center gap-2">
+                    <div className="relative">
+                      <Avatar initials="RM" color="linear-gradient(135deg,#059669,#10b981)" />
+                      <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#0B1220] flex items-center justify-center">
+                        <WaIcon size={8} />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-semibold text-white" style={{ fontSize: 11 }}>Rosa Martinez</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      </div>
+                      <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.4)' }}>Online · WhatsApp</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {[Phone, Video, BarChart2].map((Icon, i) => (
+                      <div key={i} className="w-6 h-6 rounded-lg flex items-center justify-center bg-white/5 hover:bg-white/10">
+                        <Icon className="w-3 h-3 text-white/50" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Messages */}
+                <div className="flex-1 overflow-hidden px-3 sm:px-4 py-3 flex flex-col justify-end gap-2">
+                  <AnimatePresence mode="sync">
+                    {CHAT_STEPS.map((step, idx) => {
+                      if (idx >= visibleCount) return null
+                      if (step.side === 'typing') {
+                        return (
+                          <motion.div key={`${loopKey}-typing`} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 4 }} transition={{ duration: 0.25 }} className="flex items-center gap-2">
+                            <Avatar initials="PN" color="linear-gradient(135deg,#046BD2,#0086F9)" />
+                            <div className="flex items-center gap-1 px-3 py-2 rounded-2xl" style={{ background: 'rgba(4,107,210,0.2)' }}>
+                              {[0, 0.15, 0.3].map((d, i) => (
+                                <motion.div key={i} className="w-1.5 h-1.5 rounded-full bg-[#0086F9]"
+                                  animate={{ y: [0, -3, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: d }} />
+                              ))}
+                            </div>
+                          </motion.div>
+                        )
+                      }
+                      const right = step.side === 'right'
+                      return (
+                        <motion.div key={`${loopKey}-${step.id}`}
+                          initial={{ opacity: 0, x: right ? 10 : -10 }} animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: right ? 6 : -6 }} transition={{ duration: 0.3, ease: 'easeOut' }}
+                          className={`flex items-end gap-2 max-w-[75%] ${right ? 'self-end flex-row-reverse' : ''}`}>
+                          <Avatar initials={step.initials} color={step.color} />
+                          <div className={`rounded-2xl px-3 py-2 ${right ? 'rounded-br-sm' : 'rounded-bl-sm'}`}
+                            style={{ background: right ? 'rgba(4,107,210,0.35)' : '#152035', fontSize: 10, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+                            {step.text}
+                            <div className={`flex items-center gap-1 mt-0.5 ${right ? 'justify-end' : ''}`}>
+                              <span style={{ fontSize: 8, color: 'rgba(255,255,255,0.35)' }}>{step.time}</span>
+                              {right && <CheckCheck className="w-2.5 h-2.5" style={{ color: '#0086F9' }} />}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )
+                    })}
+                  </AnimatePresence>
+                </div>
+
+                {/* Input */}
+                <div className="px-3 sm:px-4 py-2 border-t border-white/5">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/[0.08]">
+                    <Paperclip className="w-3 h-3 text-white/35 flex-shrink-0" />
+                    <span className="flex-1" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>Reply to Rosa Martinez — Priya N.</span>
+                    <Smile className="w-3 h-3 text-white/35 flex-shrink-0" />
+                    <div className="w-5 h-5 rounded-full bg-[#046BD2] flex items-center justify-center flex-shrink-0">
+                      <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
-
         </div>
-      </motion.div>
 
-      {/* Bottom connector line (decorative) */}
-      <svg
-        className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[90%] h-6 pointer-events-none opacity-20"
-        viewBox="0 0 400 24" preserveAspectRatio="none"
-      >
-        <path d="M0 0 Q200 24 400 0" stroke="#046BD2" strokeWidth="1" fill="none" strokeDasharray="4 4" />
-      </svg>
+        {/* Hinge strip — matches hero exactly */}
+        <div className="h-1 w-[96%] rounded-b-[3px] bg-gradient-to-b from-[#1A2638] to-[#0B1220]" />
+
+        {/* Trapezoid base — matches hero exactly */}
+        <div
+          className="relative h-3 w-[108%]"
+          style={{
+            clipPath: 'polygon(2.5% 0%, 97.5% 0%, 100% 100%, 0% 100%)',
+            background: 'linear-gradient(to bottom, #232F44, #0B1220)',
+          }}
+        >
+          <div className="absolute inset-x-0 top-0 h-px bg-white/15" />
+          <div className="absolute left-1/2 top-0 h-[3px] w-12 -translate-x-1/2 rounded-b-md bg-[#070B14]" />
+        </div>
+
+      </motion.div>
     </div>
   )
 }

@@ -146,7 +146,7 @@ export function ProdAIReceptionistPageView() {
 
           </div>
 
-          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 340 }}>
+          <div className="flex items-start justify-center overflow-hidden h-[244px] sm:h-[316px] md:h-[382px]">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }} className="relative">
               <ReceptionistHero />
             </motion.div>

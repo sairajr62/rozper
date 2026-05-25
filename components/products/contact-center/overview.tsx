@@ -22,6 +22,11 @@ import {
   Mic,
   ChevronRight,
 } from "lucide-react";
+import { CCTabletIllustration } from "@/components/ui/cc-tablet-illustration";
+import { ChannelCollapseAnimation } from "@/components/ui/channel-collapse-animation";
+import { AIShieldAnimation } from "@/components/ui/ai-shield-animation";
+import { SupervisorDashboardAnimation } from "@/components/ui/supervisor-dashboard-animation";
+import { OutboundDialerMobile } from "@/components/ui/outbound-dialer-mobile";
 
 const channels = [
   { name: "Voice", color: "bg-blue-500", volume: 247 },
@@ -232,7 +237,7 @@ function LiveDashboard() {
 
 export function ContactCenterPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220]">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-hidden">
       <Navbar />
 
       {/* Subtle scan-line backdrop */}
@@ -277,7 +282,7 @@ export function ContactCenterPageView() {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-                className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+                className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight"
               >
                 Contact center
                 <br />
@@ -303,31 +308,26 @@ export function ContactCenterPageView() {
                   href="/contact"
                   className="group inline-flex items-center gap-2 px-6 py-3.5 rounded bg-[#046BD2] text-white font-semibold hover:bg-[#0086F9] transition"
                 >
-                  Start a No-Pressure Conversation
+                  Start a Free Trial
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-white/15 text-white font-medium hover:bg-white/5 transition"
                 >
-                  $29/agent
+                  See pricing
                 </Link>
               </motion.div>
             </div>
 
             <div className="hidden md:block">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}
-              >
-                <LiveDashboard />
-              </motion.div>
+              <CCTabletIllustration />
             </div>
           </div>
         </section>
 
         {/* Feature Grid - panel style */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
               <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#0086F9]/80 mb-3">
@@ -371,7 +371,7 @@ export function ContactCenterPageView() {
         </section>
 
         {/* Alternating sections */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24 space-y-32">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24 space-y-16 sm:space-y-24 lg:space-y-32">
           {sections.map((s, i) => (
             <motion.div
               key={s.title}
@@ -402,20 +402,34 @@ export function ContactCenterPageView() {
                   ))}
                 </ul>
               </div>
-              <div className="relative aspect-[4/3] rounded-2xl border border-white/10 bg-gradient-to-br from-[#046BD2]/15 to-[#2575FC]/10 overflow-hidden p-8 flex items-center justify-center">
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle, rgba(34,211,238,0.4) 1px, transparent 1px)",
-                    backgroundSize: "24px 24px",
-                  }}
-                />
-                <s.icon
-                  className="w-32 h-32 text-[#0086F9]/80 relative z-10"
-                  strokeWidth={1}
-                />
-              </div>
+              {i === 0 ? (
+                <div className="relative rounded-2xl border border-white/10 bg-gradient-to-br from-[#046BD2]/10 to-[#2575FC]/5 overflow-hidden py-6 px-4 min-h-[200px]">
+                  <ChannelCollapseAnimation />
+                </div>
+              ) : i === 1 ? (
+                <div className="relative rounded-2xl border border-white/10 bg-[#080F1C] overflow-hidden min-h-[200px]">
+                  <AIShieldAnimation />
+                </div>
+              ) : i === 2 ? (
+                <div className="relative rounded-2xl border border-white/10 bg-[#080F1C] overflow-hidden min-h-[200px]">
+                  <SupervisorDashboardAnimation />
+                </div>
+              ) : (
+                <div className="relative aspect-[4/3] rounded-2xl border border-white/10 bg-gradient-to-br from-[#046BD2]/15 to-[#2575FC]/10 overflow-hidden p-8 flex items-center justify-center">
+                  <div
+                    className="absolute inset-0 opacity-30"
+                    style={{
+                      backgroundImage:
+                        "radial-gradient(circle, rgba(34,211,238,0.4) 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
+                  <s.icon
+                    className="w-32 h-32 text-[#0086F9]/80 relative z-10"
+                    strokeWidth={1}
+                  />
+                </div>
+              )}
             </motion.div>
           ))}
         </section>
@@ -475,7 +489,7 @@ export function ContactCenterPageView() {
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded bg-[#046BD2] text-white font-semibold hover:bg-[#0086F9] transition"
                 >
-                  Start a No-Pressure Conversation{" "}
+                  Start a Free Trial{" "}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link

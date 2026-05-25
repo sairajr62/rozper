@@ -67,7 +67,7 @@ export function ProdUCaaSSMSMMSPageView() {
             </motion.div>
           </div>
 
-          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 380 }}>
+          <div className="flex items-start justify-center overflow-hidden h-[184px] sm:h-[238px] md:h-[300px] lg:h-[384px]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }}
@@ -121,10 +121,10 @@ export function ProdUCaaSSMSMMSPageView() {
             <MessageSquare className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-4xl md:text-6xl font-bold text-white">Text your customers. Win their loyalty.</h2>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
               <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
                 Start messaging <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

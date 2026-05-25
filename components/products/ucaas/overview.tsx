@@ -111,8 +111,8 @@ export function UcaasPageView() {
 
             </div>
 
-            {/* ── Right: GSAP laptop ── */}
-            <div className="hidden sm:block">
+            {/* ── Right: GSAP laptop — hidden on mobile, visible sm+ ── */}
+            <div className="hidden sm:flex items-start justify-center overflow-hidden sm:h-[298px] lg:h-[397px]">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0, transition: { delay: 0.25, ease: 'easeOut' } }}

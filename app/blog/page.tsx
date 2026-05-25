@@ -8,17 +8,46 @@ import { BlogTopics } from "@/components/blog/topics"
 import { BlogNewsletter } from "@/components/blog/newsletter"
 import { fetchAllPosts } from "@/lib/blog-api"
 
+const SITE_URL = "https://www.rozper.com"
+
 export const metadata: Metadata = {
   title: "Blog · Field notes from the global voice layer | Rozper",
   description:
     "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries. AI agents, contact center, wholesale voice, and more.",
   keywords:
     "Rozper blog, voice AI research, contact center playbook, wholesale voice, SIP trunking, UCaaS engineering",
+  alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     title: "Blog · Field notes from the global voice layer | Rozper",
     description:
       "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries.",
     type: "website",
+    url: `${SITE_URL}/blog`,
+    siteName: "Rozper",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog · Field notes from the global voice layer | Rozper",
+    description:
+      "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries.",
+  },
+}
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Rozper Blog",
+  description:
+    "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries.",
+  url: `${SITE_URL}/blog`,
+  publisher: {
+    "@type": "Organization",
+    name: "Rozper",
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/images/white-rozper-logo.png`,
+    },
   },
 }
 
@@ -38,6 +67,11 @@ export default async function BlogPage() {
 
   return (
     <main className="min-h-screen bg-[#0B1220]">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <Navbar />
       {/* BlogHero and BlogPostsSection both read `?q=` via useSearchParams,
           which Next.js requires to be wrapped in <Suspense> on statically

@@ -10,6 +10,7 @@ import {
   ArrowRight, ChevronRight, Inbox,
 } from 'lucide-react'
 import { OmnichannelIllustration } from '@/components/ui/omnichannel-illustration'
+import { ChannelCollapseAnimation } from '@/components/ui/channel-collapse-animation'
 
 const features = [
   { icon: Layers, title: 'Unified Agent Desktop', desc: 'Every channel — voice, chat, SMS, social, email — in one screen with full CRM context.' },

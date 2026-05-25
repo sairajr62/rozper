@@ -170,7 +170,7 @@ export function AIPageView() {
 
           </div>
 
-          <div className="hidden lg:block">
+          <div className="flex items-center justify-center overflow-hidden">
             <AIOrb />
           </div>
         </section>

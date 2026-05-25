@@ -69,7 +69,7 @@ export function ProdUCaaSVideoMeetingsPageView() {
 
           </div>
 
-          <div className="hidden lg:flex items-center justify-center overflow-hidden" style={{ minHeight: 380 }}>
+          <div className="flex items-start justify-center overflow-hidden h-[184px] sm:h-[238px] md:h-[300px] lg:h-[384px]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }}
