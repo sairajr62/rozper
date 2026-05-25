@@ -17,6 +17,7 @@ type Frontmatter = {
   title?: string
   slug?: string
   excerpt?: string
+  seoTitle?: string
   seoDescription?: string
   category?: string
   tags?: string[]
@@ -303,6 +304,7 @@ function fileToPost(filename: string): BlogPostDetail | null {
         : undefined,
       categories,
       tags,
+      seoTitle: data.seoTitle,
       seoDescription:
         data.seoDescription || data.excerpt || stripped.slice(0, 160),
       contentHtml,
