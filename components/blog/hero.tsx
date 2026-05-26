@@ -210,12 +210,16 @@ export function BlogHero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-10 inline-flex flex-wrap items-stretch justify-center gap-0 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md divide-x divide-white/5 overflow-hidden"
+          className="mt-10 w-full sm:w-fit sm:mx-auto grid grid-cols-2 sm:grid-cols-4 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden"
         >
           {stats.map((s) => (
             <div
               key={s.label}
-              className="px-5 sm:px-7 py-3 text-left first:pl-6 last:pr-6"
+              className="px-5 sm:px-7 py-4 sm:py-3 text-center sm:text-left
+                border-r border-white/[0.05] [&:nth-child(2n)]:border-r-0
+                sm:[&:nth-child(2n)]:border-r sm:[&:last-child]:border-r-0
+                border-b border-white/[0.05] [&:nth-child(n+3)]:border-b-0
+                sm:border-b-0"
             >
               <div className="text-lg sm:text-xl font-semibold text-white tabular-nums">
                 {s.value}

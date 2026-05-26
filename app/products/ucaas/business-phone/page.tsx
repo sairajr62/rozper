@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { ProdUCaaSBusinessPhonePageView } from '@/components/products/ucaas/business-phone'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Business Phone · Cloud Calling for Global Teams | Rozper',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     description: 'Cloud phone with local numbers, smart routing, and AI — wherever your team is.',
     type: 'website',
   },
+  alternates: { canonical: `${SITE_URL}/products/ucaas/business-phone` },
 }
 
 export default function BusinessPhonePage() {

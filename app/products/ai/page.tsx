@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { AIPageView } from '@/components/products/ai/overview'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'AI Suite · Receptionist, Assistant & Conversation Analytics | Rozper',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     description: 'Three AI tools — receptionist, assistant, and analytics — included on every Rozper seat.',
     type: 'website',
   },
+  alternates: { canonical: `${SITE_URL}/products/ai` },
 }
 
 export default function AIPage() {

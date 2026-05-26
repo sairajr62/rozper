@@ -7,6 +7,7 @@ import { PricingTestimonial } from '@/components/pricing/testimonial'
 import { PricingFAQ } from '@/components/pricing/faq'
 import { PricingCTA } from '@/components/pricing/cta'
 import { RelatedLinks } from '@/components/product-page'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Pricing · $9.99/user Business Phone & Contact Center | Rozper',
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     description: 'Simple, transparent pricing starting at $9.99/user. UCaaS, contact center, and AI tools. 14-day free trial.',
     type: 'website',
   },
+  alternates: { canonical: `${SITE_URL}/pricing` },
 }
 
 const relatedLinks = [

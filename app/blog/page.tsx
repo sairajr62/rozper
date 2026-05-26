@@ -7,8 +7,7 @@ import { BlogPostsSection } from "@/components/blog/posts"
 import { BlogTopics } from "@/components/blog/topics"
 import { BlogNewsletter } from "@/components/blog/newsletter"
 import { fetchAllPosts } from "@/lib/blog-api"
-
-const SITE_URL = "https://www.rozper.com"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Blog · Field notes from the global voice layer | Rozper",
@@ -36,12 +35,14 @@ export const metadata: Metadata = {
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
+  "@id": `${SITE_URL}/blog`,
   name: "Rozper Blog",
   description:
     "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries.",
   url: `${SITE_URL}/blog`,
   publisher: {
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "Rozper",
     url: SITE_URL,
     logo: {
@@ -49,6 +50,15 @@ const blogSchema = {
       url: `${SITE_URL}/images/white-rozper-logo.png`,
     },
   },
+}
+
+const blogBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+  ],
 }
 
 // Refresh the listing every 30 min via ISR.
@@ -71,6 +81,11 @@ export default async function BlogPage() {
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogBreadcrumbSchema) }}
       />
       <Navbar />
       {/* BlogHero and BlogPostsSection both read `?q=` via useSearchParams,

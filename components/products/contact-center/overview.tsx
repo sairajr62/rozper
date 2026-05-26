@@ -302,18 +302,18 @@ export function ContactCenterPageView() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.3 } }}
-                className="mt-10 flex flex-wrap gap-3"
+                className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3"
               >
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2 px-6 py-3.5 rounded bg-[#046BD2] text-white font-semibold hover:bg-[#0086F9] transition"
+                  className="group inline-flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 rounded bg-[#046BD2] text-sm sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
                 >
                   Start a Free Trial
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-white/15 text-white font-medium hover:bg-white/5 transition"
+                  className="inline-flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 rounded border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
                 >
                   See pricing
                 </Link>
@@ -484,17 +484,17 @@ export function ContactCenterPageView() {
                   customer experiences. No hardware. No long contracts.
                 </p>
               </div>
-              <div className="flex flex-col gap-3 md:items-end">
+              <div className="flex flex-row flex-wrap gap-2 sm:gap-3 md:justify-end">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded bg-[#046BD2] text-white font-semibold hover:bg-[#0086F9] transition"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded bg-[#046BD2] text-sm sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
                 >
                   Start a Free Trial{" "}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded border border-white/15 text-white font-medium hover:bg-white/5 transition"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
                 >
                   See pricing
                 </Link>

@@ -7,11 +7,13 @@ import { DocsLearningPaths } from "@/components/docs/learning-paths"
 import { DocsQuickstart } from "@/components/docs/quickstart"
 import { DocsSDKGrid } from "@/components/docs/sdk-grid"
 import { DocsCommunity } from "@/components/docs/community"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Documentation · Build with Rozper",
   description:
     "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform.",
+  alternates: { canonical: `${SITE_URL}/docs` },
 }
 
 export default function DocsPage() {

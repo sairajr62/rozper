@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
@@ -46,64 +46,188 @@ const channelColor: Record<string, string> = {
   Twitter: 'text-[#2D98F1]',
 }
 
-function UnifiedInboxUI() {
-  const [activeTab, setActiveTab] = useState('sms')
+export function OmniChannelInboxAnimation() {
+  const [cycleKey, setCycleKey] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setCycleKey(k => k + 1), 10000)
+    return () => clearInterval(t)
+  }, [])
+
+  const channels = [
+    {
+      id: 'voice',     label: 'Voice',
+      textCls: 'text-[#0086F9]',   dotCls: 'bg-[#0086F9]',
+      pillCls: 'text-[#0086F9] border-[#0086F9]/25 bg-[#0086F9]/[0.08]',
+      avatarCls: 'bg-[#0086F9]/10 text-[#0086F9]',  barCls: 'bg-[#0086F9]',
+      name: 'Sarah K.',    initials: 'SK',
+      preview: 'Can I speak to billing?',  time: 'just now', unread: true,  delay: 0.5,
+    },
+    {
+      id: 'sms',       label: 'SMS',
+      textCls: 'text-emerald-400', dotCls: 'bg-emerald-400',
+      pillCls: 'text-emerald-400 border-emerald-400/25 bg-emerald-400/[0.08]',
+      avatarCls: 'bg-emerald-400/10 text-emerald-400', barCls: 'bg-emerald-400',
+      name: 'Mike R.',     initials: 'MR',
+      preview: 'Need to change my delivery date', time: '1m', unread: true,  delay: 1.9,
+    },
+    {
+      id: 'whatsapp',  label: 'WhatsApp',
+      textCls: 'text-green-400',   dotCls: 'bg-green-400',
+      pillCls: 'text-green-400 border-green-400/25 bg-green-400/[0.08]',
+      avatarCls: 'bg-green-400/10 text-green-400',   barCls: 'bg-green-400',
+      name: 'Priya L.',    initials: 'PL',
+      preview: 'Order #4821 status update?', time: '2m',      unread: true,  delay: 3.3,
+    },
+    {
+      id: 'instagram', label: 'Instagram',
+      textCls: 'text-amber-400',   dotCls: 'bg-amber-400',
+      pillCls: 'text-amber-400 border-amber-400/25 bg-amber-400/[0.08]',
+      avatarCls: 'bg-amber-400/10 text-amber-400',   barCls: 'bg-amber-400',
+      name: '@jay.brands', initials: 'JB',
+      preview: 'Loved the product! Quick q…', time: '3m',      unread: true,  delay: 4.7,
+    },
+    {
+      id: 'facebook',  label: 'Facebook',
+      textCls: 'text-[#2D98F1]',   dotCls: 'bg-[#2D98F1]',
+      pillCls: 'text-[#2D98F1] border-[#2D98F1]/25 bg-[#2D98F1]/[0.08]',
+      avatarCls: 'bg-[#2D98F1]/10 text-[#2D98F1]',  barCls: 'bg-[#2D98F1]',
+      name: 'Carlos M.',   initials: 'CM',
+      preview: 'Is there a promo code available?', time: '5m', unread: false, delay: 6.1,
+    },
+  ]
+
+  const statsDelay = 7.6
 
   return (
-    <div className="rounded-3xl bg-[#111B2D] border border-white/10 overflow-hidden">
-      <div className="px-5 py-3 bg-[#0B1220] border-b border-white/10 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Inbox className="w-4 h-4 text-[#0086F9]" />
-          <span className="text-xs font-mono text-white/60">Unified Inbox · All Channels</span>
-        </div>
-        <span className="text-[10px] font-mono text-amber-400">13 open</span>
-      </div>
+    <motion.div
+      key={cycleKey}
+      className="relative w-full max-w-[440px] mx-auto lg:mx-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+    >
+      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-64 h-20 bg-[#046BD2]/10 blur-3xl rounded-full pointer-events-none" />
 
-      {/* Channel tabs */}
-      <div className="flex border-b border-white/5">
-        {channelTabs.map(tab => {
-          const Icon = tab.icon
-          return (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 text-[10px] font-mono transition border-b-2 ${activeTab === tab.id ? `${tab.color} border-current` : 'text-white/30 border-transparent hover:text-white/50'}`}>
-              <Icon className="w-3 h-3" />
-              {tab.label}
-              {tab.count > 0 && (
-                <span className={`px-1 rounded text-[9px] ${activeTab === tab.id ? 'bg-current/20' : 'bg-white/10 text-white/30'}`}>
-                  {tab.count}
-                </span>
-              )}
-            </button>
-          )
-        })}
-      </div>
-
-      <div className="divide-y divide-white/5">
-        {conversations.map((conv, i) => (
-          <motion.div key={conv.name} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}
-            className="px-5 py-3.5 flex items-center gap-3 hover:bg-white/[0.02] transition cursor-pointer">
-            <div className="w-9 h-9 rounded-full bg-[#046BD2]/15 border border-[#046BD2]/20 flex items-center justify-center text-[10px] font-bold text-[#2D98F1] flex-shrink-0">
-              {conv.name.split(' ').map(n => n[0]).join('')}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-0.5">
-                <span className={`text-[9px] font-mono ${channelColor[conv.channel]}`}>{conv.channel}</span>
-                <span className="text-xs font-medium text-white">{conv.name}</span>
-              </div>
-              <div className={`text-xs truncate ${conv.unread ? 'text-white/70' : 'text-white/35'}`}>{conv.preview}</div>
-            </div>
-            <div className="text-right flex-shrink-0">
-              <div className="text-[10px] font-mono text-white/25">{conv.time}</div>
-              {conv.unread && <div className="w-2 h-2 rounded-full bg-[#0086F9] ml-auto mt-1" />}
-            </div>
+      <div className="rounded-2xl bg-[#111B2D] border border-white/10 overflow-hidden">
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-[#0c1422] border-b border-white/[0.06]">
+          <div className="flex items-center gap-2">
+            <Inbox className="w-3.5 h-3.5 text-[#0086F9]" />
+            <span className="text-[11px] font-semibold text-white/65 uppercase tracking-wider">Unified Inbox</span>
+            <span className="text-[10px] font-mono text-white/20">· All Channels</span>
+          </div>
+          <motion.div
+            className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/25"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: statsDelay, duration: 0.3 }}
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span className="text-[9px] font-mono text-amber-400">12 open</span>
           </motion.div>
-        ))}
-      </div>
+        </div>
 
-      <div className="px-5 py-3 border-t border-white/10 text-[10px] font-mono text-white/30">
-        Voice · SMS · WhatsApp · Instagram · Facebook — one screen
+        {/* Channel pills — light up as each channel comes online */}
+        <div className="flex gap-1.5 px-4 py-2 border-b border-white/[0.04]">
+          {channels.map(ch => (
+            <motion.div
+              key={ch.id}
+              className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono shrink-0 border ${ch.pillCls}`}
+              initial={{ opacity: 0.15 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: ch.delay + 0.15, duration: 0.3 }}
+            >
+              <div className={`w-1 h-1 rounded-full ${ch.dotCls}`} />
+              {ch.label}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Conversation rows */}
+        <div className="divide-y divide-white/[0.04]">
+          {channels.map(ch => (
+            <motion.div
+              key={ch.id}
+              className="relative flex items-center gap-3 px-4 py-3 overflow-hidden"
+              initial={{ opacity: 0, x: -14 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: ch.delay, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Left channel colour bar */}
+              <div className={`absolute left-0 top-0 bottom-0 w-[3px] ${ch.barCls}`} />
+
+              {/* Avatar */}
+              <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[9px] font-bold shrink-0 ${ch.avatarCls}`}>
+                {ch.initials}
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className={`text-[9px] font-mono ${ch.textCls}`}>{ch.label}</span>
+                  <span className="text-xs font-medium text-white truncate">{ch.name}</span>
+                </div>
+                <div className="relative h-[16px]">
+                  {/* Typing indicator — fades out when message arrives */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center gap-[3px]"
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 0 }}
+                    transition={{ delay: ch.delay + 0.65, duration: 0.15 }}
+                  >
+                    {[0, 1, 2].map(i => (
+                      <motion.div
+                        key={i}
+                        className="w-[5px] h-[5px] rounded-full bg-white/25"
+                        animate={{ opacity: [0.3, 1, 0.3], y: [0, -2, 0] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }}
+                      />
+                    ))}
+                  </motion.div>
+                  {/* Message preview */}
+                  <motion.span
+                    className="absolute inset-0 flex items-center text-[11px] text-white/50 truncate"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: ch.delay + 0.65, duration: 0.25 }}
+                  >
+                    {ch.preview}
+                  </motion.span>
+                </div>
+              </div>
+
+              {/* Time + unread dot */}
+              <div className="flex flex-col items-end gap-1 shrink-0">
+                <span className="text-[9px] font-mono text-white/25">{ch.time}</span>
+                {ch.unread && <div className={`w-1.5 h-1.5 rounded-full ${ch.dotCls}`} />}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Stats footer */}
+        <motion.div
+          className="px-4 py-2.5 bg-[#0c1422] border-t border-white/[0.05] flex items-center gap-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: statsDelay, duration: 0.4 }}
+        >
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span className="text-[9px] font-mono text-white/30">5 channels live</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="text-[10px] font-mono font-bold text-[#0086F9]">12</span>
+            <span className="text-[9px] font-mono text-white/30 ml-1">conversations</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="text-[10px] font-mono font-bold text-emerald-400">2</span>
+            <span className="text-[9px] font-mono text-white/30 ml-1">AI-handled</span>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -125,23 +249,23 @@ export function ProdUCaaSCustomerEngagementPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-8 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-10 items-center">
           <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
               <Inbox className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">UCaaS · Customer Engagement</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
               Every channel,<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">one inbox</span>.
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-4 text-lg text-white/60 max-w-xl leading-relaxed">
               Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified for every agent. No tool-switching, no context loss, no missed conversations.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-wrap gap-3">
               <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
                 Unify your channels <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -149,9 +273,7 @@ export function ProdUCaaSCustomerEngagementPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
-            <UnifiedInboxUI />
-          </motion.div>
+          <OmniChannelInboxAnimation />
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">

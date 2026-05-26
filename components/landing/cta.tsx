@@ -146,16 +146,15 @@ export function CTA() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center"
+              className="mt-10 flex flex-row flex-wrap gap-2 sm:gap-3 justify-center items-center"
             >
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="w-full sm:w-auto"
               >
                 <Button
                   size="lg"
-                  className="relative w-full sm:w-auto h-14 px-8 text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
+                  className="relative h-11 sm:h-14 px-4 sm:px-8 text-sm sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
                 >
                   <motion.span
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12"
@@ -176,13 +175,12 @@ export function CTA() {
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="w-full sm:w-auto"
               >
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto h-14 px-8 text-base rounded-xl border-white/15 bg-white/[0.04] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
+                  className="h-11 sm:h-14 px-4 sm:px-8 text-sm sm:text-base rounded-xl border-white/15 bg-white/[0.04] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
                 >
                   <Link href="/pricing">
                     See pricing

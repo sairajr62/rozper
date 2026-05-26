@@ -1,7 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import { ArrowUpRight, Clock } from "lucide-react"
 import type { BlogPost } from "@/lib/blog-api"
 import { CoverArt } from "./cover-art"
+import { BlogImage } from "./blog-image"
 
 const toneSequence: Array<"blue" | "cyan" | "violet" | "emerald" | "amber"> = [
   "blue",
@@ -58,14 +61,13 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   {post.featuredImage ? (
-                    <>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={post.featuredImage.src}
-                        alt={post.featuredImage.alt}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                        loading="lazy"
-                      />
+                    <BlogImage
+                      src={post.featuredImage.src}
+                      alt={post.featuredImage.alt}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      tone={tone}
+                      label={categoryLabel}
+                    >
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/80 via-[#0A1020]/20 to-transparent" />
                       <div className="absolute top-3 left-3">
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.16em] text-white">
@@ -73,7 +75,7 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
                           {categoryLabel}
                         </span>
                       </div>
-                    </>
+                    </BlogImage>
                   ) : (
                     <CoverArt tone={tone} label={categoryLabel} />
                   )}

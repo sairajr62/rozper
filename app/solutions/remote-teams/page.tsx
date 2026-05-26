@@ -12,10 +12,12 @@ import {
   RelatedLinks,
   CTA,
 } from './sections'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata = {
   title: 'Phone System for Remote Teams | Rozper',
   description: 'Cloud calling, video, chat, and AI for distributed teams. Works from any device, any country. 150+ countries. rozper.com.',
+  alternates: { canonical: `${SITE_URL}/solutions/remote-teams` },
 }
 
 export default function RemoteTeamsPage() {

@@ -6,6 +6,7 @@ import { PlansCompare } from "@/components/compare/plans-compare"
 import { FeaturesMatrix } from "@/components/compare/features-matrix"
 import { SavingsCalculator } from "@/components/compare/savings"
 import { CompareCTA } from "@/components/compare/cta"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Rozper vs. RingCentral, 8x8, Vonage & Twilio — Compare plans & features",
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
       "Side-by-side pricing and feature comparison against RingCentral, 8x8, Vonage, and Twilio Flex.",
     type: "website",
   },
+  alternates: { canonical: `${SITE_URL}/compare` },
 }
 
 export default function ComparePage() {

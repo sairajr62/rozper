@@ -1,12 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
   Phone, FileText, Zap, Users, Settings,
-  ArrowRight, ChevronRight, GitMerge, Check, Layers,
+  ArrowRight, ChevronRight, GitMerge, Check,
 } from 'lucide-react'
 
 const features = [
@@ -50,34 +51,168 @@ const events = [
   { trigger: 'Deal keyword detected', outcomes: ['Advance deal stage', 'Notify account executive', 'Queue email sequence'] },
 ]
 
-function ZohoProductStack() {
+function ZohoCRMAnimation() {
+  const [cycleKey, setCycleKey] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setCycleKey(k => k + 1), 8500)
+    return () => clearInterval(t)
+  }, [])
+
+  const waveH = [3, 7, 12, 9, 14, 8, 11, 6, 10, 5, 8, 4]
+  const rows = [
+    { label: 'Duration',    value: '3m 42s',                   pct: 72,  d: 0.5 },
+    { label: 'Recording',   value: 'Saved',                    pct: 88,  d: 1.3 },
+    { label: 'AI Summary',  value: '"Interested in enterprise..."', pct: 100, d: 2.1 },
+    { label: 'Next Action', value: '+ Follow-up task',         pct: 60,  d: 3.0 },
+    { label: 'Lead Stage',  value: 'Prospect → Qualified',     pct: 50,  d: 3.8 },
+  ]
+
   return (
-    <div className="relative">
-      {zohoProducts.map((p, i) => (
-        <motion.div
-          key={p.name}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: i * 0.12 }}
-          style={{ marginTop: i === 0 ? 0 : '-0.75rem', zIndex: 10 - i }}
-          className="relative rounded-2xl bg-[#111B2D] border border-white/10 p-5 hover:border-[#046BD2]/40 transition hover:z-20 hover:-translate-y-1 duration-200"
-        >
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#046BD2]/15 border border-[#046BD2]/30 flex items-center justify-center flex-shrink-0">
-              <span className="text-xs font-mono font-bold text-[#0086F9]">{p.badge}</span>
+    <motion.div
+      key={cycleKey}
+      className="relative w-full max-w-[440px] mx-auto lg:mx-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {/* Ambient glow */}
+      <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-72 h-28 bg-[#046BD2]/10 blur-3xl rounded-full pointer-events-none" />
+
+      {/* ── CALL ENDED CARD ─────────────────────────────────────────── */}
+      <motion.div
+        className="relative rounded-2xl bg-[#111B2D] border border-white/10 p-3 mb-2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#046BD2] to-[#0086F9] flex items-center justify-center shrink-0">
+              <Phone className="w-3.5 h-3.5 text-white" />
             </div>
-            <div className="flex-1">
-              <div className="font-display font-semibold text-white">{p.name}</div>
-              <div className="text-xs text-white/40">{p.desc}</div>
-            </div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/20">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-mono text-emerald-400">Connected</span>
+            <div>
+              <div className="text-sm font-semibold text-white leading-none">John Davis</div>
+              <div className="text-[10px] font-mono text-white/35 mt-0.5">+1 (555) 234-8901</div>
             </div>
           </div>
+          <motion.div
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
+          >
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span className="text-[10px] font-mono text-emerald-400">Call ended</span>
+          </motion.div>
+        </div>
+
+        {/* Waveform collapsing */}
+        <div className="flex items-center gap-[3px] h-6">
+          {waveH.map((h, i) => (
+            <motion.div
+              key={i}
+              className="flex-1 rounded-full bg-[#0086F9]"
+              initial={{ height: `${h * 2}px`, opacity: 0.7 }}
+              animate={{ height: '2px', opacity: 0.15 }}
+              transition={{ delay: 0.15 + i * 0.04, duration: 0.9, ease: 'easeOut' }}
+            />
+          ))}
+          <motion.span
+            className="ml-2 text-[11px] font-mono text-white/40 shrink-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            3m 42s
+          </motion.span>
+        </div>
+      </motion.div>
+
+      {/* ── SYNC CONNECTOR ──────────────────────────────────────────── */}
+      <motion.div
+        className="flex items-center gap-2 mb-2 px-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7 }}
+      >
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#046BD2]/40 to-[#046BD2]/60" />
+        <div className="flex items-center gap-1.5 shrink-0">
+          <motion.div
+            className="w-1.5 h-1.5 rounded-full bg-[#0086F9]"
+            animate={{ scale: [1, 1.7, 1], opacity: [1, 0.4, 1] }}
+            transition={{ duration: 1.2, repeat: Infinity, delay: 0.8 }}
+          />
+          <span className="text-[10px] font-mono text-[#2D98F1]/70 uppercase tracking-wider">Syncing to Zoho CRM</span>
+        </div>
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent via-[#046BD2]/40 to-[#046BD2]/60" />
+      </motion.div>
+
+      {/* ── CRM RECORD CARD ─────────────────────────────────────────── */}
+      <motion.div
+        className="rounded-2xl bg-[#111B2D] border border-white/10 overflow-hidden"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.5 }}
+      >
+        {/* Zoho header bar */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-[#0c1422] border-b border-white/[0.06]">
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 rounded bg-[#e04545]/15 border border-[#e04545]/20 flex items-center justify-center">
+              <span className="text-[9px] font-black text-[#e04545]">Z</span>
+            </div>
+            <span className="text-[11px] font-semibold text-white/65 uppercase tracking-wider">Zoho CRM</span>
+            <span className="text-[10px] font-mono text-white/20">· Activity Log</span>
+          </div>
+          <div className="flex gap-1">
+            {[0, 1, 2].map(i => (
+              <div key={i} className="w-2 h-2 rounded-full bg-white/10" />
+            ))}
+          </div>
+        </div>
+
+        {/* Field rows */}
+        <div className="p-3 space-y-2">
+          {rows.map(row => (
+            <div key={row.label} className="flex items-center gap-3">
+              <span className="text-[10px] font-mono text-white/30 w-[72px] shrink-0">{row.label}</span>
+              <div className="flex-1 h-[3px] bg-white/[0.05] rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full bg-gradient-to-r from-[#046BD2] to-[#2D98F1]"
+                  initial={{ width: '0%' }}
+                  animate={{ width: `${row.pct}%` }}
+                  transition={{ delay: row.d, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+                />
+              </div>
+              <motion.div
+                className="flex items-center gap-1.5 shrink-0"
+                initial={{ opacity: 0, x: 6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: row.d + 0.85, duration: 0.3 }}
+              >
+                <span className="text-[10px] text-white/55 max-w-[110px] truncate">{row.value}</span>
+                <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0">
+                  <Check className="w-2 h-2 text-emerald-400" />
+                </div>
+              </motion.div>
+            </div>
+          ))}
+        </div>
+
+        {/* Status footer */}
+        <motion.div
+          className="px-4 py-2.5 border-t border-white/[0.05] bg-[#0c1422] flex items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 5.1, duration: 0.4 }}
+        >
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <span className="text-[10px] font-mono text-white/30">
+            5 fields synced · 0 manual entries · AI summary written
+          </span>
         </motion.div>
-      ))}
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -130,16 +265,16 @@ export function ZohoPageView() {
         </div>
 
         {/* Hero — two-panel: left text, right product stack + automations */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1fr_1fr] gap-14 items-start">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-8 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-10 items-start">
           <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
               <GitMerge className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Integrations · Zoho</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight"
             >
               Rozper connects directly to{' '}
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">Zoho CRM.</span>
@@ -147,12 +282,12 @@ export function ZohoPageView() {
 
             <motion.p
               initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}
-              className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed"
+              className="mt-4 text-lg text-white/60 max-w-xl leading-relaxed"
             >
               Click-to-call, auto-logging, AI summaries, and contact pop — across all four Zoho products. Your Zoho data is only as good as what gets logged. Rozper ensures it's everything.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-wrap gap-3">
               <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
                 Connect Zoho <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -161,7 +296,7 @@ export function ZohoPageView() {
               </Link>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-10 flex flex-wrap gap-2">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-6 flex flex-wrap gap-2">
               {['No-code setup', 'CRM · Desk · Recruit · Bigin', 'Real-time sync'].map(b => (
                 <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs text-white/60">
                   <Check className="w-3 h-3 text-[#0086F9]" />{b}
@@ -170,15 +305,7 @@ export function ZohoPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="space-y-5">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <Layers className="w-4 h-4 text-[#0086F9]" />
-                <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Connected Products</span>
-              </div>
-              <ZohoProductStack />
-            </div>
-          </motion.div>
+          <ZohoCRMAnimation />
         </section>
 
         {/* Call event automation */}

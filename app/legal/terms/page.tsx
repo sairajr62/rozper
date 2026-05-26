@@ -3,11 +3,13 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { TermsContent } from "@/components/legal/terms-content"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Terms of Service · Rozper",
   description:
     "The agreement between you and Rozper for use of the platform and related services.",
+  alternates: { canonical: `${SITE_URL}/legal/terms` },
 }
 
 export default function TermsOfServicePage() {

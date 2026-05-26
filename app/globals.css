@@ -441,27 +441,13 @@ p {
   .rozper-faq-accordion .rozper-faq-title { font-size: 1.875rem; }
 }
 .rozper-faq-accordion .rozper-faq-list {
-  position: relative;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0d1220;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
   overflow: hidden;
 }
-.rozper-faq-accordion .rozper-faq-list::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(4, 107, 210, 0.15), transparent);
-  -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
-          mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  pointer-events: none;
-}
 .rozper-faq-accordion .rozper-faq-row {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.10);
   position: relative;
 }
 .rozper-faq-accordion .rozper-faq-row:last-child { border-bottom: 0; }
@@ -472,20 +458,19 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.05rem 1.25rem;
-  transition: background-color 200ms;
+  padding: 1.15rem 1.35rem;
+  transition: background-color 150ms;
   outline: none;
 }
 .rozper-faq-accordion .rozper-faq-row > summary::-webkit-details-marker { display: none; }
-.rozper-faq-accordion .rozper-faq-row > summary:hover { background: rgba(255, 255, 255, 0.025); }
+.rozper-faq-accordion .rozper-faq-row > summary:hover { background: rgba(255, 255, 255, 0.02); }
 .rozper-faq-accordion .rozper-faq-row > summary:focus-visible {
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 .rozper-faq-accordion .rozper-faq-question {
   font-family: var(--font-inter), 'Inter Fallback', system-ui, sans-serif;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
   font-size: 0.9375rem;
   line-height: 1.45;
   letter-spacing: -0.005em;
@@ -498,28 +483,17 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 0.45rem;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.02);
-  color: rgba(255, 255, 255, 0.55);
-  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
-              color 200ms,
-              border-color 200ms,
-              background-color 200ms;
+  color: rgba(255, 255, 255, 0.45);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), color 150ms;
 }
-.rozper-faq-accordion .rozper-faq-icon svg { width: 0.875rem; height: 0.875rem; }
-.rozper-faq-accordion .rozper-faq-row[open] > summary { background: rgba(34, 211, 238, 0.04); }
+.rozper-faq-accordion .rozper-faq-icon svg { width: 1.1rem; height: 1.1rem; }
 .rozper-faq-accordion .rozper-faq-row[open] .rozper-faq-icon {
-  transform: rotate(45deg);
-  color: #22D3EE;
-  border-color: rgba(34, 211, 238, 0.4);
-  background: rgba(34, 211, 238, 0.10);
+  transform: rotate(180deg);
+  color: rgba(255, 255, 255, 0.75);
 }
 .rozper-faq-accordion .rozper-faq-row[open] .rozper-faq-question { color: #ffffff; }
 .rozper-faq-accordion .rozper-faq-answer {
-  padding: 0 1.25rem 1.15rem 1.25rem;
+  padding: 0 1.35rem 1.25rem 1.35rem;
   color: #9AA8BC;
   font-size: 0.875rem;
   line-height: 1.65;

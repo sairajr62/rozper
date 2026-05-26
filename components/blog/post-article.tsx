@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import {
   ChevronRight,
@@ -7,6 +9,7 @@ import {
   Hash,
 } from "lucide-react"
 import type { BlogPostDetail } from "@/lib/blog-api"
+import { BlogImage } from "./blog-image"
 
 export function PostArticleHero({ post }: { post: BlogPostDetail }) {
   const category = post.categories[0]
@@ -173,14 +176,15 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
           <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/[0.02] shadow-[0_40px_140px_-50px_rgba(4,107,210,0.7)]">
             <div className="rounded-3xl overflow-hidden bg-[#0A1020]">
               <div className="relative aspect-[16/9]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <BlogImage
                   src={post.featuredImage.src}
                   alt={post.featuredImage.alt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/40 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#046BD2]/8 via-transparent to-[#22D3EE]/8 mix-blend-overlay opacity-60" />
+                  tone="blue"
+                  label={post.categories[0]?.name ?? "Article"}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#046BD2]/8 via-transparent to-[#22D3EE]/8 mix-blend-overlay opacity-60" />
+                </BlogImage>
               </div>
             </div>
           </div>

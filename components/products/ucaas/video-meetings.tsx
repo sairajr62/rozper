@@ -51,7 +51,7 @@ export function ProdUCaaSVideoMeetingsPageView() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">UCaaS · Video Meetings</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               HD video with<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">AI transcripts</span>.
             </motion.h1>
@@ -60,11 +60,11 @@ export function ProdUCaaSVideoMeetingsPageView() {
               Up to 200 participants, instant AI summaries, and screen sharing — all inside Rozper. No Zoom, no Meet, no extra app.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
                 Start meeting <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
             </motion.div>
 
           </div>
@@ -82,7 +82,7 @@ export function ProdUCaaSVideoMeetingsPageView() {
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold">Every meeting, intelligently captured.</h2>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Every meeting, intelligently captured.</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {features.map((f, i) => (
@@ -119,12 +119,12 @@ export function ProdUCaaSVideoMeetingsPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Video className="w-12 h-12 mx-auto mb-6 text-white" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white">Meet smarter. Summarize everything.</h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">Meet smarter. Summarize everything.</h2>
+            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
                 Start meeting <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

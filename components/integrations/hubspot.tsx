@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
@@ -56,75 +57,219 @@ const sideLabel: Record<string, string> = {
   ai: 'AI',
 }
 
-function HubSpotRecord() {
+function HubSpotWidgetAnimation() {
+  const [cycleKey, setCycleKey] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setCycleKey(k => k + 1), 9000)
+    return () => clearInterval(t)
+  }, [])
+
+  const waveH = [4, 8, 13, 10, 15, 9, 12, 7, 11, 6]
+
+  const timeline = [
+    { Icon: Phone,      label: 'Call · 14m 22s · Recorded', color: 'text-[#0086F9]',   delay: 5.8 },
+    { Icon: Zap,        label: 'AI Summary posted',          color: 'text-emerald-400',  delay: 6.4 },
+    { Icon: TrendingUp, label: 'Deal moved → Proposal',      color: 'text-[#2D98F1]',   delay: 7.1 },
+  ]
+
   return (
-    <div className="rounded-3xl bg-[#111B2D] border border-white/10 overflow-hidden shadow-2xl">
-      {/* Record header */}
-      <div className="px-5 py-3 bg-[#0B1220] border-b border-white/10 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] text-xs font-bold">EB</div>
-        <div>
-          <div className="text-sm font-semibold text-white">Elliot Barnes</div>
-          <div className="text-[10px] font-mono text-white/40">Sales Manager · Pivot Growth Agency</div>
-        </div>
-        <div className="ml-auto flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#046BD2] text-white text-xs font-semibold cursor-pointer hover:bg-[#0078E0] transition">
-          <Phone className="w-3.5 h-3.5" />
-          Call
-        </div>
-      </div>
+    <motion.div
+      key={cycleKey}
+      className="relative w-full max-w-[440px] mx-auto lg:mx-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+    >
+      {/* Ambient glow */}
+      <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-64 h-20 bg-[#046BD2]/10 blur-3xl rounded-full pointer-events-none" />
 
-      {/* Deal stage */}
-      <div className="px-5 py-4 border-b border-white/10">
-        <div className="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-2">Deal Pipeline</div>
-        <div className="flex items-center gap-1">
-          {['Prospect', 'Demo', 'Proposal', 'Closed'].map((s, i) => (
-            <div key={s} className="flex items-center gap-1">
-              <div className={`h-1.5 w-10 rounded-full ${i < 3 ? 'bg-[#046BD2]' : 'bg-white/10'}`} />
-              {i < 3 && <div className="w-1 h-1 rounded-full bg-[#046BD2]" />}
+      {/* HubSpot CRM Record Card */}
+      <motion.div
+        className="relative rounded-2xl bg-[#111B2D] border border-white/10 overflow-hidden"
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        {/* Brand header bar */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-[#0c1422] border-b border-white/[0.06]">
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 rounded bg-[#FF7A59]/15 border border-[#FF7A59]/25 flex items-center justify-center">
+              <span className="text-[9px] font-black text-[#FF7A59]">H</span>
             </div>
-          ))}
+            <span className="text-[11px] font-semibold text-white/65 uppercase tracking-wider">HubSpot CRM</span>
+            <span className="text-[10px] font-mono text-white/20">· Contact</span>
+          </div>
+          <div className="flex gap-1">
+            {[0, 1, 2].map(i => <div key={i} className="w-2 h-2 rounded-full bg-white/10" />)}
+          </div>
         </div>
-        <div className="flex justify-between text-[10px] font-mono text-white/30 mt-1">
-          <span>Prospect</span><span>Demo</span><span>Proposal</span><span>Closed</span>
-        </div>
-      </div>
 
-      {/* Activity timeline */}
-      <div className="px-5 py-4">
-        <div className="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-3">Activity · Auto-logged by Rozper</div>
-        <div className="space-y-3">
-          {[
-            { icon: Zap, label: 'AI Summary posted', time: '2m ago', color: 'text-emerald-400' },
-            { icon: Phone, label: 'Call · 14m 22s · Recorded', time: '2m ago', color: 'text-[#0086F9]' },
-            { icon: TrendingUp, label: 'Deal moved → Proposal', time: '2m ago', color: 'text-[#2D98F1]' },
-          ].map((a, i) => (
+        {/* Contact row */}
+        <div className="flex items-center gap-3 px-4 pt-3 pb-3 border-b border-white/[0.06]">
+          <div className="w-9 h-9 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] text-xs font-bold shrink-0">EB</div>
+          <div className="flex-1 min-w-0">
+            <div className="text-sm font-semibold text-white">Elliot Barnes</div>
+            <div className="text-[10px] font-mono text-white/35 truncate">Sales Manager · Pivot Growth Agency</div>
+          </div>
+          <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#046BD2] text-white text-[11px] font-semibold shrink-0">
+            <Phone className="w-3 h-3" /><span>Call</span>
+          </div>
+        </div>
+
+        {/* Deal Pipeline */}
+        <div className="px-4 py-2.5 border-b border-white/[0.06]">
+          <div className="text-[9px] font-mono uppercase tracking-widest text-white/25 mb-2">Deal Pipeline</div>
+          <div className="flex gap-1.5 mb-1">
+            {['Prospect', 'Demo', 'Proposal', 'Closed'].map((s, i) => (
+              <div key={s} className="flex-1 flex flex-col gap-1">
+                {i < 2 ? (
+                  <div className="h-1.5 rounded-full bg-[#046BD2]" />
+                ) : i === 2 ? (
+                  <motion.div
+                    className="h-1.5 rounded-full"
+                    initial={{ backgroundColor: 'rgba(255,255,255,0.07)' }}
+                    animate={{ backgroundColor: '#0086F9' }}
+                    transition={{ delay: 7.2, duration: 0.6 }}
+                  />
+                ) : (
+                  <div className="h-1.5 rounded-full bg-white/[0.07]" />
+                )}
+                <span className="text-[8px] font-mono text-white/20 truncate">{s}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Embedded Rozper calling widget */}
+        <div className="mx-3 my-3 rounded-xl bg-[#0B1220] border border-[#046BD2]/40 overflow-hidden">
+          {/* Widget header */}
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#046BD2]/20 border-b border-[#046BD2]/30">
             <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.15 + 0.5 }}
-              className="flex items-center gap-3"
-            >
-              <div className={`w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center ${a.color}`}>
-                <a.icon className="w-3.5 h-3.5" />
-              </div>
-              <div className="flex-1">
-                <div className="text-xs text-white/70">{a.label}</div>
-              </div>
-              <div className="text-[10px] font-mono text-white/30">{a.time}</div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+              className="w-1.5 h-1.5 rounded-full bg-[#0086F9]"
+              animate={{ scale: [1, 1.6, 1], opacity: [1, 0.5, 1] }}
+              transition={{ duration: 1.2, repeat: 5, delay: 0.4 }}
+            />
+            <span className="text-[9px] font-mono text-[#2D98F1] uppercase tracking-widest">Rozper · Embedded</span>
+            <span className="ml-auto text-[8px] font-mono text-white/25">no tab switching</span>
+          </div>
 
-      {/* AI summary box */}
-      <div className="mx-4 mb-4 p-4 rounded-2xl bg-[#046BD2]/10 border border-[#046BD2]/20">
-        <div className="flex items-center gap-2 mb-2">
-          <Zap className="w-3.5 h-3.5 text-[#0086F9]" />
-          <span className="text-[10px] font-mono uppercase tracking-widest text-[#2D98F1]">AI Summary</span>
+          {/* Phase container — fixed height, phases overlap via absolute */}
+          <div className="relative h-[52px] overflow-hidden">
+
+            {/* Phase 1: Screen pop (0.2 → 1.8s) */}
+            <motion.div
+              className="absolute inset-0 flex items-center gap-2.5 px-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 1, 1, 0] }}
+              transition={{ delay: 0.2, times: [0, 0.05, 0.72, 1], duration: 1.6 }}
+            >
+              <div className="w-7 h-7 rounded-full bg-[#0086F9]/15 border border-[#0086F9]/30 flex items-center justify-center shrink-0">
+                <Phone className="w-3.5 h-3.5 text-[#0086F9]" />
+              </div>
+              <div>
+                <div className="text-[10px] font-mono text-[#0086F9]">Screen pop — incoming call</div>
+                <div className="text-[11px] font-semibold text-white">Elliot Barnes · Pivot Growth</div>
+              </div>
+            </motion.div>
+
+            {/* Phase 2: In call with waveform (1.8 → 5.2s) */}
+            <motion.div
+              className="absolute inset-0 flex items-center gap-2.5 px-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 1, 1, 0] }}
+              transition={{ delay: 1.8, times: [0, 0.06, 0.88, 1], duration: 3.4 }}
+            >
+              <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 mb-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="text-[10px] font-mono text-emerald-400">In call</span>
+                  <span className="text-[10px] font-mono text-white/30 ml-auto">14:22</span>
+                </div>
+                <div className="flex items-end gap-[2px] h-4">
+                  {waveH.map((h, i) => (
+                    <motion.div
+                      key={i}
+                      className="w-[3px] rounded-full bg-[#0086F9]/60"
+                      style={{ height: `${h}px` }}
+                      animate={{ height: [`${h}px`, `${Math.max(2, Math.floor(h * 0.3))}px`, `${h}px`] }}
+                      transition={{ duration: 0.55 + i * 0.07, repeat: Infinity, ease: 'easeInOut', delay: i * 0.06 }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Phase 3: Logging (5.2 → 6.4s) */}
+            <motion.div
+              className="absolute inset-0 flex items-center gap-2.5 px-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 1, 1, 0] }}
+              transition={{ delay: 5.2, times: [0, 0.1, 0.78, 1], duration: 1.2 }}
+            >
+              <motion.div
+                className="w-4 h-4 rounded-full border-2 border-[#0086F9]/40 border-t-[#0086F9] shrink-0"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
+              />
+              <span className="text-[11px] font-mono text-[#2D98F1]">Logging to HubSpot CRM…</span>
+            </motion.div>
+
+            {/* Phase 4: Done (6.4s+) */}
+            <motion.div
+              className="absolute inset-0 flex items-center gap-2.5 px-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 6.4, duration: 0.3 }}
+            >
+              <div className="w-4 h-4 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                <Check className="w-2.5 h-2.5 text-emerald-400" />
+              </div>
+              <span className="text-[11px] font-mono text-white/50">Synced · 0 manual entries</span>
+            </motion.div>
+          </div>
         </div>
-        <p className="text-xs text-white/60 leading-relaxed">Discussed Q3 proposal. Client requested pricing breakdown by seat. Follow-up scheduled for Thursday. Deal moved to Proposal stage.</p>
-      </div>
-    </div>
+
+        {/* Activity timeline */}
+        <div className="px-4 pb-3">
+          <div className="text-[9px] font-mono uppercase tracking-widest text-white/25 mb-2">Activity · Auto-logged by Rozper</div>
+          <div className="space-y-2">
+            {timeline.map(({ Icon, label, color, delay }) => (
+              <motion.div
+                key={label}
+                className="flex items-center gap-2.5"
+                initial={{ opacity: 0, x: -6 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay, duration: 0.3 }}
+              >
+                <div className={`w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center ${color} shrink-0`}>
+                  <Icon className="w-3 h-3" />
+                </div>
+                <span className="text-[11px] text-white/60 flex-1">{label}</span>
+                <span className="text-[9px] font-mono text-white/20 shrink-0">just now</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* AI Summary */}
+        <motion.div
+          className="mx-3 mb-3 p-3 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 7.5, duration: 0.4 }}
+        >
+          <div className="flex items-center gap-1.5 mb-1.5">
+            <Zap className="w-3 h-3 text-[#0086F9]" />
+            <span className="text-[9px] font-mono uppercase tracking-widest text-[#2D98F1]">AI Summary</span>
+          </div>
+          <p className="text-[10px] text-white/55 leading-relaxed">Discussed Q3 proposal. Client requested pricing by seat. Follow-up Thursday. Deal → Proposal.</p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -146,16 +291,16 @@ export function HubSpotPageView() {
         </div>
 
         {/* Hero */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1fr_1fr] gap-14 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-8 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-10 items-center">
           <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
               <RefreshCw className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Integrations · HubSpot</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight"
             >
               Rozper syncs with{' '}
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">HubSpot,</span>{' '}
@@ -164,12 +309,12 @@ export function HubSpotPageView() {
 
             <motion.p
               initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}
-              className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed"
+              className="mt-4 text-lg text-white/60 max-w-xl leading-relaxed"
             >
               Click-to-call, auto-logging, AI summaries, and deal-stage triggers — without ever leaving HubSpot. Every call logged. Every deal updated. Zero manual entry.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-wrap gap-3">
               <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
                 Connect HubSpot <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -179,7 +324,7 @@ export function HubSpotPageView() {
             </motion.div>
 
             {/* Trust badges */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-10 flex flex-wrap gap-2">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-6 flex flex-wrap gap-2">
               {['Free → Enterprise', 'Embedded widget', 'Real-time sync'].map(b => (
                 <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-xs text-white/60">
                   <Check className="w-3 h-3 text-[#0086F9]" />{b}
@@ -188,9 +333,7 @@ export function HubSpotPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
-            <HubSpotRecord />
-          </motion.div>
+          <HubSpotWidgetAnimation />
         </section>
 
         {/* Sync flow — numbered steps */}

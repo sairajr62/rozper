@@ -121,11 +121,11 @@ export function FAQ() {
                   >
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : i)}
-                      className="w-full flex items-center justify-between gap-6 p-5 sm:p-6 text-left"
+                      className="w-full flex items-start justify-between gap-3 sm:gap-6 p-4 sm:p-6 text-left"
                     >
-                      <div className="flex items-center gap-4 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 min-w-0">
                         <span
-                          className={`shrink-0 text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded border transition-colors ${
+                          className={`shrink-0 self-start text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded border transition-colors ${
                             isOpen
                               ? "border-[#22D3EE]/30 bg-[#22D3EE]/10 text-[#22D3EE]"
                               : "border-white/10 bg-white/[0.03] text-white/50"
@@ -134,7 +134,7 @@ export function FAQ() {
                           {faq.category}
                         </span>
                         <span
-                          className={`font-semibold text-base sm:text-lg transition-colors ${
+                          className={`font-semibold text-sm sm:text-lg transition-colors ${
                             isOpen ? "text-white" : "text-white/85"
                           }`}
                         >
@@ -144,13 +144,13 @@ export function FAQ() {
                       <motion.div
                         animate={{ rotate: isOpen ? 45 : 0 }}
                         transition={{ duration: 0.2 }}
-                        className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
+                        className={`shrink-0 mt-0.5 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-colors ${
                           isOpen
                             ? "bg-[#22D3EE]/15 text-[#22D3EE]"
                             : "bg-white/[0.03] text-white/40"
                         }`}
                       >
-                        <Plus className="w-4 h-4" />
+                        <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </motion.div>
                     </button>
 
@@ -166,7 +166,7 @@ export function FAQ() {
                           }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 sm:px-6 pb-6 pt-0 sm:pl-[7.25rem] text-[#9AA8BC] leading-relaxed">
+                          <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-0 sm:pl-[7.25rem] text-sm sm:text-base text-[#9AA8BC] leading-relaxed">
                             {faq.answer}
                           </div>
                         </motion.div>

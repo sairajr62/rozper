@@ -1,9 +1,11 @@
 import { Metadata } from 'next'
 import { FeatTollFreeNumbersPageView } from '@/components/features/toll-free-numbers'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Toll-Free Numbers · 800, 888, 877 & International | Rozper',
   description: 'Instant toll-free number provisioning in 150+ countries. USA 800/888/877 and international freephone. rozper.com.',
+  alternates: { canonical: `${SITE_URL}/features/toll-free-numbers` },
 }
 
 export default function TollFreeNumbersFeaturePage() {

@@ -9,7 +9,8 @@
 import fs from "node:fs"
 import path from "node:path"
 
-const API_BASE = "https://www.rozper.com/wp-json/wp/v2"
+const API_BASE =
+  process.env.NEXT_PUBLIC_WP_API_URL ?? "https://www.rozper.com/wp-json/wp/v2"
 const REVALIDATE_SECONDS = 60 * 30 // 30 min
 
 // Local cache of WordPress posts (raw payloads), produced by

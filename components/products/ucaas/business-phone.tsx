@@ -250,7 +250,7 @@ export function ProdUCaaSBusinessPhonePageView() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+              className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
             >
               Cloud calling for
               <br />
@@ -277,14 +277,14 @@ export function ProdUCaaSBusinessPhonePageView() {
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition"
+                className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition"
               >
                 Start a free trial{" "}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition"
+                className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition"
               >
                 See pricing
               </Link>
@@ -352,7 +352,7 @@ export function ProdUCaaSBusinessPhonePageView() {
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-5xl font-bold">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center">
               Enterprise calling. Startup simplicity.
             </h2>
           </div>
@@ -406,21 +406,21 @@ export function ProdUCaaSBusinessPhonePageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Phone className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-4xl md:text-6xl font-bold text-white">
               Your team. Calling everywhere.
             </h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap"
               >
-                Start a free trial <ArrowRight className="w-4 h-4" />
+                Start a free trial <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap"
               >
                 See pricing
               </Link>

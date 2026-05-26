@@ -27,7 +27,7 @@ type TocEntry = { id: string; text: string; level: 2 | 3 }
 // Q/A pairs (Q = an H3/H4 OR a <p> ending with "?" that contains a link
 // or strong tag, A = subsequent paragraphs).
 const ICON_PLUS_SVG =
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>'
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>'
 
 function escapeHtml(s: string): string {
   return s
@@ -350,7 +350,7 @@ function PostEndCta() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-      className="relative mt-14 sm:mt-20 max-w-3xl mx-auto"
+      className="relative mt-14 sm:mt-20 max-w-3xl"
     >
       <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-transparent shadow-[0_30px_80px_-30px_rgba(4,107,210,0.55)]">
         <div className="relative rounded-3xl bg-[#0A1020]/85 backdrop-blur-md overflow-hidden p-7 sm:p-10 text-center">
@@ -413,9 +413,33 @@ export function PostLayout({
   author: BlogAuthor
 }) {
   const articleRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const tocListRef = useRef<HTMLUListElement>(null)
   const activeIdRef = useRef<string>("")
   const [activeId, setActiveId] = useState<string>("")
+  const [tocVisible, setTocVisible] = useState(false)
+  // Blocks scroll-spy from overriding an explicit click selection while the
+  // smooth-scroll animation is still in progress.
+  const clickLockRef = useRef(false)
+  const clickLockTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Show the TOC only while the article prose is in view:
+  // - starts when the section top crosses the navbar (prevents hero overlap)
+  // - stops when the article's bottom edge scrolls within 200px of the navbar
+  //   (hides before the author bio / end CTA / footer area)
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const check = () => {
+      const sectionTop = el.getBoundingClientRect().top
+      const articleBottom =
+        articleRef.current?.getBoundingClientRect().bottom ?? Infinity
+      setTocVisible(sectionTop <= 112 && articleBottom > 200)
+    }
+    check()
+    window.addEventListener("scroll", check, { passive: true })
+    return () => window.removeEventListener("scroll", check)
+  }, [])
 
   // Bake heading IDs into the HTML string up-front (runs identically on
   // server and client, so no hydration mismatch). The TOC is derived from
@@ -451,7 +475,35 @@ export function PostLayout({
     }
     activeIdRef.current = id
     setActiveId(id)
+    // Lock scroll-spy for 1 s so the smooth-scroll animation doesn't
+    // immediately override the item the user just clicked.
+    clickLockRef.current = true
+    if (clickLockTimer.current) clearTimeout(clickLockTimer.current)
+    clickLockTimer.current = setTimeout(() => {
+      clickLockRef.current = false
+    }, 1000)
   }
+
+  // Hide broken images inside the WordPress-rendered article HTML.
+  // wp-content images that 404 would otherwise show the browser's broken-image
+  // icon; hiding them degrades gracefully without disrupting the layout.
+  useEffect(() => {
+    const article = articleRef.current
+    if (!article) return
+    const imgs = Array.from(article.querySelectorAll<HTMLImageElement>("img"))
+    const handlers: Array<() => void> = []
+    for (const img of imgs) {
+      const onErr = () => {
+        img.style.display = "none"
+        img.closest("figure")?.remove()
+      }
+      img.addEventListener("error", onErr)
+      handlers.push(() => img.removeEventListener("error", onErr))
+      // Trigger for already-broken images (src already evaluated before the handler was attached).
+      if (img.complete && img.naturalWidth === 0 && img.src) onErr()
+    }
+    return () => handlers.forEach((fn) => fn())
+  }, [processedHtml])
 
   // Post-render enhancements (FAQ accordion + mid-article CTAs) and scroll-spy.
   // IDs are already in the markup, so this no longer touches them.
@@ -513,6 +565,7 @@ export function PostLayout({
 
     const computeActive = () => {
       ticking = false
+      if (clickLockRef.current) return
       const headings = getHeadings()
       if (!headings.length) return
       const scrollY = window.scrollY
@@ -577,100 +630,104 @@ export function PostLayout({
   }, [processedHtml])
 
   return (
-    <section className="relative pb-12 sm:pb-16 lg:pb-20">
+    <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative pb-12 sm:pb-16 lg:pb-20">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-20">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
-          {/* Sticky sidebar — boxed TOC + subscribe box */}
-          <aside className="lg:col-span-3 order-2 lg:order-1">
-            <div className="lg:sticky lg:top-28 space-y-6">
-              {toc.length > 0 && (
-                <nav
-                  aria-label="Table of contents"
-                  className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5"
-                >
-                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] font-mono text-white/45 mb-4">
-                    <span className="w-4 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
-                    Table of contents
-                  </div>
-                  <ul
-                    ref={tocListRef}
-                    className="space-y-0.5"
-                  >
-                    {toc.map((entry, i) => {
-                      const isActive = activeId === entry.id
-                      return (
-                        <li key={entry.id}>
-                          <a
-                            href={`#${entry.id}`}
-                            data-toc-id={entry.id}
-                            onClick={(e) => handleTocClick(e, entry.id)}
-                            aria-current={isActive ? "location" : undefined}
-                            className={`group flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm border-l-2 transition-colors ${
-                              isActive
-                                ? "border-[#22D3EE] bg-[#046BD2]/15 text-white"
-                                : "border-transparent text-white/55 hover:text-white/90 hover:bg-white/[0.04]"
-                            } ${entry.level === 3 ? "pl-6 text-[13px]" : ""}`}
-                          >
-                            <span
-                              className={`shrink-0 mt-px font-mono text-[11px] tabular-nums transition-colors ${
-                                isActive ? "text-[#22D3EE]" : "text-white/30"
-                              }`}
-                            >
-                              {String(i + 1).padStart(2, "0")}
-                            </span>
-                            <span className="leading-snug">{entry.text}</span>
-                          </a>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </nav>
-              )}
+      {/* Fixed TOC — visible on lg+ screens, stays in viewport for the
+          entire scroll. Hidden on mobile/tablet (no space). */}
+      {toc.length > 0 && (
+        <aside
+          aria-label="Table of contents"
+          className={`hidden lg:flex flex-col fixed top-28 z-30 w-56 xl:w-64 transition-opacity duration-300 ${tocVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+          style={{
+            left: "max(1rem, calc(50vw - 40rem + 1.5rem))",
+            maxHeight: "calc(100vh - 8rem)",
+          }}
+        >
+          <nav className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 flex flex-col min-h-0">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] font-mono text-white/45 mb-4 shrink-0">
+              <span className="w-4 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
+              Table of contents
             </div>
-          </aside>
-
-          {/* Article body */}
-          <div className="lg:col-span-9 order-1 lg:order-2 min-w-0">
-            <article
-              ref={articleRef as React.RefObject<HTMLElement>}
-              className="blog-prose max-w-3xl"
-              // Content comes from the WordPress REST API (rozper.com) or
-              // local Markdown — both trusted sources. `processedHtml` has
-              // stable heading IDs baked in for the TOC anchors.
-              dangerouslySetInnerHTML={{ __html: processedHtml }}
-            />
-
-            <AuthorBio author={author} />
-
-            {/* Tags + share row at the article end (matches screenshot) */}
-            <div className="mt-10 max-w-3xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 pt-6 border-t border-white/[0.08]">
-              {tags.length > 0 ? (
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Tag className="w-3.5 h-3.5 text-white/35" />
-                  {tags.map((t) => (
-                    <span
-                      key={t.id}
-                      className="inline-flex items-center text-[11px] text-white/70 px-2.5 py-1 rounded-md border border-white/10 bg-white/[0.03]"
+            <ul
+              ref={tocListRef}
+              className="space-y-0.5 overflow-y-auto min-h-0"
+              style={{ scrollbarWidth: "none" }}
+            >
+              {toc.map((entry, i) => {
+                const isActive = activeId === entry.id
+                return (
+                  <li key={entry.id}>
+                    <a
+                      href={`#${entry.id}`}
+                      data-toc-id={entry.id}
+                      onClick={(e) => handleTocClick(e, entry.id)}
+                      aria-current={isActive ? "location" : undefined}
+                      className={`group flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm border-l-2 transition-colors ${
+                        isActive
+                          ? "border-[#22D3EE] bg-[#046BD2]/15 text-white"
+                          : "border-transparent text-white/55 hover:text-white/90 hover:bg-white/[0.04]"
+                      } ${entry.level === 3 ? "pl-6 text-[13px]" : ""}`}
                     >
-                      #{t.name}
-                    </span>
-                  ))}
-                </div>
-              ) : (
-                <span />
-              )}
-              <div className="flex items-center gap-3">
-                <span className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40">
-                  Share
-                </span>
-                <ShareButtons url={shareUrl} title={title} layout="row" />
-              </div>
-            </div>
+                      <span
+                        className={`shrink-0 mt-px font-mono text-[11px] tabular-nums transition-colors ${
+                          isActive ? "text-[#22D3EE]" : "text-white/30"
+                        }`}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="leading-snug">{entry.text}</span>
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+        </aside>
+      )}
 
-            <PostEndCta />
+      {/* Article — left-padded on lg+ to sit beside the fixed TOC */}
+      <div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-20"
+      >
+        <div className="lg:pl-64 xl:pl-72">
+          <article
+            ref={articleRef as React.RefObject<HTMLElement>}
+            className="blog-prose max-w-3xl"
+            // Content comes from the WordPress REST API (rozper.com) or
+            // local Markdown — both trusted sources. `processedHtml` has
+            // stable heading IDs baked in for the TOC anchors.
+            dangerouslySetInnerHTML={{ __html: processedHtml }}
+          />
+
+          <AuthorBio author={author} />
+
+          {/* Tags + share row at the article end */}
+          <div className="mt-10 max-w-3xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 pt-6 border-t border-white/[0.08]">
+            {tags.length > 0 ? (
+              <div className="flex items-center gap-2 flex-wrap">
+                <Tag className="w-3.5 h-3.5 text-white/35" />
+                {tags.map((t) => (
+                  <span
+                    key={t.id}
+                    className="inline-flex items-center text-[11px] text-white/70 px-2.5 py-1 rounded-md border border-white/10 bg-white/[0.03]"
+                  >
+                    #{t.name}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <span />
+            )}
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40">
+                Share
+              </span>
+              <ShareButtons url={shareUrl} title={title} layout="row" />
+            </div>
           </div>
+
+          <PostEndCta />
         </div>
       </div>
     </section>

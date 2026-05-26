@@ -3,11 +3,13 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { SecurityContent } from "@/components/legal/security-content"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Security · Rozper",
   description:
     "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications safe.",
+  alternates: { canonical: `${SITE_URL}/security` },
 }
 
 export default function SecurityPage() {

@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { ProdUCaaSSMSMMSPageView } from '@/components/products/ucaas/sms-mms'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Business SMS & MMS · Messaging Built for Teams | Rozper',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     description: 'Two-way messaging, bulk sends, and WhatsApp — all from your business number.',
     type: 'website',
   },
+  alternates: { canonical: `${SITE_URL}/products/ucaas/sms-mms` },
 }
 
 export default function SMSMMSPage() {

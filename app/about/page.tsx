@@ -7,11 +7,13 @@ import { AboutPrinciples } from "@/components/about/principles"
 import { AboutTimeline } from "@/components/about/timeline"
 import { AboutTeam } from "@/components/about/team"
 import { AboutCTA } from "@/components/about/cta"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "About · Rozper",
   description:
     "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018 — built so every call just works.",
+  alternates: { canonical: `${SITE_URL}/about` },
 }
 
 export default function AboutPage() {

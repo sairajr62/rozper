@@ -12,13 +12,12 @@ import {
   fetchPostBySlug,
   fetchRelatedPosts,
 } from "@/lib/blog-api"
+import { SITE_URL } from "@/lib/site"
 
 // Refresh each post every 30 min via ISR.
 export const revalidate = 1800
 // Allow on-demand rendering of any new slug that wasn't pre-built.
 export const dynamicParams = true
-
-const SITE_URL = "https://www.rozper.com"
 
 type RouteParams = { slug: string }
 
@@ -55,7 +54,13 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: `/blog/${post.slug}` },
+    // WP posts carry an absolute link (the original rozper.com URL).
+    // Local markdown posts carry a relative path — prefix with SITE_URL.
+    alternates: {
+      canonical: post.link.startsWith("http")
+        ? post.link
+        : `${SITE_URL}${post.link}`,
+    },
     openGraph: {
       title,
       description,
@@ -95,27 +100,85 @@ export default async function BlogPostPage({
 
   const related = await fetchRelatedPosts(post, 3).catch(() => [])
 
+  // Canonical: WP posts carry an absolute link; local markdown posts are relative.
+  const canonical = post.link.startsWith("http")
+    ? post.link
+    : `${SITE_URL}${post.link}`
+
   const shareUrl = `${SITE_URL}/blog/${post.slug}`
 
-  // JSON-LD for search
-  const jsonLd = {
+  const category = post.categories[0]
+  const keywords = post.tags.map((t) => t.name).join(", ") || undefined
+
+  // BlogPosting structured data
+  const blogPostingSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": canonical,
+    url: canonical,
     headline: post.title,
+    name: post.title,
     description: post.seoDescription || post.excerpt,
-    image: post.featuredImage?.src,
+    ...(post.featuredImage
+      ? {
+          image: {
+            "@type": "ImageObject",
+            url: post.featuredImage.src,
+            ...(post.featuredImage.width ? { width: post.featuredImage.width } : {}),
+            ...(post.featuredImage.height ? { height: post.featuredImage.height } : {}),
+          },
+        }
+      : {}),
     datePublished: post.date,
     dateModified: post.modified,
-    author: { "@type": "Person", name: post.author.name },
+    inLanguage: "en",
+    author: {
+      "@type": "Person",
+      name: post.author.name,
+      ...(post.author.avatar ? { image: post.author.avatar } : {}),
+    },
     publisher: {
       "@type": "Organization",
+      "@id": SITE_URL,
       name: "Rozper",
+      url: SITE_URL,
       logo: {
         "@type": "ImageObject",
         url: `${SITE_URL}/images/white-rozper-logo.png`,
       },
     },
-    mainEntityOfPage: { "@type": "WebPage", "@id": shareUrl },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical,
+    },
+    ...(keywords ? { keywords } : {}),
+    ...(category ? { articleSection: category.name } : {}),
+  }
+
+  // BreadcrumbList mirrors the visual breadcrumb: Home › Blog › Post Title
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${SITE_URL}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: canonical,
+      },
+    ],
   }
 
   return (
@@ -125,7 +188,12 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <PostArticleHero post={post} />
       <PostLayout
