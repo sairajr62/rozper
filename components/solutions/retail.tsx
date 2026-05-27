@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  MessageSquare, Bot, Bell, Link as LinkIcon, Heart, ArrowRight, ChevronRight,
+  MessageSquare, Bot, Bell, Database, ThumbsUp, ArrowRight, ChevronRight,
   ShoppingBag, TrendingUp, Zap, Activity,
 } from 'lucide-react'
 
@@ -13,8 +13,8 @@ const features = [
   { icon: MessageSquare, title: 'Every channel in one inbox', desc: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified.' },
   { icon: Bot, title: 'AI Receptionist for WISMO', desc: 'Handles "Where Is My Order" calls 24/7 — freeing agents for complex issues.' },
   { icon: Bell, title: 'Outbound SMS notifications', desc: 'Order updates, shipping alerts, and restock notifications.' },
-  { icon: LinkIcon, title: 'CRM integration', desc: 'Shopify, Salesforce Commerce, and major retail platforms.' },
-  { icon: Heart, title: 'AI sentiment analysis', desc: 'Flags unhappy customers before they post a negative review.' },
+  { icon: Database, title: 'CRM integration', desc: 'Shopify, Salesforce Commerce, and major retail platforms.' },
+  { icon: ThumbsUp, title: 'AI sentiment analysis', desc: 'Flags unhappy customers before they post a negative review.' },
 ]
 
 const dark = [
@@ -103,7 +103,7 @@ export function RetailPageView() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Solutions · Retail & eCommerce</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Contact center built for{' '}
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">retail peaks</span>.
             </motion.h1>
@@ -112,15 +112,15 @@ export function RetailPageView() {
               Omnichannel support that scales for Black Friday and handles every return with ease. Your contact center gets 10x the volume on peak days — Rozper scales instantly.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">
                 Prepare for peak <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }}>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
             <PeakChart />
           </motion.div>
         </section>
@@ -270,14 +270,14 @@ export function RetailPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <ShoppingBag className="w-12 h-12 mx-auto mb-6 text-white" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Built for the busiest day of the year.</h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">Built for the busiest day of the year.</h2>
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition">
                 Prepare for peak <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

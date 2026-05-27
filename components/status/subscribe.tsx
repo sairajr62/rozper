@@ -51,7 +51,7 @@ export function StatusSubscribe() {
                     setEmail("")
                   }
                 }}
-                className="mt-6 relative flex items-center rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-md focus-within:border-[#22D3EE]/40 transition-colors"
+                className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-0 sm:items-center sm:rounded-xl sm:border sm:border-white/10 sm:bg-white/[0.03] sm:backdrop-blur-md sm:focus-within:border-[#22D3EE]/40 transition-colors"
               >
                 <input
                   type="email"
@@ -59,11 +59,11 @@ export function StatusSubscribe() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
-                  className="flex-1 bg-transparent px-4 py-3 text-sm text-white placeholder-white/30 outline-none"
+                  className="flex-1 bg-white/[0.03] sm:bg-transparent px-4 py-3 text-sm text-white placeholder-white/30 outline-none rounded-xl border border-white/10 sm:border-0 sm:rounded-none focus:border-[#22D3EE]/40 sm:focus:border-0 transition-colors"
                 />
                 <button
                   type="submit"
-                  className="m-1 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium transition-colors"
+                  className="sm:m-1 inline-flex items-center justify-center gap-1.5 px-4 py-3 sm:px-3 sm:py-2 rounded-xl sm:rounded-lg bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium transition-colors"
                 >
                   {done ? "Subscribed" : (
                     <>

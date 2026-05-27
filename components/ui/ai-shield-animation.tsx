@@ -75,7 +75,7 @@ export function AIShieldAnimation() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef    = useRef<HTMLCanvasElement>(null)
   const particles    = useRef<Particle[]>([])
-  const rafRef       = useRef<number>()
+  const rafRef       = useRef<number>(0)
   const idRef        = useRef(0)
   const glowTimers   = useRef<Map<number, ReturnType<typeof setTimeout>>>(new Map())
 

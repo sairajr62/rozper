@@ -6,18 +6,19 @@ import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import {
   BarChart3,
+  Activity,
   TrendingUp,
-  Clock,
-  Users,
-  Flag,
-  Download,
+  AlarmClock,
+  Trophy,
+  ClipboardCheck,
+  Database,
   ArrowRight,
   ChevronRight,
 } from "lucide-react";
 
 const features = [
   {
-    icon: BarChart3,
+    icon: Activity,
     title: "Real-Time Queue Stats",
     desc: "Live call volume, wait times, abandonment rate, and agent availability in one view.",
   },
@@ -27,22 +28,22 @@ const features = [
     desc: "SLA compliance, CSAT, AHT, and FCR trended by day, week, or custom range.",
   },
   {
-    icon: Clock,
+    icon: AlarmClock,
     title: "SLA Tracking",
     desc: "Monitor SLA adherence per queue and team — with alerts before breaches occur.",
   },
   {
-    icon: Users,
+    icon: Trophy,
     title: "Agent Performance Boards",
     desc: "Compare AHT, resolution rate, and CSAT per agent — sortable, filterable, exportable.",
   },
   {
-    icon: Flag,
+    icon: ClipboardCheck,
     title: "Quality Scorecards",
     desc: "Automated QA scoring on 100% of calls — no manual review sampling.",
   },
   {
-    icon: Download,
+    icon: Database,
     title: "Export & BI Integration",
     desc: "Export to CSV or push data to Looker, Tableau, or any BI tool via webhook.",
   },
@@ -154,9 +155,10 @@ function AnalyticsDashboard() {
 
 export function ProdCCAnalyticsPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
+      <div className="relative overflow-hidden">
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-[#046BD2]/7 blur-[160px] pointer-events-none" />
 
       <div className="relative z-10">
@@ -177,12 +179,12 @@ export function ProdCCAnalyticsPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start">
-          <div>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-start">
+          <div className="w-full">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6 sm:mb-8"
             >
               <BarChart3 className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">
@@ -206,7 +208,7 @@ export function ProdCCAnalyticsPageView() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
-              className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed"
+              className="mt-5 sm:mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed"
             >
               Transcripts, sentiment, intent, and quality scores — on 100% of
               interactions. Every conversation analyzed, instantly surfaced.
@@ -215,17 +217,17 @@ export function ProdCCAnalyticsPageView() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
-              className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3"
+              className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3"
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap"
+                className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap"
               >
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Start a free trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
               >
                 See pricing
               </Link>
@@ -304,16 +306,16 @@ export function ProdCCAnalyticsPageView() {
             <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">
               Real-time intelligence. Zero lag.
             </h2>
-            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap"
               >
                 Start a free trial <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap"
               >
                 See pricing
               </Link>
@@ -322,6 +324,7 @@ export function ProdCCAnalyticsPageView() {
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   );

@@ -126,9 +126,9 @@ export function PricingHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.58 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-row flex-wrap items-center justify-center gap-4"
         >
-          <button className="relative overflow-hidden px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
+          <button className="relative overflow-hidden whitespace-nowrap px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
             style={{ boxShadow: '0 0 0 0 rgba(4,107,210,0.4)' }}
             onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 40px rgba(4,107,210,0.45)')}
             onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 0 0 rgba(4,107,210,0.4)')}

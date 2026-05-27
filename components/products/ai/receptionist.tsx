@@ -5,18 +5,18 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Phone, Calendar, Database, Mic, Globe, RefreshCw,
-  ArrowRight, ChevronRight, Bot, CheckCircle,
+  PhoneIncoming, CalendarCheck, Database, Mic, Globe, GitBranch,
+  MessageCircle, ArrowRight, ChevronRight, Bot, CheckCircle,
 } from 'lucide-react'
 import { ReceptionistHero } from '@/components/products/ai/receptionist-hero'
 
 const features = [
-  { icon: Bot, title: '24/7 Call Answering', desc: 'Never miss a call — AI answers immediately at any hour, any day.' },
-  { icon: Phone, title: 'Natural Language Greetings', desc: 'Sounds human — no robotic prompts, no IVR trees. Just a natural conversation.' },
-  { icon: Calendar, title: 'Calendar Booking', desc: 'Books appointments directly into your calendar with instant SMS/email confirmation.' },
+  { icon: PhoneIncoming, title: '24/7 Call Answering', desc: 'Never miss a call — AI answers immediately at any hour, any day.' },
+  { icon: MessageCircle, title: 'Natural Language Greetings', desc: 'Sounds human — no robotic prompts, no IVR trees. Just a natural conversation.' },
+  { icon: CalendarCheck, title: 'Calendar Booking', desc: 'Books appointments directly into your calendar with instant SMS/email confirmation.' },
   { icon: Database, title: 'CRM Pre-Population', desc: 'Writes contact data and call summary to CRM before the agent picks up.' },
   { icon: Globe, title: 'Multi-Language Support', desc: 'Answers in the caller\'s language — 40+ languages supported automatically.' },
-  { icon: RefreshCw, title: 'Custom Call Flows', desc: 'Configure greeting, qualifying questions, and routing rules per number or department.' },
+  { icon: GitBranch, title: 'Custom Call Flows', desc: 'Configure greeting, qualifying questions, and routing rules per number or department.' },
 ]
 
 const faqs = [
@@ -105,9 +105,10 @@ function ReceptionistFlowUI() {
 
 export function ProdAIReceptionistPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
+      <div className="relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[#046BD2]/7 blur-[180px] pointer-events-none" />
 
       <div className="relative z-10">
@@ -121,32 +122,32 @@ export function ProdAIReceptionistPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
-          <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-12 pb-8 sm:pb-16 flex flex-col lg:grid lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-12 lg:items-center min-h-[calc(100dvh-200px)] lg:min-h-0">
+          <div className="w-full shrink-0">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6 sm:mb-8">
               <Bot className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">AI · Receptionist</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               24/7 call answering.<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">Zero hold time</span>.
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-5 sm:mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
               Answers calls, qualifies leads, books meetings, and writes to your CRM — around the clock. Included on every Rozper seat.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap">
                 Start a free trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
             </motion.div>
 
           </div>
 
-          <div className="flex items-start justify-center overflow-hidden h-[244px] sm:h-[316px] md:h-[382px]">
+          <div className="flex-1 lg:flex-none flex items-start justify-center overflow-hidden min-h-[240px] sm:min-h-[300px] lg:min-h-0">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }} className="relative">
               <ReceptionistHero />
             </motion.div>
@@ -195,16 +196,17 @@ export function ProdAIReceptionistPageView() {
           <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Bot className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">Answer every call. Book every meeting.</h2>
-            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
                 Start a free trial <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
             </div>
           </div>
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   )

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
-import { Mic, Video, Monitor, MicOff, PhoneOff } from 'lucide-react'
+import { Mic, Video, MonitorSmartphone, MicOff, PhoneOff } from 'lucide-react'
 
 gsap.registerPlugin(TextPlugin)
 
@@ -362,7 +362,7 @@ export function TabletVideoHero() {
             {/* Screen share */}
             <div className="w-7 h-7 rounded-full flex items-center justify-center cursor-pointer"
               style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)' }}>
-              <Monitor className="w-3 h-3 text-white/60" />
+              <MonitorSmartphone className="w-3 h-3 text-white/60" />
             </div>
             {/* End call */}
             <div className="w-7 h-7 rounded-full flex items-center justify-center cursor-pointer"

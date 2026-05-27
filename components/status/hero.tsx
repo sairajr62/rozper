@@ -66,15 +66,15 @@ export function StatusHero() {
                 { l: "Avg API latency", v: "84 ms", trend: "−3 ms" },
                 { l: "Call setup success", v: "99.98%", trend: "30d" },
               ].map((m) => (
-                <div key={m.l} className="bg-[#0A1020]/80 px-5 py-4">
-                  <div className="text-[10px] uppercase tracking-widest font-mono text-white/40">
+                <div key={m.l} className="bg-[#0A1020]/80 px-2 py-3 sm:px-5 sm:py-4">
+                  <div className="text-[9px] sm:text-[10px] uppercase tracking-wide sm:tracking-widest font-mono text-white/40 leading-tight">
                     {m.l}
                   </div>
-                  <div className="mt-1 flex items-baseline gap-2">
-                    <span className="font-display text-2xl font-bold text-white tabular-nums">
+                  <div className="mt-1 flex items-baseline gap-1 sm:gap-2 flex-wrap">
+                    <span className="font-display text-base sm:text-2xl font-bold text-white tabular-nums">
                       {m.v}
                     </span>
-                    <span className="text-[10px] font-mono text-emerald-400">
+                    <span className="text-[9px] sm:text-[10px] font-mono text-emerald-400">
                       {m.trend}
                     </span>
                   </div>

@@ -133,7 +133,7 @@ export function PricingCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.32 }}
               viewport={{ once: true }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex flex-row flex-wrap items-center justify-center gap-4"
             >
               <a
                 href="https://rozper.com"

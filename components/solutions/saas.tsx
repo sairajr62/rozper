@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Globe, Phone, Bot, Brain, Video, ArrowRight, ChevronRight,
+  Globe, Phone, Bot, Lightbulb, Video, ArrowRight, ChevronRight,
   Code2, Terminal, Boxes, Zap, GitBranch, Webhook,
 } from 'lucide-react'
 
@@ -13,7 +13,7 @@ const features = [
   { icon: Globe, title: 'Provision numbers globally', desc: 'Numbers in any country — hire globally without a telecoms project.', sample: 'POST /v1/numbers' },
   { icon: Phone, title: 'Click-to-call from CRM', desc: 'Salesforce, HubSpot, Zoho, and your custom CRM.', sample: 'rozper.dial(contact)' },
   { icon: Bot, title: 'AI call summaries', desc: 'Synced to opportunity records — no note-taking needed.', sample: 'auto-sync: enabled' },
-  { icon: Brain, title: 'Conversation intelligence', desc: 'Identifies deal risks and competitor mentions automatically.', sample: 'GET /v1/insights' },
+  { icon: Lightbulb, title: 'Conversation intelligence', desc: 'Identifies deal risks and competitor mentions automatically.', sample: 'GET /v1/insights' },
   { icon: Video, title: 'Video meetings with AI', desc: 'AI transcripts built in — no Zoom subscription needed.', sample: 'meetings.create()' },
 ]
 
@@ -101,7 +101,7 @@ export function SaaSPageView() {
               <span className="text-[10px] uppercase tracking-widest text-[#2D98F1]">solutions ./saas</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Phone and AI<br />for{' '}
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">SaaS teams</span>.
             </motion.h1>
@@ -110,22 +110,20 @@ export function SaaSPageView() {
               Global calls, CRM-connected, scales with headcount — no procurement overhead. Provision a number in any country in minutes.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-6 py-3.5 rounded font-mono text-sm bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded font-mono text-xs sm:text-sm whitespace-nowrap bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
                 <span>$ rozper init</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-6 py-3.5 rounded border border-white/15 text-white font-medium hover:bg-white/5 transition">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded border border-white/15 text-white text-xs sm:text-sm whitespace-nowrap font-medium hover:bg-white/5 transition">
                 See pricing
               </Link>
             </motion.div>
           </div>
 
-          <div className="hidden sm:block">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
-              <CodeBlock />
-            </motion.div>
-          </div>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
+            <CodeBlock />
+          </motion.div>
         </section>
 
         {/* Features as API endpoints */}
@@ -283,16 +281,16 @@ export function SaaSPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-2xl border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9] p-12 md:p-16 overflow-hidden">
+          <div className="relative rounded-2xl border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9] p-6 sm:p-12 md:p-16 overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.2),transparent_60%)]" />
             <div className="relative">
               <div className="font-mono text-xs uppercase tracking-[0.3em] text-white/70 mb-3">// ship.it</div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight text-white">Build phone into your stack in an afternoon.</h2>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold leading-tight text-white">Build phone into your stack in an afternoon.</h2>
+              <div className="mt-8 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+                <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded bg-white text-[#046BD2] text-xs sm:text-sm whitespace-nowrap font-semibold hover:scale-105 transition">
                   <span className="font-mono">$ rozper init</span> <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+                <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-sm whitespace-nowrap font-semibold hover:bg-white/25 transition">See pricing</Link>
               </div>
             </div>
           </div>

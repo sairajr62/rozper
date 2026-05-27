@@ -6,9 +6,9 @@ import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import {
   Inbox,
-  Brain,
-  Monitor,
-  FileText,
+  Lightbulb,
+  LayoutDashboard,
+  ClipboardCheck,
   Clock,
   BarChart3,
   Users,
@@ -27,17 +27,17 @@ const features = [
     desc: "Voice, SMS, WhatsApp, chat, Instagram, and Facebook — all in one queue, zero tab switching.",
   },
   {
-    icon: Brain,
+    icon: Lightbulb,
     title: "AI Agent Assist",
     desc: "Surfaces the answer before the agent types the question. Faster resolution, every time.",
   },
   {
-    icon: Monitor,
+    icon: LayoutDashboard,
     title: "Screen-Pop History",
     desc: "Full customer history on screen — all channels, all tickets, all prior contacts.",
   },
   {
-    icon: FileText,
+    icon: ClipboardCheck,
     title: "Automated Ticket Creation",
     desc: "CRM logging on every interaction — no manual data entry required.",
   },
@@ -219,7 +219,7 @@ function TicketQueue() {
 
       {/* AI Assist bar */}
       <div className="px-5 py-4 bg-[#046BD2]/10 border-t border-[#046BD2]/20 flex items-center gap-3">
-        <Brain className="w-4 h-4 text-[#0086F9] flex-shrink-0" />
+        <Lightbulb className="w-4 h-4 text-[#0086F9] flex-shrink-0" />
         <div className="text-xs text-[#2D98F1] font-mono">
           AI Agent Assist · Suggested reply ready for TKT-4820
         </div>
@@ -332,7 +332,7 @@ export function SupportTeamsPageView() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
             >
               One inbox.
               <br />
@@ -356,18 +356,18 @@ export function SupportTeamsPageView() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
-              className="mt-10 flex flex-wrap gap-3"
+              className="mt-10 flex flex-row flex-wrap gap-3"
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition"
+                className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold transition"
               >
                 Book a demo{" "}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition"
+                className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition"
               >
                 See pricing
               </Link>
@@ -394,7 +394,7 @@ export function SupportTeamsPageView() {
           </div>
 
           {/* Live queue panels */}
-          <div className="hidden md:block">
+          <div className="hidden sm:block">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
@@ -422,7 +422,7 @@ export function SupportTeamsPageView() {
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -12 : 12 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
@@ -677,7 +677,7 @@ export function SupportTeamsPageView() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <div
               className="absolute inset-0 opacity-20"
               style={{
@@ -686,22 +686,22 @@ export function SupportTeamsPageView() {
                 backgroundSize: "40px 40px",
               }}
             />
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white relative">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white relative">
               Handle more. Stress less.
             </h2>
             <p className="mt-6 text-white/80 max-w-md mx-auto relative">
               14-day free trial. No credit card required. Cancel anytime.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 relative">
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 relative">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition"
+                className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition"
               >
                 Book a demo <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition"
+                className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition"
               >
                 See pricing
               </Link>

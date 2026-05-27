@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Lock, Users, Shield, Building, FileText, Settings, ArrowRight,
+  Lock, Users, Shield, Network, FileText, Code2, ArrowRight,
   CheckCircle, Headphones, ChevronRight, Server, Boxes, Cpu, KeyRound,
 } from 'lucide-react'
 
@@ -13,9 +13,9 @@ const features = [
   { icon: Lock, code: 'AUTH.SAML', title: 'SAML SSO', desc: 'Okta · Azure AD · Google Workspace · Custom SAML' },
   { icon: Users, code: 'IDP.SCIM', title: 'SCIM Provisioning', desc: 'Automate seat creation and deactivation from your directory.' },
   { icon: Shield, code: 'POL.RBAC', title: 'Role-Based Access', desc: 'Granular permissions per team and function.' },
-  { icon: Building, code: 'NET.MULTI', title: 'Multi-Site Routing', desc: 'Unlimited locations from a single admin console.' },
+  { icon: Network, code: 'NET.MULTI', title: 'Multi-Site Routing', desc: 'Unlimited locations from a single admin console.' },
   { icon: FileText, code: 'GRC.SUITE', title: 'Compliance Suite', desc: 'GDPR · HIPAA · SOC 2 — with data residency controls.' },
-  { icon: Settings, code: 'API.REST', title: 'Developer Tools', desc: 'REST API · webhooks · SDK for custom integrations.' },
+  { icon: Code2, code: 'API.REST', title: 'Developer Tools', desc: 'REST API · webhooks · SDK for custom integrations.' },
 ]
 
 const detail = [
@@ -126,7 +126,7 @@ export function EnterpriseITPageView() {
               [ Solutions / Enterprise / Architecture v4 ]
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               <span className="font-mono text-[#0086F9] text-2xl md:text-3xl block mb-3">/* enterprise.it */</span>
               SSO, SCIM, and SLA<br />for enterprise IT.
             </motion.h1>
@@ -135,11 +135,11 @@ export function EnterpriseITPageView() {
               Enterprise-grade deployment with SSO, SCIM, multi-site routing, and a dedicated success team. Every enterprise standard met — out of the box.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-6 py-3.5 bg-[#046BD2] text-[#0B1220] font-semibold rounded-md hover:bg-[#0086F9] transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#046BD2] text-[#0B1220] text-xs sm:text-sm whitespace-nowrap font-semibold rounded-md hover:bg-[#0086F9] transition">
                 Schedule architecture review <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#046BD2]/30 text-[#2D98F1] rounded-md hover:bg-[#046BD2]/10 transition font-medium">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-sm whitespace-nowrap rounded-md hover:bg-[#046BD2]/10 transition font-medium">
                 Enterprise pricing
               </Link>
             </motion.div>
@@ -308,7 +308,7 @@ export function EnterpriseITPageView() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-md border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#0B1220] p-12 md:p-20 overflow-hidden">
+          <div className="relative rounded-md border border-[#046BD2]/30 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#0B1220] p-6 sm:p-12 md:p-20 overflow-hidden">
             <div className="absolute inset-0 opacity-30" style={{
               backgroundImage: 'linear-gradient(rgba(0,134,249,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,134,249,0.08) 1px, transparent 1px)',
               backgroundSize: '40px 40px',
@@ -316,16 +316,16 @@ export function EnterpriseITPageView() {
             <div className="relative grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#0086F9]/60 mb-4">// next.steps</div>
-                <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
+                <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
                   Architect a deployment<br />for your organization.
                 </h2>
                 <p className="mt-6 text-white/60 max-w-md">Our enterprise team will scope, design, and migrate. Most enterprise deployments live within 30 days.</p>
               </div>
-              <div className="flex flex-col gap-3 md:items-end">
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#046BD2] text-[#0B1220] font-semibold rounded-md hover:bg-[#0086F9] transition">
+              <div className="flex flex-row flex-wrap gap-3 md:justify-end">
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 bg-[#046BD2] text-[#0B1220] text-xs sm:text-sm whitespace-nowrap font-semibold rounded-md hover:bg-[#0086F9] transition">
                   Schedule architecture review <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center justify-center gap-2 px-7 py-4 border border-[#046BD2]/30 text-[#2D98F1] rounded-md hover:bg-[#046BD2]/10 transition font-medium">
+                <Link href="/pricing" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-sm whitespace-nowrap rounded-md hover:bg-[#046BD2]/10 transition font-medium">
                   Enterprise pricing
                 </Link>
               </div>

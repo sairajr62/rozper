@@ -5,16 +5,16 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Shield, Phone, FileText, Bot, Pause, ArrowRight, ChevronRight,
+  Shield, Mic, Printer, Bot, MicOff, ArrowRight, ChevronRight,
   Heart, Activity, Plus, Stethoscope, Clock,
 } from 'lucide-react'
 
 const features = [
   { icon: Shield, title: 'HIPAA-eligible config', desc: 'Encrypted calls, faxes, and messages with full compliance controls.', accent: 'rose' },
-  { icon: Phone, title: 'Compliant call recording', desc: 'HIPAA-compliant storage and access controls for all recordings.', accent: 'sky' },
-  { icon: FileText, title: 'Online fax for clinical docs', desc: 'No fax machine — full audit trail for every document.', accent: 'teal' },
+  { icon: Mic, title: 'Compliant call recording', desc: 'HIPAA-compliant storage and access controls for all recordings.', accent: 'sky' },
+  { icon: Printer, title: 'Online fax for clinical docs', desc: 'No fax machine — full audit trail for every document.', accent: 'teal' },
   { icon: Bot, title: 'AI Receptionist 24/7', desc: 'Handles patient calls and appointment bookings around the clock.', accent: 'violet' },
-  { icon: Pause, title: 'Pause-and-resume recording', desc: 'Automatically pause during PHI capture on calls.', accent: 'amber' },
+  { icon: MicOff, title: 'Pause-and-resume recording', desc: 'Automatically pause during PHI capture on calls.', accent: 'amber' },
 ]
 
 const benefits = [
@@ -26,7 +26,7 @@ const benefits = [
 const stats = [
   { v: '40%', k: 'After-hours calls handled by AI', icon: Clock },
   { v: '100%', k: 'HIPAA compliance', icon: Shield },
-  { v: '0', k: 'Fax machines needed', icon: FileText },
+  { v: '0', k: 'Fax machines needed', icon: Printer },
 ]
 
 const faqs = [
@@ -104,7 +104,7 @@ export function HealthcarePageView() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Solutions · Healthcare</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               <span className="bg-gradient-to-r from-[#2D98F1] via-[#0086F9] to-[#2575FC] bg-clip-text text-transparent">HIPAA-compliant</span><br />
               calling for healthcare teams.
             </motion.h1>
@@ -113,21 +113,19 @@ export function HealthcarePageView() {
               Secure calling, faxing, and patient messaging — compliant and built for clinical workflows. BAA included.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-to-br from-[#046BD2] to-[#2575FC] text-white font-semibold hover:shadow-[0_0_40px_rgba(4,107,210,0.4)] transition-shadow">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-gradient-to-br from-[#046BD2] to-[#2575FC] text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:shadow-[0_0_40px_rgba(4,107,210,0.4)] transition-shadow">
                 Request BAA <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-[#046BD2]/30 text-[#2D98F1] hover:bg-[#046BD2]/10 transition font-medium">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-base whitespace-nowrap hover:bg-[#046BD2]/10 transition font-medium">
                 View pricing
               </Link>
             </motion.div>
           </div>
 
-          <div className="hidden sm:block">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
-              <HeartMonitor />
-            </motion.div>
-          </div>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}>
+            <HeartMonitor />
+          </motion.div>
         </section>
 
         {/* Features as care cards */}
@@ -292,15 +290,15 @@ export function HealthcarePageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0086F9] to-[#046BD2]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0086F9] to-[#046BD2]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.2),transparent_60%)]" />
             <Heart className="w-12 h-12 mx-auto mb-6 text-white relative" strokeWidth={1.5} />
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight relative">Care for your patients.<br />We'll handle the calls.</h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 relative">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight relative">Care for your patients.<br />We'll handle the calls.</h2>
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3 relative">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition">
                 Request BAA <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

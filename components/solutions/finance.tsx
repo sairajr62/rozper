@@ -108,7 +108,7 @@ export function FinancePageView() {
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#2D98F1]">Solutions / Financial Services</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Compliant contact center<br />for{' '}
               <span className="bg-gradient-to-br from-[#2D98F1] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">finance</span>.
             </motion.h1>
@@ -117,17 +117,17 @@ export function FinancePageView() {
               Call recording, PCI-safe payment capture, and AI-flagged compliance triggers — built for financial services where every call is recorded, regulated, and audited.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-6 py-3.5 bg-[#046BD2] text-white font-semibold rounded hover:bg-[#0086F9] transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#046BD2] text-white text-xs sm:text-sm whitespace-nowrap font-semibold rounded hover:bg-[#0086F9] transition">
                 Talk to compliance team <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#046BD2]/30 text-[#2D98F1] rounded hover:bg-[#046BD2]/10 transition font-medium">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-sm whitespace-nowrap rounded hover:bg-[#046BD2]/10 transition font-medium">
                 View pricing
               </Link>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }} className="hidden sm:block rounded border border-[#046BD2]/20 bg-[#111B2D] p-5">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="rounded border border-[#046BD2]/20 bg-[#111B2D] p-5">
             <div className="flex items-center justify-between mb-3">
               <div>
                 <div className="text-[10px] font-mono uppercase tracking-widest text-[#0086F9]/60">Audit Readiness Index</div>
@@ -302,16 +302,16 @@ export function FinancePageView() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">
               Reduce audit prep<br />from weeks to minutes.
             </h2>
             <p className="mt-6 text-white/80 max-w-md mx-auto">Built for banks, insurance, broker-dealers, and fintech. SOC 2 Type II certified.</p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition">
                 Talk to compliance team <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition">
                 See pricing
               </Link>
             </div>

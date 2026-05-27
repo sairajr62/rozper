@@ -285,7 +285,7 @@ export function ChannelCollapseAnimation() {
   const getTrans = (idx: number) => {
     if (phase === 'entering') return {
       duration: 0.5, delay: idx * 0.07,
-      ease: [0.34, 1.56, 0.64, 1] as number[],
+      ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
     }
     if (phase === 'scattered') return {
       y: { duration: 2.5 + idx * 0.35, repeat: Infinity, ease: 'easeInOut' as const },
@@ -295,7 +295,7 @@ export function ChannelCollapseAnimation() {
     }
     if (phase === 'splitting') return {
       duration: 0.55, delay: idx * 0.06,
-      ease: [0.34, 1.56, 0.64, 1] as number[],
+      ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
     }
     return { duration: 0 }
   }

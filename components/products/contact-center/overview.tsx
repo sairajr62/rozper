@@ -11,7 +11,7 @@ import {
   Headphones,
   Phone,
   BarChart3,
-  Building,
+  Building2,
   MessageSquare,
   Zap,
   Users,
@@ -64,7 +64,7 @@ const features = [
     desc: "Transcripts, sentiment, intent, and quality scores on 100% of conversations.",
   },
   {
-    icon: Building,
+    icon: Building2,
     title: "Enterprise Ready",
     desc: "SSO, SCIM, multi-site routing, custom SLAs, and dedicated success team.",
   },
@@ -237,10 +237,10 @@ function LiveDashboard() {
 
 export function ContactCenterPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-x-hidden">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
-      {/* Subtle scan-line backdrop */}
+      {/* Subtle scan-line backdrop — must stay outside overflow container */}
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
@@ -249,6 +249,7 @@ export function ContactCenterPageView() {
         }}
       />
 
+      <div className="relative overflow-hidden">
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28">
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
@@ -266,12 +267,12 @@ export function ContactCenterPageView() {
 
         {/* Hero */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16">
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start">
-            <div>
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-start">
+            <div className="w-full">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded border border-[#046BD2]/30 bg-[#046BD2]/5 mb-8"
+                className="inline-flex items-center gap-3 px-4 py-2 rounded border border-[#046BD2]/30 bg-[#046BD2]/5 mb-6 sm:mb-8"
               >
                 <Radio className="w-4 h-4 text-[#0086F9]" />
                 <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">
@@ -282,7 +283,7 @@ export function ContactCenterPageView() {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-                className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight"
+                className="font-display text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight"
               >
                 Contact center
                 <br />
@@ -292,7 +293,7 @@ export function ContactCenterPageView() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.2 } }}
-                className="mt-6 text-lg text-white/60 max-w-lg leading-relaxed"
+                className="mt-5 sm:mt-6 text-base sm:text-lg text-white/60 max-w-lg leading-relaxed"
               >
                 Six channels. Three shifts. Two dozen agents. Rozper ties it
                 together — AI handles the routine, your team handles what
@@ -302,26 +303,28 @@ export function ContactCenterPageView() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.3 } }}
-                className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3"
+                className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3"
               >
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 rounded bg-[#046BD2] text-sm sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
+                  className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded bg-[#046BD2] text-xs sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
                 >
                   Start a Free Trial
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 rounded border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
                 >
                   See pricing
                 </Link>
               </motion.div>
             </div>
 
-            <div className="hidden md:block">
-              <CCTabletIllustration />
+            <div className="w-full overflow-hidden h-[262px] sm:h-auto">
+              <div className="scale-[0.60] sm:scale-100 origin-top">
+                <CCTabletIllustration />
+              </div>
             </div>
           </div>
         </section>
@@ -469,17 +472,17 @@ export function ContactCenterPageView() {
 
         {/* CTA - mission control */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-3xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#2575FC]/10 p-12 md:p-20 overflow-hidden">
+          <div className="relative rounded-3xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#2575FC]/10 p-5 sm:p-10 md:p-20 overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#046BD2]/10 blur-3xl" />
-            <div className="relative grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div>
                 <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#0086F9] mb-4">
                   // deploy
                 </div>
-                <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
+                <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
                   Ready to transform your contact center?
                 </h2>
-                <p className="mt-6 text-white/60 max-w-md">
+                <p className="mt-4 sm:mt-6 text-sm sm:text-base text-white/60 max-w-md">
                   Join thousands of teams using Rozper to deliver better
                   customer experiences. No hardware. No long contracts.
                 </p>
@@ -487,14 +490,14 @@ export function ContactCenterPageView() {
               <div className="flex flex-row flex-wrap gap-2 sm:gap-3 md:justify-end">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded bg-[#046BD2] text-sm sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded bg-[#046BD2] text-xs sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
                 >
-                  Start a Free Trial{" "}
+                  Start a Free Trial
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
                 >
                   See pricing
                 </Link>
@@ -504,6 +507,7 @@ export function ContactCenterPageView() {
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   );

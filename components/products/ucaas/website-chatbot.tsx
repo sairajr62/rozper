@@ -6,17 +6,17 @@ import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import { ChatbotHero } from '@/components/products/ucaas/chatbot-hero'
 import {
-  Zap, Users, BarChart3, Globe, Code,
-  ArrowRight, ChevronRight, Bot,
+  UserCheck, TrendingUp, Languages, Workflow, Code2,
+  ArrowRight, ChevronRight, Bot, MessageSquareDot,
 } from 'lucide-react'
 
 const features = [
-  { icon: Bot, title: 'AI-Powered Conversations', desc: 'Answers FAQs, qualifies leads, and books meetings — 24/7 without an agent.' },
-  { icon: Zap, title: 'One-Line Embed', desc: 'Add to any website with a single script tag — live in minutes, no developer needed.' },
-  { icon: Users, title: 'Live Agent Handoff', desc: 'Escalate to a live agent with full conversation context — no re-introduction.' },
-  { icon: BarChart3, title: 'Engagement Analytics', desc: 'See conversations, conversions, and CSAT per page or campaign in real time.' },
-  { icon: Globe, title: 'Multi-Language Support', desc: 'Auto-detect visitor language and respond in 40+ languages.' },
-  { icon: Code, title: 'Custom Flows & Triggers', desc: 'Trigger the chat on exit intent, scroll depth, or time on page — no code.' },
+  { icon: MessageSquareDot, title: 'AI-Powered Conversations', desc: 'Answers FAQs, qualifies leads, and books meetings — 24/7 without an agent.' },
+  { icon: Code2, title: 'One-Line Embed', desc: 'Add to any website with a single script tag — live in minutes, no developer needed.' },
+  { icon: UserCheck, title: 'Live Agent Handoff', desc: 'Escalate to a live agent with full conversation context — no re-introduction.' },
+  { icon: TrendingUp, title: 'Engagement Analytics', desc: 'See conversations, conversions, and CSAT per page or campaign in real time.' },
+  { icon: Languages, title: 'Multi-Language Support', desc: 'Auto-detect visitor language and respond in 40+ languages.' },
+  { icon: Workflow, title: 'Custom Flows & Triggers', desc: 'Trigger the chat on exit intent, scroll depth, or time on page — no code.' },
 ]
 
 const faqs = [
@@ -28,9 +28,10 @@ const faqs = [
 
 export function ProdUCaaSWebsiteChatbotPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
+      <div className="relative overflow-hidden">
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] rounded-full bg-[#046BD2]/7 blur-[140px] pointer-events-none" />
 
       <div className="relative z-10">
@@ -44,35 +45,35 @@ export function ProdUCaaSWebsiteChatbotPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
-          <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-center">
+          <div className="w-full">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6 sm:mb-8">
               <Bot className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">UCaaS · Website Chatbot</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Engage visitors<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">24/7</span>.
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-5 sm:mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
               AI chatbot that captures leads, books meetings, and hands off to live agents — one-line embed. Never miss a visitor again.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
                 Add to your site <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
             </motion.div>
           </div>
 
-          <div className="flex items-start justify-center overflow-hidden h-[191px] sm:h-[246px] md:h-[310px] lg:h-[397px]">
+          <div className="w-full flex items-start justify-center overflow-hidden h-[268px] sm:h-[392px] md:h-[412px] lg:h-[412px]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }}
-              className="relative"
+              className="relative w-full flex justify-center"
             >
               <ChatbotHero />
             </motion.div>
@@ -118,19 +119,20 @@ export function ProdUCaaSWebsiteChatbotPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-4 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Bot className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">Your site. Always on. Always converting.</h2>
-            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
                 Add to your site <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
             </div>
           </div>
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   )

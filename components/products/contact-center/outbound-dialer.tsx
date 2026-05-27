@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  PhoneOutgoing, Shield, Zap, BarChart3, Users, RefreshCw,
+  PhoneOutgoing, Shield, Search, BarChart3, Users, RefreshCw,
   ArrowRight, ChevronRight, TrendingUp,
 } from 'lucide-react'
 import { OutboundDialerMobile } from '@/components/ui/outbound-dialer-mobile'
@@ -13,7 +13,7 @@ import { OutboundDialerMobile } from '@/components/ui/outbound-dialer-mobile'
 const features = [
   { icon: PhoneOutgoing, title: 'Power & Predictive Dialing', desc: 'Power dialer for compliance, predictive for volume — switch modes per campaign.' },
   { icon: Shield, title: 'TCPA Compliance', desc: 'DNC list scrubbing, call time restrictions, and consent-based dialing built in.' },
-  { icon: Zap, title: 'AI Pre-Call Research', desc: 'AI pulls CRM data and LinkedIn info before the agent picks up — no cold calls.' },
+  { icon: Search, title: 'AI Pre-Call Research', desc: 'AI pulls CRM data and LinkedIn info before the agent picks up — no cold calls.' },
   { icon: BarChart3, title: 'Campaign Analytics', desc: 'Contact rate, conversion rate, and revenue per call — per rep, per list, per day.' },
   { icon: Users, title: 'Agent Whisper & Coaching', desc: 'AI coaches agents on objections and next steps during outbound calls.' },
   { icon: RefreshCw, title: 'CRM Auto-Update', desc: 'Call disposition, notes, and next steps synced to CRM automatically after every call.' },

@@ -6,19 +6,19 @@ import { useState } from 'react'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Layers, Phone, MessageSquare, Globe, Zap, BarChart3,
-  ArrowRight, ChevronRight, Inbox,
+  LayoutDashboard, PhoneForwarded, Mail, Share2, Route, TrendingUp,
+  ArrowRight, ChevronRight, Inbox, Layers, Phone, MessageSquare, Globe,
 } from 'lucide-react'
 import { OmnichannelIllustration } from '@/components/ui/omnichannel-illustration'
 import { ChannelCollapseAnimation } from '@/components/ui/channel-collapse-animation'
 
 const features = [
-  { icon: Layers, title: 'Unified Agent Desktop', desc: 'Every channel — voice, chat, SMS, social, email — in one screen with full CRM context.' },
-  { icon: Phone, title: 'Voice + Digital Routing', desc: 'Route voice and digital contacts to the same queue with skills-based logic.' },
-  { icon: Zap, title: 'AI Channel Selection', desc: 'AI routes customers to the fastest channel based on intent, history, and agent availability.' },
-  { icon: Globe, title: 'Social & WhatsApp', desc: 'Instagram, Facebook, Twitter DMs, and WhatsApp Business — natively integrated.' },
-  { icon: MessageSquare, title: 'Email Queuing', desc: 'Email enters the same queue as calls — SLA tracked, assigned, and resolved in one place.' },
-  { icon: BarChart3, title: 'Cross-Channel Analytics', desc: 'CSAT, resolution rate, and handle time across every channel in a unified report.' },
+  { icon: LayoutDashboard, title: 'Unified Agent Desktop', desc: 'Every channel — voice, chat, SMS, social, email — in one screen with full CRM context.' },
+  { icon: PhoneForwarded, title: 'Voice + Digital Routing', desc: 'Route voice and digital contacts to the same queue with skills-based logic.' },
+  { icon: Route, title: 'AI Channel Selection', desc: 'AI routes customers to the fastest channel based on intent, history, and agent availability.' },
+  { icon: Share2, title: 'Social & WhatsApp', desc: 'Instagram, Facebook, Twitter DMs, and WhatsApp Business — natively integrated.' },
+  { icon: Mail, title: 'Email Queuing', desc: 'Email enters the same queue as calls — SLA tracked, assigned, and resolved in one place.' },
+  { icon: TrendingUp, title: 'Cross-Channel Analytics', desc: 'CSAT, resolution rate, and handle time across every channel in a unified report.' },
 ]
 
 const faqs = [
@@ -107,9 +107,10 @@ function OmnichannelInbox() {
 
 export function ProdCCOmnichannelPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
+      <div className="relative overflow-hidden">
       <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-[#046BD2]/7 blur-[140px] pointer-events-none" />
 
       <div className="relative z-10">
@@ -123,34 +124,36 @@ export function ProdCCOmnichannelPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start">
-          <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-start">
+          <div className="w-full">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6 sm:mb-8">
               <Layers className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Contact Center · Omnichannel</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Every channel.<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">One screen</span>.
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-5 sm:mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
               Voice, chat, social, and SMS unified — with AI routing and full CRM context on every conversation. Your agents never need to switch tools again.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
-                Unify your contact center <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap">
+                Unify your channels <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
-            className="w-full">
-            <OmnichannelIllustration />
-          </motion.div>
+          <div className="w-full overflow-hidden h-[248px] sm:h-[364px] md:h-auto">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+              className="scale-[0.55] sm:scale-[0.82] md:scale-100 origin-top">
+              <OmnichannelIllustration />
+            </motion.div>
+          </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
@@ -193,19 +196,20 @@ export function ProdCCOmnichannelPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-4 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Layers className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">All channels. One contact center.</h2>
-            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
-                Unify your contact center <ArrowRight className="w-4 h-4" />
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
+                Unify your channels <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
             </div>
           </div>
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   )

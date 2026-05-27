@@ -21,7 +21,7 @@ const footerColumns = [
     href: '/products/contact-center',
     links: [
       { label: 'Omnichannel Inbox', href: '/products/contact-center/omnichannel' },
-      { label: 'Predictive Dialer', href: '/products/contact-center/outbound-dialer' },
+      { label: 'Outbound Dialer', href: '/products/contact-center/outbound-dialer' },
       { label: 'Supervisor Tools', href: '/products/contact-center/supervisor-tools' },
     ],
   },
@@ -29,7 +29,7 @@ const footerColumns = [
     title: 'AI Features',
     href: '/products/ai',
     links: [
-      { label: 'AI Voice Agent', href: '/products/ai/receptionist' },
+      { label: 'AI Receptionist', href: '/products/ai/receptionist' },
       { label: 'AI Assistant', href: '/products/ucaas/ai-assistant' },
       { label: 'Customer Engagement', href: '/products/ucaas/customer-engagement' },
     ],

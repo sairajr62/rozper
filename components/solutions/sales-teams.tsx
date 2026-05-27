@@ -5,15 +5,15 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Phone, Brain, Globe, RefreshCw, BarChart3, Users, Headphones, Bell,
+  Phone, Headphones, MapPin, ClipboardCheck, BarChart3, Users, Bell,
   ArrowRight, ChevronRight, TrendingUp, Trophy, Target,
 } from 'lucide-react'
 
 const features = [
   { icon: Phone, title: 'Power Dialer', desc: 'Connect to live calls the moment someone picks up — zero wait time between dials.' },
-  { icon: Brain, title: 'AI Live Coaching', desc: 'Whispers objection handlers and pricing guidance mid-call for real-time support.' },
-  { icon: Globe, title: 'Local Presence Dialing', desc: "Match caller ID to prospect's area code for higher pickup rates." },
-  { icon: RefreshCw, title: 'Automatic CRM Logging', desc: 'Outcome, summary, and next action synced to Salesforce or HubSpot automatically.' },
+  { icon: Headphones, title: 'AI Live Coaching', desc: 'Whispers objection handlers and pricing guidance mid-call for real-time support.' },
+  { icon: MapPin, title: 'Local Presence Dialing', desc: "Match caller ID to prospect's area code for higher pickup rates." },
+  { icon: ClipboardCheck, title: 'Automatic CRM Logging', desc: 'Outcome, summary, and next action synced to Salesforce or HubSpot automatically.' },
   { icon: BarChart3, title: 'Conversation Intelligence', desc: 'Find patterns from top reps and replicate winning behaviors across the team.' },
 ]
 
@@ -137,7 +137,7 @@ export function SalesTeamsPageView() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Solutions · Sales Teams</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Dial more.<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">Close more.</span><br />
               Zero friction.
@@ -147,11 +147,11 @@ export function SalesTeamsPageView() {
               Power dialer, AI coaching, CRM sync, and conversation intelligence — for sales teams that move fast. Reps spend 40% of their day on admin. Rozper removes that friction.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">
                 Book a demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }} className="mt-10 flex flex-wrap items-center gap-3">
@@ -162,12 +162,10 @@ export function SalesTeamsPageView() {
             </motion.div>
           </div>
 
-          <div className="hidden sm:block">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="space-y-4">
-              <Leaderboard />
-              <SalesPipeline />
-            </motion.div>
-          </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="space-y-4">
+            <Leaderboard />
+            <SalesPipeline />
+          </motion.div>
         </section>
 
         {/* Features grid */}
@@ -308,14 +306,14 @@ export function SalesTeamsPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Trophy className="w-12 h-12 mx-auto mb-6 text-white" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Sell more, type less.</h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">Sell more, type less.</h2>
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition">
                 Book a demo <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

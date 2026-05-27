@@ -8,9 +8,9 @@ import { Footer } from "@/components/landing/footer";
 import {
   Globe,
   Smartphone,
-  RefreshCw,
+  WifiOff,
   Shield,
-  FileText,
+  ClipboardCheck,
   ArrowRight,
   ChevronRight,
   MessageSquare,
@@ -45,7 +45,7 @@ const features = [
     desc: "Calls, video, chat, and SMS on desktop, browser, iOS, and Android.",
   },
   {
-    icon: RefreshCw,
+    icon: WifiOff,
     title: "Automatic Failover",
     desc: "If one connection drops, calls route to backup instantly.",
   },
@@ -55,7 +55,7 @@ const features = [
     desc: "Secure remote access with SSO — no VPN required.",
   },
   {
-    icon: FileText,
+    icon: ClipboardCheck,
     title: "Remote Recording & AI",
     desc: "Call recording and AI summaries work the same remotely as in-office.",
   },
@@ -196,7 +196,7 @@ export function RemoteTeamsPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-8 sm:pb-16 flex flex-col lg:grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center min-h-[calc(100dvh-200px)] lg:min-h-0">
           <div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -212,7 +212,7 @@ export function RemoteTeamsPageView() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
             >
               Your team is{" "}
               <span className="bg-gradient-to-r from-[#2D98F1] via-[#0086F9] to-[#2575FC] bg-clip-text text-transparent">
@@ -235,18 +235,18 @@ export function RemoteTeamsPageView() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
-              className="mt-10 flex flex-wrap gap-3"
+              className="mt-10 flex flex-row flex-nowrap gap-3"
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] text-white font-semibold hover:bg-[#0086F9] transition"
+                className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-[#0086F9] transition"
               >
                 Connect your team{" "}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition"
+                className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition"
               >
                 See pricing
               </Link>
@@ -276,6 +276,7 @@ export function RemoteTeamsPageView() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1, transition: { delay: 0.3 } }}
+            className="flex-1 lg:flex-none"
           >
             <WorldClock />
           </motion.div>
@@ -301,7 +302,7 @@ export function RemoteTeamsPageView() {
               {features.map((f, i) => (
                 <motion.div
                   key={f.title}
-                  initial={{ opacity: 0, x: 16 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07 }}
@@ -538,23 +539,23 @@ export function RemoteTeamsPageView() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_60%)]" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight relative">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight relative">
               One platform.
               <br />
               Twelve time zones.
             </h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition relative"
+                className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition relative"
               >
-                Connect your team <ArrowRight className="w-4 h-4" />
+                Start a free trial <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition"
+                className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition"
               >
                 See pricing
               </Link>

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Globe, Bot, Phone, Mail, FileText, Users, RefreshCw, Building,
+  Globe, Bot, Phone, Mail, Mic, Users, Database, ArrowUpCircle,
   ArrowRight, ChevronRight, Sparkles, Star,
 } from 'lucide-react'
 
@@ -14,13 +14,13 @@ const features = [
   { icon: Bot, title: 'AI Receptionist', desc: 'Answers 24/7 — never miss a lead, even after hours.' },
   { icon: Phone, title: 'Auto-Attendant & Hunt Groups', desc: 'Route calls professionally without hiring a receptionist.' },
   { icon: Mail, title: 'Voicemail to Email', desc: 'AI transcription — read messages anywhere, anytime.' },
-  { icon: FileText, title: 'Call Recording', desc: 'Record every client conversation — accessible from any device.' },
+  { icon: Mic, title: 'Call Recording', desc: 'Record every client conversation — accessible from any device.' },
 ]
 
 const detail = [
   { icon: Users, title: 'Add Seats in Minutes', desc: 'Scale as you hire — no hardware, no IT department needed.' },
-  { icon: RefreshCw, title: 'CRM Sync', desc: 'HubSpot, Zoho, Salesforce — every contact record stays current.' },
-  { icon: Building, title: 'Upgrade When Ready', desc: 'Move to contact center plan when ready — same platform, same data.' },
+  { icon: Database, title: 'CRM Sync', desc: 'HubSpot, Zoho, Salesforce — every contact record stays current.' },
+  { icon: ArrowUpCircle, title: 'Upgrade When Ready', desc: 'Move to contact center plan when ready — same platform, same data.' },
 ]
 
 const stats = [
@@ -59,7 +59,7 @@ export function SMBPageView() {
             <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Solutions · Small Business</span>
           </motion.div>
 
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
             Enterprise phone on a{' '}
             <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">small business</span> budget.
           </motion.h1>
@@ -68,11 +68,11 @@ export function SMBPageView() {
             AI receptionist, call recording, and CRM sync — starting at <span className="text-white font-semibold">$9.99 per user</span>.
           </motion.p>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap justify-center gap-3">
+            <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">
               Start free trial — 14 days <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">
+            <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">
               See pricing
             </Link>
           </motion.div>
@@ -297,14 +297,14 @@ export function SMBPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Sound bigger. Pay less.</h2>
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">Sound bigger. Pay less.</h2>
             <p className="mt-6 text-white/80 max-w-md mx-auto">14-day free trial. No credit card required. Cancel anytime.</p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
-                Start free trial <ArrowRight className="w-4 h-4" />
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition">
+                Start free trial — 14 days <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

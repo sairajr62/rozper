@@ -6,15 +6,15 @@ import { useRef } from 'react'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Sparkles, ArrowRight, ChevronRight, Phone, Bot, BarChart3, Brain,
-  FileText, Mic, Activity, Cpu, Waves, Stars
+  Sparkles, ArrowRight, ChevronRight, PhoneCall, Bot, BarChart3,
+  Headphones, ClipboardCheck, TrendingUp, BookOpen, Zap, Users, Waves
 } from 'lucide-react'
 
 const aiTools = [
   {
     name: 'AI Receptionist',
     tag: 'voice.ai',
-    icon: Phone,
+    icon: PhoneCall,
     bullet: '24/7 inbound · books meetings · qualifies leads',
     metric: '24/7',
   },
@@ -35,12 +35,12 @@ const aiTools = [
 ]
 
 const capabilities = [
-  { icon: Mic, title: 'Real-Time Coaching', desc: 'Live guidance — objection handling, compliance, suggested replies on every call.' },
-  { icon: FileText, title: 'Auto CRM Logging', desc: 'AI writes call notes, updates records, and creates follow-up tasks automatically.' },
-  { icon: Activity, title: 'Sentiment & Intent', desc: 'Every interaction scored, every signal surfaced — never miss the next deal.' },
-  { icon: Brain, title: 'Custom Knowledge Base', desc: 'Train on your FAQs, scripts, and procedures in minutes. AI learns your voice.' },
-  { icon: Cpu, title: 'Edge-Latency Inference', desc: 'Sub-second response on regional carriers — calls feel human, not robotic.' },
-  { icon: Stars, title: 'Included on Every Seat', desc: 'No upcharge. All three AI tools live on every Rozper seat from day one.' },
+  { icon: Headphones, title: 'Real-Time Coaching', desc: 'Live guidance — objection handling, compliance, suggested replies on every call.' },
+  { icon: ClipboardCheck, title: 'Auto CRM Logging', desc: 'AI writes call notes, updates records, and creates follow-up tasks automatically.' },
+  { icon: TrendingUp, title: 'Sentiment & Intent', desc: 'Every interaction scored, every signal surfaced — never miss the next deal.' },
+  { icon: BookOpen, title: 'Custom Knowledge Base', desc: 'Train on your FAQs, scripts, and procedures in minutes. AI learns your voice.' },
+  { icon: Zap, title: 'Edge-Latency Inference', desc: 'Sub-second response on regional carriers — calls feel human, not robotic.' },
+  { icon: Users, title: 'Included on Every Seat', desc: 'No upcharge. All three AI tools live on every Rozper seat from day one.' },
 ]
 
 const flow = [
@@ -68,12 +68,7 @@ function DeviceMockup() {
   const waveHeights = [2, 4, 6, 3, 8, 5, 7, 3, 6, 4]
 
   return (
-    <motion.div
-      className="relative w-full max-w-[440px] mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-    >
+    <div className="relative w-full max-w-[440px] mx-auto">
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-3/4 bg-[#0086F9]/12 blur-3xl rounded-full pointer-events-none" />
 
@@ -315,7 +310,7 @@ function DeviceMockup() {
           <span className="text-[5.5px] text-white/25 font-mono">vs yesterday</span>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -325,7 +320,7 @@ export function AIPageView() {
   const auroraY = useTransform(scrollYProgress, [0, 1], [0, -200])
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#0B1220] relative overflow-x-clip">
+    <main ref={containerRef} className="min-h-screen bg-[#0B1220] relative">
       <Navbar />
 
       <motion.div style={{ y: auroraY }} className="fixed inset-0 pointer-events-none">
@@ -350,11 +345,11 @@ export function AIPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-24 grid lg:grid-cols-[1.1fr_1fr] gap-16 items-center">
-          <div>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-center">
+          <div className="w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 sm:mb-8"
             >
               <span className="relative flex w-2 h-2">
                 <span className="absolute inset-0 rounded-full bg-[#0086F9] animate-ping" />
@@ -365,7 +360,7 @@ export function AIPageView() {
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
             >
               AI that{' '}
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">answers</span>,{' '}
@@ -376,7 +371,7 @@ export function AIPageView() {
 
             <motion.p
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed"
+              className="mt-5 sm:mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed"
             >
               Three production-grade AI tools — Receptionist, Virtual Assistant, and Conversation Analytics —
               <span className="text-white/90"> included on every Rozper seat</span>. No upcharge. No add-on tiers.
@@ -384,18 +379,18 @@ export function AIPageView() {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-4"
+              className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3"
             >
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap"
+                className="group relative inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap"
               >
-                <span>Start a No-Pressure Conversation</span>
+                <span>Start a free trial</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 rounded-full bg-white/5 border border-white/10 text-sm sm:text-base text-white font-medium hover:bg-white/10 transition whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-base text-white font-medium hover:bg-white/10 transition whitespace-nowrap"
               >
                 See pricing
               </Link>
@@ -403,8 +398,15 @@ export function AIPageView() {
 
           </div>
 
-          <div className="flex items-center justify-center py-8 px-6">
-            <DeviceMockup />
+          <div className="w-full overflow-hidden h-[220px] sm:h-[290px] md:h-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="scale-[0.60] sm:scale-[0.84] md:scale-100 origin-top flex items-center justify-center py-8 px-6"
+            >
+              <DeviceMockup />
+            </motion.div>
           </div>
         </section>
 
@@ -513,7 +515,7 @@ export function AIPageView() {
           <div className="space-y-3">
             {faqs.map((f, i) => (
               <details key={i} className="group rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur p-6 hover:bg-white/[0.05] transition">
-                <summary className="flex items-center justify-between cursor-pointer font-display font-semibold text-lg list-none">
+                <summary className="flex items-start justify-between cursor-pointer font-display font-semibold text-sm sm:text-base list-none gap-3">
                   <span>{f.q}</span>
                   <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
                 </summary>
@@ -535,11 +537,11 @@ export function AIPageView() {
               <p className="mt-6 text-lg text-white/80 max-w-xl mx-auto">
                 Three AI tools. Zero extra charge. Available on every Rozper seat starting at $9.99.
               </p>
-              <div className="mt-10 flex flex-row flex-nowrap justify-center gap-2 sm:gap-4">
-                <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
-                  Start a No-Pressure Conversation <ArrowRight className="w-4 h-4" />
+              <div className="mt-10 flex flex-row flex-wrap justify-center gap-2 sm:gap-4">
+                <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
+                  Start a free trial <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/10 backdrop-blur border border-white/20 text-sm sm:text-base text-white font-medium hover:bg-white/20 transition whitespace-nowrap">
+                <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs sm:text-base text-white font-medium hover:bg-white/20 transition whitespace-nowrap">
                   View pricing
                 </Link>
               </div>

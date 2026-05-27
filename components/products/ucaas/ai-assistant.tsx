@@ -6,17 +6,17 @@ import { useState } from 'react'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Brain, FileText, Zap, TrendingUp, Shield, MessageSquare,
+  Headphones, ClipboardCheck, MessageCircle, TrendingUp, ShieldAlert, Mail,
   ArrowRight, ChevronRight, Sparkles,
 } from 'lucide-react'
 
 const features = [
-  { icon: Brain, title: 'Live Call Coaching', desc: 'AI whispers objection handlers and product info to agents mid-call — invisible to the customer.' },
-  { icon: FileText, title: 'Auto Call Summaries', desc: 'Every call summarized with action items, topics, and next steps — zero manual notes.' },
-  { icon: Zap, title: 'Suggested Replies', desc: 'AI suggests the next best response based on conversation context and your knowledge base.' },
+  { icon: Headphones, title: 'Live Call Coaching', desc: 'AI whispers objection handlers and product info to agents mid-call — invisible to the customer.' },
+  { icon: ClipboardCheck, title: 'Auto Call Summaries', desc: 'Every call summarized with action items, topics, and next steps — zero manual notes.' },
+  { icon: MessageCircle, title: 'Suggested Replies', desc: 'AI suggests the next best response based on conversation context and your knowledge base.' },
   { icon: TrendingUp, title: 'Performance Insights', desc: 'Trend reports on talk ratios, objection patterns, and winning call behaviors per rep.' },
-  { icon: Shield, title: 'Compliance Alerts', desc: 'Real-time flagging of prohibited language, missing disclosures, and policy violations.' },
-  { icon: MessageSquare, title: 'Draft Email Follow-ups', desc: 'Post-call email drafts generated from the summary — agents send, AI writes.' },
+  { icon: ShieldAlert, title: 'Compliance Alerts', desc: 'Real-time flagging of prohibited language, missing disclosures, and policy violations.' },
+  { icon: Mail, title: 'Draft Email Follow-ups', desc: 'Post-call email drafts generated from the summary — agents send, AI writes.' },
 ]
 
 const faqs = [
@@ -114,9 +114,10 @@ function AIAssistantPanel() {
 
 export function ProdUCaaSAIAssistantPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
+      <div className="relative overflow-hidden">
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-[#046BD2]/8 blur-[140px] pointer-events-none" />
 
       <div className="relative z-10">
@@ -130,31 +131,31 @@ export function ProdUCaaSAIAssistantPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start">
-          <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-start">
+          <div className="w-full">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6 sm:mb-8">
               <Sparkles className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">UCaaS · AI Assistant</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               AI for every<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">team member</span>.
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-6 text-lg text-white/60 max-w-xl leading-relaxed">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-5 sm:mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
               Per-seat AI that coaches live, writes summaries, and surfaces the right answer — on every call and message. Works before your team arrives and after they log off.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap">
                 See AI in action <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="w-full">
             <AIAssistantPanel />
           </motion.div>
         </section>
@@ -201,16 +202,17 @@ export function ProdUCaaSAIAssistantPageView() {
           <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Sparkles className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">Smarter calls. Every time.</h2>
-            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
                 See AI in action <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
             </div>
           </div>
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   )

@@ -216,7 +216,7 @@ function WorldVisualization() {
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-10 pb-16">
+    <section className="relative min-h-[90vh] lg:h-screen flex items-center overflow-hidden pt-10 pb-16 lg:pt-0 lg:pb-0">
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute inset-0 opacity-[0.025]"
@@ -238,7 +238,7 @@ export function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -246,7 +246,7 @@ export function Hero() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#046BD2]/30 bg-[#046BD2]/5 backdrop-blur-sm mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#046BD2]/30 bg-[#046BD2]/5 backdrop-blur-sm mb-5 lg:mb-6"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -267,21 +267,18 @@ export function Hero() {
             <p className="text-lg sm:text-xl text-[#CCD6DF] mb-4 leading-relaxed max-w-xl">
               Cloud calling, video, and chat for fully remote and hybrid teams — in 150+ countries.
             </p>
-            <p className="text-base text-[#757575] mb-10 leading-relaxed max-w-xl">
-              Your team works in 12 time zones. Your phone system should work in all of them. Every remote seat gets a local number, a full comms suite, and 99.99% uptime.
-            </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-row flex-nowrap gap-3 mb-8 lg:mb-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#046BD2] hover:bg-[#046BD2]/90 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#046BD2]/40 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 bg-[#046BD2] hover:bg-[#046BD2]/90 text-white text-sm sm:text-base font-semibold rounded-xl whitespace-nowrap transition-all duration-300 hover:shadow-lg hover:shadow-[#046BD2]/40 hover:-translate-y-0.5"
               >
                 Get Started Free
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 border border-[#1A2638] hover:border-[#046BD2]/50 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-white/[0.04]"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 border border-[#1A2638] hover:border-[#046BD2]/50 text-white text-sm sm:text-base font-semibold rounded-xl whitespace-nowrap transition-all duration-300 hover:bg-white/[0.04]"
               >
                 Talk to Sales
               </Link>
@@ -304,7 +301,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="hidden lg:flex items-center justify-center"
+            className="flex items-center justify-center"
           >
             <WorldVisualization />
           </motion.div>
@@ -848,7 +845,7 @@ export function CTA() {
               href="/contact"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#046BD2] hover:bg-[#046BD2]/90 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#046BD2]/40 hover:-translate-y-0.5"
             >
-              Start a No-Pressure Conversation
+              Start a free trial
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

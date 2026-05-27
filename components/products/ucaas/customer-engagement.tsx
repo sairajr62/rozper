@@ -6,17 +6,17 @@ import { useState, useEffect } from 'react'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Inbox, Phone, MessageSquare, Globe, Zap, BarChart3,
-  ArrowRight, ChevronRight, Instagram, Twitter,
+  Inbox, PhoneForwarded, MessageSquare, Smartphone, Bot, BarChart3,
+  Share2, ArrowRight, ChevronRight, Instagram, Twitter,
 } from 'lucide-react'
 
 const features = [
   { icon: Inbox, title: 'Unified Inbox', desc: 'Every channel — voice, SMS, WhatsApp, chat, social — in one agent inbox.' },
-  { icon: Phone, title: 'Voice + Digital Routing', desc: 'Route calls and messages to the same queue with priority and skills-based logic.' },
-  { icon: Globe, title: 'WhatsApp Business', desc: 'Native WhatsApp Business API — reply to customers where they prefer.' },
-  { icon: Zap, title: 'Auto-Response Flows', desc: 'Trigger AI or templated responses when agents are unavailable — no customer left waiting.' },
+  { icon: PhoneForwarded, title: 'Voice + Digital Routing', desc: 'Route calls and messages to the same queue with priority and skills-based logic.' },
+  { icon: Smartphone, title: 'WhatsApp Business', desc: 'Native WhatsApp Business API — reply to customers where they prefer.' },
+  { icon: Bot, title: 'Auto-Response Flows', desc: 'Trigger AI or templated responses when agents are unavailable — no customer left waiting.' },
   { icon: BarChart3, title: 'Cross-Channel Analytics', desc: 'Response time, CSAT, and volume across every channel in one dashboard.' },
-  { icon: MessageSquare, title: 'Instagram & Facebook DM', desc: 'Manage Instagram DMs and Facebook Messenger alongside voice from one screen.' },
+  { icon: Share2, title: 'Instagram & Facebook DM', desc: 'Manage Instagram DMs and Facebook Messenger alongside voice from one screen.' },
 ]
 
 const faqs = [
@@ -26,7 +26,7 @@ const faqs = [
 ]
 
 const channelTabs = [
-  { id: 'voice', label: 'Voice', icon: Phone, color: 'text-[#0086F9]', count: 3 },
+  { id: 'voice', label: 'Voice', icon: PhoneForwarded, color: 'text-[#0086F9]', count: 3 },
   { id: 'sms', label: 'SMS', icon: MessageSquare, color: 'text-emerald-400', count: 7 },
   { id: 'ig', label: 'Instagram', icon: Instagram, color: 'text-amber-400', count: 2 },
   { id: 'tw', label: 'Twitter', icon: Twitter, color: 'text-[#2D98F1]', count: 1 },
@@ -129,7 +129,7 @@ export function OmniChannelInboxAnimation() {
         </div>
 
         {/* Channel pills — light up as each channel comes online */}
-        <div className="flex gap-1.5 px-4 py-2 border-b border-white/[0.04]">
+        <div className="flex flex-wrap gap-1.5 px-4 py-2 border-b border-white/[0.04]">
           {channels.map(ch => (
             <motion.div
               key={ch.id}
@@ -233,9 +233,10 @@ export function OmniChannelInboxAnimation() {
 
 export function ProdUCaaSCustomerEngagementPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
+      <div className="relative overflow-hidden">
       <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] rounded-full bg-[#046BD2]/7 blur-[140px] pointer-events-none" />
 
       <div className="relative z-10">
@@ -249,27 +250,27 @@ export function ProdUCaaSCustomerEngagementPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-8 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-10 items-center">
-          <div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
-              <Inbox className="w-3.5 h-3.5 text-[#0086F9]" />
-              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">UCaaS · Customer Engagement</span>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-12 pb-8 sm:pb-16 grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-10 items-center">
+          <div className="w-full">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5 sm:mb-6">
+              <Inbox className="w-3.5 h-3.5 text-[#0086F9] shrink-0" />
+              <span className="text-xs font-mono uppercase tracking-wide text-[#2D98F1]">UCaaS · Customer Engagement</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Every channel,<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">one inbox</span>.
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-4 text-lg text-white/60 max-w-xl leading-relaxed">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="mt-4 sm:mt-5 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
               Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified for every agent. No tool-switching, no context loss, no missed conversations.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-6 sm:mt-8 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap">
                 Unify your channels <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
             </motion.div>
           </div>
 
@@ -315,19 +316,20 @@ export function ProdUCaaSCustomerEngagementPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Inbox className="w-12 h-12 mx-auto mb-6 text-white" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white">One inbox. Every customer.</h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">One inbox. Every customer.</h2>
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
                 Unify your channels <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
             </div>
           </div>
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   )

@@ -196,7 +196,7 @@ export function ChatbotHero() {
   return (
     <div
       ref={wrapRef}
-      className="flex flex-col items-center select-none relative scale-[0.48] sm:scale-[0.62] md:scale-[0.78] lg:scale-100 origin-top"
+      className="flex flex-col items-center select-none relative scale-[0.65] sm:scale-[0.95] md:scale-[1.0] lg:scale-100 origin-top"
     >
       {/* Ambient glow */}
       <div

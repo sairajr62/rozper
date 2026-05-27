@@ -33,7 +33,6 @@ import {
   Shield,
   BookOpen,
   Database,
-  GitMerge,
   Activity,
   Layers,
   Cpu,
@@ -135,7 +134,7 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
             iconGradient: "from-[#0078E0] to-[#046BD2]",
           },
           {
-            label: "Predictive Dialer",
+            label: "Outbound Dialer",
             description: "Power, predictive and preview dialers for max connect rate.",
             href: "/products/contact-center/outbound-dialer",
             icon: PhoneOutgoing,
@@ -169,7 +168,7 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
             badge: "AI",
           },
           {
-            label: "AI Voice Agent",
+            label: "AI Receptionist",
             description: "24/7 autonomous calls — captures intent, qualifies leads.",
             href: "/products/ai/receptionist",
             icon: Bot,

@@ -6,16 +6,17 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Phone, FileText, Zap, Users, TrendingUp,
+  PhoneCall, PhoneIncoming, ClipboardList, Bot, Workflow,
+  Phone, Zap, TrendingUp,
   ArrowRight, ChevronRight, RefreshCw, Check, CircleDot,
 } from 'lucide-react'
 
 const features = [
-  { icon: Phone, title: 'Click-to-Call', desc: 'Click-to-call any HubSpot contact, company, or deal — directly from the record.' },
-  { icon: Users, title: 'Caller ID Match', desc: 'HubSpot contact record opens automatically when an inbound call arrives.' },
-  { icon: FileText, title: 'Auto-Logging', desc: 'Duration, recording, transcript, and disposition logged to HubSpot timeline automatically.' },
-  { icon: Zap, title: 'AI Summaries', desc: 'AI call summary posted to HubSpot within seconds of hang-up — no manual notes.' },
-  { icon: TrendingUp, title: 'Deal Automation', desc: 'Advance deal stages, create tasks, and trigger sequences from call outcomes.' },
+  { icon: PhoneCall, title: 'Click-to-Call', desc: 'Click-to-call any HubSpot contact, company, or deal — directly from the record.' },
+  { icon: PhoneIncoming, title: 'Caller ID Match', desc: 'HubSpot contact record opens automatically when an inbound call arrives.' },
+  { icon: ClipboardList, title: 'Auto-Logging', desc: 'Duration, recording, transcript, and disposition logged to HubSpot timeline automatically.' },
+  { icon: Bot, title: 'AI Summaries', desc: 'AI call summary posted to HubSpot within seconds of hang-up — no manual notes.' },
+  { icon: Workflow, title: 'Deal Automation', desc: 'Advance deal stages, create tasks, and trigger sequences from call outcomes.' },
 ]
 
 const detail = [
@@ -106,7 +107,7 @@ function HubSpotWidgetAnimation() {
         </div>
 
         {/* Contact row */}
-        <div className="flex items-center gap-3 px-4 pt-3 pb-3 border-b border-white/[0.06]">
+        <div className="flex items-center gap-3 px-4 pt-2 pb-2 border-b border-white/[0.06]">
           <div className="w-9 h-9 rounded-full bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center text-[#2D98F1] text-xs font-bold shrink-0">EB</div>
           <div className="flex-1 min-w-0">
             <div className="text-sm font-semibold text-white">Elliot Barnes</div>
@@ -118,7 +119,7 @@ function HubSpotWidgetAnimation() {
         </div>
 
         {/* Deal Pipeline */}
-        <div className="px-4 py-2.5 border-b border-white/[0.06]">
+        <div className="px-4 py-2 border-b border-white/[0.06]">
           <div className="text-[9px] font-mono uppercase tracking-widest text-white/25 mb-2">Deal Pipeline</div>
           <div className="flex gap-1.5 mb-1">
             {['Prospect', 'Demo', 'Proposal', 'Closed'].map((s, i) => (
@@ -142,7 +143,7 @@ function HubSpotWidgetAnimation() {
         </div>
 
         {/* Embedded Rozper calling widget */}
-        <div className="mx-3 my-3 rounded-xl bg-[#0B1220] border border-[#046BD2]/40 overflow-hidden">
+        <div className="mx-3 my-2 rounded-xl bg-[#0B1220] border border-[#046BD2]/40 overflow-hidden">
           {/* Widget header */}
           <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#046BD2]/20 border-b border-[#046BD2]/30">
             <motion.div
@@ -155,7 +156,7 @@ function HubSpotWidgetAnimation() {
           </div>
 
           {/* Phase container — fixed height, phases overlap via absolute */}
-          <div className="relative h-[52px] overflow-hidden">
+          <div className="relative h-[44px] overflow-hidden">
 
             {/* Phase 1: Screen pop (0.2 → 1.8s) */}
             <motion.div
@@ -234,9 +235,9 @@ function HubSpotWidgetAnimation() {
         </div>
 
         {/* Activity timeline */}
-        <div className="px-4 pb-3">
-          <div className="text-[9px] font-mono uppercase tracking-widest text-white/25 mb-2">Activity · Auto-logged by Rozper</div>
-          <div className="space-y-2">
+        <div className="px-4 pb-2">
+          <div className="text-[9px] font-mono uppercase tracking-widest text-white/25 mb-1.5">Activity · Auto-logged by Rozper</div>
+          <div className="space-y-1.5">
             {timeline.map(({ Icon, label, color, delay }) => (
               <motion.div
                 key={label}
@@ -257,7 +258,7 @@ function HubSpotWidgetAnimation() {
 
         {/* AI Summary */}
         <motion.div
-          className="mx-3 mb-3 p-3 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20"
+          className="mx-3 mb-2 p-2.5 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 7.5, duration: 0.4 }}
@@ -291,7 +292,7 @@ export function HubSpotPageView() {
         </div>
 
         {/* Hero */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-8 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-10 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-4 flex flex-col lg:grid lg:grid-cols-[1fr_1fr] gap-6 lg:gap-10 items-center min-h-[calc(100dvh-120px)] lg:min-h-0">
           <div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
               <RefreshCw className="w-3.5 h-3.5 text-[#0086F9]" />
@@ -314,11 +315,11 @@ export function HubSpotPageView() {
               Click-to-call, auto-logging, AI summaries, and deal-stage triggers — without ever leaving HubSpot. Every call logged. Every deal updated. Zero manual entry.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-row flex-nowrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold whitespace-nowrap transition">
                 Connect HubSpot <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium whitespace-nowrap hover:bg-white/5 transition">
                 See pricing
               </Link>
             </motion.div>
@@ -541,11 +542,11 @@ export function HubSpotPageView() {
           <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Your CRM. Always accurate.</h2>
             <p className="mt-6 text-white/80 max-w-md mx-auto">Connect in under 10 minutes. No credit card required.</p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold whitespace-nowrap hover:scale-105 transition">
                 Connect HubSpot <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold whitespace-nowrap hover:bg-white/25 transition">
                 See pricing
               </Link>
             </div>

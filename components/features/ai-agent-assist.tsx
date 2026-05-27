@@ -6,13 +6,13 @@ import { useState } from 'react'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Mic, Brain, FileText, RefreshCw, BarChart3, Shield,
+  Mic, Lightbulb, FileText, RefreshCw, BarChart3, Shield,
   ArrowRight, ChevronRight, Zap, MessageSquare,
 } from 'lucide-react'
 
 const features = [
   { icon: Mic, title: 'Real-Time Whisper Coaching', desc: 'Live guidance appears silently — only the agent sees it, not the customer.' },
-  { icon: Brain, title: 'Objection Handling Scripts', desc: 'AI surfaces the right response the moment it detects a known objection pattern.' },
+  { icon: Lightbulb, title: 'Objection Handling Scripts', desc: 'AI surfaces the right response the moment it detects a known objection pattern.' },
   { icon: FileText, title: 'Auto Call Summary', desc: 'Full summary, action items, and CRM notes generated within seconds of hang-up.' },
   { icon: RefreshCw, title: 'CRM Auto-Logging', desc: 'Duration, outcome, transcript, and AI summary synced automatically — zero manual entry.' },
   { icon: BarChart3, title: 'Sentiment Detection', desc: 'Real-time customer sentiment so agents can adjust tone before things escalate.' },
@@ -50,7 +50,7 @@ function WhisperPanel() {
     <div className="rounded-3xl bg-[#111B2D] border border-white/10 overflow-hidden">
       <div className="px-5 py-3 bg-[#0B1220] border-b border-white/10 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Brain className="w-4 h-4 text-[#0086F9]" />
+          <Lightbulb className="w-4 h-4 text-[#0086F9]" />
           <span className="text-xs font-mono text-white/60">AI Agent Assist · Whisper Panel</span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -124,7 +124,7 @@ export function FeatAIAgentAssistPageView() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start">
           <div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
-              <Brain className="w-3.5 h-3.5 text-[#0086F9]" />
+              <Lightbulb className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">AI Features · Agent Assist</span>
             </motion.div>
 

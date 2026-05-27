@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Smartphone, MessageSquare, Bot, Building, Settings, ArrowRight,
+  Smartphone, MessageSquare, Bot, Warehouse, Webhook, ArrowRight,
   ChevronRight, Truck, Package, MapPin, Navigation,
 } from 'lucide-react'
 
@@ -13,8 +13,8 @@ const features = [
   { icon: Smartphone, title: 'Mobile-first calling', desc: 'Drivers call dispatch from the app — no personal numbers exposed.' },
   { icon: MessageSquare, title: 'Automated SMS updates', desc: 'Delivery ETA, delays, and confirmation — triggered by your system.' },
   { icon: Bot, title: 'AI Receptionist 24/7', desc: 'Handles inbound delivery enquiries — no after-hours staffing needed.' },
-  { icon: Building, title: 'Multi-site routing', desc: 'Calls go to the right depot, region, or dispatch team.' },
-  { icon: Settings, title: 'API integration', desc: 'Trigger calls and SMS from shipment events in your platform.' },
+  { icon: Warehouse, title: 'Multi-site routing', desc: 'Calls go to the right depot, region, or dispatch team.' },
+  { icon: Webhook, title: 'API integration', desc: 'Trigger calls and SMS from shipment events in your platform.' },
 ]
 
 const dark = [
@@ -128,7 +128,7 @@ export function LogisticsPageView() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Solutions · Logistics</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Dispatch and comms<br />
               <span className="bg-gradient-to-r from-[#2D98F1] to-[#0086F9] bg-clip-text text-transparent">that move</span>.
             </motion.h1>
@@ -137,15 +137,15 @@ export function LogisticsPageView() {
               Driver calls, customer updates, and dispatch coordination — all on one platform. A delayed shipment call that goes unanswered is a customer lost.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] text-[#0B1220] font-semibold hover:bg-[#0086F9] transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] text-[#0B1220] text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-[#0086F9] transition">
                 Get logistics demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }}>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}>
             <RouteVisual />
           </motion.div>
         </section>
@@ -165,7 +165,7 @@ export function LogisticsPageView() {
               {features.map((f, i) => (
                 <motion.div
                   key={f.title}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
@@ -300,14 +300,14 @@ export function LogisticsPageView() {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#046BD2] to-[#0078E0]">
+          <div className="relative rounded-[2rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#046BD2] to-[#0078E0]">
             <Truck className="w-12 h-12 mx-auto mb-6 text-white" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Get every shipment connected.</h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">Get every shipment connected.</h2>
+            <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition">
                 Get logistics demo <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

@@ -6,22 +6,22 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Phone, FileText, Zap, Users, Settings,
-  ArrowRight, ChevronRight, GitMerge, Check,
+  Phone, PhoneCall, PhoneIncoming, ClipboardList, Zap, Bot, UserPlus,
+  ArrowRight, ChevronRight, Check, Layers, ArrowLeftRight, RefreshCw,
 } from 'lucide-react'
 
 const features = [
-  { icon: Phone, title: 'Click-to-Call', desc: 'Click-to-call any Zoho contact, lead, or account — directly from CRM without switching apps.' },
-  { icon: Users, title: 'Screen-Pop', desc: "Incoming call screen-pop: caller's Zoho record opens automatically when the call rings." },
-  { icon: FileText, title: 'Auto-Logging', desc: 'Every call logged: duration, recording, transcript, and outcome — zero manual entry.' },
-  { icon: Zap, title: 'AI Summaries', desc: 'AI call summary written to Zoho activity log within seconds of hang-up.' },
-  { icon: Settings, title: 'Auto-Create Records', desc: 'Create leads, contacts, and tasks from call events automatically.' },
+  { icon: PhoneCall, title: 'Click-to-Call', desc: 'Click-to-call any Zoho contact, lead, or account — directly from CRM without switching apps.' },
+  { icon: PhoneIncoming, title: 'Screen-Pop', desc: "Incoming call screen-pop: caller's Zoho record opens automatically when the call rings." },
+  { icon: ClipboardList, title: 'Auto-Logging', desc: 'Every call logged: duration, recording, transcript, and outcome — zero manual entry.' },
+  { icon: Bot, title: 'AI Summaries', desc: 'AI call summary written to Zoho activity log within seconds of hang-up.' },
+  { icon: UserPlus, title: 'Auto-Create Records', desc: 'Create leads, contacts, and tasks from call events automatically.' },
 ]
 
 const detail = [
-  { title: 'Full Zoho Suite', desc: 'Connects to Zoho CRM, Desk, Recruit, and Bigin — all from one integration.' },
-  { title: 'Custom Field Mapping', desc: 'Map Rozper fields to custom Zoho fields — no developer required.' },
-  { title: 'Workflow Triggers', desc: 'Trigger Zoho workflows from call events: deal stage, follow-up task, SLA breach.' },
+  { icon: Layers, title: 'Full Zoho Suite', desc: 'Connects to Zoho CRM, Desk, Recruit, and Bigin — all from one integration.' },
+  { icon: ArrowLeftRight, title: 'Custom Field Mapping', desc: 'Map Rozper fields to custom Zoho fields — no developer required.' },
+  { icon: Zap, title: 'Workflow Triggers', desc: 'Trigger Zoho workflows from call events: deal stage, follow-up task, SLA breach.' },
 ]
 
 const stats = [
@@ -268,7 +268,7 @@ export function ZohoPageView() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-8 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 lg:gap-10 items-start">
           <div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-5">
-              <GitMerge className="w-3.5 h-3.5 text-[#0086F9]" />
+              <RefreshCw className="w-3.5 h-3.5 text-[#0086F9]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Integrations · Zoho</span>
             </motion.div>
 
@@ -287,11 +287,11 @@ export function ZohoPageView() {
               Click-to-call, auto-logging, AI summaries, and contact pop — across all four Zoho products. Your Zoho data is only as good as what gets logged. Rozper ensures it's everything.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 flex flex-row flex-nowrap gap-3">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold whitespace-nowrap transition">
                 Connect Zoho <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium whitespace-nowrap hover:bg-white/5 transition">
                 See pricing
               </Link>
             </motion.div>
@@ -364,7 +364,7 @@ export function ZohoPageView() {
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="p-6 rounded-2xl bg-white/[0.04] border border-white/10"
                 >
-                  <GitMerge className="w-5 h-5 text-[#0086F9] mb-3" />
+                  <d.icon className="w-5 h-5 text-[#0086F9] mb-3" />
                   <h3 className="font-display font-semibold mb-2">{d.title}</h3>
                   <p className="text-sm text-white/55">{d.desc}</p>
                 </motion.div>
@@ -477,11 +477,11 @@ export function ZohoPageView() {
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'repeating-linear-gradient(90deg, white 0, white 1px, transparent 0, transparent 50%)', backgroundSize: '60px 60px' }} />
             <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white relative">Log every call. Automatically.</h2>
             <p className="mt-6 text-white/80 max-w-md mx-auto relative">No-code setup. Works across all Zoho products.</p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 relative">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-3 relative">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold whitespace-nowrap hover:scale-105 transition">
                 Connect Zoho <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold whitespace-nowrap hover:bg-white/25 transition">See pricing</Link>
             </div>
           </div>
         </section>

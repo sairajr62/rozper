@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
-  Activity, AlertTriangle, TrendingUp, BarChart3, Brain, Shield,
+  Activity, AlertTriangle, TrendingUp, BarChart3, Lightbulb, Shield,
   ArrowRight, ChevronRight, Smile,
 } from 'lucide-react'
 
@@ -14,7 +14,7 @@ const features = [
   { icon: AlertTriangle, title: 'Escalation Alerts', desc: 'Supervisors alerted the moment sentiment crosses a threshold.' },
   { icon: TrendingUp, title: 'Trend Analysis', desc: 'Spot sentiment patterns over time — by agent, queue, product, or campaign.' },
   { icon: BarChart3, title: '100% Coverage', desc: 'Every interaction scored — not just a random sample.' },
-  { icon: Brain, title: 'Intent Detection', desc: 'AI infers what the customer actually wants, beyond what they say.' },
+  { icon: Lightbulb, title: 'Intent Detection', desc: 'AI infers what the customer actually wants, beyond what they say.' },
   { icon: Shield, title: 'Churn Risk Scoring', desc: 'Flag interactions where churn signals are high before the customer hangs up.' },
 ]
 
