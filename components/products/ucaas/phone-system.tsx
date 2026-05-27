@@ -102,7 +102,7 @@ function PhoneSystemDiagram() {
 
 export function ProdUCaaSPhoneSystemPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
       <Navbar />
 
       <div className="fixed inset-0 pointer-events-none opacity-[0.02]" style={{

@@ -212,7 +212,7 @@ function SoftphoneUI() {
 
 export function ProdUCaaSBusinessPhonePageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
       <Navbar />
 
       <div className="absolute top-1/3 right-0 w-[600px] h-[600px] rounded-full bg-[#046BD2]/8 blur-[160px] pointer-events-none" />

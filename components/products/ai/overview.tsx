@@ -325,7 +325,7 @@ export function AIPageView() {
   const auroraY = useTransform(scrollYProgress, [0, 1], [0, -200])
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#0B1220] relative overflow-hidden">
+    <main ref={containerRef} className="min-h-screen bg-[#0B1220] relative overflow-x-clip">
       <Navbar />
 
       <motion.div style={{ y: auroraY }} className="fixed inset-0 pointer-events-none">
@@ -461,7 +461,7 @@ export function AIPageView() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="group p-8 bg-[#0B1220] hover:bg-[#111B2D] transition-colors relative overflow-hidden"
+                className="group p-8 bg-[#0B1220] hover:bg-[#111B2D] transition-colors relative overflow-x-clip"
               >
                 <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-[#0086F9]/0 group-hover:bg-[#0086F9]/10 blur-2xl transition-all duration-500" />
                 <cap.icon className="w-8 h-8 text-[#0086F9] mb-4" strokeWidth={1.5} />

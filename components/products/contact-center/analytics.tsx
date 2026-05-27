@@ -154,7 +154,7 @@ function AnalyticsDashboard() {
 
 export function ProdCCAnalyticsPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
       <Navbar />
 
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-[#046BD2]/7 blur-[160px] pointer-events-none" />

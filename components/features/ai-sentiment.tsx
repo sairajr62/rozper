@@ -95,7 +95,7 @@ function SentimentDashboard() {
 
 export function FeatAISentimentPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
       <Navbar />
 
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#046BD2]/12 blur-[120px] pointer-events-none" />

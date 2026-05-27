@@ -28,10 +28,11 @@ const faqs = [
 
 export function ProdUCaaSVideoMeetingsPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#046BD2]/8 blur-[150px] pointer-events-none" />
+      <div className="relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#046BD2]/8 blur-[150px] pointer-events-none" />
 
       <div className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-28">
@@ -44,7 +45,7 @@ export function ProdUCaaSVideoMeetingsPageView() {
           </div>
         </div>
 
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 overflow-x-clip grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-8">
               <Video className="w-3.5 h-3.5 text-[#0086F9]" />
@@ -61,15 +62,15 @@ export function ProdUCaaSVideoMeetingsPageView() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
+              <Link href="/contact" className="group inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap">
                 Start meeting <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">See pricing</Link>
             </motion.div>
 
           </div>
 
-          <div className="flex items-start justify-center overflow-hidden h-[184px] sm:h-[238px] md:h-[300px] lg:h-[384px]">
+          <div className="w-full flex items-start justify-center overflow-hidden h-[184px] sm:h-[238px] md:h-[300px] lg:h-[384px]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.3, ease: 'easeOut' } }}
@@ -108,9 +109,9 @@ export function ProdUCaaSVideoMeetingsPageView() {
           <div className="space-y-3">
             {faqs.map((f, i) => (
               <details key={i} className="group rounded-2xl bg-white/[0.03] border border-white/10 p-6 hover:bg-white/[0.05] transition">
-                <summary className="flex items-center justify-between cursor-pointer list-none font-display font-semibold">
-                  <span>{f.q}</span>
-                  <ChevronRight className="w-5 h-5 group-open:rotate-90 transition-transform text-[#0086F9]" />
+                <summary className="flex items-start justify-between cursor-pointer list-none font-display font-semibold gap-3">
+                  <span className="min-w-0">{f.q}</span>
+                  <ChevronRight className="w-5 h-5 shrink-0 mt-0.5 group-open:rotate-90 transition-transform text-[#0086F9]" />
                 </summary>
                 <p className="mt-4 text-white/60">{f.a}</p>
               </details>
@@ -119,19 +120,20 @@ export function ProdUCaaSVideoMeetingsPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-4 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Video className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">Meet smarter. Summarize everything.</h2>
             <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-sm sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
-                Start meeting <ArrowRight className="w-4 h-4" />
+              <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
+                Start a free trial <ArrowRight className="w-4 h-4" />
               </Link>
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-xs sm:text-base text-white font-semibold hover:bg-white/25 transition whitespace-nowrap">See pricing</Link>
             </div>
           </div>
         </section>
 
         <Footer />
+      </div>
       </div>
     </main>
   )

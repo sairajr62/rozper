@@ -107,7 +107,7 @@ function OutboundDialerUI() {
 
 export function ProdCCOutboundDialerPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
       <Navbar />
 
       <div className="absolute top-1/3 right-0 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] rounded-full bg-[#046BD2]/7 blur-[140px] pointer-events-none" />

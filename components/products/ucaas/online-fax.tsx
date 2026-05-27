@@ -87,7 +87,7 @@ function FaxInboxUI() {
 
 export function ProdUCaaSOnlineFaxPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
       <Navbar />
 
       <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#046BD2]/8 blur-[120px] pointer-events-none" />

@@ -415,7 +415,7 @@ export function Navbar() {
                   alt="Rozper"
                   width={160}
                   height={50}
-                  className="h-10 w-auto"
+                  className="h-8 sm:h-10 w-auto max-w-[120px] sm:max-w-[160px]"
                   priority
                 />
               </Link>

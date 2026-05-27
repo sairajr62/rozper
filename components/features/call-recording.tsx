@@ -97,7 +97,7 @@ function RecordingPlayer() {
 
 export function FeatCallRecordingPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] overflow-hidden">
+    <main className="min-h-screen bg-[#0B1220] overflow-x-clip">
       <Navbar />
 
       <div className="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full bg-[#046BD2]/10 blur-[100px] pointer-events-none" />

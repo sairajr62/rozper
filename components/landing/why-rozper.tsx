@@ -3,18 +3,18 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  ShieldCheck,
+  Activity,
   Globe2,
   Headphones,
-  Bot,
+  BrainCircuit,
   Handshake,
-  Plug,
+  Puzzle,
   ArrowUpRight,
 } from "lucide-react";
 
 const reasons = [
   {
-    icon: ShieldCheck,
+    icon: Activity,
     title: "99.99% uptime SLA",
     body: "Engineered into the network, not just promised in the brochure. We back it with a contract.",
     accent: "from-[#046BD2] to-[#0078E0]",
@@ -35,7 +35,7 @@ const reasons = [
     glow: "rgba(34,211,238,0.25)",
   },
   {
-    icon: Bot,
+    icon: BrainCircuit,
     title: "AI built into every seat",
     body: "Receptionist, agent assist, and conversation analytics included in the base plan. No upsell required.",
     accent: "from-[#2575FC] to-[#0086F9]",
@@ -49,7 +49,7 @@ const reasons = [
     glow: "rgba(4,107,210,0.25)",
   },
   {
-    icon: Plug,
+    icon: Puzzle,
     title: "No forced rip-and-replace",
     body: "Keep your SIP phones, your CRM, your workflow. Rozper drops in alongside the tools your team already trusts.",
     accent: "from-[#0078E0] to-[#046BD2]",
