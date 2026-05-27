@@ -115,7 +115,7 @@ export function CTA() {
           />
 
           {/* Content */}
-          <div className="relative px-6 py-16 sm:py-20 lg:py-24 text-center">
+          <div className="relative px-3 py-12 sm:px-6 sm:py-20 lg:py-24 text-center">
             {/* Headline */}
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
@@ -154,7 +154,7 @@ export function CTA() {
               >
                 <Button
                   size="lg"
-                  className="relative h-11 sm:h-14 px-4 sm:px-8 text-sm sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
+                  className="relative h-11 sm:h-14 px-3 sm:px-8 text-xs sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
                 >
                   <motion.span
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12"
@@ -180,7 +180,7 @@ export function CTA() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="h-11 sm:h-14 px-4 sm:px-8 text-sm sm:text-base rounded-xl border-white/15 bg-white/[0.04] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
+                  className="h-11 sm:h-14 px-3 sm:px-8 text-xs sm:text-base rounded-xl border-white/15 bg-white/[0.04] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
                 >
                   <Link href="/pricing">
                     See pricing

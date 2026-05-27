@@ -815,16 +815,16 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
-              className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 lg:justify-start"
+              className="mt-5 flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 lg:justify-start"
             >
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="w-full sm:w-auto"
+                className="w-auto"
               >
                 <Button
                   size="lg"
-                  className="group relative h-11 w-full overflow-hidden rounded-full bg-[#046BD2] px-6 text-sm font-semibold text-white shadow-[0_0_50px_-10px_rgba(4,107,210,0.85)] hover:bg-[#0078E0] sm:w-auto sm:px-7 sm:text-[0.95rem]"
+                  className="group relative h-11 w-auto overflow-hidden rounded-full bg-[#046BD2] px-4 text-xs font-semibold text-white shadow-[0_0_50px_-10px_rgba(4,107,210,0.85)] hover:bg-[#0078E0] sm:px-7 sm:text-[0.95rem]"
                 >
                   <motion.span
                     aria-hidden
@@ -847,13 +847,13 @@ export function Hero() {
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="w-full sm:w-auto"
+                className="w-auto"
               >
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="group h-11 w-full rounded-full border-white/15 bg-white/[0.04] px-6 text-sm text-white backdrop-blur-md hover:bg-white/10 hover:text-white sm:w-auto sm:px-7 sm:text-[0.95rem]"
+                  className="group h-11 w-auto rounded-full border-white/15 bg-white/[0.04] px-4 text-xs text-white backdrop-blur-md hover:bg-white/10 hover:text-white sm:px-7 sm:text-[0.95rem]"
                 >
                   <Link href="/pricing">
                     See Pricing

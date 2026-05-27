@@ -93,12 +93,12 @@ export function TrustBar() {
           initial={{ opacity: 0, y: 8 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-6 flex flex-wrap gap-2 justify-center"
+          className="mt-6 flex flex-wrap gap-1.5 sm:gap-2 justify-center"
         >
           {compliance.map((badge) => (
             <span
               key={badge}
-              className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider text-white/45 px-3 py-1.5 rounded-md border border-white/[0.06] bg-white/[0.02] hover:border-[#046BD2]/30 hover:text-white/70 transition-colors"
+              className="inline-flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-white/45 px-2 py-1 sm:px-3 sm:py-1.5 rounded-md border border-white/[0.06] bg-white/[0.02] hover:border-[#046BD2]/30 hover:text-white/70 transition-colors"
             >
               <span className="w-1 h-1 rounded-full bg-[#046BD2]/70 shrink-0" />
               {badge}
