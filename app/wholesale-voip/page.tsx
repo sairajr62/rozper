@@ -3,13 +3,13 @@ import { WholesaleVoipPageView } from "@/components/solutions/wholesale-voip"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Wholesale VoIP · White-Label SIP Infrastructure | Rozper",
+  title: "Wholesale VoIP · High-Performance Routes & Global Voice Termination | Rozper",
   description:
-    "Elastic SIP trunking, programmable routing, and number provisioning APIs. The carrier-grade VoIP platform you can build on and resell as your own.",
+    "Wholesale voice solutions and international VoIP termination powered by direct A-Z routes, secure SIP interconnections, and performance-optimized global voice termination. 200+ countries.",
   openGraph: {
-    title: "Wholesale VoIP · White-Label SIP Infrastructure | Rozper",
+    title: "Wholesale VoIP · High-Performance Routes & Global Voice Termination | Rozper",
     description:
-      "SIP infrastructure ready to white-label — elastic trunks, programmable routing, and number APIs at carrier scale.",
+      "Direct A-Z routes, secure carrier interconnections, and performance-optimized global VoIP termination — built for carriers, VoIP providers, and telecom operators.",
     type: "website",
   },
   alternates: { canonical: `${SITE_URL}/wholesale-voip` },

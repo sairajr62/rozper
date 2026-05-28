@@ -20,7 +20,7 @@ const toneSequence: Array<"blue" | "cyan" | "violet" | "emerald" | "amber"> = [
 ]
 
 function toneForPost(post: BlogPost, index: number) {
-  return toneSequence[(post.id + index) % toneSequence.length]!
+  return toneSequence[(Math.abs(post.id) + index) % toneSequence.length] ?? "blue"
 }
 
 function AuthorAvatar({ post }: { post: BlogPost }) {

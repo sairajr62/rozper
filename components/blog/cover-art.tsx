@@ -49,7 +49,7 @@ export function CoverArt({
   label: string
   size?: "default" | "lg"
 }) {
-  const t = toneMap[tone]
+  const t = toneMap[tone] ?? toneMap["blue"]
   const isLg = size === "lg"
 
   return (

@@ -3,13 +3,13 @@ import { WholesaleVoicePageView } from "@/components/solutions/wholesale-voice"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Wholesale Voice · A-Z Termination & Origination | Rozper",
+  title: "Wholesale Voice Solutions · Global VoIP Termination | Rozper",
   description:
-    "Direct A-Z voice termination and origination at true carrier rates. Premium CLI routes, real-time quality scoring, least-cost routing, and per-second CDR billing.",
+    "Leading global provider of wholesale voice solutions. High-quality A-Z VoIP termination, SIP trunking, DID & toll-free numbers, and UCaaS integration. 200+ countries, 99.99% uptime SLA.",
   openGraph: {
-    title: "Wholesale Voice · A-Z Termination & Origination | Rozper",
+    title: "Wholesale Voice Solutions · Global VoIP Termination | Rozper",
     description:
-      "Move millions of minutes on routes built to convert — wholesale voice termination and origination from Rozper.",
+      "Your trusted wholesale voice carrier — A-Z termination, CLI & non-CLI routes, SIP trunking, and DID numbers across 200+ countries.",
     type: "website",
   },
   alternates: { canonical: `${SITE_URL}/wholesale-voice` },

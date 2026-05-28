@@ -9,136 +9,192 @@ import {
   Cable,
   Server,
   Code2,
-  Hash,
-  Boxes,
+  Workflow,
   ShieldCheck,
   Globe2,
   Cpu,
-  Workflow,
-  Terminal,
   ArrowRight,
   ChevronRight,
   Cloud,
+  Activity,
+  Zap,
+  DollarSign,
+  HeadphonesIcon,
+  Settings2,
+  TrendingUp,
+  CheckCircle2,
+  AlertTriangle,
+  Lock,
+  Bell,
+  Radio,
+  Building2,
+  Wifi,
+  Layers,
+  Users,
 } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
 
 // ──────────────────────────────────────────────────────────────────────
 // Data
 // ──────────────────────────────────────────────────────────────────────
-const CAPABILITIES: { icon: LucideIcon; title: string; desc: string }[] = [
-  {
-    icon: Cable,
-    title: "Elastic SIP trunking",
-    desc: "Burstable trunks that scale with demand — no channel caps, no provisioning queues, no surprise blocks at peak.",
-  },
-  {
-    icon: Server,
-    title: "BYOC & BYO-SBC",
-    desc: "Bring your own carrier or SBC and peer directly with our SIP edge over TLS, in any region you operate.",
-  },
-  {
-    icon: Code2,
-    title: "Programmable routing API",
-    desc: "Dial plans, LCR, failover, and time-of-day rules — every routing decision driven by REST and webhooks.",
-  },
-  {
-    icon: Hash,
-    title: "Number provisioning API",
-    desc: "Search, buy, and port DIDs across 90+ countries programmatically — procurement becomes a single API call.",
-  },
-  {
-    icon: Boxes,
-    title: "White-label partner portals",
-    desc: "Resell the whole platform under your brand: custom rate decks, margin controls, and partner logins included.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Carrier-grade security",
-    desc: "TLS + SRTP encryption, STIR/SHAKEN attestation, fraud scoring, and IP access control on every trunk.",
-  },
+
+const WHO_WE_WORK_WITH = [
+  { icon: Building2, label: "Wholesale carriers" },
+  { icon: Wifi,      label: "VoIP service providers" },
+  { icon: Layers,    label: "Telecom aggregators" },
+  { icon: Globe2,    label: "Enterprise UCaaS platforms" },
+  { icon: Radio,     label: "Mobile Network Operators" },
 ]
 
-const ARCHITECTURE = [
+const OPERATOR_PRIORITIES = [
+  { text: "Stable CLI protects reputation" },
+  { text: "Consistent ASR protects margins" },
+  { text: "Clean routing protects long-term growth" },
+]
+
+const WHAT_SETS_APART = [
   {
     icon: Globe2,
-    title: "Anycast SIP edge, 8 regions",
-    desc: "Calls register at the nearest PoP — not a single chokepoint half a world away.",
+    tag: "01",
+    title: "Global A-Z Coverage",
+    desc: "Our wholesale voice network connects directly across key international destinations, delivering reliable A-Z VoIP termination with scalable capacity for high-volume traffic.",
+  },
+  {
+    icon: Activity,
+    tag: "02",
+    title: "Performance-Optimized Routing",
+    desc: "Intelligent route management ensures stable ASR, improved ACD, and low PDD — creating consistent international call completion without quality fluctuations.",
+  },
+  {
+    icon: Cable,
+    tag: "03",
+    title: "Direct Carrier Interconnections",
+    desc: "We maintain controlled routing paths through direct carrier relationships, reducing unnecessary hops and improving overall voice stability.",
   },
   {
     icon: Cpu,
-    title: "N+1 redundancy, sub-second failover",
-    desc: "A PoP can drop mid-traffic and live calls stay up. No re-registration storms.",
+    tag: "04",
+    title: "Real-Time Network Monitoring",
+    desc: "Continuous traffic analysis and live route testing allow us to proactively optimize voice wholesale performance before issues impact your network.",
   },
   {
-    icon: Workflow,
-    title: "One control plane",
-    desc: "Every trunk, number, and route managed from a single API, dashboard, and webhook stream.",
+    icon: ShieldCheck,
+    tag: "05",
+    title: "Advanced Fraud Protection",
+    desc: "Built-in traffic monitoring and anomaly detection safeguard your voice routes with 24/7 protection against fraud and route manipulation.",
+  },
+  {
+    icon: Server,
+    tag: "06",
+    title: "Scalable Infrastructure",
+    desc: "Designed to handle both growing and high-volume VoIP wholesale traffic with redundancy, secure SIP connectivity, and global resilience.",
   },
 ]
 
+const ADDITIONAL_FEATURES = [
+  {
+    icon: HeadphonesIcon,
+    title: "24/7 Dedicated Support",
+    desc: "Our support team is always available to assist with troubleshooting, scaling, or optimizing your VoIP services for a smooth experience.",
+  },
+  {
+    icon: DollarSign,
+    title: "Transparent Pricing",
+    desc: "Clear and competitive pricing for wholesale VoIP services, with no hidden fees — making it easier to manage your costs and maximize value.",
+  },
+  {
+    icon: Zap,
+    title: "Easy Integration",
+    desc: "Our voice services integrate with your existing systems, providing hassle-free setup and minimal downtime for carriers and VoIP providers of all sizes.",
+  },
+  {
+    icon: Settings2,
+    title: "Customizable Solutions",
+    desc: "Tailored VoIP wholesale solutions to meet your specific business requirements, ensuring optimal performance and reliability at every scale.",
+  },
+]
+
+const WHY_ROZPER = [
+  {
+    icon: ShieldCheck,
+    title: "Reliability When You Need It Most",
+    desc: "With direct carrier interconnections, optimized routes, and global coverage, we ensure your wholesale voice services are always stable and of top quality.",
+    points: ["Direct Tier-1 carrier interconnects", "Automated failover & redundancy", "99.99% uptime SLA — backed by contract"],
+  },
+  {
+    icon: TrendingUp,
+    title: "Future-Proof Your Business",
+    desc: "Rozper's scalable infrastructure grows with your business, giving you the flexibility to adapt to evolving needs and stay competitive in the wholesale VoIP provider market.",
+    points: ["Elastic capacity — no channel caps", "White-label ready from day one", "API-driven provisioning at any scale"],
+  },
+]
+
+const FRAUD_POINTS = [
+  { icon: Activity, text: "Round-the-clock fraud detection to secure routes." },
+  { icon: AlertTriangle, text: "Anomaly detection to prevent fraud attacks." },
+  { icon: Bell, text: "Real-time alerts for immediate action." },
+  { icon: Lock, text: "Secure SIP connections for reliable service." },
+]
+
 const STATS = [
-  { v: "8", k: "Anycast PoP regions" },
-  { v: "< 60s", k: "Trunk provisioning time" },
+  { v: "200+", k: "Countries covered" },
   { v: "99.99%", k: "Platform uptime SLA" },
-  { v: "Elastic", k: "Channel capacity model" },
+  { v: "24/7", k: "NOC monitoring" },
+  { v: "< 60s", k: "Trunk provisioning" },
 ]
 
 const TESTIMONIALS = [
   {
-    initials: "HB",
-    quote:
-      "We white-labelled the entire portal in a weekend — our resellers genuinely think it's our own platform.",
-    name: "Helena Brandt",
-    role: "VP Product · Northwind Carriers",
+    initials: "RK",
+    quote: "Switching wholesale termination to Rozper cut our per-minute costs significantly. The direct carrier interconnects removed the aggregator margin we had been paying for years.",
+    name: "Rajiv Kumar",
+    role: "CTO · NexaTel Communications",
   },
   {
-    initials: "ST",
-    quote:
-      "Elastic trunks meant we stopped pre-provisioning for peak. Our busiest sales day just worked, with zero blocks.",
-    name: "Sho Tanaka",
-    role: "Infrastructure Lead · Kaze Telecom",
+    initials: "ML",
+    quote: "We needed a wholesale VoIP provider that could guarantee uptime for our reseller base. Rozper's redundant infrastructure and automatic failover have been flawless over 18 months.",
+    name: "Maria Lopes",
+    role: "VP Infrastructure · CloudVoice Brazil",
   },
   {
-    initials: "RC",
-    quote:
-      "The number provisioning API turned a two-week procurement cycle into a script. Onboarding a customer is instant now.",
-    name: "Rafael Costa",
-    role: "Platform Engineer · Vível Communications",
+    initials: "JW",
+    quote: "The programmable LCR rules alone saved us weeks of manual routing work. We tripled our outbound volume after migrating and the fraud detection blocked bad traffic immediately.",
+    name: "James Walsh",
+    role: "Head of Network · BrightLine Telecom",
   },
 ]
 
 const FAQS = [
   {
-    q: "What is wholesale VoIP and SIP trunking?",
-    a: "Wholesale VoIP is the carrier-grade IP platform — SIP trunks, programmable routing, number APIs, and white-label tooling — that lets carriers, resellers, and enterprises run voice over IP at scale and resell it as their own.",
+    q: "What truly makes Rozper different?",
+    a: "It's our commitment to partnership. We pair our carrier-grade network with a dedicated team that is genuinely invested in your success and available to you 24/7 — real engineers, not phone trees.",
   },
   {
-    q: "How is wholesale VoIP different from wholesale voice?",
-    a: "Wholesale VoIP is the SIP infrastructure and platform; wholesale voice is the call minutes — termination and origination — carried over it. This page is about the platform. Most customers run both together.",
+    q: "Is your network secure for business-critical communications?",
+    a: "Security and reliability are core to our platform. We use TLS + SRTP encryption, STIR/SHAKEN attestation, AI-driven fraud detection, and multiple layers of redundancy to protect your communications and data.",
   },
   {
-    q: "Can we white-label the whole platform?",
-    a: "Yes. The partner portal, rate decks, margin configuration, and customer logins can all run under your brand and domain. Your resellers never see Rozper.",
+    q: "How complicated is it to switch our services to Rozper?",
+    a: "Our onboarding team makes it a smooth process. We guide you every step of the way — from SIP peering to number porting — to ensure a seamless transition with minimal downtime.",
   },
   {
-    q: "Do you support BYOC and BYO-SBC?",
-    a: "Absolutely. Point your own SBC or carrier at our SIP edge over TLS. We support SRTP, and G.711, G.729, and Opus codecs out of the box.",
+    q: "How does your pricing work? Are there fixed plans?",
+    a: "We provide custom quotes because every business has unique needs. This ensures you only pay for the capacity and features you actually use. Contact us for a transparent, no-obligation quote tailored to your requirements.",
   },
   {
-    q: "How do the APIs and webhooks work?",
-    a: "Everything — trunks, numbers, routing rules, CDRs — is exposed over a REST API with webhook events. Provision a trunk, buy a number, or change a route in a single call; subscribe to events for real-time state.",
+    q: "Can we use our existing SIP phones or hardware with your service?",
+    a: "Yes, absolutely. Our platform is compatible with all major SIP-based IP phones and PBX systems. Our technical team is here to ensure a smooth integration with your current equipment.",
   },
 ]
 
-const TOPOLOGY_NODES: { icon: LucideIcon; label: string; sub: string }[] = [
+// ──────────────────────────────────────────────────────────────────────
+// SIP Topology visual (kept from previous version)
+// ──────────────────────────────────────────────────────────────────────
+const TOPOLOGY_NODES = [
   { icon: Server, label: "Your SBC", sub: "BYOC / BYO-SBC" },
-  { icon: Cloud, label: "Rozper SIP edge", sub: "anycast · 8 PoPs" },
+  { icon: Cloud,  label: "Rozper SIP edge", sub: "anycast · 8 PoPs" },
   { icon: Network, label: "200+ carriers", sub: "Tier-1 interconnects" },
 ]
 
-// ──────────────────────────────────────────────────────────────────────
-// Hero visual — SIP trunk topology
-// ──────────────────────────────────────────────────────────────────────
 function Connector() {
   return (
     <div className="relative mx-1 h-px flex-1 bg-gradient-to-r from-[#046BD2]/50 via-[#0086F9]/50 to-[#046BD2]/50">
@@ -148,12 +204,7 @@ function Connector() {
           className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#22D3EE] shadow-[0_0_8px_#22D3EE]"
           initial={{ left: dir === 0 ? "0%" : "100%" }}
           animate={{ left: dir === 0 ? "100%" : "0%" }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-            ease: "linear",
-            delay: dir * 0.9,
-          }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "linear", delay: dir * 0.9 }}
         />
       ))}
     </div>
@@ -172,13 +223,10 @@ function SipTopology() {
         </div>
         <div className="flex items-center gap-1.5">
           <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-          <span className="font-mono text-xs text-emerald-400">
-            Trunk registered
-          </span>
+          <span className="font-mono text-xs text-emerald-400">Trunk registered</span>
         </div>
       </div>
 
-      {/* pipeline */}
       <div className="flex items-stretch">
         {TOPOLOGY_NODES.map((n, i) => {
           const mid = i === 1
@@ -193,9 +241,7 @@ function SipTopology() {
               >
                 <span
                   className={`mb-2 flex h-8 w-8 items-center justify-center rounded-lg ${
-                    mid
-                      ? "bg-gradient-to-br from-[#22D3EE] to-[#046BD2]"
-                      : "bg-white/[0.06]"
+                    mid ? "bg-gradient-to-br from-[#22D3EE] to-[#046BD2]" : "bg-white/[0.06]"
                   }`}
                 >
                   <n.icon className="h-4 w-4 text-white" />
@@ -213,77 +259,35 @@ function SipTopology() {
         })}
       </div>
 
-      {/* status grid */}
       <div className="mt-6 grid grid-cols-3 gap-3">
         {[
           { k: "Channels", v: "Elastic" },
           { k: "Codecs", v: "Opus · G.711" },
           { k: "Security", v: "TLS + SRTP" },
         ].map((s) => (
-          <div
-            key={s.k}
-            className="rounded-xl border border-white/10 bg-white/[0.03] p-3"
-          >
-            <div className="font-mono text-[9px] uppercase tracking-widest text-white/35">
-              {s.k}
-            </div>
-            <div className="mt-1 font-display text-sm font-bold text-[#2D98F1]">
-              {s.v}
-            </div>
+          <div key={s.k} className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+            <div className="font-mono text-[9px] uppercase tracking-widest text-white/35">{s.k}</div>
+            <div className="mt-1 font-display text-sm font-bold text-[#2D98F1]">{s.v}</div>
           </div>
         ))}
       </div>
-    </div>
-  )
-}
 
-// ──────────────────────────────────────────────────────────────────────
-// Developer code panel
-// ──────────────────────────────────────────────────────────────────────
-function ApiPanel() {
-  return (
-    <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#070B14]">
-      <div className="flex items-center gap-1.5 border-b border-white/[0.06] bg-white/[0.02] px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-        <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-        <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-        <span className="ml-2 font-mono text-[11px] text-white/40">
-          POST /v1/sip-trunks
-        </span>
-      </div>
-      <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-relaxed">
-        <code>
-          <span className="text-white/40">{"// provision an elastic trunk\n"}</span>
-          <span className="text-white/80">{"{\n"}</span>
-          <span className="text-[#2D98F1]">{'  "name"'}</span>
-          <span className="text-white/50">{": "}</span>
-          <span className="text-[#22D3EE]">{'"edge-eu-1"'}</span>
-          <span className="text-white/50">{",\n"}</span>
-          <span className="text-[#2D98F1]">{'  "transport"'}</span>
-          <span className="text-white/50">{": "}</span>
-          <span className="text-[#22D3EE]">{'"tls"'}</span>
-          <span className="text-white/50">{",\n"}</span>
-          <span className="text-[#2D98F1]">{'  "codecs"'}</span>
-          <span className="text-white/50">{": ["}</span>
-          <span className="text-[#22D3EE]">{'"opus"'}</span>
-          <span className="text-white/50">{", "}</span>
-          <span className="text-[#22D3EE]">{'"g711"'}</span>
-          <span className="text-white/50">{"],\n"}</span>
-          <span className="text-[#2D98F1]">{'  "routing"'}</span>
-          <span className="text-white/50">{": "}</span>
-          <span className="text-[#22D3EE]">{'"lcr"'}</span>
-          <span className="text-white/50">{",\n"}</span>
-          <span className="text-[#2D98F1]">{'  "channels"'}</span>
-          <span className="text-white/50">{": "}</span>
-          <span className="text-[#22D3EE]">{'"elastic"'}</span>
-          <span className="text-white/80">{"\n}"}</span>
-        </code>
-      </pre>
-      <div className="flex items-center gap-2 border-t border-white/[0.06] bg-emerald-500/[0.06] px-5 py-3">
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-        <span className="font-mono text-[11px] text-emerald-300">
-          201 · trunk.created · ready in 42s
-        </span>
+      {/* route quality strip */}
+      <div className="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+        <div className="flex items-center justify-between mb-2">
+          <span className="font-mono text-[9px] uppercase tracking-widest text-white/35">Route health</span>
+          <span className="font-mono text-[10px] text-emerald-400">All routes nominal</span>
+        </div>
+        <div className="flex gap-1.5">
+          {Array.from({ length: 14 }).map((_, i) => (
+            <div
+              key={i}
+              className={`h-5 flex-1 rounded-sm ${
+                i === 5 ? "bg-amber-400/60" : "bg-emerald-400/70"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -294,28 +298,29 @@ function ApiPanel() {
 // ──────────────────────────────────────────────────────────────────────
 export function WholesaleVoipPageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] text-white">
+    <main className="min-h-screen bg-[#0B1220] text-white overflow-x-clip">
       <Navbar />
+
+      {/* ambient glow */}
+      <div className="pointer-events-none absolute top-1/3 right-0 h-[500px] w-[500px] rounded-full bg-[#046BD2]/8 blur-[160px]" />
 
       <div className="relative z-10">
         {/* Breadcrumb */}
-        <div className="mx-auto max-w-7xl px-4 pt-28 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 pt-20 sm:pt-28 sm:px-6">
           <div className="flex items-center gap-2 font-mono text-xs text-white/40">
-            <Link href="/" className="hover:text-[#2D98F1]">
-              /
-            </Link>
+            <Link href="/" className="hover:text-[#2D98F1]">/</Link>
             <ChevronRight className="h-3 w-3" />
             <span className="text-[#0086F9]">wholesale-voip</span>
           </div>
         </div>
 
-        {/* Hero */}
-        <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 pt-12 sm:px-6 lg:grid-cols-[1.1fr_1fr]">
+        {/* ── Hero ──────────────────────────────────────────────────── */}
+        <section className="mx-auto grid max-w-7xl items-center gap-8 px-4 pb-10 pt-6 sm:pb-20 sm:pt-12 sm:px-6 lg:grid-cols-[1.1fr_1fr]">
           <div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#046BD2]/30 bg-[#046BD2]/10 px-4 py-2"
+              className="mb-4 sm:mb-8 inline-flex items-center gap-2 rounded-full border border-[#046BD2]/30 bg-[#046BD2]/10 px-4 py-2"
             >
               <Network className="h-3.5 w-3.5 text-[#0086F9]" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#2D98F1]">
@@ -326,264 +331,313 @@ export function WholesaleVoipPageView() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
+              className="font-display text-2xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-6xl xl:text-7xl"
             >
-              SIP infrastructure,
+              High-Performance
               <br />
-              <span className="bg-gradient-to-r from-[#2D98F1] to-[#0086F9] bg-clip-text text-transparent">
-                ready to white-label
+              <span className="bg-gradient-to-r from-[#2D98F1] via-[#0086F9] to-[#22D3EE] bg-clip-text text-transparent">
+                Wholesale VoIP Routes
               </span>
-              .
+              <br />
+              & Global Voice Termination
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
-              className="mt-6 max-w-xl text-lg leading-relaxed text-white/60"
+              className="mt-3 sm:mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base"
             >
-              Elastic SIP trunking, programmable routing, and number
-              provisioning APIs — the carrier-grade VoIP platform you can run
-              your business on and resell as your own.
+              Wholesale voice solutions and international VoIP termination services powered by direct A-Z routes, secure interconnections, and performance-optimized global voice termination.
             </motion.p>
+
+            {/* trust chips */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0.25 } }}
+              className="mt-3 sm:mt-6 flex flex-wrap gap-2"
+            >
+              {["Direct A-Z Routes", "Secure SIP Interconnects", "200+ Countries", "24/7 NOC"].map((chip) => (
+                <span key={chip} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/60">
+                  <CheckCircle2 className="h-3 w-3 text-emerald-400 shrink-0" />
+                  {chip}
+                </span>
+              ))}
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
-              className="mt-10 flex flex-wrap gap-3"
+              className="mt-4 sm:mt-8 flex gap-3"
             >
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#046BD2] px-7 py-4 font-semibold text-white transition hover:bg-[#0086F9]"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#046BD2] px-6 py-3.5 font-semibold text-white transition hover:bg-[#0086F9] sm:px-7 sm:py-4"
               >
-                Talk to wholesale team
+                Get a Free Trial
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/docs/api"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-4 font-semibold text-white transition hover:bg-white/10"
+                href="/pricing"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-medium text-white transition hover:bg-white/5 sm:px-7 sm:py-4"
               >
-                Read the API docs
+                See pricing
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+            className="hidden lg:block w-full"
           >
             <SipTopology />
           </motion.div>
         </section>
 
-        {/* Capabilities */}
-        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
-          <div className="mb-16 text-center">
-            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">
-              // platform
+        {/* ── Who We Work With ──────────────────────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
+          <div className="rounded-[2rem] border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/8 to-transparent p-8 sm:p-12 md:p-14">
+            <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">
+              // who.we.serve
             </div>
-            <h2 className="font-display text-4xl font-bold md:text-5xl">
-              A VoIP platform you can build on.
+            <h2 className="mb-3 font-display text-3xl font-bold sm:text-4xl">
+              Designed for Carriers, VoIP Providers & Telecom Operators
+            </h2>
+            <p className="mb-10 max-w-2xl text-sm leading-relaxed text-white/50 sm:text-base">
+              Our wholesale VoIP platform is built from the ground up for operators who move serious traffic and can't afford a single dropped route.
+            </p>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5 mb-10">
+              {WHO_WE_WORK_WITH.map((w, i) => (
+                <motion.div
+                  key={w.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 hover:border-[#046BD2]/30 transition"
+                >
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#046BD2]/20 border border-[#046BD2]/25">
+                    <w.icon className="h-4 w-4 text-[#0086F9]" />
+                  </div>
+                  <span className="text-sm font-medium text-white/80">{w.label}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="border-t border-white/[0.07] pt-8">
+              <p className="mb-5 text-sm font-semibold text-white/60 uppercase tracking-widest font-mono text-[11px]">
+                Built for Telecom Operators Who Prioritize Quality
+              </p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {OPERATOR_PRIORITIES.map((p, i) => (
+                  <div key={i} className="flex items-center gap-3 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.05] px-4 py-3">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                    <span className="text-sm text-white/80">{p.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── What Sets Our Wholesale VoIP Apart ────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
+          <div className="mb-14 text-center">
+            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// differentiators</div>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+              What Sets Our Wholesale VoIP Apart
             </h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {CAPABILITIES.map((f, i) => (
+            {WHAT_SETS_APART.map((f, i) => (
               <motion.div
                 key={f.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
-                className="rounded-2xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/[0.06] to-transparent p-6 transition hover:border-[#046BD2]/40"
+                className="group relative rounded-2xl border border-white/[0.07] bg-[#111B2D] p-6 transition hover:border-[#046BD2]/30"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-[#046BD2]/30 bg-[#046BD2]/20">
+                <span className="absolute right-5 top-4 font-mono text-3xl font-bold text-white/[0.05] select-none">
+                  {f.tag}
+                </span>
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-[#046BD2]/25 bg-[#046BD2]/15 group-hover:bg-[#046BD2]/25 transition">
                   <f.icon className="h-5 w-5 text-[#0086F9]" />
                 </div>
-                <h3 className="mb-2 font-display text-lg font-semibold">
-                  {f.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-white/55">
-                  {f.desc}
-                </p>
+                <h3 className="mb-2 font-display text-lg font-semibold">{f.title}</h3>
+                <p className="text-sm leading-relaxed text-white/55">{f.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Architecture */}
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-          <div className="rounded-[2rem] border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/10 to-[#2575FC]/5 p-10 md:p-14">
-            <div className="mb-10 flex items-center gap-3">
-              <Server className="h-8 w-8 text-[#0086F9]" />
-              <h2 className="font-display text-3xl font-bold md:text-4xl">
-                Infrastructure built for builders.
-              </h2>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {ARCHITECTURE.map((a, i) => (
-                <motion.div
-                  key={a.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
-                >
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#046BD2] to-[#22D3EE]">
-                    <a.icon className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="mb-1.5 font-display text-base font-semibold">
-                    {a.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-white/55">
-                    {a.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Developer */}
-        <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-24 sm:px-6 lg:grid-cols-2">
-          <div>
-            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">
-              // for.developers
-            </div>
-            <h2 className="font-display text-4xl font-bold md:text-5xl">
-              Provision a trunk in one API call.
+        {/* ── Additional Features ───────────────────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
+          <div className="mb-12 text-center">
+            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// platform.extras</div>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl">
+              Everything You Need, Nothing You Don&apos;t
             </h2>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-white/60">
-              Trunks, numbers, routing rules, and CDRs are all exposed over a
-              clean REST API with webhook events. No tickets, no portals to
-              click through — just code.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-              {[
-                { icon: Terminal, label: "REST + webhooks" },
-                { icon: Code2, label: "SDKs & examples" },
-                { icon: Workflow, label: "Sandbox environment" },
-              ].map((d) => (
-                <div key={d.label} className="flex items-center gap-2">
-                  <d.icon className="h-4 w-4 text-[#0086F9]" />
-                  <span className="text-sm text-white/70">{d.label}</span>
-                </div>
-              ))}
-            </div>
-            <Link
-              href="/docs/api"
-              className="group mt-8 inline-flex items-center gap-2 font-semibold text-[#2D98F1] hover:text-[#22D3EE]"
-            >
-              Browse the API reference
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <ApiPanel />
-          </motion.div>
-        </section>
-
-        {/* Stats */}
-        <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {STATS.map((s) => (
-              <div
-                key={s.k}
-                className="rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-7 text-center"
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {ADDITIONAL_FEATURES.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="group rounded-2xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/[0.07] to-transparent p-6 transition hover:border-[#046BD2]/40"
               >
-                <div className="bg-gradient-to-br from-[#2D98F1] to-[#2575FC] bg-clip-text font-display text-4xl font-bold text-transparent">
-                  {s.v}
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-[#046BD2]/25 bg-[#046BD2]/15 group-hover:bg-[#046BD2]/25 transition">
+                  <f.icon className="h-5 w-5 text-[#0086F9]" />
                 </div>
-                <div className="mt-2 text-sm text-white/55">{s.k}</div>
-              </div>
+                <h3 className="mb-2 font-display text-base font-semibold">{f.title}</h3>
+                <p className="text-sm leading-relaxed text-white/55">{f.desc}</p>
+              </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-16">
-            <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#0086F9]/60 mb-3">// carrier.stories</div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold">Trusted by carriers globally.</h2>
+        {/* ── Why Rozper Wholesale VoIP ─────────────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
+          <div className="mb-14 text-center">
+            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// why.rozper</div>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+              Why Rozper Wholesale VoIP?
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                initials: 'RK', color: 'blue',
-                metric: '40%', metricLabel: 'lower cost per minute',
-                quote: 'Switching wholesale termination to Rozper cut our per-minute costs significantly. The direct carrier interconnects removed the aggregator margin we had been paying for years.',
-                name: 'Rajiv Kumar', role: 'CTO · NexaTel Communications',
-                delay: 0,
-              },
-              {
-                initials: 'ML', color: 'cyan',
-                metric: '99.99%', metricLabel: 'uptime achieved',
-                quote: 'We needed a wholesale provider that could guarantee uptime for our reseller base. Rozper\'s redundant PoPs and automatic failover have been flawless over 18 months.',
-                name: 'Maria Lopes', role: 'VP Infrastructure · CloudVoice Brazil',
-                delay: 0.2,
-              },
-              {
-                initials: 'JW', color: 'emerald',
-                metric: '3×', metricLabel: 'volume scale in 6 months',
-                quote: 'We tripled our outbound call volume after migrating. The programmable LCR rules alone saved us weeks of manual routing work and the fraud detection blocked bad traffic immediately.',
-                name: 'James Walsh', role: 'Head of Network · BrightLine Telecom',
-                delay: 0.4,
-              },
-            ].map((t) => {
-              const accent = {
-                blue:    { metric: 'text-[#2D98F1]', label: 'text-[#2D98F1]/70', avatar: 'bg-[#046BD2]/20 border-[#046BD2]/40 text-[#2D98F1]', card: 'border-[#046BD2]/25 hover:border-[#046BD2]/50' },
-                cyan:    { metric: 'text-cyan-300',    label: 'text-cyan-400/70',   avatar: 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300',    card: 'border-cyan-500/20  hover:border-cyan-500/40' },
-                emerald: { metric: 'text-emerald-300', label: 'text-emerald-400/70', avatar: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300', card: 'border-emerald-500/20 hover:border-emerald-500/40' },
-              }[t.color]!
-
-              return (
-                <motion.div
-                  key={t.initials}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: t.delay, duration: 0.5 }}
-                  className={`flex flex-col rounded-3xl bg-white/[0.03] border ${accent.card} transition-colors p-7`}
-                >
-                  <div className="text-center mb-6">
-                    <div className={`font-display text-6xl font-bold leading-none ${accent.metric}`}>{t.metric}</div>
-                    <div className={`text-xs font-mono mt-2 ${accent.label}`}>{t.metricLabel}</div>
-                  </div>
-
-                  <div className="flex gap-1 justify-center mb-5">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className={`w-3.5 h-3.5 fill-current ${accent.metric}`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    ))}
-                  </div>
-
-                  <blockquote className="text-sm text-white/70 leading-relaxed text-center flex-1 mb-6">
-                    "{t.quote}"
-                  </blockquote>
-
-                  <div className="flex items-center gap-3 pt-5 border-t border-white/[0.07] justify-center">
-                    <div className={`w-9 h-9 rounded-full border flex items-center justify-center font-display font-bold text-xs shrink-0 ${accent.avatar}`}>{t.initials}</div>
-                    <div>
-                      <div className="font-semibold text-sm">{t.name}</div>
-                      <div className="text-[11px] text-white/45 mt-0.5">{t.role}</div>
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
+          <div className="grid gap-6 md:grid-cols-2">
+            {WHY_ROZPER.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12 }}
+                className="relative overflow-hidden rounded-2xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/[0.08] to-[#0B1220] p-8"
+              >
+                <div className="pointer-events-none absolute -top-20 -right-20 h-48 w-48 rounded-full bg-[#046BD2]/10 blur-3xl" />
+                <div className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#046BD2] to-[#22D3EE] shadow-[0_8px_24px_-8px_rgba(34,211,238,0.45)]">
+                  <item.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="relative mb-3 font-display text-xl font-bold sm:text-2xl">{item.title}</h3>
+                <p className="relative mb-6 text-sm leading-relaxed text-white/55 sm:text-base">{item.desc}</p>
+                <ul className="relative space-y-2.5">
+                  {item.points.map((pt) => (
+                    <li key={pt} className="flex items-center gap-2.5 text-sm text-white/70">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="mx-auto max-w-3xl px-4 py-24 sm:px-6">
-          <h2 className="mb-8 font-display text-4xl font-bold">FAQ</h2>
+        {/* ── Fraud Prevention ──────────────────────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[#046BD2]/20 bg-[#0D1627] p-8 sm:p-12 md:p-14 lg:grid lg:grid-cols-[1fr_1fr] lg:gap-12 lg:items-center">
+            {/* background glow */}
+            <div className="pointer-events-none absolute -top-32 -left-32 h-80 w-80 rounded-full bg-[#046BD2]/10 blur-[100px]" />
+
+            <div className="relative mb-8 lg:mb-0">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/[0.08] px-3 py-1.5">
+                <ShieldCheck className="h-3.5 w-3.5 text-red-400" />
+                <span className="font-mono text-[10px] uppercase tracking-widest text-red-400">Security</span>
+              </div>
+              <h2 className="mb-4 font-display text-3xl font-bold sm:text-4xl">
+                Dedicated Fraud Prevention and Security
+              </h2>
+              <p className="text-sm leading-relaxed text-white/55 sm:text-base max-w-lg">
+                With Rozper, your wholesale VoIP services come with built-in fraud prevention. Our advanced monitoring and anomaly detection systems safeguard your routes from fraud and route manipulation, ensuring security at every step.
+              </p>
+            </div>
+
+            <div className="relative grid gap-4 sm:grid-cols-2">
+              {FRAUD_POINTS.map((p, i) => (
+                <motion.div
+                  key={p.text}
+                  initial={{ opacity: 0, x: 16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.03] p-4"
+                >
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#046BD2]/20 border border-[#046BD2]/25 mt-0.5">
+                    <p.icon className="h-4 w-4 text-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/70 leading-relaxed">{p.text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Stats ─────────────────────────────────────────────────── */}
+        <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {STATS.map((s, i) => (
+              <motion.div
+                key={s.k}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-7 text-center"
+              >
+                <div className="bg-gradient-to-br from-[#2D98F1] to-[#22D3EE] bg-clip-text font-display text-4xl font-bold text-transparent">
+                  {s.v}
+                </div>
+                <div className="mt-2 text-sm text-white/55">{s.k}</div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Testimonials ──────────────────────────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+          <div className="mb-14 text-center">
+            <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// carrier.stories</div>
+            <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+              Trusted by carriers globally
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {TESTIMONIALS.map((t, i) => (
+              <motion.div
+                key={t.initials}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.5 }}
+                className="flex flex-col rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-7 transition hover:border-[#046BD2]/40"
+              >
+                <TrendingUp className="mb-5 h-5 w-5 text-[#0086F9]" />
+                <blockquote className="flex-1 text-sm leading-relaxed text-white/70">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <div className="mt-6 flex items-center gap-3 border-t border-white/[0.07] pt-5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#046BD2]/40 bg-[#046BD2]/20 font-display text-xs font-bold text-[#2D98F1]">
+                    {t.initials}
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold">{t.name}</div>
+                    <div className="mt-0.5 text-[11px] text-white/45">{t.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── FAQ ───────────────────────────────────────────────────── */}
+        <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+          <h2 className="mb-8 text-center font-display text-3xl font-bold sm:text-4xl">FAQ</h2>
           <div className="space-y-3">
             {FAQS.map((f, i) => (
               <details
@@ -592,34 +646,46 @@ export function WholesaleVoipPageView() {
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between font-display font-semibold">
                   <span>{f.q}</span>
-                  <ChevronRight className="h-5 w-5 text-[#0086F9] transition-transform group-open:rotate-90" />
+                  <ChevronRight className="h-5 w-5 shrink-0 text-[#0086F9] transition-transform group-open:rotate-90" />
                 </summary>
-                <p className="mt-4 leading-relaxed text-white/60">{f.a}</p>
+                <p className="mt-4 text-sm leading-relaxed text-white/60">{f.a}</p>
               </details>
             ))}
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#046BD2] via-[#046BD2] to-[#0078E0] p-12 text-center md:p-20">
-            <Cable className="mx-auto mb-6 h-12 w-12 text-white" />
-            <h2 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl">
-              Build your VoIP platform on Rozper.
+        {/* ── CTA ───────────────────────────────────────────────────── */}
+        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9] px-8 py-14 text-center sm:px-12 sm:py-20">
+            {/* dot grid */}
+            <div
+              aria-hidden
+              className="absolute inset-0 pointer-events-none opacity-[0.08]"
+              style={{
+                backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+                backgroundSize: "28px 28px",
+              }}
+            />
+            <Network className="relative mx-auto mb-6 h-12 w-12 text-white" />
+            <h2 className="relative font-display text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              Stop Testing Routes.<br />Start Scaling Traffic.
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-white/75">
-              Talk to our wholesale team for SIP trunk peering, white-label
-              setup, and volume pricing — or jump straight into the API.
+            <p className="relative mx-auto mt-5 max-w-xl text-base text-white/80 sm:text-lg">
+              End the guesswork. Get stable, high-performance wholesale VoIP termination backed by direct carrier relationships and optimized routing intelligence.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 font-semibold text-[#046BD2] transition hover:scale-105"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-[#046BD2] transition hover:scale-105 sm:px-7 sm:py-4 whitespace-nowrap"
               >
-                Talk to wholesale team
-                <ArrowRight className="h-4 w-4" />
+                Get a Free Trial <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-6 py-3.5 font-semibold text-white transition hover:bg-white/25 sm:px-7 sm:py-4 whitespace-nowrap"
+              >
+                See pricing
+              </Link>
             </div>
           </div>
         </section>

@@ -264,8 +264,8 @@ function normalizePost(raw: RawPost): BlogPostDetail {
       }
     : {
         id: 0,
-        name: "Rozper Editorial",
-        initials: "RZ",
+        name: "Shahid Kathawala",
+        initials: "SK",
       }
 
   return {
@@ -353,78 +353,77 @@ export async function fetchPosts(
 }
 
 /**
- * Walk every page of /posts (per_page=100) and return the full list
- * merged with any local Markdown posts under `content/blog`. Local
- * posts take precedence on slug collision and the combined list is
- * sorted by date descending.
+ * Return all posts (local Markdown + WordPress) sorted by date descending.
  *
- * Safety cap at 20 pages = 2000 WP posts in case the site grows.
+ * Strategy:
+ *  1. Local .md posts always win on slug collision.
+ *  2. The static WP cache (content/wp-cache/posts-raw.json) provides a fast,
+ *     always-available base covering all historical posts.
+ *  3. We additionally fetch page 1 of the live WP API to pick up any NEW posts
+ *     published after the last cache sync — without reading 2000+ posts on
+ *     every request. Live data overwrites the cached entry for the same slug.
+ *  4. If the live API is unreachable, the static cache silently covers us.
+ *
+ * This means new WordPress posts appear automatically within the ISR window
+ * (30 min, set in app/blog/page.tsx) without a manual cache sync + redeploy.
  */
 export async function fetchAllPosts(): Promise<{
   posts: BlogPost[]
   total: number
 }> {
-  // Local first — they win on slug collision.
+  // Local .md posts — always fresh, win on slug collision.
   const localPosts = (await import("./blog-local")).loadAllLocalPosts()
   const localSlugs = new Set(localPosts.map((p) => p.slug))
 
-  // Prefer the synced local cache; only fall back to the live WP API when the
-  // cache is missing/empty (e.g. before the first `sync-wp-blogs.mjs` run).
-  const cached = cachedPostsNormalized().filter(
-    (p) => !localSlugs.has(p.slug),
+  // Build a base map from the static cache (no network, always fast).
+  const baseBySlug = new Map(
+    cachedPostsNormalized()
+      .filter((p) => !localSlugs.has(p.slug))
+      .map((p) => [p.slug, p]),
   )
-  if (cached.length) {
-    const combined = [...localPosts, ...cached].sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    )
-    return { posts: combined, total: combined.length }
-  }
 
-  const remote: BlogPost[] = []
-  let remoteTotal = 0
-  const perPage = 100
-  const maxPages = 20
-
-  for (let page = 1; page <= maxPages; page++) {
+  // Overlay the newest posts from the live WP API (page 1 only = ≤100 posts).
+  // We fetch WITHOUT _embed to keep the response small (avoids the Vercel
+  // ">2MB can not be cached" warning caused by embedded media/terms).
+  // For posts already in the static cache: the richer cached version is kept.
+  // For truly new posts not yet in the cache: lightweight metadata is shown
+  // immediately, and their full data appears after the next sync-wp-blogs run.
+  // The 30-min ISR window on the blog page controls how often this fires.
+  try {
     const params = new URLSearchParams()
-    params.set("per_page", String(perPage))
-    params.set("page", String(page))
-    params.set("_embed", "author,wp:featuredmedia,wp:term")
+    params.set("per_page", "100")
+    params.set("page", "1")
+    // _fields limits payload to only what normalizePost needs without embeds
+    params.set("_fields", "id,slug,date,modified,link,title,excerpt,author,yoast_head_json")
 
     const res = await fetch(`${API_BASE}/posts?${params.toString()}`, {
       headers: { Accept: "application/json" },
       next: { revalidate: REVALIDATE_SECONDS },
     })
 
-    if (!res.ok) {
-      // WordPress returns 400 once `page` exceeds total pages — that's
-      // our exit signal, not a real failure.
-      if (page === 1) {
-        throw new Error(`Rozper WP fetch failed: ${res.status} /posts (page 1)`)
+    if (res.ok) {
+      const raw = (await res.json()) as RawPost[]
+      for (const r of raw) {
+        if (!r.slug || localSlugs.has(r.slug)) continue
+        if (baseBySlug.has(r.slug)) {
+          // Post already in cache — no update needed (cache has richer data).
+          continue
+        }
+        // Truly new post not yet in the cache: normalise with what we have.
+        // Author name defaults to "Rozper Team" since _embed is not present.
+        const norm = safeNormalize(r)
+        if (norm) baseBySlug.set(norm.slug, norm)
       }
-      break
     }
-
-    if (page === 1) {
-      remoteTotal = Number(res.headers.get("x-wp-total") ?? "0")
-    }
-    const totalPages = Number(res.headers.get("x-wp-totalpages") ?? "0")
-    const raw = (await res.json()) as RawPost[]
-    if (!raw.length) break
-
-    for (const r of raw) {
-      const norm = safeNormalize(r)
-      if (norm && !localSlugs.has(norm.slug)) remote.push(norm)
-    }
-
-    if (page >= totalPages) break
+  } catch {
+    // Live API unavailable — static cache is the complete fallback, no action needed.
   }
 
-  const combined = [...localPosts, ...remote].sort(
+  const combined = [...localPosts, ...baseBySlug.values()].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   )
 
-  return { posts: combined, total: remoteTotal + localPosts.length }
+  return { posts: combined, total: combined.length }
 }
 
 export async function fetchPostBySlug(
@@ -491,41 +490,35 @@ export async function fetchRelatedPosts(
 }
 
 export async function fetchAllSlugs(): Promise<string[]> {
-  // Used by generateStaticParams.
-  const slugs: string[] = []
+  // Used by generateStaticParams — must include every slug that has a page.
   const localSlugs = (await import("./blog-local")).loadAllLocalSlugs()
-  slugs.push(...localSlugs)
-  const localSet = new Set(localSlugs)
+  const slugSet = new Set(localSlugs)
 
-  // Prefer the synced cache — covers every post without any network call.
-  const cachedRaw = loadCachedRawPosts()
-  if (cachedRaw.length) {
-    for (const p of cachedRaw) {
-      if (p.slug && !localSet.has(p.slug)) slugs.push(p.slug)
-    }
-    return slugs
+  // Add every slug from the static cache (no network, always available).
+  for (const p of loadCachedRawPosts()) {
+    if (p.slug) slugSet.add(p.slug)
   }
 
-  let page = 1
-  // Cap to keep cold builds bounded; ISR will fill in the rest dynamically.
-  const maxPages = 5
-  for (; page <= maxPages; page++) {
+  // Also fetch page 1 of the live API to pick up slugs for brand-new posts
+  // not yet in the static cache. ISR handles new posts beyond page 1 dynamically.
+  try {
     const params = new URLSearchParams()
     params.set("per_page", "100")
-    params.set("page", String(page))
+    params.set("page", "1")
     params.set("_fields", "slug")
     const res = await fetch(`${API_BASE}/posts?${params.toString()}`, {
       headers: { Accept: "application/json" },
       next: { revalidate: REVALIDATE_SECONDS * 4 },
     })
-    if (!res.ok) break
-    const items = (await res.json()) as Array<{ slug: string }>
-    if (!items.length) break
-    for (const item of items) {
-      if (item.slug && !localSet.has(item.slug)) slugs.push(item.slug)
+    if (res.ok) {
+      const items = (await res.json()) as Array<{ slug: string }>
+      for (const item of items) {
+        if (item.slug) slugSet.add(item.slug)
+      }
     }
-    const totalPages = Number(res.headers.get("x-wp-totalpages") ?? "0")
-    if (page >= totalPages) break
+  } catch {
+    // Static cache covers all known slugs; new posts are handled by ISR fallback.
   }
-  return slugs
+
+  return [...slugSet]
 }

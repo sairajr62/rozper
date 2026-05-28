@@ -278,7 +278,7 @@ function fileToPost(filename: string): BlogPostDetail | null {
         }))
       : []
 
-    const authorName = data.author || "Rozper Editorial"
+    const authorName = data.author || "Shahid Kathawala"
 
     const stripped = stripHtmlAndCondense(contentHtml)
 

@@ -138,7 +138,7 @@ export function ProdCCOutboundDialerPageView() {
               Power and predictive dialing with TCPA compliance, AI coaching, and CRM sync — built for sales and collections teams that need to move fast.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 sm:mt-10 flex flex-wrap gap-3">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 sm:mt-10 flex flex-row items-center gap-3">
               <Link href="/contact" className="group inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition text-sm sm:text-base">
                 Start dialing smarter <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -149,14 +149,14 @@ export function ProdCCOutboundDialerPageView() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0, transition: { delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] } }}
-            className="flex justify-center lg:justify-end items-center mt-4 lg:mt-0"
+            className="flex justify-center items-center mt-4 lg:mt-0"
           >
-            {/* Phone scaled to 75% on mobile, 85% on desktop */}
+            {/* Phone scaled to 75% on mobile, 85% on desktop — origin center so it stays centered */}
             <div className="hidden sm:block" style={{ width: 228, height: 456, position: 'relative', overflow: 'visible' }}>
               <div style={{
-                position: 'absolute', top: 0, left: 0,
-                transform: 'scale(0.85) translateZ(0)',
-                transformOrigin: 'top left',
+                position: 'absolute', top: 0, left: '50%',
+                transform: 'translateX(-50%) scale(0.85) translateZ(0)',
+                transformOrigin: 'top center',
                 backfaceVisibility: 'hidden',
               }}>
                 <OutboundDialerMobile />
@@ -165,9 +165,9 @@ export function ProdCCOutboundDialerPageView() {
             {/* Smaller scale for xs mobile screens */}
             <div className="block sm:hidden" style={{ width: 201, height: 402, position: 'relative', overflow: 'visible' }}>
               <div style={{
-                position: 'absolute', top: 0, left: 0,
-                transform: 'scale(0.75) translateZ(0)',
-                transformOrigin: 'top left',
+                position: 'absolute', top: 0, left: '50%',
+                transform: 'translateX(-50%) scale(0.75) translateZ(0)',
+                transformOrigin: 'top center',
                 backfaceVisibility: 'hidden',
               }}>
                 <OutboundDialerMobile />
@@ -216,14 +216,14 @@ export function ProdCCOutboundDialerPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
-            <TrendingUp className="w-12 h-12 mx-auto mb-6 text-white" />
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white">Dial more. Convert more. Risk less.</h2>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
-                Start dialing smarter <ArrowRight className="w-4 h-4" />
+          <div className="relative rounded-[2.5rem] overflow-hidden px-5 py-10 sm:px-12 sm:py-16 md:px-20 md:py-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+            <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-5 sm:mb-6 text-white" />
+            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-white">Dial more. Convert more. Risk less.</h2>
+            <div className="mt-7 flex flex-row items-center justify-center gap-3">
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition text-sm sm:text-base whitespace-nowrap">
+                Start a free trial <ArrowRight className="w-4 h-4 shrink-0" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition">See pricing</Link>
+              <Link href="/pricing" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition text-sm sm:text-base whitespace-nowrap">See pricing</Link>
             </div>
           </div>
         </section>
