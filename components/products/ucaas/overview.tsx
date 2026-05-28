@@ -435,13 +435,13 @@ export function UcaasPageView() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.3 } }}
-                className="mt-7 sm:mt-10 flex flex-wrap gap-3"
+                className="mt-7 sm:mt-10 flex flex-row flex-nowrap gap-3"
               >
-                <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition">
+                <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
                   Start a free trial
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition">
+                <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">
                   See Pricing
                 </Link>
               </motion.div>
@@ -618,11 +618,11 @@ export function UcaasPageView() {
             <Shield className="w-12 h-12 mx-auto mb-6 text-white relative" />
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight relative">Ready to unify<br />your communications?</h2>
             <p className="mt-6 text-lg text-white/85 max-w-xl mx-auto relative">Start with a 14-day free trial. No credit card required. Join teams across 150+ countries.</p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4 relative">
-              <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition">
+            <div className="mt-10 flex flex-row flex-nowrap justify-center gap-4 relative">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap">
                 Start a Free Trial <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white font-medium hover:bg-white/20 transition">
+              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/10 backdrop-blur border border-white/20 text-sm sm:text-base text-white font-medium hover:bg-white/20 transition whitespace-nowrap">
                 See pricing
               </Link>
             </div>
