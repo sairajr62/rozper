@@ -1,0 +1,6 @@
+node_modules
+.next
+*.log
+*.zip
+tsconfig.tsbuildinfo
+tsc_errors.txt
