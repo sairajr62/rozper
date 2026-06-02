@@ -162,12 +162,13 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
               <div className="absolute -bottom-4 -right-4 w-[88%] h-[88%] rounded-3xl bg-[#FCD34D]/50 -z-10" />
               <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/[0.02] shadow-[0_40px_140px_-50px_rgba(4,107,210,0.7)]">
                 <div className="rounded-3xl overflow-hidden bg-[#0A1020]">
-                  <div className="relative aspect-[16/9]">
+                  <div className="relative aspect-[2672/941]">
                     <BlogImage
                       src={post.featuredImage.src}
                       alt={post.featuredImage.alt}
                       tone="blue"
                       label={post.categories[0]?.name ?? "Article"}
+                      className="absolute inset-0 w-full h-full object-cover object-center"
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/40 via-transparent to-transparent" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-[#046BD2]/8 via-transparent to-[#22D3EE]/8 mix-blend-overlay opacity-60" />

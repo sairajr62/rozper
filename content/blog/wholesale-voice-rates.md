@@ -45,7 +45,6 @@ This guide breaks down everything you need to know about wholesale voice rates: 
 - Pricing models range from per-minute billing to flat-rate and tiered structures — each suited to different traffic profiles.
 - Businesses that actively manage routing, consolidate providers, and negotiate on volume consistently pay less.
 
-![Key Takeaways — Wholesale Voice Rates](/images/blog/wholesale-voice-rates-key-takeaways.webp)
 
 ## What Are Wholesale Voice Rates?
 
@@ -107,6 +106,8 @@ Disruptions — natural disasters, geopolitical instability, major economic shif
 
 Beyond the structural determinants above, several dynamic forces cause rates to shift on an ongoing basis.
 
+![Key Factors That Move Wholesale Voice Rates](/images/blog/wholesale-voice-rates-key-factors.png)
+
 **Technological advancement** has consistently pushed rates downward. The transition from circuit-switched to [VoIP infrastructure](https://www.rozper.com/wholesale-voip/) dramatically reduced the marginal cost of carrying a voice call. As cloud-native voice platforms, AI-optimized routing, and 5G backhaul become more prevalent, that downward pressure continues.
 
 **Demand fluctuations** move rates in both directions. High demand — driven by economic growth, contact center expansion, or mass communication events — pushes rates up. Periods of lower demand create buyer-friendly conditions and negotiating leverage.
@@ -139,11 +140,15 @@ For high-volume buyers — large enterprises, carriers, and contact center opera
 
 Wholesale voice rates are infrastructure for the broader telecom industry. They make interconnection between networks possible — without agreed-upon termination and origination rates, calls couldn't reliably cross carrier boundaries. They also underpin mobile roaming services, enabling subscribers to make and receive calls across networks when traveling.
 
+![Wholesale Voice Rates in the Telecommunications Ecosystem](/images/blog/wholesale-voice-rates-telecom-ecosystem.webp)
+
 For telecom companies themselves, wholesale pricing is both a revenue driver and a cost center. Carriers that sell wholesale minutes earn revenue tied to traffic volume; those that buy them incur costs that shape their retail margins. Managing this dynamic — buying intelligently while pricing competitively — is central to telecom financial strategy.
 
 The rise of [SIP trunking](https://www.rozper.com/products/voice/sip-trunking-providers/) has added another dimension to wholesale voice economics. By connecting PBX systems directly to carrier networks over IP, SIP trunking allows businesses to access wholesale-level pricing without the complex carrier agreements traditionally required. This has democratized access to competitive wholesale rates for businesses of all sizes.
 
 ## Benefits of Wholesale Voice Rates for Businesses
+
+![Benefits of Wholesale Voice Rates](/images/blog/benefit.webp)
 
 ### Significant Cost Savings
 
@@ -176,6 +181,8 @@ Routing voice across multiple carrier networks introduces technical complexity. 
 Wholesale voice environments are targets for toll fraud — unauthorized use of your voice infrastructure to generate fraudulent call traffic. The financial exposure from unchecked toll fraud can exceed the savings from competitive wholesale pricing. Real-time traffic monitoring, strong authentication, and anomaly detection are non-negotiable safeguards.
 
 ## Tips for Reducing Costs and Optimizing Voice Services
+
+![Tips for Reducing Costs and Optimizing Voice Services](/images/blog/red cost.webp)
 
 **Consolidate providers.** Spreading voice traffic across many carriers fragments your volume and reduces your negotiating leverage. Consolidating with one or two primary providers increases your commitment volume and typically unlocks better rates.
 
