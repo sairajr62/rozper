@@ -10,7 +10,6 @@ import {
   ArrowRight,
   Sparkles,
   Tag,
-  ChevronDown,
 } from "lucide-react"
 import { motion } from "framer-motion"
 import type { BlogAuthor } from "@/lib/blog-api"
@@ -418,14 +417,16 @@ export function PostLayout({
   const tocListRef = useRef<HTMLUListElement>(null)
   const activeIdRef = useRef<string>("")
   const [activeId, setActiveId] = useState<string>("")
-  const [tocVisible, setTocVisible] = useState(true)
+  const [tocVisible, setTocVisible] = useState(false)
   // Blocks scroll-spy from overriding an explicit click selection while the
   // smooth-scroll animation is still in progress.
   const clickLockRef = useRef(false)
   const clickLockTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Show the TOC as soon as the article section enters the viewport and hide
-  // it once the article bottom scrolls away (author bio / end CTA area).
+  // Show the TOC only while the article prose is in view:
+  // - starts when the section top crosses the navbar (prevents hero overlap)
+  // - stops when the article's bottom edge scrolls within 200px of the navbar
+  //   (hides before the author bio / end CTA / footer area)
   useEffect(() => {
     const el = sectionRef.current
     if (!el) return
@@ -433,7 +434,7 @@ export function PostLayout({
       const sectionTop = el.getBoundingClientRect().top
       const articleBottom =
         articleRef.current?.getBoundingClientRect().bottom ?? Infinity
-      setTocVisible(articleBottom > 200)
+      setTocVisible(sectionTop <= 112 && articleBottom > 200)
     }
     check()
     window.addEventListener("scroll", check, { passive: true })
@@ -693,35 +694,6 @@ export function PostLayout({
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-20"
       >
         <div className="lg:pl-64 xl:pl-72">
-          {/* Mobile/tablet TOC — collapsible, hidden on lg+ where the fixed sidebar shows */}
-          {toc.length > 0 && (
-            <details className="lg:hidden mb-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden toc-mobile">
-              <summary className="cursor-pointer select-none list-none flex items-center justify-between gap-2 p-4 text-[10px] uppercase tracking-[0.22em] font-mono text-white/45 hover:text-white/70 transition-colors">
-                <div className="flex items-center gap-2">
-                  <span className="w-4 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
-                  Table of contents
-                </div>
-                <ChevronDown className="toc-chevron w-4 h-4 transition-transform duration-200" />
-              </summary>
-              <ul className="px-4 pb-4 space-y-0.5 border-t border-white/[0.06] pt-3">
-                {toc.map((entry, i) => (
-                  <li key={entry.id}>
-                    <a
-                      href={`#${entry.id}`}
-                      onClick={(e) => handleTocClick(e, entry.id)}
-                      className={`flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm text-white/55 hover:text-white/90 hover:bg-white/[0.04] border-l-2 border-transparent transition-colors ${entry.level === 3 ? "pl-6 text-[13px]" : ""}`}
-                    >
-                      <span className="shrink-0 mt-px font-mono text-[11px] tabular-nums text-white/30">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="leading-snug">{entry.text}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          )}
-
           <article
             ref={articleRef as React.RefObject<HTMLElement>}
             className="blog-prose max-w-3xl"
