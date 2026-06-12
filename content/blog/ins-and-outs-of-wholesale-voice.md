@@ -26,7 +26,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-06"
 readingTime: "10 min"
-featuredImage: "https://www.rozper.com/wp-content/uploads/2024/08/Navigating-the-World-of-Wholesale-Voice-A-Comprehensive-Guide.png"
+featuredImage: "/images/blog/Ins and Outs of Wholesale voice.png"
 ---
 
 # The Ins and Outs of Wholesale Voice

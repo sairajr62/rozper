@@ -97,6 +97,56 @@ body {
 @keyframes globeTwinklingLong  { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
 @keyframes globeTwinklingFast  { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
 
+/* ── Hero background CSS animations (replaces framer-motion) ── */
+@keyframes heroGlowBlue {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 0.95; transform: scale(1.12); }
+}
+@keyframes heroGlowCyan {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.15); }
+}
+@keyframes heroRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes heroParticle {
+  0%, 100% { opacity: 0.15; transform: translateY(0); }
+  50%       { opacity: 0.7;  transform: translateY(-8px); }
+}
+
+.hero-glow-blue {
+  animation: heroGlowBlue 11s ease-in-out infinite;
+}
+.hero-glow-cyan {
+  animation: heroGlowCyan 13s ease-in-out infinite;
+}
+.hero-rotate {
+  animation: heroRotate 70s linear infinite;
+}
+.hero-particle {
+  animation: heroParticle 6s ease-in-out infinite;
+}
+
+/* ── Page transition (replaces framer-motion in template.tsx) ── */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-transition {
+  animation: pageFadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow-blue,
+  .hero-glow-cyan,
+  .hero-rotate,
+  .hero-particle,
+  .page-transition {
+    animation: none;
+  }
+}
+
 /* Homepage section H2 headings — One Platform, Why Teams Switch,
    Explore the Full Library, AI Spotlight, How It Works, Built for Your Team,
    Integrations, Industries, What Customers Say, FAQ, and CTA all use
@@ -351,13 +401,12 @@ p {
   border-radius: 1rem;
   border: none;
   box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.18);
-  background-color: #F7F6F2;
   max-width: 100%;
   height: auto;
   margin: 1.75em auto;
   display: block;
-  padding: 1rem;
-  background: #F7F6F2;
+  padding: 0;
+  background: transparent;
   outline: none;
 }
 

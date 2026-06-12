@@ -21,7 +21,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-15"
 readingTime: "7 min"
-featuredImage: "/images/blog/323 area code new.png"
+featuredImage: "/images/blog/323 area code new.webp"
 featuredImageFit: "contain"
 ---
 

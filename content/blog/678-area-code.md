@@ -22,7 +22,7 @@ tags:
 author: "Rozper Team"
 publishDate: "2025-05-15"
 readingTime: "7 min"
-featuredImage: "/images/blog/678-area-code-1280x720.webp"
+featuredImage: "/images/blog/678 area codenew.webp"
 featuredImageFit: "contain"
 featuredImagePosition: "top"
 ---

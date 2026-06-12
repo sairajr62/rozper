@@ -66,12 +66,13 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           className="relative grid lg:grid-cols-12 gap-0 rounded-3xl bg-[#0A1020]/85 backdrop-blur-2xl overflow-hidden"
         >
           {/* Visual */}
-          <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden">
+          <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden bg-white">
             {post.featuredImage ? (
               <BlogImage
                 src={post.featuredImage.src}
                 alt={post.featuredImage.alt}
-                className="absolute inset-0 w-full h-full object-cover object-left transition-transform duration-700 group-hover:scale-[1.03]"
+                fit={post.featuredImageFit ?? "cover"}
+                className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
                 tone="blue"
                 label={`Featured · ${categoryLabel}`}
               >
@@ -168,12 +169,13 @@ function PostCard({
         href={`/blog/${post.slug}`}
         className="block h-full rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#046BD2]/40 transition-all duration-300 overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_60px_-25px_rgba(4,107,210,0.6)]"
       >
-        <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="relative aspect-[16/10] overflow-hidden bg-white">
           {post.featuredImage ? (
             <BlogImage
               src={post.featuredImage.src}
               alt={post.featuredImage.alt}
-              className={`absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.04] ${post.featuredImageFit === "contain" ? "object-contain" : "object-cover object-left"}`}
+              fit={post.featuredImageFit ?? "cover"}
+              className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.04]"
               tone={tone}
               label={categoryLabel}
             >

@@ -79,6 +79,10 @@ export function TrustBar() {
                 key={`logo-${i}`}
                 src={logo.src}
                 alt={logo.name}
+                width={120}
+                height={28}
+                loading="lazy"
+                decoding="async"
                 className="h-6 sm:h-7 w-auto object-contain opacity-60 hover:opacity-90 transition-all duration-300 grayscale-[60%] hover:grayscale-0 shrink-0"
               />
             ))}

@@ -102,7 +102,7 @@ export function Footer() {
               width={140}
               height={40}
               className="h-8 w-auto"
-              priority
+              loading="lazy"
             />
             <p className="mt-5 text-sm text-[#9AA8BC] leading-relaxed max-w-md">
               Carrier-grade unified communications, cloud contact center, and

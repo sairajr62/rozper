@@ -414,6 +414,7 @@ export function Navbar() {
                   alt="Rozper"
                   width={160}
                   height={50}
+                  sizes="(max-width: 640px) 120px, 160px"
                   className="h-8 sm:h-10 w-auto max-w-[120px] sm:max-w-[160px]"
                   priority
                 />
