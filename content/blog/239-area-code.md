@@ -20,7 +20,7 @@ tags:
   - virtual numbers
   - local presence
   - business phone
-author: "Rozper Team"
+author: "Shahid Kathawala"
 publishDate: "2025-05-15"
 readingTime: "7 min"
 featuredImage: "/images/blog/239-area-code-cover.webp"

@@ -21,7 +21,7 @@ tags:
   - virtual numbers
   - local presence
   - business phone
-author: "Rozper Team"
+author: "Shahid Kathawala"
 publishDate: "2025-05-20"
 readingTime: "8 min"
 featuredImage: "/images/blog/917 area code new.webp"
