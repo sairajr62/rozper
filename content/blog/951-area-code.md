@@ -3,7 +3,7 @@ title: "951 Area Code Guide: Local CA Numbers VoIP"
 slug: "951-area-code"
 excerpt: "Achieving a resonant local identity is paramount for enterprises targeting Southern California's economically vibrant Inland Empire and Riverside County, where the 951 area code provides essential access. This telephonic gateway opens direct channels to a burgeoning customer base and diverse commercial landscape."
 seoTitle: "951 Area Code Guide: Local CA Numbers VoIP"
-seoDescription: "Get a 951 area code number for your Inland Empire business. Rozper virtual numbers cover Riverside, Temecula & Corona with call forwarding, CRM sync & 24/7 support."
+seoDescription: "Get a 951 area code number for your Inland Empire business. Rozper covers Riverside, Temecula & Corona with call forwarding & CRM sync."
 keywords:
   - 951 area code
   - 951 area code number

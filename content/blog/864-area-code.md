@@ -3,7 +3,7 @@ title: "864 Area Code: The Complete Business Guide for Upstate South Carolina"
 slug: "864-area-code"
 excerpt: "An 864 area code builds instant local trust across Greenville, Spartanburg, and Anderson — boosting call answer rates and giving your business a credible Upstate South Carolina presence."
 seoTitle: "864 Area Code: Complete Business Guide for Upstate South Carolina"
-seoDescription: "An 864 area code builds instant local trust across Greenville, Spartanburg, and Anderson — boosting call answer rates and giving your business a credible Upstate South Carolina presence."
+seoDescription: "An 864 area code builds local trust in Greenville, Spartanburg & Anderson — boosting call answer rates for your Upstate South Carolina business."
 keywords:
   - 864 area code
   - 864 area code number

@@ -2,8 +2,8 @@
 title: "805 Area Code: The Complete Business Guide for California's Central Coast"
 slug: "805-area-code"
 excerpt: "An 805 area code builds instant local trust across Ventura, Santa Barbara, and San Luis Obispo — boosting call answer rates and giving your business a credible Central Coast presence."
-seoTitle: "805 Area Code: Complete Business Guide for California's Central Coast"
-seoDescription: "An 805 area code builds instant local trust across Ventura, Santa Barbara, and San Luis Obispo — boosting call answer rates and giving your business a credible Central Coast presence."
+seoTitle: "805 Area Code: Complete Guide for California's Central Coast"
+seoDescription: "An 805 area code builds local trust in Ventura, Santa Barbara & San Luis Obispo — boosting call answer rates for your Central Coast business."
 keywords:
   - 805 area code
   - 805 area code number

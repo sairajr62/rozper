@@ -3,7 +3,7 @@ title: "936 Area Code: The Complete Business Guide for Deep East Texas"
 slug: "936-area-code"
 excerpt: "A 936 area code builds instant local trust across Conroe, Huntsville, Lufkin, and Nacogdoches — boosting call answer rates and giving your business a credible Deep East Texas presence."
 seoTitle: "936 Area Code: Complete Business Guide for Deep East Texas"
-seoDescription: "A 936 area code builds instant local trust across Conroe, Huntsville, Lufkin, and Nacogdoches — boosting call answer rates and giving your business a credible Deep East Texas presence."
+seoDescription: "A 936 area code builds local trust in Conroe, Huntsville, Lufkin & Nacogdoches — boosting call answer rates for your Deep East Texas business."
 keywords:
   - 936 area code
   - 936 area code number

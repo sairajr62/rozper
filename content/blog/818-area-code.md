@@ -2,8 +2,8 @@
 title: "818 Area Code: The Complete Business Guide for LA's San Fernando Valley"
 slug: "818-area-code"
 excerpt: "An 818 area code builds instant local trust across Burbank, Glendale, and the San Fernando Valley — boosting call answer rates and giving your business a credible LA presence."
-seoTitle: "818 Area Code: Complete Business Guide for LA's San Fernando Valley"
-seoDescription: "An 818 area code builds instant local trust across Burbank, Glendale, and the San Fernando Valley — boosting call answer rates and giving your business a credible LA presence."
+seoTitle: "818 Area Code: Business Guide for LA's San Fernando Valley"
+seoDescription: "An 818 area code builds local trust in Burbank, Glendale & the San Fernando Valley — boosting call answer rates for your LA business."
 keywords:
   - 818 area code
   - 818 area code number
