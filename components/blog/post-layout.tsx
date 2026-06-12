@@ -424,10 +424,8 @@ export function PostLayout({
   const clickLockRef = useRef(false)
   const clickLockTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Show the TOC only while the article prose is in view:
-  // - starts when the section top crosses the navbar (prevents hero overlap)
-  // - stops when the article's bottom edge scrolls within 200px of the navbar
-  //   (hides before the author bio / end CTA / footer area)
+  // Show the TOC as soon as the article section enters the viewport and hide
+  // it once the article bottom scrolls away (author bio / end CTA area).
   useEffect(() => {
     const el = sectionRef.current
     if (!el) return
@@ -435,7 +433,7 @@ export function PostLayout({
       const sectionTop = el.getBoundingClientRect().top
       const articleBottom =
         articleRef.current?.getBoundingClientRect().bottom ?? Infinity
-      setTocVisible(sectionTop <= 112 && articleBottom > 200)
+      setTocVisible(sectionTop <= window.innerHeight && articleBottom > 200)
     }
     check()
     window.addEventListener("scroll", check, { passive: true })
