@@ -418,7 +418,7 @@ export function PostLayout({
   const tocListRef = useRef<HTMLUListElement>(null)
   const activeIdRef = useRef<string>("")
   const [activeId, setActiveId] = useState<string>("")
-  const [tocVisible, setTocVisible] = useState(false)
+  const [tocVisible, setTocVisible] = useState(true)
   // Blocks scroll-spy from overriding an explicit click selection while the
   // smooth-scroll animation is still in progress.
   const clickLockRef = useRef(false)
