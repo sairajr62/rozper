@@ -477,6 +477,11 @@ p {
   color: inherit;
 }
 
+/* Mobile TOC chevron rotation when open */
+.toc-mobile[open] .toc-chevron {
+  transform: rotate(180deg);
+}
+
 /* ─────────────────────────────────────────────────────────────────────────
    Inline FAQ accordion — replaces a WordPress-rendered FAQ section
    in the article body. Built from native <details> for accessibility +

@@ -14,6 +14,7 @@ interface BlogImageProps {
   tone?: Tone
   label?: string
   fit?: "cover" | "contain"
+  sizes?: string
   children?: React.ReactNode
 }
 
@@ -25,6 +26,7 @@ export function BlogImage({
   tone = "blue",
   label = "Article",
   fit = "cover",
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 700px",
   children,
 }: BlogImageProps) {
   const [broken, setBroken] = useState(false)
@@ -42,7 +44,7 @@ export function BlogImage({
           src={src}
           alt={alt}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 700px"
+          sizes={sizes}
           style={{
             objectFit: fit,
             objectPosition: fit === "contain" ? "center" : "left center",

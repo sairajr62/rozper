@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Sparkles,
   Tag,
+  ChevronDown,
 } from "lucide-react"
 import { motion } from "framer-motion"
 import type { BlogAuthor } from "@/lib/blog-api"
@@ -694,6 +695,35 @@ export function PostLayout({
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-20"
       >
         <div className="lg:pl-64 xl:pl-72">
+          {/* Mobile/tablet TOC — collapsible, hidden on lg+ where the fixed sidebar shows */}
+          {toc.length > 0 && (
+            <details className="lg:hidden mb-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden toc-mobile">
+              <summary className="cursor-pointer select-none list-none flex items-center justify-between gap-2 p-4 text-[10px] uppercase tracking-[0.22em] font-mono text-white/45 hover:text-white/70 transition-colors">
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
+                  Table of contents
+                </div>
+                <ChevronDown className="toc-chevron w-4 h-4 transition-transform duration-200" />
+              </summary>
+              <ul className="px-4 pb-4 space-y-0.5 border-t border-white/[0.06] pt-3">
+                {toc.map((entry, i) => (
+                  <li key={entry.id}>
+                    <a
+                      href={`#${entry.id}`}
+                      onClick={(e) => handleTocClick(e, entry.id)}
+                      className={`flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm text-white/55 hover:text-white/90 hover:bg-white/[0.04] border-l-2 border-transparent transition-colors ${entry.level === 3 ? "pl-6 text-[13px]" : ""}`}
+                    >
+                      <span className="shrink-0 mt-px font-mono text-[11px] tabular-nums text-white/30">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="leading-snug">{entry.text}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+
           <article
             ref={articleRef as React.RefObject<HTMLElement>}
             className="blog-prose max-w-3xl"

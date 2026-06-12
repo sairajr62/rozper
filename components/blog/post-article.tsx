@@ -170,11 +170,11 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
                     alt={post.featuredImage.alt}
                     tone="blue"
                     label={post.categories[0]?.name ?? "Article"}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px"
                     className="absolute inset-0 w-full h-full object-cover object-center sm:object-left"
                     style={post.featuredImagePosition ? { objectPosition: post.featuredImagePosition } : undefined}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/40 via-transparent to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#046BD2]/8 via-transparent to-[#22D3EE]/8 mix-blend-overlay opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/20 via-transparent to-transparent" />
                   </BlogImage>
                 </div>
               </div>

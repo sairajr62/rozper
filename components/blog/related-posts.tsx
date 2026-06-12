@@ -64,7 +64,7 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
                     <BlogImage
                       src={post.featuredImage.src}
                       alt={post.featuredImage.alt}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      className="absolute inset-0 w-full h-full object-cover"
                       tone={tone}
                       label={categoryLabel}
                     >
