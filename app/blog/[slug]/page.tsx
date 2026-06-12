@@ -14,8 +14,8 @@ import {
 } from "@/lib/blog-api"
 import { SITE_URL } from "@/lib/site"
 
-// Refresh each post every 30 min via ISR.
-export const revalidate = 1800
+// Statically generate at build time from local markdown posts.
+export const dynamic = "force-static"
 // Allow on-demand rendering of any new slug that wasn't pre-built.
 export const dynamicParams = true
 

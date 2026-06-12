@@ -277,7 +277,7 @@ export function ProdCCSupervisorToolsPageView() {
               className="mt-10 flex flex-row flex-nowrap gap-2 sm:gap-3"
             >
               <Link
-                href="/contact"
+                href="/free-trial"
                 className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap"
               >
                 Start a free trial{" "}
@@ -366,7 +366,7 @@ export function ProdCCSupervisorToolsPageView() {
             </h2>
             <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
               <Link
-                href="/contact"
+                href="/free-trial"
                 className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-sm sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap"
               >
                 Start a free trial <ArrowRight className="w-4 h-4" />

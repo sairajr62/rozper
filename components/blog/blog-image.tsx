@@ -9,6 +9,7 @@ interface BlogImageProps {
   src: string
   alt: string
   className?: string
+  style?: React.CSSProperties
   tone?: Tone
   label?: string
   /** Extra children rendered on top of the image (overlays, badges, etc.) */
@@ -23,6 +24,7 @@ export function BlogImage({
   src,
   alt,
   className = "absolute inset-0 w-full h-full object-cover",
+  style,
   tone = "blue",
   label = "Article",
   children,
@@ -40,6 +42,7 @@ export function BlogImage({
         src={src}
         alt={alt}
         className={className}
+        style={style}
         onError={() => setBroken(true)}
       />
       {children}

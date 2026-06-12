@@ -649,10 +649,17 @@ export function Navbar() {
             {/* Right: CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <Button
+                variant="ghost"
+                className="text-white/80 hover:text-white hover:bg-white/[0.06] text-sm font-medium h-9 px-4 rounded-lg"
+                asChild
+              >
+                <Link href="/sign-in">Sign In</Link>
+              </Button>
+              <Button
                 className="bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium h-9 px-5 rounded-lg shadow-[0_0_24px_-8px_rgba(4,107,210,0.7)]"
                 asChild
               >
-                <Link href="/contact">Start a free trial</Link>
+                <Link href="/free-trial">Start a free trial</Link>
               </Button>
             </div>
 
@@ -795,12 +802,21 @@ export function Navbar() {
               </div>
 
               {/* CTA */}
-              <div className="px-4 pt-2 pb-4 border-t border-white/10">
+              <div className="px-4 pt-2 pb-4 border-t border-white/10 flex flex-col gap-2">
+                <Button
+                  variant="outline"
+                  className="w-full border-white/15 bg-white/[0.04] hover:bg-white/10 text-white font-medium h-11 rounded-xl"
+                  asChild
+                >
+                  <Link href="/sign-in" onClick={() => setIsOpen(false)}>
+                    Sign In
+                  </Link>
+                </Button>
                 <Button
                   className="w-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-medium h-11 rounded-xl"
                   asChild
                 >
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <Link href="/free-trial" onClick={() => setIsOpen(false)}>
                     Start a free trial
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>

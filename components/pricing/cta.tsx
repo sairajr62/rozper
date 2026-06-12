@@ -136,7 +136,7 @@ export function PricingCTA() {
               className="flex flex-row flex-wrap items-center justify-center gap-4"
             >
               <a
-                href="https://rozper.com"
+                href="/free-trial"
                 className="relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
                 style={{ boxShadow: '0 4px 24px rgba(4,107,210,0.35)' }}
               >

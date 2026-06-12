@@ -71,11 +71,11 @@ function FeaturedCard({ post }: { post: BlogPost }) {
               <BlogImage
                 src={post.featuredImage.src}
                 alt={post.featuredImage.alt}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="absolute inset-0 w-full h-full object-cover object-left transition-transform duration-700 group-hover:scale-[1.03]"
                 tone="blue"
                 label={`Featured · ${categoryLabel}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A1020]/85 via-[#0A1020]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0A1020]" />
                 <div className="absolute top-4 left-4">
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.16em] text-white">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#22D3EE] shadow-[0_0_8px_#22D3EE]" />
@@ -173,7 +173,7 @@ function PostCard({
             <BlogImage
               src={post.featuredImage.src}
               alt={post.featuredImage.alt}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              className={`absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.04] ${post.featuredImageFit === "contain" ? "object-contain" : "object-cover object-left"}`}
               tone={tone}
               label={categoryLabel}
             >
@@ -301,7 +301,7 @@ export function BlogPostsSection({
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#B8C4D4] font-light">
             {isError
-              ? "We had trouble fetching the latest posts from rozper.com. The page will retry automatically on the next refresh — or reload manually if you'd like to try sooner."
+              ? "We had trouble loading the latest posts. Reload the page to try again."
               : "Nothing has been published yet. Check back soon."}
           </p>
           {isError && (
@@ -359,9 +359,8 @@ export function BlogPostsSection({
                 </button>
               ) : (
                 <p className="mt-2 text-sm sm:text-base text-[#B8C4D4] max-w-xl font-light">
-                  Live feed from rozper.com — operator guides, area-code
-                  playbooks, and the voice-infra deep dives our team ships every
-                  week.
+                  Operator guides, area-code playbooks, and the voice-infra deep
+                  dives our team ships every week.
                 </p>
               )}
             </div>

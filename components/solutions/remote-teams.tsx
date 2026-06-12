@@ -548,7 +548,7 @@ export function RemoteTeamsPageView() {
             </h2>
             <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
               <Link
-                href="/contact"
+                href="/free-trial"
                 className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base whitespace-nowrap font-semibold hover:scale-105 transition relative"
               >
                 Start a free trial <ArrowRight className="w-4 h-4" />

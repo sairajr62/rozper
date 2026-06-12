@@ -317,8 +317,9 @@ export function PricingPlans() {
                   </ul>
 
                   {/* CTA — pinned to bottom */}
-                  <button
-                    className="mt-auto w-full py-3 rounded-xl font-bold text-sm transition-all duration-200 focus:outline-none"
+                  <a
+                    href={plan.id === 'trial' ? '/free-trial' : '/contact'}
+                    className="mt-auto w-full py-3 rounded-xl font-bold text-sm transition-all duration-200 focus:outline-none text-center block"
                     style={
                       isPopular
                         ? { background: 'white', color: '#0B1220' }
@@ -346,7 +347,7 @@ export function PricingPlans() {
                     }}
                   >
                     {plan.cta}
-                  </button>
+                  </a>
                 </div>
               </motion.div>
             )

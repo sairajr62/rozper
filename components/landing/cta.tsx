@@ -155,20 +155,23 @@ export function CTA() {
                 <Button
                   size="lg"
                   className="relative h-11 sm:h-14 px-3 sm:px-8 text-xs sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
+                  asChild
                 >
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12"
-                    animate={{ x: ["-150%", "150%"] }}
-                    transition={{
-                      duration: 2.4,
-                      repeat: Infinity,
-                      repeatDelay: 2.5,
-                    }}
-                  />
-                  <span className="relative flex items-center justify-center gap-2">
-                    Start a free trial
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
+                  <Link href="/free-trial">
+                    <motion.span
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12"
+                      animate={{ x: ["-150%", "150%"] }}
+                      transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        repeatDelay: 2.5,
+                      }}
+                    />
+                    <span className="relative flex items-center justify-center gap-2">
+                      Start a free trial
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
                 </Button>
               </motion.div>
 

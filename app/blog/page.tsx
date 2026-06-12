@@ -61,8 +61,8 @@ const blogBreadcrumbSchema = {
   ],
 }
 
-// Refresh the listing every 30 min via ISR.
-export const revalidate = 1800
+// Statically generate at build time from local markdown posts.
+export const dynamic = "force-static"
 
 export default async function BlogPage() {
   let posts: Awaited<ReturnType<typeof fetchAllPosts>>["posts"] = []

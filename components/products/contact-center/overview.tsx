@@ -306,7 +306,7 @@ export function ContactCenterPageView() {
                 className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3"
               >
                 <Link
-                  href="/contact"
+                  href="/free-trial"
                   className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded bg-[#046BD2] text-xs sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
                 >
                   Start a Free Trial
@@ -489,7 +489,7 @@ export function ContactCenterPageView() {
               </div>
               <div className="flex flex-row flex-wrap gap-2 sm:gap-3 md:justify-end">
                 <Link
-                  href="/contact"
+                  href="/free-trial"
                   className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded bg-[#046BD2] text-xs sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
                 >
                   Start a Free Trial

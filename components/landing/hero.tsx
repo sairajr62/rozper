@@ -825,22 +825,24 @@ export function Hero() {
                 <Button
                   size="lg"
                   className="group relative h-11 w-auto overflow-hidden rounded-full bg-[#046BD2] px-4 text-xs font-semibold text-white shadow-[0_0_50px_-10px_rgba(4,107,210,0.85)] hover:bg-[#0078E0] sm:px-7 sm:text-[0.95rem]"
+                  asChild
                 >
-                  <motion.span
-                    aria-hidden
-                    className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                    animate={{ x: ["-150%", "150%"] }}
-                    transition={{
-                      duration: 2.4,
-                      repeat: Infinity,
-                      repeatDelay: 2.2,
-                    }}
-                  />
-                  <span className="relative flex items-center justify-center gap-2">
-                    Start a free trial
-                    <Link href="/contact"></Link>
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
+                  <Link href="/free-trial">
+                    <motion.span
+                      aria-hidden
+                      className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                      animate={{ x: ["-150%", "150%"] }}
+                      transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        repeatDelay: 2.2,
+                      }}
+                    />
+                    <span className="relative flex items-center justify-center gap-2">
+                      Start a free trial
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
                 </Button>
               </motion.div>
 

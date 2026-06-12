@@ -220,7 +220,7 @@ export function ProdCCOutboundDialerPageView() {
             <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-5 sm:mb-6 text-white" />
             <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-white">Dial more. Convert more. Risk less.</h2>
             <div className="mt-7 flex flex-row items-center justify-center gap-3">
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition text-sm sm:text-base whitespace-nowrap">
+              <Link href="/free-trial" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] font-semibold hover:scale-105 transition text-sm sm:text-base whitespace-nowrap">
                 Start a free trial <ArrowRight className="w-4 h-4 shrink-0" />
               </Link>
               <Link href="/pricing" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/15 border border-white/30 text-white font-semibold hover:bg-white/25 transition text-sm sm:text-base whitespace-nowrap">See pricing</Link>

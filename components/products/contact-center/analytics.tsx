@@ -220,7 +220,7 @@ export function ProdCCAnalyticsPageView() {
               className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3"
             >
               <Link
-                href="/contact"
+                href="/free-trial"
                 className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap"
               >
                 Start a free trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -308,7 +308,7 @@ export function ProdCCAnalyticsPageView() {
             </h2>
             <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
               <Link
-                href="/contact"
+                href="/free-trial"
                 className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white text-[#046BD2] text-xs sm:text-base font-semibold hover:scale-105 transition whitespace-nowrap"
               >
                 Start a free trial <ArrowRight className="w-4 h-4" />

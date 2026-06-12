@@ -842,7 +842,7 @@ export function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/free-trial"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#046BD2] hover:bg-[#046BD2]/90 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#046BD2]/40 hover:-translate-y-0.5"
             >
               Start a free trial

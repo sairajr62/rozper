@@ -445,10 +445,13 @@ export function PostLayout({
   // server and client, so no hydration mismatch). The TOC is derived from
   // the SAME pass, so every anchor is guaranteed to point at a real heading
   // id that lives in the React-managed DOM and survives re-renders.
-  const { html: processedHtml, toc } = useMemo(
+  const { html: processedHtml, toc: rawToc } = useMemo(
     () => injectHeadingIds(html),
     [html],
   )
+
+  const introHtml = processedHtml
+  const toc = rawToc
 
   // TOC click: scroll the heading to just below the fixed navbar explicitly.
   // The anchors keep their real `href="#id"` (SSR-friendly, right-click /
@@ -697,7 +700,7 @@ export function PostLayout({
             // Content comes from the WordPress REST API (rozper.com) or
             // local Markdown — both trusted sources. `processedHtml` has
             // stable heading IDs baked in for the TOC anchors.
-            dangerouslySetInnerHTML={{ __html: processedHtml }}
+            dangerouslySetInnerHTML={{ __html: introHtml }}
           />
 
           <AuthorBio author={author} />

@@ -370,7 +370,7 @@ export function WholesaleVoipPageView() {
               className="mt-4 sm:mt-8 flex gap-3"
             >
               <Link
-                href="/contact"
+                href="/free-trial"
                 className="group inline-flex items-center gap-2 rounded-full bg-[#046BD2] px-6 py-3.5 font-semibold text-white transition hover:bg-[#0086F9] sm:px-7 sm:py-4"
               >
                 Get a Free Trial
@@ -675,7 +675,7 @@ export function WholesaleVoipPageView() {
             </p>
             <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10">
               <Link
-                href="/contact"
+                href="/free-trial"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-[#046BD2] transition hover:scale-105 sm:px-7 sm:py-4 whitespace-nowrap"
               >
                 Get a Free Trial <ArrowRight className="h-4 w-4" />

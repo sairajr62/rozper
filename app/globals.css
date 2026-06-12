@@ -88,6 +88,15 @@ body {
   display: none;             /* Chrome / Safari / WebKit */
 }
 
+@keyframes earthRotate {
+  0%   { background-position: 0 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes globeTwinkling      { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+@keyframes globeTwinklingSlow  { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+@keyframes globeTwinklingLong  { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+@keyframes globeTwinklingFast  { 0%,100% { opacity:0.1; } 50% { opacity:1; } }
+
 /* Homepage section H2 headings — One Platform, Why Teams Switch,
    Explore the Full Library, AI Spotlight, How It Works, Built for Your Team,
    Integrations, Industries, What Customers Say, FAQ, and CTA all use
@@ -340,12 +349,16 @@ p {
 .blog-prose img,
 .blog-prose figure img {
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 30px 60px -40px rgba(4, 107, 210, 0.5);
+  border: none;
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.18);
+  background-color: #F7F6F2;
   max-width: 100%;
   height: auto;
   margin: 1.75em auto;
   display: block;
+  padding: 1rem;
+  background: #F7F6F2;
+  outline: none;
 }
 
 .blog-prose figure { margin: 1.75em 0; }

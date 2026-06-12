@@ -11,7 +11,7 @@ keywords:
   - Southwest Florida virtual phone number
   - 239 number for business
   - area code 239
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Naples

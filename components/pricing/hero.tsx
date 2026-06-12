@@ -128,14 +128,14 @@ export function PricingHero() {
           transition={{ duration: 0.7, delay: 0.58 }}
           className="flex flex-row flex-wrap items-center justify-center gap-4"
         >
-          <button className="relative overflow-hidden whitespace-nowrap px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
+          <a href="/free-trial" className="relative overflow-hidden whitespace-nowrap px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
             style={{ boxShadow: '0 0 0 0 rgba(4,107,210,0.4)' }}
             onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 40px rgba(4,107,210,0.45)')}
             onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 0 0 rgba(4,107,210,0.4)')}
           >
             <span className="relative z-10">Start Free Trial — No Card Required</span>
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-          </button>
+          </a>
           <a
             href="#pricing-plans"
             className="px-6 py-4 text-[#CCD6DF] font-medium hover:text-white transition-all duration-300 border border-white/[0.1] rounded-xl hover:border-white/[0.22] hover:bg-white/[0.03]"

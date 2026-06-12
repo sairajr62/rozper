@@ -179,6 +179,26 @@ function mdToHtml(md: string, opts: { skipFirstH1?: boolean } = {}): string {
       continue
     }
 
+    // Table (GFM pipe tables)
+    if (/^\s*\|/.test(line)) {
+      const tableLines: string[] = []
+      while (i < lines.length && /^\s*\|/.test(lines[i]!)) {
+        tableLines.push(lines[i]!)
+        i++
+      }
+      if (tableLines.length >= 2) {
+        const parseRow = (r: string) =>
+          r.split("|").slice(1, -1).map((c) => c.trim())
+        const headers = parseRow(tableLines[0]!)
+        // tableLines[1] is the separator row — skip it
+        const rows = tableLines.slice(2)
+        const thead = `<thead><tr>${headers.map((h) => `<th>${inlineMd(h)}</th>`).join("")}</tr></thead>`
+        const tbody = `<tbody>${rows.map((r) => `<tr>${parseRow(r).map((c) => `<td>${inlineMd(c)}</td>`).join("")}</tr>`).join("")}</tbody>`
+        out.push(`<table>${thead}${tbody}</table>`)
+      }
+      continue
+    }
+
     // Blank line: skip
     if (/^\s*$/.test(line)) {
       i++
@@ -240,7 +260,10 @@ function stripHtmlAndCondense(html: string): string {
 function fileToPost(filename: string): BlogPostDetail | null {
   try {
     const filePath = path.join(CONTENT_DIR, filename)
+    // Strip UTF-8 BOM if present, normalise CRLF → LF
     const raw = fs.readFileSync(filePath, "utf8")
+      .replace(/^﻿/, "")
+      .replace(/\r\n/g, "\n")
     const { data, body } = parseFrontmatter(raw)
 
     const slug = data.slug || filename.replace(/\.md$/, "")
@@ -302,6 +325,8 @@ function fileToPost(filename: string): BlogPostDetail | null {
       featuredImage: data.featuredImage
         ? { src: data.featuredImage, alt: title }
         : undefined,
+      featuredImageFit: data.featuredImageFit ?? "cover",
+      featuredImagePosition: data.featuredImagePosition,
       categories,
       tags,
       seoTitle: data.seoTitle,
