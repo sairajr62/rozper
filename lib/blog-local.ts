@@ -7,9 +7,11 @@
 
 import fs from "fs"
 import path from "path"
+import { fileURLToPath } from "url"
 import type { BlogPost, BlogPostDetail, BlogTerm } from "./blog-api"
 
-const CONTENT_DIR = path.join(process.cwd(), "content", "blog")
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const CONTENT_DIR = path.join(__dirname, "..", "content", "blog")
 
 // ─── Vercel Blob URL resolver ─────────────────────────────────────────────
 // Maps local /images/blog/<filename> paths to Vercel Blob CDN URLs.
