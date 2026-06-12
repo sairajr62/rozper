@@ -12,6 +12,7 @@ keywords:
   - Southwestern Connecticut
   - virtual phone number Connecticut
   - 203 number
+featuredImage: "/images/blog/203-area-code-cover.webp"
 category: "Area Codes"
 tags:
   - area code
@@ -22,7 +23,6 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-05-01"
 readingTime: "8 min"
-featuredImage: ""
 ---
 
 # 203 Area Code: Connecticut Location, Cities & Number Guide

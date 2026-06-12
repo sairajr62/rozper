@@ -3,7 +3,7 @@ title: "949 Area Code: The Complete Business Guide for Southern Orange County"
 slug: "949-area-code"
 excerpt: "A 949 area code builds instant local trust across Irvine, Newport Beach, and Mission Viejo — boosting call answer rates and giving your business a credible southern Orange County presence."
 seoTitle: "949 Area Code: Complete Business Guide for Southern Orange County"
-seoDescription: "A 949 area code builds instant local trust across Irvine, Newport Beach, and Mission Viejo — boosting call answer rates and giving your business a credible southern Orange County presence."
+seoDescription: "A 949 area code builds local trust in Irvine, Newport Beach & Mission Viejo — boosting call answer rates for your southern Orange County business."
 keywords:
   - 949 area code
   - 949 area code number
