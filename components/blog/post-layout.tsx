@@ -434,7 +434,7 @@ export function PostLayout({
       const sectionTop = el.getBoundingClientRect().top
       const articleBottom =
         articleRef.current?.getBoundingClientRect().bottom ?? Infinity
-      setTocVisible(sectionTop < window.innerHeight && articleBottom > 200)
+      setTocVisible(articleBottom > 200)
     }
     check()
     window.addEventListener("scroll", check, { passive: true })
