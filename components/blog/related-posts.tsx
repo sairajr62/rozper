@@ -59,15 +59,16 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
                 href={`/blog/${post.slug}`}
                 className="group block h-full rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#046BD2]/40 transition-all duration-300 overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_60px_-25px_rgba(4,107,210,0.6)]"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-white">
+                <div className="relative aspect-[16/10] overflow-hidden">
                   {post.featuredImage ? (
                     <BlogImage
                       src={post.featuredImage.src}
                       alt={post.featuredImage.alt}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                       tone={tone}
                       label={categoryLabel}
                     >
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/80 via-[#0A1020]/20 to-transparent" />
                       <div className="absolute top-3 left-3">
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.16em] text-white">
                           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#22D3EE] shadow-[0_0_8px_#22D3EE]" />

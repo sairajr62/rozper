@@ -37,7 +37,7 @@ const capabilities = [
     title: "SIP Trunking",
     tag: "Infra",
     description: "Flexible SIP for any PBX — bring your own session border controller.",
-    href: "/products/ucaas/phone-system",
+    href: "/products/ucaas/hosted-phone-system",
     accent: "from-[#0078E0] to-[#046BD2]",
   },
 ]

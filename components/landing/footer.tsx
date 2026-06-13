@@ -10,9 +10,9 @@ const footerColumns = [
     title: 'Unified Communication',
     href: '/products/ucaas',
     links: [
-      { label: 'Business Phone System', href: '/products/ucaas/business-phone' },
-      { label: 'HD Video Meetings', href: '/products/ucaas/video-meetings' },
-      { label: 'Business SMS & MMS', href: '/products/ucaas/sms-mms' },
+      { label: 'Business Phone System', href: '/products/ucaas/business-phone-system' },
+      { label: 'HD Video Meetings', href: '/products/ucaas/hd-video-meetings' },
+      { label: 'Business SMS & MMS', href: '/products/ucaas/business-sms-mms' },
       { label: 'Team Chat', href: '/products/ucaas/team-chat' },
     ],
   },

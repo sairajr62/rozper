@@ -57,7 +57,7 @@ const topics = [
     icon: ShieldCheck,
     title: "Security & Compliance",
     blurb:
-      "HIPAA, SOC 2, PCI — practical patterns for regulated industries that move a lot of voice.",
+      "SOC 2, PCI — practical patterns for regulated industries that move a lot of voice.",
     count: 14,
     href: "/blog/topic/compliance",
   },

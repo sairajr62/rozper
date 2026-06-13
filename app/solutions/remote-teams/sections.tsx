@@ -81,8 +81,8 @@ const faqs = [
 
 const relatedLinks = [
   { title: 'UCaaS Platform', href: '/products/ucaas', desc: 'Unified comms for your whole org' },
-  { title: 'Video Meetings', href: '/products/ucaas/video-meetings', desc: 'HD video, no downloads' },
-  { title: 'SaaS & Tech Solutions', href: '/solutions/saas', desc: 'Built for fast-growing teams' },
+  { title: 'Video Meetings', href: '/products/ucaas/hd-video-meetings', desc: 'HD video, no downloads' },
+  { title: 'SaaS & Tech Solutions', href: '/solutions/saas-tech', desc: 'Built for fast-growing teams' },
   { title: 'Pricing', href: '/pricing', desc: 'Simple, scalable plans' },
 ]
 
