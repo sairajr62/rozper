@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-06-13"
 readingTime: "11 min"
-featuredImage: "/images/blog/205-area-code-cover.webp"
+featuredImage: "/images/blog/205 hero image.webp"
 ---
 
 # 205 Area Code: Birmingham, AL — Cities, History, Scams & Business Guide
