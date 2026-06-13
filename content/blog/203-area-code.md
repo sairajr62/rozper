@@ -23,7 +23,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-06-13"
 readingTime: "11 min"
-featuredImage: "/images/blog/203-area-code-cover.webp"
+featuredImage: "/images/blog/203 hero image.webp"
 ---
 
 # 203 Area Code: Southwestern Connecticut — Cities, History, Scams & Business Guide
