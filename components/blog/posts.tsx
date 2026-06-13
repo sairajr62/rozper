@@ -11,6 +11,12 @@ import { BlogImage } from "./blog-image"
 
 const ALL = "All"
 
+// "Virtual Numbers" posts are shown under the "Area Codes" pill.
+const CATEGORY_ALIASES: Record<string, string> = {
+  "Virtual Numbers": "Area Codes",
+}
+const resolveCategory = (name: string) => CATEGORY_ALIASES[name] ?? name
+
 const toneSequence: Array<"blue" | "cyan" | "violet" | "emerald" | "amber"> = [
   "blue",
   "cyan",
@@ -66,17 +72,16 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           className="relative grid lg:grid-cols-12 gap-0 rounded-3xl bg-[#0A1020]/85 backdrop-blur-2xl overflow-hidden"
         >
           {/* Visual */}
-          <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden bg-white">
+          <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden">
             {post.featuredImage ? (
               <BlogImage
                 src={post.featuredImage.src}
                 alt={post.featuredImage.alt}
-                fit={post.featuredImageFit ?? "cover"}
-                className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.03]"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 tone="blue"
                 label={`Featured · ${categoryLabel}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0A1020]" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0A1020]/85 via-[#0A1020]/40 to-transparent" />
                 <div className="absolute top-4 left-4">
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.16em] text-white">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#22D3EE] shadow-[0_0_8px_#22D3EE]" />
@@ -169,13 +174,12 @@ function PostCard({
         href={`/blog/${post.slug}`}
         className="block h-full rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#046BD2]/40 transition-all duration-300 overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_60px_-25px_rgba(4,107,210,0.6)]"
       >
-        <div className="relative aspect-[16/10] overflow-hidden bg-white">
+        <div className="relative aspect-[16/10] overflow-hidden">
           {post.featuredImage ? (
             <BlogImage
               src={post.featuredImage.src}
               alt={post.featuredImage.alt}
-              fit={post.featuredImageFit ?? "cover"}
-              className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-[1.04]"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               tone={tone}
               label={categoryLabel}
             >
@@ -252,7 +256,8 @@ export function BlogPostsSection({
     const map = new Map<string, number>()
     for (const p of posts) {
       for (const c of p.categories) {
-        map.set(c.name, (map.get(c.name) ?? 0) + 1)
+        const resolved = resolveCategory(c.name)
+        map.set(resolved, (map.get(resolved) ?? 0) + 1)
       }
     }
     const sorted = Array.from(map.entries())
@@ -274,7 +279,7 @@ export function BlogPostsSection({
 
   const filtered = useMemo(() => {
     if (active === ALL) return rest
-    return rest.filter((p) => p.categories.some((c) => c.name === active))
+    return rest.filter((p) => p.categories.some((c) => resolveCategory(c.name) === active))
   }, [rest, active])
 
   const clearSearch = () => {
@@ -303,7 +308,7 @@ export function BlogPostsSection({
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#B8C4D4] font-light">
             {isError
-              ? "We had trouble loading the latest posts. Reload the page to try again."
+              ? "We had trouble fetching the latest posts from rozper.com. The page will retry automatically on the next refresh — or reload manually if you'd like to try sooner."
               : "Nothing has been published yet. Check back soon."}
           </p>
           {isError && (
@@ -361,8 +366,9 @@ export function BlogPostsSection({
                 </button>
               ) : (
                 <p className="mt-2 text-sm sm:text-base text-[#B8C4D4] max-w-xl font-light">
-                  Operator guides, area-code playbooks, and the voice-infra deep
-                  dives our team ships every week.
+                  Live feed from rozper.com — operator guides, area-code
+                  playbooks, and the voice-infra deep dives our team ships every
+                  week.
                 </p>
               )}
             </div>
