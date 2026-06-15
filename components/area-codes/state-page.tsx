@@ -8,9 +8,7 @@ import {
   Hash, Globe, Clock, ShieldCheck, TrendingUp, Building2,
   Users, Zap, BadgeCheck, PhoneCall, CheckCircle2,
   ChevronDown, Star, BarChart3, Laptop, Headphones,
-  CalendarDays, Users2, Landmark, Map,
 } from "lucide-react"
-import { getStateInfo } from "@/lib/state-data"
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -202,140 +200,11 @@ export function StateHero({ state, stateSlug, codeCount, codes }: {
             </motion.div>
           </div>
 
-          {/* Right: State map */}
+          {/* Right: SVG — hidden below lg */}
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.15 }}
             className="hidden lg:block"
           >
-            <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl" style={{ aspectRatio: "4/3" }}>
-              <iframe
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(state + ', USA')}&t=m&z=${abbr === "AK" || abbr === "CA" || abbr === "TX" ? "5" : abbr === "RI" || abbr === "DE" || abbr === "CT" || abbr === "DC" ? "9" : "7"}&ie=UTF8&output=embed`}
-                className="absolute inset-0 w-full h-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`${state} map`}
-                style={{ filter: "brightness(0.85) saturate(0.8) hue-rotate(190deg)" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#046BD2]/80 flex items-center justify-center">
-                    <MapPin className="w-3 h-3 text-white" />
-                  </div>
-                  <span className="text-white font-semibold text-sm">{state}</span>
-                  <span className="text-white/50 text-xs ml-1">· {codeCount} area code{codeCount !== 1 ? "s" : ""}</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ─── 1b. State History ───────────────────────────────────────────────────────
-
-export function StateHistory({ state, stateSlug }: { state: string; stateSlug: string }) {
-  const info = getStateInfo(stateSlug)
-  if (!info) return null
-
-  const facts = [
-    { icon: CalendarDays, label: "First area code", value: `${info.originalCode} (${info.established})` },
-    { icon: Landmark,     label: "State capital",   value: info.capital },
-    { icon: Users2,       label: "Population",       value: info.population },
-    { icon: Clock,        label: "Time zone",        value: info.timezone },
-  ]
-
-  return (
-    <section className="py-14 sm:py-20 lg:py-24 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#046BD2]/4 via-transparent to-transparent" />
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-14 items-start">
-
-          {/* Left: history text */}
-          <div>
-            <motion.div {...fi()}>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="h-px w-10 bg-gradient-to-r from-[#046BD2] to-transparent" />
-                <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#22D3EE]/80">// {state} Area Code History</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
-                The history behind {state}&apos;s area codes
-              </h2>
-            </motion.div>
-
-            <motion.p {...fi(0.06)} className="text-sm sm:text-base text-white/60 leading-relaxed mb-4">
-              {info.overview}
-            </motion.p>
-
-            <motion.p {...fi(0.1)} className="text-sm sm:text-base text-white/50 leading-relaxed mb-5">
-              {info.history}
-            </motion.p>
-
-            {/* Major cities */}
-            <motion.div {...fi(0.14)} className="flex flex-wrap gap-2 mb-6">
-              {info.majorCities.map(city => (
-                <span key={city} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs text-white/55">
-                  <MapPin className="w-3 h-3 text-[#22D3EE]/60 shrink-0" />
-                  {city}
-                </span>
-              ))}
-            </motion.div>
-
-            {/* Business context callout */}
-            <motion.div {...fi(0.18)}
-              className="relative overflow-hidden rounded-xl border border-[#046BD2]/20 bg-[#046BD2]/6 px-5 py-4"
-            >
-              <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 rounded-lg bg-[#046BD2]/20 border border-[#046BD2]/30 flex items-center justify-center shrink-0 mt-0.5">
-                  <Map className="w-4 h-4 text-[#22D3EE]" />
-                </div>
-                <div>
-                  <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#22D3EE]/70 mb-1.5">For businesses</p>
-                  <p className="text-xs sm:text-[13px] text-white/55 leading-relaxed">{info.businessContext}</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right: facts card */}
-          <motion.div {...fi(0.1)} className="lg:sticky lg:top-24">
-            <div className="bg-[#0B1728]/80 border border-white/[0.08] rounded-2xl overflow-hidden">
-              <div className="px-5 py-4 border-b border-white/[0.07] bg-gradient-to-r from-[#046BD2]/12 to-transparent">
-                <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#22D3EE]/70">{state} · Quick Facts</p>
-              </div>
-              <div className="divide-y divide-white/[0.05]">
-                {facts.map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="flex items-center gap-3 px-5 py-4">
-                    <div className="w-8 h-8 rounded-lg bg-[#046BD2]/12 border border-[#046BD2]/18 flex items-center justify-center shrink-0">
-                      <Icon className="w-4 h-4 text-[#22D3EE]/70" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-[10px] text-white/30 font-mono uppercase tracking-[0.12em] mb-0.5">{label}</p>
-                      <p className="text-sm text-white/80 font-medium truncate">{value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* State map (also on desktop in facts panel for mobile view) */}
-            <div className="mt-4 relative rounded-xl overflow-hidden border border-white/[0.08]" style={{ aspectRatio: "4/3" }}>
-              <iframe
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(state + ', USA')}&t=m&z=${info.mapZoom}&ie=UTF8&output=embed`}
-                className="absolute inset-0 w-full h-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`${state} region map`}
-                style={{ filter: "brightness(0.85) saturate(0.8) hue-rotate(190deg)" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220]/60 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-3 pointer-events-none">
-                <span className="text-[10px] text-white/40 font-mono">{state}, USA</span>
-              </div>
-            </div>
+            <NetworkSVG codes={codes} abbr={abbr} />
           </motion.div>
         </div>
       </div>
