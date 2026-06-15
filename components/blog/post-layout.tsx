@@ -693,7 +693,7 @@ export function PostLayout({
           </aside>
         )}
 
-        <div style={{ paddingLeft: "16rem" }}>
+        <div className="lg:pl-64">
           <article
             ref={articleRef as React.RefObject<HTMLElement>}
             className="blog-prose max-w-3xl"

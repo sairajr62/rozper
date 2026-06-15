@@ -95,7 +95,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           </div>
 
           {/* Body */}
-          <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col">
+          <div className="lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col">
             <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-[#22D3EE]">
               <span>Featured</span>
               <span className="text-white/20">·</span>

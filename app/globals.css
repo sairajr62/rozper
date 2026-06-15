@@ -262,12 +262,15 @@ p {
 }
 
 .blog-prose h2 {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   line-height: 1.2;
   margin-top: 2.5em;
   margin-bottom: 0.6em;
   position: relative;
   padding-left: 1rem;
+}
+@media (min-width: 640px) {
+  .blog-prose h2 { font-size: 1.875rem; }
 }
 @media (min-width: 768px) {
   .blog-prose h2 { font-size: 2.125rem; }
@@ -285,11 +288,14 @@ p {
 }
 
 .blog-prose h3 {
-  font-size: 1.375rem;
+  font-size: 1.2rem;
   line-height: 1.3;
   margin-top: 2em;
   margin-bottom: 0.5em;
   color: #ffffff;
+}
+@media (min-width: 640px) {
+  .blog-prose h3 { font-size: 1.375rem; }
 }
 @media (min-width: 768px) {
   .blog-prose h3 { font-size: 1.5rem; }

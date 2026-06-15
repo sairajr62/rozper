@@ -80,7 +80,7 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
                     <CoverArt tone={tone} label={categoryLabel} />
                   )}
                 </div>
-                <div className="p-5">
+                <div className="p-4 sm:p-5">
                   <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.16em]">
                     <span className="text-[#22D3EE]">{categoryLabel}</span>
                     <span className="flex items-center gap-1 text-white/40">

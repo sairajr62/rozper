@@ -15,7 +15,7 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
   const category = post.categories[0]
 
   return (
-    <header className="relative overflow-hidden pt-28 pb-10 lg:pt-36 lg:pb-14">
+    <header className="relative overflow-hidden pt-24 pb-8 sm:pt-28 sm:pb-10 lg:pt-36 lg:pb-14">
       {/* Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-[#070B14]" />
@@ -83,7 +83,7 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
         )}
 
         {/* Title */}
-        <h1 className="font-display mt-6 text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-[1.02] tracking-[-0.035em] font-semibold text-white">
+        <h1 className="font-display mt-6 text-[1.75rem] sm:text-[2.5rem] md:text-5xl lg:text-[4.25rem] leading-[1.05] sm:leading-[1.02] tracking-[-0.03em] sm:tracking-[-0.035em] font-semibold text-white">
           {post.title}
         </h1>
 
@@ -158,8 +158,8 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
         {post.featuredImage && (
           <div className="mt-10">
             <div className="relative">
-              {/* Yellow accent block behind image */}
-              <div className="absolute -bottom-4 -right-4 w-[88%] h-[88%] rounded-3xl bg-[#FCD34D]/50 -z-10" />
+              {/* Yellow accent block behind image — hidden on small screens to prevent overflow */}
+              <div className="hidden sm:block absolute -bottom-4 -right-4 w-[88%] h-[88%] rounded-3xl bg-[#FCD34D]/50 -z-10" />
               <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/[0.02] shadow-[0_40px_140px_-50px_rgba(4,107,210,0.7)]">
                 <div className="rounded-3xl overflow-hidden bg-[#0A1020]">
                   <div className="relative aspect-[16/9]">
