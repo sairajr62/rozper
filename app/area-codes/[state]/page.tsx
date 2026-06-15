@@ -4,6 +4,7 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import {
   StateHero,
+  StateHistory,
   StateAreaCodeGrid,
   StateBenefits,
   StateIndustries,
@@ -116,6 +117,7 @@ export default async function StateOrRedirectPage({ params }: Props) {
       />
       <Navbar />
       <StateHero state={stateName} stateSlug={stateParam} codeCount={stateCodes.length} codes={stateCodes.map(c => c.code)} />
+      <StateHistory state={stateName} stateSlug={stateParam} />
       <StateBenefits state={stateName} />
       <StateAreaCodeGrid state={stateName} stateSlug={stateParam} codes={stateCodes} />
       <StateIndustries state={stateName} />
