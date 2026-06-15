@@ -4,7 +4,6 @@ import { useState } from "react"
 import {
   HubHero,
   WhyVirtualNumbers,
-  BrowseByState,
   PopularAreaCodes,
   AreaCodeDirectory,
   HubFAQ,
@@ -23,7 +22,6 @@ interface Props {
 export function AreaCodesHubClient({ codes, stateGroups, totalCodes, totalStates }: Props) {
   const [query, setQuery] = useState("")
 
-  // When searching, skip all non-directory sections and jump straight to results
   const isSearching = query.trim().length > 0
 
   return (
@@ -37,26 +35,16 @@ export function AreaCodesHubClient({ codes, stateGroups, totalCodes, totalStates
         setQuery={setQuery}
       />
 
-      {/* 2–6. Only show when not searching */}
-      {!isSearching && (
-        <>
-          {/* 2. Why virtual numbers */}
-          <WhyVirtualNumbers />
+      {/* 2. Why virtual numbers (hidden while searching) */}
+      {!isSearching && <WhyVirtualNumbers />}
 
-          {/* 3. Browse by state */}
-          <BrowseByState stateGroups={stateGroups} />
-
-          {/* 4. Popular area codes */}
-          <PopularAreaCodes />
-        </>
-      )}
-
-      {/* 5. Full searchable directory (always shown) */}
+      {/* 3. Directory (always shown — doubles as search results) */}
       <AreaCodeDirectory codes={codes} stateGroups={stateGroups} query={query} setQuery={setQuery} />
 
-      {/* 6 & 7. FAQ + CTA (hidden while searching) */}
+      {/* 4 & 5. Popular codes + FAQ + CTA (hidden while searching) */}
       {!isSearching && (
         <>
+          <PopularAreaCodes />
           <HubFAQ />
           <HubCTA />
         </>
