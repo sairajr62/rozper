@@ -32,6 +32,7 @@ export function AreaCodesHubClient({ codes, stateGroups, totalCodes, totalStates
       <HubHero
         totalCodes={totalCodes}
         totalStates={totalStates}
+        stateGroups={stateGroups}
         query={query}
         setQuery={setQuery}
       />

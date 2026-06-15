@@ -101,11 +101,22 @@ function HubSVG() {
 interface HeroProps {
   totalCodes: number
   totalStates: number
+  stateGroups: StateGroup[]
   query: string
   setQuery: (q: string) => void
 }
 
-export function HubHero({ totalCodes, totalStates, query, setQuery }: HeroProps) {
+export function HubHero({ totalCodes, totalStates, stateGroups, query, setQuery }: HeroProps) {
+  const [HeroMapComp, setHeroMapComp] = useState<React.ComponentType<{
+    stateGroups: StateGroup[]
+    onStateHover?: (state: string | null) => void
+    onStateSelect?: (state: string) => void
+  }> | null>(null)
+
+  useEffect(() => {
+    import("@/components/area-codes/us-hub-map").then(m => setHeroMapComp(() => m.default))
+  }, [])
+
   return (
     <section className="relative pt-20 sm:pt-24 lg:pt-28 pb-0 overflow-hidden">
       {/* Background */}
@@ -181,11 +192,17 @@ export function HubHero({ totalCodes, totalStates, query, setQuery }: HeroProps)
             </div>
           </motion.div>
 
-          {/* Right: SVG — hidden on mobile, shown from lg */}
+          {/* Right: interactive map — hidden on mobile, shown from lg */}
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
             className="hidden lg:flex items-center justify-center"
           >
-            <HubSVG />
+            {HeroMapComp ? (
+              <HeroMapComp stateGroups={stateGroups} />
+            ) : (
+              <div className="w-full aspect-[960/560] rounded-xl bg-[#0D1E33]/60 animate-pulse flex items-center justify-center">
+                <span className="text-white/20 text-xs font-mono">Loading map…</span>
+              </div>
+            )}
           </motion.div>
         </div>
 
