@@ -57,7 +57,7 @@ function AuthorAvatar({ post }: { post: BlogPost }) {
 }
 
 function FeaturedCard({ post }: { post: BlogPost }) {
-  const categoryLabel = post.categories[0]?.name ?? "Featured"
+  const categoryLabel = resolveCategory(post.categories[0]?.name ?? "Featured")
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
@@ -156,7 +156,7 @@ function PostCard({
   index: number
 }) {
   const tone = toneForPost(post, index)
-  const categoryLabel = post.categories[0]?.name ?? "Article"
+  const categoryLabel = resolveCategory(post.categories[0]?.name ?? "Article")
   return (
     <motion.article
       layout
