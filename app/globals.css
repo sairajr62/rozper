@@ -435,6 +435,9 @@ p {
 /* Tables — JS wraps each table in .rozper-table-wrap for scroll containment. */
 .rozper-table-wrap {
   position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 2em 0;
@@ -458,8 +461,8 @@ p {
 }
 
 .blog-prose table {
-  width: 100%;
-  min-width: 480px;
+  width: max-content;
+  min-width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   font-size: 0.9375rem;
