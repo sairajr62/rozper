@@ -31,8 +31,6 @@ export function AreaCodesHubClient({ codes, stateGroups, totalCodes, totalStates
         totalCodes={totalCodes}
         totalStates={totalStates}
         stateGroups={stateGroups}
-        query={query}
-        setQuery={setQuery}
       />
 
       {/* 2. Why virtual numbers (hidden while searching) */}

@@ -102,11 +102,9 @@ interface HeroProps {
   totalCodes: number
   totalStates: number
   stateGroups: StateGroup[]
-  query: string
-  setQuery: (q: string) => void
 }
 
-export function HubHero({ totalCodes, totalStates, stateGroups, query, setQuery }: HeroProps) {
+export function HubHero({ totalCodes, totalStates, stateGroups }: HeroProps) {
   const [HeroMapComp, setHeroMapComp] = useState<React.ComponentType<{
     stateGroups: StateGroup[]
     onStateHover?: (state: string | null) => void
@@ -156,24 +154,6 @@ export function HubHero({ totalCodes, totalStates, stateGroups, query, setQuery 
             <p className="text-base sm:text-lg text-white/50 max-w-xl leading-relaxed mb-6 sm:mb-8">
               Establish local presence in any U.S. market instantly — no physical office, no hardware, no waiting.
             </p>
-
-            {/* Search bar */}
-            <div className="relative w-full max-w-lg mb-6 sm:mb-8">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
-              <input
-                type="text" value={query} onChange={e => setQuery(e.target.value)}
-                placeholder="Search area code, city, or state…"
-                className="w-full bg-white/[0.06] border border-white/10 rounded-2xl pl-11 pr-10 py-3.5 sm:py-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#046BD2]/60 focus:bg-white/[0.08] transition-all"
-              />
-              {query && (
-                <button onClick={() => setQuery("")}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition"
-                  aria-label="Clear"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
-            </div>
 
             {/* CTAs — stack on small, side by side on sm+ */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-3">
