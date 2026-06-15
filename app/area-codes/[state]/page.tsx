@@ -21,7 +21,8 @@ import {
 } from "@/lib/area-code-data"
 import { SITE_URL } from "@/lib/site"
 
-export const dynamicParams = true
+export const dynamic = "force-static"
+export const dynamicParams = false
 
 type Props = { params: Promise<{ state: string }> }
 
