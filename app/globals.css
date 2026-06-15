@@ -432,22 +432,40 @@ p {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
 }
 
-/* Tables — wrap in scrollable container by default. */
-.blog-prose table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 2em 0;
-  font-size: 0.9375rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
-  overflow: hidden;
-  display: block;
+/* Tables — JS wraps each table in .rozper-table-wrap for scroll containment. */
+.rozper-table-wrap {
+  position: relative;
   overflow-x: auto;
-  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin: 2em 0;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+/* Right-side fade shadow hints that the table is scrollable on mobile */
+.rozper-table-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2rem;
+  background: linear-gradient(to right, transparent, rgba(7, 11, 20, 0.55));
+  border-radius: 0 1rem 1rem 0;
+  pointer-events: none;
 }
 @media (min-width: 768px) {
-  .blog-prose table { display: table; white-space: normal; }
+  .rozper-table-wrap::after { display: none; }
+}
+
+.blog-prose table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9375rem;
+  border: none;
+  border-radius: 0;
+  display: table;
 }
 .blog-prose thead {
   background: rgba(4, 107, 210, 0.12);
@@ -457,17 +475,25 @@ p {
   font-family: var(--font-archivo), system-ui, sans-serif;
   font-weight: 600;
   color: #ffffff;
-  padding: 0.85em 1.1em;
-  font-size: 0.8125rem;
+  padding: 0.7em 0.85em;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .blog-prose th { padding: 0.85em 1.1em; font-size: 0.8125rem; }
 }
 .blog-prose td {
-  padding: 0.85em 1.1em;
+  padding: 0.7em 0.85em;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: #CCD6DF;
   vertical-align: top;
+  font-size: 0.875rem;
+}
+@media (min-width: 640px) {
+  .blog-prose td { padding: 0.85em 1.1em; font-size: 0.9375rem; }
 }
 .blog-prose tr:last-child td { border-bottom: 0; }
 .blog-prose tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
