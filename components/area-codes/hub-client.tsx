@@ -51,7 +51,7 @@ export function AreaCodesHubClient({ codes, stateGroups, totalCodes, totalStates
       )}
 
       {/* 5. Full searchable directory (always shown) */}
-      <AreaCodeDirectory codes={codes} query={query} setQuery={setQuery} />
+      <AreaCodeDirectory codes={codes} stateGroups={stateGroups} query={query} setQuery={setQuery} />
 
       {/* 6 & 7. FAQ + CTA (hidden while searching) */}
       {!isSearching && (

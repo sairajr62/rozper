@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import React, { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import {
@@ -474,80 +474,175 @@ const STATE_ABBR: Record<string, string> = {
   "West Virginia": "WV", Wisconsin: "WI", Wyoming: "WY",
 }
 
-export function AreaCodeDirectory({ codes, query, setQuery }: {
+export function AreaCodeDirectory({ codes, stateGroups, query, setQuery }: {
   codes: AreaCodeMeta[]
+  stateGroups: StateGroup[]
   query: string
   setQuery: (q: string) => void
 }) {
-  const filtered = useMemo(() => {
-    const q = query.toLowerCase().trim()
-    if (!q) return codes
-    return codes.filter(c =>
-      c.code.includes(q) ||
-      c.city.toLowerCase().includes(q) ||
-      c.state.toLowerCase().includes(q) ||
-      (STATE_ABBR[c.state] ?? "").toLowerCase() === q
-    )
-  }, [codes, query])
+  const [MapComp, setMapComp] = useState<React.ComponentType<{
+    stateGroups: StateGroup[]
+    onStateHover?: (state: string | null) => void
+    onStateSelect?: (state: string) => void
+  }> | null>(null)
+  const [selectedState, setSelectedState] = useState<string | null>(null)
+
+  useEffect(() => {
+    import("@/components/area-codes/us-hub-map").then(m => setMapComp(() => m.default))
+  }, [])
 
   const isSearching = query.trim().length > 0
+
+  const sidebarCodes = useMemo(() => {
+    if (isSearching) {
+      const q = query.toLowerCase().trim()
+      return codes.filter(c =>
+        c.code.includes(q) ||
+        c.city.toLowerCase().includes(q) ||
+        c.state.toLowerCase().includes(q) ||
+        (STATE_ABBR[c.state] ?? "").toLowerCase() === q
+      ).slice(0, 60)
+    }
+    if (selectedState) return codes.filter(c => c.state === selectedState)
+    return []
+  }, [codes, query, selectedState, isSearching])
+
+  const activeGroup = !isSearching && selectedState
+    ? stateGroups.find(g => g.state === selectedState) ?? null
+    : null
 
   return (
     <section id="directory" className="py-14 sm:py-20 lg:py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <motion.div {...fi()} className="mb-8 sm:mb-10">
           <div className="flex items-center gap-3 mb-3">
             <div className="h-px w-10 bg-gradient-to-r from-[#046BD2] to-transparent" />
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#22D3EE]/80">// Full Directory</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#22D3EE]/80">// Directory</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-1">
-            Complete area code directory
+            Explore by state
           </h2>
           <p className="text-white/45 text-sm">
             {isSearching
-              ? `${filtered.length} result${filtered.length !== 1 ? "s" : ""} for "${query}"`
-              : `${codes.length} area codes across all U.S. states and territories`}
+              ? `${sidebarCodes.length} result${sidebarCodes.length !== 1 ? "s" : ""} for "${query}"`
+              : `Click any state on the map to browse its area codes`}
           </p>
         </motion.div>
 
-        {filtered.length === 0 ? (
-          <div className="text-center py-16 sm:py-20 text-white/30">
-            <Search className="w-10 h-10 mx-auto mb-4 opacity-30" />
-            <p className="text-lg sm:text-xl font-semibold mb-2">No results</p>
-            <p className="text-sm">Try a different area code, city, or state name.</p>
-            <button onClick={() => setQuery("")} className="mt-4 text-[#22D3EE] text-sm hover:underline">
-              Clear search
-            </button>
-          </div>
-        ) : (
-          /* 2 cols mobile → 3 sm → 4 md → 5 lg → 6 xl */
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2.5 sm:gap-3">
-            {filtered.map((ac, i) => (
-              <motion.div key={ac.code} variants={fadeUp} initial="hidden" whileInView="show"
-                viewport={{ once: true }} custom={i % 18}
-              >
-                <Link href={`/area-codes/${ac.stateSlug}/${ac.code}`}
-                  className="group relative flex flex-col bg-white/[0.025] hover:bg-[#0F1D30] border border-white/[0.06] hover:border-[#046BD2]/35 rounded-xl p-3 sm:p-4 transition-all duration-250 overflow-hidden"
-                >
-                  <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#046BD2]/0 to-transparent group-hover:via-[#22D3EE]/35 transition-all" />
-                  <div className="flex items-start justify-between mb-1.5 sm:mb-2">
-                    <span className="text-xl sm:text-2xl font-black text-white/85 group-hover:text-[#22D3EE] transition-colors leading-none">
-                      {ac.code}
+        <motion.div {...fi(0.06)}
+          className="rounded-2xl border border-white/[0.08] bg-[#0B1728]/60 overflow-hidden"
+        >
+          <div className="grid lg:grid-cols-[1fr_360px]" style={{ minHeight: 480 }}>
+
+            {/* Left: interactive map */}
+            <div className="relative flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-[#046BD2]/6 via-transparent to-[#22D3EE]/4">
+              {MapComp ? (
+                <MapComp stateGroups={stateGroups} onStateSelect={setSelectedState} />
+              ) : (
+                <div className="w-full aspect-[960/560] rounded-xl bg-[#0D1E33]/60 animate-pulse flex items-center justify-center">
+                  <span className="text-white/20 text-xs font-mono">Loading map…</span>
+                </div>
+              )}
+            </div>
+
+            {/* Right: sidebar */}
+            <div className="flex flex-col border-t lg:border-t-0 lg:border-l border-white/[0.06]">
+
+              {activeGroup ? (
+                <div className="px-5 pt-5 pb-4 border-b border-white/[0.06]">
+                  <div className="flex items-center gap-2.5 mb-1">
+                    <span className="text-xl font-black text-white">{activeGroup.state}</span>
+                    <span className="text-[10px] font-mono text-[#22D3EE]/70 bg-[#22D3EE]/10 border border-[#22D3EE]/20 px-2 py-0.5 rounded-full">
+                      {activeGroup.abbr}
                     </span>
-                    <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/15 group-hover:text-[#22D3EE]/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
                   </div>
-                  <div className="flex items-center gap-1 text-[9px] sm:text-[10px] text-white/40 mb-1">
-                    <MapPin className="w-2.5 h-2.5 shrink-0 text-[#22D3EE]/40" />
-                    <span className="truncate">{ac.city || ac.state}</span>
-                  </div>
-                  <span className="text-[9px] sm:text-[10px] font-mono text-white/25">
-                    {STATE_ABBR[ac.state] ?? ac.state.slice(0, 2).toUpperCase()}
-                  </span>
-                </Link>
-              </motion.div>
-            ))}
+                  <p className="text-white/35 text-xs">
+                    {activeGroup.totalCodes} area code{activeGroup.totalCodes !== 1 ? "s" : ""} · click any to get a number
+                  </p>
+                </div>
+              ) : isSearching ? (
+                <div className="px-5 pt-5 pb-4 border-b border-white/[0.06]">
+                  <p className="text-white font-semibold text-sm">
+                    {sidebarCodes.length} result{sidebarCodes.length !== 1 ? "s" : ""}
+                  </p>
+                  <p className="text-white/35 text-xs mt-0.5">for &ldquo;{query}&rdquo;</p>
+                </div>
+              ) : (
+                <div className="flex-1 flex items-center justify-center px-8 py-16">
+                  <p className="text-white/25 text-sm text-center">Click to explore the area codes</p>
+                </div>
+              )}
+
+              {sidebarCodes.length > 0 && (
+                <div
+                  className="flex-1 overflow-y-auto px-3 py-3"
+                  style={{ maxHeight: 360, scrollbarWidth: "thin", scrollbarColor: "rgba(4,107,210,0.25) transparent" }}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeGroup?.state ?? query}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.2 }}
+                      className="space-y-1"
+                    >
+                      {sidebarCodes.map(c => (
+                        <Link
+                          key={c.code + c.state}
+                          href={`/area-codes/${c.stateSlug}/${c.code}`}
+                          className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-[#046BD2]/10 border border-transparent hover:border-[#046BD2]/25 transition-all duration-150"
+                        >
+                          <div className="flex items-center gap-3 min-w-0">
+                            <span className="text-base font-black text-white group-hover:text-[#22D3EE] transition-colors tabular-nums leading-none shrink-0">
+                              {c.code}
+                            </span>
+                            {c.city && (
+                              <span className="text-white/35 text-xs truncate group-hover:text-white/55 transition-colors">
+                                {c.city}
+                              </span>
+                            )}
+                            {isSearching && (
+                              <span className="text-white/20 text-[10px] font-mono shrink-0">
+                                {STATE_ABBR[c.state] ?? c.state.slice(0, 2).toUpperCase()}
+                              </span>
+                            )}
+                          </div>
+                          <ArrowUpRight className="w-3.5 h-3.5 text-white/15 group-hover:text-[#22D3EE]/60 shrink-0 transition-colors" />
+                        </Link>
+                      ))}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              )}
+
+              {activeGroup && (
+                <div className="p-4 border-t border-white/[0.06] mt-auto">
+                  <Link
+                    href={`/area-codes/${activeGroup.stateSlug}`}
+                    className="group flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#046BD2]/12 hover:bg-[#046BD2]/22 border border-[#046BD2]/25 hover:border-[#046BD2]/50 text-[#22D3EE] text-xs font-semibold transition-all"
+                  >
+                    Explore all {activeGroup.state} numbers
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
+              )}
+
+              {isSearching && sidebarCodes.length === 0 && (
+                <div className="flex-1 flex flex-col items-center justify-center text-center px-8 py-12">
+                  <Search className="w-8 h-8 text-white/10 mb-3" />
+                  <p className="text-white/30 text-sm">No results</p>
+                  <p className="text-white/20 text-xs mt-1">Try a different code, city, or state</p>
+                  <button onClick={() => setQuery("")} className="mt-4 text-[#22D3EE]/60 text-xs hover:text-[#22D3EE] transition-colors">
+                    Clear search
+                  </button>
+                </div>
+              )}
+
+            </div>
           </div>
-        )}
+        </motion.div>
       </div>
     </section>
   )
