@@ -11,8 +11,13 @@ import {
 import type { BlogPostDetail } from "@/lib/blog-api"
 import { BlogImage } from "./blog-image"
 
+const CATEGORY_ALIASES: Record<string, string> = { "Virtual Numbers": "Area Codes" }
+const resolveCategory = (name: string) => CATEGORY_ALIASES[name] ?? name
+
 export function PostArticleHero({ post }: { post: BlogPostDetail }) {
   const category = post.categories[0]
+    ? { ...post.categories[0], name: resolveCategory(post.categories[0].name) }
+    : undefined
 
   return (
     <header className="relative overflow-hidden pt-24 pb-8 sm:pt-28 sm:pb-10 lg:pt-36 lg:pb-14">
