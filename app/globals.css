@@ -432,43 +432,19 @@ p {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
 }
 
-/* Tables — JS wraps each table in .rozper-table-wrap for scroll containment. */
-.rozper-table-wrap {
-  position: relative;
+/* Tables — display:block turns the table into its own scroll container. */
+.blog-prose table {
   display: block;
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 2em 0;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-/* Right-side fade shadow hints that the table is scrollable on mobile */
-.rozper-table-wrap::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 2rem;
-  background: linear-gradient(to right, transparent, rgba(7, 11, 20, 0.55));
-  border-radius: 0 1rem 1rem 0;
-  pointer-events: none;
-}
-@media (min-width: 768px) {
-  .rozper-table-wrap::after { display: none; }
-}
-
-.blog-prose table {
-  width: max-content;
-  min-width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+  margin: 2em 0;
   font-size: 0.9375rem;
-  border: none;
-  border-radius: 0;
-  display: table;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
 }
 .blog-prose thead {
   background: rgba(4, 107, 210, 0.12);

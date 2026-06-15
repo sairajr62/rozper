@@ -522,16 +522,6 @@ export function PostLayout({
     // Transform any FAQ section into a collapsible accordion.
     transformFaqSections(article)
 
-    // Wrap every table in a scroll container so they scroll horizontally on
-    // mobile instead of overflowing or crushing content.
-    for (const table of Array.from(article.querySelectorAll<HTMLTableElement>("table"))) {
-      if (table.parentElement?.classList.contains("rozper-table-wrap")) continue
-      const wrapper = document.createElement("div")
-      wrapper.className = "rozper-table-wrap"
-      table.parentNode?.insertBefore(wrapper, table)
-      wrapper.appendChild(table)
-    }
-
     const h2s = Array.from(
       article.querySelectorAll<HTMLHeadingElement>("h2"),
     )
