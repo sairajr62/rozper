@@ -74,7 +74,7 @@ export function CompareCTA() {
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/demo"
+                  href="/contact"
                   className="group inline-flex items-center gap-2 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm sm:text-base font-semibold px-7 py-3.5 transition-colors shadow-[0_10px_40px_-10px_rgba(4,107,210,0.7)]"
                 >
                   Book a migration call

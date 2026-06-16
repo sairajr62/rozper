@@ -143,7 +143,7 @@ export function Trust() {
                   delay: 0.12 + i * 0.08,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative text-center"
+                className="group relative text-center sm:text-left"
               >
                 {/* Circular icon stamp — gradient ring + dashed inner detail.
                     Re-uses the visual signature established for this section.

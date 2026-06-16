@@ -44,3 +44,13 @@ export async function auditAnalyticsAll() {
   const r = await fetch(`${BASE}/analytics/all`)
   return r.json()
 }
+
+export async function auditLeads() {
+  const r = await fetch(`${BASE}/leads`)
+  return r.json()
+}
+
+export async function auditBlogLinks() {
+  const r = await fetch(`${BASE}/blog-links`)
+  return r.json()
+}

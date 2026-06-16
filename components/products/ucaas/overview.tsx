@@ -15,11 +15,11 @@ import {
 } from 'lucide-react'
 
 const products = [
-  { icon: Phone, name: 'Business Phone', desc: 'Cloud calling in 150+ countries', href: '/products/ucaas/business-phone-system' },
-  { icon: Video, name: 'HD Video Meetings', desc: 'AI transcripts built in', href: '/products/ucaas/hd-video-meetings' },
+  { icon: Phone, name: 'Business Phone', desc: 'Cloud calling in 150+ countries', href: '/products/ucaas/business-phone' },
+  { icon: Video, name: 'HD Video Meetings', desc: 'AI transcripts built in', href: '/products/ucaas/video-meetings' },
   { icon: MessageSquare, name: 'Team Chat', desc: 'Channels, DMs, file share', href: '/products/ucaas/team-chat' },
   { icon: Bot, name: 'AI Assistant', desc: 'Live coaching on every call', href: '/products/ucaas/ai-assistant' },
-  { icon: Phone, name: 'SMS & MMS', desc: 'Two-way business SMS', href: '/products/ucaas/business-sms-mms' },
+  { icon: Phone, name: 'SMS & MMS', desc: 'Two-way business SMS', href: '/products/ucaas/sms-mms' },
   { icon: Plug, name: 'Customer Engagement', desc: 'Omnichannel customer hub', href: '/products/ucaas/customer-engagement' },
   { icon: Layers, name: 'Online Fax', desc: 'Send & receive without hardware', href: '/products/ucaas/online-fax' },
   { icon: MessageSquare, name: 'Website Chatbot', desc: 'Convert visitors instantly', href: '/products/ucaas/website-chatbot' },

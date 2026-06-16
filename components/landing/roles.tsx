@@ -44,7 +44,7 @@ const roles = [
     description: "SSO, SCIM, RBAC, custom SLA, and a dedicated implementation team.",
     tags: ["SSO / SCIM", "RBAC", "Custom SLA"],
     accent: "from-[#2575FC] to-[#046BD2]",
-    href: "/solutions/enterprise-ucaas",
+    href: "/solutions/enterprise-it",
   },
   {
     icon: BarChart2,
@@ -60,7 +60,7 @@ const roles = [
     description: "One bill, one platform, one number to call when you need help.",
     tags: ["One bill", "One platform", "Real support"],
     accent: "from-[#0078E0] to-[#0086F9]",
-    href: "/solutions/small-business",
+    href: "/solutions/smb",
   },
 ]
 

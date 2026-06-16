@@ -1,5 +1,6 @@
 "use client"
 
+import NextImage from "next/image"
 import { useState } from "react"
 import { CoverArt } from "./cover-art"
 
@@ -9,22 +10,21 @@ interface BlogImageProps {
   src: string
   alt: string
   className?: string
+  style?: React.CSSProperties
   tone?: Tone
   label?: string
-  /** Extra children rendered on top of the image (overlays, badges, etc.) */
+  fit?: "cover" | "contain"
   children?: React.ReactNode
 }
 
-/**
- * Renders a blog featured image with a graceful CoverArt fallback when the
- * WordPress-hosted image is missing or returns an error.
- */
 export function BlogImage({
   src,
   alt,
   className = "absolute inset-0 w-full h-full object-cover",
+  style,
   tone = "blue",
   label = "Article",
+  fit = "cover",
   children,
 }: BlogImageProps) {
   const [broken, setBroken] = useState(false)
@@ -33,6 +33,31 @@ export function BlogImage({
     return <CoverArt tone={tone} label={label} />
   }
 
+  const isBlobUrl = src.includes("blob.vercel-storage.com")
+
+  if (isBlobUrl) {
+    return (
+      <>
+        <NextImage
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 700px"
+          style={{
+            objectFit: fit,
+            objectPosition: fit === "contain" ? "center" : "left center",
+            background: "#0a1929",
+            ...style,
+          }}
+          className={className.replace(/object-\S+/g, "")}
+          onError={() => setBroken(true)}
+        />
+        {children}
+      </>
+    )
+  }
+
+  // Fallback for WordPress-hosted or other external images
   return (
     <>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -40,6 +65,7 @@ export function BlogImage({
         src={src}
         alt={alt}
         className={className}
+        style={{ objectFit: fit, background: "#0a1929", ...style }}
         onError={() => setBroken(true)}
       />
       {children}

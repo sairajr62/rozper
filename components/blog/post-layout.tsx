@@ -636,67 +636,70 @@ export function PostLayout({
     <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative pb-12 sm:pb-16 lg:pb-20">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-20">
-        {/* Fixed TOC — visible on lg+ screens once the article is in view */}
-        {toc.length > 0 && (
-          <aside
-            aria-label="Table of contents"
-            className={`hidden lg:flex flex-col transition-opacity duration-300 ${tocVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-            style={{
-              position: "fixed",
-              top: "7rem",
-              left: "max(1rem, calc(50vw - 40rem + 1.5rem))",
-              width: "14rem",
-              maxHeight: "calc(100vh - 8rem)",
-              zIndex: 30,
-            }}
-          >
-            <nav className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 flex flex-col min-h-0">
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] font-mono text-white/45 mb-4 shrink-0">
-                <span className="w-4 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
-                Table of contents
-              </div>
-              <ul
-                ref={tocListRef}
-                className="space-y-0.5 overflow-y-auto min-h-0"
-                style={{ scrollbarWidth: "none" }}
-              >
-                {toc.map((entry, i) => {
-                  const isActive = activeId === entry.id
-                  return (
-                    <li key={entry.id}>
-                      <a
-                        href={`#${entry.id}`}
-                        data-toc-id={entry.id}
-                        onClick={(e) => handleTocClick(e, entry.id)}
-                        aria-current={isActive ? "location" : undefined}
-                        className={`group flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm border-l-2 transition-colors ${
-                          isActive
-                            ? "border-[#22D3EE] bg-[#046BD2]/15 text-white"
-                            : "border-transparent text-white/55 hover:text-white/90 hover:bg-white/[0.04]"
-                        } ${entry.level === 3 ? "pl-6 text-[13px]" : ""}`}
+      {/* Fixed TOC — visible on lg+ screens, stays in viewport for the
+          entire scroll. Hidden on mobile/tablet (no space). */}
+      {toc.length > 0 && (
+        <aside
+          aria-label="Table of contents"
+          className={`hidden lg:flex flex-col fixed top-28 z-30 w-56 xl:w-64 transition-opacity duration-300 ${tocVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+          style={{
+            left: "max(1rem, calc(50vw - 40rem + 1.5rem))",
+            maxHeight: "calc(100vh - 8rem)",
+          }}
+        >
+          <nav className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 flex flex-col min-h-0">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] font-mono text-white/45 mb-4 shrink-0">
+              <span className="w-4 h-px bg-gradient-to-r from-transparent to-[#0086F9]" />
+              Table of contents
+            </div>
+            <ul
+              ref={tocListRef}
+              className="space-y-0.5 overflow-y-auto min-h-0"
+              style={{ scrollbarWidth: "none" }}
+            >
+              {toc.map((entry, i) => {
+                const isActive = activeId === entry.id
+                return (
+                  <li key={entry.id}>
+                    <a
+                      href={`#${entry.id}`}
+                      data-toc-id={entry.id}
+                      onClick={(e) => handleTocClick(e, entry.id)}
+                      aria-current={isActive ? "location" : undefined}
+                      className={`group flex items-start gap-2.5 rounded-lg py-1.5 px-2 text-sm border-l-2 transition-colors ${
+                        isActive
+                          ? "border-[#22D3EE] bg-[#046BD2]/15 text-white"
+                          : "border-transparent text-white/55 hover:text-white/90 hover:bg-white/[0.04]"
+                      } ${entry.level === 3 ? "pl-6 text-[13px]" : ""}`}
+                    >
+                      <span
+                        className={`shrink-0 mt-px font-mono text-[11px] tabular-nums transition-colors ${
+                          isActive ? "text-[#22D3EE]" : "text-white/30"
+                        }`}
                       >
-                        <span
-                          className={`shrink-0 mt-px font-mono text-[11px] tabular-nums transition-colors ${
-                            isActive ? "text-[#22D3EE]" : "text-white/30"
-                          }`}
-                        >
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="leading-snug">{entry.text}</span>
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
-            </nav>
-          </aside>
-        )}
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="leading-snug">{entry.text}</span>
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+        </aside>
+      )}
 
-        <div className="lg:pl-64">
+      {/* Article — left-padded on lg+ to sit beside the fixed TOC */}
+      <div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-20"
+      >
+        <div className="lg:pl-64 xl:pl-72">
           <article
             ref={articleRef as React.RefObject<HTMLElement>}
             className="blog-prose max-w-3xl"
+            // Content comes from the WordPress REST API (rozper.com) or
+            // local Markdown — both trusted sources. `processedHtml` has
+            // stable heading IDs baked in for the TOC anchors.
             dangerouslySetInnerHTML={{ __html: introHtml }}
           />
 

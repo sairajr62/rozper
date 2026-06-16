@@ -1,22 +1,19 @@
-import dynamic from "next/dynamic"
 import { Navbar } from "@/components/landing/navbar"
 import { Hero } from "@/components/landing/hero"
+import { TrustBar } from "@/components/landing/trust-bar"
+import { Features } from "@/components/landing/features"
+import { WhyRozper } from "@/components/landing/why-rozper"
+import { Products } from "@/components/landing/products"
+import { AISpotlight } from "@/components/landing/ai-spotlight"
+import { HowItWorks } from "@/components/landing/how-it-works"
+import { Roles } from "@/components/landing/roles"
+import { IntegrationsSection } from "@/components/landing/integrations-section"
+import { Trust } from "@/components/landing/trust"
+import { Testimonials } from "@/components/landing/testimonials"
+import { FAQ } from "@/components/landing/faq"
+import { CTA } from "@/components/landing/cta"
+import { Footer } from "@/components/landing/footer"
 import { SITE_URL } from "@/lib/site"
-
-// Below-fold sections: code-split so they don't block initial JS parse
-const TrustBar = dynamic(() => import("@/components/landing/trust-bar").then(m => ({ default: m.TrustBar })))
-const Features = dynamic(() => import("@/components/landing/features").then(m => ({ default: m.Features })))
-const WhyRozper = dynamic(() => import("@/components/landing/why-rozper").then(m => ({ default: m.WhyRozper })))
-const Products = dynamic(() => import("@/components/landing/products").then(m => ({ default: m.Products })))
-const AISpotlight = dynamic(() => import("@/components/landing/ai-spotlight").then(m => ({ default: m.AISpotlight })))
-const HowItWorks = dynamic(() => import("@/components/landing/how-it-works").then(m => ({ default: m.HowItWorks })))
-const Roles = dynamic(() => import("@/components/landing/roles").then(m => ({ default: m.Roles })))
-const IntegrationsSection = dynamic(() => import("@/components/landing/integrations-section").then(m => ({ default: m.IntegrationsSection })))
-const Trust = dynamic(() => import("@/components/landing/trust").then(m => ({ default: m.Trust })))
-const Testimonials = dynamic(() => import("@/components/landing/testimonials").then(m => ({ default: m.Testimonials })))
-const FAQ = dynamic(() => import("@/components/landing/faq").then(m => ({ default: m.FAQ })))
-const CTA = dynamic(() => import("@/components/landing/cta").then(m => ({ default: m.CTA })))
-const Footer = dynamic(() => import("@/components/landing/footer").then(m => ({ default: m.Footer })))
 
 export const metadata = {
   title: "Rozper · UCaaS, Contact Center & AI for Global Teams | rozper.com",
@@ -77,18 +74,31 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <Navbar />
+      {/* 1. Hero */}
       <Hero />
+      {/* 2. Trust / Logo Bar */}
       <TrustBar />
+      {/* 3. Platform View */}
       <Features />
+      {/* 4. Why Teams Switch */}
       <WhyRozper />
+      {/* 6. Capability Library */}
       <Products />
+      {/* 7. AI Receptionist Spotlight */}
       <AISpotlight />
+      {/* 8. How It Works */}
       <HowItWorks />
+      {/* 10. Built for Teams */}
       <Roles />
+      {/* 11. Integrations */}
       <IntegrationsSection />
+      {/* 12. Trust */}
       <Trust />
+      {/* 13. Testimonials */}
       <Testimonials />
+      {/* 14. FAQ */}
       <FAQ />
+      {/* Final CTA */}
       <CTA />
       <Footer />
     </main>

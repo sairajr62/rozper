@@ -506,16 +506,17 @@ function DeviceShowcase() {
 
   return (
     <div className="relative mx-auto w-full max-w-[480px]">
-      {/* glow — CSS animation, no JS */}
-      <div
+      {/* glow */}
+      <motion.div
         aria-hidden
-        className="absolute left-1/2 top-1/2 h-[90%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full hero-glow-blue"
+        className="absolute left-1/2 top-1/2 h-[90%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
             "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(34,211,238,0.14) 45%, rgba(4,107,210,0) 75%)",
           filter: "blur(55px)",
-          willChange: "transform",
         }}
+        animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.06, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* fixed stage so surrounding layout stays put while the device morphs.
@@ -616,39 +617,39 @@ function DeviceShowcase() {
 }
 
 // ──────────────────────────────────────────────────────────────────────
-// Floating background particles — CSS-only, no JS animation overhead
+// Floating background particles
 // ──────────────────────────────────────────────────────────────────────
-const PARTICLE_POSITIONS = [
-  { x: 8, y: 18, delay: "0s", dur: "6s" },
-  { x: 14, y: 72, delay: "0.4s", dur: "5s" },
-  { x: 26, y: 32, delay: "0.8s", dur: "7s" },
-  { x: 38, y: 86, delay: "1.2s", dur: "5s" },
-  { x: 58, y: 14, delay: "1.6s", dur: "6s" },
-  { x: 72, y: 64, delay: "2.0s", dur: "7s" },
-  { x: 84, y: 26, delay: "2.4s", dur: "5s" },
-  { x: 92, y: 78, delay: "2.8s", dur: "6s" },
-  { x: 46, y: 8, delay: "3.2s", dur: "6s" },
-  { x: 22, y: 92, delay: "3.6s", dur: "7s" },
-]
-
 function Particles() {
+  const dots = [
+    { x: 8, y: 18, d: 6 },
+    { x: 14, y: 72, d: 5 },
+    { x: 26, y: 32, d: 7 },
+    { x: 38, y: 86, d: 5 },
+    { x: 58, y: 14, d: 6 },
+    { x: 72, y: 64, d: 7 },
+    { x: 84, y: 26, d: 5 },
+    { x: 92, y: 78, d: 6 },
+    { x: 46, y: 8, d: 6 },
+    { x: 22, y: 92, d: 7 },
+  ];
   return (
     <div aria-hidden className="absolute inset-0 pointer-events-none">
-      {PARTICLE_POSITIONS.map((p, i) => (
-        <span
+      {dots.map((p, i) => (
+        <motion.span
           key={i}
-          className="absolute h-1 w-1 rounded-full bg-[#22D3EE] hero-particle"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            filter: "blur(0.5px)",
-            animationDelay: p.delay,
-            animationDuration: p.dur,
+          className="absolute h-1 w-1 rounded-full bg-[#22D3EE]"
+          style={{ left: `${p.x}%`, top: `${p.y}%`, filter: "blur(0.5px)" }}
+          animate={{ opacity: [0.15, 0.7, 0.15], y: [0, -8, 0] }}
+          transition={{
+            duration: p.d,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.4,
           }}
         />
       ))}
     </div>
-  )
+  );
 }
 
 // ──────────────────────────────────────────────────────────────────────
@@ -677,36 +678,39 @@ export function Hero() {
           }}
         />
 
-        <div
+        <motion.div
           aria-hidden
-          className="absolute -left-[10%] top-[10%] h-[520px] w-[520px] rounded-full hero-glow-blue"
+          className="absolute -left-[10%] top-[10%] h-[520px] w-[520px] rounded-full"
           style={{
             background:
               "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(4,107,210,0) 65%)",
             filter: "blur(80px)",
-            willChange: "transform",
           }}
+          animate={{ scale: [1, 1.12, 1], opacity: [0.6, 0.95, 0.6] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div
+        <motion.div
           aria-hidden
-          className="absolute -right-[8%] bottom-[8%] h-[560px] w-[560px] rounded-full hero-glow-cyan"
+          className="absolute -right-[8%] bottom-[8%] h-[560px] w-[560px] rounded-full"
           style={{
             background:
               "radial-gradient(circle, rgba(34,211,238,0.32) 0%, rgba(34,211,238,0) 65%)",
             filter: "blur(90px)",
-            willChange: "transform",
           }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.85, 0.5] }}
+          transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <div
+        <motion.div
           aria-hidden
-          className="absolute left-1/2 top-1/2 h-[1500px] w-[1500px] rounded-full opacity-40 hero-rotate"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[1500px] w-[1500px] rounded-full opacity-40"
           style={{
             background:
               "conic-gradient(from 90deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.3) 60deg, rgba(0,134,249,0.12) 140deg, rgba(34,211,238,0.22) 220deg, rgba(4,107,210,0) 360deg)",
             filter: "blur(100px)",
-            willChange: "transform",
           }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
         />
 
         <Particles />

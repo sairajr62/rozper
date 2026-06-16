@@ -75,21 +75,21 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
           {
             label: "Business Phone System",
             description: "Cloud PBX with IVR, recording and porting in 150+ countries.",
-            href: "/products/ucaas/business-phone-system",
+            href: "/products/ucaas/business-phone",
             icon: Building2,
             iconGradient: "from-[#2575FC] to-[#046BD2]",
           },
           {
             label: "HD Video Meetings",
             description: "1080p video, screen share, recording and noise suppression.",
-            href: "/products/ucaas/hd-video-meetings",
+            href: "/products/ucaas/video-meetings",
             icon: Video,
             iconGradient: "from-[#046BD2] to-[#0078E0]",
           },
           {
             label: "Business SMS & MMS",
             description: "Two-way messaging, MMS and bulk campaign sending.",
-            href: "/products/ucaas/business-sms-mms",
+            href: "/products/ucaas/sms-mms",
             icon: MessageCircle,
             iconGradient: "from-[#2575FC] to-[#22D3EE]",
           },
@@ -150,7 +150,7 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
           {
             label: "Analytics & Reporting",
             description: "Real-time dashboards, CSAT scoring and call analytics.",
-            href: "/products/contact-center/interaction-analytics",
+            href: "/products/contact-center/analytics",
             icon: BarChart3,
             iconGradient: "from-[#0086F9] to-[#046BD2]",
           },
@@ -211,21 +211,21 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
           {
             label: "Financial Services",
             description: "Compliant calling, recording and dialers for banks and fintechs.",
-            href: "/solutions/financial-services",
+            href: "/solutions/finance",
             icon: Building2,
             iconGradient: "from-[#046BD2] to-[#2575FC]",
           },
           {
             label: "Retail & eCommerce",
             description: "Drive conversions across SMS, chat, voice and WhatsApp.",
-            href: "/solutions/retail-ecommerce",
+            href: "/solutions/retail",
             icon: Globe2,
             iconGradient: "from-[#0086F9] to-[#22D3EE]",
           },
           {
             label: "SaaS & Technology",
             description: "Embed calling and SMS in your product with our SDKs.",
-            href: "/solutions/saas-tech",
+            href: "/solutions/saas",
             icon: Settings,
             iconGradient: "from-[#2575FC] to-[#046BD2]",
           },
@@ -265,7 +265,7 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
           {
             label: "Enterprise IT",
             description: "SSO, SCIM, audit logs and dedicated routing.",
-            href: "/solutions/enterprise-ucaas",
+            href: "/solutions/enterprise-it",
             icon: Shield,
             iconGradient: "from-[#0086F9] to-[#046BD2]",
           },
@@ -414,7 +414,6 @@ export function Navbar() {
                   alt="Rozper"
                   width={160}
                   height={50}
-                  sizes="(max-width: 640px) 120px, 160px"
                   className="h-8 sm:h-10 w-auto max-w-[120px] sm:max-w-[160px]"
                   priority
                 />

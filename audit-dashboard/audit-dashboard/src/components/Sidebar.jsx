@@ -1,11 +1,38 @@
+import {
+  LayoutDashboard,
+  FileText,
+  BookOpen,
+  SearchCheck,
+  BarChart3,
+  Link2,
+  Target,
+  ScanSearch,
+  Wifi,
+  WifiOff,
+  Loader,
+} from 'lucide-react'
+
+const ICONS = {
+  overview:   <LayoutDashboard size={15} />,
+  pages:      <FileText        size={15} />,
+  blogs:      <BookOpen        size={15} />,
+  seo:        <SearchCheck     size={15} />,
+  analytics:  <BarChart3       size={15} />,
+  'blog-links': <Link2         size={15} />,
+  leads:      <Target          size={15} />,
+  links:      <ScanSearch      size={15} />,
+}
+
 export default function Sidebar({ activeTab, onTabChange, siteOnline, counts }) {
   const nav = [
-    { id: 'overview', icon: '🏠', label: 'Dashboard' },
-    { id: 'pages',    icon: '📄', label: 'Pages',            count: counts.pageIssues,      countType: 'err' },
-    { id: 'blogs',    icon: '📝', label: 'Blog Posts',       count: counts.blogIssues,      countType: 'warn' },
-    { id: 'seo',      icon: '🔍', label: 'SEO',              count: counts.seoIssues,       countType: 'err' },
-    { id: 'analytics',icon: '📊', label: 'Google Analytics', count: counts.analyticsIssues, countType: 'err' },
-    { id: 'links',    icon: '🔗', label: 'Link Checker' },
+    { id: 'overview',    label: 'Dashboard' },
+    { id: 'pages',       label: 'Pages',            count: counts.pageIssues,      countType: 'err' },
+    { id: 'blogs',       label: 'Blog Posts',       count: counts.blogIssues,      countType: 'warn' },
+    { id: 'seo',         label: 'SEO',              count: counts.seoIssues,       countType: 'err' },
+    { id: 'analytics',   label: 'Google Analytics', count: counts.analyticsIssues, countType: 'err' },
+    { id: 'blog-links',  label: 'Blog Links',       count: counts.blogLinksIssues, countType: 'err' },
+    { id: 'leads',       label: 'Leads' },
+    { id: 'links',       label: 'Link Checker' },
   ]
 
   return (
@@ -17,6 +44,9 @@ export default function Sidebar({ activeTab, onTabChange, siteOnline, counts }) 
 
       <div className="site-badge">
         <span className={`site-dot ${siteOnline === true ? 'online' : siteOnline === false ? 'offline' : ''}`} />
+        {siteOnline === true  && <Wifi    size={12} style={{ color: 'var(--green)' }} />}
+        {siteOnline === false && <WifiOff size={12} style={{ color: 'var(--red)' }} />}
+        {siteOnline === null  && <Loader  size={12} style={{ color: 'var(--dim)' }} />}
         <span style={{ color: siteOnline === true ? 'var(--green)' : siteOnline === false ? 'var(--red)' : 'var(--dim)' }}>
           {siteOnline === true ? 'localhost:3000 online' : siteOnline === false ? 'Site offline' : 'Checking…'}
         </span>
@@ -43,7 +73,9 @@ export default function Sidebar({ activeTab, onTabChange, siteOnline, counts }) 
 function NavItem({ item, active, onClick }) {
   return (
     <button className={`nav-item ${active ? 'active' : ''}`} onClick={onClick}>
-      <span className="nav-icon">{item.icon}</span>
+      <span className="nav-icon" style={{ display: 'flex', alignItems: 'center' }}>
+        {ICONS[item.id]}
+      </span>
       {item.label}
       {item.count > 0 && <span className={`nav-count ${item.countType}`}>{item.count}</span>}
     </button>

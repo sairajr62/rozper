@@ -10,9 +10,9 @@ const footerColumns = [
     title: 'Unified Communication',
     href: '/products/ucaas',
     links: [
-      { label: 'Business Phone System', href: '/products/ucaas/business-phone-system' },
-      { label: 'HD Video Meetings', href: '/products/ucaas/hd-video-meetings' },
-      { label: 'Business SMS & MMS', href: '/products/ucaas/business-sms-mms' },
+      { label: 'Business Phone System', href: '/products/ucaas/business-phone' },
+      { label: 'HD Video Meetings', href: '/products/ucaas/video-meetings' },
+      { label: 'Business SMS & MMS', href: '/products/ucaas/sms-mms' },
       { label: 'Team Chat', href: '/products/ucaas/team-chat' },
     ],
   },
@@ -102,7 +102,7 @@ export function Footer() {
               width={140}
               height={40}
               className="h-8 w-auto"
-              loading="lazy"
+              priority
             />
             <p className="mt-5 text-sm text-[#9AA8BC] leading-relaxed max-w-md">
               Carrier-grade unified communications, cloud contact center, and

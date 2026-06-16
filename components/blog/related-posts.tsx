@@ -14,9 +14,6 @@ const toneSequence: Array<"blue" | "cyan" | "violet" | "emerald" | "amber"> = [
   "amber",
 ]
 
-const CATEGORY_ALIASES: Record<string, string> = { "Virtual Numbers": "Area Codes" }
-const resolveCategory = (name: string) => CATEGORY_ALIASES[name] ?? name
-
 export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
   if (!posts.length) return null
 
@@ -55,7 +52,7 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {posts.map((post, i) => {
             const tone = toneSequence[(post.id + i) % toneSequence.length]!
-            const categoryLabel = resolveCategory(post.categories[0]?.name ?? "Article")
+            const categoryLabel = post.categories[0]?.name ?? "Article"
             return (
               <Link
                 key={post.slug}
@@ -83,7 +80,7 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
                     <CoverArt tone={tone} label={categoryLabel} />
                   )}
                 </div>
-                <div className="p-4 sm:p-5">
+                <div className="p-5">
                   <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.16em]">
                     <span className="text-[#22D3EE]">{categoryLabel}</span>
                     <span className="flex items-center gap-1 text-white/40">

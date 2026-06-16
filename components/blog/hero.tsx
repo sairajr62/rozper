@@ -186,7 +186,7 @@ export function BlogHero() {
               <span className="font-mono uppercase tracking-wider text-[10px]">
                 Popular
               </span>
-              {["AI agents", "Wholesale margins", "SIP trunking"].map(
+              {["AI agents", "Wholesale margins", "HIPAA", "SIP trunking"].map(
                 (t) => (
                   <button
                     key={t}

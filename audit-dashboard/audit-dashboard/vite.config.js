@@ -9,7 +9,13 @@ export default defineConfig({
       '/api': 'http://localhost:3001',
     },
   },
+  optimizeDeps: {
+    include: ['xlsx'],
+  },
   build: {
     outDir: 'dist',
+    commonjsOptions: {
+      include: [/xlsx/, /node_modules/],
+    },
   },
 })
