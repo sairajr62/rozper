@@ -1,99 +1,152 @@
-import { NextRequest, NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { NextResponse } from "next/server"
+import { google } from "googleapis"
 
-export const maxDuration = 30
+// Gmail API needs the Node runtime (uses crypto / googleapis), not Edge.
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
 
-const RECIPIENTS = [
-  "mcmfarheen@gmail.com",
-  "shweta@acepeakinvestment.com",
-  "jennifer@acepeakinvestment.com",
-  "furqan@mycountrymobile.com",
-  "sk3group@gmail.com",
-  "websiteleads001@gmail.com",
-  "sk3group1@gmail.com",
-  "info@rozper.com",
-]
+type LeadPayload = {
+  firstName?: string
+  lastName?: string
+  email?: string
+  company?: string
+  companySize?: string
+  interests?: string[]
+  message?: string
+}
 
-export async function POST(req: NextRequest) {
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+}
+
+// Build a raw RFC 2822 message, base64url-encoded for the Gmail API.
+function buildRawMessage(opts: {
+  from: string
+  to: string
+  replyTo?: string
+  subject: string
+  html: string
+}) {
+  const headers = [
+    `From: ${opts.from}`,
+    `To: ${opts.to}`,
+    opts.replyTo ? `Reply-To: ${opts.replyTo}` : "",
+    `Subject: ${opts.subject}`,
+    "MIME-Version: 1.0",
+    'Content-Type: text/html; charset="UTF-8"',
+  ].filter(Boolean)
+
+  const message = `${headers.join("\r\n")}\r\n\r\n${opts.html}`
+  return Buffer.from(message)
+    .toString("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "")
+}
+
+function getGmailClient() {
+  const clientId = process.env.GMAIL_CLIENT_ID
+  const clientSecret = process.env.GMAIL_CLIENT_SECRET
+  const refreshToken = process.env.GMAIL_REFRESH_TOKEN
+  const sender = process.env.GMAIL_SENDER // the authorized mailbox, e.g. info@rozper.com
+
+  if (!clientId || !clientSecret || !refreshToken || !sender) {
+    throw new Error(
+      "Missing Gmail env vars: GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN, GMAIL_SENDER",
+    )
+  }
+
+  // OAuth2 with a refresh token — the googleapis client auto-refreshes access tokens.
+  const auth = new google.auth.OAuth2(clientId, clientSecret)
+  auth.setCredentials({ refresh_token: refreshToken })
+
+  return { gmail: google.gmail({ version: "v1", auth }), sender }
+}
+
+export async function POST(req: Request) {
+  let body: LeadPayload
   try {
-    const body = await req.json()
-    const { firstName, lastName, email, company, country, message, interests, companySize } = body
+    body = await req.json()
+  } catch {
+    return NextResponse.json(
+      { success: false, error: "Invalid JSON body." },
+      { status: 400 },
+    )
+  }
 
-    const smtpUser = process.env.SMTP_USER || ""
-    const smtpPass = process.env.SMTP_PASS || ""
+  const firstName = (body.firstName ?? "").trim()
+  const lastName = (body.lastName ?? "").trim()
+  const email = (body.email ?? "").trim()
+  const company = (body.company ?? "").trim()
+  const companySize = (body.companySize ?? "").trim()
+  const interests = Array.isArray(body.interests) ? body.interests : []
+  const message = (body.message ?? "").trim()
 
-    if (!smtpUser || !smtpPass) {
-      return NextResponse.json({ success: false, error: "SMTP not configured" }, { status: 500 })
-    }
+  // Minimal validation — email is the one field we truly need.
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json(
+      { success: false, error: "A valid email is required." },
+      { status: 400 },
+    )
+  }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: { user: smtpUser, pass: smtpPass },
-      tls: { rejectUnauthorized: false },
-      connectionTimeout: 20000,
-      greetingTimeout: 20000,
-      socketTimeout: 20000,
-    })
+  const fullName = [firstName, lastName].filter(Boolean).join(" ") || "Unknown"
+  const recipient = process.env.CONTACT_EMAIL || "Info@rozper.com"
 
-    const interestList = Array.isArray(interests) ? interests.join(", ") : interests || "—"
+  const html = `
+    <div style="font-family:system-ui,Segoe UI,Arial,sans-serif;font-size:14px;color:#0B1220;line-height:1.6">
+      <h2 style="margin:0 0 16px">New lead from rozper.com</h2>
+      <table cellpadding="6" style="border-collapse:collapse">
+        <tr><td><strong>Name</strong></td><td>${escapeHtml(fullName)}</td></tr>
+        <tr><td><strong>Email</strong></td><td>${escapeHtml(email)}</td></tr>
+        <tr><td><strong>Company</strong></td><td>${escapeHtml(company) || "—"}</td></tr>
+        <tr><td><strong>Company size</strong></td><td>${escapeHtml(companySize) || "—"}</td></tr>
+        <tr><td><strong>Interests</strong></td><td>${escapeHtml(interests.join(", ")) || "—"}</td></tr>
+        <tr><td valign="top"><strong>Message</strong></td><td>${escapeHtml(message) || "—"}</td></tr>
+      </table>
+    </div>
+  `
 
-    const html = `
-      <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9fafb;padding:24px;border-radius:10px;">
-        <div style="background:#046BD2;padding:20px 24px;border-radius:8px 8px 0 0;">
-          <h1 style="color:#fff;margin:0;font-size:20px;">New Contact Form Submission</h1>
-          <p style="color:rgba(255,255,255,0.75);margin:4px 0 0;font-size:13px;">rozper.com — Sales Enquiry</p>
-        </div>
-        <div style="background:#fff;padding:24px;border-radius:0 0 8px 8px;border:1px solid #e5e7eb;border-top:none;">
-          <table style="width:100%;border-collapse:collapse;font-size:14px;">
-            <tr><td style="padding:8px 0;color:#6b7280;width:130px;vertical-align:top;">Name</td><td style="padding:8px 0;color:#111;font-weight:600;">${firstName || ""} ${lastName || ""}</td></tr>
-            <tr style="border-top:1px solid #f3f4f6;"><td style="padding:8px 0;color:#6b7280;vertical-align:top;">Email</td><td style="padding:8px 0;"><a href="mailto:${email}" style="color:#046BD2;">${email}</a></td></tr>
-            <tr style="border-top:1px solid #f3f4f6;"><td style="padding:8px 0;color:#6b7280;vertical-align:top;">Company</td><td style="padding:8px 0;color:#111;">${company || "—"}</td></tr>
-            <tr style="border-top:1px solid #f3f4f6;"><td style="padding:8px 0;color:#6b7280;vertical-align:top;">Country</td><td style="padding:8px 0;color:#111;">${country || "—"}</td></tr>
-            <tr style="border-top:1px solid #f3f4f6;"><td style="padding:8px 0;color:#6b7280;vertical-align:top;">Company size</td><td style="padding:8px 0;color:#111;">${companySize || "—"}</td></tr>
-            <tr style="border-top:1px solid #f3f4f6;"><td style="padding:8px 0;color:#6b7280;vertical-align:top;">Interests</td><td style="padding:8px 0;color:#111;">${interestList}</td></tr>
-            ${message ? `<tr style="border-top:1px solid #f3f4f6;"><td style="padding:8px 0;color:#6b7280;vertical-align:top;">Message</td><td style="padding:8px 0;color:#111;white-space:pre-wrap;">${message}</td></tr>` : ""}
-          </table>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid #e5e7eb;font-size:12px;color:#9ca3af;">
-            Submitted via rozper.com contact form · ${new Date().toUTCString()}
-          </div>
-        </div>
-      </div>
-    `
+  try {
+    const { gmail, sender } = getGmailClient()
 
-    const subject = `New enquiry from ${firstName || ""} ${lastName || ""} — ${company || email}`
+    const subject = `New lead: ${fullName}${company ? ` (${company})` : ""}`
 
-    // Send to each recipient individually so one rejection doesn't block the rest
-    const results = await Promise.allSettled(
-      RECIPIENTS.map((to) =>
-        transporter.sendMail({
-          from: `"Rozper Website" <${smtpUser}>`,
+    // All recipients — primary contact first, then the notify list.
+    const allRecipients = [
+      recipient,
+      ...(process.env.LEAD_BCC || "").split(",").map((s) => s.trim()).filter(Boolean),
+    ]
+
+    // Send one individual email per recipient so each arrives as a normal 1-to-1
+    // message. A single email with many addresses in To/Cc gets flagged as bulk
+    // by receiving servers and bounces or lands in spam.
+    await Promise.all(
+      allRecipients.map((to) => {
+        const raw = buildRawMessage({
+          from: `Rozper Leads <${sender}>`,
           to,
           replyTo: email,
           subject,
           html,
         })
-      )
+        return gmail.users.messages.send({
+          userId: "me",
+          requestBody: { raw },
+        })
+      })
     )
 
-    const succeeded = results.filter((r) => r.status === "fulfilled").length
-    const failed = results
-      .map((r, i) => r.status === "rejected" ? `${RECIPIENTS[i]}: ${(r as PromiseRejectedResult).reason?.message}` : null)
-      .filter(Boolean)
-
-    console.log(`Contact form: ${succeeded}/${RECIPIENTS.length} delivered. Failed: ${failed.join(" | ") || "none"}`)
-
-    // Return success as long as at least one email was delivered
-    if (succeeded > 0) {
-      return NextResponse.json({ success: true })
-    }
-
-    return NextResponse.json({ success: false, error: "All recipients rejected the email" }, { status: 500 })
-
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : String(err)
-    console.error("Contact form error:", message)
-    return NextResponse.json({ success: false, error: message }, { status: 500 })
+    return NextResponse.json({ success: true })
+  } catch (err) {
+    console.error("[/api/contact] Failed to send lead email:", err)
+    return NextResponse.json(
+      { success: false, error: "Failed to send. Please try again later." },
+      { status: 500 },
+    )
   }
 }

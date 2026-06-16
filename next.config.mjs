@@ -21,6 +21,11 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      { source: '/audit', destination: '/audit/index.html' },
+    ]
+  },
   async redirects() {
     return [
       { source: "/features/ai-sentiment",                        destination: "/features/ai-sentiment-analysis",                   permanent: true },
