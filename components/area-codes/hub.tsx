@@ -186,25 +186,39 @@ export function HubHero({ totalCodes, totalStates, stateGroups }: HeroProps) {
           </motion.div>
         </div>
 
-        {/* Stats ribbon — 2 cols on mobile, 4 on sm+ */}
+        {/* Info ribbon — 2 cols on mobile, 4 on sm+ */}
         <motion.div
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.07] -mb-px relative z-10"
         >
           {[
-            { icon: Hash,  value: `${totalCodes}+`, label: "Area Codes" },
-            { icon: MapPin, value: `${totalStates}`, label: "States & Territories" },
-            { icon: Globe,  value: "150+", label: "Countries" },
-            { icon: Clock,  value: "< 10 min", label: "Setup Time" },
-          ].map(({ icon: Icon, value, label }) => (
-            <div key={label} className="flex flex-col items-center justify-center py-4 sm:py-5 px-2 sm:px-4 bg-[#0A1525]">
-              <Icon className="w-3.5 h-3.5 text-[#22D3EE]/60 mb-1.5 sm:mb-2" />
-              <span className="text-lg sm:text-2xl lg:text-3xl font-black bg-gradient-to-r from-[#22D3EE] to-[#046BD2] bg-clip-text text-transparent tabular-nums leading-none">
-                {value}
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wide sm:tracking-widest text-white/35 mt-1 text-center leading-tight">
-                {label}
-              </span>
+            {
+              icon: Zap,
+              title: "Instant activation",
+              body: "Pick an area code and go live in under 10 minutes — no hardware, no waiting.",
+            },
+            {
+              icon: PhoneCall,
+              title: "Routes to any device",
+              body: "Forward calls to mobiles, desktops, or desk phones. Works wherever your team is.",
+            },
+            {
+              icon: BadgeCheck,
+              title: "99.99% uptime SLA",
+              body: "Carrier-grade reliability backed by a guaranteed SLA and 24/7 live engineer support.",
+            },
+            {
+              icon: TrendingUp,
+              title: "3× higher pickup rates",
+              body: "Local area codes get answered up to 3× more than toll-free or out-of-state numbers.",
+            },
+          ].map(({ icon: Icon, title, body }) => (
+            <div key={title} className="flex flex-col gap-1.5 py-4 sm:py-5 px-4 sm:px-5 bg-[#0A1525]">
+              <div className="flex items-center gap-2 mb-0.5">
+                <Icon className="w-3.5 h-3.5 text-[#22D3EE]/70 shrink-0" />
+                <span className="text-xs sm:text-sm font-semibold text-white/85 leading-snug">{title}</span>
+              </div>
+              <p className="text-[10px] sm:text-xs text-white/35 leading-relaxed">{body}</p>
             </div>
           ))}
         </motion.div>
