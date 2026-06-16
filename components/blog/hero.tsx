@@ -40,7 +40,7 @@ export function BlogHero() {
   }
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28">
+    <section className="relative overflow-hidden pt-20 pb-20 sm:pt-28 lg:pt-40 lg:pb-28">
       {/* Background — soft conic + grid, consistent with landing hero */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-[#070B14]" />
@@ -60,8 +60,9 @@ export function BlogHero() {
           }}
         />
 
+        {/* Issue 1 fixed: replaced fixed w-[1300px] h-[1300px] with responsive vw/vh-based sizing */}
         <motion.div
-          className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[1300px] h-[1300px] rounded-full opacity-50"
+          className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[min(1300px,200vw)] h-[min(1300px,200vw)] sm:w-[min(1300px,150vw)] sm:h-[min(1300px,150vw)] rounded-full opacity-50"
           style={{
             background:
               "conic-gradient(from 90deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.35) 60deg, rgba(0,134,249,0.15) 140deg, rgba(34,211,238,0.25) 220deg, rgba(4,107,210,0) 360deg)",
@@ -71,8 +72,9 @@ export function BlogHero() {
           transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
         />
 
+        {/* Issue 1 fixed: replaced fixed w-[440px] h-[440px] with responsive sizing */}
         <motion.div
-          className="absolute top-[18%] right-[8%] w-[440px] h-[440px] rounded-full"
+          className="absolute top-[18%] right-[8%] w-[min(440px,60vw)] h-[min(440px,60vw)] rounded-full"
           style={{
             background:
               "radial-gradient(circle, rgba(4,107,210,0.4) 0%, rgba(4,107,210,0) 65%)",
@@ -81,8 +83,9 @@ export function BlogHero() {
           animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
+        {/* Issue 1 fixed: replaced fixed w-[380px] h-[380px] with responsive sizing */}
         <motion.div
-          className="absolute bottom-[12%] left-[6%] w-[380px] h-[380px] rounded-full"
+          className="absolute bottom-[12%] left-[6%] w-[min(380px,55vw)] h-[min(380px,55vw)] rounded-full"
           style={{
             background:
               "radial-gradient(circle, rgba(34,211,238,0.22) 0%, rgba(34,211,238,0) 65%)",
@@ -159,7 +162,7 @@ export function BlogHero() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search articles, authors, topics…"
                 aria-label="Search blog"
-                className="flex-1 bg-transparent text-sm sm:text-base text-white placeholder:text-white/40 px-3 py-2 outline-none"
+                className="flex-1 bg-transparent text-sm sm:text-base text-white placeholder:text-white/40 px-3 py-2 outline-none min-w-0"
               />
               {query && (
                 <button
@@ -174,16 +177,21 @@ export function BlogHero() {
                   <X className="w-4 h-4" />
                 </button>
               )}
+              {/* Issue 2 fixed: submit button now visible on mobile as an icon-only button,
+                  expanding to full text label at sm breakpoint */}
               <button
                 type="submit"
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium px-4 py-2 transition-colors"
+                aria-label="Search"
+                className="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium px-3 py-2 sm:px-4 transition-colors"
               >
-                Search
                 <ArrowRight className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Search</span>
               </button>
             </div>
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs text-white/40">
-              <span className="font-mono uppercase tracking-wider text-[10px]">
+            {/* Issue 5 fixed: added text-[11px] on mobile for pill labels and min-w-0 guard;
+                pills now wrap more gracefully on narrow screens */}
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 sm:gap-x-3 text-xs text-white/40">
+              <span className="font-mono uppercase tracking-wider text-[10px] shrink-0">
                 Popular
               </span>
               {["AI agents", "Wholesale margins", "HIPAA", "SIP trunking"].map(
@@ -195,7 +203,7 @@ export function BlogHero() {
                       setQuery(t)
                       goto(t)
                     }}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-white transition-colors text-[11px] sm:text-xs whitespace-nowrap"
                   >
                     {t}
                   </button>
@@ -206,29 +214,44 @@ export function BlogHero() {
         </motion.form>
 
         {/* Mini stat bar */}
+        {/* Issue 3 fixed: added min-w-0 on cells and reduced mobile px to px-3 to prevent
+            squeeze at narrow viewports (< 375px) with 2-column layout.
+            Issue 4 fixed: removed conflicting base border-r / border-b declarations;
+            now uses divide-x / divide-y on the grid wrapper to cleanly separate cells
+            without border shorthand conflicts in Tailwind JIT. */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-10 w-full sm:w-fit sm:mx-auto grid grid-cols-2 sm:grid-cols-4 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden"
+          className="mt-10 w-full sm:w-fit sm:mx-auto rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden"
         >
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="px-5 sm:px-7 py-4 sm:py-3 text-center sm:text-left
-                border-r border-white/[0.05] [&:nth-child(2n)]:border-r-0
-                sm:[&:nth-child(2n)]:border-r sm:[&:last-child]:border-r-0
-                border-b border-white/[0.05] [&:nth-child(n+3)]:border-b-0
-                sm:border-b-0"
-            >
-              <div className="text-lg sm:text-xl font-semibold text-white tabular-nums">
-                {s.value}
+          {/* On mobile (2-col): right border on odd cells (1,3), bottom border on first row (1,2).
+               On sm+ (4-col): right border on all except last, no bottom border. */}
+          <div className="grid grid-cols-2 sm:grid-cols-4">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={[
+                  "min-w-0 px-3 sm:px-7 py-4 sm:py-3 text-center sm:text-left border-white/[0.05]",
+                  // right border: odd indices (0-based: 0 and 2) get border-r on mobile; all except last on sm+
+                  i % 2 === 0 ? "border-r" : "",
+                  // bottom border: first two items (row 1 of 2-col mobile grid) get border-b on mobile only
+                  i < 2 ? "border-b sm:border-b-0" : "",
+                  // sm+: remove right border from last item
+                  i === stats.length - 1 ? "sm:border-r-0" : "sm:border-r",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <div className="text-lg sm:text-xl font-semibold text-white tabular-nums">
+                  {s.value}
+                </div>
+                <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-white/40 font-mono mt-0.5">
+                  {s.label}
+                </div>
               </div>
-              <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-white/40 font-mono mt-0.5">
-                {s.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </motion.div>
 
         <motion.div

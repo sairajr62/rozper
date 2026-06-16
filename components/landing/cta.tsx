@@ -22,9 +22,9 @@ export function CTA() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="relative rounded-3xl overflow-hidden bg-[#070B14] border border-white/10"
         >
-          {/* Left arc glow */}
+          {/* Left arc glow — hidden on mobile to prevent layout bleed, shown from sm up */}
           <div
-            className="absolute -left-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
+            className="hidden sm:block absolute -left-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
             aria-hidden
           >
             <motion.svg
@@ -60,9 +60,9 @@ export function CTA() {
             </motion.svg>
           </div>
 
-          {/* Right arc glow (mirrored) */}
+          {/* Right arc glow (mirrored) — hidden on mobile to prevent layout bleed, shown from sm up */}
           <div
-            className="absolute -right-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
+            className="hidden sm:block absolute -right-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
             aria-hidden
           >
             <motion.svg
@@ -115,13 +115,13 @@ export function CTA() {
           />
 
           {/* Content */}
-          <div className="relative px-3 py-12 sm:px-6 sm:py-20 lg:py-24 text-center">
+          <div className="relative px-5 py-12 sm:px-8 sm:py-20 lg:py-24 text-center">
             {/* Headline */}
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-[-0.025em] leading-[1.05]"
+              className="font-display text-3xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-[-0.02em] leading-[1.1]"
             >
               Start a{" "}
               <span className="bg-gradient-to-r from-[#22D3EE] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">
@@ -135,7 +135,7 @@ export function CTA() {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 text-base sm:text-lg text-[#9AA8BC] max-w-xl mx-auto leading-relaxed"
+              className="mt-5 sm:mt-6 text-sm sm:text-lg text-[#9AA8BC] max-w-xl mx-auto leading-relaxed"
             >
               See how Rozper fits into your stack in 30 minutes. 14-day free
               trial. No credit card. No deck.
@@ -146,15 +146,16 @@ export function CTA() {
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-10 flex flex-row flex-wrap gap-2 sm:gap-3 justify-center items-center"
+              className="mt-8 sm:mt-10 flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-3 justify-center items-center"
             >
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
+                className="w-full xs:w-auto"
               >
                 <Button
                   size="lg"
-                  className="relative h-11 sm:h-14 px-3 sm:px-8 text-xs sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
+                  className="relative w-full xs:w-auto h-11 sm:h-14 px-6 sm:px-8 text-sm sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
                   asChild
                 >
                   <Link href="/free-trial">
@@ -178,12 +179,13 @@ export function CTA() {
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
+                className="w-full xs:w-auto"
               >
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="h-11 sm:h-14 px-3 sm:px-8 text-xs sm:text-base rounded-xl border-white/15 bg-white/[0.04] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
+                  className="w-full xs:w-auto h-11 sm:h-14 px-6 sm:px-8 text-sm sm:text-base rounded-xl border-white/15 bg-white/[0.04] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
                 >
                   <Link href="/pricing">
                     See pricing

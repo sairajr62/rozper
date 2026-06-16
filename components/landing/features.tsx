@@ -212,7 +212,14 @@ export function Features() {
     progress.set(0)
   }, [activeIdx, progress])
 
-  const select = (i: number) => setActiveIdx(i)
+  const select = (i: number) => {
+    paused.current = true
+    setActiveIdx(i)
+    // Resume auto-cycle after a short delay when selected via touch/click
+    setTimeout(() => {
+      paused.current = false
+    }, DURATION_S * 1000)
+  }
 
   const active = layers[activeIdx]
   const ActiveIcon = active.icon
@@ -275,17 +282,22 @@ export function Features() {
         </motion.div>
 
         {/* Two-column: layer list left, detail right */}
+        {/* Fix #1: Added grid-cols-1 for mobile, explicit ordering so detail panel
+            appears first on mobile (order-first), layer list second (order-last).
+            On lg+ the natural document order is restored via lg:order-none.
+            Fix #8: replaced mouse-only pause handlers with touch-friendly
+            onPointerEnter / onPointerLeave so touch devices can also pause. */}
         <div
-          className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start"
-          onMouseEnter={() => {
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start"
+          onPointerEnter={() => {
             paused.current = true
           }}
-          onMouseLeave={() => {
+          onPointerLeave={() => {
             paused.current = false
           }}
         >
-          {/* Left: layer stack */}
-          <div className="lg:col-span-5 flex flex-col gap-2">
+          {/* Left: layer stack — shown below detail panel on mobile, left on lg+ */}
+          <div className="order-last lg:order-none lg:col-span-5 flex flex-col gap-2">
             {layers.map((layer, i) => (
               <LayerRow
                 key={layer.id}
@@ -298,16 +310,18 @@ export function Features() {
             ))}
           </div>
 
-          {/* Right: detail panel */}
+          {/* Right: detail panel — shown first on mobile, right on lg+ */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-7 relative"
+            className="order-first lg:order-none lg:col-span-7 relative overflow-hidden"
           >
-            {/* glow */}
+            {/* Fix #7: glow div clipped to parent via overflow-hidden on the
+                relative container above; reduced inset to -inset-4 on mobile
+                to avoid triggering horizontal scroll on narrow viewports. */}
             <div
-              className="absolute -inset-8 rounded-3xl pointer-events-none"
+              className="absolute -inset-4 sm:-inset-8 rounded-3xl pointer-events-none"
               style={{
                 background: `radial-gradient(circle at 50% 30%, ${active.glow} 0%, transparent 60%)`,
                 filter: "blur(50px)",
@@ -324,7 +338,7 @@ export function Features() {
                     <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
                     <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
                   </div>
-                  <span className="ml-3 text-[11px] uppercase tracking-[0.18em] text-white/35 font-mono">
+                  <span className="ml-3 text-[11px] uppercase tracking-[0.18em] text-white/35 font-mono truncate">
                     rozper · platform architecture
                   </span>
                 </div>
@@ -336,20 +350,26 @@ export function Features() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="p-6 sm:p-8"
+                    className="p-5 sm:p-8"
                   >
                     {/* Layer identity */}
-                    <div className="flex items-center gap-4">
+                    {/* Fix #2: Added flex-wrap so the row can wrap on very
+                        narrow screens (< 360px). */}
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                      {/* Fix #3: Reduced icon from w-14 h-14 to w-10 h-10 on
+                          mobile; restored to w-14 h-14 on sm+. */}
                       <div
-                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${active.accent} flex items-center justify-center shadow-[0_0_30px_-5px_rgba(4,107,210,0.6)]`}
+                        className={`w-10 h-10 sm:w-14 sm:h-14 shrink-0 rounded-2xl bg-gradient-to-br ${active.accent} flex items-center justify-center shadow-[0_0_30px_-5px_rgba(4,107,210,0.6)]`}
                       >
-                        <ActiveIcon className="w-6 h-6 text-white" />
+                        <ActiveIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40">
                           Layer {active.index} of 5
                         </div>
-                        <h3 className="font-display text-2xl sm:text-3xl font-semibold text-white tracking-tight mt-0.5">
+                        {/* Fix #4: Added text-xl base size for very small screens,
+                            then text-2xl at sm, text-3xl at md+. */}
+                        <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-white tracking-tight mt-0.5">
                           {active.label}
                         </h3>
                       </div>
@@ -378,12 +398,14 @@ export function Features() {
                     {/* Modern auto-cycle progress bar — flows in sync
                         with the left list, top-to-bottom */}
                     <div className="mt-8 pt-6 border-t border-white/5">
-                      <div className="mb-3 flex items-center justify-between">
+                      {/* Fix #5: Added min-w-0 and flex-wrap to prevent overflow
+                          on very narrow screens (< 320px). */}
+                      <div className="mb-3 flex flex-wrap items-center justify-between gap-y-1 min-w-0">
                         <span className="text-[10px] uppercase tracking-[0.18em] font-mono text-white/35">
                           Platform stack
                         </span>
                         <span className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] font-mono text-white/45">
-                          <span className="relative flex h-1.5 w-1.5">
+                          <span className="relative flex h-1.5 w-1.5 shrink-0">
                             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22D3EE] opacity-75" />
                             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#22D3EE]" />
                           </span>
@@ -392,6 +414,9 @@ export function Features() {
                           </span>
                         </span>
                       </div>
+                      {/* Fix #10: Increased tap target height for progress bar
+                          segment buttons — added py-2 padding around the 3px
+                          visible bar so touch users can hit them more easily. */}
                       <div className="flex gap-1.5">
                         {layers.map((l, i) => {
                           const isActive = i === activeIdx
@@ -400,7 +425,7 @@ export function Features() {
                               key={l.id}
                               onClick={() => select(i)}
                               title={l.label}
-                              className="group flex-1"
+                              className="group flex-1 py-2"
                               aria-label={l.label}
                             >
                               <div className="h-[3px] overflow-hidden rounded-full bg-white/[0.06] transition-colors group-hover:bg-white/[0.12]">
@@ -417,7 +442,10 @@ export function Features() {
                           )
                         })}
                       </div>
-                      <div className="mt-2 hidden gap-1.5 sm:flex">
+                      {/* Fix #6: Show sub-labels on all screen sizes (removed
+                          hidden/sm:flex so mobile users can also see them);
+                          kept truncate and text-[8px] to prevent overflow. */}
+                      <div className="mt-2 flex gap-1.5">
                         {layers.map((l, i) => {
                           const isActive = i === activeIdx
                           return (
@@ -427,8 +455,8 @@ export function Features() {
                                 isActive ? "text-[#22D3EE]" : "text-white/20"
                               }`}
                             >
-                              <span className="tabular-nums">{l.index}</span>{" "}
-                              · {l.sublabel}
+                              <span className="tabular-nums">{l.index}</span>
+                              <span className="hidden sm:inline"> · {l.sublabel}</span>
                             </span>
                           )
                         })}

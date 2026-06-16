@@ -68,10 +68,12 @@ export function FreeTrialPageView() {
     <div className="min-h-screen flex flex-col bg-[#0B1220] text-white">
       <Navbar />
 
-      {/* Aurora blobs */}
+      {/* Aurora blobs — container is fixed + overflow-hidden to clip children */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-[#22D3EE]/10 blur-[100px] sm:blur-[150px] rounded-full translate-x-1/4 -translate-y-1/4" />
-        <div className="absolute top-32 -left-20 w-[250px] h-[250px] sm:w-[500px] sm:h-[500px] bg-[#046BD2]/12 blur-[80px] sm:blur-[130px] rounded-full" />
+        {/* Issue 1: blob sizes reduced on mobile to reduce sub-pixel artifact risk */}
+        <div className="absolute top-0 right-0 w-[200px] h-[200px] sm:w-[600px] sm:h-[600px] bg-[#22D3EE]/10 blur-[80px] sm:blur-[150px] rounded-full translate-x-1/4 -translate-y-1/4" />
+        {/* Issue 6: -left-20 can escape viewport on narrow screens; use left-0 on mobile, negative offset only on sm+ */}
+        <div className="absolute top-32 left-0 sm:-left-20 w-[180px] h-[180px] sm:w-[500px] sm:h-[500px] bg-[#046BD2]/12 blur-[60px] sm:blur-[130px] rounded-full" />
         <div
           className="absolute inset-0 opacity-[0.1]"
           style={{
@@ -84,7 +86,8 @@ export function FreeTrialPageView() {
 
       {/* Content */}
       <div className="relative flex-1 flex items-start lg:items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-12 sm:pb-16">
-        <div className="w-full max-w-sm sm:max-w-md lg:max-w-5xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+        {/* Issue 3: add md:max-w-xl as intermediate step between sm (max-w-md) and lg (max-w-5xl) */}
+        <div className="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-5xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
 
           {/* ── Left: Form ── */}
           <motion.div
@@ -93,13 +96,13 @@ export function FreeTrialPageView() {
             transition={{ duration: 0.45 }}
             className="w-full"
           >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] font-mono uppercase tracking-[0.18em] text-white/55 mb-4">
-              <span className="relative flex h-1.5 w-1.5">
+            {/* Badge — Issue 8: reduce tracking on mobile to prevent overflow/awkward wrapping */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] font-mono uppercase tracking-[0.10em] sm:tracking-[0.18em] text-white/55 mb-4 max-w-full overflow-hidden">
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22D3EE] opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#22D3EE]" />
               </span>
-              Get Started Free · 14-Day Trial
+              <span className="truncate">Get Started Free · 14-Day Trial</span>
             </div>
 
             {!submitted ? (
@@ -114,7 +117,8 @@ export function FreeTrialPageView() {
                   Calling, video, team chat, SMS, and AI transcription on one platform built for growing teams.
                 </p>
 
-                <div className="relative rounded-2xl border border-white/10 bg-[#0F1A2E]/80 backdrop-blur-xl p-5 sm:p-7">
+                {/* Issue 4: reduce base padding to p-4 so inputs stay wide enough on sub-375px screens */}
+                <div className="relative rounded-2xl border border-white/10 bg-[#0F1A2E]/80 backdrop-blur-xl p-4 sm:p-7">
                   <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/10 via-[#046BD2]/20 to-white/5 -z-10" />
 
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -199,9 +203,56 @@ export function FreeTrialPageView() {
                     <Link href="/sign-in" className="font-semibold text-[#22D3EE] hover:text-white transition-colors">Sign in</Link>
                   </p>
                 </div>
+
+                {/* Issue 2: Mobile/tablet trust signals — visible below lg, hidden at lg+ (shown by right panel instead) */}
+                <div className="mt-6 flex flex-col gap-4 lg:hidden">
+                  {/* Stats row */}
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                    {stats.map((s) => (
+                      <div
+                        key={s.label}
+                        className="text-center rounded-xl border border-white/[0.07] bg-white/[0.03] px-2 py-3"
+                      >
+                        <p className="text-base sm:text-lg font-bold text-white">{s.value}</p>
+                        <p className="text-[9px] sm:text-[10px] text-white/40 mt-0.5 uppercase tracking-widest font-mono">{s.label}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Included checklist */}
+                  <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-5">
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-white/35 mb-3">
+                      What&apos;s included
+                    </p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                      {included.map((f) => (
+                        <li key={f} className="flex items-center gap-2.5 text-sm text-white/65">
+                          <CheckCircle2 className="w-4 h-4 text-[#22D3EE] shrink-0" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Product chips */}
+                  <div className="grid grid-cols-2 gap-2">
+                    {products.map((p) => (
+                      <div
+                        key={p.label}
+                        className="flex items-center gap-2.5 rounded-lg border border-white/[0.07] bg-white/[0.03] px-3 py-2.5"
+                      >
+                        <span className="w-7 h-7 rounded-md bg-gradient-to-br from-[#046BD2] to-[#22D3EE] flex items-center justify-center shrink-0">
+                          <p.icon className="w-3.5 h-3.5 text-white" />
+                        </span>
+                        <span className="text-xs font-medium text-white/70">{p.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </>
             ) : (
-              <div className="relative rounded-2xl border border-white/10 bg-[#0F1A2E]/80 backdrop-blur-xl p-8 sm:p-10 text-center">
+              /* Issue 7: success card — reduce base padding to p-5 to give more content room on sub-375px */
+              <div className="relative rounded-2xl border border-white/10 bg-[#0F1A2E]/80 backdrop-blur-xl p-5 sm:p-10 text-center">
                 <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-white/10 via-[#046BD2]/20 to-white/5 -z-10" />
                 <div className="w-14 h-14 mx-auto rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center mb-4">
                   <CheckCircle2 className="w-7 h-7 text-emerald-400" />
@@ -220,7 +271,7 @@ export function FreeTrialPageView() {
             )}
           </motion.div>
 
-          {/* ── Right: Stats + Checklist (desktop only) ── */}
+          {/* ── Right: Stats + Checklist (desktop only, lg+) ── */}
           <motion.div
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
@@ -246,7 +297,7 @@ export function FreeTrialPageView() {
             {/* Included */}
             <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
               <p className="text-[10px] font-mono uppercase tracking-widest text-white/35 mb-3">
-                What's included
+                What&apos;s included
               </p>
               <ul className="space-y-2.5">
                 {included.map((f) => (

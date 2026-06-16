@@ -55,7 +55,7 @@ export function PricingHero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.1 }}
-          className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight"
+          className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.05] tracking-tight"
         >
           Simple pricing.{' '}
           <span
@@ -93,7 +93,7 @@ export function PricingHero() {
           className="inline-flex items-baseline gap-2 mb-10 px-4 py-4 sm:px-8 sm:py-5 rounded-2xl bg-[#046BD2]/8 border border-[#046BD2]/20"
           style={{ boxShadow: '0 0 50px rgba(4,107,210,0.12), inset 0 1px 0 rgba(255,255,255,0.05)' }}
         >
-          <span className="text-5xl sm:text-7xl font-bold text-white tracking-tight">$9.99</span>
+          <span className="text-4xl sm:text-7xl font-bold text-white tracking-tight">$9.99</span>
           <div className="flex flex-col items-start">
             <span className="text-[#CCD6DF] text-sm sm:text-base font-medium whitespace-nowrap">per user</span>
             <span className="text-[#757575] text-xs sm:text-sm whitespace-nowrap">per month</span>
@@ -105,7 +105,7 @@ export function PricingHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.42 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12"
         >
           {trustIndicators.map(({ icon: Icon, label }, i) => (
             <motion.div
@@ -126,9 +126,9 @@ export function PricingHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.58 }}
-          className="flex flex-row flex-wrap items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4"
         >
-          <a href="/free-trial" className="relative overflow-hidden whitespace-nowrap px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
+          <a href="/free-trial" className="relative overflow-hidden w-full sm:w-auto text-center px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
             style={{ boxShadow: '0 0 0 0 rgba(4,107,210,0.4)' }}
             onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 40px rgba(4,107,210,0.45)')}
             onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 0 0 rgba(4,107,210,0.4)')}
@@ -138,7 +138,7 @@ export function PricingHero() {
           </a>
           <a
             href="#pricing-plans"
-            className="px-6 py-4 text-[#CCD6DF] font-medium hover:text-white transition-all duration-300 border border-white/[0.1] rounded-xl hover:border-white/[0.22] hover:bg-white/[0.03]"
+            className="w-full sm:w-auto text-center px-6 py-4 text-[#CCD6DF] font-medium hover:text-white transition-all duration-300 border border-white/[0.1] rounded-xl hover:border-white/[0.22] hover:bg-white/[0.03]"
           >
             See Full Plan ↓
           </a>

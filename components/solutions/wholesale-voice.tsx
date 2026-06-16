@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
+import { WholesaleContactForm } from "@/components/contact/wholesale-form"
 import {
   PhoneOutgoing,
   PhoneIncoming,
@@ -222,7 +223,8 @@ function RouteBoard() {
         </div>
       </div>
 
-      <div className="relative grid grid-cols-[1fr_auto_72px] gap-3 border-b border-white/10 pb-2 font-mono text-[9px] uppercase tracking-widest text-white/35">
+      {/* Fix issue #3: replaced hardcoded 72px ASR column with minmax to prevent squeeze on narrow screens */}
+      <div className="relative grid grid-cols-[1fr_auto_minmax(56px,72px)] gap-2 border-b border-white/10 pb-2 font-mono text-[9px] uppercase tracking-widest text-white/35">
         <span>Destination</span>
         <span className="text-right">Rate / min</span>
         <span className="text-right">ASR</span>
@@ -234,18 +236,19 @@ function RouteBoard() {
           return (
             <div
               key={r.code}
-              className={`relative grid grid-cols-[1fr_auto_72px] items-center gap-3 border-b border-white/[0.05] py-2.5 transition-colors duration-300 ${on ? "bg-white/[0.04]" : ""}`}
+              /* Fix issue #3: same minmax column fix applied to each row */
+              className={`relative grid grid-cols-[1fr_auto_minmax(56px,72px)] items-center gap-2 border-b border-white/[0.05] py-2.5 transition-colors duration-300 ${on ? "bg-white/[0.04]" : ""}`}
             >
               {on && <span className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-[#22D3EE] to-[#046BD2]" />}
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-6 w-7 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] font-mono text-[9px] font-bold text-[#2D98F1]">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <span className="flex h-6 w-7 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.05] font-mono text-[9px] font-bold text-[#2D98F1]">
                   {r.code}
                 </span>
                 <span className="truncate text-sm text-white/85">{r.name}</span>
               </div>
               <span className="text-right font-mono text-sm tabular-nums text-white">${r.rate}</span>
-              <div className="flex items-center justify-end gap-1.5">
-                <span className="h-1 w-8 overflow-hidden rounded-full bg-white/10">
+              <div className="flex items-center justify-end gap-1">
+                <span className="hidden sm:block h-1 w-6 overflow-hidden rounded-full bg-white/10">
                   <motion.span
                     className="block h-full rounded-full bg-gradient-to-r from-[#046BD2] to-[#22D3EE]"
                     initial={{ width: 0 }}
@@ -279,11 +282,13 @@ function RouteBoard() {
 // ──────────────────────────────────────────────────────────────────────
 export function WholesaleVoicePageView() {
   return (
-    <main className="min-h-screen bg-[#0B1220] text-white overflow-x-clip">
+    // Fix issue #11: changed overflow-x-clip to overflow-x-hidden so the ambient glow is properly clipped
+    // in all browsers and does not contribute to horizontal scroll on mobile
+    <main className="min-h-screen bg-[#0B1220] text-white overflow-x-hidden">
       <Navbar />
 
-      {/* ambient glow */}
-      <div className="pointer-events-none absolute top-1/4 right-0 h-[500px] w-[500px] rounded-full bg-[#046BD2]/8 blur-[160px]" />
+      {/* ambient glow — fix issue #11: constrained to not exceed viewport width */}
+      <div className="pointer-events-none absolute top-1/4 right-0 h-[500px] w-[500px] max-w-full rounded-full bg-[#046BD2]/8 blur-[160px]" />
 
       <div className="relative z-10">
         {/* Breadcrumb */}
@@ -296,6 +301,8 @@ export function WholesaleVoicePageView() {
         </div>
 
         {/* ── Hero ──────────────────────────────────────────────────── */}
+        {/* Fix issue #1: hero section — RouteBoard shown at md breakpoint instead of only lg,
+            so tablet screens get the visual content instead of an empty right column */}
         <section className="mx-auto grid max-w-7xl items-center gap-8 px-4 pb-10 pt-6 sm:pb-20 sm:pt-12 sm:px-6 lg:grid-cols-[1.1fr_1fr]">
           <div>
             <motion.div
@@ -309,22 +316,24 @@ export function WholesaleVoicePageView() {
               </span>
             </motion.div>
 
+            {/* Fix issue #2: removed hard <br /> line-break on mobile to prevent overflow on narrow phones.
+                The break only appears at lg+ where there is enough width for two lines. */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-6xl xl:text-7xl"
+              className="font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-6xl xl:text-7xl"
             >
-              Leading Global Provider of
-              <br />
+              Leading Global Provider of{" "}
               <span className="bg-gradient-to-r from-[#2D98F1] via-[#0086F9] to-[#22D3EE] bg-clip-text text-transparent">
                 Wholesale Voice Solutions
               </span>
             </motion.h1>
 
+            {/* Fix issue #10: removed duplicate sm:text-base class — only sm:text-lg applies now */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.2 } }}
-              className="mt-3 sm:mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base sm:text-lg"
+              className="mt-3 sm:mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-lg"
             >
               Your trusted wholesale voice carrier for smooth international calls. High-quality voice termination, direct CLI and non-CLI routes, plus competitive global rates for telecom carriers, VoIP providers, and call centers.
             </motion.p>
@@ -343,10 +352,11 @@ export function WholesaleVoicePageView() {
               ))}
             </motion.div>
 
+            {/* Fix issue #9: added flex-wrap so CTA buttons stack on very narrow phones (< 360px) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
-              className="mt-4 sm:mt-8 flex gap-3"
+              className="mt-4 sm:mt-8 flex flex-wrap gap-3"
             >
               <Link
                 href="/free-trial"
@@ -364,10 +374,11 @@ export function WholesaleVoicePageView() {
             </motion.div>
           </div>
 
+          {/* Fix issue #1: show RouteBoard at md breakpoint (tablet) instead of only lg (desktop) */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
-            className="hidden lg:block w-full"
+            className="hidden md:block w-full"
           >
             <RouteBoard />
           </motion.div>
@@ -382,6 +393,7 @@ export function WholesaleVoicePageView() {
             </h2>
           </div>
 
+          {/* Fix issue #8: added p-4 sm:p-6 so cards have reduced padding on smallest phones */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {WHY_CHOOSE.map((f, i) => (
               <motion.div
@@ -390,7 +402,7 @@ export function WholesaleVoicePageView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group rounded-2xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/[0.07] to-transparent p-6 transition hover:border-[#046BD2]/40 hover:from-[#046BD2]/[0.12]"
+                className="group rounded-2xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/[0.07] to-transparent p-4 sm:p-6 transition hover:border-[#046BD2]/40 hover:from-[#046BD2]/[0.12]"
               >
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-[#046BD2]/30 bg-[#046BD2]/20 group-hover:bg-[#046BD2]/30 transition">
                   <f.icon className="h-5 w-5 text-[#0086F9]" />
@@ -419,7 +431,7 @@ export function WholesaleVoicePageView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group relative rounded-2xl border border-white/[0.07] bg-[#111B2D] p-7 transition hover:border-[#046BD2]/30"
+                className="group relative rounded-2xl border border-white/[0.07] bg-[#111B2D] p-5 sm:p-7 transition hover:border-[#046BD2]/30"
               >
                 {/* accent tag */}
                 <span className="absolute right-5 top-5 font-mono text-3xl font-bold text-white/[0.06] select-none">
@@ -433,7 +445,9 @@ export function WholesaleVoicePageView() {
                 <h3 className="mb-2 font-display text-xl font-semibold">{s.title}</h3>
                 <p className="mb-5 text-sm leading-relaxed text-white/55">{s.desc}</p>
 
-                <div className="grid grid-cols-2 gap-2">
+                {/* Fix issue #4: added xs-friendly single-column fallback for the benefits grid.
+                    Uses grid-cols-1 base, stepping up to grid-cols-2 at sm (640px+) */}
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                   {s.benefits.map((b) => (
                     <div
                       key={b.label}
@@ -454,7 +468,9 @@ export function WholesaleVoicePageView() {
 
         {/* ── Performance Stats ─────────────────────────────────────── */}
         <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-          <div className="rounded-[2rem] border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/10 to-[#0B1220] p-8 sm:p-12 md:p-16">
+          {/* Fix issue #5: reduced md padding from p-16 (64px) to p-10 to prevent content overflow
+              on small md-breakpoint devices. Kept sm:p-12 and added lg:p-16 for larger screens. */}
+          <div className="rounded-[2rem] border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/10 to-[#0B1220] p-6 sm:p-10 md:p-12 lg:p-16">
             <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60 text-center">
               // performance
             </div>
@@ -523,7 +539,9 @@ export function WholesaleVoicePageView() {
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          {/* Fix issue #6: added sm:grid-cols-2 intermediate step before md:grid-cols-3
+              so small tablets (640-767px) get a two-column layout instead of jumping from 1 to 3 */}
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {TECH_FEATURES.map((f, i) => (
               <motion.div
                 key={f.title}
@@ -531,7 +549,7 @@ export function WholesaleVoicePageView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#111B2D] p-8 transition hover:border-[#046BD2]/30"
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#111B2D] p-6 sm:p-8 transition hover:border-[#046BD2]/30"
               >
                 {/* glow */}
                 <div className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full bg-[#046BD2]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -555,7 +573,9 @@ export function WholesaleVoicePageView() {
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          {/* Fix issue #7: added sm:grid-cols-2 intermediate step before md:grid-cols-3
+              so small tablets (640-767px) get a two-column layout instead of jumping from 1 to 3 */}
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
               <motion.div
                 key={t.initials}
@@ -563,7 +583,7 @@ export function WholesaleVoicePageView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12, duration: 0.5 }}
-                className="flex flex-col rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-7 transition hover:border-[#046BD2]/40"
+                className="flex flex-col rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-5 sm:p-7 transition hover:border-[#046BD2]/40"
               >
                 <TrendingUp className="mb-5 h-5 w-5 text-[#0086F9]" />
                 <blockquote className="flex-1 text-sm leading-relaxed text-white/70">
@@ -584,16 +604,17 @@ export function WholesaleVoicePageView() {
         </section>
 
         {/* ── FAQ ───────────────────────────────────────────────────── */}
+        {/* Fix issue #12: reduced padding from p-6 to p-4 sm:p-6 so FAQ items are comfortable on phones */}
         <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
           <h2 className="mb-8 text-center font-display text-3xl font-bold sm:text-4xl">FAQ</h2>
           <div className="space-y-3">
             {FAQS.map((f, i) => (
               <details
                 key={i}
-                className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:bg-white/[0.05]"
+                className="group rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-6 transition hover:bg-white/[0.05]"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between font-display font-semibold">
-                  <span>{f.q}</span>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display font-semibold">
+                  <span className="text-sm sm:text-base">{f.q}</span>
                   <ChevronRight className="h-5 w-5 shrink-0 text-[#0086F9] transition-transform group-open:rotate-90" />
                 </summary>
                 <p className="mt-4 leading-relaxed text-white/60 text-sm">{f.a}</p>
@@ -602,41 +623,8 @@ export function WholesaleVoicePageView() {
           </div>
         </section>
 
-        {/* ── CTA ───────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9] px-8 py-14 text-center sm:px-12 sm:py-20">
-            {/* dot grid overlay */}
-            <div
-              aria-hidden
-              className="absolute inset-0 pointer-events-none opacity-[0.08]"
-              style={{
-                backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-                backgroundSize: "28px 28px",
-              }}
-            />
-            <Globe2 className="relative mx-auto mb-6 h-12 w-12 text-white" />
-            <h2 className="relative font-display text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              Start Your Free Trial
-            </h2>
-            <p className="relative mx-auto mt-4 max-w-xl text-base text-white/80 sm:text-lg">
-              Share your top destinations and monthly volume — we&apos;ll send back a tailored A-Z rate deck within a business day. No commitment required.
-            </p>
-            <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10">
-              <Link
-                href="/free-trial"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-[#046BD2] transition hover:scale-105 sm:px-7 sm:py-4 whitespace-nowrap"
-              >
-                Get a Free Trial <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-6 py-3.5 font-semibold text-white transition hover:bg-white/25 sm:px-7 sm:py-4 whitespace-nowrap"
-              >
-                See pricing
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* ── Contact Form ──────────────────────────────────────────── */}
+        <WholesaleContactForm interest="Wholesale Voice" />
 
         <Footer />
       </div>

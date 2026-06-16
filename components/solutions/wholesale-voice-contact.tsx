@@ -118,9 +118,9 @@ export function WholesaleVoiceContactPageView() {
     <main className="min-h-screen bg-[#0B1220] text-white overflow-x-clip">
       <Navbar />
 
-      {/* ambient glows */}
-      <div className="pointer-events-none absolute top-0 left-0 w-[700px] h-[700px] bg-[#046BD2]/10 blur-[180px] rounded-full" />
-      <div className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#22D3EE]/8 blur-[150px] rounded-full" />
+      {/* ambient glows — use viewport-relative sizes to avoid horizontal scroll on narrow screens */}
+      <div className="pointer-events-none absolute top-0 left-0 w-[min(700px,100vw)] h-[min(700px,100vw)] bg-[#046BD2]/10 blur-[180px] rounded-full" />
+      <div className="pointer-events-none absolute bottom-0 right-0 w-[min(500px,100vw)] h-[min(500px,100vw)] bg-[#22D3EE]/8 blur-[150px] rounded-full" />
 
       <div className="relative z-10">
         {/* Breadcrumb */}
@@ -228,8 +228,8 @@ export function WholesaleVoiceContactPageView() {
               <div className="absolute -inset-2 bg-gradient-to-br from-[#046BD2]/20 via-[#22D3EE]/10 to-transparent blur-2xl rounded-3xl pointer-events-none" />
               <div className="relative rounded-2xl border border-white/10 bg-[#0D1627]/90 backdrop-blur-xl shadow-2xl overflow-hidden">
 
-                {/* Card header */}
-                <div className="px-6 sm:px-8 pt-6 pb-5 border-b border-white/[0.07]">
+                {/* Card header — reduced px on very small screens */}
+                <div className="px-4 sm:px-6 lg:px-8 pt-6 pb-5 border-b border-white/[0.07]">
                   <div className="flex items-center gap-2.5">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#046BD2] to-[#22D3EE]">
                       <PhoneOutgoing className="h-4 w-4 text-white" />
@@ -240,7 +240,8 @@ export function WholesaleVoiceContactPageView() {
                   </div>
                 </div>
 
-                <div className="px-6 sm:px-8 py-6">
+                {/* Card body — reduced px on very small screens */}
+                <div className="px-4 sm:px-6 lg:px-8 py-6">
                   {submitted ? (
                     <div className="py-14 text-center">
                       <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center">
@@ -307,7 +308,7 @@ export function WholesaleVoiceContactPageView() {
                             Phone
                           </label>
                           <div className="flex h-11 rounded-xl border border-white/[0.08] bg-white/[0.04] overflow-hidden focus-within:border-[#046BD2]/60 transition">
-                            {/* Country code selector */}
+                            {/* Country code selector — dropdown constrained to not overflow viewport */}
                             <div className="relative flex-shrink-0">
                               <button
                                 type="button"
@@ -319,7 +320,7 @@ export function WholesaleVoiceContactPageView() {
                                 <ChevronRight className="h-3 w-3 rotate-90 text-white/30" />
                               </button>
                               {ccOpen && (
-                                <div className="absolute left-0 top-full mt-1 z-50 w-40 rounded-xl border border-white/10 bg-[#0D1627] shadow-xl overflow-hidden">
+                                <div className="absolute left-0 top-full mt-1 z-50 w-36 max-w-[calc(100vw-2rem)] rounded-xl border border-white/10 bg-[#0D1627] shadow-xl overflow-hidden">
                                   {COUNTRY_CODES.map((c) => (
                                     <button
                                       key={c.label + c.code}
@@ -339,7 +340,7 @@ export function WholesaleVoiceContactPageView() {
                               type="tel"
                               name="phone"
                               placeholder="Enter phone number"
-                              className="flex-1 h-full px-3 bg-transparent text-sm text-white placeholder-white/20 focus:outline-none"
+                              className="flex-1 h-full px-3 bg-transparent text-sm text-white placeholder-white/20 focus:outline-none min-w-0"
                             />
                           </div>
                         </div>
@@ -371,7 +372,7 @@ export function WholesaleVoiceContactPageView() {
                         </div>
                       </div>
 
-                      {/* Row 4: Traffic type pills */}
+                      {/* Row 4: Traffic type pills — auto height on mobile to prevent text clipping */}
                       <div>
                         <label className="block text-[10px] uppercase tracking-[0.2em] font-mono text-white/40 mb-3">
                           What Traffic Are You Routing?
@@ -382,7 +383,7 @@ export function WholesaleVoiceContactPageView() {
                               key={t}
                               type="button"
                               onClick={() => setTrafficType(t)}
-                              className={`px-4 h-9 rounded-full text-sm font-medium border transition ${
+                              className={`px-3 sm:px-4 py-2 min-h-[2.25rem] rounded-full text-xs sm:text-sm font-medium border transition leading-tight ${
                                 trafficType === t
                                   ? "bg-[#046BD2] border-[#046BD2] text-white shadow-[0_0_16px_-4px_rgba(4,107,210,0.7)]"
                                   : "border-white/[0.12] bg-white/[0.03] text-white/55 hover:border-white/25 hover:text-white/80"
@@ -426,8 +427,8 @@ export function WholesaleVoiceContactPageView() {
                         </p>
                       )}
 
-                      {/* Submit row */}
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-1">
+                      {/* Submit row — button stretches full-width on mobile for easier tap target */}
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 pt-1">
                         <p className="text-[11px] text-white/30 leading-relaxed">
                           By submitting, you agree to our{" "}
                           <Link href="/legal/privacy" className="underline hover:text-white/55 transition-colors">
@@ -438,7 +439,7 @@ export function WholesaleVoiceContactPageView() {
                         <button
                           type="submit"
                           disabled={sending}
-                          className="shrink-0 inline-flex items-center justify-center gap-2 px-7 h-11 rounded-full bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0086F9] hover:to-[#22D3EE] text-white font-semibold text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_4px_20px_-4px_rgba(4,107,210,0.6)]"
+                          className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-7 h-11 rounded-full bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0086F9] hover:to-[#22D3EE] text-white font-semibold text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-[0_4px_20px_-4px_rgba(4,107,210,0.6)]"
                         >
                           {sending ? "Sending…" : "Get my quote"}
                           {!sending && <Send className="w-3.5 h-3.5" />}

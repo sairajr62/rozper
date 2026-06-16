@@ -366,11 +366,19 @@ const topLevelNav = [
   { label: "Resources", megaMenu: "Resources" },
 ];
 
+// Navbar height constants: py-4 (16px top + 16px bottom) + logo height
+// Mobile: h-8 (32px) logo => 64px total
+// sm+: h-10 (40px) logo => 72px total
+const NAVBAR_HEIGHT_MOBILE = 64; // px — py-4 + h-8
+const NAVBAR_HEIGHT_SM = 72;     // px — py-4 + h-10
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [menuTimeout, setMenuTimeout] = useState<NodeJS.Timeout | null>(null);
+  // Track whether we are in the sm+ breakpoint to pick the right navbar height
+  const [isSm, setIsSm] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -379,6 +387,33 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Detect sm breakpoint and clear desktop mega menu when below lg
+  useEffect(() => {
+    const mq640 = window.matchMedia("(min-width: 640px)");
+    const mq1024 = window.matchMedia("(min-width: 1024px)");
+
+    const onResize = () => {
+      setIsSm(mq640.matches);
+      // If viewport drops below lg, close any open desktop mega menu to prevent
+      // residual fixed panels from overflowing the page
+      if (!mq1024.matches) {
+        setActiveMenu(null);
+      }
+    };
+
+    // Set initial value
+    setIsSm(mq640.matches);
+
+    mq640.addEventListener("change", onResize);
+    mq1024.addEventListener("change", onResize);
+    return () => {
+      mq640.removeEventListener("change", onResize);
+      mq1024.removeEventListener("change", onResize);
+    };
+  }, []);
+
+  const navbarHeight = isSm ? NAVBAR_HEIGHT_SM : NAVBAR_HEIGHT_MOBILE;
 
   const handleMenuEnter = (menuName: string) => {
     if (menuTimeout) clearTimeout(menuTimeout);
@@ -398,7 +433,7 @@ export function Navbar() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 w-full z-50 transition-all duration-300 overflow-x-hidden ${
           scrolled
             ? "bg-[#0B1220]/95 backdrop-blur-md border-b border-white/10 shadow-lg"
             : "bg-[#0B1220]/60 backdrop-blur-sm"
@@ -454,8 +489,11 @@ export function Navbar() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 8 }}
                             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed left-1/2 -translate-x-1/2 top-[72px] z-50"
-                            style={{ width: `min(calc(100vw - 2rem), ${cfg.width ?? "960px"})` }}
+                            className="fixed left-1/2 -translate-x-1/2 z-50"
+                            style={{
+                              width: `min(calc(100vw - 2rem), ${cfg.width ?? "960px"})`,
+                              top: `${navbarHeight}px`,
+                            }}
                             onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
                             onMouseLeave={handleMenuLeave}
                           >
@@ -553,9 +591,10 @@ export function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                          className="fixed left-1/2 -translate-x-1/2 top-[72px] z-50"
+                          className="fixed left-1/2 -translate-x-1/2 z-50"
                           style={{
                             width: `min(calc(100vw - 2rem), ${panelWidth})`,
+                            top: `${navbarHeight}px`,
                           }}
                           onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
                           onMouseLeave={handleMenuLeave}
@@ -691,7 +730,8 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 top-[72px] z-[39] lg:hidden bg-black/30"
+              className="fixed inset-0 z-[39] lg:hidden bg-black/30"
+              style={{ top: `${navbarHeight}px` }}
               onClick={() => setIsOpen(false)}
             />
 
@@ -702,7 +742,11 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-[72px] left-0 right-0 z-40 lg:hidden max-h-[calc(100vh-72px)] overflow-y-auto bg-[#0B1220] border-b border-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.7)]"
+              className="fixed left-0 right-0 z-40 lg:hidden overflow-x-hidden overflow-y-auto bg-[#0B1220] border-b border-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.7)]"
+              style={{
+                top: `${navbarHeight}px`,
+                maxHeight: `calc(100vh - ${navbarHeight}px)`,
+              }}
             >
               {/* Nav items */}
               <div className="px-4 py-3 space-y-0.5">
@@ -711,8 +755,8 @@ export function Navbar() {
                     {item.megaMenu ? (
                       <details className="group">
                         <summary className="flex items-center justify-between px-3 py-3 cursor-pointer text-white font-medium text-base list-none rounded-xl hover:bg-white/[0.04] transition-colors">
-                          <span>{item.label}</span>
-                          <ChevronDown className="w-4 h-4 text-white/50 group-open:rotate-180 group-open:text-[#22D3EE] transition-transform duration-200" />
+                          <span className="truncate mr-2">{item.label}</span>
+                          <ChevronDown className="w-4 h-4 text-white/50 group-open:rotate-180 group-open:text-[#22D3EE] transition-transform duration-200 shrink-0" />
                         </summary>
                         <div className="px-1 pb-2 pt-0.5">
                           {megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig].sectioned ? (
@@ -729,7 +773,7 @@ export function Navbar() {
                                         <li key={subIdx}>
                                           <Link
                                             href={subitem.href ?? "/"}
-                                            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors"
+                                            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors overflow-hidden"
                                             onClick={() => setIsOpen(false)}
                                           >
                                             {IconComponent && (
@@ -737,9 +781,9 @@ export function Navbar() {
                                                 <IconComponent className="w-3.5 h-3.5 text-white" />
                                               </span>
                                             )}
-                                            <span className="font-medium text-white">{subitem.label}</span>
+                                            <span className="font-medium text-white truncate">{subitem.label}</span>
                                             {subitem.badge && (
-                                              <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
+                                              <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider shrink-0 ${
                                                 subitem.badge === "New" ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
                                                 : subitem.badge === "AI" ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
                                                 : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
@@ -763,7 +807,7 @@ export function Navbar() {
                                     <li key={subIdx}>
                                       <Link
                                         href={subitem.href ?? "/"}
-                                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors"
+                                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors overflow-hidden"
                                         onClick={() => setIsOpen(false)}
                                       >
                                         {IconComponent && (
@@ -771,9 +815,9 @@ export function Navbar() {
                                             <IconComponent className="w-3.5 h-3.5 text-white" />
                                           </span>
                                         )}
-                                        <span className="font-medium text-white">{subitem.label}</span>
+                                        <span className="font-medium text-white truncate">{subitem.label}</span>
                                         {subitem.badge && (
-                                          <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
+                                          <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider shrink-0 ${
                                             subitem.badge === "New" ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
                                             : subitem.badge === "AI" ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
                                             : subitem.badge === "Beta" ? "bg-[#2575FC]/15 text-[#2D98F1] border border-[#2D98F1]/30"

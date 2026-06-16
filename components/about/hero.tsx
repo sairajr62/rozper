@@ -15,9 +15,9 @@ export function AboutHero() {
     <section className="relative pt-32 pb-16 sm:pb-20 overflow-hidden">
       {/* Aurora background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 -left-32 w-[640px] h-[640px] bg-[#22D3EE]/12 blur-[150px] rounded-full" />
-        <div className="absolute top-32 right-0 w-[520px] h-[520px] bg-[#046BD2]/15 blur-[120px] rounded-full" />
-        <div className="absolute -bottom-32 left-1/3 w-[480px] h-[480px] bg-[#0086F9]/10 blur-[140px] rounded-full" />
+        <div className="absolute top-10 -left-16 w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] md:-left-32 md:w-[640px] md:h-[640px] bg-[#22D3EE]/12 blur-[150px] rounded-full" />
+        <div className="absolute top-32 right-0 w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[520px] md:h-[520px] bg-[#046BD2]/15 blur-[120px] rounded-full" />
+        <div className="absolute -bottom-32 left-1/3 w-[220px] h-[220px] sm:w-[340px] sm:h-[340px] md:w-[480px] md:h-[480px] bg-[#0086F9]/10 blur-[140px] rounded-full" />
         <div
           className="absolute inset-0 opacity-[0.18]"
           style={{
@@ -47,7 +47,7 @@ export function AboutHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="font-display mt-7 text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-tight text-white leading-[1.04]"
+          className="font-display mt-7 text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-tight text-white leading-[1.04]"
         >
           Building the last{" "}
           <span className="bg-gradient-to-r from-[#22D3EE] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">
@@ -96,11 +96,11 @@ export function AboutHero() {
           className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5"
         >
           {quickStats.map((s) => (
-            <div key={s.l} className="bg-[#0A1020]/80 backdrop-blur-md px-5 py-5">
-              <div className="font-display text-2xl sm:text-3xl font-bold bg-gradient-to-br from-[#22D3EE] to-[#046BD2] bg-clip-text text-transparent tabular-nums">
+            <div key={s.l} className="bg-[#0A1020]/80 backdrop-blur-md px-3 py-4 sm:px-5 sm:py-5">
+              <div className="font-display text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-br from-[#22D3EE] to-[#046BD2] bg-clip-text text-transparent tabular-nums">
                 {s.v}
               </div>
-              <div className="text-[10px] uppercase tracking-widest font-mono text-white/40 mt-1">
+              <div className="text-[9px] sm:text-[10px] uppercase tracking-widest font-mono text-white/40 mt-1">
                 {s.l}
               </div>
             </div>

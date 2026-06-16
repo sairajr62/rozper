@@ -4,6 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
+import { WholesaleContactForm } from "@/components/contact/wholesale-form"
 import {
   Network,
   Cable,
@@ -227,11 +228,12 @@ function SipTopology() {
         </div>
       </div>
 
-      <div className="flex items-stretch">
+      {/* Fix issue #2: topology nodes row — allow column stacking on very small screens */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
         {TOPOLOGY_NODES.map((n, i) => {
           const mid = i === 1
           return (
-            <div key={n.label} className="flex flex-1 items-center">
+            <div key={n.label} className="flex flex-1 items-center sm:flex-col sm:items-stretch">
               <div
                 className={`flex w-full flex-col items-center rounded-2xl border p-3 text-center ${
                   mid
@@ -253,13 +255,19 @@ function SipTopology() {
                   {n.sub}
                 </span>
               </div>
-              {i < TOPOLOGY_NODES.length - 1 && <Connector />}
+              {/* Only render connector on sm+ screens between nodes */}
+              {i < TOPOLOGY_NODES.length - 1 && (
+                <div className="hidden sm:flex sm:flex-1 sm:items-center">
+                  <Connector />
+                </div>
+              )}
             </div>
           )
         })}
       </div>
 
-      <div className="mt-6 grid grid-cols-3 gap-3">
+      {/* Fix issue #3: stats row — use grid-cols-1 on very small screens, grid-cols-3 on sm+ */}
+      <div className="mt-6 grid grid-cols-1 gap-3 xs:grid-cols-3 sm:grid-cols-3">
         {[
           { k: "Channels", v: "Elastic" },
           { k: "Codecs", v: "Opus · G.711" },
@@ -272,17 +280,18 @@ function SipTopology() {
         ))}
       </div>
 
-      {/* route quality strip */}
-      <div className="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
-        <div className="flex items-center justify-between mb-2">
+      {/* route quality strip — Fix issue #18: add overflow-hidden to contain bars */}
+      <div className="mt-4 overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+        <div className="mb-2 flex items-center justify-between">
           <span className="font-mono text-[9px] uppercase tracking-widest text-white/35">Route health</span>
           <span className="font-mono text-[10px] text-emerald-400">All routes nominal</span>
         </div>
-        <div className="flex gap-1.5">
+        {/* Fix issue #18: add flex-wrap so bars wrap rather than overflow */}
+        <div className="flex flex-wrap gap-1.5">
           {Array.from({ length: 14 }).map((_, i) => (
             <div
               key={i}
-              className={`h-5 flex-1 rounded-sm ${
+              className={`h-5 min-w-[10px] flex-1 rounded-sm ${
                 i === 5 ? "bg-amber-400/60" : "bg-emerald-400/70"
               }`}
             />
@@ -315,7 +324,8 @@ export function WholesaleVoipPageView() {
         </div>
 
         {/* ── Hero ──────────────────────────────────────────────────── */}
-        <section className="mx-auto grid max-w-7xl items-center gap-8 px-4 pb-10 pt-6 sm:pb-20 sm:pt-12 sm:px-6 lg:grid-cols-[1.1fr_1fr]">
+        {/* Fix issue #11: reduce vertical padding on mobile */}
+        <section className="mx-auto grid max-w-7xl items-center gap-8 px-4 pb-8 pt-6 sm:pb-20 sm:pt-12 sm:px-6 lg:grid-cols-[1.1fr_1fr]">
           <div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -328,10 +338,11 @@ export function WholesaleVoipPageView() {
               </span>
             </motion.div>
 
+            {/* Fix issue #4: cap at text-5xl on xl to avoid 72px on larger screens */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }}
-              className="font-display text-2xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-6xl xl:text-7xl"
+              className="font-display text-2xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl"
             >
               High-Performance
               <br />
@@ -364,10 +375,11 @@ export function WholesaleVoipPageView() {
               ))}
             </motion.div>
 
+            {/* Fix issues #5 and #15: add flex-wrap so buttons wrap on small screens */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
-              className="mt-4 sm:mt-8 flex gap-3"
+              className="mt-4 sm:mt-8 flex flex-wrap gap-3"
             >
               <Link
                 href="/free-trial"
@@ -395,19 +407,22 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── Who We Work With ──────────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
-          <div className="rounded-[2rem] border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/8 to-transparent p-8 sm:p-12 md:p-14">
+        {/* Fix issue #11: reduce py on mobile */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:py-20 sm:px-6 lg:py-24">
+          {/* Fix issue #16: reduce padding on mobile from p-8 to p-5 */}
+          <div className="rounded-[2rem] border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/8 to-transparent p-5 sm:p-8 md:p-12 lg:p-14">
             <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">
               // who.we.serve
             </div>
-            <h2 className="mb-3 font-display text-3xl font-bold sm:text-4xl">
+            <h2 className="mb-3 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
               Designed for Carriers, VoIP Providers & Telecom Operators
             </h2>
-            <p className="mb-10 max-w-2xl text-sm leading-relaxed text-white/50 sm:text-base">
+            <p className="mb-8 max-w-2xl text-sm leading-relaxed text-white/50 sm:text-base">
               Our wholesale VoIP platform is built from the ground up for operators who move serious traffic and can't afford a single dropped route.
             </p>
 
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5 mb-10">
+            {/* Fix issue #6: add md:grid-cols-3 to bridge the gap between sm:2 and lg:5 */}
+            <div className="mb-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
               {WHO_WE_WORK_WITH.map((w, i) => (
                 <motion.div
                   key={w.label}
@@ -425,10 +440,11 @@ export function WholesaleVoipPageView() {
               ))}
             </div>
 
-            <div className="border-t border-white/[0.07] pt-8">
-              <p className="mb-5 text-sm font-semibold text-white/60 uppercase tracking-widest font-mono text-[11px]">
+            <div className="border-t border-white/[0.07] pt-6 sm:pt-8">
+              <p className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-widest text-white/60">
                 Built for Telecom Operators Who Prioritize Quality
               </p>
+              {/* Operator priority cards: 1 col mobile, 3 col sm+ */}
               <div className="grid gap-3 sm:grid-cols-3">
                 {OPERATOR_PRIORITIES.map((p, i) => (
                   <div key={i} className="flex items-center gap-3 rounded-xl border border-emerald-500/20 bg-emerald-500/[0.05] px-4 py-3">
@@ -442,10 +458,11 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── What Sets Our Wholesale VoIP Apart ────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
-          <div className="mb-14 text-center">
+        {/* Fix issue #11: reduce py on mobile */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:py-20 sm:px-6 lg:py-24">
+          <div className="mb-10 text-center sm:mb-14">
             <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// differentiators</div>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+            <h2 className="font-display text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
               What Sets Our Wholesale VoIP Apart
             </h2>
           </div>
@@ -474,10 +491,11 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── Additional Features ───────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
-          <div className="mb-12 text-center">
+        {/* Fix issue #11: reduce pb on mobile */}
+        <section className="mx-auto max-w-7xl px-4 pb-10 sm:pb-20 sm:px-6">
+          <div className="mb-10 text-center sm:mb-12">
             <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// platform.extras</div>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl">
+            <h2 className="font-display text-2xl font-bold sm:text-3xl md:text-4xl">
               Everything You Need, Nothing You Don&apos;t
             </h2>
           </div>
@@ -502,10 +520,11 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── Why Rozper Wholesale VoIP ─────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
-          <div className="mb-14 text-center">
+        {/* Fix issue #11: reduce py on mobile */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:py-20 sm:px-6 lg:py-24">
+          <div className="mb-10 text-center sm:mb-14">
             <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// why.rozper</div>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+            <h2 className="font-display text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
               Why Rozper Wholesale VoIP?
             </h2>
           </div>
@@ -518,7 +537,7 @@ export function WholesaleVoipPageView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12 }}
-                className="relative overflow-hidden rounded-2xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/[0.08] to-[#0B1220] p-8"
+                className="relative overflow-hidden rounded-2xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/[0.08] to-[#0B1220] p-6 sm:p-8"
               >
                 <div className="pointer-events-none absolute -top-20 -right-20 h-48 w-48 rounded-full bg-[#046BD2]/10 blur-3xl" />
                 <div className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#046BD2] to-[#22D3EE] shadow-[0_8px_24px_-8px_rgba(34,211,238,0.45)]">
@@ -540,8 +559,9 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── Fraud Prevention ──────────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-          <div className="relative overflow-hidden rounded-[2rem] border border-[#046BD2]/20 bg-[#0D1627] p-8 sm:p-12 md:p-14 lg:grid lg:grid-cols-[1fr_1fr] lg:gap-12 lg:items-center">
+        {/* Fix issue #11: reduce py on mobile */}
+        <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12 sm:px-6">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[#046BD2]/20 bg-[#0D1627] p-6 sm:p-10 md:p-12 lg:p-14 lg:grid lg:grid-cols-[1fr_1fr] lg:gap-12 lg:items-center">
             {/* background glow */}
             <div className="pointer-events-none absolute -top-32 -left-32 h-80 w-80 rounded-full bg-[#046BD2]/10 blur-[100px]" />
 
@@ -550,10 +570,10 @@ export function WholesaleVoipPageView() {
                 <ShieldCheck className="h-3.5 w-3.5 text-red-400" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-red-400">Security</span>
               </div>
-              <h2 className="mb-4 font-display text-3xl font-bold sm:text-4xl">
+              <h2 className="mb-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
                 Dedicated Fraud Prevention and Security
               </h2>
-              <p className="text-sm leading-relaxed text-white/55 sm:text-base max-w-lg">
+              <p className="max-w-lg text-sm leading-relaxed text-white/55 sm:text-base">
                 With Rozper, your wholesale VoIP services come with built-in fraud prevention. Our advanced monitoring and anomaly detection systems safeguard your routes from fraud and route manipulation, ensuring security at every step.
               </p>
             </div>
@@ -568,10 +588,10 @@ export function WholesaleVoipPageView() {
                   transition={{ delay: i * 0.1 }}
                   className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.03] p-4"
                 >
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#046BD2]/20 border border-[#046BD2]/25 mt-0.5">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#046BD2]/25 bg-[#046BD2]/20">
                     <p.icon className="h-4 w-4 text-[#0086F9]" />
                   </div>
-                  <span className="text-sm text-white/70 leading-relaxed">{p.text}</span>
+                  <span className="text-sm leading-relaxed text-white/70">{p.text}</span>
                 </motion.div>
               ))}
             </div>
@@ -579,7 +599,8 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── Stats ─────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        {/* Fix issue #11: reduce py on mobile */}
+        <section className="mx-auto max-w-6xl px-4 py-10 sm:py-20 sm:px-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((s, i) => (
               <motion.div
@@ -588,7 +609,7 @@ export function WholesaleVoipPageView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-7 text-center"
+                className="rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-6 text-center sm:p-7"
               >
                 <div className="bg-gradient-to-br from-[#2D98F1] to-[#22D3EE] bg-clip-text font-display text-4xl font-bold text-transparent">
                   {s.v}
@@ -600,14 +621,15 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── Testimonials ──────────────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-          <div className="mb-14 text-center">
+        {/* Fix issue #11: reduce py on mobile; Fix issue #9: add sm:grid-cols-2 to avoid whitespace on mid-size phones */}
+        <section className="mx-auto max-w-7xl px-4 py-8 sm:py-12 sm:px-6">
+          <div className="mb-10 text-center sm:mb-14">
             <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-[#0086F9]/60">// carrier.stories</div>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl md:text-5xl">
+            <h2 className="font-display text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
               Trusted by carriers globally
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
               <motion.div
                 key={t.initials}
@@ -615,7 +637,7 @@ export function WholesaleVoipPageView() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12, duration: 0.5 }}
-                className="flex flex-col rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-7 transition hover:border-[#046BD2]/40"
+                className="flex flex-col rounded-3xl border border-[#046BD2]/20 bg-white/[0.03] p-6 transition hover:border-[#046BD2]/40 sm:p-7"
               >
                 <TrendingUp className="mb-5 h-5 w-5 text-[#0086F9]" />
                 <blockquote className="flex-1 text-sm leading-relaxed text-white/70">
@@ -636,17 +658,19 @@ export function WholesaleVoipPageView() {
         </section>
 
         {/* ── FAQ ───────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
-          <h2 className="mb-8 text-center font-display text-3xl font-bold sm:text-4xl">FAQ</h2>
+        {/* Fix issues #11 and #13: reduce py on mobile; reduce p-6 padding for narrow screens */}
+        <section className="mx-auto max-w-3xl px-4 py-10 sm:py-20 sm:px-6">
+          <h2 className="mb-8 text-center font-display text-2xl font-bold sm:text-3xl md:text-4xl">FAQ</h2>
           <div className="space-y-3">
             {FAQS.map((f, i) => (
               <details
                 key={i}
-                className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:bg-white/[0.05]"
+                className="group rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:bg-white/[0.05] sm:p-6"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between font-display font-semibold">
-                  <span>{f.q}</span>
-                  <ChevronRight className="h-5 w-5 shrink-0 text-[#0086F9] transition-transform group-open:rotate-90" />
+                {/* Fix issue #13: allow text to wrap and prevent chevron collision */}
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-3 font-display font-semibold">
+                  <span className="flex-1">{f.q}</span>
+                  <ChevronRight className="mt-0.5 h-5 w-5 shrink-0 text-[#0086F9] transition-transform group-open:rotate-90" />
                 </summary>
                 <p className="mt-4 text-sm leading-relaxed text-white/60">{f.a}</p>
               </details>
@@ -654,41 +678,8 @@ export function WholesaleVoipPageView() {
           </div>
         </section>
 
-        {/* ── CTA ───────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9] px-8 py-14 text-center sm:px-12 sm:py-20">
-            {/* dot grid */}
-            <div
-              aria-hidden
-              className="absolute inset-0 pointer-events-none opacity-[0.08]"
-              style={{
-                backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-                backgroundSize: "28px 28px",
-              }}
-            />
-            <Network className="relative mx-auto mb-6 h-12 w-12 text-white" />
-            <h2 className="relative font-display text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              Stop Testing Routes.<br />Start Scaling Traffic.
-            </h2>
-            <p className="relative mx-auto mt-5 max-w-xl text-base text-white/80 sm:text-lg">
-              End the guesswork. Get stable, high-performance wholesale VoIP termination backed by direct carrier relationships and optimized routing intelligence.
-            </p>
-            <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10">
-              <Link
-                href="/free-trial"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-[#046BD2] transition hover:scale-105 sm:px-7 sm:py-4 whitespace-nowrap"
-              >
-                Get a Free Trial <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-6 py-3.5 font-semibold text-white transition hover:bg-white/25 sm:px-7 sm:py-4 whitespace-nowrap"
-              >
-                See pricing
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* ── Contact Form ──────────────────────────────────────────── */}
+        <WholesaleContactForm interest="Wholesale VoIP" />
 
         <Footer />
       </div>

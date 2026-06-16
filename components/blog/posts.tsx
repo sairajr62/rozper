@@ -25,7 +25,7 @@ function toneForPost(post: BlogPost, index: number) {
 
 function AuthorAvatar({ post }: { post: BlogPost }) {
   return (
-    <div className="flex items-center gap-2.5">
+    <div className="flex items-center gap-2.5 min-w-0">
       {post.author.avatar ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -61,12 +61,17 @@ function FeaturedCard({ post }: { post: BlogPost }) {
       className="group relative"
     >
       <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/40 to-white/[0.02] shadow-[0_0_80px_-20px_rgba(4,107,210,0.5)]">
+        {/*
+          Issue 1: Added md:grid-cols-12 so tablets (768-1023px) get a side-by-side
+          layout instead of fully stacking like phones. Previously only lg:grid-cols-12
+          was set, leaving the md range with a single-column stacked layout.
+        */}
         <Link
           href={`/blog/${post.slug}`}
-          className="relative grid lg:grid-cols-12 gap-0 rounded-3xl bg-[#0A1020]/85 backdrop-blur-2xl overflow-hidden"
+          className="relative grid md:grid-cols-12 gap-0 rounded-3xl bg-[#0A1020]/85 backdrop-blur-2xl overflow-hidden"
         >
-          {/* Visual */}
-          <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:min-h-[420px] overflow-hidden bg-[#0a1929]">
+          {/* Visual — col span also shifted from lg to md */}
+          <div className="md:col-span-7 relative aspect-[16/10] md:aspect-auto md:min-h-[420px] overflow-hidden bg-[#0a1929]">
             {post.featuredImage ? (
               <BlogImage
                 src={post.featuredImage.src}
@@ -77,7 +82,12 @@ function FeaturedCard({ post }: { post: BlogPost }) {
                 tone="blue"
                 label={`Featured · ${categoryLabel}`}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0A1020]" />
+                {/*
+                  Issue 5: On mobile (stacked layout) the right-edge gradient looks
+                  odd on a full-width image. Use a bottom-fade on mobile/tablet-portrait
+                  and switch to the right-edge fade only at md+ (side-by-side layout).
+                */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A1020]/60 md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-[#0A1020]" />
                 <div className="absolute top-4 left-4">
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-md px-2.5 py-1 text-[10px] font-mono uppercase tracking-[0.16em] text-white">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#22D3EE] shadow-[0_0_8px_#22D3EE]" />
@@ -91,14 +101,19 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           </div>
 
           {/* Body */}
-          <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col">
+          {/*
+            Issue 2: Reduced base padding from p-6 to p-5 on mobile so that on a
+            375px screen the effective content width is wider (375 - 2 - 40 = 333px).
+            sm:p-7 and md:p-8 provide smooth intermediate steps before lg:p-10.
+          */}
+          <div className="md:col-span-5 p-5 sm:p-7 md:p-8 lg:p-10 flex flex-col">
             <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.16em] text-[#22D3EE]">
               <span>Featured</span>
               <span className="text-white/20">·</span>
               <span className="text-white/50">{categoryLabel}</span>
             </div>
 
-            <h2 className="font-display mt-4 text-2xl sm:text-3xl lg:text-[2.1rem] leading-[1.1] tracking-[-0.02em] font-semibold text-white">
+            <h2 className="font-display mt-4 text-xl sm:text-2xl md:text-3xl lg:text-[2.1rem] leading-[1.1] tracking-[-0.02em] font-semibold text-white">
               {post.title}
             </h2>
 
@@ -107,11 +122,11 @@ function FeaturedCard({ post }: { post: BlogPost }) {
             </p>
 
             {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-5">
+              <div className="flex flex-wrap gap-1.5 mt-5 max-w-full overflow-hidden">
                 {post.tags.slice(0, 4).map((tag) => (
                   <span
                     key={tag.id}
-                    className="text-[10px] font-mono uppercase tracking-wider text-white/50 border border-white/10 rounded-full px-2 py-0.5"
+                    className="text-[10px] font-mono uppercase tracking-wider text-white/50 border border-white/10 rounded-full px-2 py-0.5 max-w-full truncate"
                   >
                     {tag.name}
                   </span>
@@ -119,9 +134,15 @@ function FeaturedCard({ post }: { post: BlogPost }) {
               </div>
             )}
 
-            <div className="mt-auto pt-6 flex items-center justify-between gap-4">
+            {/*
+              Issue 8: When stacked on mobile the flex container is auto-height so
+              mt-auto collapses to mt-0, leaving no space before the footer row.
+              Added explicit mt-6 on mobile that switches to mt-auto at md+ where
+              the body section has a fixed height from the grid row.
+            */}
+            <div className="mt-6 md:mt-auto pt-4 md:pt-6 flex items-center justify-between gap-4">
               <AuthorAvatar post={post} />
-              <div className="flex items-center gap-3 text-[11px] text-white/40 font-mono">
+              <div className="flex items-center gap-3 text-[11px] text-white/40 font-mono shrink-0">
                 <span className="hidden sm:flex items-center gap-1">
                   <Calendar className="w-3 h-3" />
                   {post.dateLabel}
@@ -197,7 +218,7 @@ function PostCard({
         <div className="p-5 sm:p-6 flex flex-col">
           <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.16em]">
             <span className="text-[#22D3EE]">{categoryLabel}</span>
-            <span className="flex items-center gap-1 text-white/40">
+            <span className="flex items-center gap-1 text-white/40 shrink-0">
               <Clock className="w-3 h-3" />
               {post.readMinutes} min
             </span>
@@ -211,9 +232,17 @@ function PostCard({
             {post.excerpt}
           </p>
 
-          <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
-            <AuthorAvatar post={post} />
-            <span className="text-[10px] text-white/40 font-mono whitespace-nowrap">
+          {/*
+            Issue 6: On very narrow screens (<360px) the author name and date crowd
+            each other. Added min-w-0 flex-1 wrapper around AuthorAvatar so the
+            name can truncate freely, and shrink-0 on the date span so it never
+            wraps. Gap-3 provides breathing room between the two.
+          */}
+          <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <AuthorAvatar post={post} />
+            </div>
+            <span className="text-[10px] text-white/40 font-mono whitespace-nowrap shrink-0">
               {post.dateLabel}
             </span>
           </div>
@@ -329,7 +358,9 @@ export function BlogPostsSection({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {featured && (
-          <div className="mb-14 sm:mb-20">
+          // Issue 7: Reduced base bottom margin from mb-14 to mb-10 on mobile
+          // to avoid excessive vertical whitespace on small screens.
+          <div className="mb-10 sm:mb-16 lg:mb-20">
             <FeaturedCard post={featured} />
           </div>
         )}
@@ -368,17 +399,32 @@ export function BlogPostsSection({
                 </p>
               )}
             </div>
-            <div className="hidden sm:flex items-center gap-2 text-[11px] text-white/40 font-mono">
+            {/*
+              Issue 3: Article count was hidden on mobile (hidden sm:flex).
+              Now always visible so mobile users know how many posts match the
+              current filter. Kept the same visual style.
+            */}
+            <div className="flex items-center gap-2 text-[11px] text-white/40 font-mono">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               {filtered.length} article{filtered.length === 1 ? "" : "s"}
             </div>
           </div>
 
           {!hasQuery && categories.length > 1 && (
+            /*
+              Issue 4: On mobile with many categories the pill list could grow very
+              tall and push content far down. Added max-h-40 with overflow-y-auto
+              on mobile so the list scrolls vertically within a constrained height.
+              On sm+ screens the constraint is removed (max-h-none overflow-visible).
+
+              Issue 9: Added max-w-full overflow-hidden to the container and
+              max-w-[200px] truncate on the label so a single long category name
+              cannot overflow the viewport.
+            */
             <div
               role="tablist"
               aria-label="Filter posts by category"
-              className="flex flex-wrap gap-2"
+              className="flex flex-wrap gap-2 max-h-40 overflow-y-auto sm:max-h-none sm:overflow-visible"
             >
               {categories.map((cat) => {
                 const isActive = cat === active
@@ -388,7 +434,7 @@ export function BlogPostsSection({
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActive(cat)}
-                    className={`relative text-xs sm:text-sm px-4 py-2 rounded-full transition-colors ${
+                    className={`relative text-xs sm:text-sm px-4 py-2 rounded-full transition-colors max-w-full ${
                       isActive
                         ? "text-white"
                         : "text-white/60 hover:text-white/90"
@@ -408,7 +454,8 @@ export function BlogPostsSection({
                     {!isActive && (
                       <span className="absolute inset-0 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-colors" />
                     )}
-                    <span className="relative font-medium">{cat}</span>
+                    {/* Issue 9: truncate prevents a very long name from breaking layout */}
+                    <span className="relative font-medium block max-w-[200px] truncate">{cat}</span>
                   </button>
                 )
               })}

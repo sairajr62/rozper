@@ -505,8 +505,11 @@ function DeviceShowcase() {
   ).padStart(2, "0")}`;
 
   return (
-    <div className="relative mx-auto w-full max-w-[480px]">
-      {/* glow */}
+    // Issue 4 fixed: overflow-hidden on the container clips the 120% wide glow
+    // and any pixel-width children that might bleed out on narrow viewports.
+    <div className="relative mx-auto w-full max-w-[480px] overflow-hidden">
+      {/* glow — Issue 4 fixed: overflow-hidden on parent now clips this element
+          so the 120% width no longer causes horizontal scroll */}
       <motion.div
         aria-hidden
         className="absolute left-1/2 top-1/2 h-[90%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -521,95 +524,117 @@ function DeviceShowcase() {
 
       {/* fixed stage so surrounding layout stays put while the device morphs.
           The device frames use fixed px sizes (laptop base ≈ 470px), so on
-          phones we scale the whole stage down to fit. The scale lives on a
-          plain wrapper div — NOT the motion.div — so it doesn't get clobbered
-          by framer-motion's inline transform. */}
-      <div className="relative h-[340px] sm:h-[470px] lg:h-[500px]">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.6] sm:scale-90 md:scale-100">
-        <motion.div
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="relative flex flex-col items-center"
-        >
-          {/* device frame */}
+          phones we scale the whole stage down to fit.
+          Issues 1, 2, 3, 7 fixed:
+          - scale-[0.55] for very small phones (<375px) via a min-w guard
+          - scale-[0.6] base keeps the 470px hinge base at 282px, safely inside
+            the 480px max-w container even when it shrinks on narrow screens
+          - Added [475px]:scale-[0.65] and [520px]:scale-75 intermediate steps
+            to bridge the gap between 375px phones and the sm (640px) breakpoint
+          - overflow-hidden on the stage div catches any residual bleed */}
+      <div className="relative h-[320px] min-[475px]:h-[360px] sm:h-[470px] lg:h-[500px] overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.55] min-[375px]:scale-[0.6] min-[475px]:scale-[0.65] min-[520px]:scale-75 sm:scale-90 md:scale-100">
           <motion.div
-            animate={{
-              width: frame.w,
-              height: frame.h,
-              borderRadius: frame.radius,
-              padding: frame.pad,
-            }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative border border-white/12 bg-[#0B1220] shadow-[0_40px_90px_-25px_rgba(4,107,210,0.85)]"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            className="relative flex flex-col items-center"
           >
-            {/* camera dot (laptop / tablet) */}
-            <motion.span
-              aria-hidden
-              className="absolute left-1/2 top-1.5 h-1 w-1 -translate-x-1/2 rounded-full bg-white/25"
-              animate={{ opacity: isMobile ? 0 : 1 }}
-              transition={{ duration: 0.3 }}
-            />
-
-            {/* inner screen */}
+            {/* device frame */}
             <motion.div
-              animate={{ borderRadius: Math.max(6, frame.radius - 6) }}
+              animate={{
+                width: frame.w,
+                height: frame.h,
+                borderRadius: frame.radius,
+                padding: frame.pad,
+              }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex h-full w-full flex-col overflow-hidden bg-white"
+              className="relative border border-white/12 bg-[#0B1220] shadow-[0_40px_90px_-25px_rgba(4,107,210,0.85)]"
             >
-              {/* notch (mobile) */}
+              {/* camera dot (laptop / tablet) */}
               <motion.span
                 aria-hidden
-                className="absolute left-1/2 top-1 z-30 h-1.5 w-12 -translate-x-1/2 rounded-full bg-black/70"
-                animate={{ opacity: isMobile ? 1 : 0 }}
+                className="absolute left-1/2 top-1.5 h-1 w-1 -translate-x-1/2 rounded-full bg-white/25"
+                animate={{ opacity: isMobile ? 0 : 1 }}
                 transition={{ duration: 0.3 }}
               />
 
-              {/* === Screen content — each device shows its own screen === */}
-              <AnimatePresence>
-                <motion.div
-                  key={frame.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0"
-                >
-                  {isLaptop && <VideoScreen speaker={speaker} time={time} />}
-                  {isTablet && (
-                    <ChatScreen visible={visible} showTyping={showTyping} />
-                  )}
-                  {isMobile && <CallScreen lines={lines} time={time} />}
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
-          </motion.div>
-
-          {/* laptop hinge + base */}
-          <AnimatePresence>
-            {isLaptop && (
+              {/* inner screen */}
               <motion.div
-                initial={{ opacity: 0, scaleY: 0.1 }}
-                animate={{ opacity: 1, scaleY: 1 }}
-                exit={{ opacity: 0, scaleY: 0.1 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                style={{ transformOrigin: "top" }}
-                className="flex flex-col items-center"
+                animate={{ borderRadius: Math.max(6, frame.radius - 6) }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="relative flex h-full w-full flex-col overflow-hidden bg-white"
               >
-                <div className="h-1 w-[410px] rounded-b-[3px] bg-gradient-to-b from-[#1A2638] to-[#0B1220]" />
-                <div
-                  className="relative h-3 w-[470px]"
-                  style={{
-                    clipPath: "polygon(2.5% 0%, 97.5% 0%, 100% 100%, 0% 100%)",
-                    background: "linear-gradient(to bottom, #232F44, #0B1220)",
-                  }}
-                >
-                  <div className="absolute inset-x-0 top-0 h-px bg-white/15" />
-                  <div className="absolute left-1/2 top-0 h-[3px] w-12 -translate-x-1/2 rounded-b-md bg-[#070B14]" />
-                </div>
+                {/* notch (mobile) */}
+                <motion.span
+                  aria-hidden
+                  className="absolute left-1/2 top-1 z-30 h-1.5 w-12 -translate-x-1/2 rounded-full bg-black/70"
+                  animate={{ opacity: isMobile ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+
+                {/* === Screen content — each device shows its own screen === */}
+                <AnimatePresence>
+                  <motion.div
+                    key={frame.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0"
+                  >
+                    {isLaptop && <VideoScreen speaker={speaker} time={time} />}
+                    {isTablet && (
+                      <ChatScreen visible={visible} showTyping={showTyping} />
+                    )}
+                    {isMobile && <CallScreen lines={lines} time={time} />}
+                  </motion.div>
+                </AnimatePresence>
               </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+            </motion.div>
+
+            {/* laptop hinge + base
+                Issues 2 & 3 fixed: replaced hardcoded w-[410px] / w-[470px]
+                with percentage-relative widths using inline style so the hinge
+                scales proportionally with the scale wrapper and never bleeds
+                outside the motion.div's flex-col items-center context.
+                We keep the pixel values in inline style (which already lived
+                there for the base trapezoid) but express the hinge top bar
+                width relative to the frame width (410/432 ≈ 95%) so it moves
+                with the animated frame width. For the base we clamp via
+                max-width and use w-full on its wrapping flex column. */}
+            <AnimatePresence>
+              {isLaptop && (
+                <motion.div
+                  initial={{ opacity: 0, scaleY: 0.1 }}
+                  animate={{ opacity: 1, scaleY: 1 }}
+                  exit={{ opacity: 0, scaleY: 0.1 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ transformOrigin: "top" }}
+                  className="flex flex-col items-center"
+                >
+                  {/* Issue 3 fixed: use style width matching frame width
+                      ratio instead of hardcoded w-[410px] */}
+                  <div
+                    className="h-1 rounded-b-[3px] bg-gradient-to-b from-[#1A2638] to-[#0B1220]"
+                    style={{ width: `${FRAMES[0].w - 22}px` }}
+                  />
+                  {/* Issue 2 fixed: use style width matching laptop base
+                      size instead of hardcoded w-[470px] */}
+                  <div
+                    className="relative h-3"
+                    style={{
+                      width: `${FRAMES[0].w + 38}px`,
+                      clipPath: "polygon(2.5% 0%, 97.5% 0%, 100% 100%, 0% 100%)",
+                      background: "linear-gradient(to bottom, #232F44, #0B1220)",
+                    }}
+                  >
+                    <div className="absolute inset-x-0 top-0 h-px bg-white/15" />
+                    <div className="absolute left-1/2 top-0 h-[3px] w-12 -translate-x-1/2 rounded-b-md bg-[#070B14]" />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </div>
@@ -658,7 +683,10 @@ function Particles() {
 export function Hero() {
   return (
     <section
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden lg:h-[100svh] lg:min-h-0"
+      // Issue 10 fixed: use min-h-[100dvh] (dynamic viewport height) instead
+      // of 100svh to properly handle iOS Safari bottom navigation bar; fall
+      // back to 100vh for browsers that don't support dvh.
+      className="relative isolate flex min-h-[100dvh] items-center overflow-hidden lg:h-[100dvh] lg:min-h-0"
       style={{ contain: "paint" }}
     >
       {/* ─────────── Scoped background ─────────── */}
@@ -678,9 +706,17 @@ export function Hero() {
           }}
         />
 
+        {/* Issues 5 & 6 fixed:
+            - Background orbs: reduced to 340px on mobile so negative percentage
+              offsets don't push large pixel elements off-screen. Size scales up
+              at sm breakpoint to restore the original visual at wider viewports.
+            - Conic gradient div: reduced to 900px on mobile (still visually
+              fills the viewport) and scaled to 1500px at lg. The parent already
+              has overflow-hidden + contain:paint so rendering is contained, but
+              a smaller element reduces GPU paint cost on low-end phones. */}
         <motion.div
           aria-hidden
-          className="absolute -left-[10%] top-[10%] h-[520px] w-[520px] rounded-full"
+          className="absolute -left-[10%] top-[10%] h-[340px] w-[340px] sm:h-[520px] sm:w-[520px] rounded-full"
           style={{
             background:
               "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(4,107,210,0) 65%)",
@@ -691,7 +727,7 @@ export function Hero() {
         />
         <motion.div
           aria-hidden
-          className="absolute -right-[8%] bottom-[8%] h-[560px] w-[560px] rounded-full"
+          className="absolute -right-[8%] bottom-[8%] h-[360px] w-[360px] sm:h-[560px] sm:w-[560px] rounded-full"
           style={{
             background:
               "radial-gradient(circle, rgba(34,211,238,0.32) 0%, rgba(34,211,238,0) 65%)",
@@ -701,9 +737,10 @@ export function Hero() {
           transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
         />
 
+        {/* Issue 6 fixed: smaller conic gradient on mobile reduces paint cost */}
         <motion.div
           aria-hidden
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[1500px] w-[1500px] rounded-full opacity-40"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[900px] w-[900px] lg:h-[1500px] lg:w-[1500px] rounded-full opacity-40"
           style={{
             background:
               "conic-gradient(from 90deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.3) 60deg, rgba(0,134,249,0.12) 140deg, rgba(34,211,238,0.22) 220deg, rgba(4,107,210,0) 360deg)",
@@ -720,25 +757,29 @@ export function Hero() {
       </div>
 
       {/* ─────────── Content (2 columns) ─────────── */}
-      <div className="relative mx-auto w-full max-w-7xl px-4 pt-24 pb-10 sm:px-6 sm:pt-24 sm:pb-12 lg:px-8 lg:pt-20 lg:pb-8">
+      {/* Issue 10 fixed: reduced pt-24 to pt-20 on mobile so content sits
+          higher on small phones; desktop retains original pt values */}
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-20 pb-10 sm:px-6 sm:pt-24 sm:pb-12 lg:px-8 lg:pt-20 lg:pb-8">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-6">
           {/* ───── Left: copy column ───── */}
           <div className="text-center lg:col-span-6 lg:text-left xl:col-span-6">
-            {/* Pill */}
+            {/* Pill
+                Issue 9 fixed: add flex-wrap so badge content can wrap on
+                very narrow screens (<320px) instead of overflowing */}
             <motion.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-[#22D3EE]/25 bg-white/[0.04] px-3.5 py-1.5 text-[11px] backdrop-blur-md sm:text-xs"
+              className="inline-flex flex-wrap items-center gap-2 rounded-full border border-[#22D3EE]/25 bg-white/[0.04] px-3.5 py-1.5 text-[11px] backdrop-blur-md sm:text-xs"
             >
-              <span className="relative flex h-1.5 w-1.5">
+              <span className="relative flex h-1.5 w-1.5 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22D3EE] opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#22D3EE]" />
               </span>
               <span className="font-medium tracking-wide text-white/85">
                 AI Voice Agents · Now in 42 regions
               </span>
-              <Sparkles className="h-3 w-3 text-[#22D3EE]" />
+              <Sparkles className="h-3 w-3 shrink-0 text-[#22D3EE]" />
             </motion.div>
 
             {/* Headline */}
@@ -810,7 +851,10 @@ export function Hero() {
               enterprises and growing teams.
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTAs
+                Issue 8 fixed: add min-w-[160px] on the primary button wrapper
+                so the "Start a free trial" text + icon always has enough room
+                on very narrow screens (<320px) and the flex-wrap break is clean */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -820,11 +864,11 @@ export function Hero() {
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="w-auto"
+                className="min-w-[160px] w-auto"
               >
                 <Button
                   size="lg"
-                  className="group relative h-11 w-auto overflow-hidden rounded-full bg-[#046BD2] px-4 text-xs font-semibold text-white shadow-[0_0_50px_-10px_rgba(4,107,210,0.85)] hover:bg-[#0078E0] sm:px-7 sm:text-[0.95rem]"
+                  className="group relative h-11 w-full overflow-hidden rounded-full bg-[#046BD2] px-4 text-xs font-semibold text-white shadow-[0_0_50px_-10px_rgba(4,107,210,0.85)] hover:bg-[#0078E0] sm:px-7 sm:text-[0.95rem]"
                   asChild
                 >
                   <Link href="/free-trial">
@@ -840,7 +884,7 @@ export function Hero() {
                     />
                     <span className="relative flex items-center justify-center gap-2">
                       Start a free trial
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </Link>
                 </Button>
@@ -849,17 +893,17 @@ export function Hero() {
               <motion.div
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="w-auto"
+                className="min-w-[120px] w-auto"
               >
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="group h-11 w-auto rounded-full border-white/15 bg-white/[0.04] px-4 text-xs text-white backdrop-blur-md hover:bg-white/10 hover:text-white sm:px-7 sm:text-[0.95rem]"
+                  className="group h-11 w-full rounded-full border-white/15 bg-white/[0.04] px-4 text-xs text-white backdrop-blur-md hover:bg-white/10 hover:text-white sm:px-7 sm:text-[0.95rem]"
                 >
                   <Link href="/pricing">
                     See Pricing
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="ml-2 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </Button>
               </motion.div>

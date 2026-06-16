@@ -15,7 +15,8 @@ const teamSizes = [
 
 const topics = [
   "UCaaS",
-  "Wholesale Voice & VoIP Services",
+  "Wholesale Voice",
+  "Wholesale VoIP",
   "Contact Center",
   "Technical support",
   "Billing & account",
@@ -60,11 +61,13 @@ export function ContactHero() {
   }
 
   return (
-    <section className="relative pt-20 sm:pt-28 pb-12 sm:pb-20 overflow-hidden">
+    // Issue 9: add overflow-x-hidden explicitly to prevent horizontal scroll from absolutely-positioned blobs
+    <section className="relative pt-20 sm:pt-28 pb-12 sm:pb-20 overflow-hidden overflow-x-hidden">
       {/* Aurora background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 -left-32 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-[#22D3EE]/12 blur-[100px] sm:blur-[140px] rounded-full" />
-        <div className="absolute top-40 right-0 w-[250px] h-[250px] sm:w-[500px] sm:h-[500px] bg-[#046BD2]/15 blur-[80px] sm:blur-[120px] rounded-full" />
+        {/* Issue 1: reduce mobile blob sizes to avoid potential overflow on very narrow screens */}
+        <div className="absolute top-10 -left-32 w-[200px] h-[200px] sm:w-[600px] sm:h-[600px] bg-[#22D3EE]/12 blur-[100px] sm:blur-[140px] rounded-full" />
+        <div className="absolute top-40 right-0 w-[200px] h-[200px] sm:w-[500px] sm:h-[500px] bg-[#046BD2]/15 blur-[80px] sm:blur-[120px] rounded-full" />
         <div
           className="absolute inset-0 opacity-[0.15]"
           style={{
@@ -109,7 +112,8 @@ export function ContactHero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-4 sm:mt-5 text-base sm:text-lg text-[#CCD6DF] leading-relaxed max-w-lg"
+              // Issue 10: remove max-w-lg on mobile so text is properly constrained by parent padding on small screens
+              className="mt-4 sm:mt-5 text-base sm:text-lg text-[#CCD6DF] leading-relaxed sm:max-w-lg"
             >
               No SDR phone tree. The person on the call has read the docs, can
               architect your stack, and can quote your contract live.
@@ -135,8 +139,9 @@ export function ContactHero() {
               ))}
             </ul>
 
-            <div className="mt-6 sm:mt-8 flex items-center gap-4">
-              <div className="flex -space-x-3">
+            {/* Issue 2 & 3: stack avatar row on very small screens; allow location text to wrap */}
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="flex -space-x-3 flex-shrink-0">
                 {["MR", "AS", "JK", "PL"].map((i, idx) => (
                   <div
                     key={i}
@@ -149,9 +154,10 @@ export function ContactHero() {
                   </div>
                 ))}
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-sm text-white font-medium">4 SEs online now</div>
-                <div className="text-xs text-white/50">San Francisco · London · Singapore · Dubai</div>
+                {/* Issue 3: allow the location string to wrap naturally on narrow screens */}
+                <div className="text-xs text-white/50 break-words">San Francisco · London · Singapore · Dubai</div>
               </div>
             </div>
           </div>
@@ -284,10 +290,11 @@ export function ContactHero() {
                       </Link>
                       .
                     </p>
+                    {/* Issue 4: add w-full on mobile for a full-width tap target; shrink-0 only on sm+ */}
                     <button
                       type="submit"
                       disabled={sending}
-                      className="shrink-0 inline-flex items-center justify-center gap-2 px-6 h-11 rounded-full bg-[#0B1220] border border-white/20 hover:border-[#22D3EE]/50 text-white font-semibold text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed hover:bg-white/[0.05]"
+                      className="w-full sm:w-auto sm:shrink-0 inline-flex items-center justify-center gap-2 px-6 h-11 rounded-full bg-[#0B1220] border border-white/20 hover:border-[#22D3EE]/50 text-white font-semibold text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed hover:bg-white/[0.05]"
                     >
                       {sending ? "Sending…" : "Send message"}
                       {!sending && <ArrowRight className="w-4 h-4" />}

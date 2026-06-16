@@ -135,7 +135,7 @@ export function PricingPlans() {
   const [annual, setAnnual] = useState(false)
 
   return (
-    <section id="pricing-plans" className="relative py-24 bg-[#0B1220] overflow-hidden">
+    <section id="pricing-plans" className="relative py-12 sm:py-16 lg:py-24 bg-[#0B1220] overflow-hidden">
       {/* Subtle grid texture */}
       <div
         className="absolute inset-0 -z-10 opacity-20"
@@ -154,10 +154,10 @@ export function PricingPlans() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-6 sm:mb-8 lg:mb-12"
         >
           <div
-            className="flex p-1 rounded-xl"
+            className="flex flex-wrap justify-center p-1 rounded-xl"
             style={{
               background: 'rgba(255,255,255,0.06)',
               border: '1px solid rgba(255,255,255,0.1)',
@@ -165,7 +165,7 @@ export function PricingPlans() {
           >
             <button
               onClick={() => setAnnual(false)}
-              className="px-7 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none"
+              className="px-4 sm:px-7 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none"
               style={{
                 background: !annual ? 'white' : 'transparent',
                 color: !annual ? '#0B1220' : '#757575',
@@ -175,7 +175,7 @@ export function PricingPlans() {
             </button>
             <button
               onClick={() => setAnnual(true)}
-              className="flex items-center gap-2 px-7 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none"
+              className="flex items-center gap-2 px-4 sm:px-7 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none"
               style={{
                 background: annual ? 'white' : 'transparent',
                 color: annual ? '#0B1220' : '#757575',
@@ -183,7 +183,7 @@ export function PricingPlans() {
             >
               Yearly
               <span
-                className="text-xs px-2 py-0.5 rounded-full font-bold"
+                className="text-xs px-2 py-0.5 rounded-full font-bold whitespace-nowrap"
                 style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981' }}
               >
                 Save 20%
@@ -193,7 +193,7 @@ export function PricingPlans() {
         </motion.div>
 
         {/* ── 5-column equal-height card grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 items-stretch">
           {plans.map((plan, i) => {
             const isPopular = plan.popular
             const isFree = plan.type === 'free'
@@ -231,7 +231,7 @@ export function PricingPlans() {
                 }}
               >
                 {/* ── Header: name badge (+ popular badge) ── */}
-                <div className="flex items-center justify-center gap-2 px-5 pt-5 pb-0 min-h-[44px]">
+                <div className="flex flex-wrap items-center justify-center gap-2 px-5 pt-5 pb-0 min-h-[2.75rem]">
                   <span
                     className="inline-block text-xs font-semibold px-3 py-1 rounded-full"
                     style={{
@@ -257,7 +257,7 @@ export function PricingPlans() {
                 </div>
 
                 {/* ── Body: price + description + features + CTA ── */}
-                <div className="flex flex-col flex-1 px-5 pt-4 pb-6">
+                <div className="flex flex-col flex-1 px-3 pt-3 pb-4 sm:px-5 sm:pt-4 sm:pb-6">
 
                   {/* Price */}
                   <div className="mb-0.5">
@@ -282,7 +282,7 @@ export function PricingPlans() {
                       : plan.priceSub}
                   </p>
                   {plan.type === 'paid' && annual && (
-                    <p className="text-[#757575] text-xs line-through opacity-60">
+                    <p className="text-[#757575] text-xs line-through opacity-60 break-words overflow-hidden">
                       ${plan.monthlyPrice!.toFixed(2)}/mo billed monthly
                     </p>
                   )}
@@ -311,7 +311,7 @@ export function PricingPlans() {
                         >
                           <Check className="w-2.5 h-2.5 text-[#046BD2]" strokeWidth={3} />
                         </div>
-                        <span className="text-[#CCD6DF] text-xs leading-snug">{f}</span>
+                        <span className="text-[#CCD6DF] text-xs leading-snug break-words min-w-0">{f}</span>
                       </li>
                     ))}
                   </ul>
