@@ -366,19 +366,11 @@ const topLevelNav = [
   { label: "Resources", megaMenu: "Resources" },
 ];
 
-// Navbar height constants: py-4 (16px top + 16px bottom) + logo height
-// Mobile: h-8 (32px) logo => 64px total
-// sm+: h-10 (40px) logo => 72px total
-const NAVBAR_HEIGHT_MOBILE = 64; // px — py-4 + h-8
-const NAVBAR_HEIGHT_SM = 72;     // px — py-4 + h-10
-
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [menuTimeout, setMenuTimeout] = useState<NodeJS.Timeout | null>(null);
-  // Track whether we are in the sm+ breakpoint to pick the right navbar height
-  const [isSm, setIsSm] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -388,32 +380,15 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Detect sm breakpoint and clear desktop mega menu when below lg
+  // Close desktop mega menu when viewport drops below lg
   useEffect(() => {
-    const mq640 = window.matchMedia("(min-width: 640px)");
     const mq1024 = window.matchMedia("(min-width: 1024px)");
-
     const onResize = () => {
-      setIsSm(mq640.matches);
-      // If viewport drops below lg, close any open desktop mega menu to prevent
-      // residual fixed panels from overflowing the page
-      if (!mq1024.matches) {
-        setActiveMenu(null);
-      }
+      if (!mq1024.matches) setActiveMenu(null);
     };
-
-    // Set initial value
-    setIsSm(mq640.matches);
-
-    mq640.addEventListener("change", onResize);
     mq1024.addEventListener("change", onResize);
-    return () => {
-      mq640.removeEventListener("change", onResize);
-      mq1024.removeEventListener("change", onResize);
-    };
+    return () => mq1024.removeEventListener("change", onResize);
   }, []);
-
-  const navbarHeight = isSm ? NAVBAR_HEIGHT_SM : NAVBAR_HEIGHT_MOBILE;
 
   const handleMenuEnter = (menuName: string) => {
     if (menuTimeout) clearTimeout(menuTimeout);
@@ -489,10 +464,9 @@ export function Navbar() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 8 }}
                             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed left-1/2 -translate-x-1/2 z-50"
+                            className="fixed left-1/2 -translate-x-1/2 z-50 top-16 sm:top-[72px]"
                             style={{
                               width: `min(calc(100vw - 2rem), ${cfg.width ?? "960px"})`,
-                              top: `${navbarHeight}px`,
                             }}
                             onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
                             onMouseLeave={handleMenuLeave}
@@ -591,10 +565,9 @@ export function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                          className="fixed left-1/2 -translate-x-1/2 z-50"
+                          className="fixed left-1/2 -translate-x-1/2 z-50 top-16 sm:top-[72px]"
                           style={{
                             width: `min(calc(100vw - 2rem), ${panelWidth})`,
-                            top: `${navbarHeight}px`,
                           }}
                           onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
                           onMouseLeave={handleMenuLeave}
@@ -730,8 +703,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 z-[39] lg:hidden bg-black/30"
-              style={{ top: `${navbarHeight}px` }}
+              className="fixed inset-0 top-16 sm:top-[72px] z-[39] lg:hidden bg-black/30"
               onClick={() => setIsOpen(false)}
             />
 
@@ -742,11 +714,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed left-0 right-0 z-40 lg:hidden overflow-x-hidden overflow-y-auto bg-[#0B1220] border-b border-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.7)]"
-              style={{
-                top: `${navbarHeight}px`,
-                maxHeight: `calc(100vh - ${navbarHeight}px)`,
-              }}
+              className="fixed left-0 right-0 top-16 sm:top-[72px] z-40 lg:hidden overflow-x-hidden overflow-y-auto bg-[#0B1220] border-b border-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.7)] max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-72px)]"
             >
               {/* Nav items */}
               <div className="px-4 py-3 space-y-0.5">
