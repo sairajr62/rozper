@@ -46,6 +46,18 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: "/audit/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+      {
+        source: "/audit",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+      {
         source: "/images/:path*",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
