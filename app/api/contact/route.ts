@@ -166,6 +166,7 @@ export async function POST(req: Request) {
     }
 
     // Store lead in Blob (non-blocking — email already sent)
+    let blobError: string | null = null
     try {
       const leadEntry = {
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
@@ -181,11 +182,12 @@ export async function POST(req: Request) {
         access: "public",
         contentType: "application/json",
       })
-    } catch (blobErr) {
+    } catch (blobErr: any) {
+      blobError = blobErr?.message ?? String(blobErr)
       console.error("[/api/contact] Failed to store lead in blob:", blobErr)
     }
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true, ...(blobError ? { blobError } : {}) })
   } catch (err) {
     console.error("[/api/contact] Failed to send lead email:", err)
     return NextResponse.json(
