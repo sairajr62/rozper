@@ -642,6 +642,13 @@ export function Navbar() {
             {/* Right: CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <Button
+                variant="ghost"
+                className="text-white/80 hover:text-white hover:bg-white/[0.06] text-sm font-medium h-9 px-5 rounded-lg"
+                asChild
+              >
+                <Link href="https://rozper.vercel.app/sign-in">Sign In</Link>
+              </Button>
+              <Button
                 className="bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium h-9 px-5 rounded-lg shadow-[0_0_24px_-8px_rgba(4,107,210,0.7)]"
                 asChild
               >
