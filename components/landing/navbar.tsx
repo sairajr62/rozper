@@ -202,13 +202,6 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
         title: "By Industry",
         items: [
           {
-            label: "Healthcare",
-            description: "HIPAA-aligned voice, SMS and AI for patient teams.",
-            href: "/solutions/healthcare",
-            icon: Activity,
-            iconGradient: "from-[#22D3EE] to-[#0086F9]",
-          },
-          {
             label: "Financial Services",
             description: "Compliant calling, recording and dialers for banks and fintechs.",
             href: "/solutions/finance",
@@ -347,7 +340,7 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
           },
           {
             label: "Security",
-            description: "SOC 2 Type II, HIPAA BAA and trust documentation.",
+            description: "SOC 2 Type II and trust documentation.",
             href: "/security",
             icon: Shield,
             iconGradient: "from-[#046BD2] to-[#2575FC]",
@@ -380,16 +373,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close desktop mega menu when viewport drops below lg
-  useEffect(() => {
-    const mq1024 = window.matchMedia("(min-width: 1024px)");
-    const onResize = () => {
-      if (!mq1024.matches) setActiveMenu(null);
-    };
-    mq1024.addEventListener("change", onResize);
-    return () => mq1024.removeEventListener("change", onResize);
-  }, []);
-
   const handleMenuEnter = (menuName: string) => {
     if (menuTimeout) clearTimeout(menuTimeout);
     setActiveMenu(menuName);
@@ -408,7 +391,7 @@ export function Navbar() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 overflow-x-hidden ${
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
             ? "bg-[#0B1220]/95 backdrop-blur-md border-b border-white/10 shadow-lg"
             : "bg-[#0B1220]/60 backdrop-blur-sm"
@@ -464,10 +447,8 @@ export function Navbar() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 8 }}
                             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed left-1/2 -translate-x-1/2 z-50 top-16 sm:top-[72px]"
-                            style={{
-                              width: `min(calc(100vw - 2rem), ${cfg.width ?? "960px"})`,
-                            }}
+                            className="fixed left-1/2 -translate-x-1/2 top-[72px] z-50"
+                            style={{ width: `min(calc(100vw - 2rem), ${cfg.width ?? "960px"})` }}
                             onMouseEnter={() => handleMenuEnter(item.megaMenu!)}
                             onMouseLeave={handleMenuLeave}
                           >
@@ -565,7 +546,7 @@ export function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                          className="fixed left-1/2 -translate-x-1/2 z-50 top-16 sm:top-[72px]"
+                          className="fixed left-1/2 -translate-x-1/2 top-[72px] z-50"
                           style={{
                             width: `min(calc(100vw - 2rem), ${panelWidth})`,
                           }}
@@ -661,17 +642,10 @@ export function Navbar() {
             {/* Right: CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <Button
-                variant="ghost"
-                className="text-white/80 hover:text-white hover:bg-white/[0.06] text-sm font-medium h-9 px-4 rounded-lg"
-                asChild
-              >
-                <Link href="/sign-in">Sign In</Link>
-              </Button>
-              <Button
                 className="bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium h-9 px-5 rounded-lg shadow-[0_0_24px_-8px_rgba(4,107,210,0.7)]"
                 asChild
               >
-                <Link href="/free-trial">Start a free trial</Link>
+                <Link href="/contact">Start a free trial</Link>
               </Button>
             </div>
 
@@ -703,7 +677,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="fixed inset-0 top-16 sm:top-[72px] z-[39] lg:hidden bg-black/30"
+              className="fixed inset-0 top-[72px] z-[39] lg:hidden bg-black/30"
               onClick={() => setIsOpen(false)}
             />
 
@@ -714,7 +688,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed left-0 right-0 top-16 sm:top-[72px] z-40 lg:hidden overflow-x-hidden overflow-y-auto bg-[#0B1220] border-b border-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.7)] max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-72px)]"
+              className="fixed top-[72px] left-0 right-0 z-40 lg:hidden max-h-[calc(100vh-72px)] overflow-y-auto bg-[#0B1220] border-b border-white/10 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.7)]"
             >
               {/* Nav items */}
               <div className="px-4 py-3 space-y-0.5">
@@ -723,8 +697,8 @@ export function Navbar() {
                     {item.megaMenu ? (
                       <details className="group">
                         <summary className="flex items-center justify-between px-3 py-3 cursor-pointer text-white font-medium text-base list-none rounded-xl hover:bg-white/[0.04] transition-colors">
-                          <span className="truncate mr-2">{item.label}</span>
-                          <ChevronDown className="w-4 h-4 text-white/50 group-open:rotate-180 group-open:text-[#22D3EE] transition-transform duration-200 shrink-0" />
+                          <span>{item.label}</span>
+                          <ChevronDown className="w-4 h-4 text-white/50 group-open:rotate-180 group-open:text-[#22D3EE] transition-transform duration-200" />
                         </summary>
                         <div className="px-1 pb-2 pt-0.5">
                           {megaMenuConfig[item.megaMenu as keyof typeof megaMenuConfig].sectioned ? (
@@ -741,7 +715,7 @@ export function Navbar() {
                                         <li key={subIdx}>
                                           <Link
                                             href={subitem.href ?? "/"}
-                                            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors overflow-hidden"
+                                            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors"
                                             onClick={() => setIsOpen(false)}
                                           >
                                             {IconComponent && (
@@ -749,9 +723,9 @@ export function Navbar() {
                                                 <IconComponent className="w-3.5 h-3.5 text-white" />
                                               </span>
                                             )}
-                                            <span className="font-medium text-white truncate">{subitem.label}</span>
+                                            <span className="font-medium text-white">{subitem.label}</span>
                                             {subitem.badge && (
-                                              <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider shrink-0 ${
+                                              <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
                                                 subitem.badge === "New" ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
                                                 : subitem.badge === "AI" ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
                                                 : "bg-emerald-500/15 text-emerald-400 border border-emerald-400/30"
@@ -775,7 +749,7 @@ export function Navbar() {
                                     <li key={subIdx}>
                                       <Link
                                         href={subitem.href ?? "/"}
-                                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors overflow-hidden"
+                                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm hover:bg-white/[0.04] transition-colors"
                                         onClick={() => setIsOpen(false)}
                                       >
                                         {IconComponent && (
@@ -783,9 +757,9 @@ export function Navbar() {
                                             <IconComponent className="w-3.5 h-3.5 text-white" />
                                           </span>
                                         )}
-                                        <span className="font-medium text-white truncate">{subitem.label}</span>
+                                        <span className="font-medium text-white">{subitem.label}</span>
                                         {subitem.badge && (
-                                          <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider shrink-0 ${
+                                          <span className={`inline-flex items-center px-1.5 py-0.5 rounded-md text-[9px] font-semibold uppercase tracking-wider ${
                                             subitem.badge === "New" ? "bg-[#22D3EE]/15 text-[#22D3EE] border border-[#22D3EE]/30"
                                             : subitem.badge === "AI" ? "bg-[#046BD2]/15 text-[#0086F9] border border-[#0086F9]/30"
                                             : subitem.badge === "Beta" ? "bg-[#2575FC]/15 text-[#2D98F1] border border-[#2D98F1]/30"
@@ -814,21 +788,12 @@ export function Navbar() {
               </div>
 
               {/* CTA */}
-              <div className="px-4 pt-2 pb-4 border-t border-white/10 flex flex-col gap-2">
-                <Button
-                  variant="outline"
-                  className="w-full border-white/15 bg-white/[0.04] hover:bg-white/10 text-white font-medium h-11 rounded-xl"
-                  asChild
-                >
-                  <Link href="/sign-in" onClick={() => setIsOpen(false)}>
-                    Sign In
-                  </Link>
-                </Button>
+              <div className="px-4 pt-2 pb-4 border-t border-white/10">
                 <Button
                   className="w-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-medium h-11 rounded-xl"
                   asChild
                 >
-                  <Link href="/free-trial" onClick={() => setIsOpen(false)}>
+                  <Link href="/contact" onClick={() => setIsOpen(false)}>
                     Start a free trial
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
