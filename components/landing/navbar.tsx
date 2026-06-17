@@ -652,7 +652,7 @@ export function Navbar() {
                 className="bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium h-9 px-5 rounded-lg shadow-[0_0_24px_-8px_rgba(4,107,210,0.7)]"
                 asChild
               >
-                <Link href="/contact">Start a free trial</Link>
+                <Link href="/free-trial">Start a free trial</Link>
               </Button>
             </div>
 
