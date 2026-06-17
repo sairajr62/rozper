@@ -7,10 +7,10 @@ export async function POST(req: Request) {
   try {
     const { user, pass } = await req.json()
 
-    const expectedUser = process.env.AUDIT_USER || 'admin'
-    const expectedPass = process.env.AUDIT_PASS || 'rozper2024'
+    const expectedUser = (process.env.AUDIT_USER || 'admin').trim()
+    const expectedPass = (process.env.AUDIT_PASS || 'rozper2024').trim()
 
-    if (user === expectedUser && pass === expectedPass) {
+    if (user.trim() === expectedUser && pass.trim() === expectedPass) {
       return NextResponse.json({ ok: true })
     }
 
