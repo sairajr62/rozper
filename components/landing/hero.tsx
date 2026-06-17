@@ -508,20 +508,6 @@ function DeviceShowcase() {
     // Issue 4 fixed: overflow-hidden on the container clips the 120% wide glow
     // and any pixel-width children that might bleed out on narrow viewports.
     <div className="relative mx-auto w-full max-w-[480px] overflow-hidden">
-      {/* glow — Issue 4 fixed: overflow-hidden on parent now clips this element
-          so the 120% width no longer causes horizontal scroll */}
-      <motion.div
-        aria-hidden
-        className="absolute left-1/2 top-1/2 h-[90%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(34,211,238,0.14) 45%, rgba(4,107,210,0) 75%)",
-          filter: "blur(55px)",
-        }}
-        animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.06, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-
       {/* fixed stage so surrounding layout stays put while the device morphs.
           The device frames use fixed px sizes (laptop base ≈ 470px), so on
           phones we scale the whole stage down to fit.
