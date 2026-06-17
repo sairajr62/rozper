@@ -534,7 +534,7 @@ function DeviceShowcase() {
                 padding: frame.pad,
               }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative border border-white/12 bg-[#0B1220] shadow-[0_40px_90px_-25px_rgba(4,107,210,0.85)]"
+              className="relative border border-white/12 bg-[#0B1220]"
             >
               {/* camera dot (laptop / tablet) */}
               <motion.span
