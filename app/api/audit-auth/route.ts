@@ -11,7 +11,13 @@ export async function POST(req: Request) {
     const expectedPass = (process.env.AUDIT_PASS || 'rozper2024').trim()
 
     if (user.trim() === expectedUser && pass.trim() === expectedPass) {
-      return NextResponse.json({ ok: true })
+      const res = NextResponse.json({ ok: true })
+      res.cookies.set('rozper_audit', '1', {
+        path: '/',
+        sameSite: 'lax',
+        httpOnly: false,
+      })
+      return res
     }
 
     return NextResponse.json({ ok: false }, { status: 401 })
