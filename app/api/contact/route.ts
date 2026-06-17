@@ -132,34 +132,37 @@ export async function POST(req: Request) {
       })
     )
 
-    // Confirmation email to the submitter
-    const confirmationHtml = `
-      <div style="font-family:system-ui,Segoe UI,Arial,sans-serif;font-size:15px;color:#1a1a2e;line-height:1.7;max-width:560px;margin:0 auto">
-        <div style="background:#0B1220;padding:32px 36px;border-radius:12px 12px 0 0;text-align:center">
-          <img src="https://rozper.com/images/white-rozper-logo.png" alt="Rozper" style="height:36px;width:auto" />
+    // Send confirmation email to the user only for free-trial sign-ups
+    if (interests.includes("Free Trial")) {
+      const displayName = firstName || fullName
+      const confirmationHtml = `
+        <div style="font-family:system-ui,Segoe UI,Arial,sans-serif;font-size:15px;color:#1a1a2e;line-height:1.7;max-width:560px;margin:0 auto">
+          <div style="background:#0B1220;padding:32px 36px;border-radius:12px 12px 0 0;text-align:center">
+            <img src="https://rozper.com/images/white-rozper-logo.png" alt="Rozper" style="height:36px;width:auto" />
+          </div>
+          <div style="background:#ffffff;padding:36px;border-radius:0 0 12px 12px;border:1px solid #e8e8e8;border-top:none">
+            <h2 style="margin:0 0 12px;font-size:22px;color:#0B1220">You're on your way, ${escapeHtml(displayName)}!</h2>
+            <p style="margin:0 0 16px;color:#4a5568">Thanks for signing up for your free trial. Our team will reach out to you within <strong>24 hours</strong> to get you set up.</p>
+            <p style="margin:0 0 24px;color:#4a5568">In the meantime, explore what Rozper has to offer:</p>
+            <a href="https://rozper.com" style="display:inline-block;background:#046BD2;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Visit Rozper.com</a>
+            <hr style="margin:32px 0;border:none;border-top:1px solid #e8e8e8" />
+            <p style="margin:0;font-size:13px;color:#9aa8bc">You're receiving this because you signed up for a free trial at rozper.com. If this wasn't you, please ignore this email.</p>
+          </div>
         </div>
-        <div style="background:#ffffff;padding:36px;border-radius:0 0 12px 12px;border:1px solid #e8e8e8;border-top:none">
-          <h2 style="margin:0 0 12px;font-size:22px;color:#0B1220">Thanks for reaching out, ${escapeHtml(firstName || fullName)}!</h2>
-          <p style="margin:0 0 16px;color:#4a5568">We've received your message and our team will get back to you within <strong>24 hours</strong>.</p>
-          <p style="margin:0 0 24px;color:#4a5568">In the meantime, feel free to explore what Rozper has to offer:</p>
-          <a href="https://rozper.com" style="display:inline-block;background:#046BD2;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Visit Rozper.com</a>
-          <hr style="margin:32px 0;border:none;border-top:1px solid #e8e8e8" />
-          <p style="margin:0;font-size:13px;color:#9aa8bc">You're receiving this because you submitted a form at rozper.com. If this wasn't you, please ignore this email.</p>
-        </div>
-      </div>
-    `
+      `
 
-    const confirmRaw = buildRawMessage({
-      from: `Rozper <${sender}>`,
-      to: email,
-      subject: "We received your message — Rozper will be in touch within 24 hours",
-      html: confirmationHtml,
-    })
+      const confirmRaw = buildRawMessage({
+        from: `Rozper <${sender}>`,
+        to: email,
+        subject: "Our team will reach out to you within 24 hours — Rozper",
+        html: confirmationHtml,
+      })
 
-    await gmail.users.messages.send({
-      userId: "me",
-      requestBody: { raw: confirmRaw },
-    })
+      await gmail.users.messages.send({
+        userId: "me",
+        requestBody: { raw: confirmRaw },
+      })
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {
