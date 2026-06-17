@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { google } from "googleapis"
+import { put } from "@vercel/blob"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -162,6 +163,26 @@ export async function POST(req: Request) {
         userId: "me",
         requestBody: { raw: confirmRaw },
       })
+    }
+
+    // Store lead in Blob (non-blocking — email already sent)
+    try {
+      const leadEntry = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+        name: fullName,
+        email,
+        company,
+        companySize,
+        interests,
+        message,
+        submittedAt: new Date().toISOString(),
+      }
+      await put(`leads/lead-${leadEntry.id}.json`, JSON.stringify(leadEntry), {
+        access: "public",
+        contentType: "application/json",
+      })
+    } catch (blobErr) {
+      console.error("[/api/contact] Failed to store lead in blob:", blobErr)
     }
 
     return NextResponse.json({ success: true })
