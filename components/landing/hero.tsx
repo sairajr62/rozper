@@ -692,48 +692,17 @@ export function Hero() {
           }}
         />
 
-        {/* Issues 5 & 6 fixed:
-            - Background orbs: reduced to 340px on mobile so negative percentage
-              offsets don't push large pixel elements off-screen. Size scales up
-              at sm breakpoint to restore the original visual at wider viewports.
-            - Conic gradient div: reduced to 900px on mobile (still visually
-              fills the viewport) and scaled to 1500px at lg. The parent already
-              has overflow-hidden + contain:paint so rendering is contained, but
-              a smaller element reduces GPU paint cost on low-end phones. */}
+        {/* Single centered radial glow */}
         <motion.div
           aria-hidden
-          className="absolute -left-[10%] top-[10%] h-[340px] w-[340px] sm:h-[520px] sm:w-[520px] rounded-full"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[900px] sm:h-[700px] sm:w-[1100px] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(4,107,210,0.45) 0%, rgba(4,107,210,0) 65%)",
+              "radial-gradient(ellipse at 50% 50%, rgba(4,107,210,0.35) 0%, rgba(34,211,238,0.08) 45%, transparent 70%)",
             filter: "blur(80px)",
           }}
-          animate={{ scale: [1, 1.12, 1], opacity: [0.6, 0.95, 0.6] }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute -right-[8%] bottom-[8%] h-[360px] w-[360px] sm:h-[560px] sm:w-[560px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(34,211,238,0.32) 0%, rgba(34,211,238,0) 65%)",
-            filter: "blur(90px)",
-          }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.85, 0.5] }}
-          transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Issue 6 fixed: smaller conic gradient on mobile reduces paint cost */}
-        <motion.div
-          aria-hidden
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[900px] w-[900px] lg:h-[1500px] lg:w-[1500px] rounded-full opacity-40"
-          style={{
-            background:
-              "conic-gradient(from 90deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.3) 60deg, rgba(0,134,249,0.12) 140deg, rgba(34,211,238,0.22) 220deg, rgba(4,107,210,0) 360deg)",
-            filter: "blur(100px)",
-          }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+          animate={{ opacity: [0.7, 1, 0.7] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
 
         <Particles />
