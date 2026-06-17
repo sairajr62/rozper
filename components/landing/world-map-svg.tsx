@@ -46,8 +46,8 @@ export function WorldMapSVG({ isInView = true }: WorldMapProps) {
       >
         <defs>
           <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(4, 107, 210, 0.12)" />
-            <stop offset="100%" stopColor="rgba(101, 217, 255, 0.08)" />
+            <stop offset="0%" stopColor="rgba(4, 107, 210, 0.45)" />
+            <stop offset="100%" stopColor="rgba(101, 217, 255, 0.30)" />
           </linearGradient>
 
           <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -67,7 +67,7 @@ export function WorldMapSVG({ isInView = true }: WorldMapProps) {
         </defs>
 
         {/* Realistic World Map Continents */}
-        <g fill="url(#mapGrad)" stroke="rgba(4, 107, 210, 0.15)" strokeWidth="0.3" opacity="0.7">
+        <g fill="url(#mapGrad)" stroke="rgba(4, 107, 210, 0.5)" strokeWidth="0.3" opacity="1">
           {/* North America */}
           <path d="M 8 15 L 18 12 L 22 18 L 24 28 L 20 32 L 12 30 L 8 22 Z" />
           

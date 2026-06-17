@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { WorldMapSVG } from "@/components/landing/world-map-svg";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import {
@@ -173,6 +174,42 @@ function WorldClock() {
         })}
       </div>
     </div>
+  );
+}
+
+function WorldMapSection() {
+  const mapRef = useRef(null);
+  const mapInView = useInView(mapRef, { once: true, margin: "-100px" });
+  return (
+    <section ref={mapRef} className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={mapInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        className="relative rounded-3xl bg-gradient-to-br from-[#046BD2]/10 to-[#0B1220] border border-[#046BD2]/20 overflow-hidden"
+      >
+        <div className="px-8 pt-8 pb-4 flex items-center justify-between">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#2D98F1]/60 mb-2">
+              // network.coverage
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold">
+              Global reach, local presence.
+            </h2>
+          </div>
+          <div className="hidden sm:flex items-center gap-2 text-xs">
+            <span className="relative flex w-2 h-2">
+              <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" />
+              <span className="relative w-2 h-2 rounded-full bg-emerald-400" />
+            </span>
+            <span className="font-mono text-emerald-400">150+ countries live</span>
+          </div>
+        </div>
+        <div className="relative h-[320px] sm:h-[420px] w-full px-4 pb-4">
+          <WorldMapSVG isInView={mapInView} />
+        </div>
+      </motion.div>
+    </section>
   );
 }
 
@@ -379,6 +416,9 @@ export function RemoteTeamsPageView() {
             ))}
           </div>
         </section>
+
+        {/* World Map */}
+        <WorldMapSection />
 
         {/* Testimonials — connection pulse cards, all equal */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
