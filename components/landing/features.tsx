@@ -470,6 +470,15 @@ export function Features() {
 
           </motion.div>
         </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-10 text-sm text-white/45 text-center"
+        >
+          Pick one layer. Pick all five. Rozper scales with you either way.
+        </motion.p>
       </div>
     </section>
   )
