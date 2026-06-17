@@ -279,11 +279,17 @@ export function BlogPostsSection({
 
   const [active, setActive] = useState<string>(ALL)
 
+  // Remap "Virtual Numbers" into "Area Codes"; hide everything else except "Area Codes"
+  const CATEGORY_REMAP: Record<string, string> = { "Virtual Numbers": "Area Codes" }
+  const ALLOWED_CATEGORIES = new Set(["Area Codes"])
+
   const categories = useMemo(() => {
     const map = new Map<string, number>()
     for (const p of posts) {
       for (const c of p.categories) {
-        map.set(c.name, (map.get(c.name) ?? 0) + 1)
+        const name = CATEGORY_REMAP[c.name] ?? c.name
+        if (!ALLOWED_CATEGORIES.has(name)) continue
+        map.set(name, (map.get(name) ?? 0) + 1)
       }
     }
     const sorted = Array.from(map.entries())
@@ -305,7 +311,9 @@ export function BlogPostsSection({
 
   const filtered = useMemo(() => {
     if (active === ALL) return rest
-    return rest.filter((p) => p.categories.some((c) => c.name === active))
+    return rest.filter((p) =>
+      p.categories.some((c) => (CATEGORY_REMAP[c.name] ?? c.name) === active)
+    )
   }, [rest, active])
 
   const clearSearch = () => {
