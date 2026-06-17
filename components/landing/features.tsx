@@ -229,13 +229,14 @@ export function Features() {
       ref={ref}
       className="relative py-20 sm:py-28 overflow-hidden bg-[#070B14]"
     >
-      {/* Aurora background */}
+      {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] sm:w-[1100px] sm:h-[700px] rounded-full opacity-100"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(4,107,210,0.18) 0%, transparent 60%)",
+              "radial-gradient(ellipse at 50% 50%, rgba(4,107,210,0.35) 0%, rgba(34,211,238,0.08) 45%, transparent 70%)",
+            filter: "blur(80px)",
           }}
         />
         <div
@@ -247,9 +248,9 @@ export function Features() {
             `,
             backgroundSize: "56px 56px",
             maskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, black 40%, transparent 80%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 80%)",
+              "radial-gradient(ellipse 70% 60% at 50% 50%, black 40%, transparent 80%)",
           }}
         />
       </div>
