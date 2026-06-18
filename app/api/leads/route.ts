@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { list } from '@vercel/blob'
+import { list, getDownloadUrl } from '@vercel/blob'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -17,13 +17,11 @@ export async function GET(req: Request) {
       })
     }
 
-    const token = process.env.BLOB_READ_WRITE_TOKEN
     const leads = await Promise.all(
       blobs.map(async (blob) => {
         try {
-          const res = await fetch(blob.url, {
-            headers: token ? { Authorization: `Bearer ${token}` } : {},
-          })
+          const signedUrl = await getDownloadUrl(blob.url)
+          const res = await fetch(signedUrl)
           return await res.json()
         } catch {
           return null
