@@ -10,10 +10,22 @@ export async function GET(req: Request) {
     const { blobs } = await list({ prefix: 'leads/' })
 
     if (debug) {
+      const first = blobs[0]
+      let fetchTest: any = null
+      if (first) {
+        try {
+          const signedUrl = await getDownloadUrl(first.url)
+          const res = await fetch(signedUrl)
+          fetchTest = { status: res.status, ok: res.ok, signedUrl, text: await res.text() }
+        } catch (err: any) {
+          fetchTest = { error: err?.message ?? String(err) }
+        }
+      }
       return NextResponse.json({
         blobCount: blobs.length,
         blobs: blobs.map(b => ({ url: b.url, pathname: b.pathname, size: b.size })),
         hasToken: !!process.env.BLOB_READ_WRITE_TOKEN,
+        fetchTest,
       })
     }
 
