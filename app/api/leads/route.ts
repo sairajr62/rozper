@@ -8,10 +8,13 @@ export async function GET() {
   try {
     const { blobs } = await list({ prefix: 'leads/' })
 
+    const token = process.env.BLOB_READ_WRITE_TOKEN
     const leads = await Promise.all(
       blobs.map(async (blob) => {
         try {
-          const res = await fetch(blob.url)
+          const res = await fetch(blob.url, {
+            headers: token ? { Authorization: `Bearer ${token}` } : {},
+          })
           return await res.json()
         } catch {
           return null

@@ -179,7 +179,7 @@ export async function POST(req: Request) {
         submittedAt: new Date().toISOString(),
       }
       await put(`leads/lead-${leadEntry.id}.json`, JSON.stringify(leadEntry), {
-        access: "public",
+        access: "private",
         contentType: "application/json",
       })
     } catch (blobErr: any) {
