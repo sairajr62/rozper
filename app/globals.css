@@ -351,13 +351,12 @@ p {
   border-radius: 1rem;
   border: none;
   box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.18);
-  background-color: #F7F6F2;
   max-width: 100%;
   height: auto;
   margin: 1.75em auto;
   display: block;
-  padding: 1rem;
-  background: #F7F6F2;
+  padding: 0;
+  background: transparent;
   outline: none;
 }
 
