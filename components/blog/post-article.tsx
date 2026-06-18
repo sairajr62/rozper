@@ -170,7 +170,12 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
                     alt={post.featuredImage.alt}
                     tone="blue"
                     label={post.categories[0]?.name ?? "Article"}
-                    className="absolute inset-0 w-full h-full object-cover object-center sm:object-left"
+                    fit={post.featuredImageFit ?? "cover"}
+                    className={
+                      (post.featuredImageFit ?? "cover") === "contain"
+                        ? "absolute inset-0 w-full h-full object-contain object-center"
+                        : "absolute inset-0 w-full h-full object-cover object-center sm:object-left"
+                    }
                     style={post.featuredImagePosition ? { objectPosition: post.featuredImagePosition } : undefined}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1020]/40 via-transparent to-transparent" />
