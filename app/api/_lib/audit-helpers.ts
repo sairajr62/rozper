@@ -54,7 +54,6 @@ export const STATIC_PAGES = [
   '/security',
   '/solutions/enterprise-it',
   '/solutions/finance',
-  '/solutions/healthcare',
   '/solutions/logistics',
   '/solutions/remote-teams',
   '/solutions/retail',

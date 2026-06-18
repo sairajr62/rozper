@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
-import { HealthcarePageView } from '@/components/solutions/healthcare'
-import { SITE_URL } from '@/lib/site'
+import { notFound } from 'next/navigation'
 
+// Healthcare page temporarily disabled — returns 404 and is excluded from indexing.
 export const metadata: Metadata = {
-  title: 'Phone System for Healthcare · HIPAA-Compliant | Rozper',
-  description: 'HIPAA-compliant phone, fax, and messaging for healthcare teams. Call recording, AI receptionist, and patient communications. rozper.com.',
-  alternates: { canonical: `${SITE_URL}/solutions/healthcare` },
+  title: 'Not Found | Rozper',
+  robots: { index: false, follow: false },
 }
 
 export default function HealthcarePage() {
-  return <HealthcarePageView />
+  notFound()
 }

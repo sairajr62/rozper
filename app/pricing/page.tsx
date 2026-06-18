@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 }
 
 const relatedLinks = [
-  { title: 'Healthcare', description: 'HIPAA-compliant communications for healthcare teams', href: '/solutions/healthcare' },
   { title: 'Enterprise Contact Center', description: 'High-volume CCaaS for large organizations', href: '/products/contact-center/enterprise' },
   { title: 'HubSpot Integration', description: 'Native CRM sync with HubSpot', href: '/integrations/hubspot' },
   { title: 'UCaaS Platform', description: 'Unified communications starting at $9.99/user', href: '/products/ucaas' }

@@ -181,7 +181,6 @@ const NotFoundPage = () => {
               { label: "Unified Comms", href: "/products/ucaas" },
               { label: "AI Voice Agent", href: "/products/ai/receptionist" },
               { label: "Pricing", href: "/pricing" },
-              { label: "Solutions", href: "/solutions/healthcare" },
             ].map((item) => (
               <Link
                 key={item.href}
