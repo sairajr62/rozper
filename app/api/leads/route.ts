@@ -1,40 +1,20 @@
 import { NextResponse } from 'next/server'
-import { list, getDownloadUrl } from '@vercel/blob'
+import { list, get } from '@vercel/blob'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-export async function GET(req: Request) {
-  const debug = new URL(req.url).searchParams.has('debug')
+export async function GET() {
   try {
     const { blobs } = await list({ prefix: 'leads/' })
-
-    if (debug) {
-      const first = blobs[0]
-      let fetchTest: any = null
-      if (first) {
-        try {
-          const signedUrl = await getDownloadUrl(first.url)
-          const res = await fetch(signedUrl)
-          fetchTest = { status: res.status, ok: res.ok, signedUrl, text: await res.text() }
-        } catch (err: any) {
-          fetchTest = { error: err?.message ?? String(err) }
-        }
-      }
-      return NextResponse.json({
-        blobCount: blobs.length,
-        blobs: blobs.map(b => ({ url: b.url, pathname: b.pathname, size: b.size })),
-        hasToken: !!process.env.BLOB_READ_WRITE_TOKEN,
-        fetchTest,
-      })
-    }
 
     const leads = await Promise.all(
       blobs.map(async (blob) => {
         try {
-          const signedUrl = await getDownloadUrl(blob.url)
-          const res = await fetch(signedUrl)
-          return await res.json()
+          const result = await get(blob.url, { access: 'private' })
+          if (!result || result.statusCode !== 200 || !result.stream) return null
+          const text = await new Response(result.stream).text()
+          return JSON.parse(text)
         } catch {
           return null
         }
