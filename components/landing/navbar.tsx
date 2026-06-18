@@ -795,12 +795,24 @@ export function Navbar() {
               </div>
 
               {/* CTA */}
-              <div className="px-4 pt-2 pb-4 border-t border-white/10">
+              <div className="px-4 pt-2 pb-4 border-t border-white/10 space-y-2">
+                <Button
+                  variant="ghost"
+                  className="w-full text-white/80 hover:text-white hover:bg-white/[0.06] font-medium h-11 rounded-xl"
+                  asChild
+                >
+                  <Link
+                    href="https://rozper.vercel.app/sign-in"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Sign In
+                  </Link>
+                </Button>
                 <Button
                   className="w-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-medium h-11 rounded-xl"
                   asChild
                 >
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <Link href="/free-trial" onClick={() => setIsOpen(false)}>
                     Start a free trial
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
