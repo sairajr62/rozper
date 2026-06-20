@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import * as XLSX from 'xlsx'
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
@@ -10,9 +10,11 @@ import SEOAudit from './tabs/SEOAudit'
 import AnalyticsAudit from './tabs/AnalyticsAudit'
 import LeadsAudit from './tabs/LeadsAudit'
 import BlogLinksAudit from './tabs/BlogLinksAudit'
+import GA4Live from './tabs/GA4Live'
+import PageSpeedTab from './tabs/PageSpeedTab'
 import { checkHealth, fetchSummary, auditPages, auditBlogs, checkLinks, auditSEO, auditAnalytics, auditAnalyticsAll, auditBlogLinks } from './api'
 
-export default function App() {
+export default function App({ onLogout }) {
   const [tab, setTab] = useState('overview')
   const [siteOnline, setSiteOnline] = useState(null)
   const [summary, setSummary] = useState(null)
@@ -30,10 +32,18 @@ export default function App() {
   const [blogLinksLoading, setBlogLinksLoading] = useState(false)
   const [running, setRunning] = useState(false)
   const [lastRun, setLastRun] = useState(null)
+  const autoRanRef = useRef(false)
 
   useEffect(() => {
     checkHealth().then(r => setSiteOnline(r.online)).catch(() => setSiteOnline(false))
     fetchSummary().then(setSummary).catch(() => {})
+
+    // Auto-run the Overview audits on first load so it's populated without clicking Run Audit
+    if (!autoRanRef.current) {
+      autoRanRef.current = true
+      runAll()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function runPageAudit() {
@@ -68,9 +78,12 @@ export default function App() {
 
   async function runAll() {
     setRunning(true)
-    await Promise.all([runPageAudit(), runBlogAudit(), runSEOAudit(), runAnalyticsAudit(), runBlogLinksAudit()])
-    setLastRun(new Date().toLocaleTimeString())
-    setRunning(false)
+    try {
+      await Promise.allSettled([runPageAudit(), runBlogAudit(), runSEOAudit(), runAnalyticsAudit(), runBlogLinksAudit()])
+      setLastRun(new Date().toLocaleTimeString())
+    } finally {
+      setRunning(false)
+    }
   }
 
   function runCurrent() {
@@ -216,7 +229,7 @@ export default function App() {
 
   return (
     <div className="layout">
-      <Sidebar activeTab={tab} onTabChange={setTab} siteOnline={siteOnline} counts={counts} />
+      <Sidebar activeTab={tab} onTabChange={setTab} siteOnline={siteOnline} counts={counts} onLogout={onLogout} />
 
       <div className="main">
         <Topbar
@@ -260,8 +273,14 @@ export default function App() {
           {tab === 'blog-links' && (
             <BlogLinksAudit results={blogLinksResults} loading={blogLinksLoading} onRun={runBlogLinksAudit} />
           )}
+          {tab === 'ga4' && (
+            <GA4Live />
+          )}
           {tab === 'leads' && (
             <LeadsAudit />
+          )}
+          {tab === 'pagespeed' && (
+            <PageSpeedTab />
           )}
         </div>
       </div>

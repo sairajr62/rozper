@@ -120,7 +120,7 @@ export default function Overview({ summary, pageResults, blogResults, onGoToPage
               <tbody>
                 {topPages.map(p => (
                   <tr key={p.route}>
-                    <td><span className="route"><a href={`http://localhost:3000${p.route}`} target="_blank" rel="noreferrer">{p.route}</a></span></td>
+                    <td><span className="route"><a href={`https://rozper.vercel.app${p.route}`} target="_blank" rel="noreferrer">{p.route}</a></span></td>
                     <td><StatusCode code={p.status} /></td>
                     <td><span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: p.responseMs > 2000 ? 'var(--orange)' : 'var(--dim)' }}>{p.responseMs ? `${p.responseMs}ms` : '—'}</span></td>
                     <td><HealthBadge issues={p.issues.length} warnings={p.warnings.length} /></td>

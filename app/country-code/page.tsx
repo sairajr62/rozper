@@ -1,33 +1,22 @@
-"use client"
+import type { Metadata } from "next"
+import { SITE_URL } from "@/lib/site"
+import { CountryCodeHubClient } from "./_client"
 
-import { useState } from "react"
-import { Navbar } from "@/components/landing/navbar"
-import { Footer } from "@/components/landing/footer"
-import {
-  CountryHubHero,
-  WhyInternational,
-  BrowseByRegion,
-  PopularCountries,
-  CountryDirectory,
-  CountryHubFAQ,
-  CountryHubCTA,
-} from "@/components/country-code/hub"
-import { COUNTRIES } from "@/lib/country-code-data"
+export const metadata: Metadata = {
+  title: "International Country Codes & Virtual Phone Numbers | Rozper",
+  description:
+    "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed.",
+  alternates: { canonical: `${SITE_URL}/country-code` },
+  openGraph: {
+    title: "International Country Codes & Virtual Phone Numbers | Rozper",
+    description:
+      "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed.",
+    type: "website",
+    url: `${SITE_URL}/country-code`,
+    siteName: "Rozper",
+  },
+}
 
 export default function CountryCodeHubPage() {
-  const [query, setQuery] = useState("")
-
-  return (
-    <main className="min-h-screen bg-[#0B1220]">
-      <Navbar />
-      <CountryHubHero total={COUNTRIES.length} query={query} setQuery={setQuery} />
-      <WhyInternational />
-      <BrowseByRegion countries={COUNTRIES} />
-      <PopularCountries countries={COUNTRIES} />
-      <CountryDirectory countries={COUNTRIES} query={query} setQuery={setQuery} />
-      <CountryHubFAQ />
-      <CountryHubCTA />
-      <Footer />
-    </main>
-  )
+  return <CountryCodeHubClient />
 }

@@ -9,10 +9,18 @@ import { ContactOffices } from "@/components/contact/offices"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Contact Sales · Rozper",
+  title: "Contact Sales & Support · Get in Touch | Rozper",
   description:
-    "Talk to a solutions engineer in under 60 seconds. Build the right plan for your volume, regions, and integrations.",
+    "Talk to a Rozper solutions engineer in under 60 seconds. Build the right UCaaS + AI plan for your volume, regions, and integrations.",
   alternates: { canonical: `${SITE_URL}/contact` },
+  openGraph: {
+    title: "Contact Sales & Support · Get in Touch | Rozper",
+    description:
+      "Talk to a Rozper solutions engineer in under 60 seconds. Build the right UCaaS + AI plan for your volume, regions, and integrations.",
+    type: "website",
+    url: `${SITE_URL}/contact`,
+    siteName: "Rozper",
+  },
 }
 
 export default function ContactPage() {

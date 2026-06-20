@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: 'Auto-Attendant & Visual IVR Builder | Rozper',
   description: 'Multi-level auto-attendant and visual IVR builder. Route calls correctly from the first ring. No code needed. rozper.com.',
   alternates: { canonical: `${SITE_URL}/features/auto-attendant` },
+  openGraph: {
+    title: 'Auto-Attendant & Visual IVR Builder | Rozper',
+    description: 'Multi-level auto-attendant and visual IVR builder. Route calls correctly from the first ring. No code needed.',
+    type: 'website',
+    url: `${SITE_URL}/features/auto-attendant`,
+    siteName: 'Rozper',
+  },
 }
 
 export default function AutoAttendantFeaturePage() {

@@ -78,7 +78,7 @@ export default function LinkChecker({ onCheck }) {
                   <tr key={i}>
                     <td>
                       <span className="route">
-                        <a href={`http://localhost:3000${l.href}`} target="_blank" rel="noreferrer">{l.href}</a>
+                        <a href={`https://rozper.vercel.app${l.href}`} target="_blank" rel="noreferrer">{l.href}</a>
                       </span>
                     </td>
                     <td>

@@ -125,7 +125,7 @@ export default function AnalyticsAudit({ results, loading, onRun, onRunAll }) {
               <tbody>
                 {results.map(p => (
                   <tr key={p.route} className="clickable" onClick={() => setSelected(p.route)}>
-                    <td><span className="route"><a href={`http://localhost:3000${p.route}`} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>{p.route}</a></span></td>
+                    <td><span className="route"><a href={`https://rozper.vercel.app${p.route}`} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>{p.route}</a></span></td>
                     <td>
                       {p.hasGA4
                         ? <Badge type="ok">✓ {p.ga4Id || 'GA4'}</Badge>

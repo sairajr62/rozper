@@ -1,56 +1,40 @@
 const BASE = '/api'
 
-export async function checkHealth() {
-  const r = await fetch(`${BASE}/health`)
+async function get(path) {
+  const r = await fetch(`${BASE}${path}`)
+  if (!r.ok) throw new Error(`HTTP ${r.status}`)
   return r.json()
 }
 
-export async function fetchSummary() {
-  const r = await fetch(`${BASE}/summary`)
-  return r.json()
-}
-
-export async function auditPages() {
-  const r = await fetch(`${BASE}/pages`)
-  return r.json()
-}
-
-export async function auditBlogs() {
-  const r = await fetch(`${BASE}/blogs`)
-  return r.json()
-}
+export async function checkHealth()          { return get('/health') }
+export async function fetchSummary()         { return get('/summary') }
+export async function auditPages()           { return get('/pages') }
+export async function auditBlogs()           { return get('/blogs') }
+export async function auditSEO()             { return get('/seo') }
+export async function auditAnalytics()       { return get('/analytics') }
+export async function auditAnalyticsAll()    { return get('/analytics/all') }
+export async function auditBlogLinks()       { return get('/blog-links') }
+export async function fetchLeads()           { return get('/leads') }
+export async function fetchGA4Overview()     { return get('/ga4/overview') }
+export async function fetchGA4TopPages()     { return get('/ga4/top-pages') }
+export async function fetchGA4TrafficSources() { return get('/ga4/traffic-sources') }
+export async function fetchGA4Devices()      { return get('/ga4/devices') }
+export async function fetchGA4Trend()        { return get('/ga4/trend') }
 
 export async function checkLinks(route) {
   const r = await fetch(`${BASE}/links?route=${encodeURIComponent(route)}`)
-  return r.json()
-}
-
-export async function auditSEO() {
-  const r = await fetch(`${BASE}/seo`)
+  if (!r.ok) throw new Error(`HTTP ${r.status}`)
   return r.json()
 }
 
 export async function auditSEOSingle(route) {
   const r = await fetch(`${BASE}/seo/single?route=${encodeURIComponent(route)}`)
+  if (!r.ok) throw new Error(`HTTP ${r.status}`)
   return r.json()
 }
 
-export async function auditAnalytics() {
-  const r = await fetch(`${BASE}/analytics`)
-  return r.json()
-}
-
-export async function auditAnalyticsAll() {
-  const r = await fetch(`${BASE}/analytics/all`)
-  return r.json()
-}
-
-export async function auditLeads() {
-  const r = await fetch(`${BASE}/leads`)
-  return r.json()
-}
-
-export async function auditBlogLinks() {
-  const r = await fetch(`${BASE}/blog-links`)
+export async function auditPageSpeed(url) {
+  const r = await fetch(`${BASE}/pagespeed?url=${encodeURIComponent(url)}`)
+  if (!r.ok) throw new Error(`HTTP ${r.status}`)
   return r.json()
 }

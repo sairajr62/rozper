@@ -9,9 +9,9 @@ import { CompareCTA } from "@/components/compare/cta"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Rozper vs. RingCentral, 8x8, Vonage & Twilio — Compare plans & features",
+  title: "Compare Rozper vs RingCentral, 8x8, Vonage & Twilio",
   description:
-    "An honest head-to-head: Rozper's UCaaS + AI bundle compared with RingCentral, 8x8, Vonage, and Twilio Flex. Side-by-side pricing, included features, and total-cost calculator.",
+    "Honest head-to-head: Rozper UCaaS + AI vs RingCentral, 8x8, Vonage & Twilio Flex. Side-by-side pricing, features, and total-cost calculator.",
   keywords:
     "Rozper vs RingCentral, Rozper vs 8x8, Rozper vs Vonage, Rozper vs Twilio, UCaaS comparison, contact center comparison, AI receptionist comparison",
   openGraph: {

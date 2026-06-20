@@ -5,12 +5,14 @@ import { SITE_URL } from "@/lib/site"
 export const metadata: Metadata = {
   title: "Wholesale Voice Solutions · Global VoIP Termination | Rozper",
   description:
-    "Leading global provider of wholesale voice solutions. High-quality A-Z VoIP termination, SIP trunking, DID & toll-free numbers, and UCaaS integration. 200+ countries, 99.99% uptime SLA.",
+    "Global wholesale voice carrier — A-Z VoIP termination, SIP trunking, DID & toll-free numbers, CLI & non-CLI routes. 200+ countries, 99.99% uptime SLA.",
   openGraph: {
     title: "Wholesale Voice Solutions · Global VoIP Termination | Rozper",
     description:
-      "Your trusted wholesale voice carrier — A-Z termination, CLI & non-CLI routes, SIP trunking, and DID numbers across 200+ countries.",
+      "Global wholesale voice carrier — A-Z VoIP termination, SIP trunking, DID & toll-free numbers, CLI & non-CLI routes. 200+ countries, 99.99% uptime SLA.",
     type: "website",
+    url: `${SITE_URL}/wholesale-voice`,
+    siteName: "Rozper",
   },
   alternates: { canonical: `${SITE_URL}/wholesale-voice` },
 }

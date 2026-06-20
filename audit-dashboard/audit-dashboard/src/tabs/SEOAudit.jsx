@@ -136,7 +136,7 @@ export default function SEOAudit({ results, loading, onRun }) {
               <tbody>
                 {filtered.map(p => (
                   <tr key={p.route} className="clickable" onClick={() => setSelected(p.route)}>
-                    <td><span className="route"><a href={`http://localhost:3000${p.route}`} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>{p.route}</a></span></td>
+                    <td><span className="route"><a href={`https://rozper.vercel.app${p.route}`} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>{p.route}</a></span></td>
                     <td><ScoreRing score={p.score} size={36} /></td>
                     <td>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: !p.title ? 'var(--red)' : p.titleLen > 65 || p.titleLen < 30 ? 'var(--yellow)' : 'var(--green)' }}>

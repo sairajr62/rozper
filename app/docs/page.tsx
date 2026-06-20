@@ -14,6 +14,14 @@ export const metadata: Metadata = {
   description:
     "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform.",
   alternates: { canonical: `${SITE_URL}/docs` },
+  openGraph: {
+    title: "Documentation · Build with Rozper",
+    description:
+      "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform.",
+    type: "website",
+    url: `${SITE_URL}/docs`,
+    siteName: "Rozper",
+  },
 }
 
 export default function DocsPage() {

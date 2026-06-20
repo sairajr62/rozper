@@ -70,7 +70,7 @@ export default function PagesAudit({ results, loading, onRun }) {
                   <tr key={p.route} className="clickable" onClick={() => setSelected(p.route)}>
                     <td>
                       <span className="route">
-                        <a href={`http://localhost:3000${p.route}`} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>
+                        <a href={`https://rozper.vercel.app${p.route}`} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>
                           {p.route}
                         </a>
                       </span>
