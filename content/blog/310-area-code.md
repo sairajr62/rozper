@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-01"
 readingTime: "11 min"
-featuredImage: "/images/blog/310-area-code-cover.webp"
+featuredImage: "/images/blog/310-area-code.webp"
 ---
 
 # 310 Area Code: Complete Guide to Los Angeles's Iconic Prefix

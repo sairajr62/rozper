@@ -23,7 +23,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-16"
 readingTime: "11 min"
-featuredImage: "/images/blog/201-area-code-cover.webp"
+featuredImage: "/images/blog/201-area-code.webp"
 ---
 
 # 201 Area Code: Complete Guide to Northeast New Jersey's Iconic Prefix

@@ -22,7 +22,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-04-24"
 readingTime: "11 min"
-featuredImage: "/images/blog/213-area-code-cover.webp"
+featuredImage: "/images/blog/213-area-code.webp"
 ---
 
 # 213 Area Code: The Complete Guide to Downtown Los Angeles's Original Prefix

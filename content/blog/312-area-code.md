@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-21"
 readingTime: "11 min"
-featuredImage: "/images/blog/312-area-code-cover.webp"
+featuredImage: "/images/blog/312-area-code.webp"
 ---
 
 # 312 Area Code: The Complete Guide to Chicago's Most Iconic Prefix

@@ -68,7 +68,7 @@ For businesses targeting this region, a 510 area code directly signals a connect
 
 Imagine a resident of Oakland searching for a local home services provider. Two ads appear — one showing a familiar 510 number, the other showing a toll-free 800 number from an out-of-state call center. The local number wins, almost every time. Local presence is a measurable trust signal, and the 510 prefix carries that signal in one of America's most competitive regional markets.
 
-![Why a 510 Area Code Gives Your Business a Competitive Edge](/images/blog/why%20210.webp)
+![Why a 510 Area Code Gives Your Business a Competitive Edge](/images/blog/510-image-1.webp)
 
 ### Building Immediate Trust and Credibility
 
@@ -113,7 +113,7 @@ Custom pricing ensures teams of any size can access these tools without paying f
 
 The value of a 510 number multiplies with the right feature set. Here's what a truly unified VoIP platform delivers for sales and customer service teams.
 
-![Essential Communication Features for 510 Area Code Users](/images/blog/essential-communication-features-for-510-area-code-users.webp)
+![Essential Communication Features for 510 Area Code Users](/images/blog/510-image-2.webp)
 
 ### 1. A Unified Communications Experience
 
@@ -194,7 +194,7 @@ Promote your 510 area code number actively across every customer touchpoint in t
 
 The right plan depends on team size, call volume, and the features your operation requires. Most leading providers — including Rozper — offer tiered options:
 
-![Choosing the Right VoIP Plan for Your East Bay Business](/images/blog/choosing%20the%20right.webp)
+![Choosing the Right VoIP Plan for Your East Bay Business](/images/blog/510-image-3.webp)
 
 **For Solopreneurs and Small East Bay Businesses:** Entry-level plans typically include one local 510 number, unlimited domestic calling, core features like voicemail and call forwarding, and access to mobile and desktop apps. This delivers a professional local presence at a cost that makes sense for lean teams.
 
@@ -210,7 +210,7 @@ When evaluating plans, look beyond the base price. Consider the total value: fea
 
 A communication system should accelerate growth, not introduce bottlenecks. In a market as competitive as the East Bay — where Oakland's startup ecosystem and Berkeley's enterprise-adjacent research economy attract significant business activity — downtime is a direct cost.
 
-![Scale Confidently: Reliability You Can Count On](/images/blog/scalability.webp)
+![Scale Confidently: Reliability You Can Count On](/images/blog/510-image-4.webp)
 
 **Scalability** is one of cloud-based VoIP's core advantages. Adding users, new 510 lines, or additional area codes for expansion requires no hardware changes and no lead time. As your East Bay team grows, your phone system grows with it — one admin panel, one platform.
 

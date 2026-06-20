@@ -20,7 +20,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-06-05"
 readingTime: "8 min"
-featuredImage: "/images/blog/951-area-code-cover.webp"
+featuredImage: "/images/blog/951-area-code.webp"
 ---
 
 # 951 Area Code: A Complete Guide to California's Inland Empire

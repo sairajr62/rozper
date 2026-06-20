@@ -23,7 +23,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-04-28"
 readingTime: "11 min"
-featuredImage: "/images/blog/470-area-code-cover.webp"
+featuredImage: "/images/blog/470-area-code.webp"
 ---
 
 # 470 Area Code: Complete Guide to Metro Atlanta's Multi-Code Overlay System

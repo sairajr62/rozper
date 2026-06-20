@@ -23,7 +23,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-10"
 readingTime: "11 min"
-featuredImage: "/images/blog/562-area-code-cover.webp"
+featuredImage: "/images/blog/562-area-code.webp"
 ---
 
 # 562 Area Code: Long Beach, CA — Cities, Location & Business Guide

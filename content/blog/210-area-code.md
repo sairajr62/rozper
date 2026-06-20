@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-19"
 readingTime: "11 min"
-featuredImage: "/images/blog/210-area-code-cover.webp"
+featuredImage: "/images/blog/210-area-code.webp"
 ---
 
 # 210 Area Code: San Antonio, TX — Cities, History, Scams & Business Guide

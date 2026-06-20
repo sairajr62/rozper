@@ -20,7 +20,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-06-07"
 readingTime: "8 min"
-featuredImage: "/images/blog/240-area-code-cover.webp"
+featuredImage: "/images/blog/240-area-code.webp"
 ---
 
 # 240 Area Code: Maryland's Location, Cities, and How to Get a Number

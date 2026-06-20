@@ -22,7 +22,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2024-12-30"
 readingTime: "11 min"
-featuredImage: "/images/blog/228-area-code-cover.webp"
+featuredImage: "/images/blog/228-area-code.webp"
 ---
 
 # 228 Area Code: Complete Guide to Mississippi's Gulf Coast Telephone Prefix

@@ -20,7 +20,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-06-07"
 readingTime: "8 min"
-featuredImage: "/images/blog/239-area-code-cover.webp"
+featuredImage: "/images/blog/239-area-code.webp"
 ---
 
 # 239 Area Code: The Complete Guide to Southwest Florida's Local Number

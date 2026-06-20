@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-24"
 readingTime: "11 min"
-featuredImage: "/images/blog/602-area-code-cover.webp"
+featuredImage: "/images/blog/602-area-code.webp"
 ---
 
 # 602 Area Code: Phoenix, AZ — Cities, Time Zone, Scams & Business Guide

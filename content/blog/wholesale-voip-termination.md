@@ -26,7 +26,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-07-19"
 readingTime: "13 min"
-featuredImage: "/images/blog/voip-termination.webp"
+featuredImage: "/images/blog/Wholesale VoIP Termination hero.webp"
 ---
 
 # Wholesale VoIP Termination: How It Works & Why It Matters
@@ -57,7 +57,7 @@ Every other part of your voice stack — PBX, softphones, dialers, CRM integrati
 
 Before optimizing for cost or quality, it's worth understanding exactly what happens — technically and commercially — when a call terminates on someone else's network.
 
-![Understanding Wholesale VoIP Termination](/images/blog/voip-termination-understanding.webp)
+![Understanding Wholesale VoIP Termination](/images/blog/understand the wholesale voip termination.webp)
 
 ### How a Call Gets Terminated
 

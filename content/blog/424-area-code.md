@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-04-26"
 readingTime: "11 min"
-featuredImage: "/images/blog/424-area-code-cover.webp"
+featuredImage: "/images/blog/424-area-code.webp"
 ---
 
 # 424 Area Code: Complete Guide to Los Angeles's Westside Prefix

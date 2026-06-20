@@ -20,7 +20,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-06-09"
 readingTime: "8 min"
-featuredImage: "/images/blog/281-area-code-cover.webp"
+featuredImage: "/images/blog/281-area-code.webp"
 ---
 
 # 281 Area Code: Everything Houston Businesses Need to Know

@@ -53,7 +53,7 @@ The global wholesale voice market reached $44.5 billion in 2026. This guide cove
 
 Wholesale VoIP (Voice over Internet Protocol) is a telecommunications model in which voice communication services are purchased in bulk from a carrier or platform provider on a business-to-business basis, then used internally or resold to end customers. Rather than acquiring individual phone lines at retail pricing, wholesale buyers access bulk capacity — paying volume-based rates for voice termination, origination, SIP trunking, and associated services.
 
-![What Is Wholesale VoIP](/images/blog/what is voip.webp)
+![What Is Wholesale VoIP](/images/blog/what is wholesale voip.webp)
 
 The "wholesale" distinction is important. For a deeper look at the services layer that wraps around this model, see our [wholesale VoIP services guide](https://rozper.vercel.app/blog/wholesale-voip-services). Retail VoIP products are designed for individual businesses with standardized plans, fixed pricing, and limited customization. Wholesale VoIP is designed for organizations that need volume, control, API access, and commercial terms structured for high usage or resale. The buyer profile includes enterprises managing thousands of concurrent calls, resellers building communication products, contact centers running outbound campaigns at scale, and software developers integrating voice into applications.
 
@@ -169,7 +169,7 @@ Software companies building communication features into their products — click
 
 Side by side, the gap between wholesale VoIP and legacy phone infrastructure is clear — in cost, flexibility, and what each can actually support at scale.
 
-![Wholesale VoIP vs. Traditional Phone Systems](/images/blog/traditional phone system.webp)
+![Wholesale VoIP vs. Traditional Phone Systems](/images/blog/Wholesale VoIP vs. Traditional Phone Systems.webp)
 
 ### Traditional PSTN and PRI Lines
 
@@ -209,7 +209,7 @@ In the US market, STIR/SHAKEN caller authentication, E911 compliance, and [FCC r
 
 Your wholesale VoIP provider is a long-term infrastructure decision — these criteria help you move past marketing claims and evaluate what actually matters in production.
 
-![Choosing the Right Wholesale VoIP Provider](/images/blog/wholesale-provider.webp)
+![Choosing the Right Wholesale VoIP Provider](/images/blog/Choosing the Right Wholesale VoIP Provider.webp)
 
 ### Match the Provider to Your Business Model
 
