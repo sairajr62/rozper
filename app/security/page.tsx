@@ -6,9 +6,16 @@ import { SecurityContent } from "@/components/legal/security-content"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Security · Rozper",
+  title: "Security & Compliance · Trust at Every Layer | Rozper",
   description:
     "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications safe.",
+  openGraph: {
+    title: "Security & Compliance · Trust at Every Layer | Rozper",
+    description: "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications safe.",
+    type: "website",
+    url: `${SITE_URL}/security`,
+    siteName: "Rozper",
+  },
   alternates: { canonical: `${SITE_URL}/security` },
 }
 

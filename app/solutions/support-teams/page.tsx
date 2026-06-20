@@ -5,6 +5,13 @@ import { SITE_URL } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Omnichannel Contact Center for Support Teams | Rozper',
   description: 'Omnichannel support inbox for voice, chat, SMS, and social. AI agent assist, CRM sync, and SLA tools. rozper.com.',
+  openGraph: {
+    title: 'Omnichannel Contact Center for Support Teams | Rozper',
+    description: 'Omnichannel support inbox for voice, chat, SMS, and social. AI agent assist, CRM sync, and SLA tools.',
+    type: 'website',
+    url: `${SITE_URL}/solutions/support-teams`,
+    siteName: 'Rozper',
+  },
   alternates: { canonical: `${SITE_URL}/solutions/support-teams` },
 }
 

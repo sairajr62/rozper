@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
     description: 'Transcripts, sentiment, intent, and quality scores — on 100% of interactions.',
     type: 'website',
+    url: `${SITE_URL}/products/contact-center/interaction-analytics`,
+    siteName: 'Rozper',
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/interaction-analytics` },
 }

@@ -6,9 +6,16 @@ import { PrivacyContent } from "@/components/legal/privacy-content"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy · Rozper",
+  title: "Privacy Policy · How Rozper Protects Your Data | Rozper",
   description:
     "How Rozper collects, uses, and protects personal information across our platform and websites.",
+  openGraph: {
+    title: "Privacy Policy · How Rozper Protects Your Data | Rozper",
+    description: "How Rozper collects, uses, and protects personal information across our platform and websites.",
+    type: 'website',
+    url: `${SITE_URL}/legal/privacy`,
+    siteName: 'Rozper',
+  },
   alternates: { canonical: `${SITE_URL}/legal/privacy` },
 }
 

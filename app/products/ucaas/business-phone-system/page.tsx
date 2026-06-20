@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     title: 'Business Phone · Cloud Calling for Global Teams | Rozper',
     description: 'Cloud phone with local numbers, smart routing, and AI — wherever your team is.',
     type: 'website',
+    url: `${SITE_URL}/products/ucaas/business-phone-system`,
+    siteName: 'Rozper',
   },
   alternates: { canonical: `${SITE_URL}/products/ucaas/business-phone-system` },
 }

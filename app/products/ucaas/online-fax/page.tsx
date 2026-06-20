@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     title: 'Online Fax · Digital Fax for Business Teams | Rozper',
     description: 'Send and receive faxes from your browser, mobile, or email — in 150+ countries.',
     type: 'website',
+    url: `${SITE_URL}/products/ucaas/online-fax`,
+    siteName: 'Rozper',
   },
   alternates: { canonical: `${SITE_URL}/products/ucaas/online-fax` },
 }

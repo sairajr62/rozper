@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     title: 'HD Video Meetings · AI Transcripts Included | Rozper',
     description: 'Up to 200 participants, AI summaries, and screen sharing — all inside Rozper.',
     type: 'website',
+    url: `${SITE_URL}/products/ucaas/hd-video-meetings`,
+    siteName: 'Rozper',
   },
   alternates: { canonical: `${SITE_URL}/products/ucaas/hd-video-meetings` },
 }

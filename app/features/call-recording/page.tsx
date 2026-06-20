@@ -4,7 +4,14 @@ import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Call Recording · AI Search & Compliance | Rozper',
-  description: 'Record every call with AI transcription, keyword search, and configurable retention. GDPR and HIPAA options. rozper.com.',
+  description: 'Record every call with AI transcription, keyword search, and configurable retention. GDPR and HIPAA options.',
+  openGraph: {
+    title: 'Call Recording · AI Search & Compliance | Rozper',
+    description: 'Record every call with AI transcription, keyword search, and configurable retention. GDPR and HIPAA options.',
+    type: 'website',
+    url: `${SITE_URL}/features/call-recording`,
+    siteName: 'Rozper',
+  },
   alternates: { canonical: `${SITE_URL}/features/call-recording` },
 }
 

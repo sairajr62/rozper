@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     title: 'Business SMS & MMS · Messaging Built for Teams | Rozper',
     description: 'Two-way messaging, bulk sends, and WhatsApp — all from your business number.',
     type: 'website',
+    url: `${SITE_URL}/products/ucaas/business-sms-mms`,
+    siteName: 'Rozper',
   },
   alternates: { canonical: `${SITE_URL}/products/ucaas/business-sms-mms` },
 }

@@ -6,9 +6,16 @@ import { TermsContent } from "@/components/legal/terms-content"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Terms of Service · Rozper",
+  title: "Terms of Service · Platform Usage Agreement | Rozper",
   description:
     "The agreement between you and Rozper for use of the platform and related services.",
+  openGraph: {
+    title: "Terms of Service · Platform Usage Agreement | Rozper",
+    description: "The agreement between you and Rozper for use of the platform and related services.",
+    type: 'website',
+    url: `${SITE_URL}/legal/terms`,
+    siteName: 'Rozper',
+  },
   alternates: { canonical: `${SITE_URL}/legal/terms` },
 }
 

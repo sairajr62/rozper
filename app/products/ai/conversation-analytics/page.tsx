@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     title: 'Conversation Analytics · Transcripts, Sentiment & Intent | Rozper',
     description: 'Transcripts, sentiment, intent, and keyword trends — on 100% of conversations.',
     type: 'website',
+    url: `${SITE_URL}/products/ai/conversation-analytics`,
+    siteName: 'Rozper',
   },
   alternates: { canonical: `${SITE_URL}/products/ai/conversation-analytics` },
 }
