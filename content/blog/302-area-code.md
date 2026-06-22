@@ -21,6 +21,8 @@ author: "Shahid Kathawala"
 publishDate: "2025-06-09"
 readingTime: "8 min"
 featuredImage: "/images/blog/302-area-code-cover.webp"
+featuredImageFit: "contain"
+featuredImagePosition: "center"
 ---
 
 # 302 Area Code: A Complete Guide to Delaware's Statewide Number
