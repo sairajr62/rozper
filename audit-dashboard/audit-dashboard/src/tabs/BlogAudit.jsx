@@ -19,7 +19,7 @@ export default function BlogAudit({ results, loading, onRun }) {
 
   const selectedPost = selected ? results.find(r => r.slug === selected) : null
 
-  const wcOutOfRange = results.filter(b => b.wordCount < 1500 || b.wordCount > 1600)
+  const wcOutOfRange = results.filter(b => b.wordCount < 978 || b.wordCount > 1600)
 
   return (
     <div>
@@ -32,12 +32,12 @@ export default function BlogAudit({ results, loading, onRun }) {
           <span style={{ fontSize: 15, lineHeight: 1, marginTop: 1 }}>⚠</span>
           <div>
             <span style={{ fontSize: 13, fontWeight: 600, color: '#f59e0b' }}>
-              {wcOutOfRange.length} post{wcOutOfRange.length > 1 ? 's' : ''} outside the 1500–1600 word target
+              {wcOutOfRange.length} post{wcOutOfRange.length > 1 ? 's' : ''} need attention — critically short or over 1600 words
             </span>
             <div style={{ fontSize: 11, color: 'var(--dim)', marginTop: 3, lineHeight: 1.5 }}>
               {wcOutOfRange.map(b => (
                 <span key={b.slug} style={{ marginRight: 10 }}>
-                  {b.wordCount < 1500 ? '↓' : '↑'} {b.title} ({b.wordCount} words)
+                  {b.wordCount < 978 ? '↓' : '↑'} {b.title} ({b.wordCount} words)
                 </span>
               )).slice(0, 5)}
               {wcOutOfRange.length > 5 && <span>and {wcOutOfRange.length - 5} more…</span>}
@@ -94,8 +94,9 @@ export default function BlogAudit({ results, loading, onRun }) {
                 {filtered.map(b => {
                   const imgOk = b.featuredImage && !b.issues.some(i => i.toLowerCase().includes('image'))
                   const wc = b.wordCount
+                  const wcCritical = wc < 978 || wc > 1600
                   const wcOk = wc >= 1500 && wc <= 1600
-                  const wcColor = wcOk ? 'var(--green)' : wc < 1500 ? '#f59e0b' : '#f59e0b'
+                  const wcColor = wcOk ? 'var(--green)' : wcCritical ? '#f59e0b' : 'var(--text)'
 
                   return (
                     <tr key={b.slug} className="clickable" onClick={() => setSelected(b.slug)}>
@@ -117,9 +118,9 @@ export default function BlogAudit({ results, loading, onRun }) {
                       </td>
                       <td>
                         <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: wcColor }}>{wc}</span>
-                        {!wcOk && (
+                        {wcCritical && (
                           <div style={{ fontSize: 9, color: '#f59e0b', marginTop: 1 }}>
-                            {wc < 1500 ? `↓ ${1500 - wc} short` : `↑ ${wc - 1600} over`}
+                            {wc < 978 ? `↓ ${978 - wc} critical` : `↑ ${wc - 1600} over`}
                           </div>
                         )}
                       </td>
@@ -152,8 +153,8 @@ export default function BlogAudit({ results, loading, onRun }) {
               <DetailRow label="Publish date" value={selectedPost.publishDate || '⚠ Missing'} color={!selectedPost.publishDate ? 'var(--yellow)' : undefined} />
               <DetailRow
                 label="Word count"
-                value={`${selectedPost.wordCount} words${selectedPost.wordCount < 1500 ? ` — ⚠ ${1500 - selectedPost.wordCount} below target (1500–1600)` : selectedPost.wordCount > 1600 ? ` — ⚠ ${selectedPost.wordCount - 1600} over target (1500–1600)` : ' — ✓ within target'}`}
-                color={selectedPost.wordCount >= 1500 && selectedPost.wordCount <= 1600 ? 'var(--green)' : '#f59e0b'}
+                value={`${selectedPost.wordCount} words${selectedPost.wordCount < 978 ? ` — ⚠ critically short (min 978)` : selectedPost.wordCount > 1600 ? ` — ⚠ ${selectedPost.wordCount - 1600} over target (1500–1600)` : selectedPost.wordCount >= 1500 ? ' — ✓ within target' : ''}`}
+                color={selectedPost.wordCount >= 1500 && selectedPost.wordCount <= 1600 ? 'var(--green)' : selectedPost.wordCount < 978 || selectedPost.wordCount > 1600 ? '#f59e0b' : 'var(--text)'}
               />
             </DetailSection>
             <DetailSection title="Assets">
