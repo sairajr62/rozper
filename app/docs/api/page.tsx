@@ -13,6 +13,29 @@ export const metadata: Metadata = {
   title: "API Reference · REST & WebSocket Docs | Rozper",
   description:
     "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
+  openGraph: {
+    title: "API Reference · REST & WebSocket Docs | Rozper",
+    description:
+      "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
+    type: "website",
+    url: `${SITE_URL}/docs/api`,
+    siteName: "Rozper",
+    images: [
+      {
+        url: `${SITE_URL}/docs/api/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "API Reference · REST & WebSocket Docs | Rozper",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "API Reference · REST & WebSocket Docs | Rozper",
+    description:
+      "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
+    images: [`${SITE_URL}/docs/api/opengraph-image`],
+  },
   alternates: { canonical: `${SITE_URL}/docs/api` },
 }
 
