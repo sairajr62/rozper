@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { ProdUCaaSAIAssistantPageView } from '@/components/products/unified-communications/ai-assistant'
+import { ProdUCaaSAIAssistantPageView } from '@/components/products/ai-features/ai-assistant'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Per-seat AI that answers, drafts, summarizes, and coaches — on every call and message.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/ai-assistant` },
+  alternates: { canonical: `${SITE_URL}/products/ai-features/ai-assistant` },
 }
 
 export default function UCaaSAIAssistantPage() {

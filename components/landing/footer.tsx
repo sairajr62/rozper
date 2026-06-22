@@ -30,7 +30,7 @@ const footerColumns = [
     href: '/products/ai',
     links: [
       { label: 'AI Receptionist', href: '/products/ai/receptionist' },
-      { label: 'AI Assistant', href: '/products/unified-communications/ai-assistant' },
+      { label: 'AI Assistant', href: '/products/ai-features/ai-assistant' },
       { label: 'Customer Engagement', href: '/products/unified-communications/customer-engagement' },
     ],
   },

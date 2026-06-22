@@ -65,7 +65,7 @@ const STATIC_PAGES = [
   '/products/contact-center/outbound-dialer',
   '/products/contact-center/supervisor-tools',
   '/products/unified-communications',
-  '/products/unified-communications/ai-assistant',
+  '/products/ai-features/ai-assistant',
   '/products/unified-communications/business-phone',
   '/products/unified-communications/customer-engagement',
   '/products/unified-communications/online-fax',

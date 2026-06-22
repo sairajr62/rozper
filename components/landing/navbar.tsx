@@ -178,7 +178,7 @@ const megaMenuConfig: Record<string, { columns: MenuColumn[]; sectioned?: boolea
           {
             label: "AI Assistant",
             description: "Real-time agent guidance, summaries and next-best-action.",
-            href: "/products/unified-communications/ai-assistant",
+            href: "/products/ai-features/ai-assistant",
             icon: Brain,
             iconGradient: "from-[#0086F9] to-[#2575FC]",
             badge: "AI",

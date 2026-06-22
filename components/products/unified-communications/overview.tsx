@@ -18,7 +18,7 @@ const products = [
   { icon: Phone, name: 'Business Phone', desc: 'Cloud calling in 150+ countries', href: '/products/unified-communications/business-phone' },
   { icon: Video, name: 'HD Video Meetings', desc: 'AI transcripts built in', href: '/products/unified-communications/video-meetings' },
   { icon: MessageSquare, name: 'Team Chat', desc: 'Channels, DMs, file share', href: '/products/unified-communications/team-chat' },
-  { icon: Bot, name: 'AI Assistant', desc: 'Live coaching on every call', href: '/products/unified-communications/ai-assistant' },
+  { icon: Bot, name: 'AI Assistant', desc: 'Live coaching on every call', href: '/products/ai-features/ai-assistant' },
   { icon: Phone, name: 'SMS & MMS', desc: 'Two-way business SMS', href: '/products/unified-communications/sms-mms' },
   { icon: Plug, name: 'Customer Engagement', desc: 'Omnichannel customer hub', href: '/products/unified-communications/customer-engagement' },
   { icon: Layers, name: 'Online Fax', desc: 'Send & receive without hardware', href: '/products/unified-communications/online-fax' },

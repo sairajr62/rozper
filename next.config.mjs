@@ -41,6 +41,7 @@ const nextConfig = {
       { source: "/solutions/finance",                            destination: "/solutions/financial-services",                     permanent: true },
       { source: "/solutions/retail",                             destination: "/solutions/retail-ecommerce",                       permanent: true },
       { source: "/solutions/saas",                               destination: "/solutions/saas-tech",                              permanent: true },
+      { source: "/products/unified-communications/ai-assistant",  destination: "/products/ai-features/ai-assistant",                permanent: true },
     ]
   },
   async headers() {
