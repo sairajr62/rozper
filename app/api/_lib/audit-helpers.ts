@@ -169,7 +169,14 @@ export function auditBlogs() {
     if (!data.featuredImage) issues.push('Missing featuredImage')
     else {
       const imgPath = path.join(process.cwd(), 'public', data.featuredImage)
-      if (!fs.existsSync(imgPath)) issues.push(`Featured image not found: ${data.featuredImage}`)
+      const blobUrlsPath = path.join(process.cwd(), 'lib', 'blog-blob-urls.json')
+      let inBlob = false
+      try {
+        const blobUrls: Record<string, string> = JSON.parse(fs.readFileSync(blobUrlsPath, 'utf8'))
+        const filename = data.featuredImage.split('/').pop() ?? ''
+        inBlob = !!blobUrls[filename]
+      } catch { /* ignore */ }
+      if (!fs.existsSync(imgPath) && !inBlob) issues.push(`Featured image not found: ${data.featuredImage}`)
     }
     if (!data.category) warnings.push('Missing category')
     if (!data.author) warnings.push('Missing author')
