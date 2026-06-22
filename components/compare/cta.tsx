@@ -21,8 +21,8 @@ export function CompareCTA() {
       >
         <defs>
           <linearGradient id="cta-divider" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#0B1220" />
-            <stop offset="100%" stopColor="#0B1220" />
+            <stop offset="0%" stopColor="#070B14" />
+            <stop offset="100%" stopColor="#070B14" />
           </linearGradient>
         </defs>
         <path
@@ -31,19 +31,53 @@ export function CompareCTA() {
         />
       </svg>
 
-      <div className="relative bg-[#0B1220] py-20 lg:py-28">
-        {/* ambient blobs */}
-        <motion.div
+      <div className="relative bg-[#070B14] py-20 lg:py-28">
+        {/* Left arc glow */}
+        <div
+          className="hidden sm:block absolute -left-32 top-1/2 -translate-y-1/2 w-[520px] h-[520px] pointer-events-none"
           aria-hidden
-          className="absolute -z-10 top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] opacity-40"
+        >
+          <motion.svg
+            viewBox="0 0 200 200"
+            className="w-full h-full"
+            style={{ filter: "blur(28px)" }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+          >
+            <circle cx="100" cy="100" r="78" stroke="#22D3EE" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+            <circle cx="100" cy="100" r="54" stroke="#046BD2" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(40 100 100)" />
+          </motion.svg>
+        </div>
+
+        {/* Right arc glow */}
+        <div
+          className="hidden sm:block absolute -right-32 top-1/2 -translate-y-1/2 w-[520px] h-[520px] pointer-events-none"
+          aria-hidden
+        >
+          <motion.svg
+            viewBox="0 0 200 200"
+            className="w-full h-full"
+            style={{ filter: "blur(28px)" }}
+            animate={{ rotate: -360 }}
+            transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+          >
+            <circle cx="100" cy="100" r="78" stroke="#0086F9" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+            <circle cx="100" cy="100" r="54" stroke="#22D3EE" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(-40 100 100)" />
+          </motion.svg>
+        </div>
+
+        {/* Faint background grid */}
+        <div
+          className="absolute inset-0 opacity-[0.18] pointer-events-none"
           style={{
-            background:
-              "conic-gradient(from 90deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.5) 90deg, rgba(34,211,238,0.30) 180deg, rgba(4,107,210,0) 360deg)",
-            filter: "blur(100px)",
-            borderRadius: "62% 38% 49% 51% / 53% 41% 59% 47%",
+            backgroundImage: `
+              linear-gradient(rgba(120,160,220,0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(120,160,220,0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: "56px 56px",
+            maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%)",
           }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

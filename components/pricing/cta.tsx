@@ -20,20 +20,6 @@ export function PricingCTA() {
 
   return (
     <section className="relative py-28 bg-[#0B1220] overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute bottom-0 left-1/3 w-[700px] h-[700px] bg-[#046BD2]/12 rounded-full blur-[140px]"
-          animate={{ scale: [1, 1.18, 1], opacity: [0.12, 0.22, 0.12] }}
-          transition={{ duration: 16, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[#0086F9]/8 rounded-full blur-[100px]"
-          animate={{ scale: [1.1, 1, 1.1], opacity: [0.08, 0.15, 0.08] }}
-          transition={{ duration: 12, repeat: Infinity }}
-        />
-      </div>
-
       {/* Top separator line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[1px] bg-gradient-to-r from-transparent via-[#046BD2]/50 to-transparent" />
 
@@ -77,18 +63,55 @@ export function PricingCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative rounded-3xl overflow-hidden text-center p-12 sm:p-16 border border-[#046BD2]/25 mb-16"
-          style={{
-            background: 'linear-gradient(135deg, rgba(4,107,210,0.12) 0%, rgba(255,255,255,0.03) 50%, rgba(0,134,249,0.08) 100%)',
-            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07)',
-          }}
+          className="relative rounded-3xl overflow-hidden text-center p-12 sm:p-16 border border-white/10 bg-[#070B14] mb-16"
         >
-          {/* Top accent line */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[2px] bg-gradient-to-r from-transparent via-[#046BD2]/70 to-transparent" />
+          {/* Left arc glow */}
+          <div
+            className="hidden sm:block absolute -left-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
+            aria-hidden
+          >
+            <motion.svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              style={{ filter: "blur(28px)" }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+            >
+              <circle cx="100" cy="100" r="78" stroke="#22D3EE" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+              <circle cx="100" cy="100" r="54" stroke="#046BD2" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(40 100 100)" />
+            </motion.svg>
+          </div>
 
-          {/* Corner glow */}
-          <div className="absolute top-0 right-0 w-72 h-72 bg-[#046BD2]/8 rounded-full blur-[80px] -z-0" />
-          <div className="absolute bottom-0 left-0 w-56 h-56 bg-[#0086F9]/6 rounded-full blur-[60px] -z-0" />
+          {/* Right arc glow */}
+          <div
+            className="hidden sm:block absolute -right-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
+            aria-hidden
+          >
+            <motion.svg
+              viewBox="0 0 200 200"
+              className="w-full h-full"
+              style={{ filter: "blur(28px)" }}
+              animate={{ rotate: -360 }}
+              transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+            >
+              <circle cx="100" cy="100" r="78" stroke="#0086F9" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+              <circle cx="100" cy="100" r="54" stroke="#22D3EE" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(-40 100 100)" />
+            </motion.svg>
+          </div>
+
+          {/* Faint background grid */}
+          <div
+            className="absolute inset-0 opacity-[0.18] pointer-events-none"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(120,160,220,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(120,160,220,0.05) 1px, transparent 1px)
+              `,
+              backgroundSize: "56px 56px",
+              maskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%)",
+              WebkitMaskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%)",
+            }}
+          />
 
           <div className="relative z-10">
             <motion.p
@@ -109,10 +132,7 @@ export function PricingCTA() {
               className="font-display text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight"
             >
               Start a{' '}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: 'linear-gradient(135deg, #046BD2 0%, #0086F9 100%)' }}
-              >
+              <span className="bg-gradient-to-r from-[#22D3EE] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">
                 no-pressure
               </span>{' '}
               conversation.

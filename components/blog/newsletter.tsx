@@ -17,33 +17,8 @@ export function BlogNewsletter() {
   return (
     <section
       id="newsletter"
-      className="relative py-20 sm:py-24 lg:py-28 overflow-hidden"
+      className="relative py-20 sm:py-24 lg:py-28 bg-[#0B1220] overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full opacity-50"
-          style={{
-            background:
-              "conic-gradient(from 0deg at 50% 50%, rgba(4,107,210,0) 0deg, rgba(4,107,210,0.4) 90deg, rgba(34,211,238,0.25) 180deg, rgba(4,107,210,0) 360deg)",
-            filter: "blur(100px)",
-          }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle, rgba(4,107,210,0.14) 1px, transparent 1px)`,
-            backgroundSize: "30px 30px",
-            maskImage:
-              "radial-gradient(ellipse 60% 80% at 50% 50%, black 30%, transparent 100%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 60% 80% at 50% 50%, black 30%, transparent 100%)",
-          }}
-        />
-      </div>
-
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -52,8 +27,55 @@ export function BlogNewsletter() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/20 via-[#046BD2]/50 to-[#22D3EE]/20 shadow-[0_0_120px_-30px_rgba(4,107,210,0.7)]"
         >
-          <div className="relative rounded-3xl bg-[#0A1020]/90 backdrop-blur-2xl overflow-hidden p-8 sm:p-12 lg:p-16">
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="relative rounded-3xl bg-[#070B14] overflow-hidden p-8 sm:p-12 lg:p-16">
+            {/* Left arc glow */}
+            <div
+              className="hidden sm:block absolute -left-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
+              aria-hidden
+            >
+              <motion.svg
+                viewBox="0 0 200 200"
+                className="w-full h-full"
+                style={{ filter: "blur(28px)" }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+              >
+                <circle cx="100" cy="100" r="78" stroke="#22D3EE" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+                <circle cx="100" cy="100" r="54" stroke="#046BD2" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(40 100 100)" />
+              </motion.svg>
+            </div>
+
+            {/* Right arc glow */}
+            <div
+              className="hidden sm:block absolute -right-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none"
+              aria-hidden
+            >
+              <motion.svg
+                viewBox="0 0 200 200"
+                className="w-full h-full"
+                style={{ filter: "blur(28px)" }}
+                animate={{ rotate: -360 }}
+                transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+              >
+                <circle cx="100" cy="100" r="78" stroke="#0086F9" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+                <circle cx="100" cy="100" r="54" stroke="#22D3EE" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(-40 100 100)" />
+              </motion.svg>
+            </div>
+
+            {/* Faint background grid */}
+            <div
+              className="absolute inset-0 opacity-[0.18] pointer-events-none"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(120,160,220,0.05) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(120,160,220,0.05) 1px, transparent 1px)
+                `,
+                backgroundSize: "56px 56px",
+                maskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%)",
+                WebkitMaskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%)",
+              }}
+            />
+            <div className="relative grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-[0.18em] text-[#22D3EE]">
                   <Sparkles className="w-3.5 h-3.5" />
