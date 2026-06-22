@@ -3,7 +3,7 @@ title: "469 Area Code: Business Guide to Dallas-Fort Worth Numbers"
 slug: "469-area-code"
 excerpt: "The 469 area code serves Dallas-Fort Worth alongside 214, 972, and 945. Learn its history, overlay rules, and how to get a local Dallas number for business."
 seoTitle: "469 Area Code: Business Guide to Dallas-Fort Worth Numbers"
-seoDescription: "The 469 area code serves Dallas-Fort Worth alongside 214, 972, and 945. Learn its history, overlay rules, and how to get a local Dallas number for your business."
+seoDescription: "The 469 area code covers Dallas-Fort Worth alongside 214, 972, and 945. Learn its history, overlay rules, and how to get a local Dallas number."
 keywords:
   - 469 area code
   - 469 area code number
