@@ -310,7 +310,16 @@ function fileToPost(filename: string): BlogPostDetail | null {
     const contentHtml = mdToHtml(body, { skipFirstH1: !!data.title })
 
     const wordCount = body
-      .replace(/[#*_>\-]/g, " ")
+      .replace(/```[\s\S]*?```/g, " ")           // code blocks
+      .replace(/`[^`]+`/g, " ")                  // inline code
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")     // images (remove entirely)
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")   // links → text only
+      .replace(/https?:\/\/\S+/g, " ")           // bare URLs
+      .replace(/^\s*#{1,6}\s+/gm, "")            // heading markers
+      .replace(/^\s*[-*+]\s+/gm, "")             // unordered list markers
+      .replace(/^\s*\d+\.\s+/gm, "")             // ordered list markers
+      .replace(/^\s*>\s*/gm, "")                 // blockquote markers
+      .replace(/[|`_*#~\\]/g, " ")               // remaining markdown chars
       .split(/\s+/)
       .filter(Boolean).length
     const readMinutes = Math.max(1, Math.round(wordCount / 220))
