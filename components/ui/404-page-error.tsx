@@ -178,7 +178,7 @@ const NotFoundPage = () => {
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
             {[
               { label: "Contact Center", href: "/products/contact-center" },
-              { label: "Unified Comms", href: "/products/ucaas" },
+              { label: "Unified Comms", href: "/products/unified-communications" },
               { label: "AI Voice Agent", href: "/products/ai/receptionist" },
               { label: "Pricing", href: "/pricing" },
             ].map((item) => (

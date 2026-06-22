@@ -56,16 +56,16 @@ const STATIC_PAGES = [
   '/products/contact-center/omnichannel',
   '/products/contact-center/outbound-dialer',
   '/products/contact-center/supervisor-tools',
-  '/products/ucaas',
-  '/products/ucaas/ai-assistant',
-  '/products/ucaas/business-phone',
-  '/products/ucaas/customer-engagement',
-  '/products/ucaas/online-fax',
-  '/products/ucaas/phone-system',
-  '/products/ucaas/sms-mms',
-  '/products/ucaas/team-chat',
-  '/products/ucaas/video-meetings',
-  '/products/ucaas/website-chatbot',
+  '/products/unified-communications',
+  '/products/unified-communications/ai-assistant',
+  '/products/unified-communications/business-phone',
+  '/products/unified-communications/customer-engagement',
+  '/products/unified-communications/online-fax',
+  '/products/unified-communications/phone-system',
+  '/products/unified-communications/sms-mms',
+  '/products/unified-communications/team-chat',
+  '/products/unified-communications/video-meetings',
+  '/products/unified-communications/website-chatbot',
   '/security',
   '/solutions/enterprise-it',
   '/solutions/finance',
@@ -511,7 +511,7 @@ async function checkAnalytics(route) {
 
 app.get('/api/analytics', async (req, res) => {
   // Check a representative sample: homepage + key pages
-  const routes = ['/', '/blog', '/pricing', '/contact', '/about', '/area-codes', '/solutions/finance', '/products/ucaas', '/security', '/wholesale-voip']
+  const routes = ['/', '/blog', '/pricing', '/contact', '/about', '/area-codes', '/solutions/finance', '/products/unified-communications', '/security', '/wholesale-voip']
   const results = []
   for (const r of routes) results.push(await checkAnalytics(r))
   res.json(results)

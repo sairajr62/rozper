@@ -11,7 +11,7 @@ const capabilities = [
     tag: "Anchor",
     description:
       "Calling, video, SMS, and AI on one seat. Replace four vendors with one bill.",
-    href: "/products/ucaas",
+    href: "/products/unified-communications",
     bullets: ["Cloud PBX", "Video meetings", "SMS / MMS", "Team chat"],
     accent: "from-[#046BD2] to-[#22D3EE]",
     featured: true,
@@ -37,7 +37,7 @@ const capabilities = [
     title: "SIP Trunking",
     tag: "Infra",
     description: "Flexible SIP for any PBX — bring your own session border controller.",
-    href: "/products/ucaas/phone-system",
+    href: "/products/unified-communications/phone-system",
     accent: "from-[#0078E0] to-[#046BD2]",
   },
 ]

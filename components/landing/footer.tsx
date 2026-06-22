@@ -8,12 +8,12 @@ import type { LucideIcon } from 'lucide-react'
 const footerColumns = [
   {
     title: 'Unified Communication',
-    href: '/products/ucaas',
+    href: '/products/unified-communications',
     links: [
-      { label: 'Business Phone System', href: '/products/ucaas/business-phone' },
-      { label: 'HD Video Meetings', href: '/products/ucaas/video-meetings' },
-      { label: 'Business SMS & MMS', href: '/products/ucaas/sms-mms' },
-      { label: 'Team Chat', href: '/products/ucaas/team-chat' },
+      { label: 'Business Phone System', href: '/products/unified-communications/business-phone' },
+      { label: 'HD Video Meetings', href: '/products/unified-communications/video-meetings' },
+      { label: 'Business SMS & MMS', href: '/products/unified-communications/sms-mms' },
+      { label: 'Team Chat', href: '/products/unified-communications/team-chat' },
     ],
   },
   {
@@ -30,8 +30,8 @@ const footerColumns = [
     href: '/products/ai',
     links: [
       { label: 'AI Receptionist', href: '/products/ai/receptionist' },
-      { label: 'AI Assistant', href: '/products/ucaas/ai-assistant' },
-      { label: 'Customer Engagement', href: '/products/ucaas/customer-engagement' },
+      { label: 'AI Assistant', href: '/products/unified-communications/ai-assistant' },
+      { label: 'Customer Engagement', href: '/products/unified-communications/customer-engagement' },
     ],
   },
   {
