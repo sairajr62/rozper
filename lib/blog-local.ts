@@ -133,11 +133,11 @@ function inlineMd(s: string): string {
     (_m, code: string) =>
       `<code class="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[0.92em]">${escapeHtml(code)}</code>`,
   )
-  // Inline images
+  // Inline images — resolve via Vercel Blob if available
   out = out.replace(
     /!\[([^\]]*)\]\(([^)]+)\)/g,
     (_m, alt: string, url: string) =>
-      `<img src="${escapeHtml(url)}" alt="${escapeHtml(alt)}" />`,
+      `<img src="${escapeHtml(resolveBlobUrl(url))}" alt="${escapeHtml(alt)}" />`,
   )
   // Links
   out = out.replace(
