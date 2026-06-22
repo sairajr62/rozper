@@ -174,6 +174,8 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
                     className={
                       (post.featuredImageFit ?? "cover") === "contain"
                         ? "absolute inset-0 w-full h-full object-contain object-center"
+                        : (post.featuredImageFit ?? "cover") === "fill"
+                        ? "absolute inset-0 w-full h-full object-fill"
                         : "absolute inset-0 w-full h-full object-cover object-center sm:object-left"
                     }
                     style={post.featuredImagePosition ? { objectPosition: post.featuredImagePosition } : undefined}

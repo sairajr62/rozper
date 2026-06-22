@@ -33,7 +33,7 @@ export type BlogPost = {
   readMinutes: number
   author: BlogAuthor
   featuredImage?: BlogImage
-  featuredImageFit?: "cover" | "contain"
+  featuredImageFit?: "cover" | "contain" | "fill"
   featuredImagePosition?: string
   categories: BlogTerm[]
   tags: BlogTerm[]
