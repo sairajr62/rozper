@@ -122,7 +122,7 @@ export default function LoginGate({ children }) {
   const locked = authState === 'locked' || authState === 'shattering'
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', minHeight: '100vh', overflow: locked ? 'hidden' : 'unset' }}>
 
       {/* Dashboard — always rendered, unblurs as shards fly off */}
       <div style={{
