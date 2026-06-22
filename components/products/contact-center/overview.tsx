@@ -472,8 +472,23 @@ export function ContactCenterPageView() {
 
         {/* CTA - mission control */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-3xl border border-[#046BD2]/20 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#2575FC]/10 p-5 sm:p-10 md:p-20 overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#046BD2]/10 blur-3xl" />
+          <div className="relative rounded-3xl overflow-hidden bg-[#070B14] border border-white/10 p-5 sm:p-10 md:p-20">
+            {/* Left arc glow */}
+            <div className="hidden sm:block absolute -left-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none" aria-hidden>
+              <motion.svg viewBox="0 0 200 200" className="w-full h-full" style={{ filter: "blur(28px)" }} animate={{ rotate: 360 }} transition={{ duration: 70, repeat: Infinity, ease: "linear" }}>
+                <circle cx="100" cy="100" r="78" stroke="#22D3EE" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+                <circle cx="100" cy="100" r="54" stroke="#046BD2" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(40 100 100)" />
+              </motion.svg>
+            </div>
+            {/* Right arc glow */}
+            <div className="hidden sm:block absolute -right-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none" aria-hidden>
+              <motion.svg viewBox="0 0 200 200" className="w-full h-full" style={{ filter: "blur(28px)" }} animate={{ rotate: -360 }} transition={{ duration: 70, repeat: Infinity, ease: "linear" }}>
+                <circle cx="100" cy="100" r="78" stroke="#0086F9" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+                <circle cx="100" cy="100" r="54" stroke="#22D3EE" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(-40 100 100)" />
+              </motion.svg>
+            </div>
+            {/* Faint background grid */}
+            <div className="absolute inset-0 opacity-[0.18] pointer-events-none" style={{ backgroundImage: `linear-gradient(rgba(120,160,220,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(120,160,220,0.05) 1px, transparent 1px)`, backgroundSize: "56px 56px", maskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%)", WebkitMaskImage: "radial-gradient(ellipse 60% 60% at 50% 50%, black 30%, transparent 80%)" }} />
             <div className="relative grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
               <div>
                 <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#0086F9] mb-4">
@@ -490,14 +505,14 @@ export function ContactCenterPageView() {
               <div className="flex flex-row flex-wrap gap-2 sm:gap-3 md:justify-end">
                 <Link
                   href="/free-trial"
-                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded bg-[#046BD2] text-xs sm:text-base text-white font-semibold hover:bg-[#0086F9] transition whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded bg-[#046BD2] hover:bg-[#0078E0] text-white shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] text-xs sm:text-base font-semibold transition whitespace-nowrap"
                 >
                   Start a Free Trial
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/pricing"
-                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded border border-white/15 text-xs sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded bg-white/[0.04] border border-white/15 hover:bg-white/10 text-xs sm:text-base text-white font-medium transition whitespace-nowrap"
                 >
                   See pricing
                 </Link>
