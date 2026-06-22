@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import * as XLSX from 'xlsx'
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
@@ -13,7 +13,7 @@ import BlogLinksAudit from './tabs/BlogLinksAudit'
 import GA4Live from './tabs/GA4Live'
 import { checkHealth, fetchSummary, auditPages, auditBlogs, checkLinks, auditSEO, auditAnalytics, auditAnalyticsAll, auditBlogLinks } from './api'
 
-export default function App({ onLogout }) {
+export default function App() {
   const [tab, setTab] = useState('overview')
   const [siteOnline, setSiteOnline] = useState(null)
   const [summary, setSummary] = useState(null)
@@ -31,18 +31,10 @@ export default function App({ onLogout }) {
   const [blogLinksLoading, setBlogLinksLoading] = useState(false)
   const [running, setRunning] = useState(false)
   const [lastRun, setLastRun] = useState(null)
-  const autoRanRef = useRef(false)
 
   useEffect(() => {
     checkHealth().then(r => setSiteOnline(r.online)).catch(() => setSiteOnline(false))
     fetchSummary().then(setSummary).catch(() => {})
-
-    // Auto-run the Overview audits on first load so it's populated without clicking Run Audit
-    if (!autoRanRef.current) {
-      autoRanRef.current = true
-      runAll()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function runPageAudit() {
@@ -77,12 +69,9 @@ export default function App({ onLogout }) {
 
   async function runAll() {
     setRunning(true)
-    try {
-      await Promise.allSettled([runPageAudit(), runBlogAudit(), runSEOAudit(), runAnalyticsAudit(), runBlogLinksAudit()])
-      setLastRun(new Date().toLocaleTimeString())
-    } finally {
-      setRunning(false)
-    }
+    await Promise.all([runPageAudit(), runBlogAudit(), runSEOAudit(), runAnalyticsAudit(), runBlogLinksAudit()])
+    setLastRun(new Date().toLocaleTimeString())
+    setRunning(false)
   }
 
   function runCurrent() {
@@ -228,7 +217,7 @@ export default function App({ onLogout }) {
 
   return (
     <div className="layout">
-      <Sidebar activeTab={tab} onTabChange={setTab} siteOnline={siteOnline} counts={counts} onLogout={onLogout} />
+      <Sidebar activeTab={tab} onTabChange={setTab} siteOnline={siteOnline} counts={counts} />
 
       <div className="main">
         <Topbar
