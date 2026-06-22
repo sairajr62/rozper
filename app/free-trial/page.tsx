@@ -15,6 +15,33 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Start Your Free Trial — Rozper",
+      "description": "Try Rozper free for 14 days. No credit card required. Full access to cloud phone, AI, contact center, and global numbers.",
+      "url": `${SITE_URL}/free-trial`,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Free Trial", "item": `${SITE_URL}/free-trial` },
+      ],
+    },
+  ],
+}
+
 export default function FreeTrialPage() {
-  return <FreeTrialPageView />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <FreeTrialPageView />
+    </>
+  )
 }

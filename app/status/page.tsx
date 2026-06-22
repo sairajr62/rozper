@@ -24,9 +24,36 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/status` },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/status#webpage`,
+      "name": "Rozper Platform Status",
+      "description": "Real-time uptime and incident status for the Rozper platform, including voice, messaging, AI, and API services.",
+      "url": `${SITE_URL}/status`,
+      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "inLanguage": "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Status", "item": `${SITE_URL}/status` },
+      ],
+    },
+  ],
+}
+
 export default function StatusPage() {
   return (
-    <main className="min-h-screen bg-[#0B1220]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
       <StatusHero />
       <StatusServices />
@@ -36,5 +63,6 @@ export default function StatusPage() {
       <StatusSubscribe />
       <Footer />
     </main>
+    </>
   )
 }

@@ -24,9 +24,36 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": `${SITE_URL}/docs#webpage`,
+      "name": "Rozper Developer Documentation",
+      "description": "Official documentation for building with the Rozper platform — APIs, SDKs, webhooks, and integration guides.",
+      "url": `${SITE_URL}/docs`,
+      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
+      "inLanguage": "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Documentation", "item": `${SITE_URL}/docs` },
+      ],
+    },
+  ],
+}
+
 export default function DocsPage() {
   return (
-    <main className="min-h-screen bg-[#0B1220]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
       <DocsHero />
       <DocsQuickstart />
@@ -36,5 +63,6 @@ export default function DocsPage() {
       <DocsCommunity />
       <Footer />
     </main>
+    </>
   )
 }

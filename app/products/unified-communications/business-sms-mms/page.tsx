@@ -15,6 +15,65 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/products/unified-communications/business-sms-mms` },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${SITE_URL}/products/unified-communications/business-sms-mms#app`,
+      "name": "Business SMS & MMS",
+      "description": "Two-way business SMS and MMS messaging from your business number",
+      "url": `${SITE_URL}/products/unified-communications/business-sms-mms`,
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
+      "provider": {
+        "@type": "Organization",
+        "@id": `${SITE_URL}#organization`,
+        "name": "Rozper",
+        "url": SITE_URL
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
+        { "@type": "ListItem", "position": 4, "name": "Business SMS & MMS", "item": `${SITE_URL}/products/unified-communications/business-sms-mms` }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Business SMS & MMS?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Rozper's Business SMS & MMS enables two-way text and multimedia messaging directly from your business number, supporting bulk sends and WhatsApp integration for business-scale messaging." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Business SMS & MMS cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Rozper's unified communications plans start at $9.99 per user per month, including Business SMS & MMS and a 14-day free trial." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Business SMS & MMS work on mobile?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, Business SMS & MMS works on web browsers, iOS, and Android via the Rozper mobile app." }
+        }
+      ]
+    }
+  ]
+}
+
 export default function SMSMMSPage() {
-  return <ProdUCaaSSMSMMSPageView />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProdUCaaSSMSMMSPageView />
+    </>
+  )
 }

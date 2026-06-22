@@ -19,9 +19,36 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/security` },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/security#webpage`,
+      "name": "Rozper Security & Compliance",
+      "description": "Rozper's security posture — SOC 2, encryption, GDPR compliance, and enterprise-grade data protection.",
+      "url": `${SITE_URL}/security`,
+      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "inLanguage": "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Security", "item": `${SITE_URL}/security` },
+      ],
+    },
+  ],
+}
+
 export default function SecurityPage() {
   return (
-    <main className="min-h-screen bg-[#0B1220]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
       <LegalHero
         eyebrow="Trust · Security · Compliance"
@@ -32,5 +59,6 @@ export default function SecurityPage() {
       <SecurityContent />
       <Footer />
     </main>
+    </>
   )
 }

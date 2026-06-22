@@ -19,9 +19,37 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/legal/privacy` },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/legal/privacy#webpage`,
+      "name": "Privacy Policy — Rozper",
+      "description": "Rozper's privacy policy explaining how we collect, use, and protect your personal data.",
+      "url": `${SITE_URL}/legal/privacy`,
+      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "inLanguage": "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Legal", "item": `${SITE_URL}/legal` },
+        { "@type": "ListItem", "position": 3, "name": "Privacy Policy", "item": `${SITE_URL}/legal/privacy` },
+      ],
+    },
+  ],
+}
+
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-[#0B1220]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
       <LegalHero
         eyebrow="Legal · Privacy"
@@ -33,5 +61,6 @@ export default function PrivacyPolicyPage() {
       <PrivacyContent />
       <Footer />
     </main>
+    </>
   )
 }
