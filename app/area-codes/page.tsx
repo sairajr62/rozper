@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/site"
 export const metadata: Metadata = {
   title: "U.S. Area Code Virtual Phone Numbers | Rozper",
   description:
-    "Get a local virtual phone number in any U.S. market — New York 212, Los Angeles 310, Chicago 312, Miami 305, and 300+ more area codes. Instant setup, 99.99% uptime.",
+    "Get a virtual phone number for any U.S. area code — New York 212, Los Angeles 310, Chicago 312, Miami 305, and 300+ more. Instant setup, 99.99% uptime.",
   keywords: "area code virtual numbers, local phone numbers, virtual phone numbers USA, US area codes, business phone number, area code lookup",
   alternates: { canonical: `${SITE_URL}/area-codes` },
   openGraph: {

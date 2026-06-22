@@ -5,6 +5,13 @@ import { SITE_URL } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Cloud Phone for SaaS & Tech Companies | Rozper',
   description: 'Phone, video, and AI for fast-growing SaaS teams. CRM integration, global coverage, scales with headcount. rozper.com.',
+  openGraph: {
+    title: 'Cloud Phone for SaaS & Tech Companies | Rozper',
+    description: 'Phone, video, and AI for fast-growing SaaS teams. CRM integration, global coverage, scales with headcount.',
+    type: 'website',
+    url: `${SITE_URL}/solutions/saas`,
+    siteName: 'Rozper',
+  },
   alternates: { canonical: `${SITE_URL}/solutions/saas` },
 }
 

@@ -29,7 +29,6 @@ const STATIC_PAGES = [
   '/compare',
   '/contact',
   '/country-code',
-  '/demo',
   '/docs',
   '/docs/api',
   '/features/ai-agent-assist',

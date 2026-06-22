@@ -21,140 +21,58 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.48, delay, ease: [0.22, 1, 0.36, 1] },
 })
 
-// ─── Animated phone SVG ───────────────────────────────────────────────────────
+// ─── Hero Map Embed ───────────────────────────────────────────────────────────
 
-function PhoneIllustration({ code, city }: { code: string; city: string }) {
-  const gId = `pg${code}`
-  const glowId = `pglow${code}`
-  const screenId = `pscr${code}`
+function HeroMapEmbed({ city, state, code }: { city: string; state: string; code: string }) {
+  const location = [city, state].filter(Boolean).join(", ")
+  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(location || `area code ${code}`)}&z=9&output=embed`
 
   return (
-    <div className="relative w-full flex items-center justify-center select-none pointer-events-none">
-      {/* Ambient glows */}
-      <div className="absolute w-64 h-64 rounded-full bg-[#046BD2]/20 blur-[80px]" />
-      <div className="absolute w-40 h-40 rounded-full bg-[#22D3EE]/10 blur-[60px] translate-y-8" />
+    <div className="relative w-full h-full flex flex-col select-none min-h-[260px]">
+      {/* Ambient glow */}
+      <div className="absolute -inset-6 rounded-[2.5rem] bg-[#046BD2]/10 blur-[70px] pointer-events-none" />
 
-      <svg viewBox="0 0 360 480" className="relative w-full max-w-[260px] sm:max-w-[290px] lg:max-w-[310px]" fill="none" aria-hidden>
-        <defs>
-          <linearGradient id={gId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#046BD2" />
-            <stop offset="100%" stopColor="#22D3EE" />
-          </linearGradient>
-          <linearGradient id={screenId} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#0A1628" />
-            <stop offset="100%" stopColor="#060D1A" />
-          </linearGradient>
-          <filter id={glowId} x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-        </defs>
+      <div className="relative flex-1 rounded-2xl lg:rounded-3xl overflow-hidden border border-white/[0.1] shadow-2xl shadow-black/60">
+        {/* Top fade */}
+        <div className="absolute top-0 inset-x-0 h-12 bg-gradient-to-b from-[#0B1220]/70 to-transparent z-10 pointer-events-none" />
 
-        {/* Outer ripple rings */}
-        {[175, 148, 120].map((r, i) => (
-          <motion.circle key={r} cx={180} cy={240} r={r}
-            stroke={i === 0 ? "#046BD2" : "#22D3EE"}
-            strokeOpacity={0.05 + i * 0.03}
-            strokeWidth={1}
-            strokeDasharray={i === 1 ? "5 10" : undefined}
-            fill="none"
-            animate={{ r: [r, r + 5, r], opacity: [0.4, 0.9, 0.4] }}
-            transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.9 }}
-          />
-        ))}
+        <iframe
+          src={mapSrc}
+          className="w-full h-full block"
+          style={{ border: 0, filter: "saturate(0.65) contrast(1.12) brightness(0.85) hue-rotate(4deg)" }}
+          allowFullScreen
+          loading="eager"
+          referrerPolicy="no-referrer-when-downgrade"
+          title={`${code} area code map — ${location}`}
+        />
 
-        {/* Phone body */}
-        <rect x={92} y={55} width={176} height={346} rx={28}
-          fill="#0B1728" stroke={`url(#${gId})`} strokeWidth={1.5} strokeOpacity={0.6} />
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0B1220] to-transparent z-10 pointer-events-none" />
 
-        {/* Screen */}
-        <rect x={103} y={73} width={154} height={308} rx={20}
-          fill={`url(#${screenId})`} />
+        {/* Code badge — top right */}
+        <div className="absolute top-4 right-4 z-20">
+          <div className="bg-gradient-to-br from-[#046BD2] to-[#0086F9] rounded-xl px-4 py-2.5 shadow-lg shadow-[#046BD2]/40 border border-[#22D3EE]/20 backdrop-blur-sm">
+            <span className="font-black text-2xl text-white leading-none tracking-tight">{code}</span>
+          </div>
+        </div>
 
-        {/* Notch */}
-        <rect x={163} y={77} width={34} height={9} rx={4.5} fill="#060D1A" />
-        <circle cx={180} cy={81.5} r={3} fill="#0D1E35" stroke="#046BD2" strokeOpacity={0.35} strokeWidth={0.5} />
+        {/* Location badge — bottom left */}
+        <div className="absolute bottom-5 left-4 z-20 flex items-center gap-2 bg-[#0B1220]/90 backdrop-blur-md border border-white/[0.12] rounded-xl px-3.5 py-2.5 shadow-xl">
+          <MapPin className="w-3.5 h-3.5 text-[#22D3EE] shrink-0" />
+          <span className="text-xs text-white font-medium leading-tight">{location || `Area Code ${code}`}</span>
+        </div>
 
-        {/* Side buttons */}
-        <rect x={86} y={126} width={6} height={30} rx={3} fill="#0D1E35" stroke="#046BD2" strokeOpacity={0.2} strokeWidth={1} />
-        <rect x={268} y={115} width={6} height={22} rx={3} fill="#0D1E35" stroke="#046BD2" strokeOpacity={0.2} strokeWidth={1} />
-
-        {/* Area code — big number with glow */}
-        <motion.text
-          x={180} y={208}
-          textAnchor="middle"
-          fill={`url(#${gId})`}
-          fontSize="62" fontWeight="900"
-          fontFamily="system-ui,-apple-system,sans-serif"
-          filter={`url(#${glowId})`}
-          animate={{ opacity: [0.85, 1, 0.85] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        {/* Open maps — bottom right */}
+        <a
+          href={`https://maps.google.com/maps?q=${encodeURIComponent(location || code)}`}
+          target="_blank" rel="noopener noreferrer"
+          className="absolute bottom-5 right-4 z-20 flex items-center gap-1.5 bg-[#0B1220]/90 backdrop-blur-md border border-white/[0.12] hover:border-[#046BD2]/50 rounded-xl px-3 py-2.5 text-[11px] text-white/45 hover:text-white/80 transition-all shadow-xl"
         >
-          {code}
-        </motion.text>
-
-        {/* AREA CODE label */}
-        <text x={180} y={225} textAnchor="middle" fill="#22D3EE" fontSize="8"
-          fontFamily="system-ui,sans-serif" letterSpacing="5" fillOpacity={0.75}>
-          AREA CODE
-        </text>
-
-        {/* City */}
-        <text x={180} y={243} textAnchor="middle" fill="white" fontSize="10.5"
-          fontFamily="system-ui,sans-serif" fillOpacity={0.4}>
-          {city || "United States"}
-        </text>
-
-        {/* Divider */}
-        <line x1={150} y1={254} x2={210} y2={254} stroke="white" strokeOpacity={0.07} strokeWidth={1} />
-
-        {/* Map pin icon */}
-        <motion.g
-          animate={{ y: [0, -4, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <circle cx={180} cy={283} r={20} fill="#046BD2" fillOpacity={0.1} />
-          <circle cx={180} cy={283} r={12} fill="#046BD2" fillOpacity={0.18} />
-          <path
-            d="M180 271 C174.5 271 170 275.3 170 280.8 C170 288.8 180 299 180 299 C180 299 190 288.8 190 280.8 C190 275.3 185.5 271 180 271Z"
-            fill={`url(#${gId})`}
-          />
-          <circle cx={180} cy={280.8} r={4} fill="#060D1A" />
-        </motion.g>
-
-        {/* Signal bars */}
-        <rect x={136} y={317} width={5} height={9} rx={1.5} fill="#046BD2" fillOpacity={0.5} />
-        <rect x={144} y={313} width={5} height={13} rx={1.5} fill="#046BD2" fillOpacity={0.65} />
-        <rect x={152} y={309} width={5} height={17} rx={1.5} fill="#22D3EE" fillOpacity={0.75} />
-        <rect x={160} y={305} width={5} height={21} rx={1.5} fill="#22D3EE" fillOpacity={0.85} />
-
-        {/* Virtual chip */}
-        <rect x={177} y={311} width={52} height={15} rx={7.5}
-          fill="#046BD2" fillOpacity={0.18} stroke="#046BD2" strokeOpacity={0.4} strokeWidth={0.6} />
-        <text x={203} y={321.5} textAnchor="middle" fill="#22D3EE" fontSize="7.5"
-          fontFamily="system-ui,sans-serif" fillOpacity={0.9} letterSpacing="1">
-          VIRTUAL
-        </text>
-
-        {/* Home bar */}
-        <rect x={161} y={369} width={38} height={3} rx={1.5} fill="white" fillOpacity={0.15} />
-
-        {/* Floating markers */}
-        <motion.g animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.2, repeat: Infinity, delay: 0.5 }}>
-          <circle cx={52} cy={136} r={10} fill="#046BD2" fillOpacity={0.12} stroke="#046BD2" strokeOpacity={0.45} strokeWidth={1.5} />
-          <circle cx={52} cy={136} r={4.5} fill="#046BD2" fillOpacity={0.8} />
-          <line x1={91} y1={152} x2={62} y2={138} stroke="#046BD2" strokeOpacity={0.2} strokeWidth={1} strokeDasharray="3 6" />
-        </motion.g>
-        <motion.g animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2.8, repeat: Infinity, delay: 1 }}>
-          <circle cx={310} cy={156} r={10} fill="#22D3EE" fillOpacity={0.12} stroke="#22D3EE" strokeOpacity={0.45} strokeWidth={1.5} />
-          <circle cx={310} cy={156} r={4.5} fill="#22D3EE" fillOpacity={0.8} />
-          <line x1={268} y1={174} x2={300} y2={158} stroke="#22D3EE" strokeOpacity={0.2} strokeWidth={1} strokeDasharray="3 6" />
-        </motion.g>
-        <circle cx={42} cy={320} r={7} fill="#046BD2" fillOpacity={0.1} stroke="#046BD2" strokeOpacity={0.3} strokeWidth={1} />
-        <circle cx={42} cy={320} r={3} fill="#046BD2" fillOpacity={0.55} />
-        <circle cx={322} cy={332} r={7} fill="#22D3EE" fillOpacity={0.1} stroke="#22D3EE" strokeOpacity={0.3} strokeWidth={1} />
-        <circle cx={322} cy={332} r={3} fill="#22D3EE" fillOpacity={0.55} />
-      </svg>
+          <Globe className="w-3 h-3" />
+          <span className="hidden sm:inline">Open in Google Maps</span>
+          <span className="sm:hidden">Open</span>
+        </a>
+      </div>
     </div>
   )
 }
@@ -163,25 +81,31 @@ function PhoneIllustration({ code, city }: { code: string; city: string }) {
 
 export function AreaCodeHero({ data, stateSlug }: { data: AreaCodeData; stateSlug?: string }) {
   const resolvedStateSlug = stateSlug ?? data.stateSlug
+  // Strip SEO suffix ("Birmingham, AL — Cities, History…" → "Birmingham, AL")
+  const cityName = (data.city.split(/\s*[—–]\s*/)[0] ?? "").trim() || data.state
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+    <section className="relative h-[100dvh] flex flex-col justify-center overflow-hidden pt-[72px]">
       {/* Aurora background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#0B1220]" />
         <div className="absolute -top-48 -left-24 w-[700px] h-[700px] rounded-full bg-[#046BD2]/12 blur-[160px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#22D3EE]/5 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-[#22D3EE]/5 blur-[130px]" />
         <div className="absolute inset-0 opacity-[0.022]"
           style={{ backgroundImage: "radial-gradient(circle at 1px 1px,rgba(120,160,220,0.2) 1px,transparent 0)", backgroundSize: "28px 28px" }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full py-4 lg:py-6">
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-8 items-stretch">
 
           {/* Left */}
-          <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.55 }}>
+          <motion.div
+            initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55 }}
+            className="flex flex-col justify-center gap-3"
+          >
             {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-[11px] font-mono text-white/30 mb-8">
+            <nav className="flex items-center gap-2 text-[11px] font-mono text-white/30">
               <Link href="/" className="hover:text-white/60 transition">home</Link>
               <span className="text-white/15">/</span>
               <Link href="/area-codes" className="hover:text-white/60 transition">area-codes</Link>
@@ -198,36 +122,36 @@ export function AreaCodeHero({ data, stateSlug }: { data: AreaCodeData; stateSlu
             </nav>
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6">
-              <Hash className="w-3.5 h-3.5 text-[#22D3EE]" />
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#22D3EE]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 self-start">
+              <Hash className="w-3 h-3 text-[#22D3EE]" />
+              <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#22D3EE]">
                 {data.state || "United States"} · Area Code {data.code}
               </span>
             </div>
 
-            {/* Heading */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.04] tracking-tight mb-5">
-              <span className="bg-gradient-to-r from-[#22D3EE] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">
+            {/* Heading — code number large, city+state on one line, subtitle small */}
+            <div>
+              <div className="text-6xl sm:text-7xl lg:text-8xl font-black leading-none tracking-tight bg-gradient-to-r from-[#22D3EE] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">
                 {data.code}
-              </span>
-              <br />
-              <span>{data.city || data.state}</span>
-              <br />
-              <span className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white/40 tracking-normal">
-                Virtual Numbers
-              </span>
-            </h1>
+              </div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight mt-1">
+                {cityName}
+              </div>
+              <div className="text-sm sm:text-base font-medium text-white/35 mt-0.5 tracking-wide">
+                Virtual Phone Numbers
+              </div>
+            </div>
 
-            <p className="text-base sm:text-lg text-white/55 mb-8 leading-relaxed max-w-lg">
+            <p className="text-xs sm:text-sm text-white/50 leading-relaxed max-w-md line-clamp-2">
               {data.excerpt}
             </p>
 
             {/* Overlay codes */}
             {data.overlays.length > 0 && (
-              <div className="flex flex-wrap items-center gap-2 mb-8">
-                <span className="text-[11px] font-mono text-white/30 uppercase tracking-widest">Overlay:</span>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-[10px] font-mono text-white/25 uppercase tracking-widest">Overlay:</span>
                 {data.overlays.map(o => (
-                  <span key={o} className="text-xs font-mono px-2.5 py-1 rounded-lg bg-white/[0.05] border border-white/10 text-white/50">
+                  <span key={o} className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/[0.05] border border-white/10 text-white/45">
                     {o}
                   </span>
                 ))}
@@ -235,29 +159,29 @@ export function AreaCodeHero({ data, stateSlug }: { data: AreaCodeData; stateSlu
             )}
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-3 mb-10">
+            <div className="flex flex-wrap gap-2.5">
               <Link href="/free-trial"
-                className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-lg shadow-[#046BD2]/20 text-sm sm:text-base"
+                className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-[#046BD2]/20 text-sm"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-3.5 h-3.5" />
                 Start a Free Trial
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link href="#coverage"
-                className="inline-flex items-center gap-2 border border-white/15 hover:border-[#22D3EE]/40 hover:bg-white/[0.04] text-white/75 hover:text-white font-semibold px-6 py-3.5 rounded-xl transition-all text-sm sm:text-base"
+                className="inline-flex items-center gap-2 border border-white/15 hover:border-[#22D3EE]/40 hover:bg-white/[0.04] text-white/70 hover:text-white font-semibold px-5 py-2.5 rounded-xl transition-all text-sm"
               >
                 See Coverage
               </Link>
             </div>
           </motion.div>
 
-          {/* Right: illustration */}
+          {/* Right: map — stretches to fill the same height as the left column */}
           <motion.div
-            initial={{ opacity: 0, x: 24, scale: 0.96 }} animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="hidden lg:flex items-center justify-center"
+            initial={{ opacity: 0, x: 24, scale: 0.97 }} animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.65, delay: 0.12 }}
+            className="hidden md:flex flex-col"
           >
-            <PhoneIllustration code={data.code} city={data.city} />
+            <HeroMapEmbed code={data.code} city={data.city} state={data.state} />
           </motion.div>
         </div>
       </div>
@@ -355,53 +279,80 @@ export function CoverageSection({ data }: { data: AreaCodeData }) {
 
 export function MapSection({ city, state, code }: { city: string; state: string; code: string }) {
   const location = [city, state].filter(Boolean).join(", ")
-  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(location || code)}&t=&z=11&ie=UTF8&iwloc=&output=embed`
+  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(location || code)}&t=&z=10&ie=UTF8&iwloc=&output=embed`
 
   return (
-    <section className="py-20 sm:py-24 relative">
+    <section className="py-20 sm:py-28 relative overflow-hidden">
+      {/* Section background glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#046BD2]/4 to-transparent pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...fadeUp()} className="mb-8">
+        <motion.div {...fadeUp()} className="mb-10 sm:mb-12">
           <div className="flex items-center gap-3 mb-3">
             <div className="h-px w-10 bg-gradient-to-r from-[#046BD2] to-transparent" />
             <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#22D3EE]/80">// Coverage Map</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            {code} Area Code — Where It Covers
-          </h2>
-          <p className="text-white/45 text-base max-w-lg">
-            The geographic service area for{location ? ` ${location}` : ` area code ${code}`} virtual phone numbers.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+                {code} Area Code Coverage Map
+              </h2>
+              <p className="text-white/45 text-base max-w-xl">
+                Geographic service area for {location ? location : `area code ${code}`} virtual phone numbers.
+              </p>
+            </div>
+            <a
+              href={`https://maps.google.com/maps?q=${encodeURIComponent(location || code)}`}
+              target="_blank" rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 text-[#22D3EE] text-sm font-medium hover:text-white transition group whitespace-nowrap"
+            >
+              <Globe className="w-4 h-4" />
+              Open in Google Maps
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          </div>
         </motion.div>
 
-        <motion.div {...fadeUp(0.1)} className="relative rounded-3xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/50">
-          <div aria-hidden className="absolute top-0 inset-x-0 h-12 bg-gradient-to-b from-[#0B1220] to-transparent z-10 pointer-events-none" />
-          <iframe
-            title={`${code} area code map — ${location}`}
-            src={mapSrc}
-            className="w-full h-[280px] sm:h-[400px] lg:h-[500px] block"
-            style={{ border: 0, filter: "saturate(0.8) contrast(1.05) brightness(0.95)" }}
-            allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-          />
-          <div aria-hidden className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0B1220] to-transparent z-10 pointer-events-none" />
+        <motion.div {...fadeUp(0.1)}
+          className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/[0.09] shadow-2xl shadow-black/60"
+        >
+          {/* Top fade */}
+          <div aria-hidden className="absolute top-0 inset-x-0 h-14 bg-gradient-to-b from-[#0B1220]/80 to-transparent z-10 pointer-events-none" />
 
-          <div className="absolute bottom-6 left-4 sm:left-6 z-20 flex items-center gap-2.5 bg-[#0B1220]/90 backdrop-blur-md border border-white/[0.12] rounded-xl px-3.5 py-2.5 shadow-xl">
-            <div className="w-7 h-7 rounded-lg bg-[#046BD2]/20 flex items-center justify-center shrink-0">
-              <MapPin className="w-3.5 h-3.5 text-[#046BD2]" />
+          <iframe
+            title={`${code} area code coverage map — ${location}`}
+            src={mapSrc}
+            className="w-full block"
+            style={{
+              height: "clamp(420px, 62vh, 720px)",
+              border: 0,
+              filter: "saturate(0.72) contrast(1.1) brightness(0.88) hue-rotate(4deg)",
+            }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
+          {/* Bottom fade */}
+          <div aria-hidden className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0B1220] to-transparent z-10 pointer-events-none" />
+
+          {/* Location badge — bottom left */}
+          <div className="absolute bottom-6 left-4 sm:left-8 z-20 flex items-center gap-2.5 bg-[#0B1220]/92 backdrop-blur-md border border-white/[0.14] rounded-xl px-4 py-3 shadow-xl">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#046BD2]/30 to-[#046BD2]/10 flex items-center justify-center shrink-0 border border-[#046BD2]/20">
+              <MapPin className="w-4 h-4 text-[#22D3EE]" />
             </div>
             <div>
               <p className="text-white text-xs font-semibold leading-tight">{location || `Area Code ${code}`}</p>
-              <p className="text-white/35 text-[10px] font-mono leading-tight">Area Code {code}</p>
+              <p className="text-white/35 text-[10px] font-mono leading-tight mt-0.5">Area Code {code}</p>
             </div>
           </div>
 
-          <a href={`https://maps.google.com/maps?q=${encodeURIComponent(location || code)}`}
-            target="_blank" rel="noopener noreferrer"
-            className="absolute bottom-6 right-4 sm:right-6 z-20 flex items-center gap-1.5 bg-[#0B1220]/90 backdrop-blur-md border border-white/[0.12] hover:border-[#046BD2]/50 rounded-xl px-3.5 py-2.5 text-xs text-white/45 hover:text-white/80 transition-all shadow-xl"
-          >
-            <Globe className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Open in Google Maps</span>
-            <span className="sm:hidden">Open</span>
-          </a>
+          {/* Code badge — bottom right */}
+          <div className="absolute bottom-6 right-4 sm:right-8 z-20">
+            <div className="bg-gradient-to-br from-[#046BD2] to-[#0086F9] rounded-xl px-4 py-3 shadow-lg shadow-[#046BD2]/30 border border-[#22D3EE]/20">
+              <span className="font-black text-2xl text-white leading-none tracking-tight">{code}</span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

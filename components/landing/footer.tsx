@@ -46,11 +46,12 @@ const footerColumns = [
   {
     title: 'Resources',
     links: [
-      { label: 'Docs', href: '/docs' },
       { label: 'API Reference', href: '/docs/api' },
       { label: 'Status', href: '/status' },
       { label: 'Blog', href: '/blog' },
       { label: 'Security', href: '/security' },
+      { label: 'Wholesale Voice', href: '/wholesale-voice' },
+      { label: 'Wholesale VoIP', href: '/wholesale-voip' },
     ],
   },
 ]

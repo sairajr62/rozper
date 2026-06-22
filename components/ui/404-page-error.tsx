@@ -1,219 +1,154 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
-import { Home, ArrowLeft } from "lucide-react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { motion } from "framer-motion"
+import { Home, ArrowLeft, ArrowRight } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+
+const QUICK_LINKS = [
+  { label: "Contact Center", href: "/products/contact-center" },
+  { label: "Unified Comms",  href: "/products/ucaas" },
+  { label: "AI Voice Agent", href: "/products/ai/receptionist" },
+  { label: "Pricing",        href: "/pricing" },
+]
 
 const NotFoundPage = () => {
-  const [animationLoaded, setAnimationLoaded] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimationLoaded(true), 800);
-    return () => clearTimeout(timer);
-  }, []);
+  const router = useRouter()
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      style={{ backgroundColor: "#0B1220" }}
-    >
-      {/* Background grid */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(4, 107, 210, 0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(4, 107, 210, 0.05) 1px, transparent 1px)
-            `,
-            backgroundSize: "80px 80px",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 50% at 50% 30%, rgba(4, 107, 210, 0.18), transparent)",
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(4, 107, 210, 0.18) 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-          animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0.9, 0.6] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+    <div className="relative flex items-center justify-center px-4 sm:px-6 py-24 sm:py-32 lg:py-40 overflow-x-hidden">
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
+      {/* Ambient glows */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[350px] rounded-full bg-[#046BD2]/12 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-1/2 max-w-[300px] h-[300px] rounded-full bg-[#22D3EE]/8 blur-[100px]" />
+
+      {/* Subtle grid */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(4,107,210,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(4,107,210,0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: "72px 72px",
+        }}
+      />
+
+      <div className="relative z-10 w-full max-w-3xl mx-auto text-center">
+
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border"
-          style={{
-            borderColor: "rgba(4, 107, 210, 0.3)",
-            backgroundColor: "rgba(4, 107, 210, 0.1)",
-          }}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#046BD2]/30 bg-[#046BD2]/10 mb-8"
         >
-          <span
-            className="w-2 h-2 rounded-full animate-pulse"
-            style={{ backgroundColor: "#046BD2" }}
-          />
-          <span
-            className="text-xs font-semibold uppercase tracking-wider"
-            style={{ color: "#147ad9" }}
-          >
+          <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] animate-pulse" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#2D98F1]">
             Error 404
           </span>
         </motion.div>
 
-        {/* 404 Number */}
+        {/* 404 */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex items-center justify-center"
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="leading-none tracking-tighter font-display font-black bg-gradient-to-b from-white via-white to-[#046BD2] bg-clip-text text-transparent mb-6 select-none"
+          style={{ fontSize: "clamp(4.5rem, 20vw, 13rem)" }}
         >
-          {animationLoaded ? (
-            <span
-              className="font-display font-black leading-none tracking-tighter bg-clip-text text-transparent"
-              style={{
-                fontSize: "clamp(7rem, 20vw, 11rem)",
-                backgroundImage:
-                  "linear-gradient(to bottom, #ffffff 40%, #147ad9)",
-              }}
-            >
-              404
-            </span>
-          ) : (
-            <div
-              className="w-64 h-40 rounded-2xl flex items-center justify-center animate-pulse"
-              style={{ backgroundColor: "rgba(255,255,255,0.04)" }}
-            >
-              <span
-                className="font-display font-bold text-3xl"
-                style={{ color: "rgba(255,255,255,0.2)" }}
-              >
-                Loading…
-              </span>
-            </div>
-          )}
+          404
         </motion.div>
 
         {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white"
+          transition={{ delay: 0.15 }}
+          className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4"
         >
           Lost connection to this page
         </motion.h1>
 
-        {/* Body text */}
+        {/* Subtext */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-base sm:text-lg max-w-xl mx-auto leading-relaxed px-4 sm:px-0"
-          style={{ color: "#CCD6DF" }}
+          transition={{ delay: 0.22 }}
+          className="text-base sm:text-lg text-white/50 leading-relaxed max-w-lg mx-auto mb-10"
         >
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
-          Let&apos;s get you back on track — explore Rozper or return to the
-          homepage.
+          Let&apos;s get you back on track.
         </motion.p>
 
-        {/* CTA buttons */}
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 sm:px-0"
+          transition={{ delay: 0.3 }}
+          className="flex flex-col xs:flex-row sm:flex-row items-center justify-center gap-3 mb-14 sm:mb-16"
         >
           <Link
             href="/"
-            className="group inline-flex items-center justify-center gap-2 h-12 px-6 rounded font-medium text-white transition-all duration-200 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] w-full sm:w-auto"
-            style={{ backgroundColor: "#046BD2" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#0078E0")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "#046BD2")
-            }
-            aria-label="Go to home"
+            className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0086F9] hover:to-[#22D3EE] text-white font-semibold text-sm transition-all shadow-[0_4px_20px_-4px_rgba(4,107,210,0.55)] w-full sm:w-auto"
           >
-            <Home className="w-4 h-4 transition-transform duration-200 group-hover:scale-105" />
+            <Home className="w-4 h-4" />
             Back to Home
           </Link>
 
           <button
             onClick={() => router.back()}
-            className="group inline-flex items-center justify-center gap-2 h-12 px-6 rounded font-medium text-white bg-transparent border transition-all duration-200 hover:bg-white/5 hover:scale-[1.02] hover:shadow-sm active:scale-[0.98] w-full sm:w-auto"
-            style={{ borderColor: "rgba(255,255,255,0.2)" }}
-            aria-label="Go back"
+            className="group inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full border border-white/15 text-white font-medium text-sm hover:bg-white/[0.05] transition-all w-full sm:w-auto"
           >
-            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
             Go Back
           </button>
         </motion.div>
 
-        {/* Popular destinations */}
+        {/* Quick links */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 pt-10 border-t border-white/10"
+          transition={{ delay: 0.45 }}
+          className="border-t border-white/[0.07] pt-10"
         >
-          <p className="text-xs uppercase tracking-wider text-gray-500 mb-5">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/30 mb-6">
             Popular destinations
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
-            {[
-              { label: "Contact Center", href: "/products/contact-center" },
-              { label: "Unified Comms", href: "/products/unified-communications" },
-              { label: "AI Voice Agent", href: "/products/ai/receptionist" },
-              { label: "Pricing", href: "/pricing" },
-            ].map((item) => (
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-y-3 max-w-xs sm:max-w-none mx-auto">
+            {QUICK_LINKS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-300 transition-colors inline-flex items-center gap-1.5 group hover:text-[#147ad9]"
+                className="group inline-flex items-center justify-center sm:justify-start gap-1.5 text-sm text-white/50 hover:text-[#2D98F1] transition-colors"
               >
                 {item.label}
-                <ArrowLeft className="w-3 h-3 rotate-[135deg] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
               </Link>
             ))}
           </div>
         </motion.div>
 
-        {/* Support link */}
+        {/* Support */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-xs sm:text-sm text-gray-500"
+          transition={{ delay: 0.55 }}
+          className="mt-8 text-xs text-white/30"
         >
           Think this is a mistake?{" "}
           <a
             href="mailto:support@rozper.com"
-            className="text-gray-300 hover:text-white hover:underline transition-colors duration-200 font-medium"
+            className="text-white/50 hover:text-white transition-colors font-medium"
           >
-            Contact our support team
+            Contact support
           </a>
         </motion.p>
+
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotFoundPage;
-export { NotFoundPage as NotFoundAnimation };
-export { NotFoundPage as Component };
+export default NotFoundPage
+export { NotFoundPage as NotFoundAnimation }
+export { NotFoundPage as Component }

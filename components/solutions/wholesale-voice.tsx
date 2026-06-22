@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
-import { WholesaleContactForm } from "@/components/contact/wholesale-form"
+import { WholesaleVoiceContactSection } from "@/components/solutions/wholesale-voice-contact"
 import {
   PhoneOutgoing,
   PhoneIncoming,
@@ -624,7 +624,7 @@ export function WholesaleVoicePageView() {
         </section>
 
         {/* ── Contact Form ──────────────────────────────────────────── */}
-        <WholesaleContactForm interest="Wholesale Voice" />
+        <WholesaleVoiceContactSection />
 
         <Footer />
       </div>

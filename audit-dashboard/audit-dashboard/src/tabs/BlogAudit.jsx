@@ -19,8 +19,33 @@ export default function BlogAudit({ results, loading, onRun }) {
 
   const selectedPost = selected ? results.find(r => r.slug === selected) : null
 
+  const wcOutOfRange = results.filter(b => b.wordCount < 1500 || b.wordCount > 1600)
+
   return (
     <div>
+      {results.length > 0 && wcOutOfRange.length > 0 && (
+        <div style={{
+          display: 'flex', alignItems: 'flex-start', gap: 10, padding: '11px 16px',
+          background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.28)',
+          borderRadius: 8, marginBottom: 16,
+        }}>
+          <span style={{ fontSize: 15, lineHeight: 1, marginTop: 1 }}>⚠</span>
+          <div>
+            <span style={{ fontSize: 13, fontWeight: 600, color: '#f59e0b' }}>
+              {wcOutOfRange.length} post{wcOutOfRange.length > 1 ? 's' : ''} outside the 1500–1600 word target
+            </span>
+            <div style={{ fontSize: 11, color: 'var(--dim)', marginTop: 3, lineHeight: 1.5 }}>
+              {wcOutOfRange.map(b => (
+                <span key={b.slug} style={{ marginRight: 10 }}>
+                  {b.wordCount < 1500 ? '↓' : '↑'} {b.title} ({b.wordCount} words)
+                </span>
+              )).slice(0, 5)}
+              {wcOutOfRange.length > 5 && <span>and {wcOutOfRange.length - 5} more…</span>}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="toolbar">
         <input
           className="search"
@@ -69,7 +94,8 @@ export default function BlogAudit({ results, loading, onRun }) {
                 {filtered.map(b => {
                   const imgOk = b.featuredImage && !b.issues.some(i => i.toLowerCase().includes('image'))
                   const wc = b.wordCount
-                  const wcColor = wc < 300 ? 'var(--red)' : wc < 600 ? 'var(--yellow)' : 'var(--green)'
+                  const wcOk = wc >= 1500 && wc <= 1600
+                  const wcColor = wcOk ? 'var(--green)' : wc < 1500 ? '#f59e0b' : '#f59e0b'
 
                   return (
                     <tr key={b.slug} className="clickable" onClick={() => setSelected(b.slug)}>
@@ -89,7 +115,14 @@ export default function BlogAudit({ results, loading, onRun }) {
                           ? <Badge type="error">Broken</Badge>
                           : <Badge type="ok">✓</Badge>}
                       </td>
-                      <td><span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: wcColor }}>{wc}</span></td>
+                      <td>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: wcColor }}>{wc}</span>
+                        {!wcOk && (
+                          <div style={{ fontSize: 9, color: '#f59e0b', marginTop: 1 }}>
+                            {wc < 1500 ? `↓ ${1500 - wc} short` : `↑ ${wc - 1600} over`}
+                          </div>
+                        )}
+                      </td>
                       <td><span style={{ fontSize: 11, color: b.author ? 'var(--muted)' : 'var(--yellow)' }}>{b.author || '—'}</span></td>
                       <td><HealthBadge issues={b.issues.length} warnings={b.warnings.length} /></td>
                       <td>
@@ -117,7 +150,11 @@ export default function BlogAudit({ results, loading, onRun }) {
               <DetailRow label="Category" value={selectedPost.category || '⚠ Missing'} color={!selectedPost.category ? 'var(--yellow)' : 'var(--cyan)'} />
               <DetailRow label="Author" value={selectedPost.author || '⚠ Missing'} color={!selectedPost.author ? 'var(--yellow)' : undefined} />
               <DetailRow label="Publish date" value={selectedPost.publishDate || '⚠ Missing'} color={!selectedPost.publishDate ? 'var(--yellow)' : undefined} />
-              <DetailRow label="Word count" value={`${selectedPost.wordCount} words`} color={selectedPost.wordCount < 300 ? 'var(--red)' : selectedPost.wordCount < 600 ? 'var(--yellow)' : 'var(--green)'} />
+              <DetailRow
+                label="Word count"
+                value={`${selectedPost.wordCount} words${selectedPost.wordCount < 1500 ? ` — ⚠ ${1500 - selectedPost.wordCount} below target (1500–1600)` : selectedPost.wordCount > 1600 ? ` — ⚠ ${selectedPost.wordCount - 1600} over target (1500–1600)` : ' — ✓ within target'}`}
+                color={selectedPost.wordCount >= 1500 && selectedPost.wordCount <= 1600 ? 'var(--green)' : '#f59e0b'}
+              />
             </DetailSection>
             <DetailSection title="Assets">
               <DetailRow

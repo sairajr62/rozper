@@ -12,7 +12,7 @@ import { SITE_URL } from "@/lib/site"
 export const metadata: Metadata = {
   title: "Blog · Field notes from the global voice layer | Rozper",
   description:
-    "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries. AI agents, contact center, wholesale voice, and more.",
+    "Research, deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries. AI agents, contact center, wholesale voice & more.",
   keywords:
     "Rozper blog, voice AI research, contact center playbook, wholesale voice, SIP trunking, UCaaS engineering",
   alternates: { canonical: `${SITE_URL}/blog` },

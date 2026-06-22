@@ -18,8 +18,24 @@ import { SITE_URL } from "@/lib/site"
 export const metadata = {
   title: "Rozper · UCaaS, Contact Center & AI for Global Teams | rozper.com",
   description:
-    "Voice, video, SMS, AI, and contact center on one carrier-grade platform. 150+ countries. 99.99% uptime. $9.99/user. Start a no-pressure conversation at rozper.com.",
+    "Voice, video, SMS, AI, and contact center on one carrier-grade platform. 150+ countries. 99.99% uptime. Starting at $9.99/user.",
   alternates: { canonical: `${SITE_URL}` },
+  openGraph: {
+    title: "Rozper · UCaaS, Contact Center & AI for Global Teams",
+    description:
+      "Voice, video, SMS, AI, and contact center on one carrier-grade platform. 150+ countries. 99.99% uptime. Starting at $9.99/user.",
+    url: `${SITE_URL}`,
+    siteName: "Rozper",
+    images: [
+      {
+        url: `${SITE_URL}/images/blog/Main_2672x941.webp`,
+        width: 2672,
+        height: 941,
+        alt: "Rozper – Unified Communications Platform",
+      },
+    ],
+    type: "website",
+  },
 }
 
 const organizationSchema = {

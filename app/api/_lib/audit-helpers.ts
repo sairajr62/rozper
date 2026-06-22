@@ -14,7 +14,6 @@ export const STATIC_PAGES = [
   '/compare',
   '/contact',
   '/country-code',
-  '/demo',
   '/docs',
   '/docs/api',
   '/features/ai-agent-assist',
@@ -363,7 +362,7 @@ export async function checkAnalytics(route: string) {
 }
 
 export function auditBlogLinks() {
-  const INTERNAL_PATTERN = /^(\/|https?:\/\/(www\.)?rozper\.com)/i
+  const INTERNAL_PATTERN = /^(\/|https?:\/\/(www\.)?rozper\.com|https?:\/\/rozper\.vercel\.app)/i
   const IMAGE_PATTERN = /\.(png|jpg|jpeg|webp|gif|svg|ico)(\?.*)?$/i
   const LINK_RE = /(?<!!)\[([^\]]*)\]\(([^)]+)\)/g
   let files: string[]

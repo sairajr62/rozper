@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { ProdUCaaSAIAssistantPageView } from '@/components/products/ai-features/ai-assistant'
+import { ProdUCaaSAIAssistantPageView } from '@/components/products/unified-communications/ai-assistant'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
