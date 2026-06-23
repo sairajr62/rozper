@@ -1,4 +1,4 @@
----
+﻿---
 title: "602 Area Code: Phoenix, AZ — Cities, Time Zone, Scams & Business Guide"
 slug: "602-area-code"
 excerpt: "The 602 area code serves Phoenix and central Arizona's fastest-growing metro. Discover cities, MST time zone, scam alerts, and how to get a 602 business number."
@@ -13,12 +13,12 @@ keywords:
   - Phoenix business phone number
   - Arizona area code
   - Mountain Standard Time phone
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Phoenix
   - Arizona
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

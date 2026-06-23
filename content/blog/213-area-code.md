@@ -1,4 +1,4 @@
----
+﻿---
 title: "213 Area Code: Downtown LA, 323 Overlay & Business Guide"
 slug: "213-area-code"
 excerpt: "The 213 area code covers Downtown LA, Koreatown & Hollywood. Discover its 323/738 overlays, Pacific time zone, scam alerts & how to get a local business number."
@@ -12,11 +12,11 @@ keywords:
   - area code 213
   - Downtown LA phone number
   - 323 overlay
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Los Angeles
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

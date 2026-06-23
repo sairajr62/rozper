@@ -1,4 +1,4 @@
----
+﻿---
 title: "205 Area Code: Birmingham, AL — Cities, History, Scams & Business Guide"
 slug: "205-area-code"
 excerpt: "The 205 area code serves Birmingham and central-western Alabama. Discover cities, the 659 overlay, dialing rules, 2026 scam alerts, and how to get a 205 business number."
@@ -13,12 +13,12 @@ keywords:
   - 205 number for business
   - Birmingham virtual phone number
   - Alabama business phone
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Birmingham
   - Alabama
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Philadelphia's 215 Area Code: Your Local Number Guide"
 slug: "215-area-code"
 excerpt: "Explore Philadelphia's 215 area code: its cities, rich history & business advantages. Get a local virtual number via Rozper and connect with the Philly market."
@@ -16,7 +16,7 @@ tags:
   - area codes
   - Philadelphia
   - Pennsylvania
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

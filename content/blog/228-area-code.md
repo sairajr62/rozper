@@ -1,4 +1,4 @@
----
+﻿---
 title: "228 Area Code: Gulfport, Biloxi & Gulf Coast Business Guide"
 slug: "228-area-code"
 excerpt: "The 228 area code serves Mississippi's Gulf Coast: Gulfport, Biloxi & Pascagoula. Discover history, Central time zone, scam alerts & how to get a local number."
@@ -12,11 +12,11 @@ keywords:
   - area code 228
   - Gulfport phone number
   - Gulf Coast area code
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Mississippi
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

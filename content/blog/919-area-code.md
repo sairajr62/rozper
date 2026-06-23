@@ -1,4 +1,4 @@
----
+﻿---
 title: "919 Area Code: Complete Business Guide for Raleigh & RTP"
 slug: "919-area-code"
 excerpt: "The 919 area code is your direct gateway to North Carolina's Research Triangle — 300+ companies, 76,570 tech workers, and a market that rewards local presence."
@@ -18,7 +18,7 @@ tags:
   - Raleigh
   - Durham
   - North Carolina
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

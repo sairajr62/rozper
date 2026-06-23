@@ -1,4 +1,4 @@
----
+﻿---
 title: "903 Area Code: Complete Guide to Northeast Texas Numbers"
 slug: "903-area-code"
 excerpt: "Explore the 903 area code in Northeast Texas: cities served, key industries, local business benefits, scam protection tips, and how to get your own 903 number."
@@ -11,11 +11,11 @@ keywords:
   - 903 number for business
   - Tyler Texas phone number
   - Longview Texas area code
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Texas
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

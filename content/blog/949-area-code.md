@@ -1,4 +1,4 @@
----
+﻿---
 title: "949 Area Code: The Complete Business Guide for Southern Orange County"
 slug: "949-area-code"
 excerpt: "A 949 area code builds instant local trust across Irvine, Newport Beach, and Mission Viejo — boosting call answer rates and giving your business a credible southern Orange County presence."
@@ -19,7 +19,7 @@ tags:
   - Newport Beach
   - Orange County
   - California
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

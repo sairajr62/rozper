@@ -1,9 +1,9 @@
----
+﻿---
 title: "334 Area Code Guide: Local Numbers for Alabama"
 slug: "334-area-code"
-excerpt: "Get a 334 area code number for your Alabama business. Rozper virtual numbers serve Montgomery, Auburn & Dothan with call forwarding, CRM sync & 24/7 support."
+excerpt: "Get a 334 area code number for your Alabama business. Rozper Area Codes serve Montgomery, Auburn & Dothan with call forwarding, CRM sync & 24/7 support."
 seoTitle: "334 Area Code Guide: Local Numbers for Alabama | Rozper"
-seoDescription: "Get a 334 area code number for your Alabama business. Rozper virtual numbers serve Montgomery, Auburn & Dothan with call forwarding, CRM sync & 24/7 support."
+seoDescription: "Get a 334 area code number for your Alabama business. Rozper Area Codes serve Montgomery, Auburn & Dothan with call forwarding, CRM sync & 24/7 support."
 keywords:
   - 334 area code
   - 334 area code number
@@ -15,7 +15,7 @@ category: "Area Codes"
 tags:
   - area codes
   - Alabama
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

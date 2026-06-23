@@ -1,4 +1,4 @@
----
+﻿---
 title: "562 Area Code: Long Beach, CA — Cities, Location & Business Guide"
 slug: "562-area-code"
 excerpt: "The 562 area code serves Long Beach and southeast LA County, CA. Discover cities, dialing rules, scam call tips, and how to get a 562 business phone number."
@@ -12,12 +12,12 @@ keywords:
   - Long Beach business phone number
   - southeast LA County phone number
   - California area codes
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Long Beach
   - California
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

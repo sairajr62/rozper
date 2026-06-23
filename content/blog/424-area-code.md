@@ -1,4 +1,4 @@
----
+﻿---
 title: "424 Area Code: Beverly Hills, Malibu & LA Westside Guide"
 slug: "424-area-code"
 excerpt: "The 424 area code overlays 310 across Beverly Hills, Santa Monica & South Bay LA. Discover time zone, scam alerts, history & how to get a local business number."
@@ -13,12 +13,12 @@ keywords:
   - Beverly Hills area code
   - Santa Monica area code
   - Silicon Beach phone number
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Los Angeles
   - California
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

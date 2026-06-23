@@ -1,4 +1,4 @@
----
+﻿---
 title: "203 Area Code: Southwestern Connecticut — Cities, History, Scams & Business Guide"
 slug: "203-area-code"
 excerpt: "The 203 area code serves southwestern Connecticut including Stamford, New Haven, and Bridgeport. Learn cities, time zone, scam alerts, and how to get a 203 business number."
@@ -13,11 +13,11 @@ keywords:
   - Connecticut virtual phone number
   - Stamford business phone
   - New Haven phone number
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Connecticut
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

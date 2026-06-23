@@ -1,4 +1,4 @@
----
+﻿---
 title: "501 Area Code: Arkansas Local Phone Numbers for Business"
 slug: "501-area-code"
 excerpt: "The 501 area code serves central Arkansas — Little Rock, Conway, Hot Springs. Get a local number to boost trust, answer rates, and brand reach with Rozper."
@@ -16,7 +16,7 @@ tags:
   - area codes
   - Arkansas
   - Little Rock
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

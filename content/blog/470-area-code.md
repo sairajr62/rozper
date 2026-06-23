@@ -1,4 +1,4 @@
----
+﻿---
 title: "470 Area Code: Atlanta, 404 Overlay & Georgia Business Guide"
 slug: "470-area-code"
 excerpt: "The 470 area code overlays metro Atlanta with 404, 678 & 943. Discover history, Eastern time zone, scam alerts & how to get a local Atlanta business number."
@@ -12,12 +12,12 @@ keywords:
   - area code 470
   - metro Atlanta phone number
   - Georgia area code
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Atlanta
   - Georgia
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

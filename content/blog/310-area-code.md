@@ -1,4 +1,4 @@
----
+﻿---
 title: "310 Area Code: History, Cities & LA Business Phone Guide"
 slug: "310-area-code"
 excerpt: "The 310 area code covers LA's Westside & South Bay. Explore Beverly Hills, Malibu, time zone, 424 overlay, scam alerts & how to get a local business number."
@@ -13,12 +13,12 @@ keywords:
   - Beverly Hills area code
   - Santa Monica area code
   - Silicon Beach phone number
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Los Angeles
   - California
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

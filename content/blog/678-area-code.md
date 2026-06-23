@@ -1,4 +1,4 @@
----
+﻿---
 title: "678 Area Code: The Complete Business Guide for Atlanta & Metro Georgia"
 slug: "678-area-code"
 excerpt: "A 678 area code embeds your business inside Atlanta's Fortune 1000 market, raises call answer rates, and delivers VoIP tools built to scale across Georgia."
@@ -16,7 +16,7 @@ tags:
   - area codes
   - Atlanta
   - Georgia
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

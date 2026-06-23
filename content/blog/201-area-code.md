@@ -1,4 +1,4 @@
----
+﻿---
 title: "201 Area Code: Jersey City, 551 Overlay & NJ Business Guide"
 slug: "201-area-code"
 excerpt: "The 201 area code covers Jersey City, Hoboken & Bergen County, NJ. Explore its 551 overlay, time zone, scam call alerts & how to get a local business number."
@@ -13,11 +13,11 @@ keywords:
   - Jersey City phone number
   - Bergen County area code
   - 551 overlay
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - New Jersey
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

@@ -1,4 +1,4 @@
----
+﻿---
 title: "917 Area Code: Complete Business Guide to New York City"
 slug: "917-area-code"
 excerpt: "The 917 area code covers all five NYC boroughs — world's #2 tech hub, 203,000+ tech jobs. Get a local number and tap into New York City's $2 trillion economy."
@@ -18,7 +18,7 @@ tags:
   - New York City
   - Manhattan
   - Brooklyn
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

@@ -1,4 +1,4 @@
----
+﻿---
 title: "240 Area Code: Maryland's Location, Cities, and How to Get a Number"
 slug: "240-area-code"
 excerpt: "The 240 area code covers western and central Maryland, from Frederick to Bethesda. Learn its location, cities, time zone, and how to get your own 240 number."
@@ -14,7 +14,7 @@ category: "Area Codes"
 tags:
   - area codes
   - Maryland
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

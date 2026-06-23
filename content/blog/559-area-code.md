@@ -1,4 +1,4 @@
----
+﻿---
 title: "559 Area Code: Fresno, Visalia & Central CA Business Guide"
 slug: "559-area-code"
 excerpt: "The 559 area code serves Fresno, Visalia & Central California. Discover the 357 overlay, Pacific time zone, scam alerts & how to get a local business number."
@@ -12,12 +12,12 @@ keywords:
   - area code 559
   - Fresno phone number
   - Central Valley area code
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - California
   - Fresno
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

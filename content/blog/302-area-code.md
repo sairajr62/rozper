@@ -1,4 +1,4 @@
----
+﻿---
 title: "302 Area Code: A Complete Guide to Delaware's Statewide Number"
 slug: "302-area-code"
 excerpt: "Delaware's 302 area code covers the entire state — Wilmington to Rehoboth Beach. See its cities, counties, time zone, and how to get your own 302 phone number."
@@ -14,7 +14,7 @@ category: "Area Codes"
 tags:
   - area codes
   - Delaware
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

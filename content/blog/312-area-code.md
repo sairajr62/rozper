@@ -1,4 +1,4 @@
----
+﻿---
 title: "312 Area Code: Location, History & Chicago Business Guide"
 slug: "312-area-code"
 excerpt: "Chicago's iconic 312 area code covers The Loop & inner city. Discover its history, 872 overlay, time zone, scam alerts & how to get a local business number."
@@ -13,12 +13,12 @@ keywords:
   - Downtown Chicago phone number
   - The Loop area code
   - 872 overlay
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - Chicago
   - Illinois
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

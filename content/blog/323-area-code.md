@@ -1,9 +1,9 @@
----
+﻿---
 title: "323 Area Code Guide: Local Los Angeles Numbers"
 slug: "323-area-code"
-excerpt: "Get a 323 area code number for your Los Angeles business. Rozper virtual numbers serve Hollywood, East LA & South Gate with call forwarding & 24/7 support."
+excerpt: "Get a 323 area code number for your Los Angeles business. Rozper Area Codes serve Hollywood, East LA & South Gate with call forwarding & 24/7 support."
 seoTitle: "323 Area Code Guide: Local Los Angeles Numbers | Rozper"
-seoDescription: "Get a 323 area code number for your Los Angeles business. Rozper virtual numbers serve Hollywood, East LA & South Gate with call forwarding & 24/7 support."
+seoDescription: "Get a 323 area code number for your Los Angeles business. Rozper Area Codes serve Hollywood, East LA & South Gate with call forwarding & 24/7 support."
 keywords:
   - 323 area code
   - 323 area code number
@@ -15,7 +15,7 @@ category: "Area Codes"
 tags:
   - area codes
   - Los Angeles
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

@@ -1,4 +1,4 @@
----
+﻿---
 title: "415 Area Code: San Francisco, 628 Overlay & Business Guide"
 slug: "415-area-code"
 excerpt: "The 415 area code covers San Francisco and Marin County. Learn about the 628 overlay, time zone, scam alerts, history & how to get a local SF business number."
@@ -13,12 +13,12 @@ keywords:
   - SF business phone number
   - 628 overlay
   - Bay Area phone number
-category: "Virtual Numbers"
+category: "Area Codes"
 tags:
   - area codes
   - San Francisco
   - California
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"

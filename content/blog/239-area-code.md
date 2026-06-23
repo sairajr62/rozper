@@ -1,4 +1,4 @@
----
+﻿---
 title: "239 Area Code: The Complete Guide to Southwest Florida's Local Number"
 slug: "239-area-code"
 excerpt: "The 239 area code covers Fort Myers, Naples, and Cape Coral in Southwest Florida. Learn its history, cities, time zone, and how to get a local 239 virtual number for your business."
@@ -14,7 +14,7 @@ category: "Area Codes"
 tags:
   - area codes
   - Florida
-  - virtual numbers
+  - Area Codes
   - local presence
   - business phone
 author: "Shahid Kathawala"
