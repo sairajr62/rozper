@@ -55,6 +55,8 @@ Wholesale voice termination refers to the delivery of outbound voice calls from 
 
 ## How Wholesale Voice Termination Works
 
+![How Wholesale Voice Termination Works](/images/blog/How Wholesale Voice Termination Works.webp)
+
 ### The Termination Path
 
 When an outbound call is initiated, the originating system sends it to the wholesale termination provider's switching infrastructure. The provider's system analyzes the destination number, determines the optimal routing path based on configured criteria (cost, quality, or both), and forwards the call to the appropriate downstream carrier. Each hop in the routing path adds latency and introduces potential quality variation — which is why routing depth matters for both quality and cost.
@@ -68,6 +70,8 @@ LCR is powerful but requires active management. A routing table that hasn't been
 ---
 
 ## Call Quality Metrics
+
+![Call Quality Metrics](/images/blog/Benefits of Wholesale Voice Termination.webp)
 
 ### ASR — Answer-Seizure Ratio
 
@@ -89,6 +93,8 @@ PDD measures the time between when a call is sent to the termination provider an
 
 ## Wholesale Voice Termination Pricing Models
 
+![Wholesale Voice Termination Pricing Models](/images/blog/Wholesale Voice Termination Pricing Models.webp)
+
 **Per-Minute Pricing:** Pay a per-minute rate for each destination. Rates vary — domestic routes are cheapest, remote or regulated destinations priced highest. Best for variable traffic patterns.
 
 **Volume Commitment Pricing:** Commit to a monthly minimum minute volume in exchange for reduced per-minute rates. Meaningful discounts typically start at 500,000+ minutes per month. Consistently delivers the lowest achievable costs at high volume.
@@ -98,6 +104,8 @@ PDD measures the time between when a call is sent to the termination provider an
 ---
 
 ## Choosing the Right Wholesale Voice Termination Provider
+
+![Choosing the Right Wholesale Voice Termination Provider](/images/blog/Choosing the Right Wholesale Voice Termination Provider.webp)
 
 Start with route quality testing — request test access and run real calls to your top destination markets, measuring ASR, NER, and PDD independently. Don't rely on provider-supplied quality data for routes you actually use.
 
