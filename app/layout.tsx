@@ -41,26 +41,6 @@ export default function RootLayout({
         <BfcacheFix />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.floatchatSettings = {"position":"right","type":"standard","launcherTitle":""};
-              (function(d,t) {
-                var BASE_URL="https://app.floatchat.com";
-                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                g.src=BASE_URL+"/packs/js/sdk.js";
-                g.async = true;
-                s.parentNode.insertBefore(g,s);
-                g.onload=function(){
-                  window.floatchatSDK.run({
-                    websiteToken: 'Y5dhjsU4KbGVne8XFCxbtGxK',
-                    baseUrl: BASE_URL
-                  })
-                }
-              })(document,"script");
-            `,
-          }}
-        />
       </body>
     </html>
   )
