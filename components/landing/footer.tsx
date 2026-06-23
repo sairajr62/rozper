@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowUpRight, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { ArrowUpRight, Linkedin, Twitter, Facebook, Phone, Mail, MapPin } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 const footerColumns = [
@@ -123,6 +123,32 @@ export function Footer() {
               Carrier-grade unified communications, cloud contact center, and
               wholesale VoIP — one platform built to scale.
             </p>
+
+            {/* Contact details */}
+            <ul className="mt-6 space-y-2.5">
+              <li>
+                <a
+                  href="tel:+19296597334"
+                  className="group inline-flex items-center gap-2.5 text-sm text-[#9AA8BC] hover:text-white transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 shrink-0 text-[#046BD2]" />
+                  +1 929-659-7334
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@rozper.com"
+                  className="group inline-flex items-center gap-2.5 text-sm text-[#9AA8BC] hover:text-white transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 shrink-0 text-[#046BD2]" />
+                  info@rozper.com
+                </a>
+              </li>
+              <li className="inline-flex items-start gap-2.5 text-sm text-[#9AA8BC]">
+                <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5 text-[#046BD2]" />
+                <span>46 Shopping Plaza, Unit #5092<br />Chagrin Falls, OH 44022</span>
+              </li>
+            </ul>
 
             {/* Social */}
             {/*
