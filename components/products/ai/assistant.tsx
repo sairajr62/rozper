@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -120,7 +120,7 @@ export function ProdAIAssistantPageView() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">AI · Virtual Assistant</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Per-seat AI for<br />
               <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">every agent</span>.
             </motion.h1>
@@ -181,7 +181,7 @@ export function ProdAIAssistantPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
+          <div className="relative rounded-[2.5rem] overflow-hidden p-6 sm:p-6 sm:p-12 md:p-20 text-center bg-gradient-to-br from-[#046BD2] via-[#0078E0] to-[#0086F9]">
             <Sparkles className="w-12 h-12 mx-auto mb-6 text-white" />
             <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">Your team. Powered by AI.</h2>
             <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-2 sm:gap-3">
