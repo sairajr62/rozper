@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-05-30"
 readingTime: "13 min"
-featuredImage: "/images/blog/wholesale voice service.webp"
+featuredImage: "/images/blog/wholesale-voice-service-main.webp"
 ---
 
 # Wholesale Voice Services: Benefits, Features & Use Cases
