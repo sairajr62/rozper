@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-05-20"
 readingTime: "7 min"
-featuredImage: "/images/blog/936 area code.webp"
+featuredImage: "/images/blog/936-hero.webp"
 featuredImageFit: "cover"
 ---
 
