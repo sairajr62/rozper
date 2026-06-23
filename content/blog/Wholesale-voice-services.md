@@ -44,7 +44,7 @@ Organizations that treat wholesale voice services as a strategic asset consisten
 
 ## What Are Wholesale Voice Services?
 
-![What Are Wholesale Voice Services](/images/blog/understand-wholesale-services.webp)
+![What Are Wholesale Voice Services](/images/blog/understanding-wholesale-voice.webp)
 
 Wholesale voice services refer to the bulk provisioning and delivery of voice communication capabilities — purchased by businesses, carriers, and resellers, then deployed or resold at scale. Unlike retail voice designed for individual consumers, wholesale voice operates on the economics of volume: higher quantities at lower per-unit costs, with far greater configurability and control.
 
