@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-05-29"
 readingTime: "13 min"
-featuredImage: "/images/blog/wholesale-voice-termination-main.webp"
+featuredImage: "/images/blog/wholesale voice termination hero.webp"
 ---
 
 # Wholesale Voice Termination: The Complete Business Guide
