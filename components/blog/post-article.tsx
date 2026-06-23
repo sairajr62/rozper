@@ -15,7 +15,7 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
   const category = post.categories[0]
 
   return (
-    <header className="relative overflow-hidden pt-28 pb-10 lg:pt-36 lg:pb-14">
+    <header className="relative overflow-hidden pt-24 pb-8 sm:pt-28 sm:pb-10 lg:pt-36 lg:pb-14">
       {/* Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-[#070B14]" />
@@ -158,13 +158,13 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
 
       {/* Featured image — full width below author row */}
       {post.featuredImage && (
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        <div className="relative max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 mt-7 sm:mt-10">
           <div className="relative">
             {/* Yellow accent block behind image */}
-            <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-[88%] h-[88%] rounded-2xl sm:rounded-3xl bg-[#FCD34D]/50 -z-10" />
-            <div className="relative rounded-2xl sm:rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/[0.02] shadow-[0_20px_80px_-30px_rgba(4,107,210,0.6)] sm:shadow-[0_40px_140px_-50px_rgba(4,107,210,0.7)]">
-              <div className="rounded-2xl sm:rounded-3xl overflow-hidden bg-[#0A1020]">
-                <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[2114/941]">
+            <div className="absolute -bottom-1.5 -right-1.5 sm:-bottom-4 sm:-right-4 w-[88%] h-[88%] rounded-xl sm:rounded-3xl bg-[#FCD34D]/50 -z-10" />
+            <div className="relative rounded-xl sm:rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/[0.02] shadow-[0_20px_80px_-30px_rgba(4,107,210,0.6)] sm:shadow-[0_40px_140px_-50px_rgba(4,107,210,0.7)]">
+              <div className="rounded-xl sm:rounded-3xl overflow-hidden bg-[#0A1020]">
+                <div className="relative aspect-[16/9] lg:aspect-[2114/941]">
                   <BlogImage
                     src={post.featuredImage.src}
                     alt={post.featuredImage.alt}

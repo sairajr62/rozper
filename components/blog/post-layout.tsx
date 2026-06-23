@@ -633,7 +633,7 @@ export function PostLayout({
   }, [processedHtml])
 
   return (
-    <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative pb-12 sm:pb-16 lg:pb-20">
+    <section ref={sectionRef as React.RefObject<HTMLElement>} className="relative pb-12 sm:pb-16 lg:pb-20 overflow-x-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       {/* Fixed TOC — visible on lg+ screens, stays in viewport for the
