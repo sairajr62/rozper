@@ -24,7 +24,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-06-24"
 readingTime: "7 min"
-featuredImage: "/images/blog/380-area-code.webp"
+featuredImage: "/images/blog/380-hero.webp"
 ---
 
 # 380 Area Code: Complete Guide to Columbus, Ohio's Local Number
@@ -63,6 +63,8 @@ Major cities and communities served include:
 
 The Columbus metro area is home to over 2 million residents, making it one of the most economically active markets in the Midwest. Major employers based in the region include JPMorgan Chase, Nationwide Insurance, Amazon, Cardinal Health, and Honda — businesses that drive consistent demand for local communication lines and reliable voice services.
 
+![Cities the 380 Area Code Covers](/images/blog/Cities the 380 Area Code Covers.webp)
+
 ---
 
 ## How the 380 Area Code Came to Be
@@ -72,6 +74,8 @@ Central Ohio's rapid population and business growth in the early 2000s placed mo
 In 2001, the Public Utilities Commission of Ohio (PUCO) approved **area code 380** as an overlay solution to address the shortage. The code was officially activated on February 27, 2016, adding a fresh pool of number combinations for the region without displacing existing customers.
 
 Residents and businesses were not reassigned new numbers — instead, the **380 area code** became available for all new activations alongside the existing 614 numbers. The 10-digit dialing requirement that accompanied the change applies uniformly across both codes.
+
+![How the 380 Area Code Came to Be](/images/blog/how-the-380-area-code-came-to-be.webp)
 
 ---
 
@@ -95,6 +99,8 @@ The same advantage applies across other major markets. Companies building local 
 
 Providers like Rozper offer **area code 380** numbers with 99.999% uptime and reach across 150+ countries — allowing businesses to establish a Columbus presence as part of a broader, scalable communication infrastructure without the overhead of legacy telecom contracts.
 
+![Why Businesses Choose a 380 Area Code Number](/images/blog/why-businesses-choose-a-380-area-code-number.webp)
+
 ---
 
 ## How to Get a Local Columbus Phone Number
@@ -107,6 +113,8 @@ Here is the typical process:
 2. **Pick your number** — Providers offer a range of available numbers, including vanity options for businesses that want something memorable.
 3. **Configure call routing** — Direct the number to existing mobile phones, a desktop softphone app, or a full cloud PBX system.
 4. **Activate and test** — Numbers are typically live within minutes, not business days.
+
+![How to Get a Local Columbus Phone Number](/images/blog/how-to-get-a-local-columbus-phone-number.webp)
 
 For a thorough look at the regulatory and technical background of this numbering plan, the [Wikipedia article on area codes 614 and 380](https://en.wikipedia.org/wiki/Area_codes_614_and_380) provides a detailed overview of the PUCO decision and the 2016 activation timeline.
 
