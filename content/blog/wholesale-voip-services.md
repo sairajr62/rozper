@@ -26,7 +26,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-03-26"
 readingTime: "13 min"
-featuredImage: "/images/blog/wholesale-voip-services-main.webp"
+featuredImage: "/images/blog/wholesale-voip-hero.webp"
 ---
 
 # Wholesale VoIP Services: The Complete 2026 Business Guide

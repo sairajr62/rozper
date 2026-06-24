@@ -26,7 +26,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-07-19"
 readingTime: "13 min"
-featuredImage: "/images/blog/voip-termination.webp"
+featuredImage: "/images/blog/Wholesale VoIP Termination hero.webp"
 ---
 
 # Wholesale VoIP Termination: How It Works & Why It Matters
