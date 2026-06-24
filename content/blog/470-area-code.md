@@ -36,7 +36,7 @@ If you're operating in metro Atlanta with a toll-free or out-of-state number, yo
 
 The **470 area code** is one of five overlapping codes serving metropolitan Atlanta, Georgia. Approved in **2001**, assignments began around **2010** as 678 still held sufficient capacity. Today, the 470 area code coexists with 404, 770, 678, and 943 in a unified local calling area with no long-distance charges between numbers.
 
-![Metro Atlanta Multi-Code Overlay System Overview](/images/blog/470-image-1.webp)
+![How the Metro Atlanta Multi-Code Overlay System Works](/images/blog/470-image-1.webp)
 
 **Quick Facts:**
 
@@ -55,7 +55,7 @@ The **470 area code** is one of five overlapping codes serving metropolitan Atla
 
 ## Where Does the 470 Code Cover?
 
-![Metro Atlanta Geographic Coverage in Georgia](/images/blog/470-image-3.webp)
+![Geographic Reach of the 470 Area Code Across Metro Atlanta Georgia](/images/blog/470-image-3.webp)
 
 Because 470 is an overlay code, it covers the same geographic territory as 404 and 770 — the full metropolitan Atlanta footprint, including the urban core and surrounding suburban counties. Businesses expanding across the Southeast often compare Atlanta's overlay system to neighboring codes such as [the 228 area code](/blog/228-area-code), which serves coastal Mississippi, to align multi-state local presence strategies.
 
@@ -79,7 +79,7 @@ The 470 overlay covers Downtown, Midtown, and Buckhead — hosting CNN, Mercedes
 
 ## History of the 470 Area Code
 
-![Metro Atlanta Area Code History and Overlay Timeline](/images/blog/470-image-2.webp)
+![Timeline of Metro Atlanta Area Code History and Overlay Changes](/images/blog/470-image-2.webp)
 
 The history of area code 470 is inseparable from Atlanta's explosive growth.
 
@@ -150,7 +150,7 @@ All five codes — 404, 770, 678, 470, and 943 — cover identical territory, so
 
 ## How to Get a Local 470 Business Number
 
-![How the Atlanta Multi-Code Overlay System Works](/images/blog/470-image-4.webp)
+![Understanding Atlanta Multi-Code Overlay Routing and Dialing Rules](/images/blog/470-image-4.webp)
 
 **1. Choose a VoIP provider with live 470 inventory** — confirm availability before starting setup.
 

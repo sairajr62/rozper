@@ -1,4 +1,4 @@
----
+﻿---
 title: "Wholesale VoIP Termination: How It Works & Why It Matters"
 slug: "wholesale-voip-termination"
 excerpt: "Dropped calls and rising voice costs often trace back to one thing: termination. Learn how wholesale VoIP termination works and how to choose quality routes."
@@ -57,7 +57,7 @@ Every other part of your voice stack — PBX, softphones, dialers, CRM integrati
 
 Before optimizing for cost or quality, it's worth understanding exactly what happens — technically and commercially — when a call terminates on someone else's network.
 
-![Understanding Wholesale VoIP Termination](/images/blog/voip-termination-understanding.webp)
+![How Wholesale VoIP Termination Works and Why It Matters](/images/blog/voip-termination-understanding.webp)
 
 ### How a Call Gets Terminated
 
