@@ -20,7 +20,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2025-06-09"
 readingTime: "8 min"
-featuredImage: "/images/blog/302 hero section.webp"
+featuredImage: "/images/blog/302-hero-section.webp"
 featuredImageFit: "cover"
 ---
 
