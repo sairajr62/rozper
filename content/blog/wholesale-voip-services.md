@@ -49,7 +49,7 @@ This guide walks through what wholesale VoIP services are, how they work behind 
 
 Before evaluating providers or pricing, it helps to understand exactly what wholesale VoIP services are and how they fit into the broader telecom ecosystem.
 
-![What Wholesale VoIP Services Are and How They Operate](/images/blog/understand-wholesale-services.webp)
+![What Wholesale VoIP Services Are and How They Operate](/images/blog/understand-wholesale-voip services.webp)
 
 ### What Are Wholesale VoIP Services?
 
@@ -93,7 +93,7 @@ Mature wholesale networks are built with multiple redundant routes to every dest
 
 Not all wholesale VoIP platforms are built the same — the right feature set determines whether a provider can actually support your traffic, scale, and compliance requirements.
 
-![Essential Features to Evaluate in Wholesale VoIP Services](/images/blog/key-features-wholesale-voip.webp)
+![Essential Features to Evaluate in Wholesale VoIP Services](/images/blog/key-features-wholesale-voip services.webp)
 
 ### Intelligent Call Routing
 
@@ -119,7 +119,7 @@ Toll fraud costs the telecom industry billions annually. Look for velocity limit
 
 The right wholesale VoIP partner is a long-term infrastructure decision — use these five criteria to evaluate every provider before you commit.
 
-![Criteria for Selecting the Right Wholesale VoIP Provider](/images/blog/how-to-choose-wholesale-voip-provider.webp)
+![Criteria for Selecting the Right Wholesale VoIP Provider](/images/blog/wholesale voip services provide.webp)
 
 ### Evaluate the Network First
 
@@ -145,7 +145,7 @@ Be cautious with providers showing rates dramatically below market (often grey r
 
 The wholesale voice landscape is shifting fast — here are the four forces defining competitive advantage in 2026.
 
-![Emerging Wholesale VoIP Trends to Watch in 2026](/images/blog/wholesale-voip-trends-2026.webp)
+![Emerging Wholesale VoIP Trends to Watch in 2026](/images/blog/Wholesale VoIP Trends Shaping 2026.webp)
 
 ### AI-Driven Routing and Analytics
 
