@@ -63,6 +63,7 @@ type Frontmatter = {
   modified?: string
   readingTime?: string
   featuredImage?: string
+  featuredImageAlt?: string
 }
 
 function unquote(s: string): string {
@@ -369,7 +370,7 @@ function fileToPost(filename: string): BlogPostDetail | null {
         initials: initialsFromName(authorName),
       },
       featuredImage: data.featuredImage
-        ? { src: resolveBlobUrl(data.featuredImage), alt: title }
+        ? { src: resolveBlobUrl(data.featuredImage), alt: data.featuredImageAlt ?? title }
         : undefined,
       featuredImageFit: data.featuredImageFit ?? "cover",
       featuredImagePosition: data.featuredImagePosition,
