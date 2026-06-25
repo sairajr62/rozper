@@ -248,7 +248,7 @@ export function WholesaleContactForm({ interest }: WholesaleContactFormProps) {
                   />
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex justify-center rounded-xl border border-[#046BD2]/30 bg-[#0F1A2E] p-3 w-fit mx-auto">
                   <ReCAPTCHA
                     ref={recaptchaRef}
                     sitekey="6Lf5zjMtAAAAAGAU-oWDPa9j_7PJ9RzWWU4HatED"
