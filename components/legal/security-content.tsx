@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import {
@@ -187,7 +187,7 @@ export function SecurityContent() {
               </p>
             </div>
             <a
-              href="/contact"
+              href="/contact/"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 text-sm text-white transition-colors"
             >
               <FileCheck2 className="w-4 h-4 text-[#22D3EE]" />
@@ -347,7 +347,7 @@ export function SecurityContent() {
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
                 <a
-                  href="/legal/privacy"
+                  href="/legal/privacy/"
                   className="inline-flex items-center gap-2 h-11 px-5 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 text-sm text-white/85 transition-colors"
                 >
                   Read privacy policy

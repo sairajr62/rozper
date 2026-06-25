@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useRef, useState } from "react"
 import dynamic from "next/dynamic"
@@ -213,14 +213,14 @@ export function FreeTrialPageView() {
 
                   <p className="mt-4 text-[11px] text-white/30 leading-relaxed">
                     By signing up you agree to our{" "}
-                    <Link href="/legal/privacy" className="underline hover:text-white/60 transition-colors">privacy policy</Link>
+                    <Link href="/legal/privacy/" className="underline hover:text-white/60 transition-colors">privacy policy</Link>
                     {" "}and{" "}
-                    <Link href="/legal/terms" className="underline hover:text-white/60 transition-colors">terms of service</Link>.
+                    <Link href="/legal/terms/" className="underline hover:text-white/60 transition-colors">terms of service</Link>.
                   </p>
 
                   <p className="mt-3 text-center text-sm text-white/40">
                     Already have an account?{" "}
-                    <Link href="/sign-in" className="font-semibold text-[#22D3EE] hover:text-white transition-colors">Sign in</Link>
+                    <Link href="/sign-in/" className="font-semibold text-[#22D3EE] hover:text-white transition-colors">Sign in</Link>
                   </p>
                 </div>
 

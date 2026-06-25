@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { ArrowDown, Sparkles } from "lucide-react"
@@ -81,7 +81,7 @@ export function AboutHero() {
             <ArrowDown className="w-4 h-4" />
           </a>
           <a
-            href="/contact"
+            href="/contact/"
             className="inline-flex items-center gap-2 h-11 px-5 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 text-sm text-white/85 transition-colors"
           >
             Talk to us

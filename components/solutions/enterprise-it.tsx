@@ -114,7 +114,7 @@ export function EnterpriseITPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-[#0086F9]/40">
             <Link href="/" className="hover:text-[#2D98F1]">~</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/solutions" className="hover:text-[#2D98F1]">solutions</Link>
+            <Link href="/solutions/" className="hover:text-[#2D98F1]">solutions</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">enterprise-it</span>
           </div>
@@ -136,10 +136,10 @@ export function EnterpriseITPageView() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#046BD2] text-[#0B1220] text-xs sm:text-sm whitespace-nowrap font-semibold rounded-md hover:bg-[#0086F9] transition">
+              <Link href="/contact/" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#046BD2] text-[#0B1220] text-xs sm:text-sm whitespace-nowrap font-semibold rounded-md hover:bg-[#0086F9] transition">
                 Schedule architecture review <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-sm whitespace-nowrap rounded-md hover:bg-[#046BD2]/10 transition font-medium">
+              <Link href="/pricing/" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-sm whitespace-nowrap rounded-md hover:bg-[#046BD2]/10 transition font-medium">
                 Enterprise pricing
               </Link>
             </motion.div>
@@ -334,10 +334,10 @@ export function EnterpriseITPageView() {
                 <p className="mt-6 text-white/60 max-w-md">Our enterprise team will scope, design, and migrate. Most enterprise deployments live within 30 days.</p>
               </div>
               <div className="flex flex-row flex-wrap gap-3 md:justify-end">
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-sm whitespace-nowrap font-semibold rounded-md shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
+                <Link href="/contact/" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-sm whitespace-nowrap font-semibold rounded-md shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
                   Schedule architecture review <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-sm whitespace-nowrap rounded-md transition font-medium">
+                <Link href="/pricing/" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-sm whitespace-nowrap rounded-md transition font-medium">
                   Enterprise pricing
                 </Link>
               </div>

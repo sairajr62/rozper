@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import {
@@ -60,7 +60,7 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
         >
           <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3" />
-          <Link href="/blog" className="hover:text-white/70 transition-colors">Blog</Link>
+          <Link href="/blog/" className="hover:text-white/70 transition-colors">Blog</Link>
           {category && (
             <>
               <ChevronRight className="w-3 h-3" />
@@ -193,7 +193,7 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
       {/* Back to blog */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <Link
-          href="/blog"
+          href="/blog/"
           className="group inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.18em] text-white/45 hover:text-white transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />

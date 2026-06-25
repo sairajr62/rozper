@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import Link from "next/link"
@@ -108,14 +108,14 @@ export function CompareCTA() {
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="group inline-flex items-center gap-2 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm sm:text-base font-semibold px-7 py-3.5 transition-colors shadow-[0_10px_40px_-10px_rgba(4,107,210,0.7)]"
                 >
                   Book a migration call
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
                 <Link
-                  href="/pricing"
+                  href="/pricing/"
                   className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/25 backdrop-blur-md text-white text-sm sm:text-base font-medium px-7 py-3.5 transition-colors"
                 >
                   See Rozper plans

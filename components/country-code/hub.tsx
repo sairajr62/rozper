@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo, useEffect, useRef } from "react"
 import Link from "next/link"
@@ -319,14 +319,14 @@ export function CountryHubHero({ total, query, setQuery }: HubHeroProps) {
               </p>
 
               <div className="flex flex-row flex-wrap gap-3">
-                <Link href="/contact"
+                <Link href="/contact/"
                   className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-5 py-3 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm whitespace-nowrap"
                 >
                   <Phone className="w-4 h-4 shrink-0" />
                   Start a Free Trial
                   <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
-                <Link href="/pricing"
+                <Link href="/pricing/"
                   className="inline-flex items-center justify-center gap-2 bg-white/[0.07] border border-white/20 hover:bg-white/[0.12] hover:border-white/30 text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm whitespace-nowrap"
                 >
                   See Pricing
@@ -1284,7 +1284,7 @@ export function CountryHubFAQ() {
             <p className="text-white/45 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
               Everything you need to know about international calling codes and virtual numbers.
             </p>
-            <Link href="/contact"
+            <Link href="/contact/"
               className="group inline-flex items-center gap-2 text-[#22D3EE] text-sm font-medium hover:text-white transition"
             >
               Have more questions?
@@ -1339,13 +1339,13 @@ export function CountryHubCTA() {
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/contact"
+                  <Link href="/contact/"
                     className="group flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-bold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm"
                   >
                     Start a Free Trial
                     <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
-                  <Link href="/pricing"
+                  <Link href="/pricing/"
                     className="inline-flex items-center justify-center bg-white/[0.08] border border-white/20 hover:bg-white/[0.14] hover:border-white/35 text-white font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all text-sm whitespace-nowrap"
                   >
                     See Pricing

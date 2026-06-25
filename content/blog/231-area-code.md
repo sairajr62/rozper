@@ -88,7 +88,7 @@ Research consistently demonstrates that consumers are significantly more likely 
 
 ### Projecting Professionalism and Stability with Rozper
 
-Whether your business operates from a Traverse City storefront or manages a fully distributed remote team, a 231 area code number from Rozper delivers the professional local presence that builds customer confidence. For a broader look at how Area Codes are reshaping regional market entry, our [205 area code guide](https://rozper.vercel.app/blog/205-area-code) walks through a comparable Midwest-adjacent market and the dynamics of building local presence remotely.
+Whether your business operates from a Traverse City storefront or manages a fully distributed remote team, a 231 area code number from Rozper delivers the professional local presence that builds customer confidence. For a broader look at how Area Codes are reshaping regional market entry, our [205 area code guide](https://rozper.vercel.app/blog/205-area-code/) walks through a comparable Midwest-adjacent market and the dynamics of building local presence remotely.
 
 ---
 
@@ -116,7 +116,7 @@ Rozper delivers powerful, flexible, and cost-effective communication solutions t
 A phone number is only as effective as the system that powers it. Rozper equips your 231 area code number with a full suite of VoIP-driven features designed to optimize communication workflows and project a highly professional image:
 
 - **Intelligent Call Forwarding:** Route calls to any device or location — ensuring you never miss a critical connection, even during the region's peak tourism seasons when demand spikes.
-- **Voicemail-to-Email/Text:** Receive voicemail transcriptions directly in your inbox or as a text message for fast, organized follow-up. For the underlying carrier infrastructure that powers reliable call delivery at scale, see our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services).
+- **Voicemail-to-Email/Text:** Receive voicemail transcriptions directly in your inbox or as a text message for fast, organized follow-up. For the underlying carrier infrastructure that powers reliable call delivery at scale, see our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/).
 - **Custom Auto-Attendant (IVR):** Greet callers professionally and direct them to the appropriate department or team member with ease.
 - **Ring Groups & Hunt Groups:** Distribute incoming calls across your team to ensure prompt answering during peak periods.
 - **Business SMS/MMS:** Reach customers via text for appointment reminders, seasonal promotions, and rapid-response support.

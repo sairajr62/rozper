@@ -94,7 +94,7 @@ export function FinancePageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-white/70">/</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/solutions" className="hover:text-white/70">solutions</Link>
+            <Link href="/solutions/" className="hover:text-white/70">solutions</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">finance</span>
           </div>
@@ -118,10 +118,10 @@ export function FinancePageView() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#046BD2] text-white text-xs sm:text-sm whitespace-nowrap font-semibold rounded hover:bg-[#0086F9] transition">
+              <Link href="/contact/" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#046BD2] text-white text-xs sm:text-sm whitespace-nowrap font-semibold rounded hover:bg-[#0086F9] transition">
                 Talk to compliance team <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-sm whitespace-nowrap rounded hover:bg-[#046BD2]/10 transition font-medium">
+              <Link href="/pricing/" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 border border-[#046BD2]/30 text-[#2D98F1] text-xs sm:text-sm whitespace-nowrap rounded hover:bg-[#046BD2]/10 transition font-medium">
                 View pricing
               </Link>
             </motion.div>
@@ -325,10 +325,10 @@ export function FinancePageView() {
               </h2>
               <p className="mt-6 text-white/80 max-w-md mx-auto">Built for banks, insurance, broker-dealers, and fintech. SOC 2 Type II certified.</p>
               <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
-                <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
+                <Link href="/contact/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
                   Talk to compliance team <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">
+                <Link href="/pricing/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">
                   See pricing
                 </Link>
               </div>

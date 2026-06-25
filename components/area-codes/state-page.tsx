@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
@@ -130,7 +130,7 @@ export function StateHero({ state, stateSlug, codeCount, codes }: {
         >
           <Link href="/" className="hover:text-white/60 transition">home</Link>
           <span className="text-white/15">/</span>
-          <Link href="/area-codes" className="hover:text-white/60 transition">area-codes</Link>
+          <Link href="/area-codes/" className="hover:text-white/60 transition">area-codes</Link>
           <span className="text-white/15">/</span>
           <span className="text-[#22D3EE]">{stateSlug}</span>
         </motion.nav>
@@ -184,14 +184,14 @@ export function StateHero({ state, stateSlug, codeCount, codes }: {
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.26 }}
               className="flex flex-col sm:flex-row flex-wrap gap-3"
             >
-              <Link href="/free-trial"
+              <Link href="/free-trial/"
                 className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold text-sm transition-all shadow-lg shadow-[#046BD2]/25"
               >
                 <Phone className="w-4 h-4 shrink-0" />
                 Start a Free Trial
                 <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <Link href="/area-codes"
+              <Link href="/area-codes/"
                 className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-xl border border-white/15 hover:border-white/25 hover:bg-white/[0.04] text-white/70 hover:text-white font-medium text-sm transition-all"
               >
                 <Globe className="w-4 h-4 shrink-0" />
@@ -520,7 +520,7 @@ export function StateFAQ({ state, codeCount }: { state: string; codeCount: numbe
             <p className="text-white/45 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
               Common questions about getting and using {state} virtual phone numbers for your business.
             </p>
-            <Link href="/contact" className="group inline-flex items-center gap-2 text-[#22D3EE] text-sm font-medium hover:text-white transition">
+            <Link href="/contact/" className="group inline-flex items-center gap-2 text-[#22D3EE] text-sm font-medium hover:text-white transition">
               Have more questions?
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
@@ -579,13 +579,13 @@ export function StateCTA({ state }: { state: string }) {
 
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/free-trial"
+                  <Link href="/free-trial/"
                     className="group flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-bold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm"
                   >
                     Start a Free Trial
                     <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
-                  <Link href="/pricing"
+                  <Link href="/pricing/"
                     className="inline-flex items-center justify-center border border-white/15 hover:border-white/30 hover:bg-white/[0.04] text-white/75 hover:text-white font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all text-sm whitespace-nowrap"
                   >
                     See Pricing
@@ -612,7 +612,7 @@ export function StateCTA({ state }: { state: string }) {
         </motion.div>
 
         <div className="mt-6 sm:mt-8 flex justify-center">
-          <Link href="/area-codes" className="inline-flex items-center gap-2 text-white/35 hover:text-white/65 text-sm transition group">
+          <Link href="/area-codes/" className="inline-flex items-center gap-2 text-white/35 hover:text-white/65 text-sm transition group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
             All U.S. area codes
           </Link>

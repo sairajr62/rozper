@@ -42,7 +42,7 @@ The **516 area code** covers Nassau County, the westernmost county of Long Islan
 
 In 2017, continued growth led to the 363 overlay. New lines in the same area may now receive 363 numbers, while existing **516 area code** numbers keep their prefix. Ten-digit dialing is required throughout the region.
 
-For businesses, a 516 number signals a Nassau County identity — distinct from the broader Long Island 631 market and clearly separate from [New York City's 212/646/917 landscape](https://rozper.vercel.app/blog/917-area-code).
+For businesses, a 516 number signals a Nassau County identity — distinct from the broader Long Island 631 market and clearly separate from [New York City's 212/646/917 landscape](https://rozper.vercel.app/blog/917-area-code/).
 
 ---
 
@@ -65,7 +65,7 @@ Nassau County is densely populated and economically diverse. Here are the major 
 
 Nassau County ranks among the wealthiest counties in the United States, with median household income well above national averages — meaning a 516 customer base with strong purchasing power across healthcare, professional services, retail, and real estate. Mineola is the legal hub; Garden City and Great Neck anchor corporate and financial services.
 
-Businesses extending their reach upstate can also explore our guide on the [315 area code](https://rozper.vercel.app/blog/315-area-code), covering Central New York.
+Businesses extending their reach upstate can also explore our guide on the [315 area code](https://rozper.vercel.app/blog/315-area-code/), covering Central New York.
 
 ---
 

@@ -115,7 +115,7 @@ export function LogisticsPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-[#2D98F1]">/</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/solutions" className="hover:text-[#2D98F1]">solutions</Link>
+            <Link href="/solutions/" className="hover:text-[#2D98F1]">solutions</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">logistics</span>
           </div>
@@ -138,10 +138,10 @@ export function LogisticsPageView() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] text-[#0B1220] text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-[#0086F9] transition">
+              <Link href="/contact/" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] text-[#0B1220] text-xs sm:text-base whitespace-nowrap font-semibold hover:bg-[#0086F9] transition">
                 Get logistics demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">See pricing</Link>
+              <Link href="/pricing/" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">See pricing</Link>
             </motion.div>
           </div>
 
@@ -321,10 +321,10 @@ export function LogisticsPageView() {
               <Truck className="w-12 h-12 mx-auto mb-6 text-white" />
               <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">Get every shipment connected.</h2>
               <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
-                <Link href="/contact" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
+                <Link href="/contact/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
                   Get logistics demo <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">See pricing</Link>
+                <Link href="/pricing/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">See pricing</Link>
               </div>
             </div>
           </div>

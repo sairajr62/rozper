@@ -339,7 +339,7 @@ export function AIPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-white/70">/</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/products" className="hover:text-white/70">products</Link>
+            <Link href="/products/" className="hover:text-white/70">products</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">ai</span>
           </div>
@@ -382,14 +382,14 @@ export function AIPageView() {
               className="mt-8 sm:mt-10 flex flex-row flex-wrap gap-3"
             >
               <Link
-                href="/free-trial"
+                href="/free-trial/"
                 className="group relative inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-xs sm:text-base text-white font-semibold transition whitespace-nowrap"
               >
                 <span>Start a free trial</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/pricing"
+                href="/pricing/"
                 className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-base text-white font-medium hover:bg-white/10 transition whitespace-nowrap"
               >
                 See pricing
@@ -552,10 +552,10 @@ export function AIPageView() {
                 Three AI tools. Zero extra charge. Available on every Rozper seat starting at $9.99.
               </p>
               <div className="mt-10 flex flex-row flex-wrap justify-center gap-2 sm:gap-4">
-                <Link href="/free-trial" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition whitespace-nowrap">
+                <Link href="/free-trial/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition whitespace-nowrap">
                   Start a free trial <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-xs sm:text-base text-white font-medium transition whitespace-nowrap">
+                <Link href="/pricing/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-xs sm:text-base text-white font-medium transition whitespace-nowrap">
                   View pricing
                 </Link>
               </div>

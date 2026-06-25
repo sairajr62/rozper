@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -652,7 +652,7 @@ export function Navbar() {
                 className="bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm font-medium h-9 px-5 rounded-lg shadow-[0_0_24px_-8px_rgba(4,107,210,0.7)]"
                 asChild
               >
-                <Link href="/free-trial">Start a free trial</Link>
+                <Link href="/free-trial/">Start a free trial</Link>
               </Button>
             </div>
 
@@ -812,7 +812,7 @@ export function Navbar() {
                   className="w-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-medium h-11 rounded-xl"
                   asChild
                 >
-                  <Link href="/free-trial" onClick={() => setIsOpen(false)}>
+                  <Link href="/free-trial/" onClick={() => setIsOpen(false)}>
                     Start a free trial
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>

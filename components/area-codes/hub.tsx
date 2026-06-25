@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
@@ -157,14 +157,14 @@ export function HubHero({ totalCodes, totalStates, stateGroups }: HeroProps) {
 
             {/* CTAs — stack on small, side by side on sm+ */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <Link href="/free-trial"
+              <Link href="/free-trial/"
                 className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-5 sm:px-6 py-3.5 rounded-xl transition-all shadow-lg shadow-[#046BD2]/20 text-sm whitespace-nowrap"
               >
                 <Phone className="w-4 h-4 shrink-0" />
                 Start a Free Trial
                 <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <Link href="/pricing"
+              <Link href="/pricing/"
                 className="inline-flex items-center justify-center gap-2 border border-white/15 hover:border-white/25 hover:bg-white/[0.04] text-white/70 hover:text-white font-medium px-5 sm:px-6 py-3.5 rounded-xl transition-all text-sm whitespace-nowrap"
               >
                 See Pricing
@@ -721,7 +721,7 @@ export function HubFAQ() {
             <p className="text-white/45 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
               Everything you need to know about getting and using virtual area code numbers for your business.
             </p>
-            <Link href="/contact"
+            <Link href="/contact/"
               className="group inline-flex items-center gap-2 text-[#22D3EE] text-sm font-medium hover:text-white transition"
             >
               Have more questions?
@@ -784,13 +784,13 @@ export function HubCTA() {
               <div className="flex flex-col gap-4">
                 {/* Buttons — stack on mobile, row on sm+ */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/free-trial"
+                  <Link href="/free-trial/"
                     className="group flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-bold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm"
                   >
                     Start a Free Trial
                     <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
-                  <Link href="/pricing"
+                  <Link href="/pricing/"
                     className="inline-flex items-center justify-center border border-white/15 hover:border-white/30 hover:bg-white/[0.04] text-white/75 hover:text-white font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all text-sm whitespace-nowrap"
                   >
                     See Pricing

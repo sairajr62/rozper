@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -257,7 +257,7 @@ export function Footer() {
               {/* Fix #3: Show separator only at md+ where layout is guaranteed horizontal */}
               <span className="hidden md:inline shrink-0">·</span>
               <a
-                href="/status"
+                href="/status/"
                 className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-white transition-colors shrink-0"
               >
                 <span className="relative flex h-1.5 w-1.5 shrink-0">
@@ -272,10 +272,10 @@ export function Footer() {
 
             {/* Right group: legal links */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[10px] sm:text-[11px] font-mono uppercase tracking-wider sm:tracking-widest text-white/40">
-              <a href="/legal/privacy" className="hover:text-white transition-colors">
+              <a href="/legal/privacy/" className="hover:text-white transition-colors">
                 Privacy
               </a>
-              <a href="/legal/terms" className="hover:text-white transition-colors">
+              <a href="/legal/terms/" className="hover:text-white transition-colors">
                 Terms
               </a>
             </div>

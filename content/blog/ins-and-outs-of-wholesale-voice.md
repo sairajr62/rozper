@@ -67,7 +67,7 @@ Services span three main categories: traditional circuit-switched voice, VoIP-ba
 
 **Improved Call Quality:** High-quality voice connections with reduced latency and echo ensure professional, reliable communication. This improvement benefits both the business and its customers, reducing frustration and building trust in every interaction.
 
-**Enhanced Scalability:** Services can scale up or down rapidly to meet changing demands, supporting high-volume traffic and accommodating business growth without the need for additional hardware investment. This is especially valuable for businesses in expansion phases or those managing seasonal traffic spikes. For a broader look at how these benefits apply in practice, see our guide on [wholesale voice services](https://rozper.vercel.app/blog/wholesale-voice-services).
+**Enhanced Scalability:** Services can scale up or down rapidly to meet changing demands, supporting high-volume traffic and accommodating business growth without the need for additional hardware investment. This is especially valuable for businesses in expansion phases or those managing seasonal traffic spikes. For a broader look at how these benefits apply in practice, see our guide on [wholesale voice services](https://rozper.vercel.app/blog/wholesale-voice-services/).
 
 ## Key Features of Wholesale Voice
 
@@ -79,7 +79,7 @@ Services span three main categories: traditional circuit-switched voice, VoIP-ba
 
 **Number Porting:** Enables businesses to transfer phone numbers between carriers with minimal disruption. Support for international number porting is particularly beneficial for businesses with global operations or those switching providers while retaining brand identity through existing numbers.
 
-**Call Routing:** Advanced routing capabilities including least cost routing (LCR) and quality-based routing optimize both cost and call quality. Real-time routing updates adapt to changing network conditions, ensuring calls are directed through the most efficient and reliable paths available. Businesses looking to go deeper on routing infrastructure can explore our guide on [wholesale VoIP termination](https://rozper.vercel.app/blog/wholesale-voip-termination).
+**Call Routing:** Advanced routing capabilities including least cost routing (LCR) and quality-based routing optimize both cost and call quality. Real-time routing updates adapt to changing network conditions, ensuring calls are directed through the most efficient and reliable paths available. Businesses looking to go deeper on routing infrastructure can explore our guide on [wholesale VoIP termination](https://rozper.vercel.app/blog/wholesale-voip-termination/).
 
 ## Choosing the Right Wholesale Voice Provider
 

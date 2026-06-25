@@ -70,7 +70,7 @@ A recognizable 949 caller ID bypasses the default suspicion that toll-free or ou
 
 ### Establishing a Cost-Effective Virtual Presence
 
-A 949 virtual phone number gives any business a credible southern Orange County identity without the overhead of premium Irvine or Newport Beach leases. For how the same local trust dynamics play out in the neighboring Central Coast market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code). Calls route to your team wherever they work — a distributed organization, a remote-first startup, or a company entering the California coastal market without a physical footprint.
+A 949 virtual phone number gives any business a credible southern Orange County identity without the overhead of premium Irvine or Newport Beach leases. For how the same local trust dynamics play out in the neighboring Central Coast market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code/). Calls route to your team wherever they work — a distributed organization, a remote-first startup, or a company entering the California coastal market without a physical footprint.
 
 ---
 
@@ -92,7 +92,7 @@ A 949 VoIP line with wideband audio codecs delivers call quality that builds tru
 
 ### 2. Intelligent Call Routing
 
-Skill-based routing directs callers to the right agent. Time-of-day routing redirects calls after business hours. IVR menus handle high-volume inbound without hold-time frustration — critical for Orange County businesses managing high-value client portfolios. For similar infrastructure needs in the neighboring Ventura market, see our [805 area code guide](https://rozper.vercel.app/blog/805-area-code).
+Skill-based routing directs callers to the right agent. Time-of-day routing redirects calls after business hours. IVR menus handle high-volume inbound without hold-time frustration — critical for Orange County businesses managing high-value client portfolios. For similar infrastructure needs in the neighboring Ventura market, see our [805 area code guide](https://rozper.vercel.app/blog/805-area-code/).
 
 ### 3. CRM Integration
 
@@ -100,7 +100,7 @@ Every inbound and outbound 949 call is automatically logged against the relevant
 
 ### 4. Call Recording and Compliance
 
-California is a two-party consent state for call recording. A VoIP platform with built-in recording and automated consent prompts keeps your 949 number compliant with California Penal Code § 632. For background on the carrier infrastructure beneath modern VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) covers how it works.
+California is a two-party consent state for call recording. A VoIP platform with built-in recording and automated consent prompts keeps your 949 number compliant with California Penal Code § 632. For background on the carrier infrastructure beneath modern VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) covers how it works.
 
 ### 5. Real-Time Call Analytics
 

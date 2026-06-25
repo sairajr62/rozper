@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useRef } from "react"
 import dynamic from "next/dynamic"
@@ -305,7 +305,7 @@ export function ContactHero() {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-1">
                     <p className="text-[11px] text-white/35 leading-relaxed">
                       By submitting, you agree to our{" "}
-                      <Link href="/legal/privacy" className="underline hover:text-white/60 transition-colors">
+                      <Link href="/legal/privacy/" className="underline hover:text-white/60 transition-colors">
                         privacy policy
                       </Link>
                       .

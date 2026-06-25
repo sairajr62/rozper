@@ -398,7 +398,7 @@ export function UcaasPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-white/70">home</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/platform" className="hover:text-white/70">platform</Link>
+            <Link href="/platform/" className="hover:text-white/70">platform</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">ucaas</span>
           </div>
@@ -437,11 +437,11 @@ export function UcaasPageView() {
                 animate={{ opacity: 1, transition: { delay: 0.3 } }}
                 className="mt-7 sm:mt-10 flex flex-row flex-nowrap gap-3"
               >
-                <Link href="/free-trial" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
+                <Link href="/free-trial/" className="group inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-sm sm:text-base text-white font-semibold transition whitespace-nowrap">
                   Start a free trial
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">
+                <Link href="/pricing/" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-sm sm:text-base text-white font-medium hover:bg-white/5 transition whitespace-nowrap">
                   See Pricing
                 </Link>
               </motion.div>
@@ -501,7 +501,7 @@ export function UcaasPageView() {
                   <span className="text-[#0086F9]">Zero compromises.</span>
                 </h2>
                 <p className="text-white/60 mb-8 max-w-md mx-auto lg:mx-0">Replace your patchwork of vendors with a single carrier-grade solution.</p>
-                <Link href="/features" className="inline-flex items-center gap-2 text-[#0086F9] font-semibold group mx-auto lg:mx-0">
+                <Link href="/features/" className="inline-flex items-center gap-2 text-[#0086F9] font-semibold group mx-auto lg:mx-0">
                   See all features <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -635,10 +635,10 @@ export function UcaasPageView() {
               <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">Ready to unify<br />your communications?</h2>
               <p className="mt-6 text-lg text-white/85 max-w-xl mx-auto">Start with a 14-day free trial. No credit card required. Join teams across 150+ countries.</p>
               <div className="mt-10 flex flex-row flex-nowrap justify-center gap-4">
-                <Link href="/free-trial" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition whitespace-nowrap">
+                <Link href="/free-trial/" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition whitespace-nowrap">
                   Start a Free Trial <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-sm sm:text-base text-white font-medium transition whitespace-nowrap">
+                <Link href="/pricing/" className="inline-flex items-center gap-2 px-4 py-3 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-sm sm:text-base text-white font-medium transition whitespace-nowrap">
                   See pricing
                 </Link>
               </div>

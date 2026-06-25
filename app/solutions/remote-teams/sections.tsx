@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
@@ -95,7 +95,7 @@ export function Breadcrumb() {
         <nav className="flex items-center gap-2 text-sm text-[#757575]">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3" />
-          <Link href="/solutions" className="hover:text-white transition-colors">Solutions</Link>
+          <Link href="/solutions/" className="hover:text-white transition-colors">Solutions</Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-[#CCD6DF]">Remote Teams</span>
         </nav>
@@ -270,14 +270,14 @@ export function Hero() {
 
             <div className="flex flex-row flex-nowrap gap-3 mb-8 lg:mb-10">
               <Link
-                href="/contact"
+                href="/contact/"
                 className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 bg-[#046BD2] hover:bg-[#046BD2]/90 text-white text-sm sm:text-base font-semibold rounded-xl whitespace-nowrap transition-all duration-300 hover:shadow-lg hover:shadow-[#046BD2]/40 hover:-translate-y-0.5"
               >
                 Get Started Free
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/contact"
+                href="/contact/"
                 className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 border border-[#1A2638] hover:border-[#046BD2]/50 text-white text-sm sm:text-base font-semibold rounded-xl whitespace-nowrap transition-all duration-300 hover:bg-white/[0.04]"
               >
                 Talk to Sales
@@ -573,7 +573,7 @@ export function CollaborationSection() {
             </div>
 
             <Link
-              href="/contact"
+              href="/contact/"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#046BD2] hover:bg-[#046BD2]/90 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#046BD2]/40"
             >
               See it in action
@@ -842,7 +842,7 @@ export function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/free-trial"
+              href="/free-trial/"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#046BD2] hover:bg-[#046BD2]/90 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-[#046BD2]/40 hover:-translate-y-0.5"
             >
               Start a free trial

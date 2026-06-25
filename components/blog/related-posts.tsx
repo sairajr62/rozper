@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { ArrowUpRight, Clock } from "lucide-react"
@@ -41,7 +41,7 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
             </h2>
           </div>
           <Link
-            href="/blog"
+            href="/blog/"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0086F9] hover:text-[#22D3EE] transition-colors"
           >
             Browse all articles

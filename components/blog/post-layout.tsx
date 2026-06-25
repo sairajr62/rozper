@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -136,7 +136,7 @@ const INLINE_CTA_HTML = `
         <div class="font-display text-lg font-semibold text-white tracking-tight leading-snug">Want this mapped to your operation?</div>
         <div class="mt-1 text-sm text-[#9AA8BC] leading-relaxed">A real solutions engineer at Rozper can size the routes, regions, and rates against your traffic in under an hour.</div>
       </div>
-      <a href="/contact" class="shrink-0 inline-flex items-center gap-1.5 h-10 px-4 rounded-lg bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0078E0] hover:to-[#22D3EE] text-white text-sm font-medium transition-all whitespace-nowrap">
+      <a href="/contact/" class="shrink-0 inline-flex items-center gap-1.5 h-10 px-4 rounded-lg bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0078E0] hover:to-[#22D3EE] text-white text-sm font-medium transition-all whitespace-nowrap">
         Talk to us
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
@@ -330,7 +330,7 @@ function AuthorBio({ author }: { author: BlogAuthor }) {
               </p>
             )}
             <Link
-              href="/blog"
+              href="/blog/"
               className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-[#22D3EE] hover:text-white transition-colors"
             >
               More from {author.name.split(" ")[0]}
@@ -380,14 +380,14 @@ function PostEndCta() {
           </p>
           <div className="relative mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/contact"
+              href="/contact/"
               className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0078E0] hover:to-[#22D3EE] text-white font-medium transition-all"
             >
               Talk to a solutions engineer
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/pricing"
+              href="/pricing/"
               className="inline-flex items-center gap-2 h-11 px-5 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 text-sm text-white/85 transition-colors"
             >
               See pricing

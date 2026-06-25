@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
@@ -158,7 +158,7 @@ export function CTA() {
                   className="relative w-full sm:w-auto h-11 sm:h-14 px-8 sm:px-10 text-sm sm:text-base bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold rounded-xl overflow-hidden group shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)]"
                   asChild
                 >
-                  <Link href="/free-trial">
+                  <Link href="/free-trial/">
                     <motion.span
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12"
                       animate={{ x: ["-150%", "150%"] }}
@@ -187,7 +187,7 @@ export function CTA() {
                   variant="outline"
                   className="w-full sm:w-auto h-11 sm:h-14 px-8 sm:px-10 text-sm sm:text-base rounded-xl border-white/15 bg-white/[0.04] hover:bg-white/10 text-white hover:text-white backdrop-blur-md group justify-center"
                 >
-                  <Link href="/pricing">
+                  <Link href="/pricing/">
                     See pricing
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5" />
                   </Link>

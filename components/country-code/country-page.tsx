@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo } from "react"
 import dynamic from "next/dynamic"
@@ -154,7 +154,7 @@ export function CountryPageHero({ country, times }: { country: CountryData; time
             <nav className="flex items-center gap-2 text-[11px] font-mono text-white/30 mb-6 sm:mb-8 flex-wrap">
               <Link href="/" className="hover:text-white/60 transition">home</Link>
               <span className="text-white/15">/</span>
-              <Link href="/country-code" className="hover:text-white/60 transition">country-code</Link>
+              <Link href="/country-code/" className="hover:text-white/60 transition">country-code</Link>
               <span className="text-white/15">/</span>
               <span className="text-[#22D3EE]">{country.slug}</span>
             </nav>
@@ -187,7 +187,7 @@ export function CountryPageHero({ country, times }: { country: CountryData; time
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-3">
-              <Link href="/contact"
+              <Link href="/contact/"
                 className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-lg shadow-[#046BD2]/20 text-sm sm:text-base"
               >
                 <Phone className="w-4 h-4" />
@@ -605,13 +605,13 @@ export function CountryPageCTA({ country }: { country: CountryData }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-              <Link href="/contact"
+              <Link href="/contact/"
                 className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm sm:text-base"
               >
                 Start a Free Trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <Link href="/pricing"
+              <Link href="/pricing/"
                 className="inline-flex items-center justify-center border border-white/15 hover:border-white/30 hover:bg-white/[0.04] text-white/75 hover:text-white font-semibold px-8 py-4 rounded-xl transition-all text-sm sm:text-base"
               >
                 View Pricing

@@ -67,7 +67,7 @@ Picture a San Jose decision-maker receiving two calls: one displays a 669 caller
 
 **Stronger local SEO.** A 669 number in your Google Business Profile, website, and directory listings reinforces your Silicon Valley identity for algorithms and customers alike. Consistent local NAP data is a ranking signal that distinguishes genuinely local businesses from out-of-area competitors.
 
-**Cost-effective virtual presence.** A 669 virtual phone number gives any business a credible Silicon Valley identity without leasing South Bay office space. For a closer look at the same dynamics in a neighboring market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code).
+**Cost-effective virtual presence.** A 669 virtual phone number gives any business a credible Silicon Valley identity without leasing South Bay office space. For a closer look at the same dynamics in a neighboring market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code/).
 
 ---
 
@@ -79,7 +79,7 @@ The 669 number is the front door. What happens inside the platform determines wh
 
 **HD Voice Quality.** Wideband audio codecs deliver the clarity that builds trust before your team makes its first point — Silicon Valley clients notice immediately.
 
-**Intelligent Call Routing.** Skill-based routing directs callers to the right agent. Time-of-day routing redirects after hours. IVR menus handle high-volume inbound at scale. See our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) for carrier infrastructure background.
+**Intelligent Call Routing.** Skill-based routing directs callers to the right agent. Time-of-day routing redirects after hours. IVR menus handle high-volume inbound at scale. See our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) for carrier infrastructure background.
 
 **CRM Integration.** Every 669 call is logged against the relevant contact record automatically. Screen pops surface full context the moment a known caller dials in, eliminating manual logging.
 

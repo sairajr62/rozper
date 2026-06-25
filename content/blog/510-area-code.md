@@ -77,13 +77,13 @@ A 510 number in local digital ads, Google Business Profile listings, and directo
 
 ### Establishing a Cost-Effective Virtual Presence
 
-A 510 virtual phone number gives your business an East Bay identity without physical office overhead. For the same dynamics in a neighboring California market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code). Calls route to your team wherever they work — ideal for remote teams testing the East Bay market.
+A 510 virtual phone number gives your business an East Bay identity without physical office overhead. For the same dynamics in a neighboring California market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code/). Calls route to your team wherever they work — ideal for remote teams testing the East Bay market.
 
 ---
 
 ## Beyond the Number: How a VoIP Platform Powers Your 510 Strategy
 
-Acquiring a 510 area code is the first step. Modern VoIP solutions transform a local number into a complete communications hub. For background on the carrier layer, see our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services).
+Acquiring a 510 area code is the first step. Modern VoIP solutions transform a local number into a complete communications hub. For background on the carrier layer, see our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/).
 
 Providers like Rozper include at least one local number in every paid plan:
 

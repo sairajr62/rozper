@@ -46,7 +46,7 @@ export function SMBPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-[#0086F9]">/</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/solutions" className="hover:text-[#0086F9]">solutions</Link>
+            <Link href="/solutions/" className="hover:text-[#0086F9]">solutions</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">smb</span>
           </div>
@@ -69,10 +69,10 @@ export function SMBPageView() {
           </motion.p>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-row flex-wrap justify-center gap-3">
-            <Link href="/free-trial" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">
+            <Link href="/free-trial/" className="group inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">
               Start free trial — 14 days <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/pricing" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">
+            <Link href="/pricing/" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white text-xs sm:text-base whitespace-nowrap font-medium hover:bg-white/5 transition">
               See pricing
             </Link>
           </motion.div>
@@ -318,10 +318,10 @@ export function SMBPageView() {
               <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">Sound bigger. Pay less.</h2>
               <p className="mt-6 text-white/80 max-w-md mx-auto">14-day free trial. No credit card required. Cancel anytime.</p>
               <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
-                <Link href="/free-trial" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
+                <Link href="/free-trial/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base whitespace-nowrap font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
                   Start free trial — 14 days <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">See pricing</Link>
+                <Link href="/pricing/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white text-xs sm:text-base whitespace-nowrap font-semibold transition">See pricing</Link>
               </div>
             </div>
           </div>

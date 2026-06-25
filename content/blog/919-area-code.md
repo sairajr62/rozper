@@ -103,7 +103,7 @@ Modern VoIP has eliminated every logistical barrier to operating a 919 number pr
 
 **Business SMS/MMS.** Send and receive text messages from your 919 number — increasingly important for follow-up and appointment management.
 
-Providers like Rozper deliver these capabilities with **99.999% uptime** across **150+ countries**. For a comparable Southeast market, see our [864 area code guide](https://rozper.vercel.app/blog/864-area-code).
+Providers like Rozper deliver these capabilities with **99.999% uptime** across **150+ countries**. For a comparable Southeast market, see our [864 area code guide](https://rozper.vercel.app/blog/864-area-code/).
 
 ---
 
@@ -115,7 +115,7 @@ The Research Triangle spans solo practitioners, growth-stage startups, and enter
 
 **For Solo Operators and Early-Stage Startups:** A reliable 919 number, call forwarding, voicemail transcription, and mobile app access covers the essentials — supporting founders and consultants who need local presence without a full telephony stack.
 
-**For Growing Sales and Support Teams:** Multi-user extensions, IVR, call recording, and CRM sync become requirements as you scale. For background on the carrier infrastructure beneath VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) walks through how it works. Analytics become important for team performance and campaign attribution.
+**For Growing Sales and Support Teams:** Multi-user extensions, IVR, call recording, and CRM sync become requirements as you scale. For background on the carrier infrastructure beneath VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) walks through how it works. Analytics become important for team performance and campaign attribution.
 
 **For Enterprise and Scale-Stage Organizations:** Requirements include custom SLAs, API access for workflow automation, advanced compliance controls, and dedicated account management. Enterprise teams often manage multiple numbers across divisions — requiring centralized reporting.
 

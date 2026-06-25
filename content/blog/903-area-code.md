@@ -40,7 +40,7 @@ The **903 area code** serves Northeast Texas — a region stretching from the Da
 
 The coverage zone spans mid-sized cities, rural counties, and communities with deep agricultural and energy roots. Unlike the 214/469/972 codes that define DFW, 903 signals a different Texas — one where community ties and local recognition carry real weight.
 
-Just as a major metro code anchors businesses in [Downtown Los Angeles](https://rozper.vercel.app/blog/213-area-code), the **903 area code** anchors businesses across Northeast Texas's commercial landscape — a region with its own distinct economic identity.
+Just as a major metro code anchors businesses in [Downtown Los Angeles](https://rozper.vercel.app/blog/213-area-code/), the **903 area code** anchors businesses across Northeast Texas's commercial landscape — a region with its own distinct economic identity.
 
 ---
 
@@ -61,7 +61,7 @@ A 903 virtual number can anchor your presence across multiple economic hubs in t
 | Greenville | Hunt | Aviation, Manufacturing, Retail | Medium |
 | Palestine | Anderson | Healthcare, Government, Oil | Low-Medium |
 
-Each city operates within its own economic micro-climate. Tyler — the "Rose Capital of America" — is the largest and most commercially dense, anchoring regional healthcare and retail. Longview's proximity to East Texas oil fields keeps energy activity high. Texarkana, sitting on the Texas-Arkansas state line, draws customers from both sides of the border. If your business also operates in Deep East Texas, see our guide on the [936 area code](https://rozper.vercel.app/blog/936-area-code) for a full breakdown of that region.
+Each city operates within its own economic micro-climate. Tyler — the "Rose Capital of America" — is the largest and most commercially dense, anchoring regional healthcare and retail. Longview's proximity to East Texas oil fields keeps energy activity high. Texarkana, sitting on the Texas-Arkansas state line, draws customers from both sides of the border. If your business also operates in Deep East Texas, see our guide on the [936 area code](https://rozper.vercel.app/blog/936-area-code/) for a full breakdown of that region.
 
 ---
 

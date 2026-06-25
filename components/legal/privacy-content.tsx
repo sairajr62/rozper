@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { LegalArticle, type LegalSection } from "./shared"
 
@@ -119,7 +119,7 @@ const sections: LegalSection[] = [
             other vendors that help us deliver the Services. The current list
             is maintained at{" "}
             <a
-              href="/security"
+              href="/security/"
               className="text-[#22D3EE] hover:text-white transition-colors"
             >
               /security

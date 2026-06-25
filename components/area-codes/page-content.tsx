@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import Link from "next/link"
@@ -108,7 +108,7 @@ export function AreaCodeHero({ data, stateSlug }: { data: AreaCodeData; stateSlu
             <nav className="flex items-center gap-2 text-[11px] font-mono text-white/30">
               <Link href="/" className="hover:text-white/60 transition">home</Link>
               <span className="text-white/15">/</span>
-              <Link href="/area-codes" className="hover:text-white/60 transition">area-codes</Link>
+              <Link href="/area-codes/" className="hover:text-white/60 transition">area-codes</Link>
               {data.state && resolvedStateSlug && (
                 <>
                   <span className="text-white/15">/</span>
@@ -160,7 +160,7 @@ export function AreaCodeHero({ data, stateSlug }: { data: AreaCodeData; stateSlu
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-2.5">
-              <Link href="/free-trial"
+              <Link href="/free-trial/"
                 className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-[#046BD2]/20 text-sm"
               >
                 <Phone className="w-3.5 h-3.5" />
@@ -642,13 +642,13 @@ export function AreaCodeCTA({ code, city }: { code: string; city: string }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-              <Link href="/free-trial"
+              <Link href="/free-trial/"
                 className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm sm:text-base"
               >
                 Start a Free Trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <Link href="/pricing"
+              <Link href="/pricing/"
                 className="inline-flex items-center justify-center border border-white/15 hover:border-white/30 hover:bg-white/[0.04] text-white/75 hover:text-white font-semibold px-8 py-4 rounded-xl transition-all text-sm sm:text-base"
               >
                 See Pricing

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo, useRef, useEffect } from "react"
 import dynamic from "next/dynamic"
@@ -493,7 +493,7 @@ export function WholesaleVoiceContactSection() {
                   <p className="mt-2 text-white/50 text-sm leading-relaxed max-w-xs mx-auto">
                     Our wholesale team will send your custom rate card within one business day.
                   </p>
-                  <Link href="/wholesale-voice" className="mt-7 inline-flex items-center gap-2 text-sm text-[#22D3EE] hover:text-white transition-colors">
+                  <Link href="/wholesale-voice/" className="mt-7 inline-flex items-center gap-2 text-sm text-[#22D3EE] hover:text-white transition-colors">
                     <ChevronRight className="h-4 w-4 rotate-180" />
                     Back to Wholesale Voice
                   </Link>
@@ -568,7 +568,7 @@ export function WholesaleVoiceContactSection() {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-1">
                     <p className="text-[11px] text-white/30 leading-relaxed">
                       By submitting, you agree to our{" "}
-                      <Link href="/legal/privacy" className="underline hover:text-white/55 transition-colors">Privacy Policy</Link>.
+                      <Link href="/legal/privacy/" className="underline hover:text-white/55 transition-colors">Privacy Policy</Link>.
                     </p>
                     <button
                       type="submit"

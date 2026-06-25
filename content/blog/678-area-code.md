@@ -88,7 +88,7 @@ Modern VoIP has removed every barrier to operating a 678 number at scale — no 
 
 **HD Voice Quality.** Clear, reliable audio regardless of where your team is located — business-grade VoIP eliminates the drop-offs that plague consumer apps.
 
-**Intelligent Call Routing.** Direct incoming calls to the right team member automatically based on time of day, caller ID, or IVR selection. See our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) for carrier-grade infrastructure background.
+**Intelligent Call Routing.** Direct incoming calls to the right team member automatically based on time of day, caller ID, or IVR selection. See our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) for carrier-grade infrastructure background.
 
 **CRM Integration.** Sync your phone activity with your CRM to log calls and give your team instant context on every incoming call — eliminating manual data entry and keeping pipeline data clean.
 
@@ -102,7 +102,7 @@ Modern VoIP has removed every barrier to operating a 678 number at scale — no 
 
 **Cross-Device Flexibility.** Make and receive calls from mobile, desktop, or desk phone — all tied to the same 678 number.
 
-For businesses scaling their Atlanta communications, providers like Rozper deliver these capabilities with **99.999% uptime** and support across **150+ countries**. For a closer look at the same dynamics in a comparable Southeast market, see our [864 area code guide](https://rozper.vercel.app/blog/864-area-code).
+For businesses scaling their Atlanta communications, providers like Rozper deliver these capabilities with **99.999% uptime** and support across **150+ countries**. For a closer look at the same dynamics in a comparable Southeast market, see our [864 area code guide](https://rozper.vercel.app/blog/864-area-code/).
 
 ---
 

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -382,14 +382,14 @@ export function WholesaleVoipPageView() {
               className="mt-4 sm:mt-8 flex flex-wrap gap-3"
             >
               <Link
-                href="/free-trial"
+                href="/free-trial/"
                 className="group inline-flex items-center gap-2 rounded-full bg-[#046BD2] px-6 py-3.5 font-semibold text-white transition hover:bg-[#0086F9] sm:px-7 sm:py-4"
               >
                 Get a Free Trial
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/pricing"
+                href="/pricing/"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-medium text-white transition hover:bg-white/5 sm:px-7 sm:py-4"
               >
                 See pricing

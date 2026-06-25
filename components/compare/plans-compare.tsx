@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { useState } from "react"
@@ -367,7 +367,7 @@ function VendorCard({
 
         {hero && (
           <a
-            href="/pricing"
+            href="/pricing/"
             className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-white text-[#0B1220] text-xs sm:text-sm font-semibold px-4 py-2.5 transition-colors hover:bg-[#dce8f5]"
           >
             See all Rozper plans →

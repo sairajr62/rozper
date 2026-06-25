@@ -116,9 +116,9 @@ Richardson's Telecom Corridor accounts for 130,000+ jobs and 25 million square f
 VoIP-based providers allow businesses anywhere to obtain and operate a local 469 number remotely — practical for companies entering the DFW market or distributed teams managing South-Central accounts.
 
 **4. Marketing consistency across channels**
-A local DFW number signals geographic alignment in Google Ads and local directories. For a comparable look in another market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code).
+A local DFW number signals geographic alignment in Google Ads and local directories. For a comparable look in another market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code/).
 
-Rozper offers virtual 469 numbers backed by 99.999% uptime and coverage spanning 150+ countries. For context on the carrier-grade infrastructure behind multi-overlay regions, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) covers the key details.
+Rozper offers virtual 469 numbers backed by 99.999% uptime and coverage spanning 150+ countries. For context on the carrier-grade infrastructure behind multi-overlay regions, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) covers the key details.
 
 ---
 

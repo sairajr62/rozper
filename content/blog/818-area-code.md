@@ -62,7 +62,7 @@ The San Fernando Valley is a relationship-driven market spanning entertainment, 
 
 ### A Cost-Effective Virtual Presence
 
-An 818 virtual phone number delivers a credible San Fernando Valley identity without the cost of office space in Burbank or Sherman Oaks. For a closer look at the same dynamics in a neighboring California market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code). Calls route to your team wherever they work.
+An 818 virtual phone number delivers a credible San Fernando Valley identity without the cost of office space in Burbank or Sherman Oaks. For a closer look at the same dynamics in a neighboring California market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code/). Calls route to your team wherever they work.
 
 ---
 
@@ -89,7 +89,7 @@ Wideband audio codecs deliver call clarity that builds trust passively — befor
 
 ### 2. Intelligent Call Routing
 
-Skill-based routing sends callers to the right agent, time-of-day rules redirect after-hours calls to on-call staff or voicemail, and IVR menus handle high-volume inbound without hold times. For background on the carrier infrastructure beneath modern VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) explains how it works.
+Skill-based routing sends callers to the right agent, time-of-day rules redirect after-hours calls to on-call staff or voicemail, and IVR menus handle high-volume inbound without hold times. For background on the carrier infrastructure beneath modern VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) explains how it works.
 
 ### 3. CRM Integration
 

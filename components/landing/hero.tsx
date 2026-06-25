@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -826,7 +826,7 @@ export function Hero() {
                   className="group relative h-11 w-full overflow-hidden rounded-full bg-[#046BD2] px-4 text-xs font-semibold text-white shadow-[0_0_50px_-10px_rgba(4,107,210,0.85)] hover:bg-[#0078E0] sm:px-7 sm:text-[0.95rem]"
                   asChild
                 >
-                  <Link href="/free-trial">
+                  <Link href="/free-trial/">
                     <motion.span
                       aria-hidden
                       className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent"
@@ -856,7 +856,7 @@ export function Hero() {
                   variant="outline"
                   className="group h-11 w-full rounded-full border-white/15 bg-white/[0.04] px-4 text-xs text-white backdrop-blur-md hover:bg-white/10 hover:text-white sm:px-7 sm:text-[0.95rem]"
                 >
-                  <Link href="/pricing">
+                  <Link href="/pricing/">
                     See Pricing
                     <ArrowRight className="ml-2 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
                   </Link>

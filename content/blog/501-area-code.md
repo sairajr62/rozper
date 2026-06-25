@@ -137,7 +137,7 @@ Not all VoIP providers deliver equally. When choosing a platform for your 501 ar
 
 **Uptime reliability.** Your phone line is a revenue channel. Look for providers guaranteeing 99.999% uptime — meaning your 501 number stays reachable when Arkansas customers call, not just when conditions are ideal.
 
-**Call forwarding and routing.** Route 501 calls to the right team member, department, or time-based queue. Rozper's call forwarding gives you granular control without configuration complexity, so calls reach the right person every time. For a closer look at the same dynamics in a comparable Southern market, see our [334 area code guide](https://rozper.vercel.app/blog/334-area-code).
+**Call forwarding and routing.** Route 501 calls to the right team member, department, or time-based queue. Rozper's call forwarding gives you granular control without configuration complexity, so calls reach the right person every time. For a closer look at the same dynamics in a comparable Southern market, see our [334 area code guide](https://rozper.vercel.app/blog/334-area-code/).
 
 **Voicemail-to-email transcription.** Convert voicemails into readable text so your team never misses a message, even in noisy environments or during high-volume periods.
 
@@ -147,7 +147,7 @@ Not all VoIP providers deliver equally. When choosing a platform for your 501 ar
 
 **Scalability across regions.** Start with one 501 number and add lines, users, or entirely new area codes as your business expands — without switching platforms.
 
-Rozper combines these capabilities under one platform, with coverage across 150+ countries and human-first support built in — making it straightforward to manage a 501 Arkansas number alongside any other regional numbers your operation requires. For background on the underlying carrier layer that makes this delivery reliable, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) explains how it fits together.
+Rozper combines these capabilities under one platform, with coverage across 150+ countries and human-first support built in — making it straightforward to manage a 501 Arkansas number alongside any other regional numbers your operation requires. For background on the underlying carrier layer that makes this delivery reliable, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) explains how it fits together.
 
 ---
 

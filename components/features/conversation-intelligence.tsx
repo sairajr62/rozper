@@ -111,7 +111,7 @@ export function FeatConversationIntelligencePageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-[#0086F9]">/</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/features" className="hover:text-[#0086F9]">features</Link>
+            <Link href="/features/" className="hover:text-[#0086F9]">features</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">conversation-intelligence</span>
           </div>
@@ -134,7 +134,7 @@ export function FeatConversationIntelligencePageView() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-10 flex flex-wrap gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
+              <Link href="/contact/" className="group inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition">
                 See a live demo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
@@ -198,7 +198,7 @@ export function FeatConversationIntelligencePageView() {
             <div className="relative">
               <BarChart3 className="w-12 h-12 mx-auto mb-6 text-white" />
               <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-white">Turn conversations into strategy.</h2>
-              <Link href="/contact" className="mt-10 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
+              <Link href="/contact/" className="mt-10 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
                 See a live demo <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

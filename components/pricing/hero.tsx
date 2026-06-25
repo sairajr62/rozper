@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 import { Shield, Globe, Clock, Zap } from 'lucide-react'
@@ -128,7 +128,7 @@ export function PricingHero() {
           transition={{ duration: 0.7, delay: 0.58 }}
           className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4"
         >
-          <a href="/free-trial" className="relative overflow-hidden w-full sm:w-auto text-center px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
+          <a href="/free-trial/" className="relative overflow-hidden w-full sm:w-auto text-center px-8 py-4 bg-[#046BD2] text-white font-bold text-base rounded-xl transition-all duration-300 hover:bg-[#0078E0] group"
             style={{ boxShadow: '0 0 0 0 rgba(4,107,210,0.4)' }}
             onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 40px rgba(4,107,210,0.45)')}
             onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 0 0 rgba(4,107,210,0.4)')}

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { ArrowRight, Tag } from "lucide-react"
@@ -86,14 +86,14 @@ export function AboutCTA() {
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a
-                  href="/contact"
+                  href="/contact/"
                   className="inline-flex items-center gap-2 h-12 px-6 rounded-lg bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0078E0] hover:to-[#22D3EE] text-white font-medium transition-all"
                 >
                   Talk to a solutions engineer
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a
-                  href="/pricing"
+                  href="/pricing/"
                   className="inline-flex items-center gap-2 h-12 px-6 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 text-sm text-white/85 transition-colors"
                 >
                   <Tag className="w-4 h-4" />

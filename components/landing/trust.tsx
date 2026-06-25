@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
@@ -323,7 +323,7 @@ export function Trust() {
           className="mt-16 sm:mt-20 flex items-center justify-center"
         >
           <a
-            href="/security"
+            href="/security/"
             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/[0.10] bg-white/[0.02] text-sm font-medium text-white/70 hover:text-white hover:border-[#22D3EE]/30 hover:bg-white/[0.04] transition-all"
           >
             <ShieldCheck className="h-4 w-4 text-[#22D3EE]" />

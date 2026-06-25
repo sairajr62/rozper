@@ -87,7 +87,7 @@ New York City is not a market you can approach anonymously. Buyers and clients i
 
 **NYC's tech economy rewards presence.** New York surpassed San Francisco in AI job growth in 2025, recording 39% year-over-year growth. The city's 203,000+ tech workers represent a 64% increase since 2014, holding the world's #2 global tech hub ranking.
 
-**Scale without relocation costs.** Establishing a physical NYC office can cost upward of $150 per square foot annually in prime Midtown real estate. A VoIP-powered 917 number delivers a verifiable NYC presence — local callback, voicemail, and call routing — without a commercial lease. For dynamics in a comparable East Coast market, see our [215 area code guide](https://rozper.vercel.app/blog/215-area-code).
+**Scale without relocation costs.** Establishing a physical NYC office can cost upward of $150 per square foot annually in prime Midtown real estate. A VoIP-powered 917 number delivers a verifiable NYC presence — local callback, voicemail, and call routing — without a commercial lease. For dynamics in a comparable East Coast market, see our [215 area code guide](https://rozper.vercel.app/blog/215-area-code/).
 
 ---
 
@@ -99,7 +99,7 @@ Operating in New York City requires a communication setup built for pace and vol
 
 **Intelligent Call Routing** — Time-based and geographic routing ensures calls reach the right person without friction, whether your team is in Midtown or working remotely.
 
-**CRM Integration** — New York's sales-driven environment requires CRM data and call logs to stay in sync. Native integrations with Salesforce, HubSpot, and similar platforms keep your pipeline clean. For background on the carrier infrastructure beneath modern VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) walks through how it works.
+**CRM Integration** — New York's sales-driven environment requires CRM data and call logs to stay in sync. Native integrations with Salesforce, HubSpot, and similar platforms keep your pipeline clean. For background on the carrier infrastructure beneath modern VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) walks through how it works.
 
 **Call Recording** — Financial services, legal, and compliance-heavy industries often require call records. Automatic recording with cloud storage protects your business and supports training.
 

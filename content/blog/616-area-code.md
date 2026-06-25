@@ -77,13 +77,13 @@ A 616 number in local digital ads, Google Business Profile listings, and directo
 
 ### Building a Cost-Effective Virtual Presence
 
-A 616 virtual phone number gives your business a West Michigan identity with zero physical overhead. For the same dynamics in a neighboring market, see our [231 area code guide](https://rozper.vercel.app/blog/231-area-code). Calls route to your team wherever they work.
+A 616 virtual phone number gives your business a West Michigan identity with zero physical overhead. For the same dynamics in a neighboring market, see our [231 area code guide](https://rozper.vercel.app/blog/231-area-code/). Calls route to your team wherever they work.
 
 ---
 
 ## Beyond the Number: How a VoIP Platform Powers Your 616 Strategy
 
-A 616 area code is the first step. Modern VoIP solutions transform a local number into a full-stack communications hub. For background on the carrier infrastructure, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) explains how it works.
+A 616 area code is the first step. Modern VoIP solutions transform a local number into a full-stack communications hub. For background on the carrier infrastructure, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) explains how it works.
 
 Providers like Rozper include at least one local number in every paid plan, with:
 

@@ -68,7 +68,7 @@ Picture a Central Coast decision-maker receiving two calls: one displays an 805 
 
 **Increasing answer rates.** A recognizable 805 caller ID bypasses the call screening that filters out toll-free numbers. Sales teams using an 805 number see more live conversations per dial session.
 
-**Building a local digital footprint.** An 805 number in your Google Business Profile, website, and directory listings reinforces your Central Coast identity for search algorithms and customers. For a closer look at the same dynamics in a neighboring market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code).
+**Building a local digital footprint.** An 805 number in your Google Business Profile, website, and directory listings reinforces your Central Coast identity for search algorithms and customers. For a closer look at the same dynamics in a neighboring market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code/).
 
 **Overcoming the outsider barrier.** A toll-free or out-of-area number creates friction before the conversation starts. An 805 number removes that concern — especially for real estate, legal, healthcare, and hospitality businesses where local credibility is often the deciding factor.
 
@@ -82,7 +82,7 @@ The 805 number is the front door. What happens inside the platform determines wh
 
 **HD Voice Quality.** Wideband audio codecs deliver clarity that builds trust before your team makes its pitch — critical in a market where relationships rest on personal connection.
 
-**Intelligent Call Routing.** Skill-based routing directs callers to the right agent. Time-of-day routing redirects after hours. IVR menus handle seasonal peaks in tourism and wine country booking. See our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services) for carrier infrastructure background.
+**Intelligent Call Routing.** Skill-based routing directs callers to the right agent. Time-of-day routing redirects after hours. IVR menus handle seasonal peaks in tourism and wine country booking. See our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) for carrier infrastructure background.
 
 **CRM Integration.** Every 805 call is automatically logged against the relevant contact record. Screen pops surface full account history the moment a known caller dials in — no application switching mid-call.
 

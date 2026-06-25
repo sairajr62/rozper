@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -119,7 +119,7 @@ export function ProdCCOutboundDialerPageView() {
             <div className="flex items-center gap-2 text-xs font-mono text-white/40 mb-6">
               <Link href="/" className="hover:text-[#0086F9]">/</Link>
               <ChevronRight className="w-3 h-3" />
-              <Link href="/products/contact-center" className="hover:text-[#0086F9]">contact-center</Link>
+              <Link href="/products/contact-center/" className="hover:text-[#0086F9]">contact-center</Link>
               <ChevronRight className="w-3 h-3" />
               <span className="text-[#0086F9]">outbound-dialer</span>
             </div>
@@ -139,10 +139,10 @@ export function ProdCCOutboundDialerPageView() {
             </motion.p>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }} className="mt-7 sm:mt-10 flex flex-row items-center gap-3">
-              <Link href="/contact" className="group inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition text-sm sm:text-base">
+              <Link href="/contact/" className="group inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition text-sm sm:text-base">
                 Start dialing smarter <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/pricing" className="inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition text-sm sm:text-base">See pricing</Link>
+              <Link href="/pricing/" className="inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full border border-white/15 text-white font-medium hover:bg-white/5 transition text-sm sm:text-base">See pricing</Link>
             </motion.div>
           </div>
 
@@ -237,10 +237,10 @@ export function ProdCCOutboundDialerPageView() {
               <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-5 sm:mb-6 text-white" />
               <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-white">Dial more. Convert more. Risk less.</h2>
               <div className="mt-7 flex flex-row items-center justify-center gap-3">
-                <Link href="/free-trial" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] font-semibold transition text-sm sm:text-base whitespace-nowrap">
+                <Link href="/free-trial/" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] font-semibold transition text-sm sm:text-base whitespace-nowrap">
                   Start a free trial <ArrowRight className="w-4 h-4 shrink-0" />
                 </Link>
-                <Link href="/pricing" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white font-semibold transition text-sm sm:text-base whitespace-nowrap">See pricing</Link>
+                <Link href="/pricing/" className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-white font-semibold transition text-sm sm:text-base whitespace-nowrap">See pricing</Link>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
@@ -105,7 +105,7 @@ export function SignInPageView() {
                     <label className="block text-[10px] uppercase tracking-[0.22em] font-mono text-white/40">
                       Password
                     </label>
-                    <Link href="/forgot-password" className="text-xs text-[#22D3EE]/70 hover:text-[#22D3EE] transition-colors">
+                    <Link href="/forgot-password/" className="text-xs text-[#22D3EE]/70 hover:text-[#22D3EE] transition-colors">
                       Forgot password?
                     </Link>
                   </div>
@@ -169,7 +169,7 @@ export function SignInPageView() {
 
               <p className="mt-5 text-center text-sm text-white/40">
                 Not a customer?{" "}
-                <Link href="/free-trial" className="font-semibold text-[#22D3EE] hover:text-white transition-colors">
+                <Link href="/free-trial/" className="font-semibold text-[#22D3EE] hover:text-white transition-colors">
                   Start your free trial ↗
                 </Link>
               </p>
