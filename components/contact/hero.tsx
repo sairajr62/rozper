@@ -1,9 +1,13 @@
 "use client"
 
+import { useState, useRef } from "react"
+import dynamic from "next/dynamic"
+import type ReCAPTCHAType from "react-google-recaptcha"
 import { motion } from "framer-motion"
-import { useState } from "react"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 
 const teamSizes = [
   "1–10 seats",
@@ -29,9 +33,15 @@ export function ContactHero() {
   const [error, setError] = useState<string | null>(null)
   const [topic, setTopic] = useState("UCaaS")
   const [teamSize, setTeamSize] = useState("10–50 seats")
+  const recaptchaRef = useRef<ReCAPTCHAType>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const recaptchaToken = recaptchaRef.current?.getValue()
+    if (!recaptchaToken) {
+      setError("Please complete the reCAPTCHA check.")
+      return
+    }
     setSending(true)
     setError(null)
     const form = e.currentTarget
@@ -43,6 +53,7 @@ export function ContactHero() {
       companySize: teamSize,
       interests: [topic],
       message:  (form.elements.namedItem("message") as HTMLTextAreaElement)?.value,
+      recaptchaToken,
     }
     try {
       const res = await fetch("/api/contact", {
@@ -52,11 +63,12 @@ export function ContactHero() {
       })
       const json = await res.json()
       if (json.success) setSubmitted(true)
-      else setError("Something went wrong. Please try again.")
+      else setError(json.error ?? "Something went wrong. Please try again.")
     } catch {
       setError("Network error. Please check your connection.")
     } finally {
       setSending(false)
+      recaptchaRef.current?.reset()
     }
   }
 
@@ -272,6 +284,14 @@ export function ContactHero() {
                       rows={4}
                       placeholder="Tell us what you're working on, current stack, and what good looks like."
                       className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#22D3EE]/50 focus:bg-white/[0.05] transition resize-none"
+                    />
+                  </div>
+
+                  <div className="flex justify-center">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey="6Lf5zjMtAAAAAGAU-oWDPa9j_7PJ9RzWWU4HatED"
+                      theme="dark"
                     />
                   </div>
 

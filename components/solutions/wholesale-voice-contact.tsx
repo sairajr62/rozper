@@ -1,8 +1,12 @@
 "use client"
 
 import { useState, useMemo, useRef, useEffect } from "react"
+import dynamic from "next/dynamic"
+import type ReCAPTCHAType from "react-google-recaptcha"
 import Link from "next/link"
 import { motion } from "framer-motion"
+
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 import {
   PhoneOutgoing,
   CheckCircle2,
@@ -348,9 +352,15 @@ export function WholesaleVoiceContactSection() {
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [cc, setCc] = useState(ALL_COUNTRIES.find((c) => c.name === "United States")!)
+  const recaptchaRef = useRef<ReCAPTCHAType>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const recaptchaToken = recaptchaRef.current?.getValue()
+    if (!recaptchaToken) {
+      setError("Please complete the reCAPTCHA check.")
+      return
+    }
     setSending(true)
     setError(null)
     const form = e.currentTarget
@@ -370,13 +380,14 @@ export function WholesaleVoiceContactSection() {
     ].filter(Boolean)
 
     const data = {
-      firstName:   get("name"),
-      lastName:    "",
-      email:       get("email"),
-      company:     "",
-      companySize: minutes ? `${minutes} min/month` : "—",
-      interests:   ["Wholesale Voice"],
-      message:     parts.join("\n"),
+      firstName:      get("name"),
+      lastName:       "",
+      email:          get("email"),
+      company:        "",
+      companySize:    minutes ? `${minutes} min/month` : "—",
+      interests:      ["Wholesale Voice"],
+      message:        parts.join("\n"),
+      recaptchaToken,
     }
 
     try {
@@ -387,11 +398,12 @@ export function WholesaleVoiceContactSection() {
       })
       const json = await res.json()
       if (json.success) setSubmitted(true)
-      else setError("Something went wrong. Please try again.")
+      else setError(json.error ?? "Something went wrong. Please try again.")
     } catch {
       setError("Network error. Please check your connection.")
     } finally {
       setSending(false)
+      recaptchaRef.current?.reset()
     }
   }
 
@@ -535,6 +547,14 @@ export function WholesaleVoiceContactSection() {
                       rows={4}
                       placeholder="Tell us what you need and we'll tailor your quote."
                       className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.09] text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#046BD2]/70 focus:bg-white/[0.07] transition resize-none"
+                    />
+                  </div>
+
+                  <div className="flex justify-center">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey="6Lf5zjMtAAAAAGAU-oWDPa9j_7PJ9RzWWU4HatED"
+                      theme="dark"
                     />
                   </div>
 
