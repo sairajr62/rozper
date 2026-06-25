@@ -1,7 +1,9 @@
 "use client"
 
 import { useRef, useState } from "react"
-import ReCAPTCHA from "react-google-recaptcha"
+import dynamic from "next/dynamic"
+import type ReCAPTCHAType from "react-google-recaptcha"
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, PhoneOutgoing, Network } from "lucide-react"
 import Link from "next/link"
@@ -38,7 +40,7 @@ export function WholesaleContactForm({ interest }: WholesaleContactFormProps) {
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [volume, setVolume] = useState(VOLUME_OPTIONS[1])
-  const recaptchaRef = useRef<ReCAPTCHA>(null)
+  const recaptchaRef = useRef<ReCAPTCHAType>(null)
 
   const Icon = interest === "Wholesale Voice" ? PhoneOutgoing : Network
 

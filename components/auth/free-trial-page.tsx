@@ -1,7 +1,9 @@
 "use client"
 
 import { useRef, useState } from "react"
-import ReCAPTCHA from "react-google-recaptcha"
+import dynamic from "next/dynamic"
+import type ReCAPTCHAType from "react-google-recaptcha"
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, Phone, Users, Bot, Globe2 } from "lucide-react"
 import Link from "next/link"
@@ -35,7 +37,7 @@ export function FreeTrialPageView() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const recaptchaRef = useRef<ReCAPTCHA>(null)
+  const recaptchaRef = useRef<ReCAPTCHAType>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
