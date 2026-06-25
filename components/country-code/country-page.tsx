@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import {
@@ -13,6 +14,11 @@ import {
 import type { CountryData, BestCallingTimes } from "@/lib/country-code-data"
 import { formatDialCode, formatUTCOffset, formatPopulation, formatGDP } from "@/lib/country-code-data"
 
+const CountryLeafletMap = dynamic(
+  () => import("@/components/country-code/country-leaflet-map").then(m => ({ default: m.CountryLeafletMap })),
+  { ssr: false, loading: () => <div style={{ height: 440, borderRadius: 16, background: "#040d1a", border: "1px solid rgba(0,134,249,0.2)" }} /> }
+)
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const fi = (delay = 0) => ({
@@ -22,97 +28,108 @@ const fi = (delay = 0) => ({
   transition: { duration: 0.48, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
 })
 
-// ─── Country SVG ─────────────────────────────────────────────────────────────
+// ─── Country map ──────────────────────────────────────────────────────────────
 
-function CountryNetworkSVG({ country }: { country: CountryData }) {
-  const grad = `cpg-${country.isoCode2}`
-  const glow = `cpgw-${country.isoCode2}`
-  const dialNodes = [
-    { code: formatDialCode(country.dialCode), label: country.isoCode2, color: "#22D3EE", cx: 180, cy: 180 },
-  ]
-  const orbits = [
-    { cx: 60,  cy: 80,  color: "#22D3EE" },
-    { cx: 300, cy: 70,  color: "#0086F9" },
-    { cx: 330, cy: 210, color: "#22D3EE" },
-    { cx: 280, cy: 300, color: "#046BD2" },
-    { cx: 80,  cy: 300, color: "#0086F9" },
-    { cx: 30,  cy: 190, color: "#22D3EE" },
-  ]
+// Capital coords [lon, lat]
+const CAPITAL_COORDS: Record<string, [number, number]> = {
+  AF: [69.18, 34.52], AL: [19.82, 41.33], DZ: [3.05, 36.74], AS: [-170.70, -14.27],
+  AD: [1.52, 42.51],  AO: [13.23, -8.84], AI: [-63.05, 18.22], AG: [-61.85, 17.12],
+  AR: [-58.38, -34.61], AM: [44.50, 40.18], AW: [-70.02, 12.52], AU: [149.13, -35.31],
+  AT: [16.37, 48.21], AZ: [49.87, 40.41], BS: [-77.34, 25.06], BH: [50.59, 26.21],
+  BD: [90.41, 23.72], BB: [-59.62, 13.10], BY: [27.57, 53.90], BE: [4.35, 50.85],
+  BZ: [-88.77, 17.25], BJ: [2.62, 6.37],  BM: [-64.78, 32.29], BT: [89.64, 27.47],
+  BO: [-68.13, -16.50], BA: [18.42, 43.85], BW: [25.91, -24.65], BR: [-47.93, -15.78],
+  BN: [114.94, 4.94], BG: [23.32, 42.70], BF: [-1.52, 12.37], BI: [29.36, -3.38],
+  CV: [-23.51, 14.93], KH: [104.92, 11.57], CM: [11.52, 3.87], CA: [-75.70, 45.42],
+  KY: [-81.38, 19.30], CF: [18.56, 4.36],  TD: [15.05, 12.11], CL: [-70.67, -33.46],
+  CN: [116.39, 39.91], CO: [-74.08, 4.71], KM: [43.26, -11.70], CD: [15.32, -4.32],
+  CG: [15.28, -4.26], CR: [-84.09, 9.93],  HR: [16.00, 45.80], CU: [-82.35, 23.13],
+  CW: [-68.92, 12.11], CY: [33.36, 35.17], CZ: [14.47, 50.08], DK: [12.57, 55.68],
+  DJ: [43.14, 11.59], DM: [-61.39, 15.30], DO: [-69.90, 18.48], EC: [-78.50, -0.23],
+  EG: [31.24, 30.06], SV: [-89.20, 13.70], GQ: [8.78, 3.75],   ER: [38.93, 15.34],
+  EE: [24.73, 59.44], SZ: [31.13, -26.32], ET: [38.70, 9.03],  FJ: [178.44, -18.14],
+  FI: [25.00, 60.17], FR: [2.35, 48.85],   GF: [-52.33, 4.94], PF: [-149.57, -17.53],
+  GA: [9.45, 0.39],   GM: [-15.59, 13.45], GE: [44.83, 41.69], DE: [13.41, 52.52],
+  GH: [-0.19, 5.55],  GI: [-5.35, 36.14],  GR: [23.73, 37.98], GL: [-51.74, 64.18],
+  GD: [-61.75, 12.05], GP: [-61.53, 16.00], GU: [144.79, 13.47], GT: [-90.52, 14.64],
+  GN: [-13.71, 9.54], GW: [-15.18, 11.86], GY: [-58.16, 6.80], HT: [-72.34, 18.54],
+  HN: [-87.22, 14.10], HK: [114.18, 22.32], HU: [19.04, 47.50], IS: [-21.82, 64.13],
+  IN: [77.21, 28.61], ID: [106.82, -6.21], IR: [51.39, 35.69], IQ: [44.39, 33.34],
+  IE: [-6.27, 53.33], IL: [35.22, 31.77],  IT: [12.48, 41.90], JM: [-76.79, 17.99],
+  JP: [139.69, 35.69], JO: [35.93, 31.96], KZ: [71.43, 51.18], KE: [36.82, -1.29],
+  KI: [173.02, -1.33], XK: [21.17, 42.67], KW: [47.98, 29.37], KG: [74.60, 42.87],
+  LA: [102.60, 17.97], LV: [24.11, 56.95], LB: [35.49, 33.89], LS: [27.48, -29.32],
+  LR: [-10.80, 6.30], LY: [13.18, 32.90],  LI: [9.52, 47.14],  LT: [25.28, 54.69],
+  LU: [6.13, 49.61],  MO: [113.55, 22.20], MG: [47.53, -18.91], MW: [33.78, -13.97],
+  MY: [101.69, 3.14], MV: [73.51, 4.18],   ML: [-8.00, 12.65], MT: [14.51, 35.90],
+  MH: [171.38, 7.09], MQ: [-61.06, 14.61], MR: [-15.96, 18.08], MU: [57.50, -20.16],
+  MX: [-99.13, 19.43], FM: [158.16, 6.92], MD: [28.86, 47.00], MC: [7.42, 43.73],
+  MN: [106.92, 47.91], ME: [19.27, 42.44], MS: [-62.21, 16.71], MA: [-6.85, 33.99],
+  MZ: [32.59, -25.97], MM: [96.13, 19.74], NA: [17.08, -22.56], NR: [166.92, -0.55],
+  NP: [85.32, 27.72],  NL: [4.90, 52.37],  NC: [166.46, -22.27], NZ: [174.78, -41.29],
+  NI: [-86.29, 12.13], NE: [2.11, 13.51],  NG: [7.53, 9.07],   NU: [-169.92, -19.02],
+  NF: [167.97, -29.05], KP: [125.75, 39.02], MK: [21.43, 42.00], MP: [145.75, 15.21],
+  NO: [10.75, 59.91],  OM: [58.59, 23.61], PK: [73.04, 33.72], PW: [134.62, 7.34],
+  PS: [35.23, 31.90],  PA: [-79.52, 8.99], PG: [147.18, -9.44], PY: [-57.64, -25.28],
+  PE: [-77.04, -12.05], PH: [120.98, 14.60], PL: [21.01, 52.23], PT: [-9.14, 38.72],
+  PR: [-66.11, 18.47], QA: [51.53, 25.29],  RE: [55.45, -20.88], RO: [26.10, 44.44],
+  RU: [37.62, 55.75],  RW: [30.06, -1.94], KN: [-62.72, 17.30], LC: [-61.00, 14.01],
+  VC: [-61.21, 13.16], WS: [-171.77, -13.82], SM: [12.45, 43.94], ST: [6.73, 0.34],
+  SA: [46.72, 24.69],  SN: [-17.44, 14.69], RS: [20.46, 44.80], SC: [55.45, -4.62],
+  SL: [-13.23, 8.49],  SG: [103.85, 1.29],  SX: [-63.05, 18.03], SK: [17.11, 48.15],
+  SI: [14.51, 46.05],  SB: [159.95, -9.43], SO: [45.34, 2.05],  ZA: [28.22, -25.75],
+  GS: [-36.51, -54.28], SS: [31.62, 4.86],  ES: [-3.69, 40.42], LK: [80.64, 7.29],
+  SD: [32.53, 15.55],  SR: [-55.17, 5.85],  SE: [18.07, 59.33], CH: [7.45, 46.95],
+  SY: [36.29, 33.51],  TW: [121.53, 25.05], TJ: [68.78, 38.56], TZ: [39.29, -6.17],
+  TH: [100.52, 13.75], TL: [125.58, -8.56], TG: [1.22, 6.14],  TO: [-175.22, -21.14],
+  TT: [-61.52, 10.65], TN: [10.18, 36.82],  TR: [32.86, 39.93], TM: [58.38, 37.95],
+  TC: [-71.14, 21.46], TV: [179.21, -8.52], UG: [32.58, 0.32],  UA: [30.52, 50.43],
+  AE: [54.37, 24.47],  GB: [-0.13, 51.51],  US: [-77.04, 38.91], UY: [-56.19, -34.90],
+  UZ: [69.27, 41.30],  VU: [168.32, -17.73], VE: [-66.86, 10.49], VN: [105.85, 21.03],
+  VG: [-64.62, 18.42], VI: [-64.93, 18.34], WF: [-171.93, -13.28], EH: [-13.20, 27.17],
+  YE: [44.19, 15.35],  ZM: [28.29, -15.41], ZW: [31.05, -17.83],
+  KR: [126.98, 37.57], TF: [70.22, -49.35],
+  CC: [96.83, -12.16], CK: [-159.78, -21.21], FK: [-57.85, -51.70], FO: [-6.91, 62.01],
+  GG: [-2.54, 49.46], IM: [-4.48, 54.15], JE: [-2.10, 49.19], PM: [-56.18, 46.78],
+  SH: [-5.72, -15.93], SJ: [15.63, 78.22], TC: [-71.14, 21.46], VA: [12.45, 41.90],
+  AX: [19.95, 60.12], BL: [-62.85, 17.90], MF: [-63.05, 18.07], CX: [105.72, -10.49],
+  IO: [72.38, -7.34], HM: [73.50, -53.10], PN: [-130.10, -25.07], TK: [-171.84, -9.17],
+}
+
+// Map center [lon, lat]
+const COUNTRY_CENTERS: Record<string, [number, number]> = {
+  AL: [20.17, 41.15], US: [-98.5, 39.5], GB: [-3.4, 55.4], DE: [10.4, 51.2],
+  FR: [2.2, 46.2], IN: [78.9, 20.6], CN: [104.2, 35.9], JP: [138.3, 36.2],
+  BR: [-51.9, -14.2], AU: [133.8, -25.3], CA: [-96.8, 56.1], RU: [105.3, 61.5],
+  MX: [-102.6, 23.6], ZA: [25.1, -29.0], NG: [8.7, 9.1], KE: [37.9, 0.0],
+  EG: [30.8, 26.8], SA: [44.8, 24.7], AE: [53.8, 23.4], TR: [35.2, 38.9],
+  IT: [12.6, 42.5], ES: [-3.7, 40.2], PL: [19.1, 51.9], NL: [5.3, 52.1],
+  SE: [18.6, 59.3], NO: [15.5, 65.5], CH: [8.2, 46.8], AT: [14.6, 47.7],
+  PK: [69.3, 30.4], BD: [90.4, 23.7], PH: [121.8, 12.9], ID: [117.9, -2.5],
+  MY: [109.7, 3.1], TH: [100.9, 15.9], VN: [108.3, 14.1], KR: [127.8, 36.5],
+  AR: [-63.6, -38.4], CL: [-71.5, -35.7], CO: [-74.3, 4.6], PE: [-75.0, -9.2],
+}
+
+function CountryMapSVG({ country }: { country: CountryData }) {
+  const coords = CAPITAL_COORDS[country.isoCode2]
+  const lat = coords ? coords[1] : 41.33
+  const lon = coords ? coords[0] : 19.82
 
   return (
-    <div className="relative w-full max-w-[380px] sm:max-w-[420px] mx-auto select-none pointer-events-none">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-52 h-52 rounded-full bg-[#046BD2]/20 blur-[70px]" />
-        <div className="absolute w-32 h-32 rounded-full bg-[#22D3EE]/15 blur-[50px]" />
-      </div>
-      <svg viewBox="0 0 360 360" className="relative w-full" aria-hidden fill="none">
-        <defs>
-          <linearGradient id={grad} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#046BD2" /><stop offset="100%" stopColor="#22D3EE" />
-          </linearGradient>
-          <filter id={glow} x="-25%" y="-25%" width="150%" height="150%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-        </defs>
-
-        {/* Pulsing rings */}
-        {[160, 128, 96].map((r, i) => (
-          <motion.circle key={r} cx={180} cy={180} r={r}
-            fill="none" stroke={i === 1 ? "#22D3EE" : "#046BD2"}
-            strokeOpacity={0.05 + i * 0.03} strokeWidth={1}
-            strokeDasharray={i === 1 ? "5 12" : undefined}
-            animate={{ r: [r, r + 5, r], opacity: [0.4, 0.85, 0.4] }}
-            transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 }}
-          />
-        ))}
-
-        {/* Center globe */}
-        <circle cx={180} cy={180} r={60} fill="#0A1628" stroke={`url(#${grad})`} strokeWidth={1.5} strokeOpacity={0.75} />
-        <circle cx={180} cy={180} r={52} fill="#060D1A" />
-
-        {/* Latitude lines on center */}
-        {[-1, 0, 1].map((l, i) => (
-          <ellipse key={i} cx={180} cy={180 + l * 16} rx={i === 1 ? 52 : 38} ry={i === 1 ? 6 : 4}
-            stroke="#22D3EE" strokeOpacity={0.07} strokeWidth={0.5} fill="none" />
-        ))}
-        <path d="M180 128 Q198 180 180 232" stroke="#046BD2" strokeOpacity={0.07} strokeWidth={0.5} fill="none" />
-        <path d="M180 128 Q162 180 180 232" stroke="#046BD2" strokeOpacity={0.07} strokeWidth={0.5} fill="none" />
-
-        {/* Dial code text */}
-        <motion.text x={180} y={173} textAnchor="middle"
-          fill={`url(#${grad})`}
-          fontSize={country.dialCode.length > 4 ? "22" : "28"}
-          fontWeight="900" fontFamily="system-ui,-apple-system,sans-serif"
-          filter={`url(#${glow})`}
-          animate={{ opacity: [0.82, 1, 0.82] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
-          {formatDialCode(country.dialCode)}
-        </motion.text>
-        <text x={180} y={188} textAnchor="middle" fill="#22D3EE" fontSize="7"
-          fontFamily="system-ui,sans-serif" letterSpacing="3.5" fillOpacity={0.7}>DIAL CODE</text>
-        <text x={180} y={202} textAnchor="middle" fill="white" fontSize="8.5"
-          fontFamily="system-ui,sans-serif" fillOpacity={0.4}>
-          {country.isoCode2} · {formatUTCOffset(country.utcOffset)}
-        </text>
-
-        {/* Orbit nodes */}
-        {orbits.map((node, i) => (
-          <motion.g key={i}
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.55, ease: "easeInOut" }}>
-            <motion.line x1={node.cx} y1={node.cy} x2={180} y2={180}
-              stroke={node.color} strokeOpacity={0.15} strokeWidth={1} strokeDasharray="4 8"
-              animate={{ strokeDashoffset: [0, -24] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: i * 0.2 }}
-            />
-            <circle cx={node.cx} cy={node.cy} r={9}
-              fill={node.color} fillOpacity={0.1} stroke={node.color} strokeOpacity={0.4} strokeWidth={1.2} />
-            <circle cx={node.cx} cy={node.cy} r={4} fill={node.color} fillOpacity={0.85} />
-          </motion.g>
-        ))}
-      </svg>
-    </div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6 }}
+      className="relative w-full max-w-[580px] mx-auto"
+    >
+      <CountryLeafletMap
+        capital={country.capital}
+        lat={lat}
+        lon={lon}
+        dialCode={formatDialCode(country.dialCode)}
+        isoCode2={country.isoCode2}
+        countryName={country.name}
+      />
+    </motion.div>
   )
 }
 
@@ -167,20 +184,10 @@ export function CountryPageHero({ country, times }: { country: CountryData; time
               Business hours: {times.est.start}–{times.est.end} EST.
             </p>
 
-            {/* Sub-page links */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              <Link href={`/country-code/${country.slug}/best-time-to-call`}
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#22D3EE]/10 border border-[#22D3EE]/25 hover:bg-[#22D3EE]/15 transition text-xs font-mono text-[#22D3EE]"
-              >
-                <Clock className="w-3.5 h-3.5" />
-                Best Time to Call
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-3">
-              <Link href="/free-trial"
+              <Link href="/contact"
                 className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-lg shadow-[#046BD2]/20 text-sm sm:text-base"
               >
                 <Phone className="w-4 h-4" />
@@ -190,18 +197,18 @@ export function CountryPageHero({ country, times }: { country: CountryData; time
               <Link href={`/country-code/${country.slug}/best-time-to-call`}
                 className="inline-flex items-center gap-2 border border-white/15 hover:border-[#22D3EE]/40 hover:bg-white/[0.04] text-white/75 hover:text-white font-semibold px-6 py-3.5 rounded-xl transition-all text-sm sm:text-base"
               >
-                Calling Guide
+                Best Time to Call
               </Link>
             </div>
           </motion.div>
 
-          {/* Right: SVG — shown from md upwards */}
+          {/* Right: country map */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.15 }}
             className="hidden md:flex items-center justify-center"
           >
-            <CountryNetworkSVG country={country} />
+            <CountryMapSVG country={country} />
           </motion.div>
         </div>
       </div>
@@ -590,14 +597,6 @@ export function CountryPageCTA({ country }: { country: CountryData }) {
             style={{ backgroundImage: "radial-gradient(circle at 1px 1px,rgba(120,160,220,0.25) 1px,transparent 0)", backgroundSize: "24px 24px" }} />
 
           <div className="relative px-6 sm:px-12 py-16 sm:py-20 text-center">
-            <div aria-hidden className="text-[80px] sm:text-[110px] font-black text-white/[0.04] leading-none -mb-2 select-none">
-              {formatDialCode(country.dialCode)}
-            </div>
-
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#046BD2]/30 to-[#046BD2]/10 border border-[#046BD2]/25 mb-6">
-              <Globe className="w-6 h-6 text-[#22D3EE]" />
-            </div>
-
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4">
               Start calling {country.name} today
             </h2>
@@ -606,7 +605,7 @@ export function CountryPageCTA({ country }: { country: CountryData }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-              <Link href="/free-trial"
+              <Link href="/contact"
                 className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm sm:text-base"
               >
                 Start a Free Trial

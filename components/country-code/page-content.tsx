@@ -1,6 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
+const LeafletMap = dynamic(() => import("./LeafletMap"), { ssr: false })
 import Link from "next/link"
 import { motion } from "framer-motion"
 import {
@@ -24,158 +26,170 @@ const fadeUp = (delay = 0) => ({
 
 // ─── Animated Globe SVG ───────────────────────────────────────────────────────
 
+// Capital coords map [lon, lat] for country pins
+const CAPITAL_COORDS_MAP: Record<string, [number, number]> = {
+  AF:[69.18,34.52],AL:[19.82,41.33],DZ:[3.05,36.74],AO:[13.23,-8.84],AR:[-58.38,-34.61],
+  AM:[44.50,40.18],AU:[149.13,-35.31],AT:[16.37,48.21],AZ:[49.87,40.41],BS:[-77.34,25.06],
+  BH:[50.59,26.21],BD:[90.41,23.72],BY:[27.57,53.90],BE:[4.35,50.85],BZ:[-88.77,17.25],
+  BJ:[2.62,6.37],BT:[89.64,27.47],BO:[-68.13,-16.50],BA:[18.42,43.85],BW:[25.91,-24.65],
+  BR:[-47.93,-15.78],BN:[114.94,4.94],BG:[23.32,42.70],BF:[-1.52,12.37],BI:[29.36,-3.38],
+  KH:[104.92,11.57],CM:[11.52,3.87],CA:[-75.70,45.42],CF:[18.56,4.36],TD:[15.05,12.11],
+  CL:[-70.67,-33.46],CN:[116.39,39.91],CO:[-74.08,4.71],CD:[15.32,-4.32],CG:[15.28,-4.26],
+  CR:[-84.09,9.93],HR:[16.00,45.80],CU:[-82.35,23.13],CY:[33.36,35.17],CZ:[14.47,50.08],
+  DK:[12.57,55.68],DJ:[43.14,11.59],DO:[-69.90,18.48],EC:[-78.50,-0.23],EG:[31.24,30.06],
+  SV:[-89.20,13.70],GQ:[8.78,3.75],ER:[38.93,15.34],EE:[24.73,59.44],ET:[38.70,9.03],
+  FJ:[178.44,-18.14],FI:[25.00,60.17],FR:[2.35,48.85],GA:[9.45,0.39],GM:[-15.59,13.45],
+  GE:[44.83,41.69],DE:[13.41,52.52],GH:[-0.19,5.55],GR:[23.73,37.98],GT:[-90.52,14.64],
+  GN:[-13.71,9.54],GW:[-15.18,11.86],GY:[-58.16,6.80],HT:[-72.34,18.54],HN:[-87.22,14.10],
+  HU:[19.04,47.50],IS:[-21.82,64.13],IN:[77.21,28.61],ID:[106.82,-6.21],IR:[51.39,35.69],
+  IQ:[44.39,33.34],IE:[-6.27,53.33],IL:[35.22,31.77],IT:[12.48,41.90],JM:[-76.79,17.99],
+  JP:[139.69,35.69],JO:[35.93,31.96],KZ:[71.43,51.18],KE:[36.82,-1.29],KW:[47.98,29.37],
+  KG:[74.60,42.87],LA:[102.60,17.97],LV:[24.11,56.95],LB:[35.49,33.89],LS:[27.48,-29.32],
+  LR:[-10.80,6.30],LY:[13.18,32.90],LT:[25.28,54.69],LU:[6.13,49.61],MG:[47.53,-18.91],
+  MW:[33.78,-13.97],MY:[101.69,3.14],MV:[73.51,4.18],ML:[-8.00,12.65],MT:[14.51,35.90],
+  MR:[-15.96,18.08],MU:[57.50,-20.16],MX:[-99.13,19.43],MD:[28.86,47.00],MN:[106.92,47.91],
+  ME:[19.27,42.44],MA:[-6.85,33.99],MZ:[32.59,-25.97],MM:[96.13,19.74],NA:[17.08,-22.56],
+  NP:[85.32,27.72],NL:[4.90,52.37],NZ:[174.78,-41.29],NI:[-86.29,12.13],NE:[2.11,13.51],
+  NG:[7.53,9.07],KP:[125.75,39.02],NO:[10.75,59.91],OM:[58.59,23.61],PK:[73.04,33.72],
+  PA:[-79.52,8.99],PG:[147.18,-9.44],PY:[-57.64,-25.28],PE:[-77.04,-12.05],PH:[120.98,14.60],
+  PL:[21.01,52.23],PT:[-9.14,38.72],QA:[51.53,25.29],RO:[26.10,44.44],RU:[37.62,55.75],
+  RW:[30.06,-1.94],SA:[46.72,24.69],SN:[-17.44,14.69],RS:[20.46,44.80],SL:[-13.23,8.49],
+  SG:[103.85,1.29],SK:[17.11,48.15],SI:[14.51,46.05],SO:[45.34,2.05],ZA:[28.22,-25.75],
+  SS:[31.62,4.86],ES:[-3.69,40.42],LK:[80.64,7.29],SD:[32.53,15.55],SR:[-55.17,5.85],
+  SE:[18.07,59.33],CH:[7.45,46.95],SY:[36.29,33.51],TW:[121.53,25.05],TJ:[68.78,38.56],
+  TZ:[39.29,-6.17],TH:[100.52,13.75],TL:[125.58,-8.56],TG:[1.22,6.14],TT:[-61.52,10.65],
+  TN:[10.18,36.82],TR:[32.86,39.93],TM:[58.38,37.95],UG:[32.58,0.32],UA:[30.52,50.43],
+  AE:[54.37,24.47],GB:[-0.13,51.51],US:[-77.04,38.91],UY:[-56.19,-34.90],UZ:[69.27,41.30],
+  VE:[-66.86,10.49],VN:[105.85,21.03],YE:[44.19,15.35],ZM:[28.29,-15.41],ZW:[31.05,-17.83],
+  KR:[126.98,37.57],
+  AI:[-63.05,18.22],AS:[-170.70,-14.28],AG:[-61.85,17.12],BB:[-59.62,13.10],BM:[-64.78,32.29],
+  CV:[-23.51,14.93],KM:[43.26,-11.70],DM:[-61.39,15.30],GD:[-61.75,12.06],
+  GY:[-58.16,6.80],KN:[-62.72,17.30],LC:[-61.00,14.00],VC:[-61.22,13.16],
+  SC:[55.45,-4.62],SB:[159.95,-9.43],TO:[-175.20,-21.14],TV:[-179.22,-8.53],
+  VU:[168.32,-17.73],WS:[-171.77,-13.83],MH:[171.37,7.12],FM:[158.15,6.92],
+  NR:[166.92,-0.55],PW:[134.62,7.34],KI:[-157.36,1.87],TL:[125.58,-8.56],
+  LS:[27.48,-29.32],SZ:[31.13,-26.32],BN:[114.94,4.94],CY:[33.36,35.17],
+  LU:[6.13,49.61],MT:[14.51,35.90],MV:[73.51,4.18],MU:[57.50,-20.16],
+}
+
+const GEO_URL = "https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json"
+
+// ISO2 → ISO3 (johan GeoJSON uses ISO3 as geo.id)
+const ISO2_TO_ISO3: Record<string,string> = {
+  AF:"AFG",AL:"ALB",DZ:"DZA",AO:"AGO",AR:"ARG",AM:"ARM",AU:"AUS",AT:"AUT",AZ:"AZE",
+  BS:"BHS",BH:"BHR",BD:"BGD",BY:"BLR",BE:"BEL",BZ:"BLZ",BJ:"BEN",BT:"BTN",
+  BO:"BOL",BA:"BIH",BW:"BWA",BR:"BRA",BN:"BRN",BG:"BGR",BF:"BFA",BI:"BDI",
+  KH:"KHM",CM:"CMR",CA:"CAN",CF:"CAF",TD:"TCD",CL:"CHL",CN:"CHN",CO:"COL",
+  CD:"COD",CG:"COG",CR:"CRI",HR:"HRV",CU:"CUB",CY:"CYP",CZ:"CZE",DK:"DNK",
+  DJ:"DJI",DO:"DOM",EC:"ECU",EG:"EGY",SV:"SLV",GQ:"GNQ",ER:"ERI",EE:"EST",
+  ET:"ETH",FJ:"FJI",FI:"FIN",FR:"FRA",GA:"GAB",GM:"GMB",GE:"GEO",DE:"DEU",
+  GH:"GHA",GR:"GRC",GT:"GTM",GN:"GIN",GW:"GNB",GY:"GUY",HT:"HTI",HN:"HND",
+  HU:"HUN",IS:"ISL",IN:"IND",ID:"IDN",IR:"IRN",IQ:"IRQ",IE:"IRL",IL:"ISR",
+  IT:"ITA",JM:"JAM",JP:"JPN",JO:"JOR",KZ:"KAZ",KE:"KEN",KW:"KWT",KG:"KGZ",
+  LA:"LAO",LV:"LVA",LB:"LBN",LS:"LSO",LR:"LBR",LY:"LBY",LT:"LTU",LU:"LUX",
+  MG:"MDG",MW:"MWI",MY:"MYS",MV:"MDV",ML:"MLI",MT:"MLT",MR:"MRT",MU:"MUS",
+  MX:"MEX",MD:"MDA",MN:"MNG",ME:"MNE",MA:"MAR",MZ:"MOZ",MM:"MMR",NA:"NAM",
+  NP:"NPL",NL:"NLD",NZ:"NZL",NI:"NIC",NE:"NER",NG:"NGA",KP:"PRK",NO:"NOR",
+  OM:"OMN",PK:"PAK",PA:"PAN",PG:"PNG",PY:"PRY",PE:"PER",PH:"PHL",PL:"POL",
+  PT:"PRT",QA:"QAT",RO:"ROU",RU:"RUS",RW:"RWA",SA:"SAU",SN:"SEN",RS:"SRB",
+  SL:"SLE",SG:"SGP",SK:"SVK",SI:"SVN",SO:"SOM",ZA:"ZAF",SS:"SSD",ES:"ESP",
+  LK:"LKA",SD:"SDN",SR:"SUR",SE:"SWE",CH:"CHE",SY:"SYR",TW:"TWN",TJ:"TJK",
+  TZ:"TZA",TH:"THA",TL:"TLS",TG:"TGO",TT:"TTO",TN:"TUN",TR:"TUR",TM:"TKM",
+  UG:"UGA",UA:"UKR",AE:"ARE",GB:"GBR",US:"USA",UY:"URY",UZ:"UZB",
+  VE:"VEN",VN:"VNM",YE:"YEM",ZM:"ZMB",ZW:"ZWE",KR:"KOR",
+}
+
+// Map dimensions & projection constants
+const W = 680, H = 320
+const SCALE = 140
+const TX = W / 2  // 340
+const TY = H / 2  // 160
+
+// Latitude → pixel Y (Mercator)
+function latToY(lat: number, scale = SCALE) {
+  const phi = (lat * Math.PI) / 180
+  const centerPhi = (30 * Math.PI) / 180
+  return TY - scale * (Math.log(Math.tan(Math.PI / 4 + phi / 2)) - Math.log(Math.tan(Math.PI / 4 + centerPhi / 2)))
+}
+
 export function GlobalIllustration({ country }: { country: CountryData }) {
-  const grad = "cc-grad"
-  const glow = "cc-glow"
-  const screen = "cc-screen"
+  const ctryUtc = country.utcOffset
+  const usUtc   = -5
+  const ctryCoords = (CAPITAL_COORDS_MAP[country.isoCode2] || [20, 41]) as [number, number]
+  const usCoords: [number, number] = [-77.04, 38.91]
+
+  const [now, setNow] = useState(() => new Date())
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  const fmtTZ = (tz: string) => now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: tz })
+  const getHourTZ = (tz: string) => parseInt(now.toLocaleString("en-US", { hour: "numeric", hour12: false, timeZone: tz }))
+
+  const usTime = fmtTZ("America/New_York")
+  const usH    = getHourTZ("America/New_York")
+
+  // now.getTime() is already UTC — just shift by country's UTC offset
+  const ctryDate = new Date(now.getTime() + ctryUtc * 3600000)
+  const ctryTime = ctryDate.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: "UTC" })
+  const ctH      = ctryDate.getUTCHours()
+
+  // Calculate actual US Eastern offset (accounts for DST)
+  const utcH = now.getUTCHours()
+  const actualUsOffset = ((usH - utcH + 36) % 24) - 12
+  const diffH = Math.abs(ctryUtc - actualUsOffset)
+
+  const isBizUS   = usH >= 9 && usH < 17
+  const isBizCtry = ctH >= 9 && ctH < 17
+  const statusCol = (biz: boolean, h: number) => biz ? "#22c55e" : (h >= 7 && h < 22) ? "#f59e0b" : "#64748b"
+  const statusLbl = (biz: boolean, h: number) => biz ? "Business hours" : (h >= 7 && h < 22) ? "Outside office" : "Sleeping"
+
+  const countryIso2 = country.isoCode2
+  const countryIso3 = country.isoCode3
 
   return (
-    <div className="relative w-full flex items-center justify-center select-none pointer-events-none">
-      <div className="absolute w-72 h-72 rounded-full bg-[#046BD2]/20 blur-[90px]" />
-      <div className="absolute w-48 h-48 rounded-full bg-[#22D3EE]/10 blur-[60px] translate-y-6" />
+    <div className="relative w-full select-none rounded-2xl overflow-hidden border border-[#0086F9]/20"
+      style={{ background: "#040d1a" }}>
 
-      <svg viewBox="0 0 380 400" className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]" fill="none" aria-hidden>
-        <defs>
-          <linearGradient id={grad} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#046BD2" />
-            <stop offset="100%" stopColor="#22D3EE" />
-          </linearGradient>
-          <linearGradient id={screen} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#0D1B2E" />
-            <stop offset="100%" stopColor="#060D1A" />
-          </linearGradient>
-          <filter id={glow} x="-25%" y="-25%" width="150%" height="150%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-        </defs>
+      {/* Leaflet map */}
+      <LeafletMap
+        ctryCoords={ctryCoords}
+        usCoords={usCoords}
+        countryIso3={countryIso3}
+      />
 
-        {/* Pulsing rings */}
-        {[155, 130, 108].map((r, i) => (
-          <motion.circle key={r} cx={190} cy={200} r={r}
-            stroke={i === 0 ? "#046BD2" : "#22D3EE"}
-            strokeOpacity={0.04 + i * 0.025}
-            strokeWidth={1} fill="none"
-            animate={{ r: [r, r + 7, r], opacity: [0.35, 0.75, 0.35] }}
-            transition={{ duration: 4 + i * 0.8, repeat: Infinity, ease: "easeInOut", delay: i * 0.9 }}
-          />
-        ))}
+      {/* Bottom time strip */}
+      <div className="grid grid-cols-3 border-t border-[#0086F9]/15" style={{ background: "#071428" }}>
+        <div className="flex items-center gap-3 px-4 py-3">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#0086F9] shrink-0" style={{ boxShadow: "0 0 6px #0086F9" }}/>
+          <div>
+            <p className="text-[10px] font-mono text-[#0086F9] font-bold">United States</p>
+            <p className="text-base font-bold text-white font-mono">{usTime}</p>
+            <div className="flex items-center gap-1 mt-0.5">
+              <div className="w-1.5 h-1.5 rounded-full" style={{ background: statusCol(isBizUS, usH) }}/>
+              <span className="text-[9px] font-mono" style={{ color: statusCol(isBizUS, usH) }}>{statusLbl(isBizUS, usH)}</span>
+            </div>
+          </div>
+        </div>
 
-        {/* Globe body */}
-        <circle cx={190} cy={200} r={100} fill={`url(#${screen})`}
-          stroke={`url(#${grad})`} strokeWidth={1.5} strokeOpacity={0.55} />
+        <div className="flex flex-col items-center justify-center border-x border-[#0086F9]/10 py-3">
+          <p className="text-2xl font-black text-white">{diffH}h</p>
+          <p className="text-[8px] font-mono text-white/25 uppercase tracking-widest">difference</p>
+        </div>
 
-        {/* Latitude lines */}
-        {[-60, -36, -12, 12, 36, 60].map((lat) => {
-          const ry = 100 * Math.abs(Math.sin((lat * Math.PI) / 180)) + 3
-          const cy = 200 + (lat / 90) * 100
-          const rx = Math.sqrt(Math.max(0, 100 * 100 - ((lat / 90) * 100) ** 2))
-          return (
-            <ellipse key={lat} cx={190} cy={cy} rx={rx * 0.95} ry={Math.max(ry * 0.3, 2)}
-              stroke="#22D3EE" strokeOpacity={0.07} strokeWidth={0.6} fill="none" />
-          )
-        })}
-
-        {/* Longitude lines */}
-        {[0, 30, 60, 90, 120, 150].map((deg) => (
-          <ellipse key={deg} cx={190} cy={200}
-            rx={Math.abs(Math.cos((deg * Math.PI) / 180)) * 100}
-            ry={100}
-            stroke="#046BD2" strokeOpacity={0.06} strokeWidth={0.6} fill="none"
-            transform={`rotate(${deg},190,200)`}
-          />
-        ))}
-
-        {/* Connection arcs — animated dashes */}
-        {[
-          { d: "M 70 240 Q 130 160 190 200", delay: 0 },
-          { d: "M 310 160 Q 260 175 190 200", delay: 1.4 },
-          { d: "M 190 95 Q 182 148 190 200",  delay: 2.6 },
-        ].map((arc, i) => (
-          <motion.path key={i} d={arc.d}
-            stroke={i % 2 === 0 ? "#22D3EE" : "#046BD2"}
-            strokeWidth={1} fill="none" strokeOpacity={0.55}
-            strokeDasharray="5 9"
-            animate={{ strokeDashoffset: [0, -140] }}
-            transition={{ duration: 2.8, repeat: Infinity, ease: "linear", delay: arc.delay }}
-          />
-        ))}
-
-        {/* Travelling call dots */}
-        {[
-          { path: "M 70 240 Q 130 160 190 200", dur: 2.8, delay: 0, color: "#22D3EE" },
-          { path: "M 310 160 Q 260 175 190 200", dur: 2.8, delay: 1.4, color: "#046BD2" },
-          { path: "M 190 95 Q 182 148 190 200",  dur: 2.8, delay: 2.6, color: "#22D3EE" },
-        ].map((dot, i) => (
-          <motion.circle key={i} r={3.5} fill={dot.color} fillOpacity={0.9}
-            animate={{ offsetDistance: ["0%","100%"] }}
-            style={{ offsetPath: `path('${dot.path}')` } as React.CSSProperties}
-            transition={{ duration: dot.dur, repeat: Infinity, ease: "linear", delay: dot.delay }}
-          />
-        ))}
-
-        {/* Central dial code */}
-        <motion.text x={190} y={190} textAnchor="middle"
-          fill={`url(#${grad})`} fontSize={country.dialCode.length > 4 ? "26" : "34"}
-          fontWeight="900" fontFamily="system-ui,-apple-system,sans-serif"
-          filter={`url(#${glow})`}
-          animate={{ opacity: [0.82, 1, 0.82] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
-          {formatDialCode(country.dialCode)}
-        </motion.text>
-
-        <text x={190} y={205} textAnchor="middle" fill="#22D3EE" fontSize="7"
-          fontFamily="system-ui,sans-serif" letterSpacing="4" fillOpacity={0.7}>
-          DIAL CODE
-        </text>
-
-        <text x={190} y={220} textAnchor="middle" fill="white" fontSize="9.5"
-          fontFamily="system-ui,sans-serif" fillOpacity={0.4}>
-          {country.name.length > 16 ? country.name.split(" ").slice(0, 2).join(" ") : country.name}
-        </text>
-
-        {/* UTC offset badge */}
-        <rect x={148} y={228} width={84} height={16} rx={8}
-          fill="#046BD2" fillOpacity={0.15} stroke="#046BD2" strokeOpacity={0.35} strokeWidth={0.6} />
-        <text x={190} y={239.5} textAnchor="middle" fill="#22D3EE" fontSize="7.5"
-          fontFamily="system-ui,sans-serif" fillOpacity={0.85} letterSpacing="1">
-          {formatUTCOffset(country.utcOffset)}
-        </text>
-
-        {/* Equator line */}
-        <line x1={90} y1={200} x2={290} y2={200}
-          stroke="white" strokeOpacity={0.05} strokeWidth={0.8} />
-
-        {/* Node markers */}
-        {[
-          { cx: 70,  cy: 240, color: "#046BD2" },
-          { cx: 310, cy: 160, color: "#22D3EE" },
-          { cx: 190, cy: 95,  color: "#046BD2" },
-          { cx: 50,  cy: 155, color: "#22D3EE" },
-        ].map((node, i) => (
-          <motion.g key={i}
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.7, ease: "easeInOut" }}>
-            <circle cx={node.cx} cy={node.cy} r={9}
-              fill={node.color} fillOpacity={0.1} stroke={node.color} strokeOpacity={0.45} strokeWidth={1.2} />
-            <circle cx={node.cx} cy={node.cy} r={4} fill={node.color} fillOpacity={0.85} />
-          </motion.g>
-        ))}
-
-        {/* Signal arcs around globe edge */}
-        <motion.path d="M 100 120 Q 145 88 190 95"
-          stroke="#22D3EE" strokeWidth={1} fill="none" strokeOpacity={0.3}
-          strokeDasharray="3 7"
-          animate={{ strokeDashoffset: [0, -60] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.path d="M 280 120 Q 235 88 190 95"
-          stroke="#046BD2" strokeWidth={1} fill="none" strokeOpacity={0.3}
-          strokeDasharray="3 7"
-          animate={{ strokeDashoffset: [0, -60] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 }}
-        />
-      </svg>
+        <div className="flex items-center gap-3 px-4 py-3 justify-end text-right">
+          <div>
+            <p className="text-[10px] font-mono text-[#22D3EE] font-bold">{country.name}</p>
+            <p className="text-base font-bold text-white font-mono">{ctryTime}</p>
+            <div className="flex items-center gap-1 mt-0.5 justify-end">
+              <div className="w-1.5 h-1.5 rounded-full" style={{ background: statusCol(isBizCtry, ctH) }}/>
+              <span className="text-[9px] font-mono" style={{ color: statusCol(isBizCtry, ctH) }}>{statusLbl(isBizCtry, ctH)}</span>
+            </div>
+          </div>
+          <div className="w-2.5 h-2.5 rounded-full bg-[#22D3EE] shrink-0" style={{ boxShadow: "0 0 6px #22D3EE" }}/>
+        </div>
+      </div>
     </div>
   )
 }
@@ -254,7 +268,7 @@ export function CountryHero({ country, times }: { country: CountryData; times: B
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-3">
-              <Link href="/free-trial"
+              <Link href="/contact"
                 className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-lg shadow-[#046BD2]/20 text-sm sm:text-base"
               >
                 <Phone className="w-4 h-4" />
@@ -852,15 +866,7 @@ export function CountryCodeCTA({ country }: { country: CountryData }) {
           <div className="absolute inset-0 opacity-[0.025]"
             style={{ backgroundImage: "radial-gradient(circle at 1px 1px,rgba(120,160,220,0.25) 1px,transparent 0)", backgroundSize: "24px 24px" }} />
 
-          <div className="relative px-6 sm:px-12 py-16 sm:py-20 text-center">
-            <div aria-hidden className="text-[70px] sm:text-[100px] font-black text-white/[0.04] leading-none -mb-2 select-none">
-              {formatDialCode(country.dialCode)}
-            </div>
-
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-[#046BD2]/30 to-[#046BD2]/10 border border-[#046BD2]/25 mb-6">
-              <Globe className="w-6 h-6 text-[#22D3EE]" />
-            </div>
-
+          <div className="relative px-6 sm:px-12 py-12 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4">
               Ready to call {country.name}?
             </h2>
@@ -869,7 +875,7 @@ export function CountryCodeCTA({ country }: { country: CountryData }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-              <Link href="/free-trial"
+              <Link href="/contact"
                 className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#046BD2] to-[#0086F9] hover:from-[#0557b0] hover:to-[#0078e0] text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-[#046BD2]/25 text-sm sm:text-base"
               >
                 Start a Free Trial

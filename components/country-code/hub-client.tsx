@@ -1,30 +1,23 @@
 "use client"
 
-import { useState } from "react"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import {
   CountryHubHero,
   WhyInternational,
   BrowseByRegion,
-  PopularCountries,
-  PopularCountriesGrid,
   CountryHubFAQ,
   CountryHubCTA,
 } from "@/components/country-code/hub"
 import { COUNTRIES } from "@/lib/country-code-data"
 
 export function CountryCodeHubClient() {
-  const [query, setQuery] = useState("")
-
   return (
     <main className="min-h-screen bg-[#0B1220]">
       <Navbar />
-      <CountryHubHero total={COUNTRIES.length} query={query} setQuery={setQuery} />
+      <CountryHubHero total={COUNTRIES.length} query="" setQuery={() => {}} />
       <WhyInternational />
       <BrowseByRegion countries={COUNTRIES} />
-      <PopularCountries countries={COUNTRIES} />
-      <PopularCountriesGrid />
       <CountryHubFAQ />
       <CountryHubCTA />
       <Footer />

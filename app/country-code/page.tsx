@@ -2,70 +2,66 @@ import type { Metadata } from "next"
 import { SITE_URL } from "@/lib/site"
 import { CountryCodeHubClient } from "./_client"
 
+const TITLE = "International Country Codes & Virtual Phone Numbers | Rozper"
+const DESCRIPTION =
+  "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed."
+const PAGE_URL = `${SITE_URL}/country-code`
+const OG_IMAGE = `${SITE_URL}/images/blog/Main_2672x941.webp`
+
 export const metadata: Metadata = {
-  title: "International Country Codes & Virtual Phone Numbers | Rozper",
-  description:
-    "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed.",
-  alternates: { canonical: `${SITE_URL}/country-code` },
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "International Country Codes & Virtual Phone Numbers | Rozper",
-    description:
-      "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed.",
-    type: "website",
-    url: `${SITE_URL}/country-code`,
+    title: TITLE,
+    description: DESCRIPTION,
+    url: PAGE_URL,
     siteName: "Rozper",
+    images: [{ url: OG_IMAGE, width: 2672, height: 941, alt: TITLE }],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+    site: "@rozper",
+    creator: "@rozper",
   },
 }
 
-const jsonLd = {
+const webPageSchema = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CollectionPage",
-      "@id": `${SITE_URL}/country-code#webpage`,
-      "name": "International Country Codes & Virtual Phone Numbers",
-      "description": "Find international dialing codes and get virtual phone numbers in 150+ countries with Rozper.",
-      "url": `${SITE_URL}/country-code`,
-      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
-      "inLanguage": "en-US",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Country Codes", "item": `${SITE_URL}/country-code` },
-      ],
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What are international dialing codes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Country codes are numeric prefixes dialed before a local number to reach phones in another country. For example, +1 is the US/Canada, +44 is the UK.",
-          },
-        },
-        {
-          "@type": "Question",
-          "name": "Can I get a virtual phone number in any country?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Rozper provides virtual phone numbers in 150+ countries, enabling local presence without a physical office.",
-          },
-        },
-        {
-          "@type": "Question",
-          "name": "How do I find a country's dialing code?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Browse the Rozper country code directory to find dialing codes, time zones, and calling tips for every country we cover.",
-          },
-        },
-      ],
-    },
-  ],
+  "@type": "WebPage",
+  "@id": `${PAGE_URL}#webpage`,
+  url: PAGE_URL,
+  name: TITLE,
+  description: DESCRIPTION,
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Country Codes", item: PAGE_URL },
+    ],
+  },
+}
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: "Rozper",
+  url: SITE_URL,
+  foundingDate: "2018",
+  logo: { "@type": "ImageObject", url: `${SITE_URL}/images/white-rozper-logo.png` },
+  sameAs: ["https://www.linkedin.com/company/rozper", "https://twitter.com/rozper"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    url: `${SITE_URL}/contact`,
+    availableLanguage: "English",
+  },
 }
 
 export default function CountryCodeHubPage() {
@@ -73,7 +69,11 @@ export default function CountryCodeHubPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <CountryCodeHubClient />
     </>
