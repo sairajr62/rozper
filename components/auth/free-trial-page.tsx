@@ -3,12 +3,13 @@
 import { useRef, useState } from "react"
 import dynamic from "next/dynamic"
 import type ReCAPTCHAType from "react-google-recaptcha"
-const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, Phone, Users, Bot, Globe2 } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
+
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 
 const included = [
   "No credit card required",

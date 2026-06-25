@@ -3,10 +3,11 @@
 import { useRef, useState } from "react"
 import dynamic from "next/dynamic"
 import type ReCAPTCHAType from "react-google-recaptcha"
-const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, PhoneOutgoing, Network } from "lucide-react"
 import Link from "next/link"
+
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false })
 
 const VOLUME_OPTIONS = [
   "Under 1M minutes / month",
