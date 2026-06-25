@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, PhoneOutgoing, Network } from "lucide-react"
 import Link from "next/link"
@@ -37,11 +38,17 @@ export function WholesaleContactForm({ interest }: WholesaleContactFormProps) {
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [volume, setVolume] = useState(VOLUME_OPTIONS[1])
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
 
   const Icon = interest === "Wholesale Voice" ? PhoneOutgoing : Network
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const recaptchaToken = recaptchaRef.current?.getValue()
+    if (!recaptchaToken) {
+      setError("Please complete the reCAPTCHA check.")
+      return
+    }
     setSending(true)
     setError(null)
     const form = e.currentTarget
@@ -53,6 +60,7 @@ export function WholesaleContactForm({ interest }: WholesaleContactFormProps) {
       companySize: volume,
       interests: [interest],
       message: (form.elements.namedItem("message") as HTMLTextAreaElement)?.value,
+      recaptchaToken,
     }
     try {
       const res = await fetch("/api/contact", {
@@ -62,11 +70,12 @@ export function WholesaleContactForm({ interest }: WholesaleContactFormProps) {
       })
       const json = await res.json()
       if (json.success) setSubmitted(true)
-      else setError("Something went wrong. Please try again.")
+      else setError(json.error ?? "Something went wrong. Please try again.")
     } catch {
       setError("Network error. Please check your connection.")
     } finally {
       setSending(false)
+      recaptchaRef.current?.reset()
     }
   }
 
@@ -233,6 +242,14 @@ export function WholesaleContactForm({ interest }: WholesaleContactFormProps) {
                     rows={4}
                     placeholder="E.g. Heavy traffic to US, UK, India — need CLI routes with ASR above 95%. Currently using X carrier."
                     className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/10 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#22D3EE]/50 focus:bg-white/[0.05] transition resize-none"
+                  />
+                </div>
+
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                    theme="dark"
                   />
                 </div>
 

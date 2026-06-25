@@ -13,6 +13,7 @@ type LeadPayload = {
   companySize?: string
   interests?: string[]
   message?: string
+  recaptchaToken?: string
 }
 
 function escapeHtml(value: string) {
@@ -74,6 +75,29 @@ export async function POST(req: Request) {
       { success: false, error: "Invalid JSON body." },
       { status: 400 },
     )
+  }
+
+  // reCAPTCHA verification (skip if secret key not configured — dev mode)
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY
+  if (secretKey) {
+    const token = (body.recaptchaToken ?? "").trim()
+    if (!token) {
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA verification required." },
+        { status: 400 },
+      )
+    }
+    const verifyRes = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`,
+      { method: "POST" },
+    )
+    const verifyJson = await verifyRes.json() as { success: boolean }
+    if (!verifyJson.success) {
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA check failed. Please try again." },
+        { status: 400 },
+      )
+    }
   }
 
   const firstName = (body.firstName ?? "").trim()

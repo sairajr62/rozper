@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, Phone, Users, Bot, Globe2 } from "lucide-react"
 import Link from "next/link"
@@ -34,9 +35,15 @@ export function FreeTrialPageView() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    const recaptchaToken = recaptchaRef.current?.getValue()
+    if (!recaptchaToken) {
+      setError("Please complete the reCAPTCHA check.")
+      return
+    }
     setLoading(true)
     setError(null)
     try {
@@ -52,15 +59,17 @@ export function FreeTrialPageView() {
           interests: ["Free Trial"],
           companySize: "—",
           message: "Started a free trial via the /free-trial page.",
+          recaptchaToken,
         }),
       })
       const json = await res.json()
       if (json.success) setSubmitted(true)
-      else setError("Something went wrong. Please try again.")
+      else setError(json.error ?? "Something went wrong. Please try again.")
     } catch {
       setError("Network error. Please check your connection.")
     } finally {
       setLoading(false)
+      recaptchaRef.current?.reset()
     }
   }
 
@@ -163,6 +172,14 @@ export function FreeTrialPageView() {
                         onChange={(e) => setCompany(e.target.value)}
                         placeholder="Acme Inc."
                         className="w-full h-11 px-4 rounded-lg bg-white/[0.03] border border-white/10 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#22D3EE]/50 focus:bg-white/[0.05] transition"
+                      />
+                    </div>
+
+                    <div className="flex justify-center">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                        theme="dark"
                       />
                     </div>
 
