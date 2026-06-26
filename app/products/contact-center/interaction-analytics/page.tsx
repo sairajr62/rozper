@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ProdCCAnalyticsPageView } from '@/components/products/contact-center/analytics'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
     description: 'Transcripts, sentiment, intent, and quality scores — on 100% of interactions.',
     type: 'website',
-    url: `${SITE_URL}/products/contact-center/interaction-analytics`,
+    url: `${SITE_URL}/products/contact-center/interaction-analytics/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center/interaction-analytics` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/interaction-analytics/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center/interaction-analytics#app`,
+      "@id": `${SITE_URL}/products/contact-center/interaction-analytics#app/`,
       "name": "Interaction Analytics",
       "description": "AI-powered interaction analytics with transcripts, sentiment, and coaching insights",
-      "url": `${SITE_URL}/products/contact-center/interaction-analytics`,
+      "url": `${SITE_URL}/products/contact-center/interaction-analytics/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Interaction Analytics", "item": `${SITE_URL}/products/contact-center/interaction-analytics` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Interaction Analytics", "item": `${SITE_URL}/products/contact-center/interaction-analytics/` },
       ],
     },
     {

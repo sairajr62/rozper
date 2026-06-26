@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { WholesaleVoipPageView } from "@/components/solutions/wholesale-voip"
 import { SITE_URL } from "@/lib/site"
 
@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     description:
       "Direct A-Z routes, secure carrier interconnections, and performance-optimized global VoIP termination — built for carriers, VoIP providers, and telecom operators.",
     type: "website",
-    url: `${SITE_URL}/wholesale-voip`,
+    url: `${SITE_URL}/wholesale-voip/`,
     siteName: "Rozper",
   },
-  alternates: { canonical: `${SITE_URL}/wholesale-voip` },
+  alternates: { canonical: `${SITE_URL}/wholesale-voip/` },
 }
 
 const jsonLd = {
@@ -22,11 +22,11 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/wholesale-voip#service`,
+      "@id": `${SITE_URL}/wholesale-voip#service/`,
       "name": "Wholesale VoIP Termination",
       "alternateName": "Wholesale Voice Termination",
       "description": "Carrier-grade wholesale VoIP termination with direct A-Z routes, secure SIP interconnections, and performance-optimized global voice delivery. Built for carriers, VoIP providers, and telecom operators.",
-      "url": `${SITE_URL}/wholesale-voip`,
+      "url": `${SITE_URL}/wholesale-voip/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -34,12 +34,12 @@ const jsonLd = {
         "url": SITE_URL,
         "logo": {
           "@type": "ImageObject",
-          "url": `${SITE_URL}/icon.svg`,
+          "url": `${SITE_URL}/icon.svg/`,
         },
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "sales",
-          "url": `${SITE_URL}/contact`,
+          "url": `${SITE_URL}/contact/`,
           "availableLanguage": "English",
         },
       },
@@ -93,7 +93,7 @@ const jsonLd = {
           "@type": "ListItem",
           "position": 2,
           "name": "Wholesale VoIP",
-          "item": `${SITE_URL}/wholesale-voip`,
+          "item": `${SITE_URL}/wholesale-voip/`,
         },
       ],
     },

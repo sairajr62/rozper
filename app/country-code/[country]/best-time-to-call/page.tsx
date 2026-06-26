@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+﻿import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -44,12 +44,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: `best time to call ${country.name}, ${country.name} country code, ${formatDialCode(country.dialCode)} dial code, call ${country.name} from US, ${country.name} business hours, ${country.name} time zone`,
-    alternates: { canonical: `${SITE_URL}/country-code/${slug}/best-time-to-call` },
+    alternates: { canonical: `${SITE_URL}/country-code/${slug}/best-time-to-call/` },
     openGraph: {
       title,
       description,
       type: "website",
-      url: `${SITE_URL}/country-code/${slug}/best-time-to-call`,
+      url: `${SITE_URL}/country-code/${slug}/best-time-to-call/`,
       siteName: "Rozper",
     },
     twitter: {
@@ -71,13 +71,13 @@ export default async function CountryCodePage({ params }: Props) {
   const schemaProduct = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": `${SITE_URL}/country-code/${slug}/best-time-to-call`,
+    "@id": `${SITE_URL}/country-code/${slug}/best-time-to-call/`,
     name: `Best Time to Call ${country.name} from the US`,
     description: `Country code ${formatDialCode(country.dialCode)}, timezone ${formatUTCOffset(country.utcOffset)}, and best calling hours for ${country.name}.`,
-    url: `${SITE_URL}/country-code/${slug}/best-time-to-call`,
+    url: `${SITE_URL}/country-code/${slug}/best-time-to-call/`,
     publisher: {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
+      "@id": `${SITE_URL}/#organization/`,
       name: "Rozper",
       url: SITE_URL,
     },

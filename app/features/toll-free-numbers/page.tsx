@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatTollFreeNumbersPageView } from '@/components/features/toll-free-numbers'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Toll-Free Numbers · 800, 888, 877 & International | Rozper',
     description: 'Instant toll-free number provisioning in 150+ countries. USA 800/888/877 and international freephone.',
     type: 'website',
-    url: `${SITE_URL}/features/toll-free-numbers`,
+    url: `${SITE_URL}/features/toll-free-numbers/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/features/toll-free-numbers` },
+  alternates: { canonical: `${SITE_URL}/features/toll-free-numbers/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/toll-free-numbers#service`,
+      "@id": `${SITE_URL}/features/toll-free-numbers#service/`,
       "name": "Toll-Free Numbers",
       "description": "Instant toll-free number provisioning in 150+ countries. USA 800/888/877 and international freephone.",
-      "url": `${SITE_URL}/features/toll-free-numbers`,
+      "url": `${SITE_URL}/features/toll-free-numbers/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "Toll-Free Numbers", "item": `${SITE_URL}/features/toll-free-numbers` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "Toll-Free Numbers", "item": `${SITE_URL}/features/toll-free-numbers/` },
       ],
     },
     {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     title: "Terms of Service · Platform Usage Agreement | Rozper",
     description: "The agreement between you and Rozper for use of the platform and related services.",
     type: 'website',
-    url: `${SITE_URL}/legal/terms`,
+    url: `${SITE_URL}/legal/terms/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/legal/terms` },
+  alternates: { canonical: `${SITE_URL}/legal/terms/` },
 }
 
 const jsonLd = {
@@ -24,10 +24,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/legal/terms#webpage`,
+      "@id": `${SITE_URL}/legal/terms#webpage/`,
       "name": "Terms of Service — Rozper",
       "description": "Rozper's terms of service outlining the conditions for using the Rozper platform and services.",
-      "url": `${SITE_URL}/legal/terms`,
+      "url": `${SITE_URL}/legal/terms/`,
       "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
       "inLanguage": "en-US",
     },
@@ -35,8 +35,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Legal", "item": `${SITE_URL}/legal` },
-        { "@type": "ListItem", "position": 3, "name": "Terms of Service", "item": `${SITE_URL}/legal/terms` },
+        { "@type": "ListItem", "position": 2, "name": "Legal", "item": `${SITE_URL}/legal/` },
+        { "@type": "ListItem", "position": 3, "name": "Terms of Service", "item": `${SITE_URL}/legal/terms/` },
       ],
     },
   ],

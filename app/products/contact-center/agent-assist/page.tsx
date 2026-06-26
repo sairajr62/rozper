@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ProdCCAgentAssistPageView } from '@/components/products/contact-center/agent-assist'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'AI that whispers the right answer, surfaces knowledge, and scores quality — in real time.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center/agent-assist` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/agent-assist/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center/agent-assist#app`,
+      "@id": `${SITE_URL}/products/contact-center/agent-assist#app/`,
       "name": "AI Agent Assist",
       "description": "Real-time AI coaching that surfaces answers and next-best-action on every call",
-      "url": `${SITE_URL}/products/contact-center/agent-assist`,
+      "url": `${SITE_URL}/products/contact-center/agent-assist/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "AI Agent Assist", "item": `${SITE_URL}/products/contact-center/agent-assist` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Agent Assist", "item": `${SITE_URL}/products/contact-center/agent-assist/` },
       ],
     },
     {

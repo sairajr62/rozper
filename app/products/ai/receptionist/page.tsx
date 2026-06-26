@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdAIReceptionistPageView } from '@/components/products/ai/receptionist'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Answers calls, qualifies leads, books meetings, and writes to your CRM — around the clock.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/ai/receptionist` },
+  alternates: { canonical: `${SITE_URL}/products/ai/receptionist/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/ai/receptionist#app`,
+      "@id": `${SITE_URL}/products/ai/receptionist#app/`,
       "name": "AI Receptionist",
       "description": "24/7 AI voice agent that answers, routes and qualifies inbound calls",
-      "url": `${SITE_URL}/products/ai/receptionist`,
+      "url": `${SITE_URL}/products/ai/receptionist/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "AI Receptionist", "item": `${SITE_URL}/products/ai/receptionist` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Receptionist", "item": `${SITE_URL}/products/ai/receptionist/` },
       ],
     },
     {

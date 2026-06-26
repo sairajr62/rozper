@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { EnterpriseITPageView } from '@/components/solutions/enterprise-it'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Enterprise UCaaS · SSO, SCIM, Multi-site | Rozper',
     description: 'Enterprise phone and contact center with SSO, SCIM, multi-site, custom SLAs, and GDPR/HIPAA compliance.',
     type: 'website',
-    url: `${SITE_URL}/solutions/enterprise-ucaas`,
+    url: `${SITE_URL}/solutions/enterprise-ucaas/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/enterprise-ucaas` },
+  alternates: { canonical: `${SITE_URL}/solutions/enterprise-ucaas/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/enterprise-ucaas#service`,
+      "@id": `${SITE_URL}/solutions/enterprise-ucaas#service/`,
       "name": "Enterprise UCaaS",
       "description": "Enterprise-grade unified communications with SSO, SCIM provisioning, and multi-site support",
-      "url": `${SITE_URL}/solutions/enterprise-ucaas`,
+      "url": `${SITE_URL}/solutions/enterprise-ucaas/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Enterprise UCaaS", "item": `${SITE_URL}/solutions/enterprise-ucaas` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Enterprise UCaaS", "item": `${SITE_URL}/solutions/enterprise-ucaas/` },
       ],
     },
     {

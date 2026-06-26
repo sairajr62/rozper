@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { AboutHero } from "@/components/about/hero"
@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
   description:
     "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018 — built so every call just works.",
-  alternates: { canonical: `${SITE_URL}/about` },
+  alternates: { canonical: `${SITE_URL}/about/` },
   openGraph: {
     title: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
     description:
       "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018 — built so every call just works.",
-    url: `${SITE_URL}/about`,
+    url: `${SITE_URL}/about/`,
     siteName: "Rozper",
     images: [
       {
@@ -35,19 +35,19 @@ export const metadata: Metadata = {
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "@id": `${SITE_URL}/about#webpage`,
-  url: `${SITE_URL}/about`,
+  "@id": `${SITE_URL}/about#webpage/`,
+  url: `${SITE_URL}/about/`,
   name: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
   description:
     "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018 — built so every call just works.",
-  isPartOf: { "@id": `${SITE_URL}/#website` },
-  publisher: { "@id": `${SITE_URL}/#organization` },
+  isPartOf: { "@id": `${SITE_URL}/#website/` },
+  publisher: { "@id": `${SITE_URL}/#organization/` },
 }
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${SITE_URL}/#organization`,
+  "@id": `${SITE_URL}/#organization/`,
   name: "Rozper",
   url: SITE_URL,
   foundingDate: "2018",
@@ -62,7 +62,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    url: `${SITE_URL}/contact`,
+    url: `${SITE_URL}/contact/`,
     availableLanguage: "English",
   },
 }

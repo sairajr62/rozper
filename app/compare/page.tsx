@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { CompareHero } from "@/components/compare/hero"
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "Side-by-side pricing and feature comparison against RingCentral, 8x8, Vonage, and Twilio Flex.",
     type: "website",
   },
-  alternates: { canonical: `${SITE_URL}/compare` },
+  alternates: { canonical: `${SITE_URL}/compare/` },
 }
 
 const jsonLd = {
@@ -30,13 +30,13 @@ const jsonLd = {
       "@type": "WebPage",
       "name": "Rozper vs RingCentral, 8x8, Vonage & Twilio",
       "description": "Compare Rozper's pricing, features, and global coverage against leading UCaaS providers.",
-      "url": `${SITE_URL}/compare`,
+      "url": `${SITE_URL}/compare/`,
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Compare", "item": `${SITE_URL}/compare` },
+        { "@type": "ListItem", "position": 2, "name": "Compare", "item": `${SITE_URL}/compare/` },
       ],
     },
     {

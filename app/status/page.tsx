@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { StatusHero } from "@/components/status/hero"
@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     description:
       "Real-time status for Rozper voice, messaging, AI, and APIs. Monitored across 14 regions with 90 days of incident history.",
     type: "website",
-    url: `${SITE_URL}/status`,
+    url: `${SITE_URL}/status/`,
     siteName: "Rozper",
   },
-  alternates: { canonical: `${SITE_URL}/status` },
+  alternates: { canonical: `${SITE_URL}/status/` },
 }
 
 const jsonLd = {
@@ -29,10 +29,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/status#webpage`,
+      "@id": `${SITE_URL}/status#webpage/`,
       "name": "Rozper Platform Status",
       "description": "Real-time uptime and incident status for the Rozper platform, including voice, messaging, AI, and API services.",
-      "url": `${SITE_URL}/status`,
+      "url": `${SITE_URL}/status/`,
       "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
       "inLanguage": "en-US",
     },
@@ -40,7 +40,7 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Status", "item": `${SITE_URL}/status` },
+        { "@type": "ListItem", "position": 2, "name": "Status", "item": `${SITE_URL}/status/` },
       ],
     },
   ],

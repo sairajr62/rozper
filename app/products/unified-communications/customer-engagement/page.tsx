@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSCustomerEngagementPageView } from '@/components/products/unified-communications/customer-engagement'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified for every agent.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/customer-engagement` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/customer-engagement/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/customer-engagement#app`,
+      "@id": `${SITE_URL}/products/unified-communications/customer-engagement#app/`,
       "name": "Customer Engagement",
       "description": "Every customer channel — voice, chat, email, SMS — in one inbox",
-      "url": `${SITE_URL}/products/unified-communications/customer-engagement`,
+      "url": `${SITE_URL}/products/unified-communications/customer-engagement/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -36,9 +36,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "Customer Engagement", "item": `${SITE_URL}/products/unified-communications/customer-engagement` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "Customer Engagement", "item": `${SITE_URL}/products/unified-communications/customer-engagement/` }
       ]
     },
     {

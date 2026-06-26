@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSBusinessPhonePageView } from '@/components/products/unified-communications/business-phone'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Business Phone · Cloud Calling for Global Teams | Rozper',
     description: 'Cloud phone with local numbers, smart routing, and AI — wherever your team is.',
     type: 'website',
-    url: `${SITE_URL}/products/unified-communications/business-phone-system`,
+    url: `${SITE_URL}/products/unified-communications/business-phone-system/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/business-phone-system` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/business-phone-system/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/business-phone-system#app`,
+      "@id": `${SITE_URL}/products/unified-communications/business-phone-system#app/`,
       "name": "Business Phone System",
       "description": "Cloud-hosted business phone system with auto-attendant, call routing, and global numbers",
-      "url": `${SITE_URL}/products/unified-communications/business-phone-system`,
+      "url": `${SITE_URL}/products/unified-communications/business-phone-system/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -38,9 +38,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "Business Phone System", "item": `${SITE_URL}/products/unified-communications/business-phone-system` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "Business Phone System", "item": `${SITE_URL}/products/unified-communications/business-phone-system/` }
       ]
     },
     {

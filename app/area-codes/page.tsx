@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { AreaCodesHubClient } from "@/components/area-codes/hub-client"
@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   description:
     "Get a virtual phone number for any U.S. area code — New York 212, Los Angeles 310, Chicago 312, Miami 305, and 300+ more. Instant setup, 99.99% uptime.",
   keywords: "area code virtual numbers, local phone numbers, virtual phone numbers USA, US area codes, business phone number, area code lookup",
-  alternates: { canonical: `${SITE_URL}/area-codes` },
+  alternates: { canonical: `${SITE_URL}/area-codes/` },
   openGraph: {
     title: "U.S. Area Code Virtual Phone Numbers | Rozper",
     description: "Instant local presence in any U.S. market. Virtual numbers for 300+ area codes across all 50 states.",
     type: "website",
-    url: `${SITE_URL}/area-codes`,
+    url: `${SITE_URL}/area-codes/`,
     siteName: "Rozper",
   },
 }
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "@id": `${SITE_URL}/area-codes`,
+  "@id": `${SITE_URL}/area-codes/`,
   name: "U.S. Area Code Virtual Phone Numbers",
   description: "Virtual phone numbers for every U.S. area code — local presence without a physical office.",
-  url: `${SITE_URL}/area-codes`,
+  url: `${SITE_URL}/area-codes/`,
   publisher: {
     "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
+    "@id": `${SITE_URL}/#organization/`,
     name: "Rozper",
     url: SITE_URL,
   },

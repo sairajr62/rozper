@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ProdCCOmnichannelPageView } from '@/components/products/contact-center/omnichannel'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Voice, chat, social, and SMS unified — with AI routing and full CRM context.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center/omnichannel` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/omnichannel/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center/omnichannel#app`,
+      "@id": `${SITE_URL}/products/contact-center/omnichannel#app/`,
       "name": "Omnichannel Contact Center",
       "description": "Voice, chat, email, and social in a single agent workspace",
-      "url": `${SITE_URL}/products/contact-center/omnichannel`,
+      "url": `${SITE_URL}/products/contact-center/omnichannel/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Omnichannel Contact Center", "item": `${SITE_URL}/products/contact-center/omnichannel` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Omnichannel Contact Center", "item": `${SITE_URL}/products/contact-center/omnichannel/` },
       ],
     },
     {

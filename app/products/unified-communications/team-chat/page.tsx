@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSTeamChatPageView } from '@/components/products/unified-communications/team-chat'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Chat, share files, and start calls from one app — no extra tools.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/team-chat` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/team-chat/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/team-chat#app`,
+      "@id": `${SITE_URL}/products/unified-communications/team-chat#app/`,
       "name": "Team Chat",
       "description": "Persistent team messaging built directly into your Rozper phone system",
-      "url": `${SITE_URL}/products/unified-communications/team-chat`,
+      "url": `${SITE_URL}/products/unified-communications/team-chat/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -36,9 +36,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "Team Chat", "item": `${SITE_URL}/products/unified-communications/team-chat` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "Team Chat", "item": `${SITE_URL}/products/unified-communications/team-chat/` }
       ]
     },
     {

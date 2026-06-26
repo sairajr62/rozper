@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     title: "Security & Compliance · Trust at Every Layer | Rozper",
     description: "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications safe.",
     type: "website",
-    url: `${SITE_URL}/security`,
+    url: `${SITE_URL}/security/`,
     siteName: "Rozper",
   },
-  alternates: { canonical: `${SITE_URL}/security` },
+  alternates: { canonical: `${SITE_URL}/security/` },
 }
 
 const jsonLd = {
@@ -24,10 +24,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/security#webpage`,
+      "@id": `${SITE_URL}/security#webpage/`,
       "name": "Rozper Security & Compliance",
       "description": "Rozper's security posture — SOC 2, encryption, GDPR compliance, and enterprise-grade data protection.",
-      "url": `${SITE_URL}/security`,
+      "url": `${SITE_URL}/security/`,
       "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
       "inLanguage": "en-US",
     },
@@ -35,7 +35,7 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Security", "item": `${SITE_URL}/security` },
+        { "@type": "ListItem", "position": 2, "name": "Security", "item": `${SITE_URL}/security/` },
       ],
     },
   ],

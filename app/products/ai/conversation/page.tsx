@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdAIConversationPageView } from '@/components/products/ai/conversation'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Transcripts, sentiment, intent, and keyword trends — on 100% of conversations.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/ai/conversation` },
+  alternates: { canonical: `${SITE_URL}/products/ai/conversation/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/ai/conversation#app`,
+      "@id": `${SITE_URL}/products/ai/conversation#app/`,
       "name": "Conversation Analytics",
       "description": "Auto-transcription, sentiment detection, and keyword insights on every call",
-      "url": `${SITE_URL}/products/ai/conversation`,
+      "url": `${SITE_URL}/products/ai/conversation/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Conversation Analytics", "item": `${SITE_URL}/products/ai/conversation` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Conversation Analytics", "item": `${SITE_URL}/products/ai/conversation/` },
       ],
     },
     {

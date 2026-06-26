@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdAIConversationPageView } from '@/components/products/ai/conversation'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Conversation Analytics · Transcripts, Sentiment & Intent | Rozper',
     description: 'Transcripts, sentiment, intent, and keyword trends — on 100% of conversations.',
     type: 'website',
-    url: `${SITE_URL}/products/ai/conversation-analytics`,
+    url: `${SITE_URL}/products/ai/conversation-analytics/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/products/ai/conversation-analytics` },
+  alternates: { canonical: `${SITE_URL}/products/ai/conversation-analytics/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/ai/conversation-analytics#app`,
+      "@id": `${SITE_URL}/products/ai/conversation-analytics#app/`,
       "name": "Conversation Analytics",
       "description": "Full call transcripts, sentiment scoring, and intent analysis",
-      "url": `${SITE_URL}/products/ai/conversation-analytics`,
+      "url": `${SITE_URL}/products/ai/conversation-analytics/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Conversation Analytics", "item": `${SITE_URL}/products/ai/conversation-analytics` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Conversation Analytics", "item": `${SITE_URL}/products/ai/conversation-analytics/` },
       ],
     },
     {

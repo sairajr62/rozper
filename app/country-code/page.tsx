@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { SITE_URL } from "@/lib/site"
 import { CountryCodeHubClient } from "./_client"
 
 const TITLE = "International Country Codes & Virtual Phone Numbers | Rozper"
 const DESCRIPTION =
   "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed."
-const PAGE_URL = `${SITE_URL}/country-code`
+const PAGE_URL = `${SITE_URL}/country-code/`
 const OG_IMAGE = `${SITE_URL}/images/blog/Main_2672x941.webp`
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ const webPageSchema = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${SITE_URL}/#organization`,
+  "@id": `${SITE_URL}/#organization/`,
   name: "Rozper",
   url: SITE_URL,
   foundingDate: "2018",
@@ -59,7 +59,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    url: `${SITE_URL}/contact`,
+    url: `${SITE_URL}/contact/`,
     availableLanguage: "English",
   },
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { DocsHero } from "@/components/docs/hero"
@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   title: "Documentation · Build with Rozper",
   description:
     "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform.",
-  alternates: { canonical: `${SITE_URL}/docs` },
+  alternates: { canonical: `${SITE_URL}/docs/` },
   openGraph: {
     title: "Documentation · Build with Rozper",
     description:
       "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform.",
     type: "website",
-    url: `${SITE_URL}/docs`,
+    url: `${SITE_URL}/docs/`,
     siteName: "Rozper",
   },
 }
@@ -29,10 +29,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "TechArticle",
-      "@id": `${SITE_URL}/docs#webpage`,
+      "@id": `${SITE_URL}/docs#webpage/`,
       "name": "Rozper Developer Documentation",
       "description": "Official documentation for building with the Rozper platform — APIs, SDKs, webhooks, and integration guides.",
-      "url": `${SITE_URL}/docs`,
+      "url": `${SITE_URL}/docs/`,
       "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
       "inLanguage": "en-US",
     },
@@ -40,7 +40,7 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Documentation", "item": `${SITE_URL}/docs` },
+        { "@type": "ListItem", "position": 2, "name": "Documentation", "item": `${SITE_URL}/docs/` },
       ],
     },
   ],

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { FinancePageView } from '@/components/solutions/finance'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Contact Center for Financial Services | Rozper',
     description: 'Compliant contact center for banks, insurance, and fintech. Call recording, PCI compliance, and regulatory controls.',
     type: 'website',
-    url: `${SITE_URL}/solutions/finance`,
+    url: `${SITE_URL}/solutions/finance/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/finance` },
+  alternates: { canonical: `${SITE_URL}/solutions/finance/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/finance#service`,
+      "@id": `${SITE_URL}/solutions/finance#service/`,
       "name": "Contact Center for Financial Services",
       "description": "Secure, compliant contact center for financial services companies",
-      "url": `${SITE_URL}/solutions/finance`,
+      "url": `${SITE_URL}/solutions/finance/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Contact Center for Financial Services", "item": `${SITE_URL}/solutions/finance` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Contact Center for Financial Services", "item": `${SITE_URL}/solutions/finance/` },
       ],
     },
     {

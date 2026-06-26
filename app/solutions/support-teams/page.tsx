@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { SupportTeamsPageView } from '@/components/solutions/support-teams'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Omnichannel Contact Center for Support Teams | Rozper',
     description: 'Omnichannel support inbox for voice, chat, SMS, and social. AI agent assist, CRM sync, and SLA tools.',
     type: 'website',
-    url: `${SITE_URL}/solutions/support-teams`,
+    url: `${SITE_URL}/solutions/support-teams/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/support-teams` },
+  alternates: { canonical: `${SITE_URL}/solutions/support-teams/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/support-teams#service`,
+      "@id": `${SITE_URL}/solutions/support-teams#service/`,
       "name": "Contact Center for Support Teams",
       "description": "Omnichannel contact center for support teams with AI agent assist and real-time dashboards",
-      "url": `${SITE_URL}/solutions/support-teams`,
+      "url": `${SITE_URL}/solutions/support-teams/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Contact Center for Support Teams", "item": `${SITE_URL}/solutions/support-teams` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Contact Center for Support Teams", "item": `${SITE_URL}/solutions/support-teams/` },
       ],
     },
     {

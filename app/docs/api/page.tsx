@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { ApiHero } from "@/components/api/hero"
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
     description:
       "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
     type: "website",
-    url: `${SITE_URL}/docs/api`,
+    url: `${SITE_URL}/docs/api/`,
     siteName: "Rozper",
     images: [
       {
-        url: `${SITE_URL}/docs/api/opengraph-image`,
+        url: `${SITE_URL}/docs/api/opengraph-image/`,
         width: 1200,
         height: 630,
         alt: "API Reference · REST & WebSocket Docs | Rozper",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     title: "API Reference · REST & WebSocket Docs | Rozper",
     description:
       "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
-    images: [`${SITE_URL}/docs/api/opengraph-image`],
+    images: [`${SITE_URL}/docs/api/opengraph-image/`],
   },
-  alternates: { canonical: `${SITE_URL}/docs/api` },
+  alternates: { canonical: `${SITE_URL}/docs/api/` },
 }
 
 const jsonLd = {
@@ -44,10 +44,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "TechArticle",
-      "@id": `${SITE_URL}/docs/api#webpage`,
+      "@id": `${SITE_URL}/docs/api#webpage/`,
       "name": "Rozper API Reference",
       "description": "REST and WebSocket API reference for the Rozper platform. Endpoints for calls, SMS, numbers, and webhooks.",
-      "url": `${SITE_URL}/docs/api`,
+      "url": `${SITE_URL}/docs/api/`,
       "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
       "inLanguage": "en-US",
     },
@@ -55,8 +55,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Docs", "item": `${SITE_URL}/docs` },
-        { "@type": "ListItem", "position": 3, "name": "API Reference", "item": `${SITE_URL}/docs/api` },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": `${SITE_URL}/docs/` },
+        { "@type": "ListItem", "position": 3, "name": "API Reference", "item": `${SITE_URL}/docs/api/` },
       ],
     },
   ],

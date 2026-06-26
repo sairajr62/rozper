@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatSupervisorToolsPageView } from '@/components/features/supervisor-tools'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Call Barge, Whisper & Monitoring | Rozper',
     description: 'Silent monitor, whisper coaching, and barge-in on any live call. Real-time supervisor control.',
     type: 'website',
-    url: `${SITE_URL}/features/supervisor-tools`,
+    url: `${SITE_URL}/features/supervisor-tools/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/features/supervisor-tools` },
+  alternates: { canonical: `${SITE_URL}/features/supervisor-tools/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/supervisor-tools#service`,
+      "@id": `${SITE_URL}/features/supervisor-tools#service/`,
       "name": "Supervisor Tools",
       "description": "Silent monitor, whisper coaching, and barge-in on any live call. Real-time supervisor control.",
-      "url": `${SITE_URL}/features/supervisor-tools`,
+      "url": `${SITE_URL}/features/supervisor-tools/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "Supervisor Tools", "item": `${SITE_URL}/features/supervisor-tools` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "Supervisor Tools", "item": `${SITE_URL}/features/supervisor-tools/` },
       ],
     },
     {

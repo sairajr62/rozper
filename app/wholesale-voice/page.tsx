@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { WholesaleVoicePageView } from "@/components/solutions/wholesale-voice"
 import { SITE_URL } from "@/lib/site"
 
@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     description:
       "Global wholesale voice carrier — A-Z VoIP termination, SIP trunking, DID & toll-free numbers, CLI & non-CLI routes. 200+ countries, 99.99% uptime SLA.",
     type: "website",
-    url: `${SITE_URL}/wholesale-voice`,
+    url: `${SITE_URL}/wholesale-voice/`,
     siteName: "Rozper",
   },
-  alternates: { canonical: `${SITE_URL}/wholesale-voice` },
+  alternates: { canonical: `${SITE_URL}/wholesale-voice/` },
 }
 
 const jsonLd = {
@@ -24,14 +24,14 @@ const jsonLd = {
       "@type": "Service",
       "name": "Wholesale Voice Solutions",
       "description": "Global wholesale voice termination for carriers and VoIP providers with direct routes, competitive rates, and 99.99% uptime.",
-      "url": `${SITE_URL}/wholesale-voice`,
+      "url": `${SITE_URL}/wholesale-voice/`,
       "provider": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Wholesale Voice", "item": `${SITE_URL}/wholesale-voice` },
+        { "@type": "ListItem", "position": 2, "name": "Wholesale Voice", "item": `${SITE_URL}/wholesale-voice/` },
       ],
     },
     {

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+﻿import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -45,12 +45,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: data.seoTitle,
     description: data.seoDescription,
     keywords: `${data.code} area code, ${data.city} virtual phone number, ${data.code} number for business, area code ${data.code}`,
-    alternates: { canonical: `${SITE_URL}/area-codes/${stateSlug}/${code}` },
+    alternates: { canonical: `${SITE_URL}/area-codes/${stateSlug}/${code}/` },
     openGraph: {
       title: data.seoTitle,
       description: data.seoDescription,
       type: "website",
-      url: `${SITE_URL}/area-codes/${stateSlug}/${code}`,
+      url: `${SITE_URL}/area-codes/${stateSlug}/${code}/`,
       siteName: "Rozper",
     },
     twitter: {
@@ -73,13 +73,13 @@ export default async function AreaCodePage({ params }: Props) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${SITE_URL}/area-codes/${stateSlug}/${code}`,
+    "@id": `${SITE_URL}/area-codes/${stateSlug}/${code}/`,
     name: `${code} Area Code Virtual Phone Number`,
     description: data.excerpt,
-    url: `${SITE_URL}/area-codes/${stateSlug}/${code}`,
+    url: `${SITE_URL}/area-codes/${stateSlug}/${code}/`,
     brand: {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
+      "@id": `${SITE_URL}/#organization/`,
       name: "Rozper",
       url: SITE_URL,
     },

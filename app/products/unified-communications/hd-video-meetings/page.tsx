@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSVideoMeetingsPageView } from '@/components/products/unified-communications/video-meetings'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'HD Video Meetings · AI Transcripts Included | Rozper',
     description: 'Up to 200 participants, AI summaries, and screen sharing — all inside Rozper.',
     type: 'website',
-    url: `${SITE_URL}/products/unified-communications/hd-video-meetings`,
+    url: `${SITE_URL}/products/unified-communications/hd-video-meetings/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/hd-video-meetings` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/hd-video-meetings/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/hd-video-meetings#app`,
+      "@id": `${SITE_URL}/products/unified-communications/hd-video-meetings#app/`,
       "name": "HD Video Meetings",
       "description": "Browser-based HD video meetings with AI transcription and recording",
-      "url": `${SITE_URL}/products/unified-communications/hd-video-meetings`,
+      "url": `${SITE_URL}/products/unified-communications/hd-video-meetings/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -38,9 +38,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "HD Video Meetings", "item": `${SITE_URL}/products/unified-communications/hd-video-meetings` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "HD Video Meetings", "item": `${SITE_URL}/products/unified-communications/hd-video-meetings/` }
       ]
     },
     {

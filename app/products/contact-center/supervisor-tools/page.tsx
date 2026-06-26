@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ProdCCSupervisorToolsPageView } from '@/components/products/contact-center/supervisor-tools'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Barge, whisper, and monitor live — with AI alerts when calls need attention.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center/supervisor-tools` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/supervisor-tools/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center/supervisor-tools#app`,
+      "@id": `${SITE_URL}/products/contact-center/supervisor-tools#app/`,
       "name": "Supervisor Tools",
       "description": "Barge, whisper, monitor, and real-time dashboards for contact center supervisors",
-      "url": `${SITE_URL}/products/contact-center/supervisor-tools`,
+      "url": `${SITE_URL}/products/contact-center/supervisor-tools/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Supervisor Tools", "item": `${SITE_URL}/products/contact-center/supervisor-tools` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Supervisor Tools", "item": `${SITE_URL}/products/contact-center/supervisor-tools/` },
       ],
     },
     {

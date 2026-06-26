@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSPhoneSystemPageView } from '@/components/products/unified-communications/phone-system'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Extensions, hunt groups, IVR, and dial plans — hosted on a carrier-grade network.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/phone-system` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/phone-system/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/phone-system#app`,
+      "@id": `${SITE_URL}/products/unified-communications/phone-system#app/`,
       "name": "Hosted Phone System",
       "description": "Cloud-based phone system for businesses of all sizes",
-      "url": `${SITE_URL}/products/unified-communications/phone-system`,
+      "url": `${SITE_URL}/products/unified-communications/phone-system/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -36,9 +36,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "Hosted Phone System", "item": `${SITE_URL}/products/unified-communications/phone-system` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "Hosted Phone System", "item": `${SITE_URL}/products/unified-communications/phone-system/` }
       ]
     },
     {

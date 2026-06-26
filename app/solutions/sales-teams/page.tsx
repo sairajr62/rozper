@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { SalesTeamsPageView } from '@/components/solutions/sales-teams'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Cloud Phone for Sales Teams | Rozper',
     description: 'Power dialer, AI coaching, CRM sync, and conversation intelligence for sales teams. More dials. Better calls. More closed.',
     type: 'website',
-    url: `${SITE_URL}/solutions/sales-teams`,
+    url: `${SITE_URL}/solutions/sales-teams/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/sales-teams` },
+  alternates: { canonical: `${SITE_URL}/solutions/sales-teams/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/sales-teams#service`,
+      "@id": `${SITE_URL}/solutions/sales-teams#service/`,
       "name": "Cloud Phone for Sales Teams",
       "description": "Cloud phone system with power dialer, call recording, and CRM integrations for sales teams",
-      "url": `${SITE_URL}/solutions/sales-teams`,
+      "url": `${SITE_URL}/solutions/sales-teams/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Cloud Phone for Sales Teams", "item": `${SITE_URL}/solutions/sales-teams` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Cloud Phone for Sales Teams", "item": `${SITE_URL}/solutions/sales-teams/` },
       ],
     },
     {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     title: "Privacy Policy · How Rozper Protects Your Data | Rozper",
     description: "How Rozper collects, uses, and protects personal information across our platform and websites.",
     type: 'website',
-    url: `${SITE_URL}/legal/privacy`,
+    url: `${SITE_URL}/legal/privacy/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/legal/privacy` },
+  alternates: { canonical: `${SITE_URL}/legal/privacy/` },
 }
 
 const jsonLd = {
@@ -24,10 +24,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/legal/privacy#webpage`,
+      "@id": `${SITE_URL}/legal/privacy#webpage/`,
       "name": "Privacy Policy — Rozper",
       "description": "Rozper's privacy policy explaining how we collect, use, and protect your personal data.",
-      "url": `${SITE_URL}/legal/privacy`,
+      "url": `${SITE_URL}/legal/privacy/`,
       "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
       "inLanguage": "en-US",
     },
@@ -35,8 +35,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Legal", "item": `${SITE_URL}/legal` },
-        { "@type": "ListItem", "position": 3, "name": "Privacy Policy", "item": `${SITE_URL}/legal/privacy` },
+        { "@type": "ListItem", "position": 2, "name": "Legal", "item": `${SITE_URL}/legal/` },
+        { "@type": "ListItem", "position": 3, "name": "Privacy Policy", "item": `${SITE_URL}/legal/privacy/` },
       ],
     },
   ],

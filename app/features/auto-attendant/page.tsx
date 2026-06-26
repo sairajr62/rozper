@@ -1,16 +1,16 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatAutoAttendantPageView } from '@/components/features/auto-attendant'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Auto-Attendant & Visual IVR Builder | Rozper',
   description: 'Multi-level auto-attendant and visual IVR builder. Route calls correctly from the first ring. No code needed. rozper.com.',
-  alternates: { canonical: `${SITE_URL}/features/auto-attendant` },
+  alternates: { canonical: `${SITE_URL}/features/auto-attendant/` },
   openGraph: {
     title: 'Auto-Attendant & Visual IVR Builder | Rozper',
     description: 'Multi-level auto-attendant and visual IVR builder. Route calls correctly from the first ring. No code needed.',
     type: 'website',
-    url: `${SITE_URL}/features/auto-attendant`,
+    url: `${SITE_URL}/features/auto-attendant/`,
     siteName: 'Rozper',
   },
 }
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/auto-attendant#service`,
+      "@id": `${SITE_URL}/features/auto-attendant#service/`,
       "name": "Auto Attendant",
       "description": "Multi-level auto-attendant and visual IVR builder. Route calls correctly from the first ring. No code needed.",
-      "url": `${SITE_URL}/features/auto-attendant`,
+      "url": `${SITE_URL}/features/auto-attendant/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "Auto Attendant", "item": `${SITE_URL}/features/auto-attendant` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "Auto Attendant", "item": `${SITE_URL}/features/auto-attendant/` },
       ],
     },
     {

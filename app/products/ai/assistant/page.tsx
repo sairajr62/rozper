@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdAIAssistantPageView } from '@/components/products/ai/assistant'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Live coaching, auto-summaries, and suggested replies — on every call and message.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/ai/assistant` },
+  alternates: { canonical: `${SITE_URL}/products/ai/assistant/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/ai/assistant#app`,
+      "@id": `${SITE_URL}/products/ai/assistant#app/`,
       "name": "AI Virtual Assistant",
       "description": "Per-seat AI that drafts responses, summarizes calls, and coaches agents",
-      "url": `${SITE_URL}/products/ai/assistant`,
+      "url": `${SITE_URL}/products/ai/assistant/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "AI Virtual Assistant", "item": `${SITE_URL}/products/ai/assistant` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Virtual Assistant", "item": `${SITE_URL}/products/ai/assistant/` },
       ],
     },
     {

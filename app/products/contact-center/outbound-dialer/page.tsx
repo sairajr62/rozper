@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ProdCCOutboundDialerPageView } from '@/components/products/contact-center/outbound-dialer'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Power and predictive dialer with compliance tools, AI coaching, and CRM sync.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center/outbound-dialer` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/outbound-dialer/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center/outbound-dialer#app`,
+      "@id": `${SITE_URL}/products/contact-center/outbound-dialer#app/`,
       "name": "Outbound Dialer",
       "description": "Power and predictive dialing for outbound sales and collections teams",
-      "url": `${SITE_URL}/products/contact-center/outbound-dialer`,
+      "url": `${SITE_URL}/products/contact-center/outbound-dialer/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Outbound Dialer", "item": `${SITE_URL}/products/contact-center/outbound-dialer` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Outbound Dialer", "item": `${SITE_URL}/products/contact-center/outbound-dialer/` },
       ],
     },
     {

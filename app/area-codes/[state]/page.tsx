@@ -1,4 +1,4 @@
-import { notFound, redirect } from "next/navigation"
+﻿import { notFound, redirect } from "next/navigation"
 import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -48,12 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: `${stateName} area codes, ${stateName} virtual phone numbers, ${codes.slice(0, 3).join(" ")} area code`,
-    alternates: { canonical: `${SITE_URL}/area-codes/${stateParam}` },
+    alternates: { canonical: `${SITE_URL}/area-codes/${stateParam}/` },
     openGraph: {
       title,
       description,
       type: "website",
-      url: `${SITE_URL}/area-codes/${stateParam}`,
+      url: `${SITE_URL}/area-codes/${stateParam}/`,
       siteName: "Rozper",
     },
   }
@@ -89,19 +89,19 @@ export default async function StateOrRedirectPage({ params }: Props) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${SITE_URL}/area-codes/${stateParam}`,
+    "@id": `${SITE_URL}/area-codes/${stateParam}/`,
     name: `${stateName} Area Code Virtual Phone Numbers`,
     description: `Virtual phone numbers for all ${stateCodes.length} ${stateName} area codes.`,
-    url: `${SITE_URL}/area-codes/${stateParam}`,
+    url: `${SITE_URL}/area-codes/${stateParam}/`,
     publisher: {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
+      "@id": `${SITE_URL}/#organization/`,
       name: "Rozper",
       url: SITE_URL,
     },
     hasPart: stateCodes.map(c => ({
       "@type": "WebPage",
-      url: `${SITE_URL}/area-codes/${stateParam}/${c.code}`,
+      url: `${SITE_URL}/area-codes/${stateParam}/${c.code}/`,
       name: `${c.code} Area Code Virtual Phone Numbers`,
     })),
   }

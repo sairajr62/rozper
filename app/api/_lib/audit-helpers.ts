@@ -145,6 +145,48 @@ export async function auditPage(route: string) {
   return result
 }
 
+// ─── Markdown / readability helpers ──────────────────────────────────────────
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`[^`]+`/g, ' ')
+    .replace(/!\[.*?\]\(.*?\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/(\*|_)(.*?)\1/g, '$2')
+    .replace(/^[-*+]\s+/gm, '')
+    .replace(/^\d+\.\s+/gm, '')
+    .replace(/[|>\\]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function countSyllables(word: string): number {
+  word = word.toLowerCase().replace(/[^a-z]/g, '')
+  if (!word) return 0
+  if (word.length <= 3) return 1
+  word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+  word = word.replace(/^y/, '')
+  const m = word.match(/[aeiouy]{1,2}/g)
+  return m ? m.length : 1
+}
+
+function calcReadability(cleanText: string): { score: number; label: string; level: string } | null {
+  const sentences = cleanText.split(/[.!?]+/).filter(s => s.trim().length > 3)
+  const words = cleanText.split(/\s+/).filter(Boolean)
+  if (sentences.length < 2 || words.length < 10) return null
+  const syllables = words.reduce((s, w) => s + countSyllables(w), 0)
+  const raw = 206.835 - (1.015 * (words.length / sentences.length)) - (84.6 * (syllables / words.length))
+  const score = Math.max(0, Math.min(100, Math.round(raw)))
+  let label: string, level: string
+  if (score >= 70)      { label = 'Easy';      level = 'ok'   }
+  else if (score >= 50) { label = 'Moderate';  level = 'warn' }
+  else                  { label = 'Difficult'; level = 'err'  }
+  return { score, label, level }
+}
+
 export function auditBlogs() {
   const results: any[] = []
   if (!fs.existsSync(BLOG_DIR)) return results
@@ -164,8 +206,6 @@ export function auditBlogs() {
     if (!data.excerpt) warnings.push('Missing excerpt/description')
     if (!data.seoTitle) warnings.push('Missing seoTitle')
     if (!data.seoDescription) warnings.push('Missing seoDescription')
-    else if (data.seoDescription.length > 160) warnings.push(`seoDescription too long (${data.seoDescription.length} chars)`)
-    else if (data.seoDescription.length < 50) warnings.push(`seoDescription too short (${data.seoDescription.length} chars)`)
     if (!data.featuredImage) issues.push('Missing featuredImage')
     else {
       const imgPath = path.join(process.cwd(), 'public', data.featuredImage)
@@ -182,12 +222,25 @@ export function auditBlogs() {
     if (!data.author) warnings.push('Missing author')
     if (!data.publishDate) warnings.push('Missing publishDate')
     if (!data.tags || !data.tags.length) warnings.push('No tags')
-    if (data.seoTitle && data.seoTitle.length > 65) warnings.push(`seoTitle too long (${data.seoTitle.length} chars)`)
-    if (data.seoTitle && data.seoTitle.length < 30) warnings.push(`seoTitle too short (${data.seoTitle.length} chars)`)
 
-    const wordCount = content.replace(/[#*_>\-\[\]]/g, ' ').split(/\s+/).filter(Boolean).length
-    if (wordCount < 300) issues.push(`Thin content: only ${wordCount} words`)
-    else if (wordCount < 600) warnings.push(`Short content: ${wordCount} words`)
+    // seoTitle: 50–60 chars
+    if (data.seoTitle && data.seoTitle.length > 60) warnings.push(`seoTitle too long (${data.seoTitle.length} chars, max 60)`)
+    if (data.seoTitle && data.seoTitle.length < 50) warnings.push(`seoTitle too short (${data.seoTitle.length} chars, min 50)`)
+
+    // seoDescription: 150–160 chars
+    if (data.seoDescription && data.seoDescription.length > 160) warnings.push(`seoDescription too long (${data.seoDescription.length} chars, max 160)`)
+    else if (data.seoDescription && data.seoDescription.length < 150) warnings.push(`seoDescription too short (${data.seoDescription.length} chars, min 150)`)
+
+    // Word count — strip markdown properly
+    const cleanContent = stripMarkdown(content)
+    const wordCount = cleanContent.split(/\s+/).filter(Boolean).length
+    if (wordCount < 1500) warnings.push(`Short content: ${wordCount} words (target 1500–1700)`)
+    else if (wordCount > 1700) warnings.push(`Long content: ${wordCount} words (target 1500–1700)`)
+
+    // Readability (Flesch Reading Ease)
+    const readability = calcReadability(cleanContent)
+    if (readability?.level === 'err')  warnings.push(`Hard to read — Flesch score ${readability.score} (target ≥50)`)
+    else if (readability?.level === 'warn') warnings.push(`Moderate readability — Flesch score ${readability.score} (aim for ≥70)`)
 
     results.push({
       file,
@@ -196,6 +249,7 @@ export function auditBlogs() {
       category: data.category || null,
       featuredImage: data.featuredImage || null,
       wordCount,
+      readability,
       issues,
       warnings,
       publishDate: data.publishDate || null,
@@ -369,29 +423,88 @@ export async function checkAnalytics(route: string) {
 }
 
 export function auditBlogLinks() {
-  const INTERNAL_PATTERN = /^(\/|https?:\/\/(www\.)?rozper\.com|https?:\/\/rozper\.vercel\.app)/i
-  const IMAGE_PATTERN = /\.(png|jpg|jpeg|webp|gif|svg|ico)(\?.*)?$/i
-  const LINK_RE = /(?<!!)\[([^\]]*)\]\(([^)]+)\)/g
+  // rozper.vercel.app is staging — only rozper.com + relative paths count as internal
+  const INTERNAL_PATTERN = /^(\/|https?:\/\/(www\.)?rozper\.com)/i
+  const STAGING_PATTERN  = /^https?:\/\/rozper\.vercel\.app/i
+  const IMAGE_PATTERN    = /\.(png|jpg|jpeg|webp|gif|svg|ico)(\?.*)?$/i
+  const LINK_RE          = /(?<!!)\[([^\]]*)\]\(([^)]+)\)/g
+
+  function extractLinks(text: string): { text: string; href: string }[] {
+    const links: { text: string; href: string }[] = []
+    const re = new RegExp(LINK_RE.source, LINK_RE.flags)
+    let m
+    while ((m = re.exec(text)) !== null) {
+      const linkText = m[1].trim(), href = m[2].trim()
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) continue
+      if (IMAGE_PATTERN.test(href)) continue
+      links.push({ text: linkText, href })
+    }
+    return links
+  }
+
+  function splitSections(text: string): { heading: string; body: string }[] {
+    const parts: { heading: string; body: string }[] = []
+    const lines = text.split('\n')
+    let heading = ''
+    let bodyLines: string[] = []
+    for (const line of lines) {
+      const m = line.match(/^#{2,3}\s+(.+)/)
+      if (m) {
+        parts.push({ heading, body: bodyLines.join('\n') })
+        heading = m[1].trim()
+        bodyLines = []
+      } else {
+        bodyLines.push(line)
+      }
+    }
+    parts.push({ heading, body: bodyLines.join('\n') })
+    return parts
+  }
+
   let files: string[]
   try { files = fs.readdirSync(BLOG_DIR).filter((f: string) => f.endsWith('.md')) } catch { return [] }
+
   const results: any[] = []
   for (const file of files) {
     const raw = fs.readFileSync(path.join(BLOG_DIR, file), 'utf8')
     const { data, content } = matter(raw)
-    const internalLinks: any[] = [], externalLinks: any[] = []
-    let match
-    const re = new RegExp(LINK_RE.source, LINK_RE.flags)
-    while ((match = re.exec(content)) !== null) {
-      const text = match[1].trim(), href = match[2].trim()
-      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) continue
-      if (IMAGE_PATTERN.test(href)) continue
-      if (INTERNAL_PATTERN.test(href)) internalLinks.push({ text, href })
-      else externalLinks.push({ text, href })
+
+    const sections = splitSections(content)
+    const introSection      = sections[0]
+    const conclusionSections = sections.filter(s =>
+      /conclusion|summary|final\s+thought|wrap.?up|closing/i.test(s.heading)
+    )
+
+    const introLinks      = extractLinks(introSection.body)
+    const conclusionLinks = conclusionSections.flatMap(s => extractLinks(s.body))
+
+    const internalLinks: any[] = []
+    const externalLinks: any[] = []
+    const stagingLinks: any[]  = []
+
+    for (const link of extractLinks(content)) {
+      if (STAGING_PATTERN.test(link.href))  stagingLinks.push(link)
+      else if (INTERNAL_PATTERN.test(link.href)) internalLinks.push(link)
+      else externalLinks.push(link)
     }
+
     const issues: string[] = [], warnings: string[] = []
     if (internalLinks.length < 2) issues.push(`Only ${internalLinks.length} internal link(s) — minimum 2 required`)
-    if (externalLinks.length < 1) warnings.push('No external links found — add at least 1 outbound link')
-    results.push({ file, slug: data.slug || file.replace('.md', ''), title: data.title || file, internalLinks, externalLinks, internalCount: internalLinks.length, externalCount: externalLinks.length, issues, warnings })
+    if (externalLinks.length < 1) warnings.push('No external links — add at least 1 outbound link')
+    if (stagingLinks.length > 0)  warnings.push(`${stagingLinks.length} link(s) use rozper.vercel.app — change to rozper.com`)
+    if (introLinks.length > 0)    warnings.push(`${introLinks.length} link(s) in introduction — remove links from intro`)
+    if (conclusionLinks.length > 0) warnings.push(`${conclusionLinks.length} link(s) in conclusion — remove links from conclusion`)
+
+    results.push({
+      file,
+      slug: data.slug || file.replace('.md', ''),
+      title: data.title || file,
+      internalLinks, externalLinks, stagingLinks,
+      introLinks, conclusionLinks,
+      internalCount: internalLinks.length,
+      externalCount: externalLinks.length,
+      issues, warnings,
+    })
   }
   return results.sort((a: any, b: any) => b.issues.length - a.issues.length)
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ProdCCAnalyticsPageView } from '@/components/products/contact-center/analytics'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Transcripts, sentiment, intent, and quality scores — on 100% of interactions.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center/analytics` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/analytics/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center/analytics#app`,
+      "@id": `${SITE_URL}/products/contact-center/analytics#app/`,
       "name": "Interaction Analytics",
       "description": "Call transcripts, sentiment analysis, and performance dashboards",
-      "url": `${SITE_URL}/products/contact-center/analytics`,
+      "url": `${SITE_URL}/products/contact-center/analytics/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Interaction Analytics", "item": `${SITE_URL}/products/contact-center/analytics` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Interaction Analytics", "item": `${SITE_URL}/products/contact-center/analytics/` },
       ],
     },
     {

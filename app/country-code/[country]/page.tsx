@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+﻿import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -44,12 +44,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     keywords: `${country.name} country code, ${formatDialCode(country.dialCode)} dial code, ${country.name} virtual phone number, call ${country.name}, ${country.name} international calling`,
-    alternates: { canonical: `${SITE_URL}/country-code/${slug}` },
+    alternates: { canonical: `${SITE_URL}/country-code/${slug}/` },
     openGraph: {
       title,
       description,
       type: "website",
-      url: `${SITE_URL}/country-code/${slug}`,
+      url: `${SITE_URL}/country-code/${slug}/`,
       siteName: "Rozper",
     },
     twitter: {
@@ -71,20 +71,20 @@ export default async function CountryPage({ params }: Props) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${SITE_URL}/country-code/${slug}`,
+    "@id": `${SITE_URL}/country-code/${slug}/`,
     name: `${country.name} Country Code ${formatDialCode(country.dialCode)}`,
     description: `International dialing code for ${country.name} is ${formatDialCode(country.dialCode)}. Timezone: ${formatUTCOffset(country.utcOffset)}. Capital: ${country.capital}.`,
-    url: `${SITE_URL}/country-code/${slug}`,
+    url: `${SITE_URL}/country-code/${slug}/`,
     publisher: {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
+      "@id": `${SITE_URL}/#organization/`,
       name: "Rozper",
       url: SITE_URL,
     },
     hasPart: [
       {
         "@type": "WebPage",
-        url: `${SITE_URL}/country-code/${slug}/best-time-to-call`,
+        url: `${SITE_URL}/country-code/${slug}/best-time-to-call/`,
         name: `Best Time to Call ${country.name} from the US`,
       },
     ],

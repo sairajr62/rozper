@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ProdCCEnterprisePageView } from '@/components/products/contact-center/enterprise'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'SSO, SCIM, multi-site routing, custom SLAs, and a dedicated success team.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center/enterprise` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/enterprise/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center/enterprise#app`,
+      "@id": `${SITE_URL}/products/contact-center/enterprise#app/`,
       "name": "Enterprise Contact Center",
       "description": "Enterprise-grade contact center with SSO, multi-site, and custom SLAs",
-      "url": `${SITE_URL}/products/contact-center/enterprise`,
+      "url": `${SITE_URL}/products/contact-center/enterprise/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Enterprise Contact Center", "item": `${SITE_URL}/products/contact-center/enterprise` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Enterprise Contact Center", "item": `${SITE_URL}/products/contact-center/enterprise/` },
       ],
     },
     {

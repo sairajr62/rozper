@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSSMSMMSPageView } from '@/components/products/unified-communications/sms-mms'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Two-way messaging, bulk sends, and WhatsApp — all from your business number.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/sms-mms` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/sms-mms/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/sms-mms#app`,
+      "@id": `${SITE_URL}/products/unified-communications/sms-mms#app/`,
       "name": "Business SMS & MMS",
       "description": "Business text messaging with two-way SMS and MMS from your business number",
-      "url": `${SITE_URL}/products/unified-communications/sms-mms`,
+      "url": `${SITE_URL}/products/unified-communications/sms-mms/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -36,9 +36,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "Business SMS & MMS", "item": `${SITE_URL}/products/unified-communications/sms-mms` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "Business SMS & MMS", "item": `${SITE_URL}/products/unified-communications/sms-mms/` }
       ]
     },
     {

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { LogisticsPageView } from '@/components/solutions/logistics'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Phone System for Logistics & Dispatch | Rozper',
     description: 'Dispatch communications, driver calls, customer updates, and coordination tools for logistics teams.',
     type: 'website',
-    url: `${SITE_URL}/solutions/logistics`,
+    url: `${SITE_URL}/solutions/logistics/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/logistics` },
+  alternates: { canonical: `${SITE_URL}/solutions/logistics/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/logistics#service`,
+      "@id": `${SITE_URL}/solutions/logistics#service/`,
       "name": "Phone System for Logistics & Dispatch",
       "description": "Voice and messaging platform for logistics, fleet dispatch, and field operations teams",
-      "url": `${SITE_URL}/solutions/logistics`,
+      "url": `${SITE_URL}/solutions/logistics/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Phone System for Logistics & Dispatch", "item": `${SITE_URL}/solutions/logistics` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Phone System for Logistics & Dispatch", "item": `${SITE_URL}/solutions/logistics/` },
       ],
     },
     {

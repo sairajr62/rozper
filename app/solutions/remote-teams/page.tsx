@@ -1,4 +1,4 @@
-import { Navbar } from '@/components/landing/navbar'
+﻿import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
   Breadcrumb,
@@ -21,10 +21,10 @@ export const metadata = {
     title: 'Phone System for Remote Teams | Rozper',
     description: 'Cloud calling, video, chat, and AI for distributed teams. Works from any device, any country. 150+ countries.',
     type: 'website',
-    url: `${SITE_URL}/solutions/remote-teams`,
+    url: `${SITE_URL}/solutions/remote-teams/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/remote-teams` },
+  alternates: { canonical: `${SITE_URL}/solutions/remote-teams/` },
 }
 
 const jsonLd = {
@@ -32,10 +32,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/remote-teams#service`,
+      "@id": `${SITE_URL}/solutions/remote-teams#service/`,
       "name": "Phone System for Remote Teams",
       "description": "Cloud phone and collaboration tools for distributed remote teams worldwide",
-      "url": `${SITE_URL}/solutions/remote-teams`,
+      "url": `${SITE_URL}/solutions/remote-teams/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -50,8 +50,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Phone System for Remote Teams", "item": `${SITE_URL}/solutions/remote-teams` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Phone System for Remote Teams", "item": `${SITE_URL}/solutions/remote-teams/` },
       ],
     },
     {

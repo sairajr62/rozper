@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatAIReceptionistPageView } from '@/components/features/ai-receptionist'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'AI receptionist that answers, qualifies, routes, and books 24/7. No missed calls. CRM sync.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/features/ai-receptionist` },
+  alternates: { canonical: `${SITE_URL}/features/ai-receptionist/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/ai-receptionist#service`,
+      "@id": `${SITE_URL}/features/ai-receptionist#service/`,
       "name": "AI Receptionist",
       "description": "AI receptionist that answers, qualifies, routes, and books 24/7. No missed calls. CRM sync.",
-      "url": `${SITE_URL}/features/ai-receptionist`,
+      "url": `${SITE_URL}/features/ai-receptionist/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "AI Receptionist", "item": `${SITE_URL}/features/ai-receptionist` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Receptionist", "item": `${SITE_URL}/features/ai-receptionist/` },
       ],
     },
     {

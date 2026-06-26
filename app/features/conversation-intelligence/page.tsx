@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatConversationIntelligencePageView } from '@/components/features/conversation-intelligence'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Every conversation transcribed, analyzed, and searchable. Competitor mentions, deal risks, coaching moments — all surfaced.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/features/conversation-intelligence` },
+  alternates: { canonical: `${SITE_URL}/features/conversation-intelligence/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/conversation-intelligence#service`,
+      "@id": `${SITE_URL}/features/conversation-intelligence#service/`,
       "name": "Conversation Intelligence",
       "description": "Every conversation transcribed, analyzed, and searchable. Competitor mentions, deal risks, coaching moments — all surfaced.",
-      "url": `${SITE_URL}/features/conversation-intelligence`,
+      "url": `${SITE_URL}/features/conversation-intelligence/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "Conversation Intelligence", "item": `${SITE_URL}/features/conversation-intelligence` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "Conversation Intelligence", "item": `${SITE_URL}/features/conversation-intelligence/` },
       ],
     },
     {

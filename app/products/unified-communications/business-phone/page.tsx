@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSBusinessPhonePageView } from '@/components/products/unified-communications/business-phone'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Cloud phone with local numbers, smart routing, and AI — wherever your team is.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/business-phone` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/business-phone/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/business-phone#app`,
+      "@id": `${SITE_URL}/products/unified-communications/business-phone#app/`,
       "name": "Business Phone",
       "description": "Cloud calling for global teams with HD voice, call routing, and 150+ country coverage",
-      "url": `${SITE_URL}/products/unified-communications/business-phone`,
+      "url": `${SITE_URL}/products/unified-communications/business-phone/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -36,9 +36,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "Business Phone", "item": `${SITE_URL}/products/unified-communications/business-phone` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "Business Phone", "item": `${SITE_URL}/products/unified-communications/business-phone/` }
       ]
     },
     {

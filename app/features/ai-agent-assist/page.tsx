@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatAIAgentAssistPageView } from '@/components/features/ai-agent-assist'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'AI whispers answers, surfaces articles, and scores calls live. Faster resolution. Better agents.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/features/ai-agent-assist` },
+  alternates: { canonical: `${SITE_URL}/features/ai-agent-assist/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/ai-agent-assist#service`,
+      "@id": `${SITE_URL}/features/ai-agent-assist#service/`,
       "name": "AI Agent Assist",
       "description": "AI whispers answers, surfaces articles, and scores calls live. Faster resolution. Better agents.",
-      "url": `${SITE_URL}/features/ai-agent-assist`,
+      "url": `${SITE_URL}/features/ai-agent-assist/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "AI Agent Assist", "item": `${SITE_URL}/features/ai-agent-assist` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Agent Assist", "item": `${SITE_URL}/features/ai-agent-assist/` },
       ],
     },
     {

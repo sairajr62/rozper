@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -68,7 +68,7 @@ export async function generateMetadata({
       publishedTime: post.date,
       modifiedTime: post.modified,
       authors: [post.author.name],
-      url: `${SITE_URL}/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}/`,
       images: post.featuredImage
         ? [
             {
@@ -105,7 +105,7 @@ export default async function BlogPostPage({
     ? post.link
     : `${SITE_URL}${post.link}`
 
-  const shareUrl = `${SITE_URL}/blog/${post.slug}`
+  const shareUrl = `${SITE_URL}/blog/${post.slug}/`
 
   const category = post.categories[0]
   const keywords = post.tags.map((t) => t.name).join(", ") || undefined
@@ -170,7 +170,7 @@ export default async function BlogPostPage({
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: `${SITE_URL}/blog`,
+        item: `${SITE_URL}/blog/`,
       },
       {
         "@type": "ListItem",

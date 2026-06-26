@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { ContactCenterPageView } from '@/components/products/contact-center/overview'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Omnichannel inbox, AI agents, supervisor tools, and analytics — one platform.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/contact-center` },
+  alternates: { canonical: `${SITE_URL}/products/contact-center/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/contact-center#app`,
+      "@id": `${SITE_URL}/products/contact-center#app/`,
       "name": "Contact Center",
       "description": "AI-powered omnichannel contact center for inbound and outbound teams",
-      "url": `${SITE_URL}/products/contact-center`,
+      "url": `${SITE_URL}/products/contact-center/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Contact Center", "item": `${SITE_URL}/products/contact-center` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Contact Center", "item": `${SITE_URL}/products/contact-center/` },
       ],
     },
     {

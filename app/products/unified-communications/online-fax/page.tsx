@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdUCaaSOnlineFaxPageView } from '@/components/products/unified-communications/online-fax'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Online Fax · Digital Fax for Business Teams | Rozper',
     description: 'Send and receive faxes from your browser, mobile, or email — in 150+ countries.',
     type: 'website',
-    url: `${SITE_URL}/products/unified-communications/online-fax`,
+    url: `${SITE_URL}/products/unified-communications/online-fax/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications/online-fax` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/online-fax/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications/online-fax#app`,
+      "@id": `${SITE_URL}/products/unified-communications/online-fax#app/`,
       "name": "Online Fax",
       "description": "Send and receive faxes digitally from any device — no fax machine needed",
-      "url": `${SITE_URL}/products/unified-communications/online-fax`,
+      "url": `${SITE_URL}/products/unified-communications/online-fax/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -38,9 +38,9 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` },
-        { "@type": "ListItem", "position": 4, "name": "Online Fax", "item": `${SITE_URL}/products/unified-communications/online-fax` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` },
+        { "@type": "ListItem", "position": 4, "name": "Online Fax", "item": `${SITE_URL}/products/unified-communications/online-fax/` }
       ]
     },
     {

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { AIPageView } from '@/components/products/ai/overview'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Three AI tools — receptionist, assistant, and analytics — included on every Rozper seat.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/ai` },
+  alternates: { canonical: `${SITE_URL}/products/ai/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/ai#app`,
+      "@id": `${SITE_URL}/products/ai#app/`,
       "name": "AI Suite",
       "description": "AI voice receptionist, assistant, and conversation analytics in one platform",
-      "url": `${SITE_URL}/products/ai`,
+      "url": `${SITE_URL}/products/ai/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "AI Suite", "item": `${SITE_URL}/products/ai` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Suite", "item": `${SITE_URL}/products/ai/` },
       ],
     },
     {

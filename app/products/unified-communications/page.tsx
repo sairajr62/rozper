@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { UcaasPageView } from '@/components/products/unified-communications/overview'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Voice, video, messaging, and AI in one platform. 150+ countries. From $12.99/user/mo.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/unified-communications` },
+  alternates: { canonical: `${SITE_URL}/products/unified-communications/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/unified-communications#app`,
+      "@id": `${SITE_URL}/products/unified-communications#app/`,
       "name": "UCaaS Platform",
       "description": "Cloud phone, video, team chat, SMS, and fax unified for global teams",
-      "url": `${SITE_URL}/products/unified-communications`,
+      "url": `${SITE_URL}/products/unified-communications/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications` }
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "Unified Communications", "item": `${SITE_URL}/products/unified-communications/` }
       ]
     },
     {

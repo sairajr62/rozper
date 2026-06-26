@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { FinancePageView } from '@/components/solutions/finance'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Contact Center for Financial Services | Rozper',
     description: 'Compliant contact center for banks, insurance, and fintech. Call recording, PCI compliance, and regulatory controls.',
     type: 'website',
-    url: `${SITE_URL}/solutions/financial-services`,
+    url: `${SITE_URL}/solutions/financial-services/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/financial-services` },
+  alternates: { canonical: `${SITE_URL}/solutions/financial-services/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/financial-services#service`,
+      "@id": `${SITE_URL}/solutions/financial-services#service/`,
       "name": "Contact Center for Financial Services",
       "description": "Compliant cloud contact center for banks, lenders, and financial services firms",
-      "url": `${SITE_URL}/solutions/financial-services`,
+      "url": `${SITE_URL}/solutions/financial-services/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Contact Center for Financial Services", "item": `${SITE_URL}/solutions/financial-services` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Contact Center for Financial Services", "item": `${SITE_URL}/solutions/financial-services/` },
       ],
     },
     {

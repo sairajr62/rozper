@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import { PricingHero } from '@/components/pricing/hero'
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Simple, transparent pricing starting at $9.99/user. UCaaS, contact center, and AI tools. 14-day free trial.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/pricing` },
+  alternates: { canonical: `${SITE_URL}/pricing/` },
 }
 
 const relatedLinks = [
@@ -34,7 +34,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "name": "Rozper",
       "description": "UCaaS, contact center, AI voice agents, and global numbers starting at $9.99 per user.",
-      "url": `${SITE_URL}/pricing`,
+      "url": `${SITE_URL}/pricing/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": [
@@ -54,7 +54,7 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": `${SITE_URL}/pricing` },
+        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": `${SITE_URL}/pricing/` },
       ],
     },
     {

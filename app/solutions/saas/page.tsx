@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { SaaSPageView } from '@/components/solutions/saas'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Cloud Phone for SaaS & Tech Companies | Rozper',
     description: 'Phone, video, and AI for fast-growing SaaS teams. CRM integration, global coverage, scales with headcount.',
     type: 'website',
-    url: `${SITE_URL}/solutions/saas`,
+    url: `${SITE_URL}/solutions/saas/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/saas` },
+  alternates: { canonical: `${SITE_URL}/solutions/saas/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/saas#service`,
+      "@id": `${SITE_URL}/solutions/saas#service/`,
       "name": "Cloud Phone for SaaS & Tech",
       "description": "Cloud communications platform built for SaaS companies and tech startups",
-      "url": `${SITE_URL}/solutions/saas`,
+      "url": `${SITE_URL}/solutions/saas/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Cloud Phone for SaaS & Tech", "item": `${SITE_URL}/solutions/saas` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Cloud Phone for SaaS & Tech", "item": `${SITE_URL}/solutions/saas/` },
       ],
     },
     {

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import { SMBPageView } from '@/components/solutions/smb'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Phone System for Small Business · AI Included | Rozper',
     description: 'Small business phone with AI receptionist, call recording, and CRM sync. Enterprise features at $9.99/user.',
     type: 'website',
-    url: `${SITE_URL}/solutions/small-business`,
+    url: `${SITE_URL}/solutions/small-business/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/solutions/small-business` },
+  alternates: { canonical: `${SITE_URL}/solutions/small-business/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/solutions/small-business#service`,
+      "@id": `${SITE_URL}/solutions/small-business#service/`,
       "name": "Phone System for Small Business",
       "description": "Affordable cloud phone system with AI features for small and growing businesses",
-      "url": `${SITE_URL}/solutions/small-business`,
+      "url": `${SITE_URL}/solutions/small-business/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions` },
-        { "@type": "ListItem", "position": 3, "name": "Phone System for Small Business", "item": `${SITE_URL}/solutions/small-business` },
+        { "@type": "ListItem", "position": 2, "name": "Solutions", "item": `${SITE_URL}/solutions/` },
+        { "@type": "ListItem", "position": 3, "name": "Phone System for Small Business", "item": `${SITE_URL}/solutions/small-business/` },
       ],
     },
     {

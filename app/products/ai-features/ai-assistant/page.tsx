@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdAIAssistantPageView } from '@/components/products/ai/assistant'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Live coaching, auto-summaries, and suggested replies — on every call and message.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/products/ai-features/ai-assistant` },
+  alternates: { canonical: `${SITE_URL}/products/ai-features/ai-assistant/` },
 }
 
 const jsonLd = {
@@ -18,11 +18,11 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'SoftwareApplication',
-      '@id': `${SITE_URL}/products/ai-features/ai-assistant#software`,
+      '@id': `${SITE_URL}/products/ai-features/ai-assistant#software/`,
       name: 'Rozper AI Virtual Assistant',
       description:
         'Live call coaching, automatic call summaries, suggested replies, rep performance analytics, compliance monitoring, and post-call follow-up drafts — included on every Rozper seat.',
-      url: `${SITE_URL}/products/ai-features/ai-assistant`,
+      url: `${SITE_URL}/products/ai-features/ai-assistant/`,
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
       offers: {
@@ -41,14 +41,14 @@ const jsonLd = {
       ],
       provider: {
         '@type': 'Organization',
-        '@id': `${SITE_URL}/#organization`,
+        '@id': `${SITE_URL}/#organization/`,
         name: 'Rozper',
         url: SITE_URL,
       },
     },
     {
       '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
+      '@id': `${SITE_URL}/#organization/`,
       name: 'Rozper',
       url: SITE_URL,
       logo: {
@@ -58,17 +58,17 @@ const jsonLd = {
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': `${SITE_URL}/products/ai-features/ai-assistant#breadcrumb`,
+      '@id': `${SITE_URL}/products/ai-features/ai-assistant#breadcrumb/`,
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE_URL}/products` },
-        { '@type': 'ListItem', position: 3, name: 'AI Features', item: `${SITE_URL}/products/ai-features` },
-        { '@type': 'ListItem', position: 4, name: 'AI Assistant', item: `${SITE_URL}/products/ai-features/ai-assistant` },
+        { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE_URL}/products/` },
+        { '@type': 'ListItem', position: 3, name: 'AI Features', item: `${SITE_URL}/products/ai-features/` },
+        { '@type': 'ListItem', position: 4, name: 'AI Assistant', item: `${SITE_URL}/products/ai-features/ai-assistant/` },
       ],
     },
     {
       '@type': 'FAQPage',
-      '@id': `${SITE_URL}/products/ai-features/ai-assistant#faq`,
+      '@id': `${SITE_URL}/products/ai-features/ai-assistant#faq/`,
       mainEntity: [
         {
           '@type': 'Question',

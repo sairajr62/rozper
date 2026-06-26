@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatCallRecordingPageView } from '@/components/features/call-recording'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'Call Recording · AI Search & Compliance | Rozper',
     description: 'Record every call with AI transcription, keyword search, and configurable retention. GDPR and HIPAA options.',
     type: 'website',
-    url: `${SITE_URL}/features/call-recording`,
+    url: `${SITE_URL}/features/call-recording/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/features/call-recording` },
+  alternates: { canonical: `${SITE_URL}/features/call-recording/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/call-recording#service`,
+      "@id": `${SITE_URL}/features/call-recording#service/`,
       "name": "Call Recording",
       "description": "Record every call with AI transcription, keyword search, and configurable retention. GDPR and HIPAA options.",
-      "url": `${SITE_URL}/features/call-recording`,
+      "url": `${SITE_URL}/features/call-recording/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "Call Recording", "item": `${SITE_URL}/features/call-recording` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "Call Recording", "item": `${SITE_URL}/features/call-recording/` },
       ],
     },
     {

@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { FeatAISentimentPageView } from '@/components/features/ai-sentiment'
 import { SITE_URL } from '@/lib/site'
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Live sentiment scoring on every call. Supervisors get alerts when calls go negative. 100% coverage.',
     type: 'website',
   },
-  alternates: { canonical: `${SITE_URL}/features/ai-sentiment-analysis` },
+  alternates: { canonical: `${SITE_URL}/features/ai-sentiment-analysis/` },
 }
 
 const jsonLd = {
@@ -18,10 +18,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Service",
-      "@id": `${SITE_URL}/features/ai-sentiment-analysis#service`,
+      "@id": `${SITE_URL}/features/ai-sentiment-analysis#service/`,
       "name": "AI Sentiment Analysis",
       "description": "Live sentiment scoring on every call. Supervisors get alerts when calls go negative. 100% coverage.",
-      "url": `${SITE_URL}/features/ai-sentiment-analysis`,
+      "url": `${SITE_URL}/features/ai-sentiment-analysis/`,
       "provider": {
         "@type": "Organization",
         "@id": `${SITE_URL}#organization`,
@@ -36,8 +36,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features` },
-        { "@type": "ListItem", "position": 3, "name": "AI Sentiment Analysis", "item": `${SITE_URL}/features/ai-sentiment-analysis` },
+        { "@type": "ListItem", "position": 2, "name": "Features", "item": `${SITE_URL}/features/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Sentiment Analysis", "item": `${SITE_URL}/features/ai-sentiment-analysis/` },
       ],
     },
     {

@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+﻿import { Metadata } from 'next'
 import { ProdAIAssistantPageView } from '@/components/products/ai/assistant'
 import { SITE_URL } from '@/lib/site'
 
@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     title: 'AI Virtual Assistant · Per-Seat AI for Every Agent | Rozper',
     description: 'Live coaching, auto-summaries, and suggested replies — on every call and message.',
     type: 'website',
-    url: `${SITE_URL}/products/ai/virtual-assistant`,
+    url: `${SITE_URL}/products/ai/virtual-assistant/`,
     siteName: 'Rozper',
   },
-  alternates: { canonical: `${SITE_URL}/products/ai/virtual-assistant` },
+  alternates: { canonical: `${SITE_URL}/products/ai/virtual-assistant/` },
 }
 
 const jsonLd = {
@@ -20,10 +20,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": `${SITE_URL}/products/ai/virtual-assistant#app`,
+      "@id": `${SITE_URL}/products/ai/virtual-assistant#app/`,
       "name": "AI Virtual Assistant",
       "description": "Per-seat AI assistant for agents across every call and message",
-      "url": `${SITE_URL}/products/ai/virtual-assistant`,
+      "url": `${SITE_URL}/products/ai/virtual-assistant/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web, iOS, Android",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
@@ -38,8 +38,8 @@ const jsonLd = {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
-        { "@type": "ListItem", "position": 3, "name": "AI Virtual Assistant", "item": `${SITE_URL}/products/ai/virtual-assistant` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products/` },
+        { "@type": "ListItem", "position": 3, "name": "AI Virtual Assistant", "item": `${SITE_URL}/products/ai/virtual-assistant/` },
       ],
     },
     {

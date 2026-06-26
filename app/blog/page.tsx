@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Suspense } from "react"
 import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     "Research, deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries. AI agents, contact center, wholesale voice & more.",
   keywords:
     "Rozper blog, voice AI research, contact center playbook, wholesale voice, SIP trunking, UCaaS engineering",
-  alternates: { canonical: `${SITE_URL}/blog` },
+  alternates: { canonical: `${SITE_URL}/blog/` },
   openGraph: {
     title: "Blog · Field notes from the global voice layer | Rozper",
     description:
       "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries.",
     type: "website",
-    url: `${SITE_URL}/blog`,
+    url: `${SITE_URL}/blog/`,
     siteName: "Rozper",
   },
   twitter: {
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "@id": `${SITE_URL}/blog`,
+  "@id": `${SITE_URL}/blog/`,
   name: "Rozper Blog",
   description:
     "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries.",
-  url: `${SITE_URL}/blog`,
+  url: `${SITE_URL}/blog/`,
   publisher: {
     "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
+    "@id": `${SITE_URL}/#organization/`,
     name: "Rozper",
     url: SITE_URL,
     logo: {
@@ -57,7 +57,7 @@ const blogBreadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog/` },
   ],
 }
 
