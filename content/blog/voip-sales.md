@@ -23,7 +23,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-06-25"
 readingTime: "7 min"
-featuredImage: "/images/blog/voip-sales-hero.webp"
+featuredImage: "/images/blog/voip rates hero.webp"
 featuredImageFit: "cover"
 featuredImagePosition: "center"
 ---
