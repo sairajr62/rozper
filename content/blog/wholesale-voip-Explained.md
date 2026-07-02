@@ -1,4 +1,4 @@
----
+﻿---
 title: "Wholesale VoIP Explained: Benefits, Costs & Best Use Cases"
 slug: "wholesale-voip"
 excerpt: "Learn what wholesale VoIP is, how it works technically, what cost and scalability benefits it delivers, and how to choose the right provider for your business."
@@ -130,7 +130,7 @@ This infrastructure layer powers scalable, cost-efficient voice communication fo
 
 The rate card is the starting point. Business fit, infrastructure quality, and partnership model determine long-term ROI.
 
-Explore how Rozper approaches wholesale voice at [rozper.com](https://www.rozper.com).
+Explore how Rozper approaches wholesale voice at [rozper.com](https://www.rozper.com/).
 
 ---
 

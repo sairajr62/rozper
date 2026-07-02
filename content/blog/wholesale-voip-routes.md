@@ -1,4 +1,4 @@
----
+﻿---
 title: "Wholesale VoIP Routes Explained: Benefits & Best Practices"
 slug: "wholesale-voip-routes"
 excerpt: "Learn what wholesale VoIP routes are, how the different types compare, which quality metrics matter, and how to choose the right provider for your business."
@@ -122,7 +122,7 @@ The right route configuration controls per-minute costs, caller ID compliance, a
 
 Businesses that match route type to traffic profile, test under real conditions, and require transparent quality metrics extract the full value from voice infrastructure investment.
 
-Explore how Rozper structures routing at [rozper.com](https://www.rozper.com).
+Explore how Rozper structures routing at [rozper.com](https://www.rozper.com/).
 
 ---
 

@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+﻿import { NextResponse } from "next/server"
 import { google } from "googleapis"
 import { put } from "@vercel/blob"
 
@@ -169,7 +169,7 @@ export async function POST(req: Request) {
             <h2 style="margin:0 0 12px;font-size:22px;color:#0B1220">You're on your way, ${escapeHtml(displayName)}!</h2>
             <p style="margin:0 0 16px;color:#4a5568">Thanks for signing up for your free trial. Our team will reach out to you within <strong>24 hours</strong> to get you set up.</p>
             <p style="margin:0 0 24px;color:#4a5568">In the meantime, explore what Rozper has to offer:</p>
-            <a href="https://rozper.com" style="display:inline-block;background:#046BD2;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Visit Rozper.com</a>
+            <a href="https://rozper.com/" style="display:inline-block;background:#046BD2;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Visit Rozper.com</a>
             <hr style="margin:32px 0;border:none;border-top:1px solid #e8e8e8" />
             <p style="margin:0;font-size:13px;color:#9aa8bc">You're receiving this because you signed up for a free trial at rozper.com. If this wasn't you, please ignore this email.</p>
           </div>
