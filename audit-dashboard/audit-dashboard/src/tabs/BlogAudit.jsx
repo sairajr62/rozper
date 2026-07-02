@@ -3,31 +3,52 @@ import Badge, { HealthBadge } from '../components/Badge'
 import LoadingState, { EmptyState } from '../components/LoadingState'
 import DetailPanel, { DetailSection, DetailRow, IssuesList } from '../components/DetailPanel'
 
+function ReadabilityBadge({ readability }) {
+  if (!readability) return <span style={{ color: 'var(--dim)', fontSize: 11 }}>—</span>
+  const colors = { ok: 'var(--green)', warn: '#f59e0b', err: 'var(--red)' }
+  const color = colors[readability.level] || 'var(--dim)'
+  return (
+    <div>
+      <span style={{
+        fontSize: 11, fontWeight: 600, color,
+        background: `${color}18`, border: `1px solid ${color}40`,
+        padding: '2px 7px', borderRadius: 5,
+      }}>
+        {readability.label}
+      </span>
+      <div style={{ fontSize: 9, color: 'var(--dim)', marginTop: 2, fontFamily: 'var(--mono)' }}>
+        {readability.score}/100
+      </div>
+    </div>
+  )
+}
+
 export default function BlogAudit({ results, loading, onRun }) {
-  const [search, setSearch] = useState('')
-  const [filter, setFilter] = useState('all')
+  const [search, setSearch]   = useState('')
+  const [filter, setFilter]   = useState('all')
   const [selected, setSelected] = useState(null)
 
   const filtered = results
     .filter(b => !search || b.title.toLowerCase().includes(search.toLowerCase()) || b.file.toLowerCase().includes(search.toLowerCase()))
     .filter(b => {
-      if (filter === 'issues') return b.issues.length > 0
+      if (filter === 'issues')   return b.issues.length > 0
       if (filter === 'warnings') return b.warnings.length > 0 && b.issues.length === 0
-      if (filter === 'ok') return b.issues.length === 0 && b.warnings.length === 0
+      if (filter === 'ok')       return b.issues.length === 0 && b.warnings.length === 0
       return true
     })
 
-  const selectedPost = selected ? results.find(r => r.slug === selected) : null
-
-  const wcOutOfRange = results.filter(b => b.wordCount < 978 || b.wordCount > 1600)
+  const selectedPost  = selected ? results.find(r => r.slug === selected) : null
+  const wcOutOfRange  = results.filter(b => b.wordCount < 978 || b.wordCount > 1600)
+  const hardToRead    = results.filter(b => b.readability && b.readability.level === 'err')
 
   return (
     <div>
+      {/* Word count warning banner */}
       {results.length > 0 && wcOutOfRange.length > 0 && (
         <div style={{
           display: 'flex', alignItems: 'flex-start', gap: 10, padding: '11px 16px',
           background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.28)',
-          borderRadius: 8, marginBottom: 16,
+          borderRadius: 8, marginBottom: 10,
         }}>
           <span style={{ fontSize: 15, lineHeight: 1, marginTop: 1 }}>⚠</span>
           <div>
@@ -35,12 +56,36 @@ export default function BlogAudit({ results, loading, onRun }) {
               {wcOutOfRange.length} post{wcOutOfRange.length > 1 ? 's' : ''} need attention — critically short or over 1600 words
             </span>
             <div style={{ fontSize: 11, color: 'var(--dim)', marginTop: 3, lineHeight: 1.5 }}>
-              {wcOutOfRange.map(b => (
+              {wcOutOfRange.slice(0, 5).map(b => (
                 <span key={b.slug} style={{ marginRight: 10 }}>
                   {b.wordCount < 978 ? '↓' : '↑'} {b.title} ({b.wordCount} words)
                 </span>
-              )).slice(0, 5)}
+              ))}
               {wcOutOfRange.length > 5 && <span>and {wcOutOfRange.length - 5} more…</span>}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Readability warning banner */}
+      {results.length > 0 && hardToRead.length > 0 && (
+        <div style={{
+          display: 'flex', alignItems: 'flex-start', gap: 10, padding: '11px 16px',
+          background: 'rgba(239,68,68,0.07)', border: '1px solid rgba(239,68,68,0.22)',
+          borderRadius: 8, marginBottom: 16,
+        }}>
+          <span style={{ fontSize: 15, lineHeight: 1, marginTop: 1 }}>📖</span>
+          <div>
+            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--red)' }}>
+              {hardToRead.length} post{hardToRead.length > 1 ? 's' : ''} are difficult to read (Flesch score &lt;50)
+            </span>
+            <div style={{ fontSize: 11, color: 'var(--dim)', marginTop: 3, lineHeight: 1.5 }}>
+              {hardToRead.slice(0, 5).map(b => (
+                <span key={b.slug} style={{ marginRight: 10 }}>
+                  {b.title} ({b.readability.score})
+                </span>
+              ))}
+              {hardToRead.length > 5 && <span>and {hardToRead.length - 5} more…</span>}
             </div>
           </div>
         </div>
@@ -72,7 +117,7 @@ export default function BlogAudit({ results, loading, onRun }) {
         </div>
         <div className="table-wrap">
           {loading ? (
-            <LoadingState message="Reading blog markdown files…" sub="Checking frontmatter, images, word count…" />
+            <LoadingState message="Reading blog markdown files…" sub="Checking frontmatter, word count, readability…" />
           ) : !results.length ? (
             <EmptyState icon="📝" message="Click Audit Blogs to start" />
           ) : !filtered.length ? (
@@ -85,6 +130,7 @@ export default function BlogAudit({ results, loading, onRun }) {
                   <th>Category</th>
                   <th>Image</th>
                   <th>Words</th>
+                  <th>Readability</th>
                   <th>Author</th>
                   <th>Health</th>
                   <th>Issues</th>
@@ -92,15 +138,15 @@ export default function BlogAudit({ results, loading, onRun }) {
               </thead>
               <tbody>
                 {filtered.map(b => {
-                  const imgOk = b.featuredImage && !b.issues.some(i => i.toLowerCase().includes('image'))
-                  const wc = b.wordCount
+                  const imgOk     = b.featuredImage && !b.issues.some(i => i.toLowerCase().includes('image'))
+                  const wc        = b.wordCount
                   const wcCritical = wc < 978 || wc > 1600
-                  const wcOk = wc >= 1500 && wc <= 1600
-                  const wcColor = wcOk ? 'var(--green)' : wcCritical ? '#f59e0b' : 'var(--text)'
+                  const wcOk      = wc >= 1500 && wc <= 1600
+                  const wcColor   = wcOk ? 'var(--green)' : wcCritical ? '#f59e0b' : 'var(--text)'
 
                   return (
                     <tr key={b.slug} className="clickable" onClick={() => setSelected(b.slug)}>
-                      <td style={{ maxWidth: 260 }}>
+                      <td style={{ maxWidth: 240 }}>
                         <div style={{ fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{b.title}</div>
                         <div style={{ fontSize: 10, color: 'var(--dim)', fontFamily: 'var(--mono)', marginTop: 2 }}>{b.file}</div>
                       </td>
@@ -117,13 +163,14 @@ export default function BlogAudit({ results, loading, onRun }) {
                           : <Badge type="ok">✓</Badge>}
                       </td>
                       <td>
-                        <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: wcColor }}>{wc}</span>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 600, color: wcColor }}>{wc ?? '—'}</span>
                         {wcCritical && (
                           <div style={{ fontSize: 9, color: '#f59e0b', marginTop: 1 }}>
                             {wc < 978 ? `↓ ${978 - wc} critical` : `↑ ${wc - 1600} over`}
                           </div>
                         )}
                       </td>
+                      <td><ReadabilityBadge readability={b.readability} /></td>
                       <td><span style={{ fontSize: 11, color: b.author ? 'var(--muted)' : 'var(--yellow)' }}>{b.author || '—'}</span></td>
                       <td><HealthBadge issues={b.issues.length} warnings={b.warnings.length} /></td>
                       <td>
@@ -153,9 +200,39 @@ export default function BlogAudit({ results, loading, onRun }) {
               <DetailRow label="Publish date" value={selectedPost.publishDate || '⚠ Missing'} color={!selectedPost.publishDate ? 'var(--yellow)' : undefined} />
               <DetailRow
                 label="Word count"
-                value={`${selectedPost.wordCount} words${selectedPost.wordCount < 978 ? ` — ⚠ critically short (min 978)` : selectedPost.wordCount > 1600 ? ` — ⚠ ${selectedPost.wordCount - 1600} over target (1500–1600)` : selectedPost.wordCount >= 1500 ? ' — ✓ within target' : ''}`}
-                color={selectedPost.wordCount >= 1500 && selectedPost.wordCount <= 1600 ? 'var(--green)' : selectedPost.wordCount < 978 || selectedPost.wordCount > 1600 ? '#f59e0b' : 'var(--text)'}
+                value={`${selectedPost.wordCount} words${
+                  selectedPost.wordCount < 978
+                    ? ` — ⚠ critically short (min 978)`
+                    : selectedPost.wordCount > 1700
+                    ? ` — ⚠ ${selectedPost.wordCount - 1700} over target (1500–1700)`
+                    : selectedPost.wordCount >= 1500
+                    ? ' — ✓ within target'
+                    : ` — ${selectedPost.wordCount} / 1500`
+                }`}
+                color={
+                  selectedPost.wordCount >= 1500 && selectedPost.wordCount <= 1700
+                    ? 'var(--green)'
+                    : selectedPost.wordCount < 978 || selectedPost.wordCount > 1700
+                    ? '#f59e0b'
+                    : 'var(--text)'
+                }
               />
+              {selectedPost.readability && (
+                <DetailRow
+                  label="Readability"
+                  value={`${selectedPost.readability.label} — Flesch score ${selectedPost.readability.score}/100${
+                    selectedPost.readability.level === 'err'
+                      ? ' — ⚠ difficult for most readers'
+                      : selectedPost.readability.level === 'warn'
+                      ? ' — aim for 70+'
+                      : ' — ✓ good'
+                  }`}
+                  color={
+                    selectedPost.readability.level === 'ok'  ? 'var(--green)' :
+                    selectedPost.readability.level === 'warn' ? '#f59e0b' : 'var(--red)'
+                  }
+                />
+              )}
             </DetailSection>
             <DetailSection title="Assets">
               <DetailRow

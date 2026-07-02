@@ -84,29 +84,56 @@ export default function LoginGate({ children }) {
     return () => clearTimeout(autoLogoutTimer.current)
   }, [authState])
 
+  async function attemptLogin(u, p) {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 12000)
+    try {
+      const res = await fetch('/api/audit-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: u, pass: p }),
+        signal: controller.signal,
+      })
+      clearTimeout(timer)
+      if (res.ok) return { ok: true }
+      const data = await res.json().catch(() => ({}))
+      return { ok: false, status: res.status, reason: data.reason }
+    } catch (err) {
+      clearTimeout(timer)
+      const aborted = err.name === 'AbortError'
+      return { ok: false, network: true, aborted }
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault()
     setError('')
     setLoading(true)
     try {
-      const res = await fetch('/api/audit-auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user, pass }),
-      })
-      if (res.ok) {
+      let result = await attemptLogin(user, pass)
+
+      // Auto-retry once on network/timeout errors (cold-start)
+      if (!result.ok && result.network) {
+        result = await attemptLogin(user, pass)
+      }
+
+      if (result.ok) {
         setAuthState('shattering')
         setTimeout(() => setAuthState('unlocked'), 1400)
-      } else {
+      } else if (result.network) {
+        setError(result.aborted ? 'Request timed out. Try again.' : 'Connection error. Try again.')
+        setShake(true)
+        setTimeout(() => setShake(false), 500)
+      } else if (result.status === 401) {
         setError('Incorrect username or password.')
         setPass('')
         setShake(true)
         setTimeout(() => setShake(false), 500)
+      } else {
+        setError('Server error. Try again in a moment.')
+        setShake(true)
+        setTimeout(() => setShake(false), 500)
       }
-    } catch {
-      setError('Connection error. Try again.')
-      setShake(true)
-      setTimeout(() => setShake(false), 500)
     } finally {
       setLoading(false)
     }

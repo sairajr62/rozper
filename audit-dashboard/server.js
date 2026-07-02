@@ -189,6 +189,48 @@ async function auditPage(route) {
   return result
 }
 
+// ─── Readability helpers ───────────────────────────────────────────────────────
+function stripMarkdown(text) {
+  return text
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`[^`]+`/g, ' ')
+    .replace(/!\[.*?\]\(.*?\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/(\*|_)(.*?)\1/g, '$2')
+    .replace(/^[-*+]\s+/gm, '')
+    .replace(/^\d+\.\s+/gm, '')
+    .replace(/[|>\\]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function countSyllables(word) {
+  word = word.toLowerCase().replace(/[^a-z]/g, '')
+  if (!word) return 0
+  if (word.length <= 3) return 1
+  word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+  word = word.replace(/^y/, '')
+  const m = word.match(/[aeiouy]{1,2}/g)
+  return m ? m.length : 1
+}
+
+function calcReadability(cleanText) {
+  const sentences = cleanText.split(/[.!?]+/).filter(s => s.trim().length > 3)
+  const words = cleanText.split(/\s+/).filter(Boolean)
+  if (sentences.length < 2 || words.length < 10) return null
+  const syllables = words.reduce((s, w) => s + countSyllables(w), 0)
+  const raw = 206.835 - (1.015 * (words.length / sentences.length)) - (84.6 * (syllables / words.length))
+  const score = Math.max(0, Math.min(100, Math.round(raw)))
+  let label, level
+  if (score >= 70) { label = 'Easy';       level = 'ok'   }
+  else if (score >= 50) { label = 'Moderate';  level = 'warn' }
+  else                  { label = 'Difficult'; level = 'err'  }
+  return { score, label, level }
+}
+
 // ─── Audit blog markdown files ─────────────────────────────────────────────────
 function auditBlogs() {
   const results = []
@@ -210,8 +252,6 @@ function auditBlogs() {
     if (!data.excerpt) warnings.push('Missing excerpt/description')
     if (!data.seoTitle) warnings.push('Missing seoTitle')
     if (!data.seoDescription) warnings.push('Missing seoDescription')
-    else if (data.seoDescription.length > 160) warnings.push(`seoDescription too long (${data.seoDescription.length} chars)`)
-    else if (data.seoDescription.length < 50) warnings.push(`seoDescription too short (${data.seoDescription.length} chars)`)
     if (!data.featuredImage) issues.push('Missing featuredImage')
     else {
       // Check if the image file actually exists
@@ -225,14 +265,24 @@ function auditBlogs() {
     // Tags
     if (!data.tags || !data.tags.length) warnings.push('No tags')
 
-    // Title length
-    if (data.seoTitle && data.seoTitle.length > 65) warnings.push(`seoTitle too long (${data.seoTitle.length} chars)`)
-    if (data.seoTitle && data.seoTitle.length < 30) warnings.push(`seoTitle too short (${data.seoTitle.length} chars)`)
+    // Title length (50–60 chars)
+    if (data.seoTitle && data.seoTitle.length > 60) warnings.push(`seoTitle too long (${data.seoTitle.length} chars, max 60)`)
+    if (data.seoTitle && data.seoTitle.length < 50) warnings.push(`seoTitle too short (${data.seoTitle.length} chars, min 50)`)
 
-    // Word count
-    const wordCount = content.replace(/[#*_>\-\[\]]/g, ' ').split(/\s+/).filter(Boolean).length
-    if (wordCount < 300) issues.push(`Thin content: only ${wordCount} words`)
-    else if (wordCount < 600) warnings.push(`Short content: ${wordCount} words`)
+    // seoDescription (150–160 chars)
+    if (data.seoDescription && data.seoDescription.length > 160) warnings.push(`seoDescription too long (${data.seoDescription.length} chars, max 160)`)
+    else if (data.seoDescription && data.seoDescription.length < 150) warnings.push(`seoDescription too short (${data.seoDescription.length} chars, min 150)`)
+
+    // Word count — strip markdown properly before counting
+    const cleanContent = stripMarkdown(content)
+    const wordCount = cleanContent.split(/\s+/).filter(Boolean).length
+    if (wordCount < 1500) warnings.push(`Short content: ${wordCount} words (target 1500–1700)`)
+    else if (wordCount > 1700) warnings.push(`Long content: ${wordCount} words (target 1500–1700)`)
+
+    // Readability (Flesch Reading Ease)
+    const readability = calcReadability(cleanContent)
+    if (readability && readability.level === 'err')  warnings.push(`Hard to read — Flesch score ${readability.score} (target ≥50)`)
+    else if (readability && readability.level === 'warn') warnings.push(`Moderate readability — Flesch score ${readability.score} (aim for ≥70)`)
 
     results.push({
       file,
@@ -241,6 +291,7 @@ function auditBlogs() {
       category: data.category || null,
       featuredImage: data.featuredImage || null,
       wordCount,
+      readability,
       issues,
       warnings,
       publishDate: data.publishDate || null,
