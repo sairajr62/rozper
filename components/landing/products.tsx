@@ -11,7 +11,7 @@ const capabilities = [
     tag: "Anchor",
     description:
       "Calling, video, SMS, and AI on one seat. Replace four vendors with one bill.",
-    href: "/products/unified-communications",
+    href: "/products/unified-communications/",
     bullets: ["Cloud PBX", "Video meetings", "SMS / MMS", "Team chat"],
     accent: "from-[#046BD2] to-[#22D3EE]",
     featured: true,
@@ -21,7 +21,7 @@ const capabilities = [
     title: "Contact Center",
     tag: "CCaaS",
     description: "Omnichannel inbox, dialers, and analytics — built for scale.",
-    href: "/products/contact-center",
+    href: "/products/contact-center/",
     accent: "from-[#0078E0] to-[#2575FC]",
   },
   {
@@ -29,7 +29,7 @@ const capabilities = [
     title: "AI Suite",
     tag: "Intelligence",
     description: "Receptionist, agent assist, and conversation analytics.",
-    href: "/products/ai",
+    href: "/products/ai/",
     accent: "from-[#22D3EE] to-[#046BD2]",
   },
   {
@@ -37,7 +37,7 @@ const capabilities = [
     title: "SIP Trunking",
     tag: "Infra",
     description: "Flexible SIP for any PBX — bring your own session border controller.",
-    href: "/products/unified-communications/phone-system",
+    href: "/products/unified-communications/hosted-phone-system/",
     accent: "from-[#0078E0] to-[#046BD2]",
   },
 ]

@@ -22,9 +22,9 @@ export const metadata: Metadata = {
 }
 
 const relatedLinks = [
-  { title: 'Enterprise Contact Center', description: 'High-volume CCaaS for large organizations', href: '/products/contact-center/enterprise' },
-  { title: 'HubSpot Integration', description: 'Native CRM sync with HubSpot', href: '/integrations/hubspot' },
-  { title: 'UCaaS Platform', description: 'Unified communications starting at $9.99/user', href: '/products/unified-communications' }
+  { title: 'Enterprise Contact Center', description: 'High-volume CCaaS for large organizations', href: '/products/contact-center/enterprise/' },
+  { title: 'HubSpot Integration', description: 'Native CRM sync with HubSpot', href: '/integrations/hubspot/' },
+  { title: 'UCaaS Platform', description: 'Unified communications starting at $9.99/user', href: '/products/unified-communications/' }
 ]
 
 const jsonLd = {

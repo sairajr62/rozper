@@ -112,7 +112,7 @@ export function AreaCodeHero({ data, stateSlug }: { data: AreaCodeData; stateSlu
               {data.state && resolvedStateSlug && (
                 <>
                   <span className="text-white/15">/</span>
-                  <Link href={`/area-codes/${resolvedStateSlug}`} className="hover:text-white/60 transition">
+                  <Link href={`/area-codes/${resolvedStateSlug}/`} className="hover:text-white/60 transition">
                     {resolvedStateSlug}
                   </Link>
                 </>
@@ -755,7 +755,7 @@ export function RelatedCodesSection({ code, state, stateSlug, relatedCodes }: {
               Explore all {relatedCodes.length + 1} area codes available across {state}.
             </p>
           </div>
-          <Link href={`/area-codes/${stateSlug}`}
+          <Link href={`/area-codes/${stateSlug}/`}
             className="shrink-0 inline-flex items-center gap-2 text-[#22D3EE] text-sm font-medium hover:text-white transition group whitespace-nowrap"
           >
             View all {state} codes
@@ -770,7 +770,7 @@ export function RelatedCodesSection({ code, state, stateSlug, relatedCodes }: {
               viewport={{ once: true }}
               transition={{ delay: i * 0.04, duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link href={`/area-codes/${rc.stateSlug}/${rc.code}`}
+              <Link href={`/area-codes/${rc.stateSlug}/${rc.code}/`}
                 className="group relative flex flex-col bg-white/[0.025] hover:bg-[#0F1D30] border border-white/[0.07] hover:border-[#046BD2]/35 rounded-xl p-3.5 sm:p-4 transition-all duration-250 overflow-hidden"
               >
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#046BD2]/0 to-transparent group-hover:via-[#22D3EE]/35 transition-all" />
@@ -791,7 +791,7 @@ export function RelatedCodesSection({ code, state, stateSlug, relatedCodes }: {
 
         {relatedCodes.length > 12 && (
           <div className="mt-5 sm:mt-6 text-center">
-            <Link href={`/area-codes/${stateSlug}`}
+            <Link href={`/area-codes/${stateSlug}/`}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 hover:border-[#046BD2]/40 hover:bg-white/[0.04] text-white/50 hover:text-white text-sm transition-all"
             >
               View all {relatedCodes.length + 1} {state} area codes

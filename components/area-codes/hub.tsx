@@ -345,7 +345,7 @@ export function BrowseByState({ stateGroups }: { stateGroups: StateGroup[] }) {
                 viewport={{ once: true }}
                 transition={{ delay: (i % 18) * 0.025, duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Link href={`/area-codes/${sg.stateSlug}`}
+                <Link href={`/area-codes/${sg.stateSlug}/`}
                   className="group relative flex flex-col bg-white/[0.03] hover:bg-[#0F1D30] border border-white/[0.07] hover:border-[#046BD2]/40 rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-250 overflow-hidden h-full"
                 >
                   <div className="absolute -bottom-6 -right-6 w-16 h-16 rounded-full bg-[#046BD2]/0 group-hover:bg-[#046BD2]/10 blur-xl transition-all duration-400" />
@@ -436,7 +436,7 @@ export function PopularAreaCodes() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link href={`/area-codes/${stateSlug}/${code}`}
+              <Link href={`/area-codes/${stateSlug}/${code}/`}
                 className="group relative flex flex-col h-full bg-[#0B1728]/80 hover:bg-[#101C2E] border border-white/[0.07] hover:border-[#22D3EE]/35 rounded-xl sm:rounded-2xl p-3.5 sm:p-5 transition-all duration-300 overflow-hidden"
               >
                 <div className="absolute -top-8 -right-8 w-20 h-20 rounded-full bg-[#22D3EE]/0 group-hover:bg-[#22D3EE]/8 blur-xl transition-all duration-500" />
@@ -602,7 +602,7 @@ export function AreaCodeDirectory({ codes, stateGroups, query, setQuery }: {
                       {sidebarCodes.map(c => (
                         <Link
                           key={c.code + c.state}
-                          href={`/area-codes/${c.stateSlug}/${c.code}`}
+                          href={`/area-codes/${c.stateSlug}/${c.code}/`}
                           className="group flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl hover:bg-[#046BD2]/10 border border-transparent hover:border-[#046BD2]/25 transition-all duration-150"
                         >
                           <div className="flex items-center gap-3 min-w-0">
@@ -631,7 +631,7 @@ export function AreaCodeDirectory({ codes, stateGroups, query, setQuery }: {
               {activeGroup && (
                 <div className="p-4 border-t border-white/[0.06] mt-auto">
                   <Link
-                    href={`/area-codes/${activeGroup.stateSlug}`}
+                    href={`/area-codes/${activeGroup.stateSlug}/`}
                     className="group flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#046BD2]/12 hover:bg-[#046BD2]/22 border border-[#046BD2]/25 hover:border-[#046BD2]/50 text-[#22D3EE] text-xs font-semibold transition-all"
                   >
                     Explore all {activeGroup.state} numbers

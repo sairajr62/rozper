@@ -18,7 +18,7 @@ export function CTAStrip({
   title,
   titleHighlight,
   subtitle,
-  primaryCTA = { label: 'Start a No-Pressure Conversation', href: '/contact' }
+  primaryCTA = { label: 'Start a No-Pressure Conversation', href: '/contact/' }
 }: CTAStripProps) {
   return (
     <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#0B1220] overflow-hidden relative">

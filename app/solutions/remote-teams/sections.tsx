@@ -80,10 +80,10 @@ const faqs = [
 ]
 
 const relatedLinks = [
-  { title: 'UCaaS Platform', href: '/products/unified-communications', desc: 'Unified comms for your whole org' },
-  { title: 'Video Meetings', href: '/products/unified-communications/video-meetings', desc: 'HD video, no downloads' },
-  { title: 'SaaS & Tech Solutions', href: '/solutions/saas', desc: 'Built for fast-growing teams' },
-  { title: 'Pricing', href: '/pricing', desc: 'Simple, scalable plans' },
+  { title: 'UCaaS Platform', href: '/products/unified-communications/', desc: 'Unified comms for your whole org' },
+  { title: 'Video Meetings', href: '/products/unified-communications/hd-video-meetings/', desc: 'HD video, no downloads' },
+  { title: 'SaaS & Tech Solutions', href: '/solutions/saas-tech/', desc: 'Built for fast-growing teams' },
+  { title: 'Pricing', href: '/pricing/', desc: 'Simple, scalable plans' },
 ]
 
 // ─── BREADCRUMB ─────────────────────────────────────────────────────────────

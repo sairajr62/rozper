@@ -56,7 +56,7 @@ export function RelatedPosts({ posts }: { posts: BlogPost[] }) {
             return (
               <Link
                 key={post.slug}
-                href={`/blog/${post.slug}`}
+                href={`/blog/${post.slug}/`}
                 className="group block h-full rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#046BD2]/40 transition-all duration-300 overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_60px_-25px_rgba(4,107,210,0.6)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">

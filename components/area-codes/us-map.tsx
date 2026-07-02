@@ -171,7 +171,7 @@ export function USStateMap({ state, stateSlug, codes }: {
                       fill="rgba(34,211,238,0.07)"
                     />
                     {/* Badge background */}
-                    <a href={`/area-codes/${entry.stateSlug}/${entry.code}`} style={{ cursor: "pointer" }}>
+                    <a href={`/area-codes/${entry.stateSlug}/${entry.code}/`} style={{ cursor: "pointer" }}>
                       <rect
                         x={ox - BW / 2} y={oy - BH / 2}
                         width={BW} height={BH} rx={4}

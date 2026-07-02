@@ -244,7 +244,7 @@ export function StateAreaCodeGrid({ state, stateSlug, codes }: {
           <motion.div key={entry.code} variants={cardVariant} initial="hidden" whileInView="show"
             viewport={{ once: true }} custom={i % 12}
           >
-            <Link href={`/area-codes/${stateSlug}/${entry.code}`}
+            <Link href={`/area-codes/${stateSlug}/${entry.code}/`}
               className="group relative flex flex-col h-full bg-[#0B1728]/80 hover:bg-[#111B2E] border border-white/[0.08] hover:border-[#046BD2]/40 rounded-xl sm:rounded-2xl p-3.5 sm:p-5 transition-all duration-300 overflow-hidden"
             >
               <div className="absolute -top-8 -right-8 w-20 h-20 rounded-full bg-[#046BD2]/0 group-hover:bg-[#046BD2]/12 blur-2xl transition-all duration-500" />

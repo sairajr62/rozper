@@ -67,7 +67,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
           was set, leaving the md range with a single-column stacked layout.
         */}
         <Link
-          href={`/blog/${post.slug}`}
+          href={`/blog/${post.slug}/`}
           className="relative grid md:grid-cols-12 gap-0 rounded-3xl bg-[#0A1020]/85 backdrop-blur-2xl overflow-hidden"
         >
           {/* Visual — col span also shifted from lg to md */}
@@ -188,7 +188,7 @@ function PostCard({
       className="group"
     >
       <Link
-        href={`/blog/${post.slug}`}
+        href={`/blog/${post.slug}/`}
         className="block h-full rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#046BD2]/40 transition-all duration-300 overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_60px_-25px_rgba(4,107,210,0.6)]"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-[#0a1929]">

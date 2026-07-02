@@ -20,7 +20,7 @@ const roles = [
     description: "Power dialer, AI coaching, CRM sync, and conversation intelligence.",
     tags: ["Power dialer", "AI coaching", "CRM sync", "Conv. IQ"],
     accent: "from-[#046BD2] to-[#0078E0]",
-    href: "/solutions/sales-teams",
+    href: "/solutions/sales-teams/",
   },
   {
     icon: Headphones,
@@ -28,7 +28,7 @@ const roles = [
     description: "Omnichannel inbox, AI agent assist, and SLA management.",
     tags: ["Omnichannel", "AI assist", "SLA mgmt"],
     accent: "from-[#0086F9] to-[#2575FC]",
-    href: "/solutions/support-teams",
+    href: "/solutions/support-teams/",
   },
   {
     icon: Globe2,
@@ -36,7 +36,7 @@ const roles = [
     description: "Local numbers anywhere, full mobile app, 99.99% uptime.",
     tags: ["Local numbers", "Mobile app", "99.99% SLA"],
     accent: "from-[#22D3EE] to-[#046BD2]",
-    href: "/solutions/remote-teams",
+    href: "/solutions/remote-teams/",
   },
   {
     icon: Shield,
@@ -44,7 +44,7 @@ const roles = [
     description: "SSO, SCIM, RBAC, custom SLA, and a dedicated implementation team.",
     tags: ["SSO / SCIM", "RBAC", "Custom SLA"],
     accent: "from-[#2575FC] to-[#046BD2]",
-    href: "/solutions/enterprise-it",
+    href: "/solutions/enterprise-ucaas/",
   },
   {
     icon: BarChart2,
@@ -52,7 +52,7 @@ const roles = [
     description: "Call analytics, queue dashboards, exportable audit logs.",
     tags: ["Analytics", "Dashboards", "Audit logs"],
     accent: "from-[#046BD2] to-[#22D3EE]",
-    href: "/features/supervisor-tools",
+    href: "/features/supervisor-tools/",
   },
   {
     icon: Building,
@@ -60,7 +60,7 @@ const roles = [
     description: "One bill, one platform, one number to call when you need help.",
     tags: ["One bill", "One platform", "Real support"],
     accent: "from-[#0078E0] to-[#0086F9]",
-    href: "/solutions/smb",
+    href: "/solutions/small-business/",
   },
 ]
 

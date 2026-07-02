@@ -30,7 +30,7 @@ const blocks = [
     title: "Premium support",
     body: "Dedicated Slack channel and a 15-min response SLA for Scale & Enterprise.",
     cta: "Talk to sales",
-    href: "/contact",
+    href: "/contact/",
   },
 ]
 

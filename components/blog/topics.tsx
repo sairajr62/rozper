@@ -19,7 +19,7 @@ const topics = [
     blurb:
       "Voice agents, sentiment, copilots. The systems quietly replacing the boring half of the queue.",
     count: 38,
-    href: "/blog/topic/ai",
+    href: "/blog/topic/ai/",
   },
   {
     icon: Network,
@@ -27,7 +27,7 @@ const topics = [
     blurb:
       "Routing, codecs, latency budgets. The engineering behind a 99.99% SLA.",
     count: 27,
-    href: "/blog/topic/infrastructure",
+    href: "/blog/topic/infrastructure/",
   },
   {
     icon: Headphones,
@@ -35,7 +35,7 @@ const topics = [
     blurb:
       "FCR playbooks, coaching scripts, and the metrics that actually move the needle.",
     count: 31,
-    href: "/blog/topic/cx",
+    href: "/blog/topic/cx/",
   },
   {
     icon: LineChart,
@@ -43,7 +43,7 @@ const topics = [
     blurb:
       "Margins, routes, and how carriers really earn (and lose) money on minutes.",
     count: 18,
-    href: "/blog/topic/wholesale",
+    href: "/blog/topic/wholesale/",
   },
   {
     icon: Globe2,
@@ -51,7 +51,7 @@ const topics = [
     blurb:
       "DID porting, regional regulations, and launching a number in countries you've never visited.",
     count: 22,
-    href: "/blog/topic/global",
+    href: "/blog/topic/global/",
   },
   {
     icon: ShieldCheck,
@@ -59,7 +59,7 @@ const topics = [
     blurb:
       "HIPAA, SOC 2, PCI — practical patterns for regulated industries that move a lot of voice.",
     count: 14,
-    href: "/blog/topic/compliance",
+    href: "/blog/topic/compliance/",
   },
 ]
 

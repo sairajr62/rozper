@@ -22,7 +22,7 @@ export function ProductHero({
   titleHighlight,
   subtitle,
   hook,
-  primaryCTA = { label: 'Start a No-Pressure Conversation', href: '/contact' },
+  primaryCTA = { label: 'Start a No-Pressure Conversation', href: '/contact/' },
   stats
 }: ProductHeroProps) {
   return (

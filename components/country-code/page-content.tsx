@@ -830,7 +830,7 @@ export function RelatedCountriesSection({ country, related }: { country: Country
               viewport={{ once: true }}
               transition={{ delay: i * 0.04, duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link href={`/country-code/${rc.slug}/best-time-to-call`}
+              <Link href={`/country-code/${rc.slug}/best-time-to-call/`}
                 className="group relative flex flex-col bg-white/[0.025] hover:bg-[#0F1D30] border border-white/[0.07] hover:border-[#046BD2]/35 rounded-xl p-3.5 sm:p-4 transition-all duration-250 overflow-hidden"
               >
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#046BD2]/0 to-transparent group-hover:via-[#22D3EE]/35 transition-all" />

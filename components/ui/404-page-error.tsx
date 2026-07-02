@@ -6,10 +6,10 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 const QUICK_LINKS = [
-  { label: "Contact Center", href: "/products/contact-center" },
-  { label: "Unified Comms",  href: "/products/ucaas" },
-  { label: "AI Voice Agent", href: "/products/ai/receptionist" },
-  { label: "Pricing",        href: "/pricing" },
+  { label: "Contact Center", href: "/products/contact-center/" },
+  { label: "Unified Comms",  href: "/products/ucaas/" },
+  { label: "AI Voice Agent", href: "/products/ai/receptionist/" },
+  { label: "Pricing",        href: "/pricing/" },
 ]
 
 const NotFoundPage = () => {

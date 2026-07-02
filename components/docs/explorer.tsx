@@ -167,7 +167,7 @@ export function DocsExplorer() {
                         {tree[cat].map((doc) => (
                           <li key={doc.slug}>
                             <a
-                              href={`/docs/${doc.slug}`}
+                              href={`/docs/${doc.slug}/`}
                               className="flex items-center gap-2 px-2 py-1 rounded text-xs text-white/60 hover:text-white hover:bg-white/[0.03] transition-colors"
                             >
                               <FileText className="w-3 h-3 text-white/30" />
@@ -205,7 +205,7 @@ export function DocsExplorer() {
                 return (
                   <a
                     key={doc.slug}
-                    href={`/docs/${doc.slug}`}
+                    href={`/docs/${doc.slug}/`}
                     className="group relative rounded-xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.05] hover:border-[#046BD2]/40 p-5 transition-all hover:-translate-y-0.5"
                   >
                     <div className="flex items-start justify-between">

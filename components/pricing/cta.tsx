@@ -12,10 +12,10 @@ const stats = [
 
 export function PricingCTA() {
   const links = [
-    { label: 'UCaaS', href: '/products/unified-communications' },
-    { label: 'Contact Center', href: '/products/contact-center' },
-    { label: 'AI Receptionist', href: '/features/ai-receptionist' },
-    { label: 'Virtual Numbers', href: '/products/virtual-numbers' },
+    { label: 'UCaaS', href: '/products/unified-communications/' },
+    { label: 'Contact Center', href: '/products/contact-center/' },
+    { label: 'AI Receptionist', href: '/features/ai-receptionist/' },
+    { label: 'Virtual Numbers', href: '/products/virtual-numbers/' },
   ]
 
   return (

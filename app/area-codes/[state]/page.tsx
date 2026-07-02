@@ -66,7 +66,7 @@ export default async function StateOrRedirectPage({ params }: Props) {
   if (/^\d{3}$/.test(stateParam)) {
     const stateName = getStateByCode(stateParam)
     if (stateName) {
-      redirect(`/area-codes/${stateToSlug(stateName)}/${stateParam}`)
+      redirect(`/area-codes/${stateToSlug(stateName)}/${stateParam}/`)
     }
     notFound()
   }

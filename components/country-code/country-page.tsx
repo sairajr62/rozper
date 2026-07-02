@@ -194,7 +194,7 @@ export function CountryPageHero({ country, times }: { country: CountryData; time
                 Start a Free Trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <Link href={`/country-code/${country.slug}/best-time-to-call`}
+              <Link href={`/country-code/${country.slug}/best-time-to-call/`}
                 className="inline-flex items-center gap-2 border border-white/15 hover:border-[#22D3EE]/40 hover:bg-white/[0.04] text-white/75 hover:text-white font-semibold px-6 py-3.5 rounded-xl transition-all text-sm sm:text-base"
               >
                 Best Time to Call
@@ -294,7 +294,7 @@ export function CallingGuideBanner({ country, times }: { country: CountryData; t
                 </p>
               </div>
             </div>
-            <Link href={`/country-code/${country.slug}/best-time-to-call`}
+            <Link href={`/country-code/${country.slug}/best-time-to-call/`}
               className="group shrink-0 w-full sm:w-auto inline-flex items-center justify-center sm:justify-start gap-2 bg-[#22D3EE]/10 hover:bg-[#22D3EE]/20 border border-[#22D3EE]/25 hover:border-[#22D3EE]/50 text-[#22D3EE] font-semibold px-5 py-2.5 rounded-xl transition-all text-sm"
             >
               Full Calling Guide
@@ -488,7 +488,7 @@ export function CountryPageRelated({ country, related }: { country: CountryData;
               viewport={{ once: true }}
               transition={{ delay: i * 0.04, duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link href={`/country-code/${rc.slug}`}
+              <Link href={`/country-code/${rc.slug}/`}
                 className="group relative flex flex-col bg-white/[0.025] hover:bg-[#0F1D30] border border-white/[0.07] hover:border-[#046BD2]/35 rounded-xl p-3.5 sm:p-4 transition-all duration-250 overflow-hidden"
               >
                 <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#046BD2]/0 to-transparent group-hover:via-[#22D3EE]/35 transition-all" />

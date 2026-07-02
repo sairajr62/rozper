@@ -616,7 +616,7 @@ export function BrowseByRegion({ countries }: { countries: CountryData[] }) {
 
                               {/* View country button */}
                               <Link
-                                href={`/country-code/${c.slug}`}
+                                href={`/country-code/${c.slug}/`}
                                 className="shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-lg border border-white/[0.07] hover:border-[#046BD2]/50 bg-white/[0.03] hover:bg-[#0F1D30] text-[11px] text-white/40 hover:text-white transition-all"
                                 onClick={e => e.stopPropagation()}
                               >
@@ -911,7 +911,7 @@ export function PopularCountries({ countries }: { countries: CountryData[] }) {
 function PhoneBookRow({ c }: { c: CountryData }) {
   return (
     <Link
-      href={`/country-code/${c.slug}`}
+      href={`/country-code/${c.slug}/`}
       className="group flex items-center gap-3 py-2.5 px-3 hover:bg-white/[0.04] rounded-lg transition-all border-b border-white/[0.04] last:border-0"
     >
       <span className="text-[#22D3EE] font-black font-mono text-sm w-20 shrink-0 tabular-nums">
@@ -954,7 +954,7 @@ function CountryCard({ c, delay }: { c: CountryData; delay: number }) {
       transition={{ duration: 0.28, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link
-        href={`/country-code/${c.slug}`}
+        href={`/country-code/${c.slug}/`}
         className="group flex flex-col gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-[#046BD2]/40 transition-all duration-200"
       >
         {/* Top row: flag + arrow */}
