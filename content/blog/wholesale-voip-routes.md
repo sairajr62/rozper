@@ -25,7 +25,7 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-03-26"
 readingTime: "7 min"
-featuredImage: "/images/blog/wholesale-voip-routes-hero.webp"
+featuredImage: "/images/blog/wholesale voip routes.webp"
 featuredImageFit: "cover"
 featuredImagePosition: "center"
 ---
