@@ -119,7 +119,7 @@ Full-featured apps across desktop, iOS, Android, and browser ensure every team m
 
 ## How to Maximize Your 864 Area Code Number's Impact
 
-![Ways to Maximize Business Impact with an 864 Area Code](/images/blog/864 image 3.webp)
+![Ways to Maximize Business Impact with an 864 Area Code](/images/blog/864-image-3.webp)
 
 **Embed it everywhere:** Feature the 864 number on your website, contact page, and footer; update your Google Business Profile; maintain consistent formatting across Yelp, LinkedIn, and the Greenville and Spartanburg Area Chambers; and use it as your call tracking ID in local paid search campaigns.
 
@@ -131,7 +131,7 @@ Full-featured apps across desktop, iOS, Android, and browser ensure every team m
 
 ## Choosing the Right VoIP Plan for Your Upstate Business
 
-![How to Choose the Right VoIP Plan for Upstate South Carolina](/images/blog/864 image 4.webp)
+![How to Choose the Right VoIP Plan for Upstate South Carolina](/images/blog/864-image-4.webp)
 
 **For Startups and Solo Operators:** Entry-level plans include one local 864 number, unlimited domestic calling, voicemail transcription, and call forwarding.
 
