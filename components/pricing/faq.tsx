@@ -130,7 +130,7 @@ export function PricingFAQ() {
         >
           <p className="text-[#757575] text-sm">
             Still have questions?{' '}
-            <a href="https://rozper.com/" className="text-[#046BD2] hover:text-[#0086F9] font-semibold transition-colors duration-200">
+            <a href="https://rozper.vercel.app/" className="text-[#046BD2] hover:text-[#0086F9] font-semibold transition-colors duration-200">
               Talk to our team →
             </a>
           </p>

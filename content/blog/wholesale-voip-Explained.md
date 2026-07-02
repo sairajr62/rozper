@@ -130,7 +130,7 @@ This infrastructure layer powers scalable, cost-efficient voice communication fo
 
 The rate card is the starting point. Business fit, infrastructure quality, and partnership model determine long-term ROI.
 
-Explore how Rozper approaches wholesale voice at [rozper.com](https://www.rozper.com/).
+Explore how Rozper approaches wholesale voice at [rozper.vercel.app](https://rozper.vercel.app/).
 
 ---
 

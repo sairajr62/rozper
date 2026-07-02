@@ -364,7 +364,7 @@ export function PricingPlans() {
         >
           All paid plans include a 14-day free trial.{' '}
           <a
-            href="https://rozper.com/"
+            href="https://rozper.vercel.app/"
             className="text-[#046BD2] hover:text-[#0086F9] font-medium transition-colors duration-200"
           >
             Volume discounts for 25+ seats →

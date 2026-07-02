@@ -19,7 +19,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rozper.com'),
+  metadataBase: new URL('https://rozper.vercel.app'),
   title: 'Rozper - One Platform. Every Call. Every Country.',
   description: 'UCaaS, contact center, AI, and virtual numbers on a carrier-grade network covering 150+ countries. Starting at $9.99 per user.',
   generator: 'v0.app',
