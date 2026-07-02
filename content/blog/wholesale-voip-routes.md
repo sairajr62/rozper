@@ -66,7 +66,7 @@ CC routes are purpose-built for contact center operations — high concurrent ca
 
 Teams evaluating **VoIP wholesale routes** should match route tier to use case before comparing per-minute pricing — the wrong tier creates quality and compliance risk regardless of cost.
 
-For a complete view of route options and global carrier coverage, [Rozper's wholesale VoIP services](https://www.rozper.com/wholesale-voip/) provide CLI, Non-CLI, and CC routes across 150+ countries with 99.999% uptime.
+For a complete view of route options and global carrier coverage, [Rozper's wholesale VoIP services](https://rozper.vercel.app/wholesale-voip/) provide CLI, Non-CLI, and CC routes across 150+ countries with 99.999% uptime.
 
 ---
 
@@ -92,7 +92,7 @@ Access to **wholesale VoIP routes** across 150+ countries means businesses can d
 
 Wholesale platforms expose route configuration through RESTful APIs — enabling businesses to switch route tiers, retrieve CDR data, monitor live ASR and PDD metrics, and adjust routing without logging support tickets. This makes route management a development function rather than a support dependency.
 
-For organizations requiring carrier-grade global coverage with real-time routing analytics, [Rozper's wholesale VoIP rates](https://www.rozper.com/wholesale-voip-rates/) provide transparent per-destination pricing with no hidden fees and a human-first support model built for scale.
+For organizations requiring carrier-grade global coverage with real-time routing analytics, [Rozper's wholesale VoIP rates](https://rozper.vercel.app/wholesale-voip-rates/) provide transparent per-destination pricing with no hidden fees and a human-first support model built for scale.
 
 ---
 

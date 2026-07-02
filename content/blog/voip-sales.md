@@ -56,7 +56,7 @@ Successful **VoIP sales** follow a structured process aligned with how enterpris
 
 **Proof-of-concept** — High-value **VoIP sales** accounts expect live testing before any commitment. Offer trial access on real production infrastructure — not a sandboxed demo environment. Call quality, provisioning speed, and portal usability demonstrate value more convincingly than any presentation deck.
 
-For organizations evaluating voice infrastructure during proof-of-concept phases, [Rozper's wholesale VoIP services](https://www.rozper.com/wholesale-voip/) deliver 99.999% uptime across 150+ countries — specifics that prospects can verify in a live test rather than accept from a brochure.
+For organizations evaluating voice infrastructure during proof-of-concept phases, [Rozper's wholesale VoIP services](https://rozper.vercel.app/wholesale-voip/) deliver 99.999% uptime across 150+ countries — specifics that prospects can verify in a live test rather than accept from a brochure.
 
 ---
 
@@ -74,7 +74,7 @@ SIP-based platforms include capabilities that legacy systems bill as extras: cal
 
 Traditional telephony adds capacity through physical line orders, PBX hardware upgrades, and weeks of lead time. IP-based voice provisions new channels and numbers in minutes — a scalability argument that lands immediately with fast-growing companies and contact centers.
 
-For organizations requiring carrier-grade global coverage at transparent per-destination rates, [Rozper's wholesale voice solutions](https://www.rozper.com/wholesale-voice/) support DID origination and A-Z termination across 150+ countries with no hidden fees.
+For organizations requiring carrier-grade global coverage at transparent per-destination rates, [Rozper's wholesale voice solutions](https://rozper.vercel.app/wholesale-voice/) support DID origination and A-Z termination across 150+ countries with no hidden fees.
 
 ---
 

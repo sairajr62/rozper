@@ -58,7 +58,7 @@ Most **VoIP wholesale** infrastructure relies on the Session Initiation Protocol
 
 **Voice termination** routes outbound calls through the carrier network to the recipient — on VoIP endpoints, mobile networks, or the PSTN. **Voice origination** delivers inbound calls through Direct Inward Dialing (DID) numbers in target geographies. Together, they form the complete inbound-outbound voice stack.
 
-For organizations evaluating carrier-grade options, [Rozper's wholesale VoIP services](https://www.rozper.com/wholesale-voip/) deliver A-Z termination across 150+ countries with 99.999% uptime — a concrete benchmark for what production-quality infrastructure looks like.
+For organizations evaluating carrier-grade options, [Rozper's wholesale VoIP services](https://rozper.vercel.app/wholesale-voip/) deliver A-Z termination across 150+ countries with 99.999% uptime — a concrete benchmark for what production-quality infrastructure looks like.
 
 ---
 
@@ -78,7 +78,7 @@ SIP channels and DID numbers are provisioned digitally — no hardware installat
 
 **VoIP wholesale** origination across 150+ countries enables businesses to present local phone numbers in every market they serve — increasing customer answer rates and establishing local presence without physical offices. A company serving customers in New York, London, and São Paulo presents a familiar local number in each market at no additional infrastructure cost.
 
-For global route coverage, [Rozper's wholesale voice solutions](https://www.rozper.com/wholesale-voice/) provide DID origination, A-Z termination, and SIP trunking with a human-first support model for carrier-grade operations.
+For global route coverage, [Rozper's wholesale voice solutions](https://rozper.vercel.app/wholesale-voice/) provide DID origination, A-Z termination, and SIP trunking with a human-first support model for carrier-grade operations.
 
 ---
 
