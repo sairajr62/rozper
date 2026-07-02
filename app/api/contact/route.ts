@@ -1,6 +1,7 @@
 ﻿import { NextResponse } from "next/server"
 import { google } from "googleapis"
 import { put } from "@vercel/blob"
+import { SITE_URL } from "@/lib/site"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -163,13 +164,13 @@ export async function POST(req: Request) {
       const confirmationHtml = `
         <div style="font-family:system-ui,Segoe UI,Arial,sans-serif;font-size:15px;color:#1a1a2e;line-height:1.7;max-width:560px;margin:0 auto">
           <div style="background:#0B1220;padding:32px 36px;border-radius:12px 12px 0 0;text-align:center">
-            <img src="https://rozper.vercel.app/images/white-rozper-logo.png" alt="Rozper" style="height:36px;width:auto" />
+            <img src="${SITE_URL}/images/white-rozper-logo.png" alt="Rozper" style="height:36px;width:auto" />
           </div>
           <div style="background:#ffffff;padding:36px;border-radius:0 0 12px 12px;border:1px solid #e8e8e8;border-top:none">
             <h2 style="margin:0 0 12px;font-size:22px;color:#0B1220">You're on your way, ${escapeHtml(displayName)}!</h2>
             <p style="margin:0 0 16px;color:#4a5568">Thanks for signing up for your free trial. Our team will reach out to you within <strong>24 hours</strong> to get you set up.</p>
             <p style="margin:0 0 24px;color:#4a5568">In the meantime, explore what Rozper has to offer:</p>
-            <a href="https://rozper.vercel.app/" style="display:inline-block;background:#046BD2;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Visit Rozper.com</a>
+            <a href="${SITE_URL}/" style="display:inline-block;background:#046BD2;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px">Visit Rozper.com</a>
             <hr style="margin:32px 0;border:none;border-top:1px solid #e8e8e8" />
             <p style="margin:0;font-size:13px;color:#9aa8bc">You're receiving this because you signed up for a free trial at rozper.com. If this wasn't you, please ignore this email.</p>
           </div>

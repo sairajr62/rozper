@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { FinancePageView } from '@/components/solutions/finance'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Contact Center for Financial Services | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/solutions/financial-services/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

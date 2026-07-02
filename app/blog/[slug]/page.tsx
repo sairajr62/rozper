@@ -12,7 +12,7 @@ import {
   fetchPostBySlug,
   fetchRelatedPosts,
 } from "@/lib/blog-api"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 // Statically generate at build time from local markdown posts.
 export const dynamic = "force-static"
@@ -59,7 +59,7 @@ export async function generateMetadata({
     alternates: {
       canonical: post.link.startsWith("http")
         ? post.link
-        : `${SITE_URL}${post.link}`,
+        : `${SITE_URL}/blog/${post.slug}/`,
     },
     openGraph: {
       title,
@@ -100,10 +100,10 @@ export default async function BlogPostPage({
 
   const related = await fetchRelatedPosts(post, 3).catch(() => [])
 
-  // Canonical: WP posts carry an absolute link; local markdown posts are relative.
+  // Canonical: WP posts carry an absolute link; local markdown posts use slug.
   const canonical = post.link.startsWith("http")
     ? post.link
-    : `${SITE_URL}${post.link}`
+    : `${SITE_URL}/blog/${post.slug}/`
 
   const shareUrl = `${SITE_URL}/blog/${post.slug}/`
 
@@ -139,7 +139,7 @@ export default async function BlogPostPage({
     },
     publisher: {
       "@type": "Organization",
-      "@id": SITE_URL,
+      "@id": ORG_ID,
       name: "Rozper",
       url: SITE_URL,
       logo: {

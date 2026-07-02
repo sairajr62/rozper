@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { RetailPageView } from '@/components/solutions/retail'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Contact Center for Retail & eCommerce | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/solutions/retail/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

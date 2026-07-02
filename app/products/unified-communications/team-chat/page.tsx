@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSTeamChatPageView } from '@/components/products/unified-communications/team-chat'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Team Chat · Built Into Your Phone System | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'Team Chat · Built Into Your Phone System | Rozper',
     description: 'Chat, share files, and start calls from one app — no extra tools.',
     type: 'website',
+    url: `${SITE_URL}/products/unified-communications/team-chat/`,
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/team-chat/` },
 }
@@ -27,7 +28,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL
       }

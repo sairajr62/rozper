@@ -7,7 +7,7 @@ import { AboutPrinciples } from "@/components/about/principles"
 import { AboutTimeline } from "@/components/about/timeline"
 import { AboutTeam } from "@/components/about/team"
 import { AboutCTA } from "@/components/about/cta"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
@@ -40,14 +40,14 @@ const aboutPageSchema = {
   name: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
   description:
     "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018 — built so every call just works.",
-  isPartOf: { "@id": `${SITE_URL}/#website/` },
-  publisher: { "@id": `${SITE_URL}/#organization/` },
+  isPartOf: { "@id": WEBSITE_ID },
+  publisher: { "@id": ORG_ID },
 }
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${SITE_URL}/#organization/`,
+  "@id": ORG_ID,
   name: "Rozper",
   url: SITE_URL,
   foundingDate: "2018",

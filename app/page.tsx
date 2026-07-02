@@ -13,7 +13,7 @@ import { Testimonials } from "@/components/landing/testimonials"
 import { FAQ } from "@/components/landing/faq"
 import { CTA } from "@/components/landing/cta"
 import { Footer } from "@/components/landing/footer"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
 
 export const metadata = {
   title: "Rozper · UCaaS, Contact Center & AI for Global Teams | rozper.com",
@@ -41,7 +41,7 @@ export const metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${SITE_URL}/#organization/`,
+  "@id": ORG_ID,
   name: "Rozper",
   url: SITE_URL,
   logo: {
@@ -63,12 +63,12 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${SITE_URL}/#website/`,
+  "@id": WEBSITE_ID,
   url: SITE_URL,
   name: "Rozper",
   description:
     "Voice, video, SMS, AI, and contact center on one carrier-grade platform. 150+ countries. 99.99% uptime.",
-  publisher: { "@id": `${SITE_URL}/#organization/` },
+  publisher: { "@id": ORG_ID },
   potentialAction: {
     "@type": "SearchAction",
     target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/blog?q={search_term_string}/` },

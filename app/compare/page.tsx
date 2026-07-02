@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     description:
       "Side-by-side pricing and feature comparison against RingCentral, 8x8, Vonage, and Twilio Flex.",
     type: "website",
+    url: `${SITE_URL}/compare/`,
   },
   alternates: { canonical: `${SITE_URL}/compare/` },
 }

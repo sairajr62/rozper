@@ -6,7 +6,7 @@ import { ContactChannels } from "@/components/contact/channels"
 import { ContactTestimonial } from "@/components/contact/testimonial"
 import { ContactFAQ } from "@/components/contact/faq"
 import { ContactOffices } from "@/components/contact/offices"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Contact Sales & Support · Get in Touch | Rozper",
@@ -34,7 +34,7 @@ const jsonLd = {
     },
     {
       "@type": "Organization",
-      "@id": `${SITE_URL}#organization`,
+      "@id": ORG_ID,
       "name": "Rozper",
       "url": SITE_URL,
       "contactPoint": [

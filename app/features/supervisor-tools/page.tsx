@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { FeatSupervisorToolsPageView } from '@/components/features/supervisor-tools'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Call Barge, Whisper & Monitoring | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/features/supervisor-tools/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

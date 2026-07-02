@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { UcaasPageView } from '@/components/products/unified-communications/overview'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'UCaaS Platform · Unified Communications for Global Teams | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'UCaaS Platform · Unified Communications for Global Teams | Rozper',
     description: 'Voice, video, messaging, and AI in one platform. 150+ countries. From $12.99/user/mo.',
     type: 'website',
+    url: `${SITE_URL}/products/unified-communications/`,
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/` },
 }
@@ -27,7 +28,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL
       }

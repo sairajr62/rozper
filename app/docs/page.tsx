@@ -7,7 +7,7 @@ import { DocsLearningPaths } from "@/components/docs/learning-paths"
 import { DocsQuickstart } from "@/components/docs/quickstart"
 import { DocsSDKGrid } from "@/components/docs/sdk-grid"
 import { DocsCommunity } from "@/components/docs/community"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Documentation · Build with Rozper",
@@ -33,7 +33,7 @@ const jsonLd = {
       "name": "Rozper Developer Documentation",
       "description": "Official documentation for building with the Rozper platform — APIs, SDKs, webhooks, and integration guides.",
       "url": `${SITE_URL}/docs/`,
-      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
+      "publisher": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper", "url": SITE_URL },
       "inLanguage": "en-US",
     },
     {

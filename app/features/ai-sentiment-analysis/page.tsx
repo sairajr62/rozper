@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { FeatAISentimentPageView } from '@/components/features/ai-sentiment'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Sentiment Analysis · Real-Time Call Emotion Scoring | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'AI Sentiment Analysis · Real-Time Call Emotion Scoring | Rozper',
     description: 'Live sentiment scoring on every call. Supervisors get alerts when calls go negative. 100% coverage.',
     type: 'website',
+    url: `${SITE_URL}/features/ai-sentiment-analysis/`,
   },
   alternates: { canonical: `${SITE_URL}/features/ai-sentiment-analysis/` },
 }
@@ -24,7 +25,7 @@ const jsonLd = {
       "url": `${SITE_URL}/features/ai-sentiment-analysis/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

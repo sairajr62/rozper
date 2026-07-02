@@ -19,7 +19,7 @@ import {
   stateToSlug,
   getStateByCode,
 } from "@/lib/area-code-data"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const dynamicParams = true
 
@@ -95,7 +95,7 @@ export default async function StateOrRedirectPage({ params }: Props) {
     url: `${SITE_URL}/area-codes/${stateParam}/`,
     publisher: {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#organization/`,
+      "@id": ORG_ID,
       name: "Rozper",
       url: SITE_URL,
     },

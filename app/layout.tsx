@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Archivo, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { BfcacheFix } from './bfcache-fix'
+import { SITE_URL } from '@/lib/site'
 import './globals.css'
 
 const archivo = Archivo({
@@ -19,7 +20,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rozper.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: 'Rozper - One Platform. Every Call. Every Country.',
   description: 'UCaaS, contact center, AI, and virtual numbers on a carrier-grade network covering 150+ countries. Starting at $9.99 per user.',
   generator: 'v0.app',

@@ -7,7 +7,7 @@ import { PricingTestimonial } from '@/components/pricing/testimonial'
 import { PricingFAQ } from '@/components/pricing/faq'
 import { PricingCTA } from '@/components/pricing/cta'
 import { RelatedLinks } from '@/components/product-page'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Pricing · $9.99/user Business Phone & Contact Center | Rozper',
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     title: 'Pricing · $9.99/user Business Phone & Contact Center | Rozper',
     description: 'Simple, transparent pricing starting at $9.99/user. UCaaS, contact center, and AI tools. 14-day free trial.',
     type: 'website',
+    url: `${SITE_URL}/pricing/`,
   },
   alternates: { canonical: `${SITE_URL}/pricing/` },
 }
@@ -48,7 +49,7 @@ const jsonLd = {
         { "@type": "Offer", "name": "Professional", "price": "19.99", "priceCurrency": "USD" },
         { "@type": "Offer", "name": "Enterprise", "description": "Custom pricing for enterprise teams" },
       ],
-      "provider": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "provider": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper" },
     },
     {
       "@type": "BreadcrumbList",

@@ -3,7 +3,7 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { TermsContent } from "@/components/legal/terms-content"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Terms of Service · Platform Usage Agreement | Rozper",
@@ -28,7 +28,7 @@ const jsonLd = {
       "name": "Terms of Service — Rozper",
       "description": "Rozper's terms of service outlining the conditions for using the Rozper platform and services.",
       "url": `${SITE_URL}/legal/terms/`,
-      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "publisher": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper" },
       "inLanguage": "en-US",
     },
     {

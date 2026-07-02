@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCOutboundDialerPageView } from '@/components/products/contact-center/outbound-dialer'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Outbound Dialer · Power & Predictive Dialing | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'Outbound Dialer · Power & Predictive Dialing | Rozper',
     description: 'Power and predictive dialer with compliance tools, AI coaching, and CRM sync.',
     type: 'website',
+    url: `${SITE_URL}/products/contact-center/outbound-dialer/`,
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/outbound-dialer/` },
 }
@@ -27,7 +28,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

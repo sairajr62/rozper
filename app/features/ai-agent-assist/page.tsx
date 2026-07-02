@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { FeatAIAgentAssistPageView } from '@/components/features/ai-agent-assist'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Agent Assist · Live Whisper Coaching for Every Call | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'AI Agent Assist · Live Whisper Coaching for Every Call | Rozper',
     description: 'AI whispers answers, surfaces articles, and scores calls live. Faster resolution. Better agents.',
     type: 'website',
+    url: `${SITE_URL}/features/ai-agent-assist/`,
   },
   alternates: { canonical: `${SITE_URL}/features/ai-agent-assist/` },
 }
@@ -24,7 +25,7 @@ const jsonLd = {
       "url": `${SITE_URL}/features/ai-agent-assist/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

@@ -7,7 +7,7 @@ import { BlogPostsSection } from "@/components/blog/posts"
 import { BlogTopics } from "@/components/blog/topics"
 import { BlogNewsletter } from "@/components/blog/newsletter"
 import { fetchAllPosts } from "@/lib/blog-api"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Blog · Field notes from the global voice layer | Rozper",
@@ -42,7 +42,7 @@ const blogSchema = {
   url: `${SITE_URL}/blog/`,
   publisher: {
     "@type": "Organization",
-    "@id": `${SITE_URL}/#organization/`,
+    "@id": ORG_ID,
     name: "Rozper",
     url: SITE_URL,
     logo: {

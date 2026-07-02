@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCAnalyticsPageView } from '@/components/products/contact-center/analytics'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
@@ -27,7 +27,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

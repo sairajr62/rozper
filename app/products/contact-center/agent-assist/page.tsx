@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCAgentAssistPageView } from '@/components/products/contact-center/agent-assist'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Agent Assist · Live Coaching on Every Call | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'AI Agent Assist · Live Coaching on Every Call | Rozper',
     description: 'AI that whispers the right answer, surfaces knowledge, and scores quality — in real time.',
     type: 'website',
+    url: `${SITE_URL}/products/contact-center/agent-assist/`,
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/agent-assist/` },
 }
@@ -27,7 +28,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

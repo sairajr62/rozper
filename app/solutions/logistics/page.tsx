@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { LogisticsPageView } from '@/components/solutions/logistics'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Phone System for Logistics & Dispatch | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/solutions/logistics/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

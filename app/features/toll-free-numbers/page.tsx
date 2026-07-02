@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { FeatTollFreeNumbersPageView } from '@/components/features/toll-free-numbers'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Toll-Free Numbers · 800, 888, 877 & International | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/features/toll-free-numbers/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

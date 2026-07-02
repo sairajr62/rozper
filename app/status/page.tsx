@@ -7,7 +7,7 @@ import { StatusRegions } from "@/components/status/regions"
 import { StatusMetrics } from "@/components/status/metrics"
 import { StatusIncidents } from "@/components/status/incidents"
 import { StatusSubscribe } from "@/components/status/subscribe"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Platform Status · Uptime & Incidents | Rozper",
@@ -33,7 +33,7 @@ const jsonLd = {
       "name": "Rozper Platform Status",
       "description": "Real-time uptime and incident status for the Rozper platform, including voice, messaging, AI, and API services.",
       "url": `${SITE_URL}/status/`,
-      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "publisher": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper" },
       "inLanguage": "en-US",
     },
     {

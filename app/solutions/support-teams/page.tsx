@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { SupportTeamsPageView } from '@/components/solutions/support-teams'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Omnichannel Contact Center for Support Teams | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/solutions/support-teams/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

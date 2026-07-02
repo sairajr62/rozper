@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { ContactCenterPageView } from '@/components/products/contact-center/overview'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Contact Center · AI-Powered, Omnichannel | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'Contact Center · AI-Powered, Omnichannel | Rozper',
     description: 'Omnichannel inbox, AI agents, supervisor tools, and analytics — one platform.',
     type: 'website',
+    url: `${SITE_URL}/products/contact-center/`,
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/` },
 }
@@ -27,7 +28,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

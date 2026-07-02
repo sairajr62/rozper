@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { ZohoPageView } from '@/components/integrations/zoho'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Rozper for Zoho · Phone & CRM Integration | Rozper',
@@ -25,7 +25,7 @@ const jsonLd = {
       "url": `${SITE_URL}/integrations/zoho/`,
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "provider": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
+      "provider": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper", "url": SITE_URL },
     },
     {
       "@type": "BreadcrumbList",

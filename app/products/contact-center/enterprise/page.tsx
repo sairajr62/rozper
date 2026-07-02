@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCEnterprisePageView } from '@/components/products/contact-center/enterprise'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Enterprise Contact Center · SSO, Multi-site, Custom SLAs | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'Enterprise Contact Center · SSO, Multi-site, Custom SLAs | Rozper',
     description: 'SSO, SCIM, multi-site routing, custom SLAs, and a dedicated success team.',
     type: 'website',
+    url: `${SITE_URL}/products/contact-center/enterprise/`,
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/enterprise/` },
 }
@@ -27,7 +28,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

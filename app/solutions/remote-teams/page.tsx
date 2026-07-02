@@ -12,7 +12,7 @@ import {
   RelatedLinks,
   CTA,
 } from './sections'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata = {
   title: 'Phone System for Remote Teams | Rozper',
@@ -38,7 +38,7 @@ const jsonLd = {
       "url": `${SITE_URL}/solutions/remote-teams/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

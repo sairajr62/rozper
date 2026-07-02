@@ -3,7 +3,7 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { SecurityContent } from "@/components/legal/security-content"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Security & Compliance · Trust at Every Layer | Rozper",
@@ -28,7 +28,7 @@ const jsonLd = {
       "name": "Rozper Security & Compliance",
       "description": "Rozper's security posture — SOC 2, encryption, GDPR compliance, and enterprise-grade data protection.",
       "url": `${SITE_URL}/security/`,
-      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "publisher": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper" },
       "inLanguage": "en-US",
     },
     {

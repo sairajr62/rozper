@@ -21,7 +21,7 @@ import {
   formatDialCode,
   formatUTCOffset,
 } from "@/lib/country-code-data"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const dynamicParams = true
 
@@ -77,7 +77,7 @@ export default async function CountryCodePage({ params }: Props) {
     url: `${SITE_URL}/country-code/${slug}/best-time-to-call/`,
     publisher: {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#organization/`,
+      "@id": ORG_ID,
       name: "Rozper",
       url: SITE_URL,
     },

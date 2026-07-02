@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSWebsiteChatbotPageView } from '@/components/products/unified-communications/website-chatbot'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Website Chatbot · Engage Visitors 24/7 | Rozper',
@@ -20,8 +20,8 @@ const webPageSchema = {
   url: `${SITE_URL}/products/unified-communications/website-chatbot/`,
   name: 'Website Chatbot · Engage Visitors 24/7 | Rozper',
   description: 'AI chatbot that captures leads, books meetings, and hands off to live agents — one-line embed. Engage visitors 24/7.',
-  isPartOf: { '@id': `${SITE_URL}/#website/` },
-  publisher: { '@id': `${SITE_URL}/#organization/` },
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: { '@id': ORG_ID },
 }
 
 const softwareSchema = {
@@ -39,7 +39,7 @@ const softwareSchema = {
   },
   publisher: {
     '@type': 'Organization',
-    '@id': `${SITE_URL}/#organization/`,
+    '@id': ORG_ID,
     name: 'Rozper',
     url: SITE_URL,
   },

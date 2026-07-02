@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { ProdAIAssistantPageView } from '@/components/products/ai/assistant'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Virtual Assistant · Per-Seat AI for Every Agent | Rozper',
@@ -41,14 +41,14 @@ const jsonLd = {
       ],
       provider: {
         '@type': 'Organization',
-        '@id': `${SITE_URL}/#organization/`,
+        '@id': ORG_ID,
         name: 'Rozper',
         url: SITE_URL,
       },
     },
     {
       '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization/`,
+      '@id': ORG_ID,
       name: 'Rozper',
       url: SITE_URL,
       logo: {

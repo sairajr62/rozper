@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSVideoMeetingsPageView } from '@/components/products/unified-communications/video-meetings'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'HD Video Meetings · AI Transcripts Included | Rozper',
@@ -29,7 +29,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "description": "Starting at $9.99 per user/month" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL
       }

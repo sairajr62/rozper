@@ -167,7 +167,7 @@ export function PricingCTA() {
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
               </a>
               <a
-                href="https://rozper.vercel.app/"
+                href="/"
                 className="inline-flex items-center gap-2 px-8 py-4 text-[#CCD6DF] font-semibold text-base rounded-xl border border-white/[0.1] hover:border-[#046BD2]/50 hover:text-white hover:bg-[#046BD2]/8 transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5" />

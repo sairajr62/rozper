@@ -1,7 +1,6 @@
 ﻿import type { Metadata } from "next"
 import { FreeTrialPageView } from "@/components/auth/free-trial-page"
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rozper.vercel.app"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Start Your Free Trial | Rozper",

@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { AIPageView } from '@/components/products/ai/overview'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Suite · Receptionist, Assistant & Analytics | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'AI Suite · Receptionist, Assistant & Analytics | Rozper',
     description: 'Three AI tools — receptionist, assistant, and analytics — included on every Rozper seat.',
     type: 'website',
+    url: `${SITE_URL}/products/ai/`,
   },
   alternates: { canonical: `${SITE_URL}/products/ai/` },
 }
@@ -27,7 +28,7 @@ const jsonLd = {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free trial available" },
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { FeatAutoAttendantPageView } from '@/components/features/auto-attendant'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Auto-Attendant & Visual IVR Builder | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/features/auto-attendant/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

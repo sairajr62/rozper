@@ -43,6 +43,7 @@ const nextConfig = {
       { source: "/solutions/retail",                             destination: "/solutions/retail-ecommerce",                       permanent: true },
       { source: "/solutions/saas",                               destination: "/solutions/saas-tech",                              permanent: true },
       { source: "/products/unified-communications/ai-assistant",  destination: "/products/ai-features/ai-assistant",                permanent: true },
+      { source: "/blog/Wholesale-voice-services",                  destination: "/blog/wholesale-voice-services/",                    permanent: true },
     ]
   },
   async headers() {

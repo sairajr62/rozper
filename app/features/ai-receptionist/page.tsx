@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { FeatAIReceptionistPageView } from '@/components/features/ai-receptionist'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Receptionist · Automated 24/7 Call Answering | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'AI Receptionist · Automated 24/7 Call Answering | Rozper',
     description: 'AI receptionist that answers, qualifies, routes, and books 24/7. No missed calls. CRM sync.',
     type: 'website',
+    url: `${SITE_URL}/features/ai-receptionist/`,
   },
   alternates: { canonical: `${SITE_URL}/features/ai-receptionist/` },
 }
@@ -24,7 +25,7 @@ const jsonLd = {
       "url": `${SITE_URL}/features/ai-receptionist/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

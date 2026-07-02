@@ -1,6 +1,6 @@
 ﻿import { Metadata } from 'next'
 import { FeatConversationIntelligencePageView } from '@/components/features/conversation-intelligence'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Conversation Intelligence · Searchable Call Insights | Rozper',
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: 'Conversation Intelligence · Searchable Call Insights | Rozper',
     description: 'Every conversation transcribed, analyzed, and searchable. Competitor mentions, deal risks, coaching moments — all surfaced.',
     type: 'website',
+    url: `${SITE_URL}/features/conversation-intelligence/`,
   },
   alternates: { canonical: `${SITE_URL}/features/conversation-intelligence/` },
 }
@@ -24,7 +25,7 @@ const jsonLd = {
       "url": `${SITE_URL}/features/conversation-intelligence/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

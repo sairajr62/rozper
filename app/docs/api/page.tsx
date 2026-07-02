@@ -7,7 +7,7 @@ import { ApiAuthSection } from "@/components/api/auth-section"
 import { ApiErrorsSection } from "@/components/api/errors-section"
 import { ApiWebhooks } from "@/components/api/webhooks"
 import { ApiChangelog } from "@/components/api/changelog"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "API Reference · REST & WebSocket Docs | Rozper",
@@ -48,7 +48,7 @@ const jsonLd = {
       "name": "Rozper API Reference",
       "description": "REST and WebSocket API reference for the Rozper platform. Endpoints for calls, SMS, numbers, and webhooks.",
       "url": `${SITE_URL}/docs/api/`,
-      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
+      "publisher": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper", "url": SITE_URL },
       "inLanguage": "en-US",
     },
     {

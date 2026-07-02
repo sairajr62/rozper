@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 import { CountryCodeHubClient } from "./_client"
 
 const TITLE = "International Country Codes & Virtual Phone Numbers | Rozper"
@@ -50,7 +50,7 @@ const webPageSchema = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${SITE_URL}/#organization/`,
+  "@id": ORG_ID,
   name: "Rozper",
   url: SITE_URL,
   foundingDate: "2018",

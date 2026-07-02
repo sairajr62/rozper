@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from "next"
 import { WholesaleVoicePageView } from "@/components/solutions/wholesale-voice"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Wholesale Voice Solutions · Global VoIP Termination | Rozper",
@@ -25,7 +25,7 @@ const jsonLd = {
       "name": "Wholesale Voice Solutions",
       "description": "Global wholesale voice termination for carriers and VoIP providers with direct routes, competitive rates, and 99.99% uptime.",
       "url": `${SITE_URL}/wholesale-voice/`,
-      "provider": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper", "url": SITE_URL },
+      "provider": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper", "url": SITE_URL },
     },
     {
       "@type": "BreadcrumbList",

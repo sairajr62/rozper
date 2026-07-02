@@ -3,7 +3,7 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { PrivacyContent } from "@/components/legal/privacy-content"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Privacy Policy · How Rozper Protects Your Data | Rozper",
@@ -28,7 +28,7 @@ const jsonLd = {
       "name": "Privacy Policy — Rozper",
       "description": "Rozper's privacy policy explaining how we collect, use, and protect your personal data.",
       "url": `${SITE_URL}/legal/privacy/`,
-      "publisher": { "@type": "Organization", "@id": `${SITE_URL}#organization`, "name": "Rozper" },
+      "publisher": { "@type": "Organization", "@id": ORG_ID, "name": "Rozper" },
       "inLanguage": "en-US",
     },
     {

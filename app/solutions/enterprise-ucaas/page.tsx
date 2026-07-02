@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { EnterpriseITPageView } from '@/components/solutions/enterprise-it'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Enterprise UCaaS · SSO, SCIM, Multi-site | Rozper',
@@ -26,7 +26,7 @@ const jsonLd = {
       "url": `${SITE_URL}/solutions/enterprise-ucaas/`,
       "provider": {
         "@type": "Organization",
-        "@id": `${SITE_URL}#organization`,
+        "@id": ORG_ID,
         "name": "Rozper",
         "url": SITE_URL,
       },

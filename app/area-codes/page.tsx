@@ -3,7 +3,7 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { AreaCodesHubClient } from "@/components/area-codes/hub-client"
 import { getAllAreaCodes } from "@/lib/area-code-data"
-import { SITE_URL } from "@/lib/site"
+import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "U.S. Area Code Virtual Phone Numbers | Rozper",
@@ -29,7 +29,7 @@ const schema = {
   url: `${SITE_URL}/area-codes/`,
   publisher: {
     "@type": "Organization",
-    "@id": `${SITE_URL}/#organization/`,
+    "@id": ORG_ID,
     name: "Rozper",
     url: SITE_URL,
   },
