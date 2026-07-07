@@ -39,6 +39,8 @@ For any company hoping to win trust in these neighborhoods, the phone number pre
 
 ## What Is the 347 Area Code?
 
+![What Is the 347 Area Code](/images/blog/What Is the 347 Area Code.webp)
+
 The **347 area code** was introduced in 1999 as an overlay for New York City's outer boroughs, layered on top of the original 718 code rather than splitting the region geographically. This overlay approach meant existing 718 customers kept their numbers while new lines received the 347 prefix as demand for phone numbers surged.
 
 Today, the **347 area code** operates as part of a four-code overlay alongside 718, 917, and 929. All four codes serve the same geographic footprint — Brooklyn, Queens, the Bronx, and Staten Island — within a single local calling area. Because of this overlay structure, mandatory 10-digit dialing applies to every call placed within the region, a requirement that has been in effect since the overlay was activated.
@@ -50,6 +52,8 @@ For businesses also targeting Manhattan alongside the outer boroughs, our [212 a
 ---
 
 ## Where Does the 347 Area Code Cover?
+
+![Where Does the 347 Area Code Cover](/images/blog/Where Does the 347 Area Code Cover.webp)
 
 The **347 area code** covers four of New York City's five boroughs — every borough except Manhattan. Here is an overview of key boroughs and their economic character:
 
@@ -68,6 +72,8 @@ For businesses expanding north into the lower Hudson Valley and Westchester Coun
 
 ## History of Area Code 347
 
+![History of Area Code 347](/images/blog/History of Area Code 347.webp)
+
 **Area code 347** was activated on October 1, 1999, as the second code to serve New York City's outer boroughs. The original 718 code had covered Brooklyn, Queens, the Bronx, and Staten Island since 1984, when these boroughs were split from Manhattan's 212 code.
 
 The progression of overlays in the outer boroughs reflects relentless demand for new numbers:
@@ -82,6 +88,8 @@ When the **347 area code** was first assigned, the explosion of mobile phones, f
 ---
 
 ## How to Get a 347 Area Code Number
+
+![How to Get a 347 Area Code Number](/images/blog/How to Get a 347 Area Code Number.webp)
 
 Getting a **347 area code** number does not require a New York City office or a physical address in the boroughs. VoIP (Voice over Internet Protocol) technology lets any business obtain and operate a local outer-borough number from anywhere in the world, routing calls to whatever devices the team uses.
 
