@@ -60,8 +60,8 @@ type Social = { Icon: LucideIcon; label: string; href?: string }
 
 const socials: Social[] = [
   { Icon: Linkedin, href: 'https://linkedin.com/company/rozper', label: 'LinkedIn' },
-  { Icon: Twitter, label: 'Twitter' },
-  { Icon: Facebook, label: 'Facebook' },
+  { Icon: Twitter, href: 'https://x.com/RozperLimited', label: 'Twitter' },
+  { Icon: Facebook, href: 'https://www.facebook.com/RozperLimited/about/', label: 'Facebook' },
 ]
 
 export function Footer() {
@@ -146,7 +146,7 @@ export function Footer() {
               </li>
               <li className="inline-flex items-start gap-2.5 text-sm text-[#9AA8BC]">
                 <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5 text-[#046BD2]" />
-                <span>46 Shopping Plaza, Unit #5092<br />Chagrin Falls, OH 44022</span>
+                <span>8/F., China Hong Kong Tower, 8-12 Hennessy Road<br />Wan Chai, Hong Kong</span>
               </li>
             </ul>
 

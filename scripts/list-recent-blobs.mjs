@@ -12,7 +12,6 @@ do {
   blobs.push(...res.blobs)
   cursor = res.cursor
 } while (cursor)
-// Show all blobs uploaded today (most recent)
 const today = new Date()
 today.setHours(0,0,0,0)
 const recent = blobs.filter(b => new Date(b.uploadedAt) >= today)

@@ -82,6 +82,23 @@ body {
   background-color: #0B1220;
 }
 
+/* reCAPTCHA responsive — widget is fixed 304px wide; scale it on narrow screens
+   so it never causes horizontal overflow. Full size at 380px+ (all modern phones).
+   Wrapped in @layer components so Tailwind v4's transform processor leaves it alone. */
+@layer components {
+  .captcha-responsive {
+    transform: scale(0.82);
+    transform-origin: center top;
+    margin-bottom: -20px;
+  }
+  @media (min-width: 380px) {
+    .captcha-responsive {
+      transform: scale(1);
+      margin-bottom: 0;
+    }
+  }
+}
+
 /* Hide the scrollbar while keeping the element scrollable (used by the
    blog post Table of Contents so the list can still auto-scroll the active
    section into view without showing a track). */
