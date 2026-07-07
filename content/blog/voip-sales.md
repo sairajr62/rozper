@@ -124,8 +124,6 @@ A strong **VoIP sales** strategy compounds through three practices that reinforc
 
 Every successful deal starts with a clear understanding of what the prospect is trying to protect or improve. Features follow outcomes — never the other way around. Master the process, know the objections, and build credibility through compliance knowledge.
 
-See how Rozper supports telecom teams at [rozper.vercel.app](https://rozper.vercel.app/).
-
 ---
 
 ## FAQs

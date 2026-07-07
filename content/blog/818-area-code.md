@@ -41,7 +41,7 @@ The 818 area code is the San Fernando Valley's local identifier, covering Burban
 
 The 818 area code entered service on January 7, 1984, split from the original 213. On June 14, 1997, the eastern San Gabriel Valley was spun off into the new 626 area code, sharpening 818's identity around the San Fernando Valley.
 
-By the 2000s, available 818 numbers were thinning out. Rather than split the region again, regulators approved an overlay: the 747 area code, which took effect on May 18, 2009. Every existing 818 subscriber kept their number untouched while fresh numbers became available.
+By the 2000s, available 818 numbers were thinning out. Rather than split the region again, regulators approved an overlay: the 747 area code, which took effect on May 18, 2009. Every existing 818 subscriber kept their number untouched while fresh numbers became available. As with all overlay regions, the [FCC's ten-digit dialing guide](https://www.fcc.gov/consumers/guides/ten-digit-dialing) confirms that callers must dial the full area code plus number for every call, even between two 818 lines.
 
 ### Geographic Coverage
 

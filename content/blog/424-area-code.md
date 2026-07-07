@@ -2,8 +2,8 @@
 title: "424 Area Code: Beverly Hills, Malibu & LA Westside Guide"
 slug: "424-area-code"
 excerpt: "The 424 area code overlays 310 across Beverly Hills, Santa Monica & South Bay LA. Discover time zone, scam alerts, history & how to get a local business number."
-seoTitle: "424 Area Code Guide for Los Angeles: Business & Location Benefits"
-seoDescription: "Explore the 424 area code covering West LA Beverly Hills & Santa Monica. Learn its history business benefits and how Rozper can secure your local number."
+seoTitle: "424 Area Code Guide: Los Angeles Business & Location Info"
+seoDescription: "Explore the 424 area code covering West LA, Beverly Hills, and Santa Monica. Learn its history, business benefits, and how Rozper can secure your local number."
 keywords:
   - 424 area code
   - 424 area code cities

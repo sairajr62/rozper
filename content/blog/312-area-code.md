@@ -2,8 +2,8 @@
 title: "312 Area Code: Location, History & Chicago Business Guide"
 slug: "312-area-code"
 excerpt: "Chicago's iconic 312 area code covers The Loop & inner city. Discover its history, 872 overlay, time zone, scam alerts & how to get a local business number."
-seoTitle: "312 Area Code: Chicago Business Numbers by Rozper"
-seoDescription: "Thinking about a 312 area code in Chicago? See how Rozper helps businesses get this key local number with great VoIP features. Build your presence."
+seoTitle: "312 Area Code: Downtown Chicago Business Numbers by Rozper"
+seoDescription: "Thinking about a 312 area code in Chicago? See how Rozper helps businesses get this key local number with great VoIP features to build a strong local presence."
 keywords:
   - 312 area code
   - 312 area code cities

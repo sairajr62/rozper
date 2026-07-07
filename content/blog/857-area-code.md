@@ -1,7 +1,8 @@
 ---
 title: "857 Area Code: Your Guide to Boston's Local Phone Lines"
-meta_description: "Discover where the 857 area code covers, how it overlays 617 in Boston, why ten-digit dialing is required, and how to get a local 857 number for your business."
 slug: 857-area-code
+seoTitle: "857 Area Code Guide: Boston's Local Phone Number Prefix"
+seoDescription: "Discover where the 857 area code covers, how it overlays 617 in Boston, why ten-digit dialing is required, and how to get a local 857 number for your business."
 ---
 
 # The 857 Area Code: A Local Guide to Boston's Phone Prefix

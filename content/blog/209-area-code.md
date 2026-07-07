@@ -85,7 +85,7 @@ For businesses scheduling calls with Central Valley contacts from other time zon
 
 In 2022, the California Public Utilities Commission (CPUC) introduced the **350 area code** as a number-relief overlay for the exhausted 209 pool. Rather than executing another geographic split — which would have forced many businesses and residents to change their numbers — regulators chose the overlay approach: all existing 209 subscribers kept their numbers, while new numbers began drawing from the 350 pool.
 
-Since the overlay launched, **mandatory 10-digit dialing** applies to every call within the territory, whether the number carries 209 or 350. Seven-digit dialing no longer connects. Update all customer-facing materials — voicemail greetings, websites, and business cards — to the full 10-digit format.
+Since the overlay launched, **mandatory 10-digit dialing** applies to every call within the territory, whether the number carries 209 or 350. Seven-digit dialing no longer connects. Update all customer-facing materials — voicemail greetings, websites, and business cards — to the full 10-digit format. For the official federal rules behind this requirement, see the FCC's [ten-digit dialing guide](https://www.fcc.gov/consumers/guides/ten-digit-dialing).
 
 ---
 

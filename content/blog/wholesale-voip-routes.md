@@ -132,8 +132,6 @@ The right route configuration controls per-minute costs, caller ID compliance, a
 
 Businesses that match route type to traffic profile, test under real conditions, and require transparent quality metrics extract the full value from voice infrastructure investment.
 
-Explore how Rozper structures routing at [rozper.vercel.app](https://rozper.vercel.app/).
-
 ---
 
 ## FAQs
