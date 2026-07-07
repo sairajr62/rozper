@@ -11,8 +11,6 @@ keywords:
   - 312 number for business
   - area code 312
   - Downtown Chicago phone number
-  - The Loop area code
-  - 872 overlay
 category: "Area Codes"
 tags:
   - area codes

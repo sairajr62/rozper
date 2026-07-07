@@ -11,7 +11,6 @@ keywords:
   - San Fernando Valley virtual phone number
   - 818 number for business
   - area code 818
-  - Los Angeles virtual phone number
 category: "Area Codes"
 tags:
   - area codes

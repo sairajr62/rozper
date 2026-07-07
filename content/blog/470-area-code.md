@@ -11,7 +11,6 @@ keywords:
   - 470 number for business
   - area code 470
   - metro Atlanta phone number
-  - Georgia area code
 category: "Area Codes"
 tags:
   - area codes

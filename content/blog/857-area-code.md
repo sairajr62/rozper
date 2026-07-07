@@ -1,6 +1,13 @@
 ---
 title: "857 Area Code: Your Guide to Boston's Local Phone Lines"
 slug: 857-area-code
+keywords:
+  - 857 area code
+  - area code 857
+  - Boston area code
+  - 617 overlay
+  - 857 phone number
+  - Massachusetts area code
 seoTitle: "857 Area Code Guide: Boston's Local Phone Number Prefix"
 seoDescription: "Discover where the 857 area code covers, how it overlays 617 in Boston, why ten-digit dialing is required, and how to get a local 857 number for your business."
 ---
@@ -23,7 +30,7 @@ A local Boston line is not the only path. If your customers are spread across th
 
 ## A Quick History of the 857 Area Code
 
-Boston ran on a single prefix for decades before the city's appetite for phone numbers forced a change. On May 2, 2001, the 857 prefix was overlaid on top of 617, making it the first overlay in Massachusetts and one of the early examples of the approach in New England. The Wikipedia entry on the [617 and 857 area codes](https://en.wikipedia.org/wiki/Area_codes_617_and_857) traces the dates and boundaries in more depth. The takeaway is that 857 was created to add capacity without redrawing the map, so longtime 617 holders kept their numbers while new lines drew from the fresh prefix.
+Boston ran on a single prefix for decades before the city's appetite for phone numbers forced a change. On May 2, 2001, the 857 prefix was overlaid on top of 617, making it the first overlay in Massachusetts and one of the early examples of the approach in New England. The [FCC's consumer dialing guide](https://www.fcc.gov/consumers/guides/ten-digit-dialing) documents how overlay codes like 857 are introduced and why mandatory ten-digit dialing follows. The takeaway is that 857 was created to add capacity without redrawing the map, so longtime 617 holders kept their numbers while new lines drew from the fresh prefix.
 
 ## Why Ten-Digit Dialing Is the Norm
 

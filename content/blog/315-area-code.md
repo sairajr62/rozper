@@ -11,8 +11,6 @@ keywords:
   - 315 number for business
   - area code 315
   - Syracuse area code
-  - Utica area code
-  - 680 overlay
 category: "Area Codes"
 tags:
   - area codes

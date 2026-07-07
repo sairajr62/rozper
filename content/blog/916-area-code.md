@@ -11,7 +11,6 @@ keywords:
   - Sacramento virtual phone number
   - 916 number for business
   - area code 916
-  - California virtual phone number
 category: "Area Codes"
 tags:
   - area codes

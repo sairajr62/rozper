@@ -11,7 +11,6 @@ keywords:
   - Upstate South Carolina virtual phone number
   - 864 number for business
   - area code 864
-  - Spartanburg virtual phone number
 category: "Area Codes"
 tags:
   - area codes

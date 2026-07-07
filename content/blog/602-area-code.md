@@ -11,8 +11,6 @@ keywords:
   - 602 number for business
   - area code 602
   - Phoenix business phone number
-  - Arizona area code
-  - Mountain Standard Time phone
 category: "Virtual Numbers"
 tags:
   - area codes

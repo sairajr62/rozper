@@ -11,7 +11,6 @@ keywords:
   - 559 number for business
   - area code 559
   - Fresno phone number
-  - Central Valley area code
 category: "Area Codes"
 tags:
   - area codes

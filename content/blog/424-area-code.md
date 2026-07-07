@@ -11,8 +11,6 @@ keywords:
   - 424 number for business
   - area code 424
   - Beverly Hills area code
-  - Santa Monica area code
-  - Silicon Beach phone number
 category: "Area Codes"
 tags:
   - area codes

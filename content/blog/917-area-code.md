@@ -11,7 +11,6 @@ keywords:
   - NYC virtual phone number
   - 917 number for business
   - area code 917
-  - New York virtual phone number
 category: "Area Codes"
 tags:
   - area codes

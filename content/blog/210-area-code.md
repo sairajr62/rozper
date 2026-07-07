@@ -11,8 +11,6 @@ keywords:
   - Texas area code
   - area code 210
   - 210 number for business
-  - San Antonio virtual phone number
-  - Texas business phone
 category: "Virtual Numbers"
 tags:
   - area codes

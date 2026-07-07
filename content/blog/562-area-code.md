@@ -11,7 +11,6 @@ keywords:
   - area code 562
   - Long Beach business phone number
   - southeast LA County phone number
-  - California area codes
 category: "Virtual Numbers"
 tags:
   - area codes

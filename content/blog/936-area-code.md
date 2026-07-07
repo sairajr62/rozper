@@ -11,7 +11,6 @@ keywords:
   - Deep East Texas virtual phone number
   - 936 number for business
   - area code 936
-  - Lufkin virtual phone number
 category: "Area Codes"
 tags:
   - area codes

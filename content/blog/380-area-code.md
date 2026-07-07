@@ -11,8 +11,6 @@ keywords:
   - 380 number for business
   - Ohio local phone number
   - 614 overlay
-  - central Ohio phone number
-  - virtual phone number Ohio
 category: "Virtual Numbers"
 tags:
   - area codes

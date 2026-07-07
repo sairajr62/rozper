@@ -11,8 +11,6 @@ keywords:
   - 415 number for business
   - area code 415
   - SF business phone number
-  - 628 overlay
-  - Bay Area phone number
 category: "Area Codes"
 tags:
   - area codes

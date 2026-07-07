@@ -11,8 +11,6 @@ keywords:
   - 201 number for business
   - area code 201
   - Jersey City phone number
-  - Bergen County area code
-  - 551 overlay
 category: "Area Codes"
 tags:
   - area codes

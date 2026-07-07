@@ -11,8 +11,6 @@ keywords:
   - 203 number for business
   - area code 203
   - Connecticut virtual phone number
-  - Stamford business phone
-  - New Haven phone number
 category: "Virtual Numbers"
 tags:
   - area codes

@@ -11,7 +11,6 @@ keywords:
   - Orange County virtual phone number
   - 949 number for business
   - area code 949
-  - Newport Beach virtual phone number
 category: "Area Codes"
 tags:
   - area codes
@@ -70,7 +69,7 @@ A recognizable 949 caller ID bypasses the default suspicion that toll-free or ou
 
 ### Establishing a Cost-Effective Virtual Presence
 
-A 949 virtual phone number gives any business a credible southern Orange County identity without the overhead of premium Irvine or Newport Beach leases. For how the same local trust dynamics play out in the neighboring Central Coast market, see our [415 area code guide](https://rozper.vercel.app/blog/415-area-code/). Calls route to your team wherever they work — a distributed organization, a remote-first startup, or a company entering the California coastal market without a physical footprint.
+A 949 virtual phone number gives any business a credible southern Orange County identity without the overhead of premium Irvine or Newport Beach leases. For how the same local trust dynamics play out in the neighboring Central Coast market, see our [415 area code guide](https://www.rozper.com/blog/415-area-code/). Calls route to your team wherever they work — a distributed organization, a remote-first startup, or a company entering the California coastal market without a physical footprint.
 
 ---
 
@@ -100,7 +99,7 @@ Every inbound and outbound 949 call is automatically logged against the relevant
 
 ### 4. Call Recording and Compliance
 
-California is a two-party consent state for call recording. A VoIP platform with built-in recording and automated consent prompts keeps your 949 number compliant with California Penal Code § 632. For background on the carrier infrastructure beneath modern VoIP delivery, our [wholesale VoIP services overview](https://rozper.vercel.app/blog/wholesale-voip-services/) covers how it works.
+California is a two-party consent state for call recording. A VoIP platform with built-in recording and automated consent prompts keeps your 949 number compliant with California Penal Code § 632. Businesses that also serve the neighboring Inland Empire can apply the same compliance approach to a [951 area code](https://www.rozper.com/blog/951-area-code/) line, since California's consent rules apply statewide regardless of which local prefix answers the call.
 
 ### 5. Real-Time Call Analytics
 

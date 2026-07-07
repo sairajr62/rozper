@@ -11,7 +11,6 @@ keywords:
   - 213 number for business
   - area code 213
   - Downtown LA phone number
-  - 323 overlay
 category: "Area Codes"
 tags:
   - area codes

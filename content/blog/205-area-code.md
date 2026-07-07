@@ -11,8 +11,6 @@ keywords:
   - Alabama area code
   - area code 205
   - 205 number for business
-  - Birmingham virtual phone number
-  - Alabama business phone
 category: "Virtual Numbers"
 tags:
   - area codes

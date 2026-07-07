@@ -11,8 +11,6 @@ keywords:
   - 404 phone number
   - Atlanta Georgia phone number
   - virtual phone number Atlanta
-  - local phone number Atlanta
-  - Georgia business phone number
 category: "Virtual Numbers"
 tags:
   - area codes

@@ -11,7 +11,6 @@ keywords:
   - Research Triangle virtual phone number
   - 919 number for business
   - area code 919
-  - Durham virtual phone number
 category: "Area Codes"
 tags:
   - area codes

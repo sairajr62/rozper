@@ -11,7 +11,6 @@ keywords:
   - 228 number for business
   - area code 228
   - Gulfport phone number
-  - Gulf Coast area code
 category: "Area Codes"
 tags:
   - area codes

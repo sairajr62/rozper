@@ -62,7 +62,7 @@ If your customers are anywhere in this footprint, a 239 number puts you on the s
 
 The **239 area code** went into service on March 11, 2002, created by splitting off from the 941 area code. Southwest Florida was booming — Fort Myers, Naples, and Cape Coral were adding residents faster than the existing numbering plan could supply phone numbers.
 
-The 941 code had itself been carved from the 813 area code in 1995, making **area code 239** a third-generation Florida code. After 239 launched, a permissive-dialing window ran until March 2003, when 239 became the region's sole area code. Such changes reflect the rapid growth of Southwest Florida, a region that the [State of Florida](https://www.myflorida.com/) monitors as one of the country's fastest-expanding business markets. More than two decades later, 239 has become a recognizable shorthand for Southwest Florida.
+The 941 code had itself been carved from the 813 area code in 1995, making **area code 239** a third-generation Florida code. After 239 launched, a permissive-dialing window ran until March 2003, when 239 became the region's sole area code. Such changes reflect the rapid growth of Southwest Florida, a region whose numbering-plan evolution follows the same overlay and permissive-dialing rules the [FCC's consumer dialing guide](https://www.fcc.gov/consumers/guides/ten-digit-dialing) documents nationwide. More than two decades later, 239 has become a recognizable shorthand for Southwest Florida.
 
 ## 239 area code at a glance
 
