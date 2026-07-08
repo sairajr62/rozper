@@ -281,7 +281,7 @@ export function BlogPostsSection({
 
   // Remap "Virtual Numbers" into "Area Codes"; hide everything else except "Area Codes"
   const CATEGORY_REMAP: Record<string, string> = { "Virtual Numbers": "Area Codes" }
-  const ALLOWED_CATEGORIES = new Set(["Area Codes", "VoIP & Voice"])
+  const ALLOWED_CATEGORIES = new Set(["Area Codes", "VoIP & Voice", "UCaaS"])
 
   const categories = useMemo(() => {
     const map = new Map<string, number>()
