@@ -81,6 +81,15 @@ export default async function CountryCodePage({ params }: Props) {
       name: "Rozper",
       url: SITE_URL,
     },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Country Codes", item: `${SITE_URL}/country-code/` },
+        { "@type": "ListItem", position: 3, name: country.name, item: `${SITE_URL}/country-code/${slug}/` },
+        { "@type": "ListItem", position: 4, name: "Best Time to Call", item: `${SITE_URL}/country-code/${slug}/best-time-to-call/` },
+      ],
+    },
   }
 
   const schemaFAQ = {
