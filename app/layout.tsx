@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import { BfcacheFix } from './bfcache-fix'
 import { SITE_URL } from '@/lib/site'
+import { SiteStructuredData } from '@/components/seo/structured-data'
 import './globals.css'
 
 const archivo = Archivo({
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="en" className={`scroll-smooth ${archivo.variable} ${inter.variable}`} style={{ backgroundColor: '#0B1220' }}>
       <body className="font-sans antialiased" style={{ backgroundColor: '#0B1220', color: '#ffffff' }} suppressHydrationWarning>
         <BfcacheFix />
+        <SiteStructuredData />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
         {process.env.FLOATCHAT_WEBSITE_TOKEN && (

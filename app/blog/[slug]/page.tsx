@@ -12,7 +12,8 @@ import {
   fetchPostBySlug,
   fetchRelatedPosts,
 } from "@/lib/blog-api"
-import { SITE_URL, ORG_ID } from "@/lib/site"
+import { SITE_URL } from "@/lib/site"
+import { BlogPostingStructuredData, BreadcrumbStructuredData } from "@/components/seo/structured-data"
 
 // Statically generate at build time from local markdown posts.
 export const dynamic = "force-static"
@@ -110,90 +111,36 @@ export default async function BlogPostPage({
   const category = post.categories[0]
   const keywords = post.tags.map((t) => t.name).join(", ") || undefined
 
-  // BlogPosting structured data
-  const blogPostingSchema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "@id": canonical,
-    url: canonical,
-    headline: post.title,
-    name: post.title,
-    description: post.seoDescription || post.excerpt,
-    ...(post.featuredImage
-      ? {
-          image: {
-            "@type": "ImageObject",
-            url: post.featuredImage.src,
-            ...(post.featuredImage.width ? { width: post.featuredImage.width } : {}),
-            ...(post.featuredImage.height ? { height: post.featuredImage.height } : {}),
-          },
-        }
-      : {}),
-    datePublished: post.date,
-    dateModified: post.modified,
-    inLanguage: "en",
-    author: {
-      "@type": "Person",
-      name: post.author.name,
-      ...(post.author.avatar ? { image: post.author.avatar } : {}),
-    },
-    publisher: {
-      "@type": "Organization",
-      "@id": ORG_ID,
-      name: "Rozper",
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/images/white-rozper-logo.png`,
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": canonical,
-    },
-    ...(keywords ? { keywords } : {}),
-    ...(category ? { articleSection: category.name } : {}),
-  }
-
-  // BreadcrumbList mirrors the visual breadcrumb: Home › Blog › Post Title
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Blog",
-        item: `${SITE_URL}/blog/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: canonical,
-      },
-    ],
-  }
-
   return (
     <main className="min-h-screen bg-[#0B1220]">
       <PostProgress />
       <Navbar />
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      <BlogPostingStructuredData
+        url={canonical}
+        title={post.title}
+        description={post.seoDescription || post.excerpt}
+        image={
+          post.featuredImage
+            ? {
+                url: post.featuredImage.src,
+                width: post.featuredImage.width,
+                height: post.featuredImage.height,
+              }
+            : undefined
+        }
+        datePublished={post.date}
+        dateModified={post.modified}
+        authorName={post.author.name}
+        authorImage={post.author.avatar}
+        category={category?.name}
+        keywords={keywords}
       />
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <BreadcrumbStructuredData
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Blog", url: `${SITE_URL}/blog/` },
+          { name: post.title, url: canonical },
+        ]}
       />
       <PostArticleHero post={post} />
       <PostLayout

@@ -22,6 +22,7 @@ import {
   formatUTCOffset,
 } from "@/lib/country-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { BreadcrumbStructuredData, FaqPageStructuredData } from "@/components/seo/structured-data"
 
 export const dynamicParams = true
 
@@ -81,44 +82,31 @@ export default async function CountryCodePage({ params }: Props) {
       name: "Rozper",
       url: SITE_URL,
     },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Country Codes", item: `${SITE_URL}/country-code/` },
-        { "@type": "ListItem", position: 3, name: country.name, item: `${SITE_URL}/country-code/${slug}/` },
-        { "@type": "ListItem", position: 4, name: "Best Time to Call", item: `${SITE_URL}/country-code/${slug}/best-time-to-call/` },
-      ],
-    },
   }
 
-  const schemaFAQ = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `What is the country code for ${country.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The country code for ${country.name} is ${formatDialCode(country.dialCode)}.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What is the best time to call ${country.name} from the US?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `${country.name} is on ${formatUTCOffset(country.utcOffset)}. Business hours (9 AM–5 PM local) correspond to ${times.est.start}–${times.est.end} US Eastern time.`,
-        },
-      },
-    ],
-  }
+  const faqItems = [
+    {
+      question: `What is the country code for ${country.name}?`,
+      answer: `The country code for ${country.name} is ${formatDialCode(country.dialCode)}.`,
+    },
+    {
+      question: `What is the best time to call ${country.name} from the US?`,
+      answer: `${country.name} is on ${formatUTCOffset(country.utcOffset)}. Business hours (9 AM–5 PM local) correspond to ${times.est.start}–${times.est.end} US Eastern time.`,
+    },
+  ]
 
   return (
     <main className="min-h-screen bg-[#0B1220]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaProduct) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Country Codes", url: `${SITE_URL}/country-code/` },
+          { name: country.name, url: `${SITE_URL}/country-code/${slug}/` },
+          { name: "Best Time to Call", url: `${SITE_URL}/country-code/${slug}/best-time-to-call/` },
+        ]}
+      />
+      <FaqPageStructuredData items={faqItems} />
       <Navbar />
       <CountryHero country={country} times={times} />
       <BestTimeSection country={country} times={times} />

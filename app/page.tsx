@@ -38,51 +38,6 @@ export const metadata = {
   },
 }
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": ORG_ID,
-  name: "Rozper",
-  url: SITE_URL,
-  logo: {
-    "@type": "ImageObject",
-    url: `${SITE_URL}/images/white-rozper-logo.png`,
-  },
-  sameAs: [
-    "https://www.linkedin.com/company/rozper",
-    "https://twitter.com/rozper",
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    url: `${SITE_URL}/contact/`,
-    availableLanguage: "English",
-  },
-  founder: [
-    {
-      "@type": "Person",
-      name: "-",
-    },
-  ],
-  areaServed: {
-    "@type": "GeoCircle",
-    geoRadius: "1000 km",
-    geoMidpoint: {
-      "@type": "GeoCoordinates",
-      latitude: "22.2775601",
-      longitude: "114.1685159",
-    },
-  },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "8/F, China Hong Kong Tower, 8-12 Hennessy Road",
-    addressLocality: "Wan Chai",
-    addressRegion: "Hong Kong",
-    postalCode: "999077",
-    addressCountry: "HK",
-  },
-}
-
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -102,11 +57,6 @@ const websiteSchema = {
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

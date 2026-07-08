@@ -22,6 +22,7 @@ import {
   formatUTCOffset,
 } from "@/lib/country-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { BreadcrumbStructuredData } from "@/components/seo/structured-data"
 
 export const dynamicParams = true
 
@@ -81,14 +82,6 @@ export default async function CountryPage({ params }: Props) {
       name: "Rozper",
       url: SITE_URL,
     },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Country Codes", item: `${SITE_URL}/country-code/` },
-        { "@type": "ListItem", position: 3, name: country.name, item: `${SITE_URL}/country-code/${slug}/` },
-      ],
-    },
     hasPart: [
       {
         "@type": "WebPage",
@@ -101,6 +94,13 @@ export default async function CountryPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-[#0B1220]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Country Codes", url: `${SITE_URL}/country-code/` },
+          { name: country.name, url: `${SITE_URL}/country-code/${slug}/` },
+        ]}
+      />
       <Navbar />
       <CountryPageHero country={country} times={times} />
       <CountryQuickFacts country={country} />
