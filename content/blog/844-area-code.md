@@ -1,6 +1,13 @@
 ---
 title: "844 Area Code: Toll-Free Numbers Explained for Business"
 slug: 844-area-code
+excerpt: "The 844 number area code is one of several non-geographic toll-free service codes used in the North American Numbering Plan (NANP). When a caller dials an 844 code number, the cost of the call is covered by the recipient (the business or individual owning the number), rather than the caller."
+category: "Area Codes"
+tags:
+  - area codes
+  - toll-free
+  - business phone
+publishDate: "2026-06-11"
 keywords:
   - 844 area code
   - area code 844
