@@ -10,6 +10,7 @@ keywords:
   - business phone number
 seoTitle: "888 Area Code: How This Toll-Free Number Helps Business"
 seoDescription: "See how the 888 area code works, what it costs callers, how to claim or port an 888 number, and why this toll-free prefix builds nationwide customer trust fast."
+author: "Shahid Kathawala"
 featuredImage: "/images/blog/888-hero.webp"
 featuredImageFit: "cover"
 ---

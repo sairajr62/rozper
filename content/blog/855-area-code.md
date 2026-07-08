@@ -10,6 +10,7 @@ keywords:
   - business phone number
 seoTitle: "855 Area Code Explained: Toll-Free Guide for Businesses"
 seoDescription: "See how the 855 area code works, what it costs callers, how to claim or port an 855 number, and why this toll-free prefix builds nationwide customer trust fast."
+author: "Shahid Kathawala"
 featuredImage: "/images/blog/855-hero.webp"
 featuredImageFit: "cover"
 ---

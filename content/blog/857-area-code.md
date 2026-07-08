@@ -10,6 +10,7 @@ keywords:
   - Massachusetts area code
 seoTitle: "857 Area Code Guide: Boston's Local Phone Number Prefix"
 seoDescription: "Discover where the 857 area code covers, how it overlays 617 in Boston, why ten-digit dialing is required, and how to get a local 857 number for your business."
+author: "Shahid Kathawala"
 featuredImage: "/images/blog/857-hero.webp"
 featuredImageFit: "cover"
 ---
