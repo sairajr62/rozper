@@ -234,8 +234,8 @@ export function auditBlogs() {
     // Word count — strip markdown properly
     const cleanContent = stripMarkdown(content)
     const wordCount = cleanContent.split(/\s+/).filter(Boolean).length
-    if (wordCount < 1500) warnings.push(`Short content: ${wordCount} words (target 1500–1700)`)
-    else if (wordCount > 1700) warnings.push(`Long content: ${wordCount} words (target 1500–1700)`)
+    if (wordCount < 1400) warnings.push(`Short content: ${wordCount} words (target 1400–1700)`)
+    else if (wordCount > 1700) warnings.push(`Long content: ${wordCount} words (target 1400–1700)`)
 
     // Readability (Flesch Reading Ease)
     const readability = calcReadability(cleanContent)
