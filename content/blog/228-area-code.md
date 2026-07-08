@@ -61,7 +61,7 @@ Harrison County is the population and commercial center of the region. **Gulfpor
 
 ### Jackson County
 
-Jackson County is the industrial engine of the Gulf Coast. **Pascagoula** is home to Ingalls Shipbuilding — the US Navy's single largest surface combat shipbuilder, employing approximately **11,000 workers** directly. **Ocean Springs** offers an arts-and-dining character alongside Moss Point and Gautier.
+Jackson County is the industrial engine of the Gulf Coast. **Pascagoula** is home to Ingalls Shipbuilding — the US Navy's single largest surface combat shipbuilder, employing approximately **11,000 workers** directly. **Ocean Springs** offers an arts-and-dining character alongside Moss Point and Gautier. The county's mix of heavy industry and coastal small business gives the 228 area code a wider commercial footprint than its population alone would suggest.
 
 ### Hancock County
 
@@ -139,7 +139,7 @@ Mississippi legalized dockside gambling in 1990, and Biloxi's waterfront corrido
 
 ### Maritime Trade and Logistics
 
-The **Port of Gulfport** is a primary US entry point for perishable imports from Central America and the Caribbean. Its federal strategic seaport designation brings infrastructure investment unavailable to private ports.
+The **Port of Gulfport** is a primary US entry point for perishable imports from Central America and the Caribbean. Its federal strategic seaport designation brings infrastructure investment unavailable to private ports. That designation also means the port receives priority consideration for federal dredging and expansion funding, reinforcing its role as a long-term logistics anchor for the region.
 
 ---
 
