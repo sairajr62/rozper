@@ -58,6 +58,29 @@ const organizationSchema = {
     url: `${SITE_URL}/contact/`,
     availableLanguage: "English",
   },
+  founder: [
+    {
+      "@type": "Person",
+      name: "-",
+    },
+  ],
+  areaServed: {
+    "@type": "GeoCircle",
+    geoRadius: "1000 km",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: "22.2775601",
+      longitude: "114.1685159",
+    },
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "8/F, China Hong Kong Tower, 8-12 Hennessy Road",
+    addressLocality: "Wan Chai",
+    addressRegion: "Hong Kong",
+    postalCode: "999077",
+    addressCountry: "HK",
+  },
 }
 
 const websiteSchema = {
