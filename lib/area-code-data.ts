@@ -165,6 +165,90 @@ function composeAreaCodeMeta(code: string, state: string): { seoTitle: string; s
   return { seoTitle, seoDescription }
 }
 
+function articleFor(word: string): "a" | "an" {
+  return /^[aeiou]/i.test(word) ? "an" : "a"
+}
+
+// Greedily appends the largest remaining clause that still fits under `max`,
+// repeating until `min` is reached or no clause fits — see audit report #3,
+// finding #4/#5 methodology (also used in lib/country-code-data.ts).
+function fillToRange(core: string, clauses: string[], min: number, max: number): string {
+  let text = core
+  if (text.length > max) return text.slice(0, max)
+  const remaining = [...clauses].sort((a, b) => b.length - a.length)
+  while (text.length < min && remaining.length) {
+    let used = -1
+    for (let i = 0; i < remaining.length; i++) {
+      const next = text + remaining[i]
+      if (next.length <= max) {
+        text = next
+        used = i
+        break
+      }
+    }
+    if (used === -1) break
+    remaining.splice(used, 1)
+  }
+  return text
+}
+
+// Composes /area-codes/[state] page meta — see audit report #3, finding #5
+// (31 pages too short, 6 too long) plus an "a"/"an" grammar bug for
+// vowel-starting state names (e.g. "with a Alabama area code").
+export function buildStateAreaCodesMeta(
+  stateName: string,
+  codes: string[],
+): { title: string; description: string } {
+  const displayState = STATE_DISPLAY_OVERRIDES[stateName] ?? stateName
+
+  const titleCandidates = [
+    `${displayState} Area Codes – Virtual Phone Numbers | Rozper`,
+    `All ${displayState} Area Codes & Virtual Numbers | Rozper`,
+    `${displayState} Area Codes & Virtual Phone Numbers | Rozper`,
+    `All ${displayState} Area Codes & Virtual Phone Numbers | Rozper`,
+  ]
+  const title =
+    titleCandidates.find((c) => c.length >= 50 && c.length <= 60) ??
+    titleCandidates[titleCandidates.length - 1]!
+
+  const article = articleFor(displayState)
+  const codeList = codes.slice(0, 5).join(", ") + (codes.length > 5 ? ", and more" : "")
+  const core = `Get a virtual phone number with ${article} ${displayState} area code, choosing from all ${codes.length} codes including ${codeList}.`
+  const clauses = [
+    " Activate in minutes with 99.999% uptime.",
+    " Build a local presence anywhere in the state.",
+    " No physical office required to get started.",
+    " Route calls anywhere with Rozper.",
+    " Sign up and start calling today.",
+    " Fast, reliable setup with no contracts.",
+    " Great for local business calls.",
+    " Works from any device, anywhere.",
+    " Start calling in minutes today.",
+    " Reliable coverage, simple setup.",
+    " No office needed to get started.",
+    " Easy to activate and manage.",
+    " Backed by 99.999% uptime.",
+    " Try Rozper risk-free today.",
+    " Simple setup, no contracts.",
+    " Great for growing businesses.",
+    " Fast and easy activation.",
+    " Start your free trial.",
+    " Get started in minutes.",
+    " No fees, no hassle.",
+    " Sign up in minutes.",
+    " Try it risk-free.",
+    " Set up in minutes.",
+    " It just works.",
+    " No fees at all.",
+    " Fast setup.",
+    " It is easy.",
+    " Try it now.",
+  ]
+  const description = fillToRange(core, clauses, 150, 160)
+
+  return { title, description }
+}
+
 function extractBulletList(body: string, keyword: string): string[] {
   const lines = body.split("\n")
   let inSection = false

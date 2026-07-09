@@ -18,6 +18,7 @@ import {
   getAllStateSlugs,
   stateToSlug,
   getStateByCode,
+  buildStateAreaCodesMeta,
 } from "@/lib/area-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
@@ -40,9 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!stateName) return {}
 
   const codes = getCodesByStateSlug(stateParam)
-  const codeList = codes.slice(0, 5).join(", ") + (codes.length > 5 ? ", and more" : "")
-  const title = `${stateName} Area Codes – Virtual Phone Numbers | Rozper`
-  const description = `Get a virtual phone number with a ${stateName} area code. Rozper offers virtual numbers for all ${codes.length} ${stateName} area codes including ${codeList}.`
+  const { title, description } = buildStateAreaCodesMeta(stateName, codes)
 
   return {
     title,
