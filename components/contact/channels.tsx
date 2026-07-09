@@ -28,7 +28,7 @@ const channels = [
   {
     Icon: Phone,
     title: "Call us now",
-    body: "+1 (415) 555-0199 · also reachable on local numbers in 19 countries.",
+    body: "+1 929-659-7334 · also reachable on local numbers in 19 countries.",
     cta: "See numbers",
     accent: "from-[#2D98F1] to-[#046BD2]",
   },
