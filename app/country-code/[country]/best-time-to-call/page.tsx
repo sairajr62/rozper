@@ -20,6 +20,7 @@ import {
   getBestCallingTimes,
   formatDialCode,
   formatUTCOffset,
+  buildBestTimeToCallMeta,
 } from "@/lib/country-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 import { BreadcrumbStructuredData, FaqPageStructuredData } from "@/components/seo/structured-data"
@@ -38,8 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const country = getCountryBySlug(slug)
   if (!country) return {}
 
-  const title = `Best Time to Call ${country.name} from the US | ${formatDialCode(country.dialCode)} Dial Code`
-  const description = `When to call ${country.name} from the United States. Country code ${formatDialCode(country.dialCode)}, timezone ${formatUTCOffset(country.utcOffset)}, business hours, and calling etiquette for ${country.name}.`
+  const { title, description } = buildBestTimeToCallMeta(country.name, formatDialCode(country.dialCode), country.capital)
 
   return {
     title,

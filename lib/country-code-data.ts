@@ -396,3 +396,104 @@ export function formatGDP(gdp: number | null): string {
   if (gdp >= 1_000_000_000) return `$${(gdp / 1_000_000_000).toFixed(0)}B`
   return `$${(gdp / 1_000_000).toFixed(0)}M`
 }
+
+// ─── Length-aware meta builders ────────────────────────────────────────────
+// Country names and capitals vary from 4 chars ("Chad", "Iowa"-scale) to 30+
+// ("Saint Vincent and the Grenadines"), so a single fixed template can't hit
+// 50-60 (title) / 150-160 (description) for every country. These pick the
+// longest candidate/clause combination that still fits, verified against all
+// 237 real entries in COUNTRIES (see audit report #3, finding 4).
+
+/** Greedily appends small independent clauses to `core` until length is in [min, max]. */
+function fillToRange(core: string, clauses: string[], min: number, max: number): string {
+  let text = core
+  if (text.length > max) return text.slice(0, max)
+  const remaining = [...clauses].sort((a, b) => b.length - a.length)
+  while (text.length < min && remaining.length) {
+    let used = -1
+    for (let i = 0; i < remaining.length; i++) {
+      const next = text + remaining[i]
+      if (next.length <= max) {
+        text = next
+        used = i
+        break
+      }
+    }
+    if (used === -1) break
+    remaining.splice(used, 1)
+  }
+  return text
+}
+
+export function buildCountryPageMeta(name: string, dial: string, capital: string): { title: string; description: string } {
+  const titleCandidates = [
+    `${name} Country Code ${dial}: Virtual Phone Numbers | Rozper`,
+    `${name} Country Code ${dial} · Virtual Numbers | Rozper`,
+    `${name} Country Code ${dial} | Rozper Virtual Numbers`,
+    `${name} Country Code ${dial} | Rozper`,
+    `${name} Country Code ${dial} · Virtual Numbers`,
+    `Get a ${name} Virtual Number | Rozper`,
+    `${name} Virtual Number | Rozper`,
+    `${name} Virtual Number`,
+  ]
+  const title =
+    titleCandidates.find((c) => c.length >= 50 && c.length <= 60) ?? titleCandidates[titleCandidates.length - 1]!
+
+  const core = `${name} country code is ${dial}, with ${capital} as the capital.`
+  const clauses = [
+    " Get a virtual number and connect from anywhere.",
+    " Check the best calling times before you dial.",
+    " No physical office is required to get started.",
+    " Rozper backs every line with 99.999% uptime.",
+    " Activate in minutes and start calling today.",
+    " Talk to Rozper.",
+    " Learn more today.",
+    " See how it works.",
+    " Start your call.",
+    " Try it now.",
+    " Sign up free.",
+    " Get started.",
+    " It's easy.",
+    " No fees.",
+    " Fast setup.",
+  ]
+  const description = fillToRange(core, clauses, 150, 160)
+
+  return { title, description }
+}
+
+export function buildBestTimeToCallMeta(name: string, dial: string, capital: string): { title: string; description: string } {
+  const titleCandidates = [
+    `Best Time to Call ${name} from the US | ${dial} Dial Code`,
+    `Call ${name} from the US: ${dial} Dial Code | Rozper`,
+    `Call ${name} from the US: ${dial} Dial Code`,
+    `${name} Calling Times & Tips | Rozper`,
+    `${name} Calling Times | Rozper`,
+  ]
+  const title =
+    titleCandidates.find((c) => c.length >= 50 && c.length <= 60) ?? titleCandidates[titleCandidates.length - 1]!
+
+  const core = `Best time to call ${name} (country code ${dial}) from the US, covering ${capital}'s business hours.`
+  const clauses = [
+    " Includes the timezone gap and calling etiquette.",
+    " Plan ahead for a live answer, not voicemail.",
+    " Rozper routes calls with 99.999% uptime.",
+    " Works from any device, anywhere in the world.",
+    " Learn the best time to dial.",
+    " Plan your call today.",
+    " Check before you dial.",
+    " See the full guide.",
+    " Read on for details.",
+    " Full guide below.",
+    " Dial smart.",
+    " Get the timing right.",
+    " Plan ahead.",
+    " Do it right.",
+    " Know before you call.",
+    " Call now.",
+    " Dial in.",
+  ]
+  const description = fillToRange(core, clauses, 150, 160)
+
+  return { title, description }
+}

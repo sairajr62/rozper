@@ -20,6 +20,7 @@ import {
   getBestCallingTimes,
   formatDialCode,
   formatUTCOffset,
+  buildCountryPageMeta,
 } from "@/lib/country-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 import { BreadcrumbStructuredData } from "@/components/seo/structured-data"
@@ -38,8 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const country = getCountryBySlug(slug)
   if (!country) return {}
 
-  const title = `${country.name} Country Code ${formatDialCode(country.dialCode)} – Virtual Phone Numbers | Rozper`
-  const description = `${country.name} international dialing code is ${formatDialCode(country.dialCode)}. Get a virtual ${country.name} phone number, explore best calling times, and connect with ${country.capital} from anywhere.`
+  const { title, description } = buildCountryPageMeta(country.name, formatDialCode(country.dialCode), country.capital)
 
   return {
     title,
