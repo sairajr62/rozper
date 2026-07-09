@@ -565,7 +565,7 @@ export function CollaborationSection() {
                     <f.Icon className="w-5 h-5 text-[#046BD2]" />
                   </div>
                   <div>
-                    <h4 className="font-display font-semibold text-white mb-1">{f.title}</h4>
+                    <h3 className="font-display font-semibold text-white mb-1">{f.title}</h3>
                     <p className="text-[#CCD6DF] text-sm leading-relaxed">{f.description}</p>
                   </div>
                 </motion.div>

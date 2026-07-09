@@ -216,9 +216,9 @@ export function DocsExplorer() {
                         {doc.read}
                       </span>
                     </div>
-                    <h4 className="mt-3 font-semibold text-white text-sm">
+                    <h3 className="mt-3 font-semibold text-white text-sm">
                       {doc.title}
-                    </h4>
+                    </h3>
                     <p className="mt-1.5 text-xs text-[#9AA8BC] leading-relaxed">
                       {doc.excerpt}
                     </p>

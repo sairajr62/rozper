@@ -216,9 +216,9 @@ export function Footer() {
                     {column.title}
                   </a>
                 ) : (
-                  <h4 className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40 mb-5">
+                  <p className="text-[10px] uppercase tracking-[0.22em] font-mono text-white/40 mb-5">
                     {column.title}
-                  </h4>
+                  </p>
                 )}
                 <ul className="space-y-3">
                   {column.links.map((link) => (

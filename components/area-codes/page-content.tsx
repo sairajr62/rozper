@@ -86,6 +86,9 @@ export function AreaCodeHero({ data, stateSlug }: { data: AreaCodeData; stateSlu
 
   return (
     <section className="relative h-[100dvh] flex flex-col justify-center overflow-hidden pt-[72px]">
+      {/* Visually hidden — gives the page its single H1 without altering the
+          decorative code/city/subtitle layout below. */}
+      <h1 className="sr-only">{data.code} Area Code: {cityName} Virtual Phone Numbers</h1>
       {/* Aurora background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-[#046BD2]/15 via-[#0B1220] to-[#0B1220]" />
