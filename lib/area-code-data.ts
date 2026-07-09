@@ -150,13 +150,13 @@ function composeAreaCodeMeta(code: string, state: string): { seoTitle: string; s
 
   const descCandidates = displayState
     ? [
-        `Get a local ${code} area code virtual phone number for ${displayState} businesses. Activate in minutes, build local presence, and route calls anywhere with 99.999% uptime.`,
-        `Get a local ${code} area code virtual phone number for your ${displayState} business. Build local presence, activate in minutes, and route calls anywhere with 99.999% uptime.`,
-        `Get a local ${code} area code virtual phone number for ${displayState}. Activate in minutes, build local presence, and route calls anywhere with 99.999% uptime.`,
-        `Get a local ${code} area code virtual phone number for ${displayState}. Activate in minutes and route calls anywhere with 99.999% uptime — no office required.`,
+        `Get a local ${code} area code virtual phone number for ${displayState} businesses. Activate in minutes, build local presence, and route calls anywhere with 99.99% uptime.`,
+        `Get a local ${code} area code virtual phone number for your ${displayState} business. Build local presence, activate in minutes, and route calls anywhere with 99.99% uptime.`,
+        `Get a local ${code} area code virtual phone number for ${displayState}. Activate in minutes, build local presence, and route calls anywhere with 99.99% uptime.`,
+        `Get a local ${code} area code virtual phone number for ${displayState}. Activate in minutes and route calls anywhere with 99.99% uptime — no office required.`,
       ]
     : [
-        `Get a local ${code} area code virtual phone number for your business. Activate in minutes, build local presence, and route calls anywhere with 99.999% uptime.`,
+        `Get a local ${code} area code virtual phone number for your business. Activate in minutes, build local presence, and route calls anywhere with 99.99% uptime.`,
       ]
   const seoDescription =
     descCandidates.find((c) => c.length >= 150 && c.length <= 160) ??
@@ -215,7 +215,7 @@ export function buildStateAreaCodesMeta(
   const codeList = codes.slice(0, 5).join(", ") + (codes.length > 5 ? ", and more" : "")
   const core = `Get a virtual phone number with ${article} ${displayState} area code, choosing from all ${codes.length} codes including ${codeList}.`
   const clauses = [
-    " Activate in minutes with 99.999% uptime.",
+    " Activate in minutes with 99.99% uptime.",
     " Build a local presence anywhere in the state.",
     " No physical office required to get started.",
     " Route calls anywhere with Rozper.",
@@ -227,7 +227,7 @@ export function buildStateAreaCodesMeta(
     " Reliable coverage, simple setup.",
     " No office needed to get started.",
     " Easy to activate and manage.",
-    " Backed by 99.999% uptime.",
+    " Backed by 99.99% uptime.",
     " Try Rozper risk-free today.",
     " Simple setup, no contracts.",
     " Great for growing businesses.",

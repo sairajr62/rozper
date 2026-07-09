@@ -444,7 +444,7 @@ export function buildCountryPageMeta(name: string, dial: string, capital: string
     " Get a virtual number and connect from anywhere.",
     " Check the best calling times before you dial.",
     " No physical office is required to get started.",
-    " Rozper backs every line with 99.999% uptime.",
+    " Rozper backs every line with 99.99% uptime.",
     " Activate in minutes and start calling today.",
     " Talk to Rozper.",
     " Learn more today.",
@@ -477,7 +477,7 @@ export function buildBestTimeToCallMeta(name: string, dial: string, capital: str
   const clauses = [
     " Includes the timezone gap and calling etiquette.",
     " Plan ahead for a live answer, not voicemail.",
-    " Rozper routes calls with 99.999% uptime.",
+    " Rozper routes calls with 99.99% uptime.",
     " Works from any device, anywhere in the world.",
     " Learn the best time to dial.",
     " Plan your call today.",
