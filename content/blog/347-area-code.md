@@ -47,7 +47,7 @@ Today, this prefix is one of four overlay codes: 718, 917, 929, and 347. All fou
 
 The region runs on **Eastern Time (ET)**. That means UTC-5 during Eastern Standard Time, from early November through mid-March. It means UTC-4 during Eastern Daylight Time, from mid-March through early November. Businesses calling in from Central, Mountain, or Pacific time zones should plan around this gap. That way, calls land during normal working hours.
 
-For businesses also targeting Manhattan alongside the outer boroughs, our [212 area code](/blog/212-area-code) guide covers the original New York City core and its commercial districts.
+For businesses also targeting Manhattan alongside the outer boroughs, our [332 area code](/blog/332-area-code) guide covers the borough's overlay prefix and its commercial districts.
 
 ---
 
@@ -66,7 +66,7 @@ The **347 area code** covers four of New York City's five boroughs. That means e
 
 This local prefix builds quick trust across all four boroughs. A local number tells customers that your business belongs to the neighborhood. It does not sound like a call center in some other state. Brooklyn's tech and creative scene is booming. Queens has many small, family-run businesses. The Bronx has strong health and school systems. In all of these places, a local number can mean the gap between a call that gets picked up and one that gets ignored.
 
-For businesses expanding north into the lower Hudson Valley and Westchester County, our [914 area code](/blog/914-area-code) guide covers Yonkers, White Plains, and the surrounding suburban market.
+For businesses expanding north into the lower Hudson Valley and Westchester County, the 914 area code covers Yonkers, White Plains, and the surrounding suburban market.
 
 ---
 

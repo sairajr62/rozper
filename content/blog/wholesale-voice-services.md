@@ -1,6 +1,6 @@
 ﻿---
 title: "Wholesale Voice Services: Benefits, Features & Use Cases"
-slug: "Wholesale-voice-services"
+slug: "wholesale-voice-services"
 excerpt: "Learn how wholesale voice services work, why they reduce costs, and what features to evaluate when choosing a provider for high-volume business communication."
 seoTitle: "Wholesale Voice Services: How They Work & Why They Matter"
 seoDescription: "Learn how wholesale voice services work, why they reduce costs, and what features to evaluate when choosing a provider for high-volume business communication."

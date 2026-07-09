@@ -35,7 +35,7 @@ The 888 area code is a toll-free prefix. It works across the North American Numb
 
 ## Where 888 Sits Among Toll-Free Codes
 
-Toll-free dialing began with the original 800 line. It grew as the best combinations ran short. If you want the full backstory, our guide to the [800 area code](https://www.rozper.com/blog/800-area-code/) explains how the first toll-free numbers changed customer service. The 888 prefix arrived as the first expansion of that pool. Then came 877, 866, 855, 844, and 833. Every one of these works the same way. Each exists only to open up fresh number combinations. Here is the practical lesson: an 888 area code behaves just like a classic 800 line. So your real choice comes down to which numbers are still open and how easy they are to remember.
+Toll-free dialing began with the original 800 line. It grew as the best combinations ran short. If you want the full backstory, our [toll-free vs. local numbers guide](https://www.rozper.com/blog/toll-free-vs-local-area-code/) explains how the first toll-free numbers changed customer service. The 888 prefix arrived as the first expansion of that pool. Then came 877, 866, 855, 844, and 833. Every one of these works the same way. Each exists only to open up fresh number combinations. Here is the practical lesson: an 888 area code behaves just like a classic 800 line. So your real choice comes down to which numbers are still open and how easy they are to remember.
 
 ## How an 888 Call Connects
 
@@ -49,7 +49,7 @@ Toll-free pricing is usually low and easy to predict. Most providers charge a sm
 
 ## Claiming or Porting an 888 Number
 
-Getting started is quicker than most owners think. You browse a provider's list of open numbers, pick a standard or vanity combination, and point it at the phones or apps your team already uses. No hardware is needed. If you already hold a toll-free number, you can usually port it to a new provider without losing it. You supply account details and sign off, and the move happens with little or no downtime. For a closer look at a sibling prefix, our breakdown of the [866 area code](https://www.rozper.com/blog/866-area-code/) covers the same ground from another angle. Picking a vanity number that spells your brand can make the line easier to remember and lift response on your ads.
+Getting started is quicker than most owners think. You browse a provider's list of open numbers, pick a standard or vanity combination, and point it at the phones or apps your team already uses. No hardware is needed. If you already hold a toll-free number, you can usually port it to a new provider without losing it. You supply account details and sign off, and the move happens with little or no downtime. For a closer look at a sibling prefix, our breakdown of the [844 area code](https://www.rozper.com/blog/844-area-code/) covers the same ground from another angle. Picking a vanity number that spells your brand can make the line easier to remember and lift response on your ads.
 
 ## Turning 888 Into a Marketing Asset
 

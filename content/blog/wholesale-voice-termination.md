@@ -109,7 +109,7 @@ Good wholesale termination gives you more than low rates. It also raises connect
 
 ![Rising answer-rate graph next to icons for CLI integrity and global reach](/images/blog/Benefits of Wholesale Voice Termination.webp)
 
-Wholesale rates run much lower than retail once you hit high volumes. Commit to more volume, and you save even more. Our [wholesale voice services overview](https://www.rozper.com/blog/Wholesale-voice-services/) covers the full picture. One provider can give you good rates across 150+ countries. You skip separate deals with each carrier. Backup routes kick in when one fails, so calls reroute without anyone noticing.
+Wholesale rates run much lower than retail once you hit high volumes. Commit to more volume, and you save even more. Our [wholesale voice services overview](https://www.rozper.com/blog/wholesale-voice-services/) covers the full picture. One provider can give you good rates across 150+ countries. You skip separate deals with each carrier. Backup routes kick in when one fails, so calls reroute without anyone noticing.
 
 ## Key Features to Evaluate in a Provider
 

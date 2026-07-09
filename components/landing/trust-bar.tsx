@@ -11,7 +11,7 @@ const logos = [
   { name: "Telekom Slovenije", src: "/images/logos/Telekom-Slovenije-partner.png" },
   { name: "Telin", src: "/images/logos/p6.webp" },
   { name: "MTT", src: "/images/logos/MTT-1.webp" },
-  { name: "Reliance Communications", src: "/images/logos/Relience.png" },
+  { name: "Reliance Communications", src: "/images/logos/reliance.png" },
 ]
 
 const compliance = [

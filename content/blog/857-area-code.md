@@ -42,7 +42,7 @@ The 857 area code does not replace anything. It shares the same map as the older
 
 ## Prefer a Nationwide Toll-Free Option?
 
-A local Boston line is not the only path. Maybe your customers are spread across the country, not just Massachusetts. If so, a toll-free number may serve you better. Our breakdown of the [800 area code](https://www.rozper.com/blog/800-area-code/) explains how those work. Here is a simple rule of thumb. Choose the 857 area code when you want to look local to Boston. Choose a toll-free prefix when you want to look national. Many growing businesses end up running both side by side.
+A local Boston line is not the only path. Maybe your customers are spread across the country, not just Massachusetts. If so, a toll-free number may serve you better. Our [toll-free vs. local numbers guide](https://www.rozper.com/blog/toll-free-vs-local-area-code/) explains how those work. Here is a simple rule of thumb. Choose the 857 area code when you want to look local to Boston. Choose a toll-free prefix when you want to look national. Many growing businesses end up running both side by side.
 
 ## A Quick History of the 857 Area Code
 
