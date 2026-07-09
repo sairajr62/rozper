@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Archivo, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import Script from 'next/script'
 import { BfcacheFix } from './bfcache-fix'
 import { SITE_URL } from '@/lib/site'
 import { SiteStructuredData } from '@/components/seo/structured-data'
@@ -45,27 +44,6 @@ export default function RootLayout({
         <SiteStructuredData />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
-        {process.env.FLOATCHAT_WEBSITE_TOKEN && (
-          <Script
-            id="floatchat-sdk"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.floatchatSettings = {"position":"right","type":"standard","launcherTitle":""};
-                (function(d,t) {
-                  var BASE_URL="https://app.floatchat.com";
-                  var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                  g.src=BASE_URL+"/packs/js/sdk.js";
-                  g.async = true;
-                  s.parentNode.insertBefore(g,s);
-                  g.onload=function(){
-                    window.floatchatSDK.run({ websiteToken: '${process.env.FLOATCHAT_WEBSITE_TOKEN}', baseUrl: BASE_URL })
-                  }
-                })(document,"script");
-              `,
-            }}
-          />
-        )}
       </body>
     </html>
   )
