@@ -95,7 +95,7 @@ export function Breadcrumb() {
         <nav className="flex items-center gap-2 text-sm text-[#757575]">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight className="w-3 h-3" />
-          <Link href="/solutions/" className="hover:text-white transition-colors">Solutions</Link>
+          <span>Solutions</span>
           <ChevronRight className="w-3 h-3" />
           <span className="text-[#CCD6DF]">Remote Teams</span>
         </nav>
@@ -132,7 +132,7 @@ function WorldVisualization() {
     <div className="relative w-full max-w-[520px] aspect-[8/5] rounded-2xl overflow-hidden border border-[#046BD2]/20 shadow-2xl shadow-[#046BD2]/10">
       {/* Real world map */}
       <Image
-        src="/images/global-map.webp"
+        src="/images/WorldMap.avif"
         alt="World map"
         fill
         className="object-cover"
