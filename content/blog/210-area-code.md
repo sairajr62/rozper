@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-19"
 readingTime: "11 min"
 featuredImage: "/images/blog/210-area-code.webp"
+featuredImageAlt: "Illustration of San Antonio's skyline and south-central Texas region covered by the 210 prefix"
 ---
 
 # 210 Area Code: San Antonio, TX — Cities, History, Scams & Business Guide

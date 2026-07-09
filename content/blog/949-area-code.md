@@ -25,6 +25,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-20"
 readingTime: "10 min"
 featuredImage: "/images/blog/949-hero.webp"
+featuredImageAlt: "Newport Beach coastline representing the 949 area code business phone number region in Orange County"
 featuredImageFit: "cover"
 ---
 

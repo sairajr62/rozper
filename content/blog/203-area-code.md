@@ -22,6 +22,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-06-06"
 readingTime: "11 min"
 featuredImage: "/images/blog/203-area-code.webp"
+featuredImageAlt: "Graphic depicting Stamford, New Haven, and Bridgeport across southwestern Connecticut's phone coverage zone"
 ---
 
 # 203 Area Code: Southwestern Connecticut — Cities, History, Scams & Business Guide

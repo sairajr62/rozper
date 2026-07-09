@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-10"
 readingTime: "11 min"
 featuredImage: "/images/blog/562-area-code.webp"
+featuredImageAlt: "Long Beach port and southeast LA County skyline within the 562 calling region"
 ---
 
 # 562 Area Code: Long Beach, CA — Cities, Location & Business Guide

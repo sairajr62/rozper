@@ -22,6 +22,7 @@ author: "Shahid Kathawala"
 publishDate: "2024-12-30"
 readingTime: "11 min"
 featuredImage: "/images/blog/228-area-code.webp"
+featuredImageAlt: "Illustration of Gulfport, Biloxi, and the Mississippi Gulf Coast region covered by the 228 prefix"
 ---
 
 # 228 Area Code: Complete Guide to Mississippi's Gulf Coast Telephone Prefix

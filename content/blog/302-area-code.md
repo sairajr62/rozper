@@ -21,6 +21,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-06-09"
 readingTime: "8 min"
 featuredImage: "/images/blog/302-hero.webp"
+featuredImageAlt: "Illustrated cover graphic for the Delaware 302 area code guide covering Wilmington and Rehoboth Beach"
 featuredImageFit: "cover"
 ---
 

@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-06-06"
 readingTime: "11 min"
 featuredImage: "/images/blog/205-area-code.webp"
+featuredImageAlt: "Illustration of Birmingham and central-western Alabama highlighting the region served by the 205 prefix"
 ---
 
 # 205 Area Code: Birmingham, AL — Cities, History, Scams & Business Guide

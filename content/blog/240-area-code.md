@@ -21,6 +21,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-06-07"
 readingTime: "8 min"
 featuredImage: "/images/blog/240-area-code.webp"
+featuredImageAlt: "Illustration of Frederick and Bethesda across western and central Maryland covered by the 240 prefix"
 ---
 
 # 240 Area Code: Maryland's Location, Cities, and How to Get a Number

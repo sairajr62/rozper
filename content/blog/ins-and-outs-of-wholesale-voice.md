@@ -24,6 +24,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-06"
 readingTime: "10 min"
 featuredImage: "/images/blog/ins outs wholesale voice hero.webp"
+featuredImageAlt: "Telecom network diagram illustrating bulk voice call routing between carriers"
 ---
 
 # The Ins and Outs of Wholesale Voice

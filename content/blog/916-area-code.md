@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-20"
 readingTime: "8 min"
 featuredImage: "/images/blog/916-hero.webp"
+featuredImageAlt: "Sacramento skyline with a local 916 phone number overlay representing California's capital region"
 featuredImageFit: "cover"
 ---
 

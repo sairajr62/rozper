@@ -22,6 +22,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-23"
 readingTime: "11 min"
 featuredImage: "/images/blog/315-area-code.webp"
+featuredImageAlt: "Illustrated cover graphic for the 315 area code guide covering Syracuse, Utica, and Central New York"
 ---
 
 # 315 Area Code: Complete Guide to Central New York

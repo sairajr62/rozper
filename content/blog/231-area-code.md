@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-15"
 readingTime: "7 min"
 featuredImage: "/images/blog/231-hero.webp"
+featuredImageAlt: "Hero graphic of Lake Michigan's shoreline and Northwest Michigan towns served by the 231 prefix"
 featuredImageFit: "cover"
 ---
 
@@ -54,7 +55,7 @@ The 231 area code began on January 1, 1999. It split off from the older 616 area
 
 Do you sell to customers in Northwest Michigan? Then a local 231 phone number is more than just a way to make calls. It is a smart asset. It shapes how customers see you. It boosts your engagement. It also ties your brand to this special region.
 
-![Why a 231 Phone Number is a Business Asset](/images/blog/231 image 2.webp)
+![Smiling business owner on a phone call with a Northwest Michigan lakeside town in the background](/images/blog/231 image 2.webp)
 
 ### Cultivating Local Trust and Authenticity
 
@@ -70,7 +71,7 @@ Studies show that people answer local calls more often. This is true versus call
 
 Knowing the towns within the 231 coverage zone helps you build a targeted plan for the biggest regional impact.
 
-![Navigating Northwest Michigan: Key Cities within 231](/images/blog/231 image 3.webp)
+![Regional map pinpointing Muskegon, Traverse City, Petoskey, and Cadillac within the 231 coverage area](/images/blog/231 image 3.webp)
 
 Muskegon was once a heavy factory town. Now it has a lively arts scene too. Its waterfront has been renewed. Its industry is still strong. Traverse City is often named one of America's best small cities. Visitors come for its National Cherry Festival. They also come for its top wineries and outdoor fun. A growing tech scene adds year-round energy. Petoskey is a rich tourism and retail market. It draws wealthy visitors each season. This makes it a good spot for service, hospitality, and real estate firms. Cadillac is a year-round trade hub. It ships goods to the inland counties around it. Charlevoix has a scenic marina. Its upscale tourism scene suits hospitality, real estate, and marine firms well. Is your business growing from Northwest Michigan into the Detroit metro area? Check the [313 area code](/blog/313-area-code) guide. It covers Wayne County's market and how a local number builds trust there.
 
@@ -101,7 +102,7 @@ The whole 231 region runs on **Eastern Time (ET)**. It follows Daylight Saving T
 
 Getting a local 231 number is a great first step. To get its full value, use it with care in your daily work. Use it in your marketing too.
 
-![Unlocking Your 231 Potential: Essential Best Practices](/images/blog/231 image 4.webp)
+![Checklist icons for displaying a local number, local SEO listings, and seasonal ad campaigns](/images/blog/231 image 4.webp)
 
 1. **Prominent Display:** Show your 231 number everywhere customers look. Put it in your website header and footer. Add it to your contact page, email signs, and local directory listings.
 2. **Local SEO Integration:** List your number right in Google Business Profile, Yelp, and other local SEO spots. This helps you show up in Northwest Michigan searches.

@@ -22,6 +22,7 @@ author: "Shahid Kathawala"
 publishDate: "2026-06-17"
 readingTime: "11 min"
 featuredImage: "/images/blog/516 hero.webp"
+featuredImageAlt: "Nassau County, Long Island suburban skyline representing the 516 area code region"
 ---
 
 # 516 Area Code: Complete Guide to Long Island, NY Numbers
@@ -36,7 +37,7 @@ A Long Island phone number does something an 800 number can't. It tells Nassau C
 
 The **516 area code** covers Nassau County. This is the westernmost county on Long Island. It sits just east of Queens. The code began in 1951. That year, the old 212 area code split to handle new demand. A second split came in 1999. It created area code 631 for Suffolk County. After that, 516 served only Nassau County.
 
-![Where Is the 516?](/images/blog/516-image-1.webp)
+![Map of Nassau County, Long Island showing the area's phone numbering split from Queens](/images/blog/516-image-1.webp)
 
 Growth continued. In 2017, the region added the 363 overlay. New phone lines in the area may now get 363 numbers. Old **516 area code** numbers keep their same prefix. Everyone in the region must dial all ten digits for local calls.
 
@@ -89,7 +90,7 @@ Joining these groups puts your business in the trust networks Nassau County buye
 
 Businesses that use a **516 area code** number must still follow New York State rules. These official sources cover setup, rules, and growth support:
 
-![Official Resources for 516 Area Businesses](/images/blog/516-image-3.webp)
+![List of New York State agencies and Nassau County economic development offices](/images/blog/516-image-3.webp)
 
 **New York Department of State — Division of Corporations** — the first stop to register a business in New York. It covers LLCs, corporations, DBA filings, and rule help.
 

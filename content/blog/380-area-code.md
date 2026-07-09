@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2026-06-24"
 readingTime: "7 min"
 featuredImage: "/images/blog/380-hero.webp"
+featuredImageAlt: "Illustrated cover graphic for the Columbus, Ohio 380 area code guide"
 ---
 
 # 380 Area Code: Complete Guide to Columbus, Ohio's Local Number
@@ -33,7 +34,7 @@ Every phone number tells a story. It tells you where a business works. Have you 
 
 ## Cities the 380 Area Code Covers
 
-![Cities the 380 Area Code Covers](/images/blog/cities-the-380-area-code-covers.webp)
+![Map graphic highlighting Franklin County and nearby central Ohio communities served by the 380 prefix](/images/blog/cities-the-380-area-code-covers.webp)
 
 The **380 area code** serves central Ohio as an overlay to the original 614 prefix. Both codes cover the same area. There is no service or location difference between them. The only difference is the three-digit prefix. Because of the overlay, every local call needs 10-digit dialing.
 
@@ -58,7 +59,7 @@ Over 2 million people live in the Columbus metro area. Major employers include J
 
 ## How the 380 Area Code Came to Be
 
-![How the 380 Area Code Came to Be](/images/blog/how-the-380-area-code-came-to-be.webp)
+![Timeline graphic showing the 2016 launch of the 380 overlay on top of area code 614](/images/blog/how-the-380-area-code-came-to-be.webp)
 
 Central Ohio grew fast in the early 2000s. Its people and its businesses both grew fast. This growth put heavy strain on the 614 number supply. New cell phone users, new business lines, and new VoIP services all added demand. Together, they used up open numbers faster than planners had guessed.
 
@@ -72,7 +73,7 @@ This overlay model is now the top choice in cities that grow fast. In those citi
 
 ## Why Businesses Choose a 380 Area Code Number
 
-![Why Businesses Choose a 380 Area Code Number](/images/blog/why-businesses-choose-a-380-area-code-number.webp)
+![Illustration of a Columbus business professional answering a call from a local number](/images/blog/why-businesses-choose-a-380-area-code-number.webp)
 
 A local phone number tells customers your business is part of their town. Studies show people are more likely to pick up and talk when a call comes from a local prefix. They answer these calls more than toll-free or out-of-state numbers. This is true across many fields, from health care to banking to retail.
 
@@ -88,7 +89,7 @@ Modern virtual phone providers pair these numbers with pro-grade tools. These in
 
 ## How to Get a Local Columbus Phone Number
 
-![How to Get a Local Columbus Phone Number](/images/blog/how-to-get-a-local-columbus-phone-number.webp)
+![Step-by-step icons for signing up with a virtual phone provider to activate a Columbus number](/images/blog/how-to-get-a-local-columbus-phone-number.webp)
 
 Getting a Columbus-area number is easier than most firms think. Virtual phone providers let you get a **380 area code** number with no old-style carrier deal. You need no physical gear. You don't even need a real Ohio address.
 

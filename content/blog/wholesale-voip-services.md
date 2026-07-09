@@ -24,6 +24,7 @@ author: "Shahid Kathawala"
 publishDate: "2026-03-26"
 readingTime: "13 min"
 featuredImage: "/images/blog/wholesale-voip-hero.webp"
+featuredImageAlt: "Carrier network diagram showing bulk voice termination, origination, and SIP trunks"
 ---
 
 # Wholesale VoIP Services: The Complete 2026 Business Guide

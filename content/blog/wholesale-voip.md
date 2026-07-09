@@ -24,6 +24,7 @@ author: "Shahid Kathawala"
 publishDate: "2026-03-26"
 readingTime: "11 min"
 featuredImage: "/images/blog/wholesale voip hero new.webp"
+featuredImageAlt: "Global carrier network powering bulk business voice calls across many countries"
 ---
 
 # Wholesale VoIP: The Complete Guide to Benefits, Features, and Business Outcomes

@@ -22,6 +22,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-04-24"
 readingTime: "11 min"
 featuredImage: "/images/blog/213-area-code.webp"
+featuredImageAlt: "Downtown Los Angeles skyline graphic representing the neighborhoods served by the 213 prefix"
 ---
 
 # 213 Area Code: The Complete Guide to Downtown Los Angeles's Original Prefix

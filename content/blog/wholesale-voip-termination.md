@@ -24,6 +24,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-07-19"
 readingTime: "13 min"
 featuredImage: "/images/blog/Wholesale VoIP Termination hero.webp"
+featuredImageAlt: "Outbound calls being handed off between carrier networks to reach the final recipient"
 ---
 
 # Wholesale VoIP Termination: How It Works & Why It Matters

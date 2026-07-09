@@ -21,6 +21,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-04-25"
 readingTime: "7 min"
 featuredImage: "/images/blog/626-hero.webp"
+featuredImageAlt: "San Gabriel Valley skyline and Pasadena landmarks tied to the 626 prefix"
 ---
 
 # 626 Area Code in California: Location, Calling Info & How to Get Yours
@@ -54,7 +55,7 @@ Other cities include: Azusa, Baldwin Park, Covina, Duarte, Irwindale, La Puente,
 
 The population grew fast. The need for phone numbers grew with it. Soon, the original 626 area code began running out of number combinations. So planners added an overlay code. This solved the problem without splitting the region into two zones again.
 
-![Understanding the 626 and 840 Overlay System](/images/blog/626-image-1.webp)
+![Diagram comparing the 626 and 840 overlay codes across the San Gabriel Valley](/images/blog/626-image-1.webp)
 
 - **626:** Created in 1997 from a split of the 818 area code.
 - **840:** Added in 2021 as an overlay. It covers the exact same area as 626.
@@ -93,7 +94,7 @@ Knowing the Pacific Time Zone helps you plan calls well. It also helps you reach
 
 Getting your 626 phone number is easy.
 
-![How to Obtain a 626 Phone Number with rozper](/images/blog/626-image-3.webp)
+![Screenshot-style walkthrough of signing up for a Rozper 626 phone number](/images/blog/626-image-3.webp)
 
 1. **Visit the Rozper Pricing Page:** Look at the pricing plans Rozper offers for different business sizes and call volumes.
 2. **Select Your Plan:** Pick a package with the features and capacity you need.

@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-04-26"
 readingTime: "11 min"
 featuredImage: "/images/blog/424-area-code.webp"
+featuredImageAlt: "Beverly Hills and Santa Monica coastline representing the LA Westside 424 area code region"
 ---
 
 # 424 Area Code: Complete Guide to Los Angeles's Westside Prefix

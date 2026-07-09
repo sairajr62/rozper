@@ -21,6 +21,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-06-05"
 readingTime: "8 min"
 featuredImage: "/images/blog/951-area-code.webp"
+featuredImageAlt: "Riverside skyline representing the 951 area code business phone number region in the Inland Empire"
 ---
 
 # 951 Area Code: A Complete Guide to California's Inland Empire

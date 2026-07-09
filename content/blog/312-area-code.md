@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-21"
 readingTime: "11 min"
 featuredImage: "/images/blog/312-area-code.webp"
+featuredImageAlt: "Illustrated cover graphic for the 312 area code guide covering downtown Chicago and The Loop"
 ---
 
 # 312 Area Code: The Complete Guide to Chicago's Most Iconic Prefix

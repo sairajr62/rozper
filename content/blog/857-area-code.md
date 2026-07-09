@@ -20,6 +20,7 @@ seoTitle: "857 Area Code Guide: Boston's Local Phone Number Prefix"
 seoDescription: "Discover where the 857 area code covers, how it overlays 617 in Boston, why ten-digit dialing is required, and how to get a local 857 number for your business."
 author: "Shahid Kathawala"
 featuredImage: "/images/blog/857-hero.webp"
+featuredImageAlt: "Boston skyline graphic representing the local 857 phone prefix across Greater Boston"
 featuredImageFit: "cover"
 ---
 
@@ -29,13 +30,13 @@ If a Boston number flashes on your screen, there is a good chance it starts with
 
 ## Where the 857 Area Code Covers
 
-![Where the 857 Area Code Covers](/images/blog/where-the-857-area-code-covers.webp)
+![Map of Greater Boston highlighting Cambridge, Brookline, Newton, and Quincy within the 857 coverage area](/images/blog/where-the-857-area-code-covers.webp)
 
 The 857 area code serves Boston and the dense ring of towns around it. That list includes Cambridge, Brookline, Newton, Quincy, Somerville, Chelsea, Everett, and Belmont. It spans parts of Suffolk, Middlesex, and Norfolk counties, and it sits in the Eastern Time zone. A toll-free prefix floats across the whole country. This one does not. It stays tied to this corner of eastern Massachusetts. That is exactly why a number with this prefix reads as truly local to anyone in greater Boston.
 
 ## How 857 Overlays the 617 Area Code
 
-![How 857 Overlays the 617 Area Code](/images/blog/how-857-overlays-the-617-area-code.webp)
+![Diagram showing the 857 prefix layered on top of the original 617 territory across Boston](/images/blog/how-857-overlays-the-617-area-code.webp)
 
 The 857 area code does not replace anything. It shares the same map as the older 617 code. Phone planners call this setup an overlay. Both codes cover the same cities. So two neighbors on the same street can hold numbers with different prefixes. If you want the companion view, our guide to the [617 area code](https://www.rozper.com/blog/617-area-code/) walks through the original Boston prefix in detail. Why the overlay? Demand for new numbers in Boston grew faster than 617 alone could supply. This same pattern has played out in busy metro areas across the country.
 
@@ -45,13 +46,13 @@ A local Boston line is not the only path. Maybe your customers are spread across
 
 ## A Quick History of the 857 Area Code
 
-![A Quick History of the 857 Area Code](/images/blog/a-quick-history-of-the-857-area-code.webp)
+![Timeline graphic marking the May 2001 launch of the 857 overlay in Massachusetts](/images/blog/a-quick-history-of-the-857-area-code.webp)
 
 Boston ran on a single prefix for decades. Then the city's growing hunger for phone numbers forced a change. On May 2, 2001, the 857 prefix was laid on top of 617. This made it the first overlay in Massachusetts, and one of the early examples of the approach in New England. The [FCC's consumer dialing guide](https://www.fcc.gov/consumers/guides/ten-digit-dialing) explains how overlay codes like 857 get introduced, and why ten-digit dialing then becomes mandatory. The takeaway is simple. The 857 code was created to add capacity without redrawing the map. Longtime 617 holders kept their numbers. New lines simply drew from the fresh prefix.
 
 ## Why Ten-Digit Dialing Is the Norm
 
-![Why Ten-Digit Dialing Is the Norm](/images/blog/why-ten-digit-dialing-is-the-norm.webp)
+![Illustration of a phone keypad emphasizing the full ten-digit number required across the 617/857 overlay](/images/blog/why-ten-digit-dialing-is-the-norm.webp)
 
 Two prefixes share one region. So you cannot assume a local call lives on 617 or 857. That is why ten-digit dialing has been required across the overlay since it launched. That means you dial the full area code plus the seven-digit number. For callers it is a small habit. For businesses it barely matters, since customers almost always tap a saved contact or click a number on a website instead of typing it by hand. The practical effect is simple. Every number in the region gets dialed in full, no matter which prefix it uses.
 

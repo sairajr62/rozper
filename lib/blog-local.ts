@@ -370,7 +370,7 @@ function fileToPost(filename: string): BlogPostDetail | null {
         initials: initialsFromName(authorName),
       },
       featuredImage: data.featuredImage
-        ? { src: resolveBlobUrl(data.featuredImage), alt: data.featuredImageAlt ?? title }
+        ? { src: resolveBlobUrl(data.featuredImage), alt: data.featuredImageAlt ?? `Cover image for "${title}"` }
         : undefined,
       featuredImageFit: data.featuredImageFit ?? "cover",
       featuredImagePosition: data.featuredImagePosition,

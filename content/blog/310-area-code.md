@@ -23,6 +23,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-05-01"
 readingTime: "11 min"
 featuredImage: "/images/blog/310-area-code.webp"
+featuredImageAlt: "Illustrated cover graphic for the 310 area code guide covering LA's Westside and South Bay"
 ---
 
 # 310 Area Code: Complete Guide to Los Angeles's Iconic Prefix

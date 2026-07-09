@@ -22,6 +22,7 @@ author: "Shahid Kathawala"
 publishDate: "2026-05-16"
 readingTime: "7 min"
 featuredImage: "/images/blog/646-hero.webp"
+featuredImageAlt: "Manhattan skyline and financial district associated with the 646 overlay code"
 featuredImageFit: "cover"
 ---
 
@@ -35,7 +36,7 @@ Manhattan runs on connections. These are financial, commercial, and personal. Th
 
 ## What Is the 646 Area Code?
 
-![What Is the 646 Area Code](/images/blog/What Is the 646 Area Code.webp)
+![Graphic explaining Manhattan's overlay launch alongside the original 212 code](/images/blog/What Is the 646 Area Code.webp)
 
 The **646 area code** is a telephone area code in the North American Numbering Plan (NANP). It is assigned only to the borough of Manhattan, New York City. It works as an overlay code, sharing Manhattan's ground with the older 212 code instead of splitting the area in two. It launched in 1999. Demand from landlines, mobile phones, and business lines had outgrown the 212 supply. **Area code 646** grew the pool of Manhattan numbers to meet that demand.
 
@@ -45,7 +46,7 @@ Today, Manhattan runs four active codes at once: 212, 646, 332, and 917. All fou
 
 ## Geographic Coverage: Where Manhattan Connects
 
-![Geographic Coverage Where Manhattan Connects](/images/blog/Geographic Coverage Where Manhattan Connects.webp)
+![Map of Manhattan neighborhoods reachable through this overlay prefix](/images/blog/Geographic Coverage Where Manhattan Connects.webp)
 
 The **646 area code** covers just one place: the borough of Manhattan, part of New York County in New York City. That area runs from the Financial District and Battery Park in the south, up to Inwood and Washington Heights in the north. It includes Midtown, the Upper East Side, the Upper West Side, Harlem, Chelsea, SoHo, and Tribeca.
 
@@ -55,7 +56,7 @@ About 1.6 million people live in Manhattan. Millions more commuters, tourists, a
 
 ## Manhattan's Four Overlay Codes Compared
 
-![Manhattan's Four Overlay Codes Compared](/images/blog/Manhattan's Four Overlay Codes Compared.webp)
+![Comparison table of Manhattan's 212, 917, 646, and 332 area codes](/images/blog/Manhattan's Four Overlay Codes Compared.webp)
 
 Manhattan is one of the few places in the US where four active area codes share the same ground. Knowing how the **646 area code** fits into that structure helps businesses and callers use New York City's phone network the right way.
 
@@ -72,7 +73,7 @@ The 212 code carries the strongest history. It has served New York since the NAN
 
 ## A Brief Timeline of Manhattan Area Codes
 
-![A Brief Timeline of Manhattan Area Codes](/images/blog/A Brief Timeline of Manhattan Area Codes.webp)
+![Timeline graphic of Manhattan's area code history from 1947 to 2017](/images/blog/A Brief Timeline of Manhattan Area Codes.webp)
 
 The **646 area code** was born out of need. Manhattan's phone network faced huge demand through the 1990s. Fax machines, early cell networks, corporate lines, and new internet-era businesses pushed demand far past what the 212 code alone could handle.
 

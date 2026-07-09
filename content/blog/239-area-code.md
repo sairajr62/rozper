@@ -21,6 +21,7 @@ author: "Shahid Kathawala"
 publishDate: "2025-06-07"
 readingTime: "8 min"
 featuredImage: "/images/blog/239-area-code.webp"
+featuredImageAlt: "Illustration of Fort Myers, Naples, and Cape Coral along Southwest Florida's Gulf Coast covered by the 239 prefix"
 ---
 
 # 239 Area Code: The Complete Guide to Southwest Florida's Local Number
