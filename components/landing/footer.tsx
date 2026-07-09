@@ -252,10 +252,10 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4">
             {/* Left group: copyright + status */}
-            <div className="flex flex-col xs:flex-row flex-wrap items-start xs:items-center gap-x-3 gap-y-1.5 text-[10px] sm:text-[11px] font-mono uppercase tracking-wider sm:tracking-widest text-white/40 min-w-0">
+            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-x-3 gap-y-1.5 text-[10px] sm:text-[11px] font-mono uppercase tracking-wider sm:tracking-widest text-white/40 min-w-0">
               <span className="shrink-0">© 2026 Rozper, Inc.</span>
-              {/* Fix #3: Show separator only at md+ where layout is guaranteed horizontal */}
-              <span className="hidden md:inline shrink-0">·</span>
+              {/* Show separator only once the row layout above (sm:) is active, so it never appears alone on its own stacked line */}
+              <span className="hidden sm:inline shrink-0">·</span>
               <a
                 href="/status/"
                 className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-white transition-colors shrink-0"
