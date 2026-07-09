@@ -54,7 +54,11 @@ function unquote(s: string): string {
   return s.replace(/^["']|["']$/g, "")
 }
 
-function parseFM(raw: string): { data: FM; body: string } {
+function parseFM(rawInput: string): { data: FM; body: string } {
+  // Strip a leading UTF-8 BOM (some markdown files were saved with one) —
+  // otherwise startsWith("---") silently fails and the whole frontmatter,
+  // including seoTitle/seoDescription, gets discarded.
+  const raw = rawInput.replace(/^﻿/, "")
   if (!raw.startsWith("---")) return { data: {}, body: raw }
   const end = raw.indexOf("\n---", 3)
   if (end === -1) return { data: {}, body: raw }
@@ -117,6 +121,48 @@ function extractState(tags: string[]): string {
     if (STATE_NAMES.has(tag)) return tag
   }
   return ""
+}
+
+// Display-only overrides for state names that are too long for the meta
+// templates below to fit in the 50-60 / 150-160 char targets.
+const STATE_DISPLAY_OVERRIDES: Record<string, string> = {
+  "District of Columbia": "Washington D.C.",
+}
+
+// Composes distinct area-code-page meta from code + state, rather than
+// reusing the markdown's seoTitle/seoDescription (which were written for
+// the /blog/[slug] post and would otherwise duplicate it verbatim on
+// /area-codes/[state]/[code] — see audit report #3, findings 1-2).
+function composeAreaCodeMeta(code: string, state: string): { seoTitle: string; seoDescription: string } {
+  const displayState = STATE_DISPLAY_OVERRIDES[state] ?? state
+
+  const titleCandidates = displayState
+    ? [
+        `${code} Area Code: ${displayState} Virtual Numbers | Rozper`,
+        `${code} Area Code: Get a ${displayState} Virtual Number | Rozper`,
+        `${code} Area Code: Get Your Local ${displayState} Virtual Number | Rozper`,
+        `${code} Area Code: ${displayState} Virtual Numbers`,
+      ]
+    : [`${code} Area Code Virtual Phone Number | Rozper`]
+  const seoTitle =
+    titleCandidates.find((c) => c.length >= 50 && c.length <= 60) ??
+    titleCandidates[titleCandidates.length - 1]!
+
+  const descCandidates = displayState
+    ? [
+        `Get a local ${code} area code virtual phone number for ${displayState} businesses. Activate in minutes, build local presence, and route calls anywhere with 99.999% uptime.`,
+        `Get a local ${code} area code virtual phone number for your ${displayState} business. Build local presence, activate in minutes, and route calls anywhere with 99.999% uptime.`,
+        `Get a local ${code} area code virtual phone number for ${displayState}. Activate in minutes, build local presence, and route calls anywhere with 99.999% uptime.`,
+        `Get a local ${code} area code virtual phone number for ${displayState}. Activate in minutes and route calls anywhere with 99.999% uptime — no office required.`,
+      ]
+    : [
+        `Get a local ${code} area code virtual phone number for your business. Activate in minutes, build local presence, and route calls anywhere with 99.999% uptime.`,
+      ]
+  const seoDescription =
+    descCandidates.find((c) => c.length >= 150 && c.length <= 160) ??
+    descCandidates[descCandidates.length - 1]!
+
+  return { seoTitle, seoDescription }
 }
 
 function extractBulletList(body: string, keyword: string): string[] {
@@ -220,6 +266,8 @@ function loadFile(filename: string): AreaCodeData | null {
     const title = String(data.title ?? "")
     const tags = (data.tags as string[]) ?? []
     const state = extractState(tags)
+    const resolvedState = state || CODE_TO_STATE[code] || ""
+    const { seoTitle, seoDescription } = composeAreaCodeMeta(code, resolvedState)
 
     return {
       code,
@@ -227,10 +275,10 @@ function loadFile(filename: string): AreaCodeData | null {
       title,
       city: extractCity(title),
       state,
-      stateSlug: stateToSlug(state || CODE_TO_STATE[code] || ""),
+      stateSlug: stateToSlug(resolvedState),
       excerpt: String(data.excerpt ?? ""),
-      seoTitle: String(data.seoTitle ?? title),
-      seoDescription: String(data.seoDescription ?? data.excerpt ?? ""),
+      seoTitle,
+      seoDescription,
       cities: extractBulletList(body, "Cities covered"),
       counties: extractBulletList(body, "Counties covered"),
       overlays: extractOverlays(body, code),
@@ -275,6 +323,8 @@ function generateAreaCodeData(code: string): AreaCodeData {
     },
   ]
 
+  const { seoTitle, seoDescription } = composeAreaCodeMeta(code, state)
+
   return {
     code,
     slug: `${code}-area-code`,
@@ -283,8 +333,8 @@ function generateAreaCodeData(code: string): AreaCodeData {
     state,
     stateSlug: sSlug,
     excerpt,
-    seoTitle: `${code} Area Code Virtual Phone Numbers | Rozper`,
-    seoDescription: excerpt,
+    seoTitle,
+    seoDescription,
     cities: [],
     counties: [],
     overlays: [],
