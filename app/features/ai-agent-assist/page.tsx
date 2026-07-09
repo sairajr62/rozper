@@ -3,11 +3,11 @@ import { FeatAIAgentAssistPageView } from '@/components/features/ai-agent-assist
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'AI Agent Assist · Live Whisper Coaching for Every Call | Rozper',
-  description: 'AI whispers answers, surfaces articles, and scores calls live. Faster resolution. Better agents. rozper.com.',
+  title: 'AI Agent Assist · Live Whisper Coaching for Agents | Rozper',
+  description: 'AI whispers answers, surfaces articles, and scores calls live so agents resolve issues faster, ramp quicker, and sound more confident on every single call.',
   openGraph: {
-    title: 'AI Agent Assist · Live Whisper Coaching for Every Call | Rozper',
-    description: 'AI whispers answers, surfaces articles, and scores calls live. Faster resolution. Better agents.',
+    title: 'AI Agent Assist · Live Whisper Coaching for Agents | Rozper',
+    description: 'AI whispers answers, surfaces articles, and scores calls live so agents resolve issues faster, ramp quicker, and sound more confident on every single call.',
     type: 'website',
     url: `${SITE_URL}/features/ai-agent-assist/`,
   },

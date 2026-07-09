@@ -10,13 +10,13 @@ import { StatusSubscribe } from "@/components/status/subscribe"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Platform Status · Uptime & Incidents | Rozper",
+  title: "Rozper Platform Status · Live Uptime & Incidents | Rozper",
   description:
-    "Real-time status for Rozper voice, messaging, AI, and APIs. Monitored across 14 regions with 90 days of incident history.",
+    "Real-time status for Rozper voice, messaging, AI, and APIs. Monitored across 14 global regions with 90 days of incident history and subscriber email alerts.",
   openGraph: {
-    title: "Platform Status · Uptime & Incidents | Rozper",
+    title: "Rozper Platform Status · Live Uptime & Incidents | Rozper",
     description:
-      "Real-time status for Rozper voice, messaging, AI, and APIs. Monitored across 14 regions with 90 days of incident history.",
+      "Real-time status for Rozper voice, messaging, AI, and APIs. Monitored across 14 global regions with 90 days of incident history and subscriber email alerts.",
     type: "website",
     url: `${SITE_URL}/status/`,
     siteName: "Rozper",

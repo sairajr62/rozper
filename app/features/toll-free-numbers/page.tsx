@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Toll-Free Numbers · 800, 888, 877 & International | Rozper',
-  description: 'Instant toll-free number provisioning in 150+ countries. USA 800/888/877 and international freephone.',
+  description: 'Instant toll-free number provisioning in 150+ countries. USA 800, 888, and 877 numbers plus international freephone options, routed to any destination.',
   openGraph: {
     title: 'Toll-Free Numbers · 800, 888, 877 & International | Rozper',
-    description: 'Instant toll-free number provisioning in 150+ countries. USA 800/888/877 and international freephone.',
+    description: 'Instant toll-free number provisioning in 150+ countries. USA 800, 888, and 877 numbers plus international freephone options, routed to any destination.',
     type: 'website',
     url: `${SITE_URL}/features/toll-free-numbers/`,
     siteName: 'Rozper',

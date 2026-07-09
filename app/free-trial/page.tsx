@@ -3,8 +3,8 @@ import { FreeTrialPageView } from "@/components/auth/free-trial-page"
 import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Start Your Free Trial | Rozper",
-  description: "Get 14 days of free access to Rozper — calls, video meetings, team chat, SMS and AI transcription. No credit card required.",
+  title: "Start Your Free 14-Day Rozper Trial Today | Rozper",
+  description: "Get 14 days of free access to Rozper — calls, video meetings, team chat, SMS, and AI transcription tools. No credit card required, cancel anytime today.",
   alternates: { canonical: `${SITE_URL}/free-trial/` },
   openGraph: {
     title: "Start Your Free 14-Day Trial | Rozper",

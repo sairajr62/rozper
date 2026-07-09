@@ -3,11 +3,11 @@ import { FeatCallRecordingPageView } from '@/components/features/call-recording'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Call Recording · AI Search & Compliance | Rozper',
-  description: 'Record every call with AI transcription, keyword search, and configurable retention. GDPR and HIPAA options.',
+  title: 'Call Recording · AI Search & Compliance Tools | Rozper',
+  description: 'Record every call with AI transcription, keyword search, and configurable retention policies, plus GDPR and HIPAA compliance options for regulated teams.',
   openGraph: {
-    title: 'Call Recording · AI Search & Compliance | Rozper',
-    description: 'Record every call with AI transcription, keyword search, and configurable retention. GDPR and HIPAA options.',
+    title: 'Call Recording · AI Search & Compliance Tools | Rozper',
+    description: 'Record every call with AI transcription, keyword search, and configurable retention policies, plus GDPR and HIPAA compliance options for regulated teams.',
     type: 'website',
     url: `${SITE_URL}/features/call-recording/`,
     siteName: 'Rozper',

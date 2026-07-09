@@ -3,11 +3,11 @@ import { EnterpriseITPageView } from '@/components/solutions/enterprise-it'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Enterprise UCaaS · SSO, SCIM, Multi-site | Rozper',
-  description: 'Enterprise phone and contact center with SSO, SCIM, multi-site, custom SLAs, and GDPR/HIPAA compliance.',
+  title: 'Enterprise UCaaS · SSO, SCIM & Multi-Site Support | Rozper',
+  description: 'Enterprise phone and contact center platform with SSO, SCIM provisioning, multi-site management, custom SLAs, and GDPR/HIPAA compliance for enterprise IT teams.',
   openGraph: {
-    title: 'Enterprise UCaaS · SSO, SCIM, Multi-site | Rozper',
-    description: 'Enterprise phone and contact center with SSO, SCIM, multi-site, custom SLAs, and GDPR/HIPAA compliance.',
+    title: 'Enterprise UCaaS · SSO, SCIM & Multi-Site Support | Rozper',
+    description: 'Enterprise phone and contact center platform with SSO, SCIM provisioning, multi-site management, custom SLAs, and GDPR/HIPAA compliance for enterprise IT teams.',
     type: 'website',
     url: `${SITE_URL}/solutions/enterprise-ucaas/`,
     siteName: 'Rozper',

@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Online Fax · Digital Fax for Business Teams | Rozper',
-  description: 'Send and receive faxes from your browser, mobile, or email — in 150+ countries. Digital fax, no machine, no desk.',
+  description: 'Send and receive faxes from your browser, mobile device, or email — available in 150+ countries. Digital fax with no machine, no dedicated phone line.',
   openGraph: {
     title: 'Online Fax · Digital Fax for Business Teams | Rozper',
-    description: 'Send and receive faxes from your browser, mobile, or email — in 150+ countries.',
+    description: 'Send and receive faxes from your browser, mobile device, or email — available in 150+ countries. Digital fax with no machine, no dedicated phone line.',
     type: 'website',
     url: `${SITE_URL}/products/unified-communications/online-fax/`,
     siteName: 'Rozper',

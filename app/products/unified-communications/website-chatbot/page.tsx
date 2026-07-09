@@ -3,11 +3,11 @@ import { ProdUCaaSWebsiteChatbotPageView } from '@/components/products/unified-c
 import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Website Chatbot · Engage Visitors 24/7 | Rozper',
-  description: 'AI chatbot that captures leads, books meetings, and hands off to live agents — one-line embed. Engage visitors 24/7.',
+  title: 'Website Chatbot · Engage Every Visitor 24/7 | Rozper',
+  description: 'AI chatbot that captures leads, books meetings, and hands off to live agents with a simple one-line embed. Engage every website visitor 24 hours a day.',
   openGraph: {
-    title: 'Website Chatbot · Engage Visitors 24/7 | Rozper',
-    description: 'AI chatbot that captures leads, books meetings, and hands off to live agents — one-line embed.',
+    title: 'Website Chatbot · Engage Every Visitor 24/7 | Rozper',
+    description: 'AI chatbot that captures leads, books meetings, and hands off to live agents with a simple one-line embed. Engage every website visitor 24 hours a day.',
     type: 'website',
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/website-chatbot/` },

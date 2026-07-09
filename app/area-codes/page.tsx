@@ -6,13 +6,13 @@ import { getAllAreaCodes } from "@/lib/area-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "U.S. Area Code Virtual Phone Numbers | Rozper",
+  title: "U.S. Area Code Virtual Phone Numbers for Every City | Rozper",
   description:
     "Get a virtual phone number for any U.S. area code — New York 212, Los Angeles 310, Chicago 312, Miami 305, and 300+ more. Instant setup, 99.99% uptime.",
   keywords: "area code virtual numbers, local phone numbers, virtual phone numbers USA, US area codes, business phone number, area code lookup",
   alternates: { canonical: `${SITE_URL}/area-codes/` },
   openGraph: {
-    title: "U.S. Area Code Virtual Phone Numbers | Rozper",
+    title: "U.S. Area Code Virtual Phone Numbers for Every City | Rozper",
     description: "Instant local presence in any U.S. market. Virtual numbers for 300+ area codes across all 50 states.",
     type: "website",
     url: `${SITE_URL}/area-codes/`,

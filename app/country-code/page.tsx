@@ -4,7 +4,7 @@ import { CountryCodeHubClient } from "./_client"
 
 const TITLE = "International Country Codes & Virtual Phone Numbers | Rozper"
 const DESCRIPTION =
-  "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed."
+  "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed, cancel anytime."
 const PAGE_URL = `${SITE_URL}/country-code/`
 const OG_IMAGE = `${SITE_URL}/images/blog/Main_2672x941.webp`
 

@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Hosted Phone System · Extensions, Hunt Groups, IVR | Rozper',
-  description: 'Extensions, hunt groups, IVR, and dial plans — hosted on a carrier-grade network. Enterprise phone features, zero hardware.',
+  description: 'Extensions, hunt groups, IVR, and custom dial plans — hosted on a carrier-grade network. Enterprise phone features delivered with zero on-site hardware.',
   openGraph: {
     title: 'Hosted Phone System · Extensions, Hunt Groups, IVR | Rozper',
-    description: 'Extensions, hunt groups, IVR, and dial plans — hosted on a carrier-grade network.',
+    description: 'Extensions, hunt groups, IVR, and custom dial plans — hosted on a carrier-grade network. Enterprise phone features delivered with zero on-site hardware.',
     type: 'website',
     url: `${SITE_URL}/products/unified-communications/hosted-phone-system/`,
     siteName: 'Rozper',

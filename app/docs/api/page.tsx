@@ -10,13 +10,13 @@ import { ApiChangelog } from "@/components/api/changelog"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "API Reference · REST & WebSocket Docs | Rozper",
+  title: "API Reference · Rozper REST & WebSocket Docs | Rozper",
   description:
-    "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
+    "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages for developers.",
   openGraph: {
-    title: "API Reference · REST & WebSocket Docs | Rozper",
+    title: "API Reference · Rozper REST & WebSocket Docs | Rozper",
     description:
-      "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
+      "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages for developers.",
     type: "website",
     url: `${SITE_URL}/docs/api/`,
     siteName: "Rozper",
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/docs/api/opengraph-image/`,
         width: 1200,
         height: 630,
-        alt: "API Reference · REST & WebSocket Docs | Rozper",
+        alt: "API Reference · Rozper REST & WebSocket Docs | Rozper",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "API Reference · REST & WebSocket Docs | Rozper",
+    title: "API Reference · Rozper REST & WebSocket Docs | Rozper",
     description:
-      "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages.",
+      "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages for developers.",
     images: [`${SITE_URL}/docs/api/opengraph-image/`],
   },
   alternates: { canonical: `${SITE_URL}/docs/api/` },

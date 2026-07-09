@@ -3,11 +3,11 @@ import { ProdAIReceptionistPageView } from '@/components/products/ai/receptionis
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'AI Receptionist · 24/7 Call Answering | Rozper',
-  description: 'Answers calls, qualifies leads, books meetings, and writes to your CRM — around the clock. Included on every Rozper seat.',
+  title: 'AI Receptionist · 24/7 Automated Call Answering | Rozper',
+  description: 'Answers every inbound call, qualifies leads, books meetings, and writes notes to your CRM automatically — around the clock, included on every Rozper seat.',
   openGraph: {
-    title: 'AI Receptionist · 24/7 Call Answering | Rozper',
-    description: 'Answers calls, qualifies leads, books meetings, and writes to your CRM — around the clock.',
+    title: 'AI Receptionist · 24/7 Automated Call Answering | Rozper',
+    description: 'Answers every inbound call, qualifies leads, books meetings, and writes notes to your CRM automatically — around the clock, included on every Rozper seat.',
     type: 'website',
     url: `${SITE_URL}/products/ai/receptionist/`,
   },

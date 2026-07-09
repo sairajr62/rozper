@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Agent Assist · Live Coaching on Every Call | Rozper',
-  description: 'AI that whispers the right answer, surfaces knowledge, and scores quality — in real time. Live coaching on every call.',
+  description: 'AI that whispers the right answer, surfaces knowledge base articles, and scores call quality in real time — delivering live coaching on every single call.',
   openGraph: {
     title: 'AI Agent Assist · Live Coaching on Every Call | Rozper',
-    description: 'AI that whispers the right answer, surfaces knowledge, and scores quality — in real time.',
+    description: 'AI that whispers the right answer, surfaces knowledge base articles, and scores call quality in real time — delivering live coaching on every single call.',
     type: 'website',
     url: `${SITE_URL}/products/contact-center/agent-assist/`,
   },

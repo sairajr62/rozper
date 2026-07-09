@@ -3,12 +3,12 @@ import { FeatAutoAttendantPageView } from '@/components/features/auto-attendant'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Auto-Attendant & Visual IVR Builder | Rozper',
-  description: 'Multi-level auto-attendant and visual IVR builder. Route calls correctly from the first ring. No code needed. rozper.com.',
+  title: 'Auto-Attendant & Visual IVR Builder for Teams | Rozper',
+  description: 'Build a multi-level auto-attendant with a visual IVR builder. Route every caller from the first ring, with no code and no phone system expertise needed at all.',
   alternates: { canonical: `${SITE_URL}/features/auto-attendant/` },
   openGraph: {
-    title: 'Auto-Attendant & Visual IVR Builder | Rozper',
-    description: 'Multi-level auto-attendant and visual IVR builder. Route calls correctly from the first ring. No code needed.',
+    title: 'Auto-Attendant & Visual IVR Builder for Teams | Rozper',
+    description: 'Build a multi-level auto-attendant with a visual IVR builder. Route every caller from the first ring, with no code and no phone system expertise needed at all.',
     type: 'website',
     url: `${SITE_URL}/features/auto-attendant/`,
     siteName: 'Rozper',

@@ -3,11 +3,11 @@ import { ProdCCEnterprisePageView } from '@/components/products/contact-center/e
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Enterprise Contact Center · SSO, Multi-site, Custom SLAs | Rozper',
-  description: 'SSO, SCIM, multi-site routing, custom SLAs, and a dedicated success team. Enterprise contact center, your rules.',
+  title: 'Enterprise Contact Center · SSO & Custom SLAs | Rozper',
+  description: 'SSO, SCIM provisioning, multi-site routing, custom SLAs, and a dedicated success team — an enterprise contact center built to run entirely on your own rules.',
   openGraph: {
-    title: 'Enterprise Contact Center · SSO, Multi-site, Custom SLAs | Rozper',
-    description: 'SSO, SCIM, multi-site routing, custom SLAs, and a dedicated success team.',
+    title: 'Enterprise Contact Center · SSO & Custom SLAs | Rozper',
+    description: 'SSO, SCIM provisioning, multi-site routing, custom SLAs, and a dedicated success team — an enterprise contact center built to run entirely on your own rules.',
     type: 'website',
     url: `${SITE_URL}/products/contact-center/enterprise/`,
   },

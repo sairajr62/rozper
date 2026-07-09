@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Suite · Receptionist, Assistant & Analytics | Rozper',
-  description: 'Three AI tools — receptionist, assistant, and analytics — included on every Rozper seat. No extra charge for AI.',
+  description: 'Three AI tools — receptionist, assistant, and conversation analytics — included on every Rozper Business and Enterprise seat, with zero extra charge for AI.',
   openGraph: {
     title: 'AI Suite · Receptionist, Assistant & Analytics | Rozper',
-    description: 'Three AI tools — receptionist, assistant, and analytics — included on every Rozper seat.',
+    description: 'Three AI tools — receptionist, assistant, and conversation analytics — included on every Rozper Business and Enterprise seat, with zero extra charge for AI.',
     type: 'website',
     url: `${SITE_URL}/products/ai/`,
   },

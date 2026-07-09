@@ -9,14 +9,14 @@ import { ContactOffices } from "@/components/contact/offices"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Contact Sales & Support · Get in Touch | Rozper",
+  title: "Contact Rozper Sales & Support Teams · Get in Touch | Rozper",
   description:
-    "Talk to a Rozper solutions engineer in under 60 seconds. Build the right UCaaS + AI plan for your volume, regions, and integrations.",
+    "Talk to a Rozper solutions engineer in under 60 seconds. Build the right UCaaS + AI plan for your call volume, regions, integrations, and budget today.",
   alternates: { canonical: `${SITE_URL}/contact/` },
   openGraph: {
-    title: "Contact Sales & Support · Get in Touch | Rozper",
+    title: "Contact Rozper Sales & Support Teams · Get in Touch | Rozper",
     description:
-      "Talk to a Rozper solutions engineer in under 60 seconds. Build the right UCaaS + AI plan for your volume, regions, and integrations.",
+      "Talk to a Rozper solutions engineer in under 60 seconds. Build the right UCaaS + AI plan for your call volume, regions, integrations, and budget today.",
     type: "website",
     url: `${SITE_URL}/contact/`,
     siteName: "Rozper",

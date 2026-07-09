@@ -12,12 +12,12 @@ import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
 export const metadata: Metadata = {
   title: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
   description:
-    "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018 — built so every call just works.",
+    "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018, we built it so every call just works, every time, worldwide.",
   alternates: { canonical: `${SITE_URL}/about/` },
   openGraph: {
     title: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
     description:
-      "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018 — built so every call just works.",
+      "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018, we built it so every call just works, every time, worldwide.",
     url: `${SITE_URL}/about/`,
     siteName: "Rozper",
     images: [

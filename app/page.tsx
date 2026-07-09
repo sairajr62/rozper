@@ -16,14 +16,14 @@ import { Footer } from "@/components/landing/footer"
 import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
 
 export const metadata = {
-  title: "Rozper · UCaaS, Contact Center & AI for Global Teams | rozper.com",
+  title: "Rozper · UCaaS, Contact Center & AI for Global Teams",
   description:
-    "Voice, video, SMS, AI, and contact center on one carrier-grade platform. 150+ countries. 99.99% uptime. Starting at $9.99/user.",
+    "Voice, video, SMS, AI, and contact center on one carrier-grade platform covering 150+ countries with 99.99% uptime, starting at just $9.99 per user monthly.",
   alternates: { canonical: `${SITE_URL}` },
   openGraph: {
     title: "Rozper · UCaaS, Contact Center & AI for Global Teams",
     description:
-      "Voice, video, SMS, AI, and contact center on one carrier-grade platform. 150+ countries. 99.99% uptime. Starting at $9.99/user.",
+      "Voice, video, SMS, AI, and contact center on one carrier-grade platform covering 150+ countries with 99.99% uptime, starting at just $9.99 per user monthly.",
     url: `${SITE_URL}`,
     siteName: "Rozper",
     images: [

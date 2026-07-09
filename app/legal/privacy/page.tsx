@@ -8,10 +8,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 export const metadata: Metadata = {
   title: "Privacy Policy · How Rozper Protects Your Data | Rozper",
   description:
-    "How Rozper collects, uses, and protects personal information across our platform and websites.",
+    "How Rozper collects, uses, shares, and protects personal information across our platform, websites, and connected apps, and the choices you have to control it.",
   openGraph: {
     title: "Privacy Policy · How Rozper Protects Your Data | Rozper",
-    description: "How Rozper collects, uses, and protects personal information across our platform and websites.",
+    description: "How Rozper collects, uses, shares, and protects personal information across our platform, websites, and connected apps, and the choices you have to control it.",
     type: 'website',
     url: `${SITE_URL}/legal/privacy/`,
     siteName: 'Rozper',

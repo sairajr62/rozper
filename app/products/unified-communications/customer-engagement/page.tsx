@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Customer Engagement · Every Channel, One Inbox | Rozper',
-  description: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified for every agent. One inbox for all customer conversations.',
+  description: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified in one inbox for every agent. Customer engagement built for fast, seamless conversations.',
   openGraph: {
     title: 'Customer Engagement · Every Channel, One Inbox | Rozper',
-    description: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified for every agent.',
+    description: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified in one inbox for every agent. Customer engagement built for fast, seamless conversations.',
     type: 'website',
     url: `${SITE_URL}/products/unified-communications/customer-engagement/`,
   },

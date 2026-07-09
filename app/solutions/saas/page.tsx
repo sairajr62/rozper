@@ -3,11 +3,11 @@ import { SaaSPageView } from '@/components/solutions/saas'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Cloud Phone for SaaS & Tech Companies | Rozper',
-  description: 'Phone, video, and AI for fast-growing SaaS teams. CRM integration, global coverage, scales with headcount. rozper.com.',
+  title: 'Cloud Phone System for SaaS & Tech Companies | Rozper',
+  description: 'Phone, video, and AI communications for fast-growing SaaS teams, with CRM integrations, global coverage, and pricing that scales with your growing headcount.',
   openGraph: {
-    title: 'Cloud Phone for SaaS & Tech Companies | Rozper',
-    description: 'Phone, video, and AI for fast-growing SaaS teams. CRM integration, global coverage, scales with headcount.',
+    title: 'Cloud Phone System for SaaS & Tech Companies | Rozper',
+    description: 'Phone, video, and AI communications for fast-growing SaaS teams, with CRM integrations, global coverage, and pricing that scales with your growing headcount.',
     type: 'website',
     url: `${SITE_URL}/solutions/saas/`,
     siteName: 'Rozper',

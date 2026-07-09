@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Business Phone · Cloud Calling for Global Teams | Rozper',
-  description: 'Cloud phone with local numbers, smart routing, and AI — wherever your team is. Business calling built for 150+ countries.',
+  description: 'Cloud business phone with local numbers, smart call routing, and AI-powered features — built for global teams working across 150+ countries worldwide.',
   openGraph: {
     title: 'Business Phone · Cloud Calling for Global Teams | Rozper',
-    description: 'Cloud phone with local numbers, smart routing, and AI — wherever your team is.',
+    description: 'Cloud business phone with local numbers, smart call routing, and AI-powered features — built for global teams working across 150+ countries worldwide.',
     type: 'website',
     url: `${SITE_URL}/products/unified-communications/business-phone-system/`,
     siteName: 'Rozper',

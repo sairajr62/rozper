@@ -3,11 +3,11 @@ import { ProdUCaaSTeamChatPageView } from '@/components/products/unified-communi
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Team Chat · Built Into Your Phone System | Rozper',
-  description: 'Chat, share files, and start calls from one app — no extra tools. Team messaging built into your phone system.',
+  title: 'Team Chat · Built Into Your Business Phone System | Rozper',
+  description: 'Chat, share files, and start calls from one app without switching between separate tools. Team messaging built directly into your Rozper phone system.',
   openGraph: {
-    title: 'Team Chat · Built Into Your Phone System | Rozper',
-    description: 'Chat, share files, and start calls from one app — no extra tools.',
+    title: 'Team Chat · Built Into Your Business Phone System | Rozper',
+    description: 'Chat, share files, and start calls from one app without switching between separate tools. Team messaging built directly into your Rozper phone system.',
     type: 'website',
     url: `${SITE_URL}/products/unified-communications/team-chat/`,
   },

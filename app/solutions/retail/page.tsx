@@ -3,11 +3,11 @@ import { RetailPageView } from '@/components/solutions/retail'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Contact Center for Retail & eCommerce | Rozper',
-  description: 'Omnichannel support for retail and eCommerce. Voice, chat, SMS, and social — unified. Peaks covered. rozper.com.',
+  title: 'Omnichannel Contact Center for Retail & eCommerce | Rozper',
+  description: 'Omnichannel support for retail and eCommerce brands — voice, chat, SMS, and social channels unified in one platform, built to handle seasonal traffic peaks.',
   openGraph: {
-    title: 'Contact Center for Retail & eCommerce | Rozper',
-    description: 'Omnichannel support for retail and eCommerce. Voice, chat, SMS, and social — unified. Peaks covered.',
+    title: 'Omnichannel Contact Center for Retail & eCommerce | Rozper',
+    description: 'Omnichannel support for retail and eCommerce brands — voice, chat, SMS, and social channels unified in one platform, built to handle seasonal traffic peaks.',
     type: 'website',
     url: `${SITE_URL}/solutions/retail/`,
     siteName: 'Rozper',

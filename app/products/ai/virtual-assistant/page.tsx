@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'AI Virtual Assistant · Per-Seat AI for Every Agent | Rozper',
-  description: 'Live coaching, auto-summaries, and suggested replies — on every call and message. Included on every Rozper seat.',
+  description: 'Live coaching, auto-summaries, and suggested replies — on every call and message, included free on every Rozper seat with zero extra setup or per-agent fees.',
   openGraph: {
     title: 'AI Virtual Assistant · Per-Seat AI for Every Agent | Rozper',
-    description: 'Live coaching, auto-summaries, and suggested replies — on every call and message.',
+    description: 'Live coaching, auto-summaries, and suggested replies — on every call and message, included free on every Rozper seat with zero extra setup or per-agent fees.',
     type: 'website',
     url: `${SITE_URL}/products/ai/virtual-assistant/`,
     siteName: 'Rozper',

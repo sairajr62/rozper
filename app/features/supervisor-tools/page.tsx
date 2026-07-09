@@ -3,11 +3,11 @@ import { FeatSupervisorToolsPageView } from '@/components/features/supervisor-to
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Call Barge, Whisper & Monitoring | Rozper',
-  description: 'Silent monitor, whisper coaching, and barge-in on any live call. Real-time supervisor control.',
+  title: 'Call Barge, Whisper & Live Monitoring Tools | Rozper',
+  description: 'Silently monitor, whisper coaching, or barge into any live call. Give supervisors control over agent calls to boost quality and speed up new-hire ramp.',
   openGraph: {
-    title: 'Call Barge, Whisper & Monitoring | Rozper',
-    description: 'Silent monitor, whisper coaching, and barge-in on any live call. Real-time supervisor control.',
+    title: 'Call Barge, Whisper & Live Monitoring Tools | Rozper',
+    description: 'Silently monitor, whisper coaching, or barge into any live call. Give supervisors control over agent calls to boost quality and speed up new-hire ramp.',
     type: 'website',
     url: `${SITE_URL}/features/supervisor-tools/`,
     siteName: 'Rozper',

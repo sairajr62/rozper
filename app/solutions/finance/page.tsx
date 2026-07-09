@@ -3,11 +3,11 @@ import { FinancePageView } from '@/components/solutions/finance'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Contact Center for Financial Services | Rozper',
-  description: 'Compliant contact center for banks, insurance, and fintech. Call recording, PCI compliance, and regulatory controls. rozper.com.',
+  title: 'Compliant Contact Center for Financial Services | Rozper',
+  description: 'Compliant contact center for banks, insurance carriers, and fintech companies, with PCI-compliant call recording, regulatory archiving, and audit controls.',
   openGraph: {
-    title: 'Contact Center for Financial Services | Rozper',
-    description: 'Compliant contact center for banks, insurance, and fintech. Call recording, PCI compliance, and regulatory controls.',
+    title: 'Compliant Contact Center for Financial Services | Rozper',
+    description: 'Compliant contact center for banks, insurance carriers, and fintech companies, with PCI-compliant call recording, regulatory archiving, and audit controls.',
     type: 'website',
     url: `${SITE_URL}/solutions/finance/`,
     siteName: 'Rozper',

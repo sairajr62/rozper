@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Rozper for Zoho · Phone & CRM Integration | Rozper',
-  description: 'Connect Rozper to Zoho CRM. Click-to-call, auto-logging, AI summaries, and contact pop. No manual entry.',
+  description: 'Connect Rozper to Zoho CRM. Click-to-call, auto-logging, AI summaries, and contact pop keep sales and support teams working from one accurate record every time.',
   openGraph: {
     title: 'Rozper for Zoho · Phone & CRM Integration | Rozper',
-    description: 'Connect Rozper to Zoho CRM. Click-to-call, auto-logging, AI summaries, and contact pop. No manual entry.',
+    description: 'Connect Rozper to Zoho CRM. Click-to-call, auto-logging, AI summaries, and contact pop keep sales and support teams working from one accurate record every time.',
     type: 'website',
     url: `${SITE_URL}/integrations/zoho/`,
     siteName: 'Rozper',

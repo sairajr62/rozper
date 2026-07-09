@@ -3,11 +3,11 @@ import { ProdAIConversationPageView } from '@/components/products/ai/conversatio
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Conversation Analytics · Transcripts, Sentiment & Intent | Rozper',
-  description: 'Transcripts, sentiment, intent, and keyword trends — on 100% of conversations. Included on every Rozper seat.',
+  title: 'Conversation Analytics · Transcripts & Sentiment | Rozper',
+  description: 'Transcripts, sentiment scoring, intent detection, and keyword trend tracking — on 100% of conversations, included free on every Rozper seat with no extra fees.',
   openGraph: {
-    title: 'Conversation Analytics · Transcripts, Sentiment & Intent | Rozper',
-    description: 'Transcripts, sentiment, intent, and keyword trends — on 100% of conversations.',
+    title: 'Conversation Analytics · Transcripts & Sentiment | Rozper',
+    description: 'Transcripts, sentiment scoring, intent detection, and keyword trend tracking — on 100% of conversations, included free on every Rozper seat with no extra fees.',
     type: 'website',
     url: `${SITE_URL}/products/ai/conversation-analytics/`,
     siteName: 'Rozper',

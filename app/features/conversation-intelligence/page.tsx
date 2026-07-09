@@ -3,11 +3,11 @@ import { FeatConversationIntelligencePageView } from '@/components/features/conv
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Conversation Intelligence · Searchable Call Insights | Rozper',
-  description: 'Every conversation transcribed, analyzed, and searchable. Competitor mentions, deal risks, coaching moments — all surfaced. rozper.com.',
+  title: 'Conversation Intelligence · Searchable Insights | Rozper',
+  description: 'Every conversation transcribed, analyzed, and made searchable. Competitor mentions, deal risks, and coaching moments are all surfaced for your whole team.',
   openGraph: {
-    title: 'Conversation Intelligence · Searchable Call Insights | Rozper',
-    description: 'Every conversation transcribed, analyzed, and searchable. Competitor mentions, deal risks, coaching moments — all surfaced.',
+    title: 'Conversation Intelligence · Searchable Insights | Rozper',
+    description: 'Every conversation transcribed, analyzed, and made searchable. Competitor mentions, deal risks, and coaching moments are all surfaced for your whole team.',
     type: 'website',
     url: `${SITE_URL}/features/conversation-intelligence/`,
   },

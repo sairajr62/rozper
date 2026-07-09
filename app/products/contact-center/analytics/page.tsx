@@ -3,11 +3,11 @@ import { ProdCCAnalyticsPageView } from '@/components/products/contact-center/an
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
-  description: 'Transcripts, sentiment, intent, and quality scores — on 100% of interactions. Every conversation analyzed, instantly.',
+  title: 'Interaction Analytics · Transcripts & Sentiment | Rozper',
+  description: 'Transcripts, sentiment scoring, intent detection, and quality scores — on 100% of interactions, with every conversation analyzed instantly and automatically.',
   openGraph: {
-    title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
-    description: 'Transcripts, sentiment, intent, and quality scores — on 100% of interactions.',
+    title: 'Interaction Analytics · Transcripts & Sentiment | Rozper',
+    description: 'Transcripts, sentiment scoring, intent detection, and quality scores — on 100% of interactions, with every conversation analyzed instantly and automatically.',
     type: 'website',
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/analytics/` },

@@ -15,11 +15,11 @@ import {
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata = {
-  title: 'Phone System for Remote Teams | Rozper',
-  description: 'Cloud calling, video, chat, and AI for distributed teams. Works from any device, any country. 150+ countries. rozper.com.',
+  title: 'Cloud Phone System for Remote & Distributed Teams | Rozper',
+  description: 'Cloud calling, video, chat, and AI tools for distributed and remote teams — works from any device, in any country, across more than 150 countries worldwide.',
   openGraph: {
-    title: 'Phone System for Remote Teams | Rozper',
-    description: 'Cloud calling, video, chat, and AI for distributed teams. Works from any device, any country. 150+ countries.',
+    title: 'Cloud Phone System for Remote & Distributed Teams | Rozper',
+    description: 'Cloud calling, video, chat, and AI tools for distributed and remote teams — works from any device, in any country, across more than 150 countries worldwide.',
     type: 'website',
     url: `${SITE_URL}/solutions/remote-teams/`,
     siteName: 'Rozper',

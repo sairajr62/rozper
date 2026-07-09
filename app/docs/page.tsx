@@ -10,14 +10,14 @@ import { DocsCommunity } from "@/components/docs/community"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Documentation · Build with Rozper",
+  title: "Developer Documentation · Build with Rozper | Rozper",
   description:
-    "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform.",
+    "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform, plus code samples and webhooks.",
   alternates: { canonical: `${SITE_URL}/docs/` },
   openGraph: {
-    title: "Documentation · Build with Rozper",
+    title: "Developer Documentation · Build with Rozper | Rozper",
     description:
-      "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform.",
+      "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform, plus code samples and webhooks.",
     type: "website",
     url: `${SITE_URL}/docs/`,
     siteName: "Rozper",

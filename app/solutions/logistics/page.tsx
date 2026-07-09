@@ -3,11 +3,11 @@ import { LogisticsPageView } from '@/components/solutions/logistics'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Phone System for Logistics & Dispatch | Rozper',
-  description: 'Dispatch communications, driver calls, customer updates, and coordination tools for logistics teams. rozper.com.',
+  title: 'Cloud Phone System for Logistics & Dispatch | Rozper',
+  description: 'Dispatch communications, driver calls, customer SMS updates, and real-time coordination tools built for logistics, fleet, and field operations teams worldwide.',
   openGraph: {
-    title: 'Phone System for Logistics & Dispatch | Rozper',
-    description: 'Dispatch communications, driver calls, customer updates, and coordination tools for logistics teams.',
+    title: 'Cloud Phone System for Logistics & Dispatch | Rozper',
+    description: 'Dispatch communications, driver calls, customer SMS updates, and real-time coordination tools built for logistics, fleet, and field operations teams worldwide.',
     type: 'website',
     url: `${SITE_URL}/solutions/logistics/`,
     siteName: 'Rozper',

@@ -3,11 +3,11 @@ import { UcaasPageView } from '@/components/products/unified-communications/over
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'UCaaS Platform · Unified Communications for Global Teams | Rozper',
-  description: 'Voice, video, messaging, and AI in one platform. 150+ countries. From $12.99/user/mo. Start a no-pressure conversation at rozper.com.',
+  title: 'UCaaS Platform · Unified Communications for Teams | Rozper',
+  description: 'Voice, video, messaging, and AI in one unified platform for over 150 countries, starting at $9.99 per user per month. Start a no-pressure conversation today.',
   openGraph: {
-    title: 'UCaaS Platform · Unified Communications for Global Teams | Rozper',
-    description: 'Voice, video, messaging, and AI in one platform. 150+ countries. From $12.99/user/mo.',
+    title: 'UCaaS Platform · Unified Communications for Teams | Rozper',
+    description: 'Voice, video, messaging, and AI in one unified platform for over 150 countries, starting at $9.99 per user per month. Start a no-pressure conversation today.',
     type: 'website',
     url: `${SITE_URL}/products/unified-communications/`,
   },

@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'HD Video Meetings · AI Transcripts Included | Rozper',
-  description: 'Up to 200 participants, AI summaries, and screen sharing — all inside Rozper. HD video with AI transcripts.',
+  description: 'Up to 200 participants, AI-generated meeting summaries, and screen sharing — all built inside Rozper. HD video meetings now include automatic AI transcripts.',
   openGraph: {
     title: 'HD Video Meetings · AI Transcripts Included | Rozper',
-    description: 'Up to 200 participants, AI summaries, and screen sharing — all inside Rozper.',
+    description: 'Up to 200 participants, AI-generated meeting summaries, and screen sharing — all built inside Rozper. HD video meetings now include automatic AI transcripts.',
     type: 'website',
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/video-meetings/` },

@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Omnichannel Contact Center for Support Teams | Rozper',
-  description: 'Omnichannel support inbox for voice, chat, SMS, and social. AI agent assist, CRM sync, and SLA tools. rozper.com.',
+  description: 'Omnichannel support inbox unifying voice, chat, SMS, and social channels, with AI agent assist, CRM sync, real-time dashboards, and SLA management tools.',
   openGraph: {
     title: 'Omnichannel Contact Center for Support Teams | Rozper',
-    description: 'Omnichannel support inbox for voice, chat, SMS, and social. AI agent assist, CRM sync, and SLA tools.',
+    description: 'Omnichannel support inbox unifying voice, chat, SMS, and social channels, with AI agent assist, CRM sync, real-time dashboards, and SLA management tools.',
     type: 'website',
     url: `${SITE_URL}/solutions/support-teams/`,
     siteName: 'Rozper',

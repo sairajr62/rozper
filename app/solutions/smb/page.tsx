@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Phone System for Small Business · AI Included | Rozper',
-  description: 'Small business phone with AI receptionist, call recording, and CRM sync. Enterprise features at $9.99/user. rozper.com.',
+  description: 'Small business phone system with an AI receptionist, call recording, voicemail-to-email, and CRM sync — enterprise-grade features starting at $9.99 per user.',
   openGraph: {
     title: 'Phone System for Small Business · AI Included | Rozper',
-    description: 'Small business phone with AI receptionist, call recording, and CRM sync. Enterprise features at $9.99/user.',
+    description: 'Small business phone system with an AI receptionist, call recording, voicemail-to-email, and CRM sync — enterprise-grade features starting at $9.99 per user.',
     type: 'website',
     url: `${SITE_URL}/solutions/smb/`,
     siteName: 'Rozper',

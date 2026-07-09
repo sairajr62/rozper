@@ -10,11 +10,11 @@ import { RelatedLinks } from '@/components/product-page'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Pricing · $9.99/user Business Phone & Contact Center | Rozper',
-  description: 'Simple, transparent pricing starting at $9.99/user. UCaaS, contact center, and AI tools. 14-day free trial. rozper.com.',
+  title: 'Pricing · $9.99/user Cloud Phone & Contact Center | Rozper',
+  description: 'Simple, transparent pricing starting at $9.99/user. UCaaS, contact center, and AI voice tools, with a 14-day free trial and no hidden fees. rozper.com.',
   keywords: 'business phone pricing, UCaaS pricing, contact center pricing, Rozper',
   openGraph: {
-    title: 'Pricing · $9.99/user Business Phone & Contact Center | Rozper',
+    title: 'Pricing · $9.99/user Cloud Phone & Contact Center | Rozper',
     description: 'Simple, transparent pricing starting at $9.99/user. UCaaS, contact center, and AI tools. 14-day free trial.',
     type: 'website',
     url: `${SITE_URL}/pricing/`,

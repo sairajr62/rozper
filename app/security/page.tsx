@@ -8,10 +8,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 export const metadata: Metadata = {
   title: "Security & Compliance · Trust at Every Layer | Rozper",
   description:
-    "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications safe.",
+    "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications, data, and customers safe every single day.",
   openGraph: {
     title: "Security & Compliance · Trust at Every Layer | Rozper",
-    description: "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications safe.",
+    description: "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications, data, and customers safe every single day.",
     type: "website",
     url: `${SITE_URL}/security/`,
     siteName: "Rozper",

@@ -3,11 +3,11 @@ import { FeatAISentimentPageView } from '@/components/features/ai-sentiment'
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'AI Sentiment Analysis · Real-Time Call Emotion Scoring | Rozper',
-  description: 'Live sentiment scoring on every call. Supervisors get alerts when calls go negative. 100% coverage. rozper.com.',
+  title: 'AI Sentiment Analysis · Real-Time Emotion Scoring | Rozper',
+  description: 'Live sentiment scoring on every call. Supervisors get instant alerts when a call turns negative, giving teams visibility and 100% coverage across call volume.',
   openGraph: {
-    title: 'AI Sentiment Analysis · Real-Time Call Emotion Scoring | Rozper',
-    description: 'Live sentiment scoring on every call. Supervisors get alerts when calls go negative. 100% coverage.',
+    title: 'AI Sentiment Analysis · Real-Time Emotion Scoring | Rozper',
+    description: 'Live sentiment scoring on every call. Supervisors get instant alerts when a call turns negative, giving teams visibility and 100% coverage across call volume.',
     type: 'website',
     url: `${SITE_URL}/features/ai-sentiment-analysis/`,
   },

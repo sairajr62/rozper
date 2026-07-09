@@ -8,10 +8,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 export const metadata: Metadata = {
   title: "Terms of Service · Platform Usage Agreement | Rozper",
   description:
-    "The agreement between you and Rozper for use of the platform and related services.",
+    "The agreement between you and Rozper governing use of the platform, billing, acceptable use, and related services across every Rozper product and feature.",
   openGraph: {
     title: "Terms of Service · Platform Usage Agreement | Rozper",
-    description: "The agreement between you and Rozper for use of the platform and related services.",
+    description: "The agreement between you and Rozper governing use of the platform, billing, acceptable use, and related services across every Rozper product and feature.",
     type: 'website',
     url: `${SITE_URL}/legal/terms/`,
     siteName: 'Rozper',

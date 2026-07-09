@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Rozper for HubSpot · Phone & CRM Integration | Rozper',
-  description: 'Connect Rozper to HubSpot. Click-to-call, auto-logging, AI summaries, and deal-stage triggers. No manual entry.',
+  description: 'Connect Rozper to HubSpot. Click-to-call, auto-logging, AI summaries, and deal-stage triggers keep every rep working from a single, up-to-date contact record.',
   openGraph: {
     title: 'Rozper for HubSpot · Phone & CRM Integration | Rozper',
-    description: 'Connect Rozper to HubSpot. Click-to-call, auto-logging, AI summaries, and deal-stage triggers. No manual entry.',
+    description: 'Connect Rozper to HubSpot. Click-to-call, auto-logging, AI summaries, and deal-stage triggers keep every rep working from a single, up-to-date contact record.',
     type: 'website',
     url: `${SITE_URL}/integrations/hubspot/`,
     siteName: 'Rozper',
