@@ -105,7 +105,7 @@ export function FeatAISentimentPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-[#0086F9]">/</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/features/" className="hover:text-[#0086F9]">features</Link>
+            <span>features</span>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">ai-sentiment</span>
           </div>

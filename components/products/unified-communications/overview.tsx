@@ -398,7 +398,7 @@ export function UcaasPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-white/70">home</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/platform/" className="hover:text-white/70">platform</Link>
+            <span>platform</span>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">ucaas</span>
           </div>
@@ -501,7 +501,7 @@ export function UcaasPageView() {
                   <span className="text-[#0086F9]">Zero compromises.</span>
                 </h2>
                 <p className="text-white/60 mb-8 max-w-md mx-auto lg:mx-0">Replace your patchwork of vendors with a single carrier-grade solution.</p>
-                <Link href="/features/" className="inline-flex items-center gap-2 text-[#0086F9] font-semibold group mx-auto lg:mx-0">
+                <Link href="/" className="inline-flex items-center gap-2 text-[#0086F9] font-semibold group mx-auto lg:mx-0">
                   See all features <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>

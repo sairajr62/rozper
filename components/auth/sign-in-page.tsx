@@ -105,7 +105,7 @@ export function SignInPageView() {
                     <label className="block text-[10px] uppercase tracking-[0.22em] font-mono text-white/40">
                       Password
                     </label>
-                    <Link href="/forgot-password/" className="text-xs text-[#22D3EE]/70 hover:text-[#22D3EE] transition-colors">
+                    <Link href="/contact/" className="text-xs text-[#22D3EE]/70 hover:text-[#22D3EE] transition-colors">
                       Forgot password?
                     </Link>
                   </div>

@@ -257,9 +257,7 @@ export function ContactCenterPageView() {
               ~
             </Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/products/" className="hover:text-white/70">
-              products
-            </Link>
+            <span>products</span>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">contact-center</span>
           </div>

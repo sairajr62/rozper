@@ -114,7 +114,7 @@ export function EnterpriseITPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-[#0086F9]/40">
             <Link href="/" className="hover:text-[#2D98F1]">~</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/solutions/" className="hover:text-[#2D98F1]">solutions</Link>
+            <span>solutions</span>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">enterprise-it</span>
           </div>

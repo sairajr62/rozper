@@ -115,7 +115,7 @@ export function LogisticsPageView() {
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <Link href="/" className="hover:text-[#2D98F1]">/</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/solutions/" className="hover:text-[#2D98F1]">solutions</Link>
+            <span>solutions</span>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">logistics</span>
           </div>

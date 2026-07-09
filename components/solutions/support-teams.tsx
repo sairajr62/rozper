@@ -307,9 +307,7 @@ export function SupportTeamsPageView() {
               /
             </Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href="/solutions/" className="hover:text-[#0086F9]">
-              solutions
-            </Link>
+            <span>solutions</span>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0086F9]">support-teams</span>
           </div>
