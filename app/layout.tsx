@@ -31,6 +31,17 @@ export const metadata: Metadata = {
     shortcut: '/icon.svg',
     apple: '/icon.svg',
   },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@rozper',
+    creator: '@rozper',
+  },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0B1220',
 }
 
 export default function RootLayout({

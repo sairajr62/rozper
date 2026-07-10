@@ -26,14 +26,6 @@ export const metadata = {
       "Voice, video, SMS, AI, and contact center on one carrier-grade platform covering 150+ countries with 99.99% uptime, starting at just $9.99 per user monthly.",
     url: `${SITE_URL}`,
     siteName: "Rozper",
-    images: [
-      {
-        url: `${SITE_URL}/images/blog/Main_2672x941.webp`,
-        width: 2672,
-        height: 941,
-        alt: "Rozper – Unified Communications Platform",
-      },
-    ],
     type: "website",
   },
 }

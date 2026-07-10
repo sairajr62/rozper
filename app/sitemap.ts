@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/site"
-import { fetchAllSlugs } from "@/lib/blog-api"
+import { fetchAllPosts } from "@/lib/blog-api"
 import { AREA_CODES_BY_STATE, stateToSlug } from "@/lib/area-codes-static"
 import { getAllCountrySlugs } from "@/lib/country-code-data"
 
@@ -71,10 +71,16 @@ const STATIC_ROUTES = [
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Build-time timestamp used as a lastModified fallback for pages without
+  // per-record dates (static marketing pages, area-code/country listings).
+  const buildDate = new Date()
+
   // Blog posts
-  const blogSlugs = await fetchAllSlugs().catch(() => [] as string[])
-  const blogEntries: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${SITE_URL}/blog/${slug}/`,
+  const emptyPosts: Awaited<ReturnType<typeof fetchAllPosts>> = { posts: [], total: 0 }
+  const { posts: blogPosts } = await fetchAllPosts().catch(() => emptyPosts)
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}/`,
+    lastModified: new Date(post.modified || post.date),
     changeFrequency: "monthly",
     priority: 0.6,
   }))
@@ -85,12 +91,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const slug = stateToSlug(state)
     areaCodeEntries.push({
       url: `${SITE_URL}/area-codes/${slug}/`,
+      lastModified: buildDate,
       changeFrequency: "yearly",
       priority: 0.4,
     })
     for (const code of codes) {
       areaCodeEntries.push({
         url: `${SITE_URL}/area-codes/${slug}/${code}/`,
+        lastModified: buildDate,
         changeFrequency: "yearly",
         priority: 0.3,
       })
@@ -100,13 +108,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Country code pages
   const countrySlugs = getAllCountrySlugs()
   const countryEntries: MetadataRoute.Sitemap = countrySlugs.flatMap((slug) => [
-    { url: `${SITE_URL}/country-code/${slug}/`, changeFrequency: "yearly" as const, priority: 0.4 },
-    { url: `${SITE_URL}/country-code/${slug}/best-time-to-call/`, changeFrequency: "yearly" as const, priority: 0.3 },
+    { url: `${SITE_URL}/country-code/${slug}/`, lastModified: buildDate, changeFrequency: "yearly" as const, priority: 0.4 },
+    { url: `${SITE_URL}/country-code/${slug}/best-time-to-call/`, lastModified: buildDate, changeFrequency: "yearly" as const, priority: 0.3 },
   ])
 
   // Static pages
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${SITE_URL}${route}`,
+    lastModified: buildDate,
     changeFrequency: route === "/" ? "weekly" : "monthly",
     priority: route === "/" ? 1.0 : route.startsWith("/products") || route.startsWith("/solutions") ? 0.8 : 0.7,
   }))

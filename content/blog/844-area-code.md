@@ -18,7 +18,7 @@ keywords:
 seoTitle: "844 Area Code: The Toll-Free Number Guide for Businesses"
 seoDescription: "Learn how the 844 area code works, how to get or port a toll-free number, what it costs callers, and how it helps your business build nationwide trust fast."
 author: "Shahid Kathawala"
-featuredImage: "/images/blog/844 hero.png"
+featuredImage: "/images/blog/844-hero.webp"
 featuredImageAlt: "Toll-free phone icon representing nationwide 844 business calls at no cost to the caller"
 featuredImageFit: "cover"
 ---

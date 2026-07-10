@@ -6,7 +6,6 @@ const TITLE = "International Country Codes & Virtual Phone Numbers | Rozper"
 const DESCRIPTION =
   "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed, cancel anytime."
 const PAGE_URL = `${SITE_URL}/country-code/`
-const OG_IMAGE = `${SITE_URL}/images/blog/Main_2672x941.webp`
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -17,7 +16,6 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: PAGE_URL,
     siteName: "Rozper",
-    images: [{ url: OG_IMAGE, width: 2672, height: 941, alt: TITLE }],
     type: "website",
     locale: "en_US",
   },
@@ -25,7 +23,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: [OG_IMAGE],
     site: "@rozper",
     creator: "@rozper",
   },

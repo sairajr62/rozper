@@ -20,14 +20,6 @@ export const metadata: Metadata = {
       "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018, we built it so every call just works, every time, worldwide.",
     url: `${SITE_URL}/about/`,
     siteName: "Rozper",
-    images: [
-      {
-        url: `${SITE_URL}/images/blog/Main_2672x941.webp`,
-        width: 2672,
-        height: 941,
-        alt: "About Rozper – Unified Communications Platform",
-      },
-    ],
     type: "website",
   },
 }
