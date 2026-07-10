@@ -697,7 +697,7 @@ export function SupportTeamsPageView() {
                 Handle more. Stress less.
               </h2>
               <p className="mt-6 text-white/80 max-w-md mx-auto">
-                14-day free trial. No credit card required. Cancel anytime.
+                See it running on your own support queue. No commitment required.
               </p>
               <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
                 <Link

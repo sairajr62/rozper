@@ -57,37 +57,37 @@ const WHAT_SETS_APART = [
     icon: Globe2,
     tag: "01",
     title: "Global A-Z Coverage",
-    desc: "Our wholesale voice network connects directly across key international destinations, delivering reliable A-Z VoIP termination with scalable capacity for high-volume traffic.",
+    desc: "Direct connections across key international destinations, with A-Z VoIP termination and capacity built for high-volume traffic.",
   },
   {
     icon: Activity,
     tag: "02",
     title: "Performance-Optimized Routing",
-    desc: "Intelligent route management ensures stable ASR, improved ACD, and low PDD — creating consistent international call completion without quality fluctuations.",
+    desc: "Smart routing keeps ASR high, ACD strong, and PDD low — consistent call quality on every route.",
   },
   {
     icon: Cable,
     tag: "03",
     title: "Direct Carrier Interconnections",
-    desc: "We maintain controlled routing paths through direct carrier relationships, reducing unnecessary hops and improving overall voice stability.",
+    desc: "Direct carrier relationships mean fewer hops and more stable call paths.",
   },
   {
     icon: Cpu,
     tag: "04",
     title: "Real-Time Network Monitoring",
-    desc: "Continuous traffic analysis and live route testing allow us to proactively optimize voice wholesale performance before issues impact your network.",
+    desc: "Live route testing and continuous traffic analysis catch issues before they reach your network.",
   },
   {
     icon: ShieldCheck,
     tag: "05",
     title: "Advanced Fraud Protection",
-    desc: "Built-in traffic monitoring and anomaly detection safeguard your voice routes with 24/7 protection against fraud and route manipulation.",
+    desc: "24/7 traffic monitoring and anomaly detection block fraud and route manipulation before they hit your network.",
   },
   {
     icon: Server,
     tag: "06",
     title: "Scalable Infrastructure",
-    desc: "Designed to handle both growing and high-volume VoIP wholesale traffic with redundancy, secure SIP connectivity, and global resilience.",
+    desc: "Built for both growing and high-volume traffic — redundant, secure SIP, and resilient worldwide.",
   },
 ]
 
@@ -95,22 +95,22 @@ const ADDITIONAL_FEATURES = [
   {
     icon: HeadphonesIcon,
     title: "24/7 Dedicated Support",
-    desc: "Our support team is always available to assist with troubleshooting, scaling, or optimizing your VoIP services for a smooth experience.",
+    desc: "Real engineers, always on — for troubleshooting, scaling, or optimizing your setup.",
   },
   {
     icon: DollarSign,
     title: "Transparent Pricing",
-    desc: "Clear and competitive pricing for wholesale VoIP services, with no hidden fees — making it easier to manage your costs and maximize value.",
+    desc: "Competitive rates with no hidden fees — costs you can actually plan around.",
   },
   {
     icon: Zap,
     title: "Easy Integration",
-    desc: "Our voice services integrate with your existing systems, providing hassle-free setup and minimal downtime for carriers and VoIP providers of all sizes.",
+    desc: "Plugs into your existing systems — fast setup, minimal downtime, any scale.",
   },
   {
     icon: Settings2,
     title: "Customizable Solutions",
-    desc: "Tailored VoIP wholesale solutions to meet your specific business requirements, ensuring optimal performance and reliability at every scale.",
+    desc: "Solutions built around your specific traffic patterns and business requirements.",
   },
 ]
 
@@ -118,13 +118,13 @@ const WHY_ROZPER = [
   {
     icon: ShieldCheck,
     title: "Reliability When You Need It Most",
-    desc: "With direct carrier interconnections, optimized routes, and global coverage, we ensure your wholesale voice services are always stable and of top quality.",
+    desc: "Direct carrier interconnections and optimized routes keep your voice services stable, worldwide.",
     points: ["Direct Tier-1 carrier interconnects", "Automated failover & redundancy", "99.99% uptime SLA — backed by contract"],
   },
   {
     icon: TrendingUp,
     title: "Future-Proof Your Business",
-    desc: "Rozper's scalable infrastructure grows with your business, giving you the flexibility to adapt to evolving needs and stay competitive in the wholesale VoIP provider market.",
+    desc: "Infrastructure that scales with you — no re-platforming as your volume grows.",
     points: ["Elastic capacity — no channel caps", "White-label ready from day one", "API-driven provisioning at any scale"],
   },
 ]
@@ -171,7 +171,7 @@ const FAQS = [
   },
   {
     q: "Is your network secure for business-critical communications?",
-    a: "Security and reliability are core to our platform. We use TLS + SRTP encryption, STIR/SHAKEN attestation, AI-driven fraud detection, and multiple layers of redundancy to protect your communications and data.",
+    a: "Yes. TLS + SRTP encryption, STIR/SHAKEN attestation, AI-driven fraud detection, and redundant infrastructure protect every call and byte of data.",
   },
   {
     q: "How complicated is it to switch our services to Rozper?",
@@ -649,7 +649,7 @@ export function WholesaleVoipPageView() {
                   </div>
                   <div>
                     <div className="text-sm font-semibold">{t.name}</div>
-                    <div className="mt-0.5 text-[11px] text-white/45">{t.role}</div>
+                    <div className="mt-0.5 text-xs text-white/65">{t.role}</div>
                   </div>
                 </div>
               </motion.div>

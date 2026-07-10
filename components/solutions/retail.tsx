@@ -244,7 +244,7 @@ export function RetailPageView() {
                     <div className={`w-9 h-9 rounded-full border flex items-center justify-center font-display font-bold text-xs shrink-0 ${t.avatarClass}`}>{t.initials}</div>
                     <div>
                       <div className="font-semibold text-sm">{t.name}</div>
-                      <div className="text-[11px] text-white/45 mt-0.5">{t.role}</div>
+                      <div className="text-xs text-white/65 mt-0.5">{t.role}</div>
                     </div>
                   </div>
                 </div>

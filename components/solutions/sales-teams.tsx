@@ -281,7 +281,7 @@ export function SalesTeamsPageView() {
                   <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-xs shrink-0 ${t.avatarClass}`}>{t.initials}</div>
                   <div>
                     <div className="font-semibold text-sm">{t.name}</div>
-                    <div className="text-[11px] text-white/40 font-mono">{t.title}</div>
+                    <div className="text-xs text-white/65 font-mono">{t.title}</div>
                   </div>
                 </div>
               </motion.div>

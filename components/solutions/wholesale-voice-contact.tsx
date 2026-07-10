@@ -568,9 +568,9 @@ export function WholesaleVoiceContactSection() {
 
                   {/* submit */}
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-1">
-                    <p className="text-[11px] text-white/30 leading-relaxed">
+                    <p className="text-xs text-white/60 leading-relaxed">
                       By submitting, you agree to our{" "}
-                      <Link href="/legal/privacy/" className="underline hover:text-white/55 transition-colors">Privacy Policy</Link>.
+                      <Link href="/legal/privacy/" className="underline hover:text-white/80 transition-colors">Privacy Policy</Link>.
                     </p>
                     <button
                       type="submit"

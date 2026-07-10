@@ -176,7 +176,7 @@ export function ProdUCaaSAIAssistantPageView() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">{f.title}</h3>
-                  <p className="text-xs text-white/50 leading-relaxed">{f.desc}</p>
+                  <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
                 </div>
               </motion.div>
             ))}

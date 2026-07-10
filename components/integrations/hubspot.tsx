@@ -372,7 +372,7 @@ export function HubSpotPageView() {
                       <span className="font-display font-semibold text-white text-[1.05rem]">{s.label}</span>
                       <span className={`px-2 py-0.5 rounded-md text-[10px] font-mono border ${sideColors[s.side]}`}>{sideLabel[s.side]}</span>
                     </div>
-                    <p className="text-sm text-white/50 leading-relaxed">{s.detail}</p>
+                    <p className="text-sm text-white/65 leading-relaxed">{s.detail}</p>
                   </div>
                 </motion.div>
               ))}
@@ -406,7 +406,7 @@ export function HubSpotPageView() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -425,7 +425,7 @@ export function HubSpotPageView() {
                 >
                   <CircleDot className="w-5 h-5 text-[#0086F9] mb-3" />
                   <h3 className="font-display font-semibold mb-2">{d.title}</h3>
-                  <p className="text-sm text-white/55">{d.desc}</p>
+                  <p className="text-sm text-white/65">{d.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -512,7 +512,7 @@ export function HubSpotPageView() {
                     <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[11px] shrink-0 ${t.avatarBg}`}>{t.initials}</div>
                     <div className="min-w-0">
                       <div className="text-sm font-semibold truncate">{t.name}</div>
-                      <div className="text-[11px] text-white/40 truncate">{t.title}</div>
+                      <div className="text-xs text-white/65 truncate">{t.title}</div>
                     </div>
                   </div>
                 </div>

@@ -207,7 +207,7 @@ function ZohoCRMAnimation() {
           transition={{ delay: 5.1, duration: 0.4 }}
         >
           <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-          <span className="text-[10px] font-mono text-white/30">
+          <span className="text-xs font-mono text-white/60">
             5 fields synced · 0 manual entries · AI summary written
           </span>
         </motion.div>
@@ -237,7 +237,7 @@ function EventAutomation() {
             {e.outcomes.map((o) => (
               <div key={o} className="flex items-center gap-2">
                 <ChevronRight className="w-3 h-3 text-[#2D98F1] flex-shrink-0" />
-                <span className="text-xs text-white/55">{o}</span>
+                <span className="text-xs text-white/65">{o}</span>
               </div>
             ))}
           </div>
@@ -346,7 +346,7 @@ export function ZohoPageView() {
                 </div>
                 <div>
                   <h3 className="font-display font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">{f.title}</h3>
-                  <p className="text-xs text-white/50 leading-relaxed">{f.desc}</p>
+                  <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -379,7 +379,7 @@ export function ZohoPageView() {
             {stats.map((s, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="p-6 rounded-2xl bg-[#111B2D] border border-white/10 text-center">
                 <div className="font-display text-3xl font-bold bg-gradient-to-br from-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">{s.v}</div>
-                <div className="text-xs text-white/50 mt-2 font-mono uppercase tracking-wider">{s.k}</div>
+                <div className="text-xs text-white/65 mt-2 font-mono uppercase tracking-wider">{s.k}</div>
               </motion.div>
             ))}
           </div>
@@ -446,7 +446,7 @@ export function ZohoPageView() {
                     <div className={`w-8 h-8 rounded-full border flex items-center justify-center font-display font-bold text-[11px] shrink-0 ${t.avatarBg}`}>{t.initials}</div>
                     <div className="min-w-0">
                       <div className="text-sm font-semibold truncate">{t.name}</div>
-                      <div className="text-[11px] text-white/40 truncate">{t.title}</div>
+                      <div className="text-xs text-white/65 truncate">{t.title}</div>
                     </div>
                   </div>
                 </div>

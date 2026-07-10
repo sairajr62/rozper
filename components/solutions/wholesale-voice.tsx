@@ -595,7 +595,7 @@ export function WholesaleVoicePageView() {
                   </div>
                   <div>
                     <div className="text-sm font-semibold">{t.name}</div>
-                    <div className="mt-0.5 text-[11px] text-white/45">{t.role}</div>
+                    <div className="mt-0.5 text-xs text-white/65">{t.role}</div>
                   </div>
                 </div>
               </motion.div>

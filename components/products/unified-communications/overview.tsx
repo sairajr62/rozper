@@ -144,7 +144,7 @@ function AICallFlowAnimation() {
             </div>
           </div>
           <motion.p
-            className="ml-7 text-[10px] text-white/50 italic leading-relaxed"
+            className="ml-7 text-xs text-white/65 italic leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.2, duration: 0.4 }}
@@ -482,7 +482,7 @@ export function UcaasPageView() {
                     <p.icon className="w-5 h-5 text-[#0086F9]" />
                   </div>
                   <h3 className="font-display font-semibold mb-1 group-hover:text-[#0086F9] transition">{p.name}</h3>
-                  <p className="text-sm text-white/50">{p.desc}</p>
+                  <p className="text-sm text-white/65">{p.desc}</p>
                 </Link>
               </motion.div>
             ))}

@@ -194,7 +194,7 @@ export function ProdCCOutboundDialerPageView() {
                   <span className="font-mono text-[10px] text-white/20 font-bold">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>

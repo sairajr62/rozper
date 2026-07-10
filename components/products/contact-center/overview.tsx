@@ -338,7 +338,7 @@ export function ContactCenterPageView() {
                 Everything your contact center needs.
               </h2>
             </div>
-            <div className="text-sm text-white/50 max-w-xs">
+            <div className="text-sm text-white/65 max-w-xs">
               AI-powered tools for agents, supervisors, and admins — all in one
               platform.
             </div>

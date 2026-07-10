@@ -34,7 +34,7 @@ const stats = [
 ]
 
 const faqs = [
-  { q: 'What compliance certifications does Rozper support?', a: 'GDPR, HIPAA, SOC 2 Type II, and ISO 27001-aligned. Full audit documentation provided on request.' },
+  { q: 'What compliance certifications does Rozper support?', a: 'GDPR, HIPAA, SOC 2 Type II (an independent audit of our security controls), and ISO 27001-aligned. Full audit documentation provided on request.' },
   { q: 'Can Rozper replace our existing PBX?', a: 'Yes. Enterprise team manages full PBX migration including number porting, dial-plan recreation, and routing config.' },
   { q: 'Is there a dedicated enterprise support contact?', a: 'Yes. Named account manager and named technical contact with SLA-backed response times.' },
 ]

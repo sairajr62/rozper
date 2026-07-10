@@ -264,7 +264,7 @@ export function HealthcarePageView() {
                     <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs text-white shrink-0" style={{ background: t.avatarBg }}>{t.initials}</div>
                     <div>
                       <div className="font-semibold text-sm">{t.name}</div>
-                      <div className="text-[11px] text-white/40 mt-0.5">{t.role}</div>
+                      <div className="text-xs text-white/65 mt-0.5">{t.role}</div>
                     </div>
                   </div>
                 </div>

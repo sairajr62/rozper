@@ -22,7 +22,7 @@ const tape = [
 ]
 
 const features = [
-  { icon: Shield, title: 'PCI DSS-compliant recording', desc: 'Pause and resume during card capture for full compliance.' },
+  { icon: Shield, title: 'PCI DSS-compliant recording', desc: 'Pause and resume during card capture — meets PCI DSS, the standard for protecting cardholder data.' },
   { icon: Bot, title: 'AI compliance monitoring', desc: 'Flags prohibited phrases and disclosures in real time.' },
   { icon: FileText, title: 'Full call audit trail', desc: 'Tamper-evident storage and access logs for every call.' },
   { icon: Globe, title: 'GDPR & data residency', desc: 'Local data residency options for regulated markets.' },
@@ -42,7 +42,7 @@ const stats = [
 ]
 
 const faqs = [
-  { q: 'Does Rozper support MiFID II?', a: 'Yes. Recording with required metadata, retention periods, and access controls.' },
+  { q: 'Does Rozper support MiFID II?', a: "Yes. MiFID II — the EU's financial markets regulation — requires call recording with specific metadata, retention periods, and access controls. Rozper covers all three." },
   { q: 'How does PCI-safe recording work?', a: 'Pause on button or DTMF trigger during card entry — recording resumes automatically.' },
   { q: 'Can Rozper flag compliance issues automatically?', a: 'Yes. AI monitors for regulatory triggers and prohibited language — alerting supervisors in real time.' },
 ]
@@ -108,7 +108,7 @@ export function FinancePageView() {
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#2D98F1]">Solutions / Financial Services</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.1 } }} className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
               Compliant contact center<br />for{' '}
               <span className="bg-gradient-to-br from-[#2D98F1] via-[#0086F9] to-[#046BD2] bg-clip-text text-transparent">finance</span>.
             </motion.h1>
@@ -275,7 +275,7 @@ export function FinancePageView() {
                     <div className={`w-9 h-9 rounded border flex items-center justify-center font-display font-bold text-xs shrink-0 ${t.avatarCls}`}>{t.initials}</div>
                     <div>
                       <div className="font-semibold text-sm">{t.name}</div>
-                      <div className="text-[11px] text-white/50 font-mono mt-0.5">{t.role}</div>
+                      <div className="text-xs text-white/65 font-mono mt-0.5">{t.role}</div>
                     </div>
                   </div>
                 </div>

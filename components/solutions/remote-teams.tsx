@@ -543,7 +543,7 @@ export function RemoteTeamsPageView() {
                       <div className="text-sm font-semibold truncate">
                         {t.name}
                       </div>
-                      <div className="text-[11px] text-white/40 truncate">
+                      <div className="text-xs text-white/65 truncate">
                         {t.role}
                       </div>
                     </div>

@@ -272,7 +272,7 @@ export function ProdCCAnalyticsPageView() {
                 <h3 className="font-display font-semibold text-white mb-2">
                   {f.title}
                 </h3>
-                <p className="text-sm text-white/50 leading-relaxed">
+                <p className="text-sm text-white/65 leading-relaxed">
                   {f.desc}
                 </p>
               </motion.div>
