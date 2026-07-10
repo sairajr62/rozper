@@ -66,7 +66,6 @@ const STATIC_ROUTES = [
   "/products/ai/",
   "/products/ai/conversation-analytics/",
   "/products/ai/receptionist/",
-  "/products/ai/virtual-assistant/",
   "/products/ai-features/ai-assistant/",
 ]
 

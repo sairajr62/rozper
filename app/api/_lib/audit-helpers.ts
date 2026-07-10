@@ -30,7 +30,6 @@ export const STATIC_PAGES = [
   '/legal/terms',
   '/pricing',
   '/products/ai',
-  '/products/ai/virtual-assistant',
   '/products/ai/conversation-analytics',
   '/products/ai/receptionist',
   '/products/contact-center',

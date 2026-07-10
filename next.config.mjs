@@ -33,7 +33,8 @@ const nextConfig = {
   async redirects() {
     return [
       { source: "/features/ai-sentiment",                        destination: "/features/ai-sentiment-analysis",                   permanent: true },
-      { source: "/products/ai/assistant",                        destination: "/products/ai/virtual-assistant",                    permanent: true },
+      { source: "/products/ai/assistant",                        destination: "/products/ai-features/ai-assistant",                permanent: true },
+      { source: "/products/ai/virtual-assistant",                destination: "/products/ai-features/ai-assistant",                permanent: true },
       { source: "/products/ai/conversation",                     destination: "/products/ai/conversation-analytics",               permanent: true },
       { source: "/products/contact-center/analytics",            destination: "/products/contact-center/interaction-analytics",    permanent: true },
       { source: "/products/unified-communications/business-phone",                destination: "/products/unified-communications/business-phone-system",             permanent: true },

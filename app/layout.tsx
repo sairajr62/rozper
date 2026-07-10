@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   icons: {
     icon: { url: '/icon.svg', type: 'image/svg+xml' },
-    shortcut: '/icon.svg',
-    apple: '/icon.svg',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
   twitter: {
     card: 'summary_large_image',

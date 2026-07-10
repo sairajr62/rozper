@@ -108,7 +108,7 @@ For the rules on overlay codes and 10-digit dialing across the country, check th
 
 Using the 864 number every day in your operations is what turns it into a lasting edge.
 
-![Checklist for listing an 864 number on a website footer, Google Business Profile, and Chamber directories](/images/blog/864 image 3.webp)
+![Checklist for listing an 864 number on a website footer, Google Business Profile, and Chamber directories](/images/blog/864-image-3.webp)
 
 Put the 864 number on your website home page, contact page, and footer as plain text. Search engines need to read it, not just see it in an image. Update your Google Business Profile with your Upstate South Carolina service area too. Keep the same format across all directory listings. This means Yelp, LinkedIn, the Greenville Chamber of Commerce, and any trade sites that serve the Upstate market. Use the same number for call tracking in all local paid search ads. This keeps your campaign data clean.
 
@@ -118,7 +118,7 @@ Put the 864 number on your website home page, contact page, and footer as plain 
 
 The right plan depends on your team size, call volume, compliance needs, and required features.
 
-![Comparison chart of startup, mid-tier, and enterprise VoIP plans for Upstate South Carolina businesses](/images/blog/864 image 4.webp)
+![Comparison chart of startup, mid-tier, and enterprise VoIP plans for Upstate South Carolina businesses](/images/blog/864-image-4.webp)
 
 **For Startups and Solo Operators:** Entry-level plans give you one local 864 number and calls anywhere in the US at no extra cost. They also add basics like voicemail-to-text and call forwarding, plus apps for phone and desktop. This is all a small Upstate business needs for a sharp local image from day one.
 

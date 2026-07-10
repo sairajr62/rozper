@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 
 const QUICK_LINKS = [
   { label: "Contact Center", href: "/products/contact-center/" },
-  { label: "Unified Comms",  href: "/products/ucaas/" },
+  { label: "Unified Comms",  href: "/products/unified-communications/" },
   { label: "AI Voice Agent", href: "/products/ai/receptionist/" },
   { label: "Pricing",        href: "/pricing/" },
 ]
