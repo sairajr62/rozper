@@ -21,6 +21,9 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-07-09"
 readingTime: "7 min"
+featuredImage: "/images/blog/786 hero.webp"
+featuredImageAlt: "Illustration of the Miami skyline with a smartphone displaying a phone call"
+featuredImageFit: "cover"
 ---
 
 # 786 Area Code: Miami's Complete Local Number Guide
@@ -28,6 +31,8 @@ readingTime: "7 min"
 A call with this prefix has a clear South Florida feel. You can hear it before you even pick up. This number has grown with Miami-Dade County since the late 1990s. It is still a top pick for people who want a number that sounds truly local. Maybe you just moved to Miami. Maybe you started a business there. Or maybe you just want to know more about the number on your caller ID. This guide covers where the prefix reaches, how it began, and why it still matters for business today.
 
 ## Where This Miami Prefix Reaches
+
+![Map of Miami-Dade County and the Florida Keys covered by this prefix](/images/blog/where-this-miami-prefix-reaches.webp)
 
 The 786 area code covers all of Miami-Dade County. It also covers the upper and middle Florida Keys in nearby Monroe County. The area runs from the heart of Miami out to Hialeah, Miami Gardens, Miami Beach, Kendall, and Homestead. Together, these spots make up one of the most connected metro economies in the country. A number with this prefix shows a real tie to the beaches, business hubs, and varied neighborhoods that make up greater Miami.
 
@@ -37,6 +42,8 @@ Miami International Airport and the Port of Miami bring in a steady stream of tr
 
 ## How the Prefix Came to Be
 
+![Timeline graphic showing the 1998 overlay added to area code 305](/images/blog/how-the-prefix-came-to-be-786.webp)
+
 Area code 305 was one of the first 86 numbering plans. It was set up in 1947. Back then, it covered the whole state of Florida. Years of growth slowly shrank its reach as the state split into more codes. Still, 305 stayed the only code for Miami-Dade County well into the 1990s.
 
 By the mid-1990s, a boom in cell phones, fax lines, and new firms had begun to use up the numbers left in 305. Regulators added area code 786 as an overlay on March 1, 1998. This was done instead of splitting the county again. That choice made ten-digit dialing a must across the region. The same rule later spread to the Florida Keys too, starting in 2015.
@@ -44,6 +51,8 @@ By the mid-1990s, a boom in cell phones, fax lines, and new firms had begun to u
 Picking an overlay over a new split let Miami firms keep their old numbers. This saved them the cost of new print materials. It also saved them the work of telling customers about a new number in an already busy market.
 
 ## Cities and Towns Covered
+
+![Illustration of Miami-Dade neighborhoods and beach towns within the coverage area](/images/blog/cities-and-communities-covered.webp)
 
 The 786 area code reaches every corner of Miami-Dade County. It touches spots like Miami, Hialeah, Miami Gardens, Miami Beach, Kendall, Homestead, Doral, and Coral Gables. Each spot has its own feel. Some are dense city blocks. Some sit right on the beach. Some are quiet suburbs further inland.
 
@@ -66,6 +75,8 @@ Every part of the 786 area code runs on Eastern Time. It uses Eastern Standard T
 Area code 786 shares its ground fully with 305, and now with 645 too. Because of this, ten-digit dialing has applied to every local call since the overlay began. This holds true even between two neighbors on the same block. For more on how this numbering plan grew, the [Wikipedia entry on area codes 305, 786, and 645](https://en.wikipedia.org/wiki/Area_codes_305,_786,_and_645) lays out a clear timeline of the splits. Getting used to ten-digit dialing takes a bit of time. Still, it stays key for anyone calling into or out of Miami-Dade today.
 
 ## Why Businesses Choose This Local Identity
+
+![Business owner using a local Miami phone number to serve South Florida clients](/images/blog/why-businesses-choose-this-local-identity.webp)
 
 A 786 number tells callers right away that a firm has real roots in Miami. That carries real weight in a city built on tourism, trade, and a fast-growing finance and tech scene. Local folks tend to pick up calls from a known prefix more than an out-of-area or toll-free number. That one habit can shift booking rates and response rates in a firm's favor.
 

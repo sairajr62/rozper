@@ -21,6 +21,9 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-07-09"
 readingTime: "7 min"
+featuredImage: "/images/blog/660-hero.webp"
+featuredImageAlt: "Illustration of rural Missouri farmland with a phone signal overlay"
+featuredImageFit: "cover"
 ---
 
 # What Is the 660 Area Code? Location, History, and Dialing Guide
@@ -29,9 +32,13 @@ Area code 660 is one of the most thinly populated area codes in the country. It 
 
 ## Where Is the 660 Area Code Located?
 
+![Map highlighting the rural counties of northern and western Missouri](/images/blog/where-is-the-660-area-code-located.webp)
+
 This area code wraps around the Kansas City metro area. It covers the rural counties of northern and western Missouri, not the city itself. Towns in this footprint sit across 42 counties and roughly 206 small cities and towns. It is a mix of farmland and county seats, not dense suburbs. The 660 area stretches from the Iowa border in the north down through the open land west of Columbia. It is the only area code covering this slice of the state. The region never needed a second overlay code the way busier metro areas have. This code forms a wide horseshoe around Kansas City. It takes in the rural fringe that the metro's own code left behind.
 
 ## History and Origin of the 660 Area Code
+
+![Timeline graphic showing Missouri's area code splits since the 1940s](/images/blog/history-and-origin-of-the-660-area-code.webp)
 
 Before 1947, Missouri had no area codes at all, since the numbering plan did not exist yet. When it was made that year, the state split into just two parts: area code 816 for the north and west, including Kansas City, and area code 314 for the eastern third, including St. Louis. In 1951, planners carved out area code 417 for the southwest corner. That trimmed 816 down to the northern third of the state.
 
@@ -45,6 +52,8 @@ Missouri runs on six area codes. Code 660 is the only one covering this rural st
 
 ## Cities and Communities Served by the 660 Area Code
 
+![Collage of small Missouri county-seat towns and farm buildings](/images/blog/cities-and-communities-served-by-the-660-area-code.webp)
+
 This area code reaches a wide, scattered mix of county seats and small towns rather than one hub. Sedalia and Warrensburg anchor the south part of the territory, while Kirksville serves as the business center for the northeast corner near the Iowa border. Marshall and Moberly round out the central corridor with a mix of farm processing and small manufacturing.
 
 Further out, Trenton, Carrollton, and Higginsville dot the land between the Missouri River towns. Macon, Marceline, and Lexington carry the footprint toward the east edge. Smaller towns like Bethany, Princeton, Unionville, Clinton, and Butler round out a territory built more on farmland and county fairs than skylines.
@@ -54,6 +63,8 @@ Further out, Trenton, Carrollton, and Higginsville dot the land between the Miss
 Every town under this area code runs on Central Time. It uses Central Standard Time in winter and Central Daylight Time each summer, along with the rest of Missouri. Unlike many nearby metro codes, this one did not need 10-digit dialing because of an overlay. Instead, the shift happened after 988 became the nationwide crisis number in 2020. That conflicted with an existing local exchange and forced every call in the region to use all 10 digits by October 2021. Skipping the area code on a local call here simply will not connect.
 
 ## Why Businesses Choose a 660 Area Code Number
+
+![Small business owner taking a call in a rural storefront office](/images/blog/why-businesses-choose-a-660-area-code-number.webp)
 
 A local number in this area code signals real roots in rural Missouri, not a call center reachable from anywhere. That matters in a region built on farming, small factories, and county-seat trade. Local trust still drives referrals here. Firms growing into Sedalia, Warrensburg, or Kirksville often pick up a matching 660 number so their listing does not look out of place to a local crowd.
 

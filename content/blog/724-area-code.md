@@ -21,6 +21,9 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-07-09"
 readingTime: "6 min"
+featuredImage: "/images/blog/724 hero.webp"
+featuredImageAlt: "Illustration of a western Pennsylvania town skyline with a phone call icon"
+featuredImageFit: "cover"
 ---
 
 # Reading the Story Behind a 724 Area Code Call
@@ -28,6 +31,8 @@ readingTime: "6 min"
 A call from western Pennsylvania rarely feels like anything but three known digits ringing before you even glance at the screen. This prefix has anchored the region around Pittsburgh since the late 1990s. It is still one of the codes local folks and firms reach for when they want a number that reads as truly from the area. Maybe you just moved to the region. Maybe you started a firm there. Or maybe you are just curious about the number on your caller ID. This guide walks through where the prefix reaches, how it began, and why it still matters for business today.
 
 ## The Reach of This Western Pennsylvania Prefix
+
+![Map of western Pennsylvania counties covered by this area code](/images/blog/the-reach-of-this-western-pennsylvania-prefix.webp)
 
 The 724 area code covers a broad swath of western and southwestern Pennsylvania. It wraps around the city of Pittsburgh without its core. The area spans all or part of fourteen counties. This includes full coverage of Armstrong, Beaver, Butler, Fayette, Greene, Indiana, Lawrence, Mercer, Washington, and Westmoreland. It also covers part of Allegheny's outer suburbs. A number under this prefix shows a real tie to the mill towns, college towns, and growing suburbs that ring the city.
 
@@ -37,6 +42,8 @@ Small and mid-sized firms across the region serve clients in several counties at
 
 ## How the Prefix Came to Be
 
+![Timeline graphic of the 1998 split from area code 412](/images/blog/how-the-prefix-came-to-be-724.webp)
+
 Area code 724 was carved out of the old 412 zone on February 1, 1998. This turned 412 into a smaller zone that covered just the city of Pittsburgh. The new code wrapped around it. The split was part of a wider push across the country to ease number shortages. Growth, new firms, and the fast spread of pagers and cell phones in the 1990s all played a part.
 
 By 2001, demand had grown enough that planners added area code 878 as an overlay across both the 412 and 724 zones. This came instead of splitting the region again. That move was finalized on August 17, 2001. It meant ten-digit dialing became the rule across southwestern Pennsylvania. It stays the standard for every local call in the region today.
@@ -44,6 +51,8 @@ By 2001, demand had grown enough that planners added area code 878 as an overlay
 Choosing an overlay over another split spared old customers a real cost. They did not have to update printed stuff, signs, and ads. That mattered a lot for the region's many small, family-run firms on tight budgets.
 
 ## Cities and Counties Covered
+
+![Illustration of small Pennsylvania towns and counties within the coverage area](/images/blog/cities-and-counties-covered.webp)
 
 The 724 area code reaches well past any single city. It touches towns such as Butler, Cranberry Township, Ellwood City, Greensburg, Hermitage, Indiana, Kittanning, Latrobe, New Castle, Sharon, Uniontown, Washington, Waynesburg, and Wexford. Each town anchors its own corner of the region. Some are steel and factory hubs. Others are college towns or growing suburbs.
 
@@ -58,6 +67,8 @@ Every town inside the 724 area code runs on Eastern Time. It uses Eastern Standa
 Area code 724 shares its ground with both 412 and the 878 overlay. So ten-digit dialing has applied to every local call since August 2001, even between two neighbors in the same small town. For a deeper look at how this number plan grew, [Wikipedia's overview of the split and later overlay](https://en.wikipedia.org/wiki/Area_code_724) lays out a clear timeline of the changes. Getting used to ten digits is a small adjustment. But it stays key for anyone routing calls into or out of the region today.
 
 ## Why Businesses Value This Local Identity
+
+![Small business owner answering a call on a local Pennsylvania number](/images/blog/why-businesses-value-this-local-identity.webp)
 
 A 724 area code number tells callers right away that a business has real roots in western Pennsylvania. That carries weight in towns where local name and word of mouth still drive much of the customer base. Local folks tend to pick up calls from a known prefix more than a strange or toll-free number. That instinct can shift booking rates and response times for a small firm.
 

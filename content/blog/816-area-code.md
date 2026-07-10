@@ -21,6 +21,9 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-07-09"
 readingTime: "7 min"
+featuredImage: "/images/blog/816 hero.webp"
+featuredImageAlt: "Skyline view representing the Kansas City metro area served by this phone prefix"
+featuredImageFit: "cover"
 ---
 
 # 816 Area Code: Kansas City's Complete Local Number Guide
@@ -28,6 +31,8 @@ readingTime: "7 min"
 A call with this prefix has a clear Kansas City feel. You can hear it before you even glance at the screen. This number has stood for northwestern Missouri since the earliest days of the North American Numbering Plan. It is still a top pick for people who want a number that sounds truly local. Maybe you just moved to the area. Maybe you started a business nearby. Or maybe you just want to know more about the number on your caller ID. This guide covers where the prefix reaches, how it began, and why it still matters for business today.
 
 ## Where This Kansas City Prefix Reaches
+
+![Map-style graphic highlighting the counties and suburbs around Kansas City](/images/blog/where-this-kansas-city-prefix-reaches.webp)
 
 The 816 area code covers the Kansas City metro area and a wide stretch of northwestern Missouri. It spans 15 counties and around 73 cities. The area reaches Independence, Lee's Summit, Blue Springs, and St. Joseph. Together, these spots make up one of the busiest metro economies in the Midwest. A number with this prefix shows a real tie to the stockyards, business hubs, and suburbs that make up greater Kansas City.
 
@@ -37,11 +42,15 @@ Kansas City International Airport and the region's rail and freight network brin
 
 ## How the Prefix Came to Be
 
+![Timeline graphic showing the numbering plan splits that shaped this prefix over the decades](/images/blog/how-the-prefix-came-to-be-816.webp)
+
 Area code 816 was one of the first 86 numbering plans. It was set up in 1947. Back then, it covered a wide stretch of western Missouri. Area code 314 served the eastern third of the state around St. Louis. In 1950, regulators split off area code 417 to cover southwestern Missouri. This included Springfield and Joplin. That split narrowed 816 to the northern third of the state.
 
 By 1997, another change moved the more rural eastern and northwestern parts of the territory to the newer area code 660. This kept 816 focused on the Kansas City metro itself. In 2023, regulators added area code 975 as an overlay rather than splitting the region again. This meant old customers kept their 816 numbers. New lines could use either code, starting October 13, 2023.
 
 ## Cities and Towns Covered
+
+![Collage of suburban and small-city streetscapes across the greater Kansas City region](/images/blog/cities-and-communities-covered-816.webp)
 
 The 816 area code reaches well past downtown Kansas City. It touches spots like Independence, Lee's Summit, Blue Springs, St. Joseph, Liberty, and Gladstone. Each spot has its own feel. Some are growing suburbs. Some are smaller regional hubs further north.
 
@@ -66,6 +75,8 @@ Every part of the 816 area code runs on Central Time. It uses Central Standard T
 Area code 816 now shares its ground with the 975 overlay. Because of this, ten-digit dialing has applied to every local call since October 2023. This holds true even between two neighbors on the same block. For more on how this numbering plan grew, the [Wikipedia entry on area codes 816 and 975](https://en.wikipedia.org/wiki/Area_codes_816_and_975) lays out a clear timeline of the splits and the later overlay. Getting used to ten-digit dialing takes a bit of time. Still, it stays key for anyone calling into or out of Kansas City today.
 
 ## Why Businesses Choose This Local Identity
+
+![Business owner on a phone call representing the trust built by a recognizable local prefix](/images/blog/why-businesses-choose-this-local-identity-816.webp)
 
 An 816 number tells callers right away that a firm has real roots in Kansas City. That carries real weight in a metro built on logistics, farming, and a fast-growing finance trade. Local folks tend to pick up calls from a known prefix more than an out-of-area or toll-free number. That one habit can shift booking rates and response rates in a firm's favor.
 

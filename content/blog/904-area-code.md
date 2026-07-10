@@ -21,6 +21,9 @@ tags:
 author: "Shahid Kathawala"
 publishDate: "2026-07-09"
 readingTime: "7 min"
+featuredImage: "/images/blog/904 hero.webp"
+featuredImageAlt: "Coastal skyline scene evoking northeast Florida's port and beach communities"
+featuredImageFit: "cover"
 ---
 
 # 904 Area Code: Jacksonville's Complete Local Number Guide
@@ -28,6 +31,8 @@ readingTime: "7 min"
 A call with this prefix has a clear North Florida feel. It has held that feel since long before most of today's callers were born. The region tied to it has changed shape a few times. Still, it has never lost its own identity. It once covered nearly the whole top half of the state. Over the decades, that reach has shrunk into something far more focused. Still, the number on the screen reads as pure Jacksonville. Maybe you just moved to the area. Maybe you started a business nearby. Or maybe you just want to know more about the number on your caller ID. This guide covers where the prefix reaches, how it began, and why it still matters for business today.
 
 ## The Counties and Cities Behind a 904 Area Code Number
+
+![Map-style graphic highlighting the counties and beach towns of northeast Florida](/images/blog/the-counties-and-cities-behind-a-904-area-code.webp)
 
 The 904 area code now covers Duval, St. Johns, Nassau, and Baker Counties, plus nearly all of Clay County. It anchors the northeast corner of Florida. The area reaches Jacksonville, Jacksonville Beach, Atlantic Beach, Neptune Beach, Orange Park, Green Cove Springs, Fernandina Beach, St. Augustine, and St. Augustine Beach. Together, these spots form one of the fastest-growing metro economies on the Atlantic coast. A number with this prefix shows a real tie to the port, the beaches, and the old towns that make up greater Jacksonville.
 
@@ -41,6 +46,8 @@ Firms that want to know more about numbering options nearby may also want to che
 
 ## From Statewide Code to Jacksonville's Own Number
 
+![Timeline graphic tracing the successive splits that narrowed this prefix down to Jacksonville](/images/blog/from-statewide-code-to-jacksonvilles-own-number.webp)
+
 Area code 305 covered the whole state of Florida in 1947. That was when AT&T brought in the first nationwide numbering plan. As the state grew, planners split off area code 904 in 1965. It then covered the entire north half of Florida on its own. It ran from Ocala up through Jacksonville and west to the Panhandle.
 
 Growth kept shrinking that footprint. In 1995, planners carved out area code 352 for Ocala and Gainesville. Just two years later, in 1997, Panama City, Tallahassee, and Pensacola broke away to form area code 850. By 2001, a new split made area code 386 for Daytona Beach and nearby towns. This narrowed 904 down to Jacksonville and its close area.
@@ -48,6 +55,8 @@ Growth kept shrinking that footprint. In 1995, planners carved out area code 352
 In 2024, regulators brought in area code 324 as an overlay rather than splitting the region a fifth time. This meant old customers kept their 904 numbers, while new lines could use either code.
 
 ## A Local Jacksonville Number Without the Jacksonville Overhead
+
+![Remote worker managing calls on a laptop and phone from outside the city](/images/blog/a-local-jacksonville-number-without-the-jacksonville-overhead.webp)
 
 Setting up a 904 number does not need an office lease in Jacksonville. It does not need a long-term contract either. Rozper offers [local and virtual numbers](https://rozper.vercel.app/) in 150+ countries. It runs on 99.999% uptime. A business can turn on this number, send it to any device, and start taking calls the same day. The platform runs on real human support, not a self-serve afterthought. Support teams can help set up call routing, voicemail, and multi-line setups built around a Jacksonville presence.
 
@@ -64,6 +73,8 @@ Every part of the 904 area code runs on Eastern Time. It uses Eastern Standard T
 Area code 904 now shares its ground with the 324 overlay. Because of this, ten-digit dialing has applied to every local call since the new code arrived in 2024. This holds true even between two neighbors on the same street. For more on how this numbering plan grew, [Wikipedia's entry on area codes 904 and 324](https://en.wikipedia.org/wiki/Area_codes_904_and_324) lays out a clear timeline of the splits and the later overlay. Getting used to ten-digit dialing takes a bit of time. Still, it stays key for anyone calling into or out of Jacksonville today.
 
 ## The Local Advantage of a Recognizable Jacksonville Prefix
+
+![Customer answering a call, illustrating the trust a familiar local prefix builds](/images/blog/the-local-advantage-of-a-recognizable-jacksonville-prefix.webp)
 
 A 904 number tells callers right away that a firm has real roots in Jacksonville. That carries real weight in a metro built on shipping, the military, and a fast-growing finance and health care scene. Local folks tend to pick up calls from a known prefix more than an out-of-area or toll-free number. That one habit can shift booking rates and response rates in a firm's favor.
 
