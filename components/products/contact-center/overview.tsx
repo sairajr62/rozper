@@ -97,6 +97,16 @@ const sections = [
       "AI-powered alerts",
     ],
   },
+  {
+    title: "One Dashboard for the Whole Floor",
+    desc: "Channel volumes, AI performance, and SLA health change by the minute. Rozper's command center shows it all live, so nothing gets caught after the fact.",
+    icon: Radio,
+    items: [
+      "Live channel volumes",
+      "AI auto-resolve and sentiment tracking",
+      "Real-time SLA monitoring",
+    ],
+  },
 ];
 
 const faqs = [
@@ -414,6 +424,10 @@ export function ContactCenterPageView() {
               ) : i === 2 ? (
                 <div className="relative rounded-2xl border border-white/10 bg-[#080F1C] overflow-hidden min-h-[200px]">
                   <SupervisorDashboardAnimation />
+                </div>
+              ) : i === 3 ? (
+                <div className="relative rounded-2xl border border-white/10 bg-[#080F1C] overflow-hidden min-h-[200px]">
+                  <LiveDashboard />
                 </div>
               ) : (
                 <div className="relative aspect-[4/3] rounded-2xl border border-white/10 bg-gradient-to-br from-[#046BD2]/15 to-[#2575FC]/10 overflow-hidden p-8 flex items-center justify-center">

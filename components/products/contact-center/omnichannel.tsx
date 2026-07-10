@@ -148,12 +148,9 @@ export function ProdCCOmnichannelPageView() {
             </motion.div>
           </div>
 
-          <div className="w-full overflow-hidden h-[248px] sm:h-[364px] md:h-auto">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
-              className="scale-[0.55] sm:scale-[0.82] md:scale-100 origin-top">
-              <OmnichannelIllustration />
-            </motion.div>
-          </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="w-full overflow-hidden">
+            <OmnichannelInbox />
+          </motion.div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">

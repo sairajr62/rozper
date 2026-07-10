@@ -154,6 +154,14 @@ export function ProdAIReceptionistPageView() {
           </div>
         </section>
 
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Watch a call, handled live.</h2>
+            <p className="mt-4 text-base sm:text-lg text-white/60 max-w-xl mx-auto">Every call is transcribed, qualified, and routed in real time — right up to the calendar booking or handoff.</p>
+          </div>
+          <ReceptionistFlowUI />
+        </section>
+
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Your front desk never closes.</h2>

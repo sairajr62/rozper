@@ -176,6 +176,14 @@ export function ProdCCOutboundDialerPageView() {
           </motion.div>
         </section>
 
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Your campaign, live.</h2>
+            <p className="mt-4 text-base sm:text-lg text-white/60 max-w-xl mx-auto">Connect rates, talk time, and agent performance — updated in real time as calls happen.</p>
+          </div>
+          <OutboundDialerUI />
+        </section>
+
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">More connects. Better conversations. Fewer risks.</h2>
