@@ -414,24 +414,34 @@ export function ProdUCaaSBusinessPhonePageView() {
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Built-in AI</span>
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold">AI on every business call.</h2>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center">
+              AI on every business call.
+            </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             {aiOnEveryCall.map((a, i) => (
               <motion.div
                 key={a.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group overflow-hidden"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className="flex items-start gap-4 p-5 rounded-2xl bg-[#111B2D] border border-white/[0.07] hover:border-[#046BD2]/30 transition-colors group"
               >
-                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-[#046BD2]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative w-11 h-11 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mb-5">
-                  <a.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all mt-0.5">
+                  <a.icon
+                    className="w-4 h-4 text-[#0086F9]"
+                    strokeWidth={1.5}
+                  />
                 </div>
-                <h3 className="relative font-display font-semibold text-white mb-2.5 group-hover:text-[#0086F9] transition-colors">{a.title}</h3>
-                <p className="relative text-sm text-white/60 leading-relaxed">{a.desc}</p>
+                <div>
+                  <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">
+                    {a.title}
+                  </h3>
+                  <p className="text-sm text-white/65 leading-relaxed">
+                    {a.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -439,27 +449,34 @@ export function ProdUCaaSBusinessPhonePageView() {
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Admin control</span>
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold">Manage every line from one screen.</h2>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center">
+              Manage every line from one screen.
+            </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             {manageEveryLine.map((m, i) => (
               <motion.div
                 key={m.title}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-7 hover:border-[#046BD2]/30 transition-colors group overflow-hidden"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className="flex items-start gap-4 p-5 rounded-2xl bg-[#111B2D] border border-white/[0.07] hover:border-[#046BD2]/30 transition-colors group"
               >
-                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-[#046BD2]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative flex items-start justify-between mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all">
-                    <m.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
-                  </div>
-                  <span className="font-mono text-xs text-white/20 font-bold">{String(i + 1).padStart(2, '0')}</span>
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all mt-0.5">
+                  <m.icon
+                    className="w-4 h-4 text-[#0086F9]"
+                    strokeWidth={1.5}
+                  />
                 </div>
-                <h3 className="relative font-display font-semibold text-white mb-2.5 group-hover:text-[#0086F9] transition-colors">{m.title}</h3>
-                <p className="relative text-sm text-white/60 leading-relaxed">{m.desc}</p>
+                <div>
+                  <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">
+                    {m.title}
+                  </h3>
+                  <p className="text-sm text-white/65 leading-relaxed">
+                    {m.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
