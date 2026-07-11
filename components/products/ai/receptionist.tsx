@@ -6,7 +6,7 @@ import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
 import {
   PhoneIncoming, CalendarCheck, Database, Mic, Globe, GitBranch,
-  MessageCircle, ArrowRight, ChevronRight, Bot, CheckCircle,
+  MessageCircle, ArrowRight, ChevronRight, Bot, CheckCircle, Star,
 } from 'lucide-react'
 import { ReceptionistHero } from '@/components/products/ai/receptionist-hero'
 
@@ -23,6 +23,13 @@ const faqs = [
   { q: 'Does it sound like a real person?', a: 'Yes. Natural language processing makes the AI indistinguishable from a professional receptionist — no robotic prompts.' },
   { q: 'What happens when the AI can\'t help?', a: 'It escalates the call to the right agent, voicemail, or callback flow based on your configured rules.' },
   { q: 'Which CRMs does it integrate with?', a: 'Salesforce, HubSpot, Zoho, Zendesk, Freshdesk, Pipedrive, and 300+ via API and Zapier.' },
+  { q: 'Can I set hours for when AI answers vs. live agents?', a: 'Yes. Define AI-only hours, hybrid routing, and live-agent-first rules per team or number.' },
+]
+
+const setItUpForget = [
+  'Configure call flows, questions, and routing in minutes — no coding.',
+  'Train the AI on your products, pricing, and FAQs through a simple interface.',
+  'Available on your existing business number — no new number needed.',
 ]
 
 const callFlow = [
@@ -182,6 +189,44 @@ export function ProdAIReceptionistPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+          <div className="rounded-2xl border border-white/10 bg-[#111B2D] p-8 sm:p-10">
+            <div className="flex gap-0.5 mb-5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-[#0086F9] text-[#0086F9]" />
+              ))}
+            </div>
+            <blockquote className="text-lg sm:text-xl text-white/85 leading-relaxed font-display">
+              "Our AI Receptionist books 30% of our demos outside business hours. It doesn't take sick days and never puts a customer on hold."
+            </blockquote>
+            <div className="flex items-center gap-3 mt-6 pt-6 border-t border-white/[0.06]">
+              <div className="w-10 h-10 rounded-full bg-[#046BD2]/15 border border-[#046BD2]/25 flex items-center justify-center font-display font-bold text-sm text-[#2D98F1]">MR</div>
+              <div>
+                <div className="font-semibold text-sm">Mia Reynolds</div>
+                <div className="text-xs text-white/65">Marketing Director, Clearbridge Tech</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Set it up. Then forget about it.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {setItUpForget.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

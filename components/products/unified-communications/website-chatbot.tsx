@@ -25,6 +25,12 @@ const faqs = [
   { q: 'How does live agent handoff work?', a: 'When the AI can\'t help or the visitor requests it, chat routes to a live agent with full conversation history.' },
 ]
 
+const oneEmbed = [
+  'Drop one line of code into any website — works on WordPress, Webflow, Shopify, and custom sites.',
+  'All chatbot conversations sync to Salesforce, HubSpot, and Zoho automatically.',
+  'Fully branded — match your colors, logo, and tone in minutes.',
+]
+
 
 export function ProdUCaaSWebsiteChatbotPageView() {
   return (
@@ -100,6 +106,24 @@ export function ProdUCaaSWebsiteChatbotPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">One embed. Zero developer time.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {oneEmbed.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

@@ -65,6 +65,12 @@ const faqs = [
   },
 ];
 
+const betterAgentsFaster = [
+  "New agents reach proficiency 3x faster with live AI guidance.",
+  "Reduces average handle time by eliminating hold-and-search moments.",
+  "Training insights identify where coaching is needed — by agent, team, or topic.",
+];
+
 const knowledgeCards = [
   {
     trigger: "Pricing question detected",
@@ -303,6 +309,26 @@ export function ProdCCAgentAssistPageView() {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">
+              Better agents. Faster.
+            </h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {betterAgentsFaster.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

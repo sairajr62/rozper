@@ -25,6 +25,12 @@ const faqs = [
   { q: 'How many participants can join?', a: 'Up to 200. Contact us for larger webinar plans with up to 1,000 attendees.' },
 ]
 
+const meetingsConnect = [
+  'One-click meeting launch from Team Chat, phone, or calendar.',
+  'Calendar integrations with Google Calendar and Microsoft Outlook.',
+  'Meeting notes and action items pushed to Salesforce, HubSpot, or Zoho automatically.',
+]
+
 
 export function ProdUCaaSVideoMeetingsPageView() {
   return (
@@ -101,6 +107,24 @@ export function ProdUCaaSVideoMeetingsPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Meetings that connect to the rest of your work.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {meetingsConnect.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

@@ -24,6 +24,12 @@ const faqs = [
   { q: 'Are faxes HIPAA compliant?', a: 'Yes. Encryption at rest and in transit, audit logs, and BAA support make Rozper fax HIPAA-eligible.' },
 ]
 
+const builtForRegulated = [
+  'Full audit trail on every fax sent and received.',
+  'Encrypted storage and secure delivery confirmation.',
+  'Works alongside your existing phone number — no separate fax line needed.',
+]
+
 const faxInbox = [
   { id: 'FAX-2291', from: '+1 (312) 555-0177', subject: 'Insurance Authorization', pages: 3, time: '10:14 AM', status: 'Received', new: true },
   { id: 'FAX-2290', from: 'Lab Results Inc.', subject: 'Patient Report #44821', pages: 7, time: 'Yesterday', status: 'Received', new: false },
@@ -151,6 +157,24 @@ export function ProdUCaaSOnlineFaxPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Built for regulated industries.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {builtForRegulated.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

@@ -24,6 +24,13 @@ const faqs = [
   { q: 'Can I connect multiple office locations?', a: 'Yes. Multi-site dial plans with shared extensions, intercom, and central management across all locations.' },
 ]
 
+const managedForYou = [
+  '99.99% uptime SLA — backed by redundant carrier-grade infrastructure.',
+  'Automatic failover and load balancing — calls never drop due to a single point of failure.',
+  'Provisioning new seats takes minutes, not weeks.',
+  '24/7 expert support team — not a ticketing bot.',
+]
+
 const departments = [
   { name: 'Sales', ext: '100', agents: 8, active: 3 },
   { name: 'Support', ext: '200', agents: 12, active: 7 },
@@ -170,6 +177,24 @@ export function ProdUCaaSPhoneSystemPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Managed for you. Reliable by design.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+              {managedForYou.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

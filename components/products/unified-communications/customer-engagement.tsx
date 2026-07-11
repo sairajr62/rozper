@@ -25,6 +25,12 @@ const faqs = [
   { q: 'Does it include an AI chatbot?', a: 'Yes. AI chatbot handles FAQs, captures leads, and escalates to agents when needed — on every channel.' },
 ]
 
+const crmConnected = [
+  'Every interaction syncs automatically to Salesforce, HubSpot, Zoho, and Zendesk.',
+  'Customer profiles surface instantly — name, history, open tickets — before the agent types a word.',
+  'Trigger automations: follow-up SMS, ticket creation, status updates — all from the inbox.',
+]
+
 const channelTabs = [
   { id: 'voice', label: 'Voice', icon: PhoneForwarded, color: 'text-[#0086F9]', count: 3 },
   { id: 'sms', label: 'SMS', icon: MessageSquare, color: 'text-emerald-400', count: 7 },
@@ -297,6 +303,24 @@ export function ProdUCaaSCustomerEngagementPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">CRM-connected from day one.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {crmConnected.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

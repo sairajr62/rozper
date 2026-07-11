@@ -25,6 +25,12 @@ const faqs = [
   { q: 'How do agents see suggestions?', a: 'Suggestions appear in a sidebar panel on the agent\'s screen — invisible to the customer, real-time.' },
 ]
 
+const aiThatLearns = [
+  'Train the AI on your products, tone, and FAQs — it gets smarter over time.',
+  'Custom call flows and AI prompts per team or department.',
+  'Works across voice, SMS, WhatsApp, and web chat — one AI, every channel.',
+]
+
 const suggestions = [
   {
     type: 'Objection Handle',
@@ -180,6 +186,24 @@ export function ProdUCaaSAIAssistantPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">AI that learns your business.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {aiThatLearns.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

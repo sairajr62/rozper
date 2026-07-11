@@ -31,6 +31,12 @@ const metricsData = [
   { rep: 'Jordan K.', score: 76, calls: 19, closed: 5 },
 ]
 
+const fasterOnboarding = [
+  'New agents ramp to full productivity in days, not months.',
+  'Every agent follows the same process — AI ensures nothing is missed.',
+  'Managers see AI-assisted performance data per agent and per team.',
+]
+
 function AIAssistantDashboard() {
   return (
     <div className="space-y-4">
@@ -162,6 +168,24 @@ export function ProdAIAssistantPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Faster onboarding. Better consistency.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {fasterOnboarding.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

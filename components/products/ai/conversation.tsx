@@ -44,6 +44,12 @@ const textMap: Record<string, string> = {
   blue: 'text-[#0086F9]',
 }
 
+const insightsWholeBusiness = [
+  'Agent performance: quality scores, resolution rates, and sentiment trends per rep.',
+  'Product intelligence: feature requests and pain points surfaced from real calls.',
+  'Executive dashboards with custom KPIs and scheduled email delivery.',
+]
+
 function ConversationAnalyticsDash() {
   return (
     <div className="space-y-4">
@@ -180,6 +186,24 @@ export function ProdAIConversationPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Insights your whole business can use.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {insightsWholeBusiness.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

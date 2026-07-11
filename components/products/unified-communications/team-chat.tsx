@@ -40,6 +40,12 @@ const chatMessages = [
   { user: 'SYS', name: 'Rozper', text: 'Marcus started a call · 2 joined', time: '2:16 PM', color: 'text-amber-400' },
 ]
 
+const connectedToRozper = [
+  'Call recordings and AI summaries land in the relevant chat channel automatically.',
+  'CRM activity, ticket updates, and call alerts surfaced in threads.',
+  'Works on desktop, browser, iOS, and Android — same experience everywhere.',
+]
+
 function TeamChatUI() {
   const [activeChannel, setActiveChannel] = useState('support-queue')
 
@@ -192,6 +198,24 @@ export function ProdUCaaSTeamChatPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Connected to every other Rozper tool.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {connectedToRozper.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

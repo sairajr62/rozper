@@ -25,6 +25,13 @@ const faqs = [
   { q: 'Does it work internationally?', a: 'Yes. Local numbers, inbound routing, and HD calls in 150+ countries on every plan.' },
 ]
 
+const aiOnEveryCall = [
+  'AI Receptionist answers and qualifies calls 24/7 — no missed leads.',
+  'Live call coaching whispers the right answer to agents mid-conversation.',
+  'Post-call summaries written automatically and synced to your CRM.',
+  'Sentiment scoring on every call so managers see quality without listening.',
+]
+
 const callLines = [
   { name: 'Priya Nair',    ext: '101', status: 'On Call',   startSecs: 261, avatar: 'PN', dir: 'Inbound'  },
   { name: 'Marcus Lee',    ext: '102', status: 'Available', startSecs: null, avatar: 'ML', dir: null       },
@@ -382,6 +389,24 @@ export function ProdUCaaSBusinessPhonePageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">AI on every business call.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+              {aiOnEveryCall.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
