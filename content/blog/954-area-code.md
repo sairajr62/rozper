@@ -23,7 +23,7 @@ publishDate: "2026-07-10"
 readingTime: "8 min"
 featuredImage: "/images/blog/954 hero.webp"
 featuredImageAlt: "Phone handset over a map of Broward County and Fort Lauderdale"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # 954 Area Code: Fort Lauderdale, Broward County & Business Guide

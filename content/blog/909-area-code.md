@@ -23,7 +23,7 @@ publishDate: "2026-07-10"
 readingTime: "8 min"
 featuredImage: "/images/blog/909 hero.webp"
 featuredImageAlt: "Phone handset over a map of San Bernardino County and the Inland Empire"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # 909 Area Code: Complete Guide to California's Inland Empire

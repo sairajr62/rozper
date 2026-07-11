@@ -24,7 +24,7 @@ author: "Shahid Kathawala"
 publishDate: "2026-07-03"
 readingTime: "7 min"
 featuredImage: "/images/blog/937-hero.png"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # 937 Area Code: The Complete Business Guide to Dayton, Ohio

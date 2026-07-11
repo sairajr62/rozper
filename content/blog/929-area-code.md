@@ -23,7 +23,7 @@ publishDate: "2026-07-10"
 readingTime: "8 min"
 featuredImage: "/images/blog/929 hero.webp"
 featuredImageAlt: "Phone handset over a map of New York City's outer boroughs"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # 929 Area Code: NYC Coverage, Cities & Business Numbers

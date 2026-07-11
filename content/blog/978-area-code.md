@@ -23,7 +23,7 @@ publishDate: "2026-07-10"
 readingTime: "7 min"
 featuredImage: "/images/blog/978 hero.webp"
 featuredImageAlt: "Phone handset over a map of northeastern Massachusetts and the Merrimack Valley"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # What Is the 978 Area Code? Location, History, and Dialing Guide

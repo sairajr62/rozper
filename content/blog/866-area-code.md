@@ -21,7 +21,7 @@ publishDate: "2026-07-10"
 readingTime: "7 min"
 featuredImage: "/images/blog/866 hero.webp"
 featuredImageAlt: "Business phone dashboard showing a toll-free 866 number ready for call routing"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # The 866 Area Code: A Plain-English Guide to This Toll-Free Prefix

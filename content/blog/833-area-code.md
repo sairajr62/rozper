@@ -21,7 +21,7 @@ publishDate: "2026-07-10"
 readingTime: "7 min"
 featuredImage: "/images/blog/833 hero.webp"
 featuredImageAlt: "Business phone display showing an incoming call from a toll-free 833 prefix"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # 833 Area Code Explained: The Toll-Free Number Built for Modern Business

@@ -23,7 +23,7 @@ publishDate: "2026-07-10"
 readingTime: "8 min"
 featuredImage: "/images/blog/979 hero.png"
 featuredImageAlt: "Phone handset over a map of southeastern Texas along the Brazos River corridor"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # 979 Area Code: Texas Cities, History & Business Numbers

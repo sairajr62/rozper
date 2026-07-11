@@ -23,7 +23,7 @@ publishDate: "2026-07-10"
 readingTime: "8 min"
 featuredImage: "/images/blog/931 hero.webp"
 featuredImageAlt: "Phone handset over a map of central Tennessee's Highland Rim region"
-featuredImageFit: "cover"
+featuredImageFit: "contain"
 ---
 
 # 931 Area Code: Complete Tennessee Cities & Business Guide
