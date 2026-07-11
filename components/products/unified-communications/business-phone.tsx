@@ -8,6 +8,8 @@ import { Footer } from '@/components/landing/footer'
 import {
   Phone, Globe, Zap, Shield, RefreshCw, Headphones,
   ArrowRight, ChevronRight, PhoneCall, MicOff, Video,
+  UserCog, ArrowRightLeft, MonitorSmartphone,
+  Bot, Ear, FileCheck2, Activity,
 } from 'lucide-react'
 
 const features = [
@@ -26,16 +28,28 @@ const faqs = [
 ]
 
 const aiOnEveryCall = [
-  'AI Receptionist answers and qualifies calls 24/7 — no missed leads.',
-  'Live call coaching whispers the right answer to agents mid-conversation.',
-  'Post-call summaries written automatically and synced to your CRM.',
-  'Sentiment scoring on every call so managers see quality without listening.',
+  { icon: Bot, title: '24/7 AI call answering', desc: 'AI Receptionist answers and qualifies calls 24/7 — no missed leads.' },
+  { icon: Ear, title: 'Live call coaching', desc: 'Live call coaching whispers the right answer to agents mid-conversation.' },
+  { icon: FileCheck2, title: 'Automatic CRM sync', desc: 'Post-call summaries written automatically and synced to your CRM.' },
+  { icon: Activity, title: 'Built-in sentiment scoring', desc: 'Sentiment scoring on every call so managers see quality without listening.' },
 ]
 
 const manageEveryLine = [
-  "Admins assign, suspend, or reassign numbers across the whole team without calling support. Role-based permissions mean a regional manager can adjust their office's setup without touching anyone else's. Changes apply instantly, no downtime.",
-  "Porting your current business numbers into Rozper doesn't interrupt service — calls keep routing while the switch happens in the background. Your team keeps the numbers customers already know. Setup is handled by Rozper's onboarding team, not left to guesswork.",
-  "Desktop, browser, and mobile apps stay in sync, so a call answered on your phone shows the same history on your laptop. Agents work from home, the office, or the road without losing context. Your business number rings wherever your team actually is.",
+  {
+    icon: UserCog,
+    title: 'Role-based admin control',
+    desc: "Admins assign, suspend, or reassign numbers across the whole team without calling support. Role-based permissions mean a regional manager can adjust their office's setup without touching anyone else's. Changes apply instantly, no downtime.",
+  },
+  {
+    icon: ArrowRightLeft,
+    title: 'Zero-downtime number porting',
+    desc: "Porting your current business numbers into Rozper doesn't interrupt service — calls keep routing while the switch happens in the background. Your team keeps the numbers customers already know. Setup is handled by Rozper's onboarding team, not left to guesswork.",
+  },
+  {
+    icon: MonitorSmartphone,
+    title: 'Synced across every device',
+    desc: "Desktop, browser, and mobile apps stay in sync, so a call answered on your phone shows the same history on your laptop. Agents work from home, the office, or the road without losing context. Your business number rings wherever your team actually is.",
+  },
 ]
 
 const callLines = [
@@ -398,39 +412,56 @@ export function ProdUCaaSBusinessPhonePageView() {
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">AI on every business call.</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Built-in AI</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold">AI on every business call.</h2>
           </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-              {aiOnEveryCall.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
-                  </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {aiOnEveryCall.map((a, i) => (
+              <motion.div
+                key={a.title}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group overflow-hidden"
+              >
+                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-[#046BD2]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative w-11 h-11 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mb-5">
+                  <a.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <h3 className="relative font-display font-semibold text-white mb-2.5 group-hover:text-[#0086F9] transition-colors">{a.title}</h3>
+                <p className="relative text-sm text-white/60 leading-relaxed">{a.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Manage every line from one screen.</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#046BD2]/10 border border-[#046BD2]/30 mb-6">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Admin control</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold">Manage every line from one screen.</h2>
           </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="space-y-4">
-              {manageEveryLine.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+          <div className="grid md:grid-cols-3 gap-4">
+            {manageEveryLine.map((m, i) => (
+              <motion.div
+                key={m.title}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-7 hover:border-[#046BD2]/30 transition-colors group overflow-hidden"
+              >
+                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-[#046BD2]/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative flex items-start justify-between mb-5">
+                  <div className="w-11 h-11 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all">
+                    <m.icon className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
                   </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
+                  <span className="font-mono text-xs text-white/20 font-bold">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h3 className="relative font-display font-semibold text-white mb-2.5 group-hover:text-[#0086F9] transition-colors">{m.title}</h3>
+                <p className="relative text-sm text-white/60 leading-relaxed">{m.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 
