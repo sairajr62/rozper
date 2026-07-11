@@ -8,6 +8,7 @@ import { Footer } from '@/components/landing/footer'
 import {
   Inbox, PhoneForwarded, MessageSquare, Smartphone, Bot, BarChart3,
   Share2, ArrowRight, ChevronRight, Instagram, Twitter,
+  RefreshCw, UserCheck, Workflow, Route, Activity, Users,
 } from 'lucide-react'
 
 const features = [
@@ -26,9 +27,15 @@ const faqs = [
 ]
 
 const crmConnected = [
-  'Every interaction syncs automatically to Salesforce, HubSpot, Zoho, and Zendesk.',
-  'Customer profiles surface instantly — name, history, open tickets — before the agent types a word.',
-  'Trigger automations: follow-up SMS, ticket creation, status updates — all from the inbox.',
+  { icon: RefreshCw, title: 'Auto-synced to your CRM', desc: 'Every interaction syncs automatically to Salesforce, HubSpot, Zoho, and Zendesk.' },
+  { icon: UserCheck, title: 'Instant customer context', desc: 'Customer profiles surface instantly — name, history, open tickets — before the agent types a word.' },
+  { icon: Workflow, title: 'Automations from the inbox', desc: 'Trigger automations: follow-up SMS, ticket creation, status updates — all from the inbox.' },
+]
+
+const queueManagement = [
+  { icon: Route, title: 'Smart routing by priority', desc: 'Set routing rules by skill, priority, or customer value, so your best agents handle your best accounts automatically. Overflow rules kick in before wait times spike, redirecting conversations to the next available agent. You define the logic once; the system runs it every time.' },
+  { icon: Activity, title: 'Live queue monitoring', desc: 'Supervisors watch live queue depth and average response time from one screen, across every channel. Alerts fire when a conversation sits too long without a reply. You catch the bottleneck before the customer complains about it.' },
+  { icon: Users, title: 'Team-level demand reporting', desc: "Team-level reporting shows which channels are overloaded and which agents are underused, week over week. You staff shifts based on actual demand, not guesswork. It's the data you need to justify your next hire." },
 ]
 
 const channelTabs = [
@@ -306,21 +313,49 @@ export function ProdUCaaSCustomerEngagementPageView() {
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">CRM-connected from day one.</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">CRM-connected from day one.</h2>
           </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="space-y-4">
-              {crmConnected.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
-                  </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {crmConnected.map((it, i) => (
+              <motion.div
+                key={it.title}
+                initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className="flex items-start gap-4 p-5 rounded-2xl bg-[#111B2D] border border-white/[0.07] hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all mt-0.5">
+                  <it.icon className="w-4 h-4 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">{it.title}</h3>
+                  <p className="text-sm text-white/65 leading-relaxed">{it.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Queue management that keeps SLAs on track.</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {queueManagement.map((it, i) => (
+              <motion.div
+                key={it.title}
+                initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className="flex items-start gap-4 p-5 rounded-2xl bg-[#111B2D] border border-white/[0.07] hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all mt-0.5">
+                  <it.icon className="w-4 h-4 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">{it.title}</h3>
+                  <p className="text-sm text-white/65 leading-relaxed">{it.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 
