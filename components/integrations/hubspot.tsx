@@ -38,6 +38,12 @@ const faqs = [
   { q: 'Complex setup?', a: 'No. Connect under 10 minutes from Rozper admin panel — no developer needed.' },
 ]
 
+const oneNumberEveryChannel = [
+  "SMS and WhatsApp messages tied to a HubSpot contact land in the same timeline as their calls, so your reps see the full conversation, not just half of it. No more digging through a separate texting app mid-call.",
+  "You can set up call queues by HubSpot lead score or lifecycle stage, so your best leads reach a live rep first. Lower-priority calls route to voicemail-to-text or an AI Receptionist instead.",
+  "Coverage across 150+ countries means your HubSpot contacts get a local number to call back, wherever they are. That alone lifts answer rates on outbound follow-up.",
+]
+
 const syncFlow = [
   { step: '01', label: 'Call initiated', detail: 'Click any phone number inside HubSpot to dial', side: 'hubspot' },
   { step: '02', label: 'Contact pops', detail: 'Caller ID matched — full contact history loaded instantly', side: 'rozper' },
@@ -518,6 +524,24 @@ export function HubSpotPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">One number, every channel, one HubSpot record.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {oneNumberEveryChannel.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

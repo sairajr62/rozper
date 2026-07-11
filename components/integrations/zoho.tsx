@@ -37,6 +37,12 @@ const faqs = [
   { q: 'Can I trigger Zoho automations from call events?', a: 'Yes. Deal updates, task creation, and email sequences from call events.' },
 ]
 
+const zohoReporting = [
+  "You get call volume, talk time, and outcome data broken down by agent and by Zoho pipeline stage, refreshed automatically. Your managers stop pulling numbers manually and start reading them instead.",
+  "Missed calls become Zoho tasks with a due date and the caller's history attached, so nobody has to remember to follow up. Your team works from a queue, not a guess.",
+  "Rozper's admin console lets you set call routing rules by Zoho territory or lead owner, right from the same dashboard. You don't need a separate telephony admin to keep it running.",
+]
+
 const zohoProducts = [
   { name: 'Zoho CRM', badge: 'CRM', desc: 'Contacts, leads, deals' },
   { name: 'Zoho Desk', badge: 'Desk', desc: 'Support tickets & SLA' },
@@ -452,6 +458,24 @@ export function ZohoPageView() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Reporting that actually tells you something.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {zohoReporting.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
