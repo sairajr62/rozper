@@ -7,7 +7,7 @@ import { Footer } from '@/components/landing/footer'
 import {
   Brain, FileText, Zap, TrendingUp, Shield, MessageSquare,
   ArrowRight, ChevronRight, Sparkles, BarChart3,
-  Gauge, LockKeyhole, Languages, GraduationCap, GitBranch, Layers,
+  Gauge, Languages,
 } from 'lucide-react'
 
 const features = [
@@ -17,6 +17,19 @@ const features = [
   { icon: TrendingUp, title: 'Rep Performance Analytics', desc: 'Spot winning patterns across your team — talk ratio, close rate, objection handling.' },
   { icon: Shield, title: 'Compliance Monitoring', desc: 'Flags missing disclosures and prohibited language in real time on every call.' },
   { icon: Zap, title: 'Post-Call Follow-up Drafts', desc: 'Email follow-ups drafted from call summary — agents review, then send.' },
+]
+
+const trustCards = [
+  { icon: Gauge, title: 'Performance data on the AI itself', desc: "Every AI-drafted reply, summary, and suggestion gets a quality score, so you know what's actually helping your team. Supervisors review flagged interactions where the AI's confidence was low — you keep the AI accountable, not just running in the background." },
+  { icon: Shield, title: 'Your data never leaves Rozper', desc: "All AI processing runs inside Rozper's infrastructure — your call data and transcripts aren't shared with outside tools you didn't approve. You control retention windows and who can access AI-generated notes. Built for teams in regulated industries that can't take chances with customer data." },
+  { icon: Languages, title: "Speaks your customer's language", desc: "The AI understands conversations in multiple languages, matching the customer's language in its summaries and suggested replies. Your agents don't need to translate before they respond — it works the same whether the call came in from London or Manila." },
+]
+
+const assistantFlow = [
+  { icon: MessageSquare, title: 'Listens in real time', desc: 'The assistant transcribes and understands the conversation live, on every call and message.' },
+  { icon: Brain, title: 'Coaches on the spot', desc: 'Objection handlers and next-best actions surface mid-call — invisible to the customer.' },
+  { icon: FileText, title: 'Summarizes & drafts', desc: 'The moment the call ends, it writes the summary, action items, and follow-up for review.' },
+  { icon: BarChart3, title: 'Scores & learns', desc: 'Every assist is quality-scored and rolled into rep analytics, so the team keeps improving.' },
 ]
 
 const faqs = [
@@ -30,18 +43,6 @@ const metricsData = [
   { rep: 'Marcus L.', score: 81, calls: 22, closed: 7 },
   { rep: 'Layla H.', score: 88, calls: 31, closed: 14 },
   { rep: 'Jordan K.', score: 76, calls: 19, closed: 5 },
-]
-
-const fasterOnboarding = [
-  { icon: GraduationCap, title: 'Faster ramp time', desc: 'New agents ramp to full productivity in days, not months.' },
-  { icon: GitBranch, title: 'One consistent process', desc: 'Every agent follows the same process — AI ensures nothing is missed.' },
-  { icon: Layers, title: 'Visibility for managers', desc: 'Managers see AI-assisted performance data per agent and per team.' },
-]
-
-const aiPerformanceData = [
-  { icon: Gauge, title: 'Quality-scored AI output', desc: "Every AI-drafted reply, summary, and suggestion gets a quality score, so you know what's actually helping your team. Supervisors review flagged interactions where the AI's confidence was low. You keep the AI accountable, not just running in the background." },
-  { icon: LockKeyhole, title: 'Data stays in your control', desc: "All AI processing runs inside Rozper's infrastructure — your call data and transcripts aren't shared with outside tools you didn't approve. You control retention windows and who can access AI-generated notes. It's built for teams in regulated industries who can't take chances with customer data." },
-  { icon: Languages, title: 'Multilingual by default', desc: "The AI understands conversations in multiple languages, matching the customer's language in its summaries and suggested replies. Your agents don't need to translate before they respond. It works the same whether the call came in from London or Manila." },
 ]
 
 function AIAssistantDashboard() {
@@ -179,46 +180,52 @@ export function ProdAIAssistantPageView() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Faster onboarding. Better consistency.</h2>
+          <div className="max-w-2xl mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">AI Assistant</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              AI you can{' '}
+              <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">hold accountable</span>.
+            </h2>
           </div>
-          <div className="divide-y divide-white/[0.06]">
-            {fasterOnboarding.map((it, i) => (
+          <div className="grid md:grid-cols-3 gap-4">
+            {trustCards.map((f, i) => (
               <motion.div
-                key={it.title}
-                initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
-                className="group flex items-start gap-6 py-7 first:pt-0 last:pb-0 hover:pl-2 transition-all duration-300"
+                key={f.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group cursor-pointer"
               >
-                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mt-0.5">
-                  <it.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center mb-4 group-hover:bg-[#046BD2]/20 transition-all">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-display font-semibold text-white mb-1.5 group-hover:text-[#0086F9] transition-colors">{it.title}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{it.desc}</p>
-                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Performance data on the AI itself.</h2>
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">How it works</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              On every call, from hello to follow-up.
+            </h2>
           </div>
-          <div className="divide-y divide-white/[0.06]">
-            {aiPerformanceData.map((it, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {assistantFlow.map((s, i) => (
               <motion.div
-                key={it.title}
-                initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
-                className="group flex items-start gap-6 py-7 first:pt-0 last:pb-0 hover:pl-2 transition-all duration-300"
+                key={s.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
               >
-                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mt-0.5">
-                  <it.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all">
+                    <s.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                  </div>
+                  <span className="font-mono text-2xl text-white/10 font-bold">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-display font-semibold text-white mb-1.5 group-hover:text-[#0086F9] transition-colors">{it.title}</h3>
-                  <p className="text-sm text-white/50 leading-relaxed">{it.desc}</p>
-                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{s.desc}</p>
               </motion.div>
             ))}
           </div>

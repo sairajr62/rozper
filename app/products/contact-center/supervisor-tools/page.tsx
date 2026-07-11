@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Supervisor Tools · Barge, Whisper, Monitor | Rozper',
-  description: 'Barge, whisper, and monitor live calls — with AI alerts flagging issues the moment they start, so supervisors can see and fix problems before calls end.',
+  description: 'Barge, whisper, and monitor live — with AI alerts when calls need attention. See every call and fix it before it ends.',
   openGraph: {
     title: 'Supervisor Tools · Barge, Whisper, Monitor | Rozper',
-    description: 'Barge, whisper, and monitor live calls — with AI alerts flagging issues the moment they start, so supervisors can see and fix problems before calls end.',
+    description: 'Barge, whisper, and monitor live — with AI alerts when calls need attention.',
     type: 'website',
     url: `${SITE_URL}/products/contact-center/supervisor-tools/`,
   },

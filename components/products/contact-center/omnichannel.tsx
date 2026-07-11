@@ -8,6 +8,7 @@ import { Footer } from '@/components/landing/footer'
 import {
   LayoutDashboard, PhoneForwarded, Mail, Share2, Route, TrendingUp,
   ArrowRight, ChevronRight, Inbox, Layers, Phone, MessageSquare, Globe,
+  ArrowLeftRight, Search, Smartphone,
 } from 'lucide-react'
 import { OmnichannelIllustration } from '@/components/ui/omnichannel-illustration'
 import { ChannelCollapseAnimation } from '@/components/ui/channel-collapse-animation'
@@ -21,16 +22,23 @@ const features = [
   { icon: TrendingUp, title: 'Cross-Channel Analytics', desc: 'CSAT, resolution rate, and handle time across every channel in a unified report.' },
 ]
 
+const channelChoice = [
+  { icon: ArrowLeftRight, title: 'The thread follows the customer', desc: 'Customers reach you on Instagram, Telegram, or WhatsApp today and switch to a phone call tomorrow — the inbox keeps the thread intact either way.' },
+  { icon: Search, title: 'Never make them repeat themselves', desc: 'Agents can search across every past conversation by keyword, so a returning customer never has to start over.' },
+  { icon: Smartphone, title: 'Pick up where you left off', desc: 'Message drafts sync in real time between desktop and mobile, so an agent can continue a chat from their phone if they step away.' },
+]
+
+const steps = [
+  { icon: MessageSquare, title: 'Customer reaches out', desc: 'A message lands from any channel — voice, chat, WhatsApp, SMS, email, or social — into one shared inbox.' },
+  { icon: Route, title: 'AI routes it instantly', desc: 'Intent, history, and skill match the contact to the right agent or queue — no manual triage.' },
+  { icon: LayoutDashboard, title: 'Agent responds in one place', desc: 'Full CRM context and past threads sit right there, so the agent replies without switching tools.' },
+  { icon: TrendingUp, title: 'Resolved and tracked', desc: 'Outcome, CSAT, and SLA are logged across every channel in a single unified report.' },
+]
+
 const faqs = [
   { q: 'Can agents handle multiple channels simultaneously?', a: 'Yes. The unified desktop shows all active conversations — agents manage concurrent chats while on a call.' },
   { q: 'Is context preserved when switching channels?', a: 'Yes. CRM history, previous interactions, and sentiment carry across every channel — no re-introduction needed.' },
   { q: 'Which social channels are supported?', a: 'Instagram DMs, Facebook Messenger, Twitter/X DMs, and WhatsApp Business — all in the same inbox.' },
-]
-
-const realTimeAction = [
-  'Live queue view for supervisors with wait times, SLA risk, and agent load.',
-  'Every conversation logged automatically to CRM — no manual entry.',
-  'Built-in SLA timers and escalation triggers so no ticket goes cold.',
 ]
 
 const channels = [
@@ -154,9 +162,12 @@ export function ProdCCOmnichannelPageView() {
             </motion.div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }} className="w-full overflow-hidden">
-            <OmnichannelInbox />
-          </motion.div>
+          <div className="w-full overflow-hidden h-[248px] sm:h-[364px] md:h-auto">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+              className="scale-[0.55] sm:scale-[0.82] md:scale-100 origin-top">
+              <OmnichannelIllustration />
+            </motion.div>
+          </div>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
@@ -177,27 +188,61 @@ export function ProdCCOmnichannelPageView() {
                   <span className="font-mono text-[10px] text-white/20 font-bold">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Real-time data. Real-time action.</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="max-w-2xl mb-14">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Omnichannel Inbox</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              Your customers pick the channel,{' '}
+              <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">not you</span>.
+            </h2>
           </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="space-y-4">
-              {realTimeAction.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+          <div className="grid md:grid-cols-3 gap-4">
+            {channelChoice.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center mb-4 group-hover:bg-[#046BD2]/20 transition-all">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">How it works</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              One thread, start to finish.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all">
+                    <s.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
                   </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
+                  <span className="font-mono text-2xl text-white/10 font-bold">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 

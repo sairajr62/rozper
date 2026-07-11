@@ -7,6 +7,8 @@ import { Footer } from '@/components/landing/footer'
 import {
   PhoneOutgoing, Shield, Search, BarChart3, Users, RefreshCw,
   ArrowRight, ChevronRight, TrendingUp,
+  ListFilter, Filter, ArrowLeftRight, Upload, SlidersHorizontal, ShieldCheck,
+  Ban, Clock, FileCheck,
 } from 'lucide-react'
 import { OutboundDialerMobile } from '@/components/ui/outbound-dialer-mobile'
 
@@ -17,6 +19,25 @@ const features = [
   { icon: BarChart3, title: 'Campaign Analytics', desc: 'Contact rate, conversion rate, and revenue per call — per rep, per list, per day.' },
   { icon: Users, title: 'Agent Whisper & Coaching', desc: 'AI coaches agents on objections and next steps during outbound calls.' },
   { icon: RefreshCw, title: 'CRM Auto-Update', desc: 'Call disposition, notes, and next steps synced to CRM automatically after every call.' },
+]
+
+const listManagement = [
+  { icon: ListFilter, title: 'Segment lists in a few clicks', desc: 'Segment contact lists by priority, source, or campaign and assign them to specific agent teams in a few clicks.' },
+  { icon: Filter, title: 'Dead leads filtered out first', desc: 'Rozper flags duplicate and invalid numbers before a campaign launches, so your agents aren’t wasting calls on dead leads.' },
+  { icon: ArrowLeftRight, title: 'One shared agent pool', desc: 'Your outbound and inbound queues share the same agent pool, so reps can flex between calling and answering without switching tools.' },
+]
+
+const campaignSteps = [
+  { icon: Upload, title: 'Upload & scrub the list', desc: 'Import contacts by CSV or CRM sync — duplicates and DNC numbers are removed automatically before you start.' },
+  { icon: SlidersHorizontal, title: 'Set up the campaign', desc: 'Pick power or predictive mode, assign agent teams, and set compliant calling hours in a few clicks.' },
+  { icon: PhoneOutgoing, title: 'Dial & connect', desc: 'The dialer places calls and routes agents only to live answers, with AI pre-call context ready to go.' },
+  { icon: BarChart3, title: 'Track & sync', desc: 'Dispositions, conversion analytics, and CRM updates are logged automatically after every call.' },
+]
+
+const complianceChecks = [
+  { icon: Ban, label: 'DNC' },
+  { icon: Clock, label: 'Call hours' },
+  { icon: FileCheck, label: 'Consent' },
 ]
 
 const faqs = [
@@ -176,14 +197,6 @@ export function ProdCCOutboundDialerPageView() {
           </motion.div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
-          <div className="text-center mb-10 sm:mb-12">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Your campaign, live.</h2>
-            <p className="mt-4 text-base sm:text-lg text-white/60 max-w-xl mx-auto">Connect rates, talk time, and agent performance — updated in real time as calls happen.</p>
-          </div>
-          <OutboundDialerUI />
-        </section>
-
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">More connects. Better conversations. Fewer risks.</h2>
@@ -202,9 +215,128 @@ export function ProdCCOutboundDialerPageView() {
                   <span className="font-mono text-[10px] text-white/20 font-bold">{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
+          <div className="max-w-2xl mb-10 sm:mb-14">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Outbound Dialer</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              List management that keeps campaigns{' '}
+              <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">organized</span>.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4">
+            {listManagement.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center mb-4 group-hover:bg-[#046BD2]/20 transition-all">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">How it works</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              From list to live call, in four steps.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {campaignSteps.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all">
+                    <s.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                  </div>
+                  <span className="font-mono text-2xl text-white/10 font-bold">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">Compliance</span>
+              <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+                Compliance that runs in the{' '}
+                <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">background</span>.
+              </h2>
+              <p className="mt-5 text-base sm:text-lg text-white/60 leading-relaxed max-w-xl">
+                Every campaign dials inside the rules — so your team moves fast without risking a violation. TCPA safeguards are on by default, not an afterthought.
+              </p>
+              <Link href="/free-trial/" className="group mt-8 inline-flex items-center gap-2 px-5 py-3 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white font-semibold transition text-sm sm:text-base">
+                Start a free trial <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+            {/* AI Compliance Engine flow */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="rounded-2xl bg-[#0E1626] border border-white/10 px-4 py-8 sm:px-10 sm:py-12"
+            >
+            <div className="flex flex-col items-center text-center">
+              {/* Engine node */}
+              <div className="inline-flex items-center gap-2.5 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/25 px-5 py-3 shadow-[0_0_40px_-12px_rgba(4,107,210,0.6)]">
+                <ShieldCheck className="w-5 h-5 text-[#0086F9]" strokeWidth={1.5} />
+                <span className="font-display font-semibold text-white">AI Compliance Engine</span>
+              </div>
+
+              {/* connector down + splay to three */}
+              <div className="w-px h-5 bg-white/15" />
+              <div className="relative w-full max-w-lg h-5" aria-hidden>
+                <div className="absolute top-0 left-[16.66%] right-[16.66%] h-px bg-white/15" />
+                <div className="absolute top-0 left-[16.66%] -translate-x-1/2 w-px h-5 bg-white/15" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-5 bg-white/15" />
+                <div className="absolute top-0 left-[83.33%] -translate-x-1/2 w-px h-5 bg-white/15" />
+              </div>
+
+              {/* three parallel checks */}
+              <div className="grid grid-cols-3 gap-2.5 sm:gap-4 w-full max-w-lg">
+                {complianceChecks.map((c) => (
+                  <div key={c.label} className="rounded-xl bg-[#111B2D] border border-white/10 px-2 py-3 sm:px-4 sm:py-4 flex flex-col items-center gap-2">
+                    <div className="w-9 h-9 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center">
+                      <c.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-white/70">{c.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* merge three back into one + connector down */}
+              <div className="relative w-full max-w-lg h-5" aria-hidden>
+                <div className="absolute bottom-0 left-[16.66%] right-[16.66%] h-px bg-white/15" />
+                <div className="absolute bottom-0 left-[16.66%] -translate-x-1/2 w-px h-5 bg-white/15" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-5 bg-white/15" />
+                <div className="absolute bottom-0 left-[83.33%] -translate-x-1/2 w-px h-5 bg-white/15" />
+              </div>
+              <div className="w-px h-5 bg-gradient-to-b from-white/15 to-emerald-400/40" />
+
+              {/* result node */}
+              <div className="inline-flex items-center gap-2.5 rounded-xl bg-emerald-400/10 border border-emerald-400/25 px-5 py-3">
+                <PhoneOutgoing className="w-5 h-5 text-emerald-400" strokeWidth={1.5} />
+                <span className="font-display font-semibold text-emerald-300">Safe to dial</span>
+              </div>
+            </div>
+            </motion.div>
           </div>
         </section>
 

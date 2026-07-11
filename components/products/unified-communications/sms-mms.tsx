@@ -7,7 +7,7 @@ import { Footer } from '@/components/landing/footer'
 import { SMSHero } from '@/components/products/unified-communications/sms-hero'
 import {
   MessageSquare, Users, MessageCircle, Shield, BarChart3, Globe,
-  ArrowRight, ChevronRight,
+  ArrowRight, ChevronRight, ShieldCheck, Send,
 } from 'lucide-react'
 
 const features = [
@@ -19,16 +19,23 @@ const features = [
   { icon: Globe, title: 'MMS & Rich Media', desc: 'Send images, PDFs, and rich media — supported in 30+ countries.' },
 ]
 
+const deliverability = [
+  { icon: ShieldCheck, title: 'Built to actually land in the inbox', desc: "10DLC registration and carrier compliance are handled for you, so your messages don't get flagged as spam before they arrive. Send at scale without babysitting deliverability rules — Rozper keeps your sender reputation clean as volume grows." },
+  { icon: BarChart3, title: 'See what actually gets replies', desc: 'Campaign-level reporting shows open rates, reply rates, and opt-outs for every SMS blast you send. See which templates get responses, and adjust your next campaign on real numbers, not a hunch.' },
+  { icon: Globe, title: 'Local numbers in 150+ countries', desc: "Send to customers in 150+ countries from numbers that match their region, so messages read as local, not foreign. Delivery rates stay high because the routing is built for it — your reach isn't capped at your home market." },
+]
+
+const smsFlow = [
+  { icon: ShieldCheck, title: 'Register once', desc: '10DLC registration and carrier compliance are handled for you — set up in minutes, not weeks.' },
+  { icon: Users, title: 'Build your list', desc: 'Import contacts or collect opt-ins; consent and DNC status are tracked automatically.' },
+  { icon: Send, title: 'Send at scale', desc: 'Personalized bulk campaigns go out from your business number with merge fields.' },
+  { icon: BarChart3, title: 'Track & optimize', desc: 'Delivery, open, reply, and opt-out reporting per campaign tells you what to send next.' },
+]
+
 const faqs = [
   { q: 'Can customers reply to bulk SMS?', a: 'Yes. Replies route to the shared inbox where any agent can respond, or trigger automated flows.' },
   { q: 'Is WhatsApp included?', a: 'Yes. WhatsApp Business API is fully integrated — no separate account or meta setup needed.' },
   { q: 'How does TCPA compliance work?', a: 'Opt-out keywords (STOP, UNSUBSCRIBE) are auto-processed. Consent timestamps are stored and exportable.' },
-]
-
-const messagingConnects = [
-  'Every SMS thread syncs to Salesforce, HubSpot, Zoho, and Zendesk automatically.',
-  'Opt-out and compliance handling built in — no manual list management.',
-  'Shared team inbox for SMS so no message goes unanswered.',
 ]
 
 export function ProdUCaaSSMSMMSPageView() {
@@ -100,28 +107,62 @@ export function ProdUCaaSSMSMMSPageView() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">{f.title}</h3>
-                  <p className="text-sm text-white/65 leading-relaxed">{f.desc}</p>
+                  <p className="text-xs text-white/50 leading-relaxed">{f.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Messaging that connects to everything.</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="max-w-2xl mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">SMS &amp; MMS</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              Messaging that lands,{' '}
+              <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">everywhere</span>.
+            </h2>
           </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="space-y-4">
-              {messagingConnects.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+          <div className="grid md:grid-cols-3 gap-4">
+            {deliverability.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center mb-4 group-hover:bg-[#046BD2]/20 transition-all">
+                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">How it works</span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              From signup to first send, fast.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {smsFlow.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all">
+                    <s.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
                   </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
+                  <span className="font-mono text-2xl text-white/10 font-bold">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </section>
 

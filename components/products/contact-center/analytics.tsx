@@ -14,6 +14,10 @@ import {
   Database,
   ArrowRight,
   ChevronRight,
+  MessageSquareText,
+  Tags,
+  BellRing,
+  Mic,
 } from "lucide-react";
 
 const features = [
@@ -49,6 +53,47 @@ const features = [
   },
 ];
 
+const conversationFeedback = [
+  {
+    icon: MessageSquareText,
+    title: "Every call counts, not just samples",
+    desc: "Track how often specific objections, complaints, or feature requests come up across every call — not just the ones QA happens to sample.",
+  },
+  {
+    icon: Tags,
+    title: "Auto-tagged by topic",
+    desc: "Rozper tags conversations by topic automatically, so product and marketing teams get raw customer language without listening to a single recording.",
+  },
+  {
+    icon: BellRing,
+    title: "Trend alerts catch issues early",
+    desc: "Get notified when a keyword's frequency spikes week over week, catching emerging issues before they escalate.",
+  },
+];
+
+const analyticsFlow = [
+  {
+    icon: Mic,
+    title: "Capture every interaction",
+    desc: "Calls, chats, and emails are recorded and transcribed automatically — no manual logging.",
+  },
+  {
+    icon: Activity,
+    title: "AI analyzes it",
+    desc: "Sentiment, intent, topics, and quality are scored on 100% of conversations in seconds.",
+  },
+  {
+    icon: BarChart3,
+    title: "Surface the insight",
+    desc: "Dashboards, trends, and topic tags update in real time — no report building required.",
+  },
+  {
+    icon: BellRing,
+    title: "Act on it",
+    desc: "Alerts, exports, and BI feeds push the signal to the team that needs it, right away.",
+  },
+];
+
 const faqs = [
   {
     q: "How fresh is the real-time data?",
@@ -62,12 +107,6 @@ const faqs = [
     q: "Is historical data retained?",
     a: "Yes. All call data and analytics are retained for your configured period — up to 7 years on Enterprise.",
   },
-];
-
-const insightsDriveChange = [
-  "Agent scorecards updated daily with call quality, resolution rate, and sentiment trends.",
-  "Product and competitor mentions surfaced for marketing and product teams.",
-  "Custom dashboards and scheduled reports delivered to your inbox.",
 ];
 
 const kpiData = [
@@ -278,7 +317,7 @@ export function ProdCCAnalyticsPageView() {
                 <h3 className="font-display font-semibold text-white mb-2">
                   {f.title}
                 </h3>
-                <p className="text-sm text-white/65 leading-relaxed">
+                <p className="text-sm text-white/50 leading-relaxed">
                   {f.desc}
                 </p>
               </motion.div>
@@ -286,23 +325,84 @@ export function ProdCCAnalyticsPageView() {
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">
-              Insights that drive real change.
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="max-w-2xl mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">
+              Interaction Analytics
+            </span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              Turns conversations into{" "}
+              <span className="bg-gradient-to-r from-[#046BD2] via-[#0086F9] to-[#2D98F1] bg-clip-text text-transparent">
+                product feedback
+              </span>
+              .
             </h2>
           </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="space-y-4">
-              {insightsDriveChange.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+          <div className="grid md:grid-cols-3 gap-4">
+            {conversationFeedback.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+                className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center mb-4 group-hover:bg-[#046BD2]/20 transition-all">
+                  <f.icon
+                    className="w-4.5 h-4.5 text-[#0086F9]"
+                    strokeWidth={1.5}
+                  />
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  {f.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#2D98F1]">
+              How it works
+            </span>
+            <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
+              From raw call to clear signal.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {analyticsFlow.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all">
+                    <s.icon
+                      className="w-4.5 h-4.5 text-[#0086F9]"
+                      strokeWidth={1.5}
+                    />
                   </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
+                  <span className="font-mono text-2xl text-white/10 font-bold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="font-display font-semibold text-white mb-2">
+                  {s.title}
+                </h3>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  {s.desc}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </section>
 

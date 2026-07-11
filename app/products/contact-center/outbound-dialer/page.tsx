@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Outbound Dialer · Power & Predictive Dialing | Rozper',
-  description: 'Power and predictive dialer with built-in compliance tools, live AI coaching, and CRM sync — outbound dialing that scales while staying fully compliant.',
+  description: 'Power and predictive dialer with compliance tools, AI coaching, and CRM sync. Outbound dialing, compliant at scale.',
   openGraph: {
     title: 'Outbound Dialer · Power & Predictive Dialing | Rozper',
-    description: 'Power and predictive dialer with built-in compliance tools, live AI coaching, and CRM sync — outbound dialing that scales while staying fully compliant.',
+    description: 'Power and predictive dialer with compliance tools, AI coaching, and CRM sync.',
     type: 'website',
     url: `${SITE_URL}/products/contact-center/outbound-dialer/`,
   },

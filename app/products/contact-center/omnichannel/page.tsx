@@ -3,11 +3,11 @@ import { ProdCCOmnichannelPageView } from '@/components/products/contact-center/
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: 'Omnichannel Contact Center · All Channels, One View | Rozper',
-  description: 'Voice, chat, social, and SMS unified in one workspace — with AI routing and full CRM context, so agents see every channel on a single, unified screen.',
+  title: 'Omnichannel Contact Center · Every Channel, One Screen | Rozper',
+  description: 'Voice, chat, social, and SMS unified — with AI routing and full CRM context. Every channel, one agent screen.',
   openGraph: {
-    title: 'Omnichannel Contact Center · All Channels, One View | Rozper',
-    description: 'Voice, chat, social, and SMS unified in one workspace — with AI routing and full CRM context, so agents see every channel on a single, unified screen.',
+    title: 'Omnichannel Contact Center · Every Channel, One Screen | Rozper',
+    description: 'Voice, chat, social, and SMS unified — with AI routing and full CRM context.',
     type: 'website',
     url: `${SITE_URL}/products/contact-center/omnichannel/`,
   },
