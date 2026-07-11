@@ -32,6 +32,12 @@ const aiOnEveryCall = [
   'Sentiment scoring on every call so managers see quality without listening.',
 ]
 
+const manageEveryLine = [
+  "Admins assign, suspend, or reassign numbers across the whole team without calling support. Role-based permissions mean a regional manager can adjust their office's setup without touching anyone else's. Changes apply instantly, no downtime.",
+  "Porting your current business numbers into Rozper doesn't interrupt service — calls keep routing while the switch happens in the background. Your team keeps the numbers customers already know. Setup is handled by Rozper's onboarding team, not left to guesswork.",
+  "Desktop, browser, and mobile apps stay in sync, so a call answered on your phone shows the same history on your laptop. Agents work from home, the office, or the road without losing context. Your business number rings wherever your team actually is.",
+]
+
 const callLines = [
   { name: 'Priya Nair',    ext: '101', status: 'On Call',   startSecs: 261, avatar: 'PN', dir: 'Inbound'  },
   { name: 'Marcus Lee',    ext: '102', status: 'Available', startSecs: null, avatar: 'ML', dir: null       },
@@ -399,6 +405,24 @@ export function ProdUCaaSBusinessPhonePageView() {
           <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
               {aiOnEveryCall.map((it) => (
+                <li key={it} className="flex items-start gap-3">
+                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
+                  </div>
+                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Manage every line from one screen.</h2>
+          </div>
+          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
+            <ul className="space-y-4">
+              {manageEveryLine.map((it) => (
                 <li key={it} className="flex items-start gap-3">
                   <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
