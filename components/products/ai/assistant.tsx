@@ -7,6 +7,7 @@ import { Footer } from '@/components/landing/footer'
 import {
   Brain, FileText, Zap, TrendingUp, Shield, MessageSquare,
   ArrowRight, ChevronRight, Sparkles, BarChart3,
+  Gauge, LockKeyhole, Languages, GraduationCap, GitBranch, Layers,
 } from 'lucide-react'
 
 const features = [
@@ -32,9 +33,15 @@ const metricsData = [
 ]
 
 const fasterOnboarding = [
-  'New agents ramp to full productivity in days, not months.',
-  'Every agent follows the same process — AI ensures nothing is missed.',
-  'Managers see AI-assisted performance data per agent and per team.',
+  { icon: GraduationCap, title: 'Faster ramp time', desc: 'New agents ramp to full productivity in days, not months.' },
+  { icon: GitBranch, title: 'One consistent process', desc: 'Every agent follows the same process — AI ensures nothing is missed.' },
+  { icon: Layers, title: 'Visibility for managers', desc: 'Managers see AI-assisted performance data per agent and per team.' },
+]
+
+const aiPerformanceData = [
+  { icon: Gauge, title: 'Quality-scored AI output', desc: "Every AI-drafted reply, summary, and suggestion gets a quality score, so you know what's actually helping your team. Supervisors review flagged interactions where the AI's confidence was low. You keep the AI accountable, not just running in the background." },
+  { icon: LockKeyhole, title: 'Data stays in your control', desc: "All AI processing runs inside Rozper's infrastructure — your call data and transcripts aren't shared with outside tools you didn't approve. You control retention windows and who can access AI-generated notes. It's built for teams in regulated industries who can't take chances with customer data." },
+  { icon: Languages, title: 'Multilingual by default', desc: "The AI understands conversations in multiple languages, matching the customer's language in its summaries and suggested replies. Your agents don't need to translate before they respond. It works the same whether the call came in from London or Manila." },
 ]
 
 function AIAssistantDashboard() {
@@ -171,21 +178,49 @@ export function ProdAIAssistantPageView() {
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Faster onboarding. Better consistency.</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Faster onboarding. Better consistency.</h2>
           </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="space-y-4">
-              {fasterOnboarding.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
-                  </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="divide-y divide-white/[0.06]">
+            {fasterOnboarding.map((it, i) => (
+              <motion.div
+                key={it.title}
+                initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="group flex items-start gap-6 py-7 first:pt-0 last:pb-0 hover:pl-2 transition-all duration-300"
+              >
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mt-0.5">
+                  <it.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-white mb-1.5 group-hover:text-[#0086F9] transition-colors">{it.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{it.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Performance data on the AI itself.</h2>
+          </div>
+          <div className="divide-y divide-white/[0.06]">
+            {aiPerformanceData.map((it, i) => (
+              <motion.div
+                key={it.title}
+                initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                className="group flex items-start gap-6 py-7 first:pt-0 last:pb-0 hover:pl-2 transition-all duration-300"
+              >
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 group-hover:border-[#046BD2]/40 transition-all mt-0.5">
+                  <it.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-white mb-1.5 group-hover:text-[#0086F9] transition-colors">{it.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed">{it.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
 
