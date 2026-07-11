@@ -164,7 +164,13 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
             <div className="absolute -bottom-1.5 -right-1.5 sm:-bottom-4 sm:-right-4 w-[88%] h-[88%] rounded-xl sm:rounded-3xl bg-[#FCD34D]/50 -z-10" />
             <div className="relative rounded-xl sm:rounded-3xl p-[1px] bg-gradient-to-br from-white/15 via-[#046BD2]/30 to-white/[0.02] shadow-[0_20px_80px_-30px_rgba(4,107,210,0.6)] sm:shadow-[0_40px_140px_-50px_rgba(4,107,210,0.7)]">
               <div className="rounded-xl sm:rounded-3xl overflow-hidden bg-[#0A1020]">
-                <div className="relative aspect-[16/9] lg:aspect-[2114/941]">
+                <div
+                  className={
+                    (post.featuredImageFit ?? "cover") === "contain"
+                      ? "relative aspect-[16/9]"
+                      : "relative aspect-[16/9] lg:aspect-[2114/941]"
+                  }
+                >
                   <BlogImage
                     src={post.featuredImage.src}
                     alt={post.featuredImage.alt}
