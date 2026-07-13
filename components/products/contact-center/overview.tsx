@@ -517,7 +517,7 @@ export function ContactCenterPageView() {
               <div className="flex flex-row flex-wrap gap-2 sm:gap-3 md:justify-end">
                 <Link
                   href="/free-trial/"
-                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded bg-[#046BD2] hover:bg-[#0078E0] text-white shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] text-xs sm:text-base font-semibold transition whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded bg-[#F59E0B] hover:bg-[#D97706] text-white shadow-[0_0_40px_-10px_rgba(245,158,11,0.7)] text-xs sm:text-base font-semibold transition whitespace-nowrap"
                 >
                   Start a Free Trial
                   <ArrowRight className="w-4 h-4" />

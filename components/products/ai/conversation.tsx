@@ -244,7 +244,7 @@ export function ProdAIConversationPageView() {
               <BarChart3 className="w-12 h-12 mx-auto mb-6 text-white" />
               <h2 className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-white">Turn conversations into strategy.</h2>
               <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-3">
-                <Link href="/contact/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition whitespace-nowrap">
+                <Link href="/contact/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(124,58,237,0.7)] transition whitespace-nowrap">
                   See a live demo <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href="/pricing/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-xs sm:text-base text-white font-semibold transition whitespace-nowrap">See pricing</Link>

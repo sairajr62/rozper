@@ -552,7 +552,7 @@ export function AIPageView() {
                 Three AI tools. Zero extra charge. Available on every Rozper seat starting at $9.99.
               </p>
               <div className="mt-10 flex flex-row flex-wrap justify-center gap-2 sm:gap-4">
-                <Link href="/free-trial/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-xs sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition whitespace-nowrap">
+                <Link href="/free-trial/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs sm:text-base font-semibold shadow-[0_0_40px_-10px_rgba(124,58,237,0.7)] transition whitespace-nowrap">
                   Start a free trial <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href="/pricing/" className="inline-flex items-center gap-2 px-3 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-xs sm:text-base text-white font-medium transition whitespace-nowrap">
