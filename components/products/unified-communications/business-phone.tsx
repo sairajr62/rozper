@@ -52,6 +52,12 @@ const manageEveryLine = [
   },
 ]
 
+const CARD_ACCENTS = [
+  'from-[#046BD2] to-[#0086F9]',
+  'from-[#0086F9] to-[#2D98F1]',
+  'from-[#2D98F1] to-[#046BD2]',
+]
+
 const callLines = [
   { name: 'Priya Nair',    ext: '101', status: 'On Call',   startSecs: 261, avatar: 'PN', dir: 'Inbound'  },
   { name: 'Marcus Lee',    ext: '102', status: 'Available', startSecs: null, avatar: 'ML', dir: null       },
@@ -453,32 +459,34 @@ export function ProdUCaaSBusinessPhonePageView() {
               Manage every line from one screen.
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {manageEveryLine.map((m, i) => (
-              <motion.div
-                key={m.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-                className="flex items-start gap-4 p-5 rounded-2xl bg-[#111B2D] border border-white/[0.07] hover:border-[#046BD2]/30 transition-colors group"
-              >
-                <div className="w-9 h-9 shrink-0 rounded-lg bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all mt-0.5">
-                  <m.icon
-                    className="w-4 h-4 text-[#0086F9]"
-                    strokeWidth={1.5}
-                  />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-white text-sm mb-1 group-hover:text-[#0086F9] transition-colors">
+          <div className="grid md:grid-cols-3 gap-4">
+            {manageEveryLine.map((m, i) => {
+              const accent = CARD_ACCENTS[i % CARD_ACCENTS.length]
+              return (
+                <motion.div
+                  key={m.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  className="group relative rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/25 p-6 transition-all hover:-translate-y-1 overflow-hidden"
+                >
+                  <div className={`absolute -top-16 -right-16 w-32 h-32 rounded-full bg-gradient-to-br ${accent} opacity-20 blur-2xl pointer-events-none transition-opacity group-hover:opacity-30`} />
+                  <div className={`relative w-10 h-10 rounded-xl bg-gradient-to-br ${accent} bg-opacity-20 border border-white/15 flex items-center justify-center`}>
+                    <m.icon
+                      className="w-4.5 h-4.5 text-white"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <h3 className="relative mt-5 font-display font-semibold text-white">
                     {m.title}
                   </h3>
-                  <p className="text-sm text-white/65 leading-relaxed">
+                  <p className="relative mt-2 text-sm text-white/50 leading-relaxed">
                     {m.desc}
                   </p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })}
           </div>
         </section>
 
