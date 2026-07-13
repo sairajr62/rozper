@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
-  description: 'Transcripts, sentiment, intent, and quality scores — on 100% of interactions. Every conversation analyzed, instantly.',
+  description: 'Transcripts, sentiment scoring, intent detection, and quality scores — on 100% of interactions, with every conversation analyzed instantly and automatically.',
   openGraph: {
     title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
-    description: 'Transcripts, sentiment, intent, and quality scores — on 100% of interactions.',
+    description: 'Transcripts, sentiment scoring, intent detection, and quality scores — on 100% of interactions, with every conversation analyzed instantly and automatically.',
     type: 'website',
     url: `${SITE_URL}/products/contact-center/interaction-analytics/`,
     siteName: 'Rozper',

@@ -4,10 +4,10 @@ import { SITE_URL, ORG_ID } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: 'Business SMS & MMS · Messaging Built for Teams | Rozper',
-  description: 'Two-way messaging, bulk sends, and WhatsApp — all from your business number. SMS and MMS built for business scale.',
+  description: 'Two-way SMS and MMS messaging, bulk sends, and WhatsApp integration — all from your business number. Built for business-scale team messaging everywhere.',
   openGraph: {
     title: 'Business SMS & MMS · Messaging Built for Teams | Rozper',
-    description: 'Two-way messaging, bulk sends, and WhatsApp — all from your business number.',
+    description: 'Two-way SMS and MMS messaging, bulk sends, and WhatsApp integration — all from your business number. Built for business-scale team messaging everywhere.',
     type: 'website',
     url: `${SITE_URL}/products/unified-communications/business-sms-mms/`,
     siteName: 'Rozper',
