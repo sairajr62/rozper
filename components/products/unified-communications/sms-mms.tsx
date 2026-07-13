@@ -32,6 +32,13 @@ const smsFlow = [
   { icon: BarChart3, title: 'Track & optimize', desc: 'Delivery, open, reply, and opt-out reporting per campaign tells you what to send next.' },
 ]
 
+const CARD_ACCENTS = [
+  'from-[#046BD2] to-[#0086F9]',
+  'from-[#0086F9] to-[#2D98F1]',
+  'from-[#2D98F1] to-[#046BD2]',
+  'from-[#046BD2] to-[#0060C7]',
+]
+
 const faqs = [
   { q: 'Can customers reply to bulk SMS?', a: 'Yes. Replies route to the shared inbox where any agent can respond, or trigger automated flows.' },
   { q: 'Is WhatsApp included?', a: 'Yes. WhatsApp Business API is fully integrated — no separate account or meta setup needed.' },
@@ -123,19 +130,23 @@ export function ProdUCaaSSMSMMSPageView() {
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-4">
-            {deliverability.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
-                className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center mb-4 group-hover:bg-[#046BD2]/20 transition-all">
-                  <f.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-display font-semibold text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{f.desc}</p>
-              </motion.div>
-            ))}
+            {deliverability.map((f, i) => {
+              const accent = CARD_ACCENTS[i % CARD_ACCENTS.length]
+              return (
+                <motion.div
+                  key={f.title}
+                  initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+                  className="group relative rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/25 p-6 transition-all hover:-translate-y-1 overflow-hidden"
+                >
+                  <div className={`absolute -top-16 -right-16 w-32 h-32 rounded-full bg-gradient-to-br ${accent} opacity-20 blur-2xl pointer-events-none transition-opacity group-hover:opacity-30`} />
+                  <div className={`relative w-10 h-10 rounded-xl bg-gradient-to-br ${accent} bg-opacity-20 border border-white/15 flex items-center justify-center`}>
+                    <f.icon className="w-4.5 h-4.5 text-white" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="relative mt-5 font-display font-semibold text-white">{f.title}</h3>
+                  <p className="relative mt-2 text-sm text-white/50 leading-relaxed">{f.desc}</p>
+                </motion.div>
+              )
+            })}
           </div>
         </section>
 
@@ -147,22 +158,26 @@ export function ProdUCaaSSMSMMSPageView() {
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {smsFlow.map((s, i) => (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="relative rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 hover:border-[#046BD2]/30 transition-colors group"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#046BD2]/10 border border-[#046BD2]/20 flex items-center justify-center group-hover:bg-[#046BD2]/20 transition-all">
-                    <s.icon className="w-4.5 h-4.5 text-[#0086F9]" strokeWidth={1.5} />
+            {smsFlow.map((s, i) => {
+              const accent = CARD_ACCENTS[i % CARD_ACCENTS.length]
+              return (
+                <motion.div
+                  key={s.title}
+                  initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                  className="group relative rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/25 p-6 transition-all hover:-translate-y-1 overflow-hidden"
+                >
+                  <div className={`absolute -top-16 -right-16 w-32 h-32 rounded-full bg-gradient-to-br ${accent} opacity-20 blur-2xl pointer-events-none transition-opacity group-hover:opacity-30`} />
+                  <div className="relative flex items-center justify-between">
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${accent} bg-opacity-20 border border-white/15 flex items-center justify-center`}>
+                      <s.icon className="w-4.5 h-4.5 text-white" strokeWidth={1.5} />
+                    </div>
+                    <span className={`font-mono text-3xl font-bold bg-gradient-to-br ${accent} bg-clip-text text-transparent opacity-40`}>{String(i + 1).padStart(2, '0')}</span>
                   </div>
-                  <span className="font-mono text-2xl text-white/10 font-bold">{String(i + 1).padStart(2, '0')}</span>
-                </div>
-                <h3 className="font-display font-semibold text-white mb-2">{s.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{s.desc}</p>
-              </motion.div>
-            ))}
+                  <h3 className="relative mt-5 font-display font-semibold text-white">{s.title}</h3>
+                  <p className="relative mt-2 text-sm text-white/50 leading-relaxed">{s.desc}</p>
+                </motion.div>
+              )
+            })}
           </div>
         </section>
 
