@@ -567,15 +567,15 @@ export function HubSpotPageView() {
             {/* Left arc glow */}
             <div className="hidden sm:block absolute -left-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none" aria-hidden>
               <motion.svg viewBox="0 0 200 200" className="w-full h-full" style={{ filter: 'blur(28px)' }} animate={{ rotate: 360 }} transition={{ duration: 70, repeat: Infinity, ease: 'linear' }}>
-                <circle cx="100" cy="100" r="78" stroke="#22D3EE" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
-                <circle cx="100" cy="100" r="54" stroke="#046BD2" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(40 100 100)" />
+                <circle cx="100" cy="100" r="78" stroke="#FDA4AF" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+                <circle cx="100" cy="100" r="54" stroke="#E11D48" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(40 100 100)" />
               </motion.svg>
             </div>
             {/* Right arc glow */}
             <div className="hidden sm:block absolute -right-32 top-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] pointer-events-none" aria-hidden>
               <motion.svg viewBox="0 0 200 200" className="w-full h-full" style={{ filter: 'blur(28px)' }} animate={{ rotate: -360 }} transition={{ duration: 70, repeat: Infinity, ease: 'linear' }}>
-                <circle cx="100" cy="100" r="78" stroke="#0086F9" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
-                <circle cx="100" cy="100" r="54" stroke="#22D3EE" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(-40 100 100)" />
+                <circle cx="100" cy="100" r="78" stroke="#FB7185" strokeOpacity="0.55" strokeWidth="24" fill="none" strokeLinecap="round" strokeDasharray="180 320" />
+                <circle cx="100" cy="100" r="54" stroke="#FDA4AF" strokeOpacity="0.5" strokeWidth="16" fill="none" strokeLinecap="round" strokeDasharray="130 240" transform="rotate(-40 100 100)" />
               </motion.svg>
             </div>
             {/* Faint background grid */}
@@ -584,7 +584,7 @@ export function HubSpotPageView() {
               <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight text-white">Your CRM. Always accurate.</h2>
               <p className="mt-6 text-white/60 max-w-md mx-auto">Connect in under 10 minutes. No credit card required.</p>
               <div className="mt-10 flex flex-row flex-nowrap items-center justify-center gap-3">
-                <Link href="/contact/" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#046BD2] hover:bg-[#0078E0] text-white text-sm sm:text-base font-semibold whitespace-nowrap shadow-[0_0_40px_-10px_rgba(4,107,210,0.7)] transition">
+                <Link href="/contact/" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm sm:text-base font-semibold whitespace-nowrap shadow-[0_0_40px_-10px_rgba(225,29,72,0.7)] transition">
                   Connect HubSpot <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link href="/pricing/" className="inline-flex items-center gap-2 px-4 py-2.5 sm:px-7 sm:py-4 rounded-full bg-white/[0.04] border border-white/15 hover:bg-white/10 text-sm sm:text-base text-white font-semibold whitespace-nowrap transition">
