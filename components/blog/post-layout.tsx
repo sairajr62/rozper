@@ -292,6 +292,8 @@ function AuthorBio({ author }: { author: BlogAuthor }) {
               <img
                 src={author.avatar}
                 alt={author.name}
+                width={64}
+                height={64}
                 className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border border-white/10"
               />
             ) : (

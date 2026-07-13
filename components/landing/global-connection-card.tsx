@@ -108,6 +108,8 @@ export function GlobalConnectionCard() {
                     <img
                       src={avatar.image}
                       alt={avatar.name}
+                      width={56}
+                      height={56}
                       className="w-full h-full object-cover"
                     />
                   </div>

@@ -31,6 +31,8 @@ function AuthorAvatar({ post }: { post: BlogPost }) {
         <img
           src={post.author.avatar}
           alt={post.author.name}
+          width={32}
+          height={32}
           className="w-8 h-8 rounded-full object-cover border border-white/10 shrink-0"
         />
       ) : (

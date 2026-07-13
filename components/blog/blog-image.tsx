@@ -64,6 +64,8 @@ export function BlogImage({
       <img
         src={src}
         alt={alt}
+        width={1200}
+        height={675}
         className={className}
         style={{ objectFit: fit, background: "#0a1929", ...style }}
         onError={() => setBroken(true)}

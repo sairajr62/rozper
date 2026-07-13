@@ -12,6 +12,7 @@ const logos = [
   { name: "Telin", src: "/images/logos/p6.webp" },
   { name: "MTT", src: "/images/logos/MTT-1.webp" },
   { name: "Reliance Communications", src: "/images/logos/reliance.png" },
+  { name: "Airtel", src: "/images/logos/airtel-logo.png" },
 ]
 
 const compliance = [
@@ -79,6 +80,8 @@ export function TrustBar() {
                 key={`logo-${i}`}
                 src={logo.src}
                 alt={logo.name}
+                width={120}
+                height={28}
                 className="h-6 sm:h-7 w-auto object-contain opacity-60 hover:opacity-90 transition-all duration-300 grayscale-[60%] hover:grayscale-0 shrink-0"
               />
             ))}

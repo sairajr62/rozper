@@ -67,6 +67,8 @@ export function ContactOffices() {
               <img
                 src="/images/WorldMap.avif"
                 alt="Rozper global office locations — San Francisco, London, Dubai, Singapore"
+                width={1200}
+                height={750}
                 className="block w-full h-full object-cover opacity-90"
               />
 

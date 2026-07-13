@@ -106,6 +106,8 @@ export function PostArticleHero({ post }: { post: BlogPostDetail }) {
                 <img
                   src={post.author.avatar}
                   alt={post.author.name}
+                  width={48}
+                  height={48}
                   className="relative w-12 h-12 rounded-full object-cover border border-white/10"
                 />
               ) : (
