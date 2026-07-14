@@ -33,6 +33,7 @@ export function ContactHero() {
   const [error, setError] = useState<string | null>(null)
   const [topic, setTopic] = useState("UCaaS")
   const [teamSize, setTeamSize] = useState("10–50 seats")
+  const [formActive, setFormActive] = useState(false)
   const recaptchaRef = useRef<ReCAPTCHAType>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -195,7 +196,7 @@ export function ContactHero() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} onFocus={() => setFormActive(true)} className="space-y-5">
 
                   {/* Row 1: Name + Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -289,11 +290,17 @@ export function ContactHero() {
 
                   <div className="w-full flex justify-center">
                     <div className="captcha-responsive rounded-xl border border-[#046BD2]/30 bg-[#0F1A2E] p-3 w-fit">
-                      <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey="6Lf5zjMtAAAAAGAU-oWDPa9j_7PJ9RzWWU4HatED"
-                        theme="dark"
-                      />
+                      {formActive ? (
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey="6Lf5zjMtAAAAAGAU-oWDPa9j_7PJ9RzWWU4HatED"
+                          theme="dark"
+                        />
+                      ) : (
+                        // Placeholder matches the reCAPTCHA v2 checkbox widget's rendered
+                        // size (304x78) so there's no layout shift when it mounts on focus.
+                        <div className="w-[300px] h-[74px] rounded-md bg-white/[0.03] animate-pulse" />
+                      )}
                     </div>
                   </div>
 
