@@ -6,13 +6,22 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
-import { LaptopHero } from '@/components/products/unified-communications/laptop-hero'
+import dynamic from 'next/dynamic'
 import { OmniChannelInboxAnimation } from '@/components/products/unified-communications/customer-engagement'
 import {
   Globe2, Phone, Video, MessageSquare, Bot, Inbox, Zap, Shield,
   ArrowRight, ChevronRight, Wifi, Plug, Layers, MapPin,
   Clock, BarChart3, UserCheck, CalendarDays, Sun, BrainCircuit, Check,
 } from 'lucide-react'
+
+// Code-split from the main bundle: LaptopHero pulls in gsap + TextPlugin,
+// a separate ~30KB+ animation library only this page uses. ssr:true keeps
+// the server-rendered markup (no CLS, no SEO impact) — only the JS chunk
+// for hydration is deferred from the critical initial bundle.
+const LaptopHero = dynamic(
+  () => import('@/components/products/unified-communications/laptop-hero').then(m => m.LaptopHero),
+  { ssr: true },
+)
 
 const products = [
   { icon: Phone, name: 'Business Phone', desc: 'Cloud calling in 150+ countries', href: '/products/unified-communications/business-phone-system/' },
