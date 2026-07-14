@@ -78,7 +78,6 @@ export function LanguageSwitcher() {
           >
             <FlagIcon country={ENGLISH.flagCountry} alt={ENGLISH.name} />
             <span>{ENGLISH.nativeName}</span>
-            <span className="ml-auto text-xs uppercase text-white/40">en</span>
           </a>
           {LANGUAGES.map((lang) => (
             <a
@@ -88,7 +87,6 @@ export function LanguageSwitcher() {
             >
               <FlagIcon country={lang.flagCountry} alt={lang.name} />
               <span>{lang.nativeName}</span>
-              <span className="ml-auto text-xs uppercase text-white/40">{lang.code}</span>
             </a>
           ))}
         </div>
