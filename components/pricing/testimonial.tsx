@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
 
@@ -103,6 +104,10 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 
 export function PricingTestimonial() {
   const featured = testimonials[0]
+  // Marquee starts paused so it doesn't cost continuous main-thread/compositing
+  // work (backdrop-filter blur x 12 cards, animating) before a user has even
+  // scrolled to it — it only starts once the section enters the viewport.
+  const [marqueeVisible, setMarqueeVisible] = useState(false)
 
   return (
     <section className="relative py-24 bg-[#0B1220] overflow-hidden">
@@ -115,8 +120,10 @@ export function PricingTestimonial() {
           0%   { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
-        .track-left  { animation: marquee-left  42s linear infinite; }
-        .track-right { animation: marquee-right 36s linear infinite; }
+        .track-left  { animation: marquee-left  42s linear infinite; animation-play-state: paused; }
+        .track-right { animation: marquee-right 36s linear infinite; animation-play-state: paused; }
+        .marquee-visible .track-left,
+        .marquee-visible .track-right { animation-play-state: running; }
         .marquee-row:hover .track-left,
         .marquee-row:hover .track-right { animation-play-state: paused; }
       `}</style>
@@ -256,9 +263,10 @@ export function PricingTestimonial() {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
+        onViewportEnter={() => setMarqueeVisible(true)}
         transition={{ duration: 0.8, delay: 0.1 }}
         viewport={{ once: true }}
-        className="relative"
+        className={`relative ${marqueeVisible ? 'marquee-visible' : ''}`}
       >
         <div
           className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
