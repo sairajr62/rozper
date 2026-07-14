@@ -6,13 +6,22 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/landing/navbar'
 import { Footer } from '@/components/landing/footer'
-import { LaptopHero } from '@/components/products/unified-communications/laptop-hero'
+import dynamic from 'next/dynamic'
 import { OmniChannelInboxAnimation } from '@/components/products/unified-communications/customer-engagement'
 import {
   Globe2, Phone, Video, MessageSquare, Bot, Inbox, Zap, Shield,
   ArrowRight, ChevronRight, Wifi, Plug, Layers, MapPin,
   Clock, BarChart3, UserCheck, CalendarDays, Sun, BrainCircuit, Check,
 } from 'lucide-react'
+
+// Code-split from the main bundle: LaptopHero pulls in gsap + TextPlugin,
+// a separate ~30KB+ animation library only this page uses. ssr:true keeps
+// the server-rendered markup (no CLS, no SEO impact) — only the JS chunk
+// for hydration is deferred from the critical initial bundle.
+const LaptopHero = dynamic(
+  () => import('@/components/products/unified-communications/laptop-hero').then(m => m.LaptopHero),
+  { ssr: true },
+)
 
 const products = [
   { icon: Phone, name: 'Business Phone', desc: 'Cloud calling in 150+ countries', href: '/products/unified-communications/business-phone-system/' },
@@ -44,12 +53,6 @@ const steps = [
   { n: '1', title: 'Sign Up', desc: 'Create your account in minutes. No credit card required for the 14-day trial.' },
   { n: '2', title: 'Configure', desc: 'Set up your numbers, extensions, and call flows with our intuitive admin portal.' },
   { n: '3', title: 'Go Live', desc: 'Start making calls, hosting meetings, and messaging — all from one platform.' },
-]
-
-const visibilityAndControl = [
-  "Admin dashboards show call volume, queue wait times, and agent activity across every location in real time. You set permissions by role, so managers see what they need and nothing else. Exportable reports turn raw call data into numbers your leadership team actually reads.",
-  "Number porting keeps your existing business lines intact during the switch — no dropped calls, no new numbers to hand out. Rozper's team handles the migration timeline so you're never running two systems at once. Your customers never notice the change happened.",
-  "New hires get a working extension in minutes, not days, through self-service provisioning. Add a seat, assign a number, done — no ticket to IT required. It's built to scale with hiring spikes, not slow them down.",
 ]
 
 const faqs = [
@@ -599,24 +602,6 @@ export function UcaasPageView() {
               )}
             </motion.div>
           ))}
-        </section>
-
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">Visibility and control for the whole system.</h2>
-          </div>
-          <div className="rounded-2xl bg-[#111B2D] border border-white/[0.07] p-6 sm:p-8">
-            <ul className="space-y-4">
-              {visibilityAndControl.map((it) => (
-                <li key={it} className="flex items-start gap-3">
-                  <div className="w-5 h-5 mt-0.5 rounded border border-[#046BD2]/40 bg-[#046BD2]/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#0086F9]" />
-                  </div>
-                  <span className="text-sm text-white/80 leading-relaxed">{it}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </section>
 
         {/* FAQ */}
