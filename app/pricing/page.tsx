@@ -7,9 +7,10 @@ import { PricingTestimonial } from '@/components/pricing/testimonial'
 import { PricingFAQ } from '@/components/pricing/faq'
 import { PricingCTA } from '@/components/pricing/cta'
 import { RelatedLinks } from '@/components/product-page'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Pricing · $9.99/user Cloud Phone & Contact Center | Rozper',
   description: 'Simple, transparent pricing starting at $9.99/user. UCaaS, contact center, and AI voice tools, with a 14-day free trial and no hidden fees. rozper.com.',
   keywords: 'business phone pricing, UCaaS pricing, contact center pricing, Rozper',
@@ -21,6 +22,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/pricing/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const relatedLinks = [
   { title: 'Enterprise Contact Center', description: 'High-volume CCaaS for large organizations', href: '/products/contact-center/enterprise/' },

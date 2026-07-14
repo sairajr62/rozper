@@ -20,6 +20,7 @@ import {
   getCodesByStateSlug,
 } from "@/lib/area-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { applyLocale, getRequestLocale } from "@/lib/locale-metadata"
 
 export const dynamicParams = true
 
@@ -40,8 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { state: stateSlug, code } = await params
   const data = getAreaCodeDataByState(stateSlug, code)
   if (!data) return {}
+  const locale = await getRequestLocale()
 
-  return {
+  return applyLocale({
     title: data.seoTitle,
     description: data.seoDescription,
     keywords: `${data.code} area code, ${data.city} virtual phone number, ${data.code} number for business, area code ${data.code}`,
@@ -58,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: data.seoTitle,
       description: data.seoDescription,
     },
-  }
+  }, locale)
 }
 
 export default async function AreaCodePage({ params }: Props) {

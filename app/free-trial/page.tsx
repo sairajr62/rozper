@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from "next"
 import { FreeTrialPageView } from "@/components/auth/free-trial-page"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Start Your Free 14-Day Rozper Trial Today | Rozper",
   description: "Get 14 days of free access to Rozper — calls, video meetings, team chat, SMS, and AI transcription tools. No credit card required, cancel anytime today.",
   alternates: { canonical: `${SITE_URL}/free-trial/` },
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
     type: "website",
   },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

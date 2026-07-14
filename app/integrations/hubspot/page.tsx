@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { HubSpotPageView } from '@/components/integrations/hubspot'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Rozper for HubSpot · Phone & CRM Integration | Rozper',
   description: 'Connect Rozper to HubSpot. Click-to-call, auto-logging, AI summaries, and deal-stage triggers keep every rep working from a single, up-to-date contact record.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/integrations/hubspot/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

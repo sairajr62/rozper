@@ -14,8 +14,9 @@ import { FAQ } from "@/components/landing/faq"
 import { CTA } from "@/components/landing/cta"
 import { Footer } from "@/components/landing/footer"
 import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
+import { localizeMetadata } from "@/lib/locale-metadata"
 
-export const metadata = {
+const metadata = {
   title: "Rozper · UCaaS, Contact Center & AI for Global Teams",
   description:
     "Voice, video, SMS, AI, and contact center on one carrier-grade platform covering 150+ countries with 99.99% uptime, starting at just $9.99 per user monthly.",
@@ -29,6 +30,8 @@ export const metadata = {
     type: "website",
   },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const websiteSchema = {
   "@context": "https://schema.org",

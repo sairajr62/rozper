@@ -6,9 +6,10 @@ import { ContactChannels } from "@/components/contact/channels"
 import { ContactTestimonial } from "@/components/contact/testimonial"
 import { ContactFAQ } from "@/components/contact/faq"
 import { ContactOffices } from "@/components/contact/offices"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Contact Rozper Sales & Support Teams · Get in Touch | Rozper",
   description:
     "Talk to a Rozper solutions engineer in under 60 seconds. Build the right UCaaS + AI plan for your call volume, regions, integrations, and budget today.",
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
     siteName: "Rozper",
   },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

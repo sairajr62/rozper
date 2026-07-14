@@ -7,9 +7,10 @@ import { DocsLearningPaths } from "@/components/docs/learning-paths"
 import { DocsQuickstart } from "@/components/docs/quickstart"
 import { DocsSDKGrid } from "@/components/docs/sdk-grid"
 import { DocsCommunity } from "@/components/docs/community"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Developer Documentation · Build with Rozper | Rozper",
   description:
     "Everything you need to ship: quickstarts, SDKs, guides, and references for the Rozper voice, messaging, and AI platform, plus code samples and webhooks.",
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
     siteName: "Rozper",
   },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSSMSMMSPageView } from '@/components/products/unified-communications/sms-mms'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Business SMS & MMS · Messaging Built for Teams | Rozper',
   description: 'Two-way SMS and MMS messaging, bulk sends, and WhatsApp integration — all from your business number. Built for business-scale team messaging everywhere.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/business-sms-mms/` },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const jsonLd = {
   "@context": "https://schema.org",

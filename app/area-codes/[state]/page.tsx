@@ -21,6 +21,7 @@ import {
   buildStateAreaCodesMeta,
 } from "@/lib/area-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { applyLocale, getRequestLocale } from "@/lib/locale-metadata"
 
 export const dynamicParams = true
 
@@ -42,8 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const codes = getCodesByStateSlug(stateParam)
   const { title, description } = buildStateAreaCodesMeta(stateName, codes)
+  const locale = await getRequestLocale()
 
-  return {
+  return applyLocale({
     title,
     description,
     keywords: `${stateName} area codes, ${stateName} virtual phone numbers, ${codes.slice(0, 3).join(" ")} area code`,
@@ -55,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${SITE_URL}/area-codes/${stateParam}/`,
       siteName: "Rozper",
     },
-  }
+  }, locale)
 }
 
 export default async function StateOrRedirectPage({ params }: Props) {

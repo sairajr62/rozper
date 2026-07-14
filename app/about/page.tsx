@@ -7,9 +7,10 @@ import { AboutPrinciples } from "@/components/about/principles"
 import { AboutTimeline } from "@/components/about/timeline"
 import { AboutTeam } from "@/components/about/team"
 import { AboutCTA } from "@/components/about/cta"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID, WEBSITE_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "About Rozper · Carrier-Grade UCaaS & Contact Center Platform",
   description:
     "Rozper unifies voice, video, contact center, and AI on one carrier-grade platform. Founded in 2018, we built it so every call just works, every time, worldwide.",
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
     type: "website",
   },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const aboutPageSchema = {
   "@context": "https://schema.org",

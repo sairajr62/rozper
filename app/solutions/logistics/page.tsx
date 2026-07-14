@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { LogisticsPageView } from '@/components/solutions/logistics'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Cloud Phone System for Logistics & Dispatch | Rozper',
   description: 'Dispatch communications, driver calls, customer SMS updates, and real-time coordination tools built for logistics, fleet, and field operations teams worldwide.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/logistics/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

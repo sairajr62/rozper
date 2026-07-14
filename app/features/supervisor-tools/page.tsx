@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { FeatSupervisorToolsPageView } from '@/components/features/supervisor-tools'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Call Barge, Whisper & Live Monitoring Tools | Rozper',
   description: 'Silently monitor, whisper coaching, or barge into any live call. Give supervisors control over agent calls to boost quality and speed up new-hire ramp.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/features/supervisor-tools/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from "next"
 import { WholesaleVoicePageView } from "@/components/solutions/wholesale-voice"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Wholesale Voice Solutions · Global VoIP Termination | Rozper",
   description:
     "Global wholesale voice carrier — A-Z VoIP termination, SIP trunking, DID & toll-free numbers, CLI & non-CLI routes. 200+ countries, 99.99% uptime SLA.",
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/wholesale-voice/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

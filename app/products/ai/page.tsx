@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { AIPageView } from '@/components/products/ai/overview'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'AI Suite · Receptionist, Assistant & Analytics | Rozper',
   description: 'Three AI tools — receptionist, assistant, and conversation analytics — included on every Rozper Business and Enterprise seat, with zero extra charge for AI.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/ai/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

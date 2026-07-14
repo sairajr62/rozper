@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { FeatAISentimentPageView } from '@/components/features/ai-sentiment'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'AI Sentiment Analysis · Real-Time Emotion Scoring | Rozper',
   description: 'Live sentiment scoring on every call. Supervisors get instant alerts when a call turns negative, giving teams visibility and 100% coverage across call volume.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/features/ai-sentiment-analysis/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

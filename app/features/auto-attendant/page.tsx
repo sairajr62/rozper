@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { FeatAutoAttendantPageView } from '@/components/features/auto-attendant'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Auto-Attendant & Visual IVR Builder for Teams | Rozper',
   description: 'Build a multi-level auto-attendant with a visual IVR builder. Route every caller from the first ring, with no code and no phone system expertise needed at all.',
   alternates: { canonical: `${SITE_URL}/features/auto-attendant/` },
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
     siteName: 'Rozper',
   },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

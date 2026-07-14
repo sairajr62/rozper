@@ -13,8 +13,9 @@ import {
   CTA,
 } from './sections'
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { localizeMetadata } from "@/lib/locale-metadata"
 
-export const metadata = {
+const metadata = {
   title: 'Cloud Phone System for Remote & Distributed Teams | Rozper',
   description: 'Cloud calling, video, chat, and AI tools for distributed and remote teams — works from any device, in any country, across more than 150 countries worldwide.',
   openGraph: {
@@ -26,6 +27,8 @@ export const metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/remote-teams/` },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const jsonLd = {
   "@context": "https://schema.org",

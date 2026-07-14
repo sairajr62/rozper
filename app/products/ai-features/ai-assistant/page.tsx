@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdAIAssistantPageView } from '@/components/products/ai/assistant'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'AI Virtual Assistant · Per-Seat AI for Every Agent | Rozper',
   description: 'Live coaching, auto-summaries, and suggested replies — on every call and message, included free on every Rozper seat with zero extra setup or per-agent fees.',
   openGraph: {
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/ai-features/ai-assistant/` },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const jsonLd = {
   '@context': 'https://schema.org',

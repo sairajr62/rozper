@@ -7,9 +7,10 @@ import { ApiAuthSection } from "@/components/api/auth-section"
 import { ApiErrorsSection } from "@/components/api/errors-section"
 import { ApiWebhooks } from "@/components/api/webhooks"
 import { ApiChangelog } from "@/components/api/changelog"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "API Reference · Rozper REST & WebSocket Docs | Rozper",
   description:
     "REST + WebSocket reference for the Rozper platform. Every endpoint, every parameter, every error code — with copy-paste examples in 8 languages for developers.",
@@ -38,6 +39,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/docs/api/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

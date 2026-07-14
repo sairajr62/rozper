@@ -6,9 +6,10 @@ import { PlansCompare } from "@/components/compare/plans-compare"
 import { FeaturesMatrix } from "@/components/compare/features-matrix"
 import { SavingsCalculator } from "@/components/compare/savings"
 import { CompareCTA } from "@/components/compare/cta"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Compare Rozper vs RingCentral, 8x8, Vonage & Twilio",
   description:
     "Honest head-to-head: Rozper UCaaS + AI vs RingCentral, 8x8, Vonage & Twilio Flex. Side-by-side pricing, features, migration ease, and a total-cost calculator.",
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/compare/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

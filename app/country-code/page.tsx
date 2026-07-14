@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next"
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { CountryCodeHubClient } from "./_client"
 
 const TITLE = "International Country Codes & Virtual Phone Numbers | Rozper"
@@ -7,7 +8,7 @@ const DESCRIPTION =
   "Browse country codes for 237 countries. Get international virtual phone numbers with local presence — instant setup, no hardware needed, cancel anytime."
 const PAGE_URL = `${SITE_URL}/country-code/`
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: PAGE_URL },
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
     creator: "@rozper",
   },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const webPageSchema = {
   "@context": "https://schema.org",

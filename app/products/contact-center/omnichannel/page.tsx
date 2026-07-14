@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCOmnichannelPageView } from '@/components/products/contact-center/omnichannel'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Omnichannel Contact Center · Every Channel, One Screen | Rozper',
   description: 'Voice, chat, social, and SMS unified in one workspace — with AI routing and full CRM context, so agents see every channel on a single, unified screen.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/omnichannel/` },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const jsonLd = {
   "@context": "https://schema.org",

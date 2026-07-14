@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { SalesTeamsPageView } from '@/components/solutions/sales-teams'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Cloud Phone System for High-Performing Sales Teams | Rozper',
   description: 'Power dialer, AI coaching, CRM sync, and conversation intelligence for sales teams — helping reps make more dials, run better calls, and close more deals.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/sales-teams/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { FinancePageView } from '@/components/solutions/finance'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Compliant Contact Center for Financial Services | Rozper',
   description: 'Compliant contact center for banks, insurance carriers, and fintech companies, with PCI-compliant call recording, regulatory archiving, and audit controls.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/financial-services/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

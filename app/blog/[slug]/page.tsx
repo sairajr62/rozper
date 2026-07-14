@@ -13,11 +13,14 @@ import {
   fetchRelatedPosts,
 } from "@/lib/blog-api"
 import { SITE_URL } from "@/lib/site"
+import { applyLocale, getRequestLocale } from "@/lib/locale-metadata"
 import { BlogPostingStructuredData, BreadcrumbStructuredData } from "@/components/seo/structured-data"
 
-// Statically generate at build time from local markdown posts.
-export const dynamic = "force-static"
-// Allow on-demand rendering of any new slug that wasn't pre-built.
+// Pre-built at build time via generateStaticParams below; rendered per-request
+// (not force-static) so generateMetadata can read the x-locale header and
+// serve translated title/description per locale — force-static makes
+// headers() return empty values unconditionally, which silently pinned
+// every locale's blog metadata to English.
 export const dynamicParams = true
 
 type RouteParams = { slug: string }
@@ -38,11 +41,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const post = await fetchPostBySlug(slug).catch(() => null)
+  const locale = await getRequestLocale()
+
   if (!post) {
-    return {
+    return applyLocale({
       title: "Article not found · Rozper Blog",
       description: "This article doesn't exist or has been moved.",
-    }
+    }, locale)
   }
 
   const description =
@@ -52,7 +57,7 @@ export async function generateMetadata({
 
   const title = post.seoTitle || `${post.title} · Rozper Blog`
 
-  return {
+  return applyLocale({
     title,
     description,
     // WP posts carry an absolute link (the original rozper.com URL).
@@ -87,7 +92,7 @@ export async function generateMetadata({
       description,
       images: post.featuredImage ? [post.featuredImage.src] : undefined,
     },
-  }
+  }, locale)
 }
 
 export default async function BlogPostPage({

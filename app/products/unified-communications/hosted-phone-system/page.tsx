@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSPhoneSystemPageView } from '@/components/products/unified-communications/phone-system'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Hosted Phone System · Extensions, Hunt Groups, IVR | Rozper',
   description: 'Extensions, hunt groups, IVR, and custom dial plans — hosted on a carrier-grade network. Enterprise phone features delivered with zero on-site hardware.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/hosted-phone-system/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

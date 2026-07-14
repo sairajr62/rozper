@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { RetailPageView } from '@/components/solutions/retail'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Omnichannel Contact Center for Retail & eCommerce | Rozper',
   description: 'Omnichannel support for retail and eCommerce brands — voice, chat, SMS, and social channels unified in one platform, built to handle seasonal traffic peaks.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/retail-ecommerce/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -7,9 +7,10 @@ import { BlogPostsSection } from "@/components/blog/posts"
 import { BlogTopics } from "@/components/blog/topics"
 import { BlogNewsletter } from "@/components/blog/newsletter"
 import { fetchAllPosts } from "@/lib/blog-api"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Blog · Field notes from the global voice layer | Rozper",
   description:
     "Research, deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries. AI agents, contact center, wholesale voice & more.",
@@ -31,6 +32,8 @@ export const metadata: Metadata = {
       "Research, engineering deep-dives, and operator playbooks from the team routing 2.4M+ daily calls across 150+ countries.",
   },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const blogSchema = {
   "@context": "https://schema.org",

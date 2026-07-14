@@ -7,9 +7,10 @@ import { StatusRegions } from "@/components/status/regions"
 import { StatusMetrics } from "@/components/status/metrics"
 import { StatusIncidents } from "@/components/status/incidents"
 import { StatusSubscribe } from "@/components/status/subscribe"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Rozper Platform Status · Live Uptime & Incidents | Rozper",
   description:
     "Real-time status for Rozper voice, messaging, AI, and APIs. Monitored across 14 global regions with 90 days of incident history and subscriber email alerts.",
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/status/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

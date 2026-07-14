@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { SaaSPageView } from '@/components/solutions/saas'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Cloud Phone System for SaaS & Tech Companies | Rozper',
   description: 'Phone, video, and AI communications for fast-growing SaaS teams, with CRM integrations, global coverage, and pricing that scales with your growing headcount.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/saas-tech/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

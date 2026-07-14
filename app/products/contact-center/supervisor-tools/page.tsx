@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCSupervisorToolsPageView } from '@/components/products/contact-center/supervisor-tools'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Supervisor Tools · Barge, Whisper, Monitor | Rozper',
   description: 'Barge, whisper, and monitor live calls — with AI alerts flagging issues the moment they start, so supervisors can see and fix problems before calls end.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/supervisor-tools/` },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const jsonLd = {
   "@context": "https://schema.org",

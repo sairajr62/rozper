@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { FeatTollFreeNumbersPageView } from '@/components/features/toll-free-numbers'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Toll-Free Numbers · 800, 888, 877 & International | Rozper',
   description: 'Instant toll-free number provisioning in 150+ countries. USA 800, 888, and 877 numbers plus international freephone options, routed to any destination.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/features/toll-free-numbers/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

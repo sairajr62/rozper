@@ -23,6 +23,7 @@ import {
   buildCountryPageMeta,
 } from "@/lib/country-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { applyLocale, getRequestLocale } from "@/lib/locale-metadata"
 import { BreadcrumbStructuredData } from "@/components/seo/structured-data"
 
 export const dynamicParams = true
@@ -40,8 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!country) return {}
 
   const { title, description } = buildCountryPageMeta(country.name, formatDialCode(country.dialCode), country.capital)
+  const locale = await getRequestLocale()
 
-  return {
+  return applyLocale({
     title,
     description,
     keywords: `${country.name} country code, ${formatDialCode(country.dialCode)} dial code, ${country.name} virtual phone number, call ${country.name}, ${country.name} international calling`,
@@ -58,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
     },
-  }
+  }, locale)
 }
 
 export default async function CountryPage({ params }: Props) {

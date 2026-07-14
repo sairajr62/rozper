@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { FeatConversationIntelligencePageView } from '@/components/features/conversation-intelligence'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Conversation Intelligence · Searchable Insights | Rozper',
   description: 'Every conversation transcribed, analyzed, and made searchable. Competitor mentions, deal risks, and coaching moments are all surfaced for your whole team.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/features/conversation-intelligence/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { SMBPageView } from '@/components/solutions/smb'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Phone System for Small Business · AI Included | Rozper',
   description: 'Small business phone system with an AI receptionist, call recording, voicemail-to-email, and CRM sync — enterprise-grade features starting at $9.99 per user.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/small-business/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

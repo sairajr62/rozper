@@ -3,9 +3,10 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { AreaCodesHubClient } from "@/components/area-codes/hub-client"
 import { getAllAreaCodes } from "@/lib/area-code-data"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "U.S. Area Code Virtual Phone Numbers for Every City | Rozper",
   description:
     "Get a virtual phone number for any U.S. area code — New York 212, Los Angeles 310, Chicago 312, Miami 305, and 300+ more. Instant setup, 99.99% uptime.",
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
     siteName: "Rozper",
   },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const schema = {
   "@context": "https://schema.org",

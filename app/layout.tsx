@@ -2,9 +2,15 @@ import type { Metadata } from 'next'
 import { Archivo, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
+import { headers } from 'next/headers'
 import { BfcacheFix } from './bfcache-fix'
 import { SITE_URL } from '@/lib/site'
 import { SiteStructuredData } from '@/components/seo/structured-data'
+import { HreflangTags } from '@/components/shared/hreflang-tags'
+import { InlineTranslations } from '@/components/i18n/InlineTranslations'
+import { GlobalTranslator } from '@/components/i18n/GlobalTranslator'
+import { stripLocaleFromPathname } from '@/lib/locale'
+import { isRTL } from '@/lib/translate'
 import './globals.css'
 
 const archivo = Archivo({
@@ -44,16 +50,30 @@ export const viewport = {
   themeColor: '#0B1220',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const h = await headers()
+  const locale = h.get('x-locale') ?? 'en'
+  const pathname = stripLocaleFromPathname(h.get('x-pathname') ?? '/')
+  const dir = isRTL(locale) ? 'rtl' : undefined
+
   return (
-    <html lang="en" className={`scroll-smooth ${archivo.variable} ${inter.variable}`} style={{ backgroundColor: '#0B1220' }}>
+    <html
+      lang={locale}
+      dir={dir}
+      className={`scroll-smooth ${archivo.variable} ${inter.variable}`}
+      style={{ backgroundColor: '#0B1220' }}
+      suppressHydrationWarning
+    >
       <body className="font-sans antialiased" style={{ backgroundColor: '#0B1220', color: '#ffffff' }} suppressHydrationWarning>
+        <HreflangTags path={pathname} />
+        <InlineTranslations txMap={{}} locale={locale} />
         <BfcacheFix />
         <SiteStructuredData />
+        <GlobalTranslator locale={locale} />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
         {process.env.FLOATCHAT_WEBSITE_TOKEN && (

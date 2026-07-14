@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCAnalyticsPageView } from '@/components/products/contact-center/analytics'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Interaction Analytics · Transcripts, Sentiment & Intent | Rozper',
   description: 'Transcripts, sentiment scoring, intent detection, and quality scores — on 100% of interactions, with every conversation analyzed instantly and automatically.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/interaction-analytics/` },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ZohoPageView } from '@/components/integrations/zoho'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Rozper for Zoho · Phone & CRM Integration | Rozper',
   description: 'Connect Rozper to Zoho CRM. Click-to-call, auto-logging, AI summaries, and contact pop keep sales and support teams working from one accurate record every time.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/integrations/zoho/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

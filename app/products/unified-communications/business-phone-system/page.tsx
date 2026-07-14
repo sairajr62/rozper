@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSBusinessPhonePageView } from '@/components/products/unified-communications/business-phone'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Business Phone · Cloud Calling for Global Teams | Rozper',
   description: 'Cloud business phone with local numbers, smart call routing, and AI-powered features — built for global teams working across 150+ countries worldwide.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/business-phone-system/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSVideoMeetingsPageView } from '@/components/products/unified-communications/video-meetings'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'HD Video Meetings · AI Transcripts Included | Rozper',
   description: 'Up to 200 participants, AI-generated meeting summaries, and screen sharing — all built inside Rozper. HD video meetings now include automatic AI transcripts.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/hd-video-meetings/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

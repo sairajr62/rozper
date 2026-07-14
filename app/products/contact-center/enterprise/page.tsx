@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCEnterprisePageView } from '@/components/products/contact-center/enterprise'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Enterprise Contact Center · SSO & Custom SLAs | Rozper',
   description: 'SSO, SCIM provisioning, multi-site routing, custom SLAs, and a dedicated success team — an enterprise contact center built to run entirely on your own rules.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/enterprise/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

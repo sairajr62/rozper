@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { SupportTeamsPageView } from '@/components/solutions/support-teams'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Omnichannel Contact Center for Support Teams | Rozper',
   description: 'Omnichannel support inbox unifying voice, chat, SMS, and social channels, with AI agent assist, CRM sync, real-time dashboards, and SLA management tools.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/support-teams/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

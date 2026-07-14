@@ -3,9 +3,10 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { TermsContent } from "@/components/legal/terms-content"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Terms of Service · Platform Usage Agreement | Rozper",
   description:
     "The agreement between you and Rozper governing use of the platform, billing, acceptable use, and related services across every Rozper product and feature.",
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/legal/terms/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

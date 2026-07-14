@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { UcaasPageView } from '@/components/products/unified-communications/overview'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'UCaaS Platform · Unified Communications for Teams | Rozper',
   description: 'Voice, video, messaging, and AI in one unified platform for over 150 countries, starting at $9.99 per user per month. Start a no-pressure conversation today.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

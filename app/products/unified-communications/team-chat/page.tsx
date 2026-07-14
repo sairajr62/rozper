@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSTeamChatPageView } from '@/components/products/unified-communications/team-chat'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Team Chat · Built Into Your Business Phone System | Rozper',
   description: 'Chat, share files, and start calls from one app without switching between separate tools. Team messaging built directly into your Rozper phone system.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/team-chat/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

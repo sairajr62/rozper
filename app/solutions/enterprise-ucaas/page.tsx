@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { EnterpriseITPageView } from '@/components/solutions/enterprise-it'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Enterprise UCaaS · SSO, SCIM & Multi-Site Support | Rozper',
   description: 'Enterprise phone and contact center platform with SSO, SCIM provisioning, multi-site management, custom SLAs, and GDPR/HIPAA compliance for enterprise IT teams.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/solutions/enterprise-ucaas/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

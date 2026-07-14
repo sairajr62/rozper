@@ -23,6 +23,7 @@ import {
   buildBestTimeToCallMeta,
 } from "@/lib/country-code-data"
 import { SITE_URL, ORG_ID } from "@/lib/site"
+import { applyLocale, getRequestLocale } from "@/lib/locale-metadata"
 import { BreadcrumbStructuredData, FaqPageStructuredData } from "@/components/seo/structured-data"
 
 export const dynamicParams = true
@@ -40,8 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!country) return {}
 
   const { title, description } = buildBestTimeToCallMeta(country.name, formatDialCode(country.dialCode), country.capital)
+  const locale = await getRequestLocale()
 
-  return {
+  return applyLocale({
     title,
     description,
     keywords: `best time to call ${country.name}, ${country.name} country code, ${formatDialCode(country.dialCode)} dial code, call ${country.name} from US, ${country.name} business hours, ${country.name} time zone`,
@@ -58,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
     },
-  }
+  }, locale)
 }
 
 export default async function CountryCodePage({ params }: Props) {

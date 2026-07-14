@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
 import {
   Menu,
   X,
@@ -641,6 +642,7 @@ export function Navbar() {
 
             {/* Right: CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
+              <LanguageSwitcher />
               <Button
                 variant="ghost"
                 className="text-white/80 hover:text-white hover:bg-white/[0.06] text-sm font-medium h-9 px-5 rounded-lg"
@@ -796,6 +798,9 @@ export function Navbar() {
 
               {/* CTA */}
               <div className="px-4 pt-2 pb-4 border-t border-white/10 space-y-2">
+                <div className="flex justify-center pb-2">
+                  <LanguageSwitcher />
+                </div>
                 <Button
                   variant="ghost"
                   className="w-full text-white/80 hover:text-white hover:bg-white/[0.06] font-medium h-11 rounded-xl"

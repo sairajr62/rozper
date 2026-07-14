@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { FeatAIReceptionistPageView } from '@/components/features/ai-receptionist'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'AI Receptionist · Automated 24/7 Call Answering | Rozper',
   description: 'AI receptionist that answers, qualifies, routes, and books appointments 24/7. No missed calls and automatic CRM sync for every conversation your business has.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/features/ai-receptionist/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

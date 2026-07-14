@@ -3,9 +3,10 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { PrivacyContent } from "@/components/legal/privacy-content"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Privacy Policy · How Rozper Protects Your Data | Rozper",
   description:
     "How Rozper collects, uses, shares, and protects personal information across our platform, websites, and connected apps, and the choices you have to control it.",
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/legal/privacy/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

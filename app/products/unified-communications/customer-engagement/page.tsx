@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdUCaaSCustomerEngagementPageView } from '@/components/products/unified-communications/customer-engagement'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Customer Engagement · Every Channel, One Inbox | Rozper',
   description: 'Voice, SMS, WhatsApp, Instagram, Facebook, and web chat — unified in one inbox for every agent. Customer engagement built for fast, seamless conversations.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/unified-communications/customer-engagement/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

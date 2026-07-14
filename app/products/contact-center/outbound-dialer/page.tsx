@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCOutboundDialerPageView } from '@/components/products/contact-center/outbound-dialer'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Outbound Dialer · Power & Predictive Dialing | Rozper',
   description: 'Power and predictive dialer with built-in compliance tools, live AI coaching, and CRM sync — outbound dialing that scales while staying fully compliant.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/outbound-dialer/` },
 }
+
+export const generateMetadata = localizeMetadata(metadata)
 
 const jsonLd = {
   "@context": "https://schema.org",

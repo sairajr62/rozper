@@ -3,9 +3,10 @@ import { Navbar } from "@/components/landing/navbar"
 import { Footer } from "@/components/landing/footer"
 import { LegalHero } from "@/components/legal/shared"
 import { SecurityContent } from "@/components/legal/security-content"
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Security & Compliance · Trust at Every Layer | Rozper",
   description:
     "Carrier-grade infrastructure, encryption everywhere, and audited controls. How Rozper keeps your communications, data, and customers safe every single day.",
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/security/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

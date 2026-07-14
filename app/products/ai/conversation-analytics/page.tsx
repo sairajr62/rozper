@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { ProdAIConversationPageView } from '@/components/products/ai/conversation'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Conversation Analytics · Transcripts & Sentiment | Rozper',
   description: 'Transcripts, sentiment scoring, intent detection, and keyword trend tracking — on 100% of conversations, included free on every Rozper seat with no extra fees.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/ai/conversation-analytics/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

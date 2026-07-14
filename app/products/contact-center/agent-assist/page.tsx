@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ProdCCAgentAssistPageView } from '@/components/products/contact-center/agent-assist'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'AI Agent Assist · Live Coaching on Every Call | Rozper',
   description: 'AI that whispers the right answer, surfaces knowledge base articles, and scores call quality in real time — delivering live coaching on every single call.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/agent-assist/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

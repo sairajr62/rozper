@@ -1,8 +1,9 @@
 ﻿import type { Metadata } from 'next'
 import { ContactCenterPageView } from '@/components/products/contact-center/overview'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Contact Center · AI-Powered Omnichannel Platform | Rozper',
   description: 'Omnichannel inbox, AI agents, supervisor tools, and rich analytics unified in one platform — a contact center that answers, routes, and resolves itself.',
   openGraph: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/products/contact-center/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",

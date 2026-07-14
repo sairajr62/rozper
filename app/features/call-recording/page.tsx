@@ -1,8 +1,9 @@
 ﻿import { Metadata } from 'next'
 import { FeatCallRecordingPageView } from '@/components/features/call-recording'
+import { localizeMetadata } from "@/lib/locale-metadata"
 import { SITE_URL, ORG_ID } from "@/lib/site"
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Call Recording · AI Search & Compliance Tools | Rozper',
   description: 'Record every call with AI transcription, keyword search, and configurable retention policies, plus GDPR and HIPAA compliance options for regulated teams.',
   openGraph: {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/features/call-recording/` },
 }
+export const generateMetadata = localizeMetadata(metadata)
+
 
 const jsonLd = {
   "@context": "https://schema.org",
